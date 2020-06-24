@@ -1,0 +1,28 @@
+GEN files
+From Creatures Wiki
+.gen files contain the genetic information for new breeds as well as individual creatures, identified by the moniker.
+Contents
+	1 Format
+	1.1 Gene header
+	2 Related links
+	3 External links
+Format
+	C2 and newer genome files start with the three characters 'd', 'n', and 'a', followed by the (textual) number representing the genome file version - '2' for Creatures 2, and '3' for the Creatures Evolution Engine.
+	The main part of the file (which C1-era files start with immediately) consists of any number of genes, which consist of the four characters 'gene', a gene header and gene data, which differs depending on the contents of the header. There is more information about the differing formats of genes in the gene types category.
+	When all the genes have occured, there is then a end-of-file marker consisting of the four characters 'gend'.
+	All numbers in the file are in little-endian form.
+
+Gene header
+	A gene header starts with two 8-bit values, representing the gene type and the gene subtype.
+	There are then another four 8-bit values, representing the gene identifier (for reference by GNO files), the generation number of the gene, the age at which the gene should be switched on, and the gene flags.
+	In version 2/3 genomes, there's then an 8-bit mutability weighting value, and in version 3 genomes, an 8-bit variant value, used in Creatures Village to turn on different genes for different species without needing separate genome files for each species.
+Related links
+	GNO files
+	Genetics
+External links
+	Creature Labs' GEN Technical Information (http://www.gamewaredevelopment.com/cdn/cdn_more.php?CDN_article_id=9) - This is known to be extremely inaccurate.
+
+Retrieved from "http://creatures.wikia.com/wiki/GEN_files?oldid=50416"
+
+Categories: File formats Genetics
+This page was last modified on June 4, 2012, at 22:38.

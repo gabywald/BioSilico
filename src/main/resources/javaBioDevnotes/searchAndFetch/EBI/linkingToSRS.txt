@@ -1,0 +1,327 @@
+-- http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:linkingtosrs -- 
+
+Linking to SRS
+
+This document describes how to add hyperlinks from your own pages to the EBI SRS server. We strive to maintain links to older versions of SRS working and will continue to do so in the future. However, SRS is evolving all the time and users need to be aware of changes to the SRS syntax. This page describes some of these changes.
+Supported links and Services at EBI
+
+If you have an entry identifier (i.e. entry Id or accession number) for which you want to retrieve an entry then we suggest you consider using one of the following services:
+
+    EBI Fetch Tools:
+        dbfetch - E.g. http://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=EMBL&id=hscfos&style=raw
+        emblfetch - get entries from EMBL
+        medlinefetch - get entries from MEDLINE
+        pdbfetch - get entries from PDB
+        swissfetch - get entries from UniProt
+        WSDbfetch - SOAP based Web Services interface to dbfetch
+
+For more complex queries many EBI resources offer REST and SOAP based Web Services interfaces, for example:
+
+    EBI Search:
+        EB-eye SOAP Web Service
+    ENA Browser:
+        ENA Browser REST URLs
+    UniProt:
+        uniprot.org REST interface (documentation), e.g. http://www.uniprot.org/uniprot/fos_human.txt
+        UniProtJAPI a client-side Java API for accessing UniProt.
+
+See EBI Web Services for more resources which provide Web Services interfaces.
+Program and Script Usage
+
+Important: resources at EBI are not unlimited and many users are using the services concurrently. Therefore, we ask that you set a pause or wait of 3-5 seconds in between individual requests in your scripts or programs. Occasionally we may have to black-list a user, host or IP address in order to ensure fair access to the service for all.
+
+We also impose limits on memory and CPU usage. Currently wgetz jobs are limited to a maximum of 4GB of memory and 5 min of runtime. This may lead to truncation or failure of some large requests. So remember to check that you have the expected number of results.
+
+We recommend that programs and scripts use the -noSession option unless they use session specific features (e.g. query history).
+
+For other considerations, and useful resources, when using developing programs which use our SRS server please see SRS URL API.
+Virtual Libraries
+What are Virtual Libraries?
+
+These are virtual SRS databanks that join multiple databases of the same type (i.e EMBLRELEASE with EMBLNEW, MEDLINE2006 with MEDLINENEW, etc.). Virtual Libraries simplify the linking process by executing a virtual query on two or more libraries.
+Old and New queries
+
+If you have an SRS query that searched the EMBLRELEASE and EMBLNEW databases but displayed only the latest entries:
+
+(q=[libs={emblrelease emblnew}-id:foobar])!(q<emblnew)))
+
+it is possible to do this query using the EMBL virtual library like this:
+
+[embl-id:foobar]
+
+There is NO need to specify any of the member libraries.
+Which Virtual Libraries exist on this SRS server
+
+    EMBL = EMBLRELEASE + EMBLNEW + EMBLWGS
+    EMBLWGS = EMBLWGSRELEASE + EMBLWGSNEW
+    EMBLCON = EMBLCONRELEASE + EMBLCONNEW
+    EMBLANN = EMBLANNRELEASE + EMBLANNNEW
+    EMBLCONEXP = EMBLCONEXPRELEASE + EMBLCONEXPNEW
+    MEDLINE = MEDLINE2006 + MEDLINENEW
+    SWALL = UNIPROT
+    PATENT_PRT = EPO_PRT + JPO_PRT + USPO_PRT
+    REFSEQ = REFSEQGENREL + REFSEQGENNEW
+    REFSEQP = REFSEQPROTREL + REFSEQPROTNEW
+    RHDB = RHDBMAIN + RHDBNEW
+
+Linking to SRS
+SRS query language
+
+Most links to SRS are performing a query or retriving an entry. In these cases the URL created will contain an SRS query. If you are not familar with the SRS query language you may find it useful to read our SRS Query Language Quick Guide before reading the rest of this document.
+Character escapes
+
+Many non-alphanumeric characters have special meanings in URLs and have to be escaped. For most characters the standard URL escapes can be used, which is a '%' followed by the hex ASCII value for the character e.g. %20 for space, %23 for '#', etc. However in SRS query strings sometimes the standard escapes will not work and wgetz character escapes have to be used instead:
+Char 	wgetz escape
+& 	_AMP_
+= 	_EQ_
+# 	_HASH_
+% 	_PERC_
++ 	_PL_
+<space> 	_SP_
+Common syntax
+
+With no session (this will strip away the SRS interface):
+
+http://srs.ebi.ac.uk/cgi-bin/wgetz?-noSession+-e+[EMBL-id:V01512]
+
+With no session (this will strip away the SRS interface) and in plain text (no html):
+
+http://srs.ebi.ac.uk/cgi-bin/wgetz?-noSession+-e+[EMBL-id:V01512]+-ascii
+
+With no session, getting all pax6 entries from UniProt in Fasta format:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+[uniprot-id:pax6_*]+-view+FastaSeqs
+
+With a session (SRS WWW interface will show):
+
+http://srs.ebi.ac.uk/cgi-bin/wgetz?-id+sessionid+-e+[EMBL-id:V01512]+-view+EmblEntry
+
+With a specific layout (-view) and session:
+
+http://srs.ebi.ac.uk/cgi-bin/wgetz?-id+sessionid+[medline-id:12519939]+-view+MedlineRef
+
+With a specific layout (-view) and no session:
+
+http://srs.ebi.ac.uk/cgi-bin/wgetz?-noSession+[medline-id:12519939]+-view+MedlineRef
+
+Common errors
+
+    Using -id without a session id worked on SRS 7.1. This was a bug. It has been fixed in the current release.
+    Using a non existent session Id will create the session, this may not be what was intended
+    Using [libs={embl emblnew}-id:bla] - EMBL is a Virtual library that includes EMBLRELEASE, EMBLWGS and EMBLNEW.
+    Using [libs={embl emblwgs}-id:bla] - EMBLWGS is part of EMBL. Use [embl-id:bla]
+
+Examples of linking to SRS
+
+    Searching for an accession number across a number of databases:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+-e+%5b{swissprot_SP_refseqp_SP_patent_prt}-id:NP_005149%5d
+
+    Searching for a term in every indexed field for a database and retrieve full entries -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+-e+%5buniprot-AllText:kinase%5d
+
+    Searching for a term in every indexed field for a database and return using a predefined view -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+%5buniprot-AllText:kinase%5d+-view+UniprotView
+
+    Searching for a term in specific indexed fields for a database and return using a predefined view -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+(%5buniprot-des:rho%5d%7c%5buniprot-gen:rho%5d)+-view+UniprotView
+
+    To search the EMBL database with a list of accession numbers -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+%5bembl-acc:AY341767%7cAJ535993%7cH38767%7cAA053940%5d+-view+SeqSimpleView
+
+    To search the GOA database with a number of uniprot accession numbers -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-e+%5bgoa-dbo:P26630%7cP47237%7cP26367%7cO73917%5d+-ascii+-lv+1000
+
+    To search the Uniprot description field for two terms using the 'AND' operator -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+-view+UniprotView+(%5buniprot-des:serine&threonine%5d)
+
+    To search the Uniprot description field for either of two terms using the 'OR' operator -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+sessionId+-view+UniprotView+(%5buniprot-des:serine%7cthreonine%5d)
+
+    To link the results of a search on Uniprot to EMBL -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+blabla+%5buniprot-AllText:kinase%5d%3Eembl+-view+SeqSimpleView
+
+    To link the results of a search for entries in Prosite with description 'actin' to InterPro -
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+blabla+-e+%5bprosite-des:actin%5d%3Einterpro
+Field information
+
+The fields that are indexed for a database can be viewed in the drop down menu of the query form or on the database information page. For example the database information page for EMBLRELEASE. The fields that are indexed are shown in the table. The short name code (usually three letters) for each field is what must be used in the URL to query or display a particular field. The short name code is always the second column in the table that gives general information about a database.
+
+Examples: Division:div, Accession number:acc, NCBI TaxId:txi, Keywords:key
+More about views
+
+Note: View names are case sensitive, i.e. SeqSimpleView and seqsimpleview are not equivalent. Database names and field names in the query string are not case sensitive.
+System specific views
+
+There are a number of predefined views available in SRS for any given database. To determine what views are available, have a look at the drop down menu called 'View results using' in the left hand side column after performing a query.These views can be used in the call to wgetz and must be used after the parameter -view. So for example, to use the view 'UniParcSimple' the URL would look like:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newId+-e+[UNIPARC:'UPI0000000001']+-view+UniParcSimple
+
+or to use the FastaSeqs view:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newId+-e+[uniprot-org:gallus]+-view+FastaSeqs
+
+User defined views
+
+A user can choose to make their own view to display particular fields for any given database. To make a user defined view, select the 'views' tab on the top tool bar. From the menu, 'Databanks to define a view for', select a databank(s). Name the view on the left. Then select create new view. On this page, select the fields for the view and save it. The view is then available for the duration of the session. Remember that temporary sessions last only 24 hours before they are deleted. Permanent sessions are maintained. If you need to retrieve data using wgetz and a pre-defined view on a regular basis, you will need to define the view in a permanent session. Example using a predefined view (called testView) for EMBL displaying the id, accession number, division, molecule, description, keywords and organsim and a permanet session (testSession):
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+PERMtestSession+embl-id+[AK033621|AK078912]+-view+testView
+
+alternatively, a user may list the fields (same as above) that they want to display in the query string using the -f parameter and sperating each field by a space:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+PERMtestSession+[embl-id:AK033621|AK078912]+-f+id%20acc%20div%20mol%20des%20key%20org
+
+Chunking Results
+
+Using the -bv and -lv options the results of a query can be split into chunks. This can be very useful for downloading very large sets or retriving data through complex views. When using a view it may be necessary to specifiy a page to get the -bv option to work correctly, see Useful pages for details of the available pages.
+Example
+
+First chunk of ten, i.e. from entry 1 get 10 entries:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+-bv+1+-lv+10+[uniprot-des:auxin*]
+
+Second chunk of ten, i.e. from entry 11 get 10 entries:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+-bv+11+-lv+10+[uniprot-des:auxin*]
+
+Result Count
+
+To get just the number of results matching a query you can use the cResult page.
+
+Note: this feature is an EBI modification and is not available in other SRS servers.
+Example
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-page+cResult+-ascii+[uniprot-all:auxin*]
+
+Useful Pages
+
+Useful pages you may wish to specify:
+
+    qResult: the results page
+    EntryPage: a single entry page
+    LibInfo: databank information, used with -lib to specify the databank
+    query: the Standard Query Form, used with -l to specify the databank
+    databanks: the List of Databanks page
+    saveQResult: (EBI only) a plain page, no header or sidebar, used as a workaround for issues with chunking support (-bv bug)
+
+SRS 5 URLs
+
+If you have existing SRS 5 style URLs please note:
+
+The -fun option is no longer supported, the following table details the equivalent -page options for the most commonly used names:
+SRS 5 -fun 	SRS 7 -page
+-fun+PageQueryForm+-l+SWISSPROT 	-page+query+-l+SWISSPROT
+-fun+PageLibInfo+-info+SWISSPROT 	-page+LibInfo+-lib+SWISSPROT
+-fun+PageLibInfo+-l+SWISSPROT 	-page+LibInfo+-lib+SWISSPROT
+-fun+PageLibList 	-page+databanks
+
+Note: SRS 7 page names are case sensitive unlike SRS 5 “function” names.
+
+Please use URLs without version numbers (i.e. http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz) instead of ones containing specific version numbers.
+Options to wgetz
+
+The following is a listing of all options available in wgetz:
+
+Usage: wgetz [-ew] [-page wwwPageName] [-id userId] [-uName uName] [-gName
+          gName] [-permUserId permUserId] [-l libList] [-lib libName] [-entry
+          entryName] [-i2f] [-dbg] [-dbr] [-dbs] [-dbt] [-dbw] [-lo] [-info
+          libInfo] [-qfrom queryFrom] [-launchFrom launchFrom] [-lfrom linkFrom]
+          [-from fromLibName] [-to toLibName] [-f fieldList] [-bv
+          viewEntriesStartN] [-lv viewEntriesChunkSize] [-lset listSetNumber]
+          [-sf seqFormat] [-q queryString] [-mime mimeType] [-qnum queryNumber]
+          [-enum entryNumber] [-snum sessionNumber] [-vt] [-vn viewNumber]
+          [-view viewName] [-rs viewRecordSep] [-cs viewColumnSep] [-bf
+          browseIndex] [-blib browseLibs] [-ifile icarusFileType] [-newId]
+          [-appl appl] [-package package] [-version] [-codeStrings] [-off]
+          [-bioScout bioScoutId] [-jobName jobName] [-debug] [-ascii] [-ldrName
+          loaderName] [-sort sortOn] [-sortDir sortDir] [-sqlImage sqlImage]
+          [-pMan projMan] [-fMan fromMan] [-dlout] [-dlkey dlkey] [-noSession]
+          'queryExpression'
+
+  -help               this message
+  -e                  [FALSE] prints entire entry
+  -page       [""] Name of page to be built.
+  -id         [""] user ID, or file, name associated with a WWW session
+  -uName      [""] The user name from the web server
+  -gName      [""] The group name from the web server
+  -permUserId [""] perm user ID, or file, name associated with a WWW
+                      session
+  -l          [""] select libraries of group
+  -lib        [""] Name of the input library.
+  -entry      [""] Name of the input entry without library name.
+  -i2f                [FALSE] Prints script generated by POST 
+  -dbg                [FALSE] Determines whether or not to print debug
+                      information.
+  -dbr                [FALSE] Reads the debug information saved by dbs
+  -dbs                [FALSE] for saving the debug information
+  -dbt                [FALSE] for saving the individual session files in a
+                      different file
+  -dbw                [FALSE] Write the arglist or the content buffer to a file
+  -lo                 [FALSE] link set/entry to other libraries
+  -info       [""] print some info about library
+  -qfrom      [""] which page or condition the query is from
+  -launchFrom [""] which page or condition the launch is from
+  -lfrom      [""] which page or condition the link is from
+  -from       [""] 
+  -to         [""] 
+  -f          [""] include fields in entry list 
+  -bv              [0] number of first entry in set to be viewed
+  -lv              [30] number of entries to be viewed in one go
+  -lset            [0] number (in history) of set to be listed
+  -sf         [""] format of sequence output file
+  -q          [""] A string with an SRS query language expression.
+  -w                  [TRUE] appends a wildcard to each search word
+  -mime       [""] MIME type to printed on top of the output page.
+  -qnum            [0] refer query by number
+  -enum       [""] Number of the entry in the query we are viewing
+  -snum            [0] refer to session by number
+  -vt                 [FALSE] prints view result in table format
+
+  -vn              [0] The view number to use. Use -view to specify view
+                      name.
+  -view       [""] Name of view to be used when displaying entries.
+  -rs          String of one or more characters to separate records in
+                      view.
+  -cs          String of one or more characters to separate columns in
+                      view.
+  -bf         [""] Selects a data-field or index to be displayed for
+                      browsing on the browse index page.
+  -blib       [""] Sepcifies the library to browse information on the
+                     library  information page.
+  -ifile      [""] Selects the type of the Icarus file: 'i' (structure),
+                      'is' (syntax),  'it' (info).
+  -newId              [FALSE] Forces wgetz to create a new user-ID if none
+                      exists yet.
+  -appl       [""] application name
+  -package    [""] application package name
+  -version            [FALSE] Get the version number
+  -codeStrings        [FALSE] Get the strings for versions of the code number
+  -off                [FALSE] Sets the off-line version of a databank.
+  -bioScout   [""] bioscout user id
+  -jobName    [""] job name, to be used for job debug page
+  -debug              [FALSE] Puts the Icarus interpreter into debugging mode.
+  -ascii              [FALSE] Select ASCII format for output.
+  -ldrName    [""] Used to specify the loader name to view on the loader
+                       information page.
+  -sort       [""] name of field to sort the query on
+  -sortDir    [""] ascending (0) or descending (1) sort
+  -sqlImage   [""] The filename where the sql for getting an image for
+                      rdb module.
+  -pMan       [""] The type of operation to do in theproject manager
+  -fMan       [""] If the page is from a manager page we need to do
+                      things.
+  -dlout              [FALSE] discovery link output
+  -dlkey      [""] key for discovery link output
+  -noSession          [TRUE] Whether to avoid creating a temporary session
+  
+  guides/linkingtosrs.txt · Last modified: 2011/09/28 09:35 by hpm
+  

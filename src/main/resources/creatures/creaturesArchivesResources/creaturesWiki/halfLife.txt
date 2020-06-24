@@ -1,0 +1,12 @@
+Half life
+From Creatures Wiki
+The half-life of any chemical, either in the Creatures series or our own universe, is the time it takes for a given amount of any chemical to decay to half the original value. In Creatures, altering this can have profound effects on biochemistry.
+
+In creatures, the half-life of any chemical is determined by a big gene called, oddly enough, the half-life gene. A common mutation of the half-life gene produces a longer half-life for ageing or life, leading to longer-lived creatures.
+
+See Biological half-life (http://en.wikipedia.org/wiki/Biological_half-life) on Wikipedia for more on the real-life topic.
+
+Genetics Lesson: Examining a Creatures Half-Life (http://discoveralbia.blogspot.com.au/2013/01/genetics-lesson-examining-creatures.html) at Discover Albia - contains a table of half-life numerical values compared to real-world time for C1, C2 and C3/DS.
+
+Retrieved from "http://creatures.wikia.com/wiki/Half_life?oldid=51252"
+This page was last modified on January 27, 2013, at 01:59.

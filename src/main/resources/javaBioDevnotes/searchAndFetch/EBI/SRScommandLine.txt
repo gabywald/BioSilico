@@ -1,0 +1,316 @@
+-- http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:srscommandline --
+
+SRS Command-line Usage
+
+Note: The following guide to using SRS from the command-line is specific to internal EBI usage only.
+Introduction to getz
+
+The SRS command line is available through a UNIX shell window and uses a program called getz. getz can be used to obtain database information and access and retrieve data.
+Preparing the environment to run getz
+
+The internal SRS server is accessible from the command line on the production (prod) or research (research) clusters. Please note that the external SRS server is not accessible from the command line. Once on prod or research, you will need to prepare the SRS environment in order for the shell to be able to find getz and for getz to know where the database and indexes are located. To do this type:
+
+For csh or tcsh users:
+
+source /ebi/extserv/projects/srs/srs71/srs7int/etc/prep_srs
+
+For sh, ksh or bash users:
+
+. /ebi/extserv/projects/srs/srs71/srs7int/etc/prep_srs.sh
+
+and you will see the following message:
+
+---------- Welcome to SRS 7.1.3.2  -------------
+
+getz is now available.
+Using getz
+
+Please note: A call to getz always takes the form of having the query of the database(s) within square brackets. These square brackets must appear within quotes. getz is NOT case sensitive within the square brackets. The parameters to getz are called either before or after the square brackets. The actual parameter(s) must be in lower case and the value for the parameter(s) is case sensitive. There are lots of examples further on in this page.
+
+Available getz options:
+
+	> getz -help
+	Usage: getz [-etdiwc] [-f fieldList] [-vf viewFieldList] [-lb viewEntriesStartN]
+	          [-ll getzViewEntriesChunkSize] [-lv] [-lvf] [-lmin minIndexValN]
+	          [-xdir indexDirName] [-info] [-libs] [-view viewName] [-rs
+	          viewRecordSep] [-cs viewColumnSep] [-sf seqFormat] [-af aliFormat]
+	          [-html] [-ascii] [-debug] [-off] [-id userId] [-uName uName] [-gName
+	          gName] [-sort sortOn] [-sortDir sortDir] [-qNew] [-qDes] [-qCSort]
+	          [-qCOr] 'queryExpression'
+	
+	  -help               this message
+	  -e                  [FALSE] prints entire entry
+	  -t                  [FALSE] copy complete text (annotation) part of entry
+	  -d                  [FALSE] copy data (eg, sequence) part of entry
+	  -i                  [FALSE] Print the tokens that would be generated for
+	                      indexing.
+	  -f          [""] include fields in entry list 
+	  -vf         [""] List of fields that will be placed into a table
+	                      view.
+	  -w                  [FALSE] appends a wildcard to each search word
+	  -lb              [0] number of first entry in set to be viewed
+	  -ll              [0] number of entries to be viewed in one go
+	  -lv                 [FALSE] List all values that match the query.
+	  -lvf                [FALSE] List all values after the first match of.
+	  -lmin            [0] List only values that occur at least specified number
+	                      of times. Use together with "lv".
+	  -c                  [FALSE] Report only number of entries found
+	  -xdir       [""] directory with the indices
+	  -info               [FALSE] prints info about specified library
+	  -libs               [FALSE] prints a list of all active libraries
+	  -view       [""] Name of view to be used when displaying entries.
+	  -rs          String of one or more characters to separate records in
+	                      view.
+	  -cs          String of one or more characters to separate columns in
+	                      view.
+	  -sf         [""] format of sequence output file
+	  -af         [""] format of sequence alignment output file
+	  -html               [FALSE] Select HTML format for output.
+	  -ascii              [TRUE] Select ASCII format for output.
+	  -debug              [FALSE] Puts the Icarus interpreter into debugging mode.
+	  -off                [FALSE] Sets the off-line version of a databank.
+	  -id         [""] user ID, or file, name associated with a WWW session
+	  -uName      [""] The user name from the web server
+	  -gName      [""] The group name from the web server
+	  -sort       [""] name of field to sort the query on
+	  -sortDir    [""] ascending (0) or descending (1) sort
+	  -qNew               [FALSE] Debugging flag - used to investigate the fastest
+	                      way of doing a query
+	  -qDes               [FALSE] Debugging flag - to investigate the fastest way of
+	                      doing a query
+	  -qCSort             [FALSE] Debugging flag - use sort combine method
+	  -qCOr               [FALSE] Debugging flag - use or combine method
+
+Database information:
+
+	> getz -info uniprot
+	
+	Library: "UNIPROT" from group: "UniprotSequence"
+	
+	Data Fields (B=busy, C=compressed):
+	
+	Name                 Short  Type    Inx     Ids   No       No     Creation  B C
+	                     Name           (kb)    (kb)  Words    IDs    Date         
+	-------------------------------------------------------------------------------
+	AllText              all    show 
+	ID                   id     id     28655   7264 1487788  1487788    3/7/04  0 1
+	EntryName            enm    index  28655   7264 1487788  1487788    3/7/04  0 1
+	AccNumber            acc    index  28958   7499 1534227  1535884    3/7/04  0 1
+	DateCreated          crd    num        2   7264      70  1487788    3/7/04  0 1
+	DateSeqUpdate        sqd    num        2   7264      70  1487788    3/7/04  0 1
+	DateAnnUpdate        annd   num        2   7264      65  1487788    3/7/04  0 1
+	Description          des    index  20742  28913  813284  5921530    3/7/04  0 1
+	GeneName             gen    index   5872   4166  278098   853308    3/7/04  0 1
+	Synonym              syn    index   1034    362   50063    74229    3/7/04  0 1
+	OrderedLocus         ord    index   7436   1863  379025   381577    3/7/04  0 1
+	ORFnames             orf    index   3326    793  154437   162505    3/7/04  0 1
+	Organism             org    index   3707  68672  117682 14064031    3/7/04  0 1
+	Species              spc    index   3046  10623   90099  2175605    3/7/04  0 1
+	Taxonomy             tax    index    672  58049   27769 11888446    3/7/04  0 1
+	Organelle            ogn    index     47    903    2209   185016    3/7/04  0 1
+	NCBI_TaxId           txi    index   1476   7302   78218  1495625    3/7/04  0 1
+	TaxCount             taxc   num        0   7264      15  1487788    3/7/04  0 1
+	Keywords             key    index     29  11844     890  2425794    3/7/04  0 1
+	ProteinID            prd    index  40483   8836 1776627  1809672    3/7/04  0 1
+	SeqLength            sl     num       74   7264    4099  1487788    3/7/04  0 1
+	MolWeight            mow    num     2537   7264  137637  1487788    3/7/04  0 1
+	crc                  crc    index  38807   7264 1351106  1487788    3/7/04  0 1
+	DBxref_              drx    index  78132 105353 3647716 21576306    3/7/04  0 1
+	MedlineID_           midx   index   6171  12951  294205  2652434    3/7/04  0 1
+	swProtName           pnm    index  42379  16664 1425857  3412814    3/7/04  0 1
+	Isoform              isoid  index    317     72   14474    14908    3/7/04  0 1
+	Sequence             seq    show 
+	DBLink               dblink  index  30326  45818 1502716  9383605    3/7/04  0 1
+	Authors              aut    index   7130 249405  297295 36484484    3/7/04  0 1
+	Title                tit    index   2994 126469  133137 18500612    3/7/04  0 1
+	RefPosition          rp     index   1068  46415   51985  6789890    3/7/04  0 1
+	RefNumber            rnum   num        3  15069     144  2204428    3/7/04  0 1
+	RefCommentCode       rcc    index      0   9542       5  1395890    3/7/04  0 1
+	RefComment           rc     index   2413  18786   82804  2748198    3/7/04  0 1
+	Journal              jnl    index     78  10150    2342  1484836    3/7/04  0 1
+	VolumeNo             vol    num       22  10150    1239  1484836    3/7/04  0 1
+	FirstPage            fp     num      332  10150   18181  1484836    3/7/04  0 1
+	Year                 yr     num        1  10150      57  1484836    3/7/04  0 1
+	Citation             cit    index    114  54684    5108  7999623    3/7/04  0 1
+	SubmissionDate       sub    num        7   4849     289   709448    3/7/04  0 1
+	Patent               pat    index      2      0      69      113    3/7/04  0 1
+	PatentDate           pdt    num        2      0      68      113    3/7/04  0 1
+	MedlineID            mid    index   6171  18132  294205  2652530    3/7/04  0 1
+	RefGroup             grp    index      3    242     101    35421    3/7/04  0 1
+	Comment              cc     index   2502  56022  101784  8195277    3/7/04  0 1
+	CommentType          cct    index      1   5936      25   868373    3/7/04  0 1
+	DbName               dbn    index      2  40528      59  5928760    3/7/04  0 1
+	DBxref               dr     index  78132 156165 3647716 22844786    3/7/04  0 1
+	FtKey                ftk    index      1  11710      33  1713136    3/7/04  0 1
+	FtLength             ftl    num       35  11588    1967  1695275    3/7/04  0 1
+	FtDescription        ftd    index   3234  14768  123096  2160410    3/7/04  0 1
+	CountedItem          cti    index      3  50208      84  7344805    3/7/04  0 1
+	CountedN             ctn    num        5  50208     235  7344805    3/7/04  0 1
+	
+	Links:
+	
+	  index-link          UNIPROT <-> UNIPROT_reference
+	  index-link          UNIPROT <-> UNIPROT_comment
+	  index-link          UNIPROT <-> UNIPROT_links
+	  index-link          UNIPROT <-> UNIPROT_features
+	  index-link          UNIPROT <-> UNIPROT_counter
+	  index-link          UNIPROT <-> SWISSPROT
+	  index-link          UNIPROT <-> SPTREMBL
+	  index-link          UNIPROT <-> TREMBLNEW
+	  read-link           UNIPROT <-> EMBLRELEASE
+	  read-link           UNIPROT <-> EMBLNEW
+	  index-link          UNIPROT <-> OMIM
+	  index-link          UNIPROT <-> ENZYME
+	  index-link          UNIPROT <-> TAXONOMY
+	  index-link      INTACTACTOR <-> UNIPROT
+	  index-link          UNIPARC <-> UNIPROT
+	  index-link        UNIREF100 <-> UNIPROT
+	  index-link         UNIREF90 <-> UNIPROT
+	  index-link         UNIREF90 <-> UNIPROT
+	  read-link             PFAMA <-> UNIPROT
+	  read-link          PFAMSEED <-> UNIPROT
+	  read-link             PFAMB <-> UNIPROT
+	  index-link       IPRMATCHES <-> UNIPROT
+	  index-link              GOA <-> UNIPROT
+	  index-link         INTERPRO <-> UNIPROT
+	
+	Directory:
+	  "/ebi/services/idata/flatfiles/swall/"
+	
+	Filenames(s):
+	      uniprot.dat 807067809
+
+This command will provide you with detailed information about a particular database. The columns in the table give information about the fields of the database, including the long name for each field, a short code name (which is used with getz and wgetz), whether the field is numerical (num), text (index), not indexed or just for display (show), the number of terms indexed for that field and in how many entries they occur and the date that the field was indexed.
+
+This is followed by information about the databases that the database in question has a direct link to. On the web server, you will find more detailed information with regard to these links and the number of entries that cross-reference each other. To find this information, you simply need to click on the name of the database on the library page to get to the detailed information page for that particular database.
+Some examples of how to retrieve data from the UniProt database
+
+When you want to query a particular database from the command line, the best thing to do first is to get the detailed information about that database and the fields that are indexed for it, by using the previous command getz -info libraryName. Once you have retrieved this information, you should then be able to use getz to construct both simple and complex queries against one or more fields belonging to that database. Remember also that at any time if you forget what parameters to use with getz, try getz -help.
+
+Get all named entries from UniProt:
+	getz '[uniprot-id:*]'
+
+or
+	getz '[uniprot:*]'
+
+the ID field is the default field to query
+
+Get the full entry of PAX6_MOUSE:
+	getz '[uniprot-id:pax6_mouse]' -e
+
+Get particular fields for the entry with accession number P32117:
+	getz '[uniprot-acc:p32117]' -f "id acc des key"
+
+you can see the short names for the fields using getz -info uniprot
+
+Search a number of fields using an AND operator:
+	etz '[uniprot-key:mitosis]&[uniprot-org:homo]'
+
+Search the keyword field for the presence of two terms using the AND operator:
+	getz '[uniprot-key:nuclease&dna-binding]'
+
+Search the keyword field for the presence of one or another term using the OR operator:
+	getz '[uniprot-key:nuclease|dna-binding]'
+
+Search the keyword field for the presence of one BUT NOT another term:
+	getz '[uniprot-key:nuclease ! dna-binding]'
+
+Search the description field for entries that have a term beginning with 'glut':
+	getz '[uniprot-des:glut*]'
+
+Search multiple databases for a particular accession number if you are not sure what database it comes from:
+	getz '[{uniprot refseqp interpro}-acc:p12555]'
+
+Retrieve the number of human proteins in UniProt:
+	getz -c '[uniprot-org:homo]'
+
+Retrieve the number of protein entries that contain the keyword aids in UniProt:
+	getz -c '[uniprot-key:aids]'
+
+Using the Link operator and getz
+
+Many of the databases in SRS contain cross-references to other databases. These cross-references are indexed and can be searched. This means that you can perform a query on one database and then find the entries in another database that are linked to the results of your query or alternatively you can find what entries in your query result are linked to another database (not the same thing!).
+
+Link operators are denoted as '>' and '<'. They must appear inside the quotes.
+
+database A > database B will give you the entries in database B that are linked to the entries in A. database A < database B will give you the entries in database A that contain a link to database B.
+
+Some examples:
+
+Obtain a list of EMBL entries that are linked to UniProt transferrin proteins (entries that have an identifier beginning with 'TRFE_'):
+	getz '[uniprot-id:trfe_*] >embl'
+
+Obtain a list of transferrin proteins in UniProt that have a cross reference to EMBL:
+	getz '[uniprot-id:trfe_*] <embl'
+
+Retrieving data in various formats
+
+If you want to retrieve the identifiers of chicken proteins to a file:
+	getz '[uniprot-org:gallus]' > chickUniprotIDs.file
+
+If you want to retrieve the full entries of chicken proteins to a file:
+	getz '[uniprot-org:gallus]' -e > chickUniprotEntries.file
+
+If you want to retrieve the sequences of chicken proteins to a file in Fasta format:
+	getz '[uniprot-org:gallus]' -view FastaSeqs >chickuniprotSeqs.file
+
+If you want to retrieve the accession number, description and taxonomy of chicken proteins to a file:
+	getz '[uniprot-org:gallus]' -f "acc des tax" >chickUniprotFields.file
+
+The SRS predefined views that are available for a particular database can be found when you do a query on the WWW server. After you do a query, there will be a drop down menu in the display options on the left listing the names of available views. These view names are case sensitive.
+getz and Subentries
+
+The parts of an entry that contain repeated information (eg. FT, DR and the reference lines in UniProt) are indexed as subentries (in these three cases as features, links and references). If you do a query on a field that belongs to a subentry, you will retrieve entries from the subentry database eg. uniprot_features, uniprot_references
+
+Get all individual features of type 'transmem' from UniProt: (your results will be from uniprot_features)
+	getz '[uniprot-ftk:transmem]'
+
+Get all the entries in UniProt that contain at least one 'transmem' feature use the link to parent operator: (your results will be from uniprot)
+	getz '[uniprot-ftk:transmem]>parent'
+
+Get all the coding sequences (feature key = cds) in EMBL from the human division (division = hum), we need to retrieve all the entries from the human division and then link these to the embl_features database retrieving only the coding sequence features:
+	getz '[embl-div:hum] > [embl-ftkey:cds*]' -e
+
+getz and EMBOSS
+
+Data can be retrieved from SRS using getz and then piped into an EMBOSS application.
+
+As you may have done for getz, you can set the path for emboss in your .cshrc file:
+	set path = ( $path /ebi/extserv/bin/emboss/bin )
+
+or alternatively you can specify the full path when calling each application.
+
+A few examples:
+
+Get the peptide statistics about all the PAX6 proteins in UniProt:
+	getz '[swissprot-id:pax6_*]' -e | /ebi/extserv/bin/emboss/bin/pepstats -filter > paxPeptideStats.file
+
+or with the path set:
+	getz '[swissprot-id:pax6_*]' -e | pepstats -filter > paxPeptideStats.file
+
+Make a Fasta file of PAX6 proteins:
+	getz '[swissprot-id:pax6_*]' -e | /ebi/extserv/bin/emboss/bin/seqret -filter >PaxFastaSeqs.file
+
+or with the path set:
+	getz '[swissprot-id:pax6_*]' -e | seqret -filter >PaxFastaSeqs.file
+
+Calculate the codon adaptation index for EMBL entry, accession number X54530:
+	getz '[embl-acc:x54530*]' -e | /ebi/extserv/bin/emboss/bin/cai -filter
+
+Reverse the sequence of EMBL entry, accession number X54530:
+	getz '[embl-acc:x54530*]' -e | /ebi/extserv/bin/emboss/bin/revseq -filter
+
+Using LSF and getz
+
+In order to make better use of the hosts in a cluster, you can use LSF. LSF unites a group of UNIX and NT computers into a single system to make better use of the resources on a network. If you use LSF with getz, it means that the job will be run on the best available host on the cluster and not necessarily on the host that you run the command from. You should use LSF if the query that you want to execute will generate a lot of data. There are two ways in which you can use LSF with getz:
+
+Using the lsrun command means that LSF will automatically select the best host that is the same type as the local host. Here, entries from the the PLN (plant) division of EMBL will be retrieved.
+	lsrun getz '[embl-div:pln]'
+
+Using the bsub command means that some (or all) of the hosts in an LSF cluster are being used as batch server hosts. Again the entries from the PLN division of EMBL will be retrieved.
+	bsub -q production -I "getz '[embl-div:pln]'"
+
+If you are going to use LSF every time with getz, you could set up an alias in your .cshrc file:
+	alias getz 'lsrun /ebi/extserv/projects/srs71/srs7int/bin/linux/getz'
+
+guides/srscommandline.txt · Last modified: 2011/09/28 09:35 by hpm

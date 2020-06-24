@@ -1,0 +1,58 @@
+http://www.gamewaredevelopment.com/cdn/CDN_more.php?CDN_article_id=92 -- 
+
+LXYZ.extension
+L: Body Part 	X: Gender 	Y: Stage of Life 	Z: Variant 	.extension: S16 or ATT
+
+
+Body Part		Gender				Stage of Life	Norn Variants
+A: Head			0: Male Norn		0: Baby			A: Brown mouse
+B: Body			1: Male Grendel		1: Child		B: White haired pixie
+C: Left Thigh	2: Male Ettin		2: Adolescent	C: Devil/Blondie
+D: Left Shin	3: Male Geat		3: Youth		D: Santa
+E: Left Foot	4: Female Norn		4: Adult		E: Purple Mountain
+F: Right Thigh	5: Female Grendel	5: Old			F: Forest
+G: Right Shin	6: Female Ettin		6: Senile		G: Ron
+H: Right Foot	7: Female Geat						H: Hebe
+I: Left Humerus										I: Malay
+J: Left Radius										J: Alba
+K: Right Humerus									K: Goldy
+L: Right Radius
+M: Tail Root
+N: Tail Tip
+
+Sprite File Arrangement
+	Each sprite file for each body part needs to be arranged in a consistent order to allow the correct facial expressions, for example, to be displayed. The ordering that is used can be summed up by describing it as having each body part arranged in the following order: Face Left - 4 poses, Face Right - 4 poses, Face Front, Face Back. But this doesn't describe the specifics of, for example, how the 4 poses for each direction are arranged - or mention how the head graphics use the previous ordering per facial expression. The easiest way to explain is to illustrate, and each body part in the table above is linked to an example image showing the ordering of the parts of the sprite file.
+	
+Pose Genes
+	Pose Genes are made up of a 15 character string, the ordering of each element is as follows: Direction, Head, Body, Left Thigh, Left Shin, Left Foot, Right Thigh, Right Shin, Right Foot, Left Humerus, Left Radius, Right Humerus, Right Radius, Tail Root, Tail Tip.
+
+The meaning of each pose gene element is explained below:
+    Direction - 0: Face away from screen
+    Direction - 1: Face out of screen
+    Direction - 2: Face right
+    Direction - 3: Face left
+    Direction: - ?: Face towards _IT_
+    Direction - !: Face away from _IT_
+    Head - ?: Look towards _IT_
+
+For all Parts - 0, 1, 2, 3: Furthest down/back pose to furthest up/forward pose. Each body part has 4 degrees of rotation on it to the left and right.
+
+For all Parts - X: No change in part arrangement
+
+The Seven Stages of Norn
+	Well, all creatures really - but the play on words would have got too lengthy :-)
+
+Each creature has 7 life stages that they pass through, these are:
+	Stage of Life	Number
+	Baby	0
+	Child	1
+	Adolescent	2
+	Youth	3
+	Adult	4
+	Old	5
+	Senile	6
+
+
+These numbers are used for sprite/attachment naming (as mentioned above), but also come into play during genome creation - switch on times, for example. Not all life stages need a graphical representation - and as shipped C2 does not use them all. Instead the creature will use graphics for the previous life stage, if it can not find ones specifically for the stage it is in now. This explains why if you use the testing menu, and use 'Force Ageing' you wont always see a graphical change in your creature - it all depends on whether new graphics are provided for that life stage.
+
+Topic Keywords: creatures2 genetics 

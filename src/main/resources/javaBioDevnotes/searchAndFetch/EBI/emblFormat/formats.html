@@ -1,0 +1,1431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="eng"><!-- InstanceBegin template="/Templates/new_template_leftmenu.dwt" codeOutsideHTMLIsLocked="false" --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<meta name="author" content="EBI Web Team">
+<meta http-equiv="Content-Language" content="en-GB">
+<meta http-equiv="Window-target" content="_top">
+<meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/">
+<meta name="generator" content="Dreamweaver 8">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Help About Sequence Formats | Tutorials | 2can Support Portal | EBI</title>
+<meta name="keywords" content="Help, Sequence, Formats, 2can, 2can Support Portal, molecular biology, bioinformatics, tutorials, databases, bioinformatic resources, glossary, infectious disease, cell, dna, protein, swissprot, embl, ebi, taxonomy, nucleotide, amino acid, genetic code, rna, transcription, translation, mutations, disease, bibliographic, genomic, microarray, human genome, genes, drug discovery, homology searching, FASTA, BLAST, InterProScan, MPSrch, ClustalW2, ScanPS, FingerPRINTScan, PPSearch, Ensembl, SRS ">
+<meta name="description" content="Help About Sequence Formats - 2Can Support Portal, which provides short and concise introductions to basic concepts in molecular and cell biology and bioinformatics. The main emphasis is placed on making it as easy as possible for the user to understand which tools and databases are available from the EBI and from sites belonging to it's collaborators.">
+<!-- InstanceEndEditable --> 
+<link rel="stylesheet" href="formats_fichiers/contents.css" type="text/css">
+<link rel="stylesheet" href="formats_fichiers/userstyles.css" type="text/css">
+<link rel="alternate" title="EBI News RSS" href="http://www.ebi.ac.uk/Information/News/rss/ebinews.xml" type="application/rss+xml"><style type="text/css">@media print { body, .contents, .header, .contentsarea, .head{ position: relative;}  } </style>
+<link rel="stylesheet" href="formats_fichiers/sidebars.css" type="text/css">
+<link rel="SHORTCUT ICON" href="http://www.ebi.ac.uk/bookmark.ico">
+<style type="text/css">      
+@media print { 
+	body, .contents, .header, .contentsarea, .head { 
+		position: relative;
+	}  
+} 
+</style>   
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable --> 
+</head>
+<body onload="if(navigator.userAgent.indexOf('MSIE') != -1) {document.getElementById('head').allowTransparency = true;}">
+	<div class="headerdiv" id="headerdiv" style="position: absolute; z-index: 1; background: none repeat scroll 0% 0% rgb(255, 255, 255);">
+		<iframe src="formats_fichiers/head.htm" name="head" id="head" marginwidth="0px" marginheight="0px" style="position: absolute; z-index: 1; height: 57px;" frameborder="0" scrolling="no" width="100%">Your
+ browser does not support inline frames or is currently configured not 
+to display inline frames. Content can be viewed at actual source page: 
+http://www.ebi.ac.uk/inc/head.html</iframe>
+	</div>
+	<div style="top: 17px;" class="contents" id="contents"><table class="contentspane" id="contentspane" summary="The main content pane of the page"><tbody><tr><td class="leftmargin"><img src="formats_fichiers/spacer.gif" class="spacer" alt="spacer"></td><td class="leftmenucell" id="leftmenucell">
+	  <div class="leftmenu" id="leftmenu" style="width: 1px; visibility: hidden; display: none;">  
+		<!-- InstanceBeginEditable name="leftnav" --><iframe src="formats_fichiers/tutorials.htm" name="leftmenu2" id="leftmenu2" marginwidth="0" marginheight="0" style="width: 145px; visibility: visible; display: block; z-index: 2;" frameborder="0" height="1200" scrolling="no" width="100%">
+		</iframe><!-- InstanceEndEditable -->
+	    <img src="formats_fichiers/spacer.gif" class="spacer" alt="spacer"></div></td><td style="width: 100%;" class="contentsarea" id="contentsarea">
+		<!-- InstanceBeginEditable name="contents" -->
+
+<a name="top"></a>
+<div class="breadcrumbs">
+	<a href="http://www.ebi.ac.uk/" class="firstbreadcrumb">EBI</a>	<a href="http://www.ebi.ac.uk/2can/home.html">2Can</a>
+<a href="http://www.ebi.ac.uk/2can/tutorials/">Tutorials</a></div>
+				
+<h1>2Can Support Portal - Sequence Formats</h1>
+
+				  <table border="0" cellpadding="6" cellspacing="0" width="100%">
+                    <tbody><tr>
+                      <td> <h2>Introduction</h2><span>Sequence formats 
+are simply the way in which the amino acid or DNA sequence is recorded 
+in a computer file. Different programs expect different formats, so if 
+you are to submit a job successfully, it is important to understand what
+ the various formats look like.</span>
+                          <p>In order to successfully submit a job it is
+ important to understand what the various sequence formats used for 
+describing biological sequences are and what their basic structure is. 
+The job submission forms are fairly flexible but cannot cope with too 
+much inconsistency.<br>
+        You can submit sequence to the search and analysis programs in 
+any of the formats mentioned in the options your chosen tool.</p>
+                          <p>If you are submitting sequences to 
+ClustalW2 or pratt you may the normal format, as described below, just 
+making sure that the sequences follow each other and are separated from 
+each other with the format´s separator. In the case of EMBL format this 
+would be '//'. </p>
+                          <p>In order to aid the user with the process of converting sequences to appropriate formats please use the following link:<a title="Go to the main EBI website" href="http://www.ebi.ac.uk/cgi-bin/readseq.cgi" class="ebi">READSEQ</a>. </p>
+                          <p>
+                        </p><h2>Examples of Sequence Formats:</h2>
+                          <a name="top" title="Go to the SRS server" class="pre_anchor" id="top"></a><p></p>
+                          
+                  <ul>
+                            
+                    <li class="greenboldsmall"><a href="#aln" class="greenboldsmall_anchor">ALN/ClustalW2 format </a> </li>
+                    <li class="greenboldsmall"><a href="#amps" class="greenboldsmall_anchor">AMPS Block file format </a> </li>
+                    <li class="greenboldsmall"><a href="#ClustalW2" class="greenboldsmall_anchor">ClustalW2</a></li>
+                    <li class="greenboldsmall"><a href="#codata" class="greenboldsmall_anchor">Codata</a> </li>
+                    <li class="greenboldsmall"><a href="#embl" class="greenboldsmall_anchor">EMBL</a> </li>
+                    <li class="greenboldsmall"><a href="#MSF" class="greenboldsmall_anchor">GCG/MSF</a> </li>
+                    <li class="greenboldsmall"><a href="#gde" class="greenboldsmall_anchor">GDE</a> </li>
+                    <li class="greenboldsmall"><a href="#Genebank" class="greenboldsmall_anchor">Genebank</a> </li>
+                    <li class="greenboldsmall"><a href="#fasta" class="greenboldsmall_anchor">FASTA (Pearson) </a> </li>
+                    <li class="greenboldsmall"><a href="#pir" class="greenboldsmall_anchor">NBRF/PIR </a> </li>
+                    <li class="greenboldsmall"><a href="#pfam" class="greenboldsmall_anchor">Pfam/Stockholm format</a> </li>
+                    <li class="greenboldsmall"><a href="#Phylip" class="greenboldsmall_anchor">Phylip</a> </li>
+                    <li class="greenboldsmall"><a href="#swiss" class="greenboldsmall_anchor">UniProtKB/Swiss-Prot</a> </li>
+                    <li class="greenboldsmall"><a href="#raw" class="greenboldsmall_anchor">Raw </a> </li>
+                    <li class="greenboldsmall"><a href="#rsf" class="greenboldsmall_anchor">RSF </a> </li>
+                  </ul>
+                  Click <a href="http://www.hgmp.mrc.ac.uk/Software/EMBOSS/Themes/SequenceFormats.html" title="External link" target="_blank" class="ext">here</a> to see a complete list of sequence formats supported by EMBOSS applications.
+                          <h2>ALN/ClustalW2 format:<a name="aln" id="aln"></a><a name="ClustalW2" id="ClustalW2"></a></h2>
+                          ALN format was originated in the alignment 
+program ClustalW2. The file starts with word "CLUSTAL" and then some 
+information about which clustal program was run and the version of 
+clustal used.<br>
+      e.g. "CLUSTAL W (2.1) multiple sequence alignment"<br>
+      The type of clustal program is "W" and the version is 2.1.<br>
+      The alignment is written in blocks of 60 residues. <br>
+      Every block starts with the sequence names, obtained from the 
+input sequence, and a count of the total number of residues is shown at 
+the end of the line. <br>
+      The information about which residues match is shown below each block of residues:
+      <blockquote> "<font color="gray">*</font>" means that the residues or nucleotides in that column are identical in all sequences in the alignment.<br>
+":" means that conserved substitutions have been observed.<br>
+"<font color="gray">.</font>" means that semi-conserved substitutions are observed.<br>
+        <br>
+        An example is shown below.<br>
+      </blockquote>          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>CLUSTAL W 2.1 multiple sequence alignment
+
+
+FOSB_MOUSE      <font color="red">I</font><font color="green">TTSQ</font><font color="blue">D</font><font color="red">L</font><font color="green">Q</font><font color="red">WLV</font><font color="green">Q</font><font color="red">P</font><font color="green">T</font><font color="red">LI</font><font color="green">SS</font><font color="red">MA</font><font color="green">QSQGQ</font><font color="red">PLA</font><font color="green">SQ</font><font color="red">PPAV</font><font color="blue">D</font><font color="red">P</font><font color="green">Y</font><font color="blue">D</font><font color="red">MP</font><font color="green">GTSYST</font><font color="red">P</font><font color="green">G</font><font color="red">L</font><font color="green">S</font><font color="red">A</font><font color="green">YSTGG</font><font color="red">A</font><font color="green">SGS</font> 60
+FOSB_HUMAN      <font color="red">I</font><font color="green">TTSQ</font><font color="blue">D</font><font color="red">L</font><font color="green">Q</font><font color="red">WLV</font><font color="green">Q</font><font color="red">P</font><font color="green">T</font><font color="red">LI</font><font color="green">SS</font><font color="red">MA</font><font color="green">QSQGQ</font><font color="red">PLA</font><font color="green">SQ</font><font color="red">PPVV</font><font color="blue">D</font><font color="red">P</font><font color="green">Y</font><font color="blue">D</font><font color="red">MP</font><font color="green">GTSYST</font><font color="red">P</font><font color="green">G</font><font color="red">M</font><font color="green">SGYSSGG</font><font color="red">A</font><font color="green">SGS</font> 60
+                <font color="gray">********************************.***************</font>:<font color="gray">*.**</font>:<font color="gray">******</font>
+
+</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table>
+          <br>
+      <h2>AMPS Block file format:<a name="amps" id="amps"></a></h2>
+      The first part of a block-file contains the identifier codes of 
+the sequences that are to follow. Each code is prefixed by the &gt; 
+symbol, codes must not contain spaces. e.g.<br>
+&gt;HAHU<br>
+&gt;Trypsin<br>
+&gt;A0046<br>
+&gt;Seq1 <br>
+      <br>
+      <br>
+      etc. <br>
+      <br>
+      The number of "&gt;" symbols is read in the beginning of the file 
+until a * symbol is found. The * signals the beginning of the multiple 
+alignment which is stored VERTICALLY, thus columns are individual 
+sequences, whilst rows are aligned positions. The * symbol must lie over
+ the first sequence. A further star in the same column signals the end 
+of the alignment. Software then uses the number of "&gt;" symbols at the
+ beginning of the file to work out how many columns to read from the * 
+position. It is therefore important that the only "&gt;" symbols in the 
+file are those that define the identifiers, and the only symbols are 
+those defining the start and end of the multiple alinnment. A simple, 
+small block-file is shown below. <br>
+      <br>          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>&gt;Seq_1<br>&gt;A0231<br>&gt;HAHU<br>&gt;Four_Alpha<br>&gt;Globin<br>&gt;GLobin_C<br>*<br>ARNDLQ<br>AAAAAA<br>PPPPPP<br>PP PPP<br>WW WWW<br>LLLLLL<br>IIVVLL<br>* </pre></span> </div>                  </td>
+                </tr>
+          </tbody></table>          <a href="#top"><br>
+            </a>
+      <p><a name="codata" id="codata"></a>
+        </p><h2>Codata Format:</h2>
+        <br>
+          <br>
+          <span>The first line starts with the text ENTRY". The end of a
+ sequence is delineated by "///". The "SEQUENCE" line specifies the 
+beginning of the sequence lines (starting on the next line), and no 
+sequence is assumed to appear in the entry if the "SEQUENCE" line is 
+missing. </span> <br>
+      <p></p>          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>			
+ENTRY           IXI_234 
+SEQUENCE        
+                 5        10        15        20        25        30
+      1 T S P A S I R P P A G P S S R P A M V S S R R T R P S P P G
+     31 P R R P T G R P C C S A A P R R P Q A T G G W K T C S G T C
+     61 T T S T S T R H R G R S G W S A R T T T A A C L R A S R K S
+     91 M R A A C S R S A G S R P N R F A P T L M S S C I T S T T G
+    121 P P A W A G D R S H E
+///
+ENTRY           IXI_235 
+SEQUENCE        
+                 5        10        15        20        25        30
+      1 T S P A S I R P P A G P S S R - - - - - - - - - R P S P P G
+     31 P R R P T G R P C C S A A P R R P Q A T G G W K T C S G T C
+     61 T T S T S T R H R G R S G W - - - - - - - - - - R A S R K S
+     91 M R A A C S R S A G S R P N R F A P T L M S S C I T S T T G
+    121 P P A W A G D R S H E
+///
+ENTRY           IXI_236 
+SEQUENCE        
+                 5        10        15        20        25        30
+      1 T S P A S I R P P A G P S S R P A M V S S R - - R P S P P P
+     31 P R R P P G R P C C S A A P P R P Q A T G G W K T C S G T C
+     61 T T S T S T R H R G R S G W S A R T T T A A C L R A S R K S
+     91 M R A A C S R - - G S R P P R F A P P L M S S C I T S T T G
+    121 P P P P A G D R S H E
+///
+ENTRY           IXI_237 
+SEQUENCE        
+                 5        10        15        20        25        30
+      1 T S P A S L R P P A G P S S R P A M V S S R R - R P S P P G
+     31 P R R P T - - - - C S A A P R R P Q A T G G Y K T C S G T C
+     61 T T S T S T R H R G R S G Y S A R T T T A A C L R A S R K S
+     91 M R A A C S R - - G S R P N R F A P T L M S S C L T S T T G
+    121 P P A Y A G D R S H E
+///
+
+
+
+</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table>
+          <br>
+      <br>
+      <h2><a name="embl" id="embl"></a>EMBL Format:</h2>
+      The EMBL entries(as below) in the database are structured so as to
+ be usable by human readers as well as by computer programs. Each entry 
+in the database is composed of lines. Different types of lines, each 
+with its own format, which are used to record the various types of data 
+which make up the entry. Some entries will not contain all of the line 
+types, and some line types occur many times in a single entry. As noted,
+ each entry begins with an identification line (ID) and ends with a 
+terminator line (//). Consult the EMBL <a href="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html" title="Go to the main EBI website" class="ebi">user manual</a> for a more comprehensive guide. <br>
+      <br>
+      <ul>
+        <li> The <a href="#ID">ID (<b>ID</b>entification line) line</a> is always the first line of an entry. The general form of the ID line is: <br>
+            <br>
+            <table class="contenttable_lmenu" width="80%">
+              <tbody><tr>
+                <th>Term</th>
+                <th>ID</th>
+                <th>id</th>
+                <th>sequence version </th>
+                <th>topology</th>
+                <th> molecule</th>
+                <th> dataclass</th>
+                <th>division</th>
+                <th nowrap="nowrap">sequencelength (Base Pairs)</th>
+              </tr>
+              <tr>
+                <td>e.g.</td>
+                <td>ID</td>
+                <td>X14897 </td>
+                <td>SV 1</td>
+                <td>linear</td>
+                <td>mRNA</td>
+                <td>STD</td>
+                <td>MUS</td>
+                <td>4145  BP</td>
+              </tr>
+            </tbody></table>
+            <br>
+        </li>
+        <span> </span>
+        <li><span>The <a href="#XX">XX line</a> contains no data or comments. It is used instead of blank lines to avoid confusion with the sequence data lines. <br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#AC">AC (<b>A</b>ccession <b>N</b>umber) line</a> lists the accession numbers associated with this entry. 
+        </span><span><br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#DT">DT (<b>D</b>a<b>T</b>e) line</a> shows when an entry first appeared in the the database and when it was last updated. <br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#DE">DE (<b>DE</b>scription) lines</a> contain general descriptive information about the sequence stored. <br>
+              <br>
+        </span></li>
+        <li><span>The <u>KW (<b>K</b>ey<b>W</b>ord) lines</u> provide 
+information which can be used to generate cross-reference indexes of the
+ sequence entries based on functional, structural, or other categories 
+deemed important. The keywords chosen for each entry serve as a subject 
+reference for the sequence, and will be expanded as work with the 
+database continues. Often several KW lines are necessary for a single 
+entry. <br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#OS">OS (<b>O</b>rganism <b>S</b>pecies) line</a> specifies the preferred scientific name of the organism which was the source of the stored sequence. <br>
+          <br>
+        </span></li>
+        <li><span>The <a href="#OC">OC (<b>O</b>rganism <b>C</b>lassification) lines</a> contain the taxonomic classification of the source organism.<br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RN">RN (<b>R</b>eference <b>N</b>umber) line</a> gives a unique number to each reference citation within an entry.<br>
+              <br>
+        </span></li>
+        <li><span>The RC (<b>R</b>eference <b>C</b>omment) line type is an optional line type which appears if the reference has a comment. <br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RP">RP (<b>R</b>eference <b>P</b>osition) line type</a>
+ is an optional line type which appears if one or more contiguous base 
+spans of the presented sequence can be attributed to the reference in 
+question. <br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RX">RX (<b>R</b>eference <b>Cross</b>-reference)</a> line type is an optional line type which contains a cross-reference to an external citation or abstract database.<br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RA">RA (<b>R</b>eference <b>A</b>uthor) lines</a> list the authors of the paper (or other work) cited.<br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RT">RT (<b>R</b>eference <b>T</b>itle) lines</a> give the title of the paper (or other work).<br>
+              <br>
+        </span></li>
+        <li><span>The <a href="#RL">RL (<b>R</b>eference <b>L</b>ocation) line</a> contains the conventional citation information for the reference. </span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#DR">DR (<b>D</b>atabase Cross-<b>R</b>eference) line</a> cross-references other databases which contain information related to the entry in which the DR line appears.</span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#CC">CC lines</a> are free text comments about the entry, and may be used to convey any sort of information thought to be useful.</span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#FH">FH (<b>F</b>eature <b>H</b>eader) lines</a>
+ are present only to improve readability of an entry when it is printed 
+or displayed on a terminal screen. The lines contain no data and may be 
+ignored by computer programs. </span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#FT">FT (Feature Table) lines</a> provide
+ a mechanism for the annotation of the sequence data. Regions or sites 
+in the sequence which are of interest are listed in the table.</span></li>
+        <span>A complete and definitive description of the feature table is given <a title="Go to the main EBI website" class="ebi" href="http://www.ebi.ac.uk/embl/Documentation/FT_definitions/feature_table.html">here</a>.<br>
+        <br>
+        </span>
+        <li><span>The <a href="#SQ">SQ (<b>S</b>e<b>Q</b>uence header) line</a> marks the beginning of the sequence data and gives a summary of its content.</span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#SD">sequence data lines</a> has lines of
+ code starting with two blanks. The sequence is written 60 bases per 
+line, in groups of 10 bases separated by a blank character, beginning in
+ position 6 of the line. The direction listed is always 5' to 3'</span></li>
+        <span><br>
+        <br>
+        </span>
+        <li><span>The <a href="#TERM">// (terminator) line</a> also contains no data or comments. It designates the end of an entry. </span></li>
+        <span><br>
+        </span>
+      </ul>
+      <br>
+      <br><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre><a name="ID" id="ID"></a><a name="AC" id="AC"></a>ID   X14897; SV 1; linear; mRNA; STD; MUS; 4145 BP.
+<a name="XX" id="XX"></a>XX
+AC   X14897;
+XX
+<a name="DT" id="DT"></a>DT   23-NOV-1989 (Rel. 21, Created)
+DT   18-APR-2005 (Rel. 83, Last updated, Version 3)
+XX
+<a name="DE" id="DE"></a>DE   Mouse fosB mRNA
+XX
+<a name="KW" id="KW"></a>KW   fos cellular oncogene; fosB oncogene; oncogene.
+XX
+<a name="OS" id="OS"></a>OS   Mus musculus (house mouse)
+<a name="OC" id="OC"></a>OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Glires; Rodentia; Sciurognathi; Muroidea;
+OC   Muridae; Murinae; Mus.
+XX
+<a name="RN" id="RN"></a>RN   [1]
+<a name="RP" id="RP"></a>RP   1-4145
+<a name="RX" id="RX"></a>RX   PUBMED; <a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[medline-PMID:2498083]+-e">2498083</a>.
+<a name="RA" id="RA"></a>RA   Zerial M., Toschi L., Ryseck R.P., Schuermann M., Mueller R., Bravo R.;
+<a name="RT" id="RT"></a>RT   "The product of a novel growth factor activated gene, fos B, interacts with
+RT   JUN proteins enhancing their DNA binding activity";
+<a name="RL" id="RL"></a>RL   EMBO J. 8(3):805-813(1989).
+XX
+<a name="DR" id="DR"></a>DR   TRANSFAC; <a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+%5Btfsite-AccNumber:T00291%5D+-e">T00291</a>; T00291.
+XX
+<a name="CC" id="CC"></a>CC   clone=AC113-1; cell line=NIH3T3;
+XX
+<a name="FH" id="FH"></a>FH   Key             Location/Qualifiers
+FH
+<a name="FT" id="FT"></a>FT   <a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+-id+newid+[EMBL_features-id:X14897_1]">source</a>          1..4145
+FT                   /organism="Mus musculus"
+FT                   /mol_type="mRNA"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[taxonomy-ID:10090]+-e">taxon:10090</a>"
+FT   <a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+-id+newid+[EMBL_features-id:X14897_2]">CDS</a>             1202..2218
+FT                   /note="fosB protein (AA 1-338)"
+FT                   /db_xref="<a href="http://www.ebi.ac.uk/QuickGO/QuickGO?query=P13346&amp;mode=search&amp;entry=&amp;querytype=protein&amp;showcontext=false">GOA:P13346</a>"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[interpro-AccNumber:IPR000837]+-e">InterPro:IPR000837</a>"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[interpro-AccNumber:IPR004827]+-e">InterPro:IPR004827</a>"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[interpro-AccNumber:IPR008917]+-e">InterPro:IPR008917</a>"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[interpro-AccNumber:IPR011700]+-e">InterPro:IPR011700</a>"
+FT                   /db_xref="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+[swissprot-AccNumber:P13346]+-e">UniProtKB/Swiss-Prot:P13346</a>"
+FT                   /protein_id="<a href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-id+newid+-e+[UNIPARC-refdbsv:CAA33026.1]%3eparent">CAA33026.1</a>"
+FT                   /translation="MFQAFPGDYDSGSRCSSSPSAESQYLSSVDSFGSPPTAAASQECA
+FT                   GLGEMPGSFVPTVTAITTSQDLQWLVQPTLISSMAQSQGQPLASQPPAVDPYDMPGTSY
+FT                   STPGLSAYSTGGASGSGGPSTSTTTSGPVSARPARARPRRPREETLTPEEEEKRRVRRE
+FT                   RNKLAAAKCRNRRRELTDRLQAETDQLEEEKAELESEIAELQKEKERLEFVLVAHKPGC
+FT                   KIPYEEGPGPGPLAEVRDLPGSTSAKEDGFGWLLPPPPPPPLPFQSSRDAPPNLTASLF
+FT                   THSEVQVLGDPFPVVSPSYTSSFVLTCPEVSAFAGAQRTSGSEQPSDPLNSPSLLAL"
+XX
+<a name="SQ" id="SQ"></a>SQ   Sequence 4145 BP; 960 A; 1186 C; 1007 G; 991 T; 1 other;
+     <a name="SD" id="SD"></a>ataaattctt attttgacac tcaccaaaat agtcacctgg aaaacccgct ttttgtgaca        60
+     aagtacagaa ggcttggtca catttaaatc actgagaact agagagaaat actatcgcaa       120
+     actgtaatag acattacatc cataaaagtt tccccagtcc ttattgtaat attgcacagt       180
+     gcaattgcta catggcaaac tagtgtagca tagaagtcaa agcaaaaaca aaccaaagaa       240
+     aggagccaca agagtaaaac tgttcaacag ttaatagttc aaactaagcc attgaatcta       300
+     tcattgggat cgttaaaatg aatcttccta caccttgcag tgtatgattt aacttttaca       360
+     gaacacaagc caagtttaaa atcagcagta gagatattaa aatgaaaagg tttgctaata       420
+     gagtaacatt aaataccctg aaggaaaaaa aacctaaata tcaaaataac tgattaaaat       480
+     tcacttgcaa attagcacac gaatatgcaa cttggaaatc atgcagtgtt ttatttaaga       540
+     aaacataaaa caaaactatt aaaatagttt tagagggggt aaaatccagg tcctctgcca       600
+     ggatgctaaa attagacttc aggggaattt tgaagtcttc aattttgaaa cctattaaaa       660
+     agcccatgat tacagttaat taagagcagt gcacgcaaca gtgacacgcc tttagagagc       720
+     attactgtgt atgaacatgt tggctgctac cagccacagt caatttaaca aggctgctca       780
+     gtcatgaact taatacagag agagcacgcc taggcagcaa gcacagcttg ctgggccact       840
+     ttcctccctg tcgtgacaca atcaatccgt gtacttggtg tatctgaagc gcacgctgca       900
+     ccgcggcact gcccggcggg tttctgggcg gggagcgatc cccgcgtcgc cccccgtgaa       960
+     accgacagag cctggacttt caggaggtac agcggcggtc tgaaggggat ctgggatctt      1020
+     gcagagggaa cttgcatcga aacttgggca gttctccgaa ccggagacta agcttccccg      1080
+     agcagcgcac tttggagacg tgtccggtct actccggact cgcatctcat tccactcggc      1140
+     catagccttg gcttcccggc gacctcagcg tggtcacagg ggcccccctg tgcccaggga      1200
+     aatgtttcaa gcttttcccg gagactacga ctccggctcc cggtgtagct catcaccctc      1260
+     cgccgagtct cagtacctgt cttcggtgga ctccttcggc agtccaccca ccgccgccgc      1320
+     ctcccaggag tgcgccggtc tcggggaaat gcccggctcc ttcgtgccaa cggtcaccgc      1380
+     aatcacaacc agccaggatc ttcagtggct cgtgcaaccc accctcatct cttccatggc      1440
+     ccagtcccag gggcagccac tggcctccca gcctccagct gttgaccctt atgacatgcc      1500
+     aggaaccagc tactcaaccc caggcctgag tgcctacagc actggcgggg caagcggaag      1560
+     tggtgggcct tcaaccagca caaccaccag tggacctgtg tctgcccgtc cagccagagc      1620
+     caggcctaga agaccccgag aagagacact taccccagaa gaagaagaaa agcgaagggt      1680
+     tcgcagagag cggaacaagc tggctgcagc taagtgcagg aaccgtcgga gggagctgac      1740
+     agatcgactt caggcggaaa ctgatcagct tgaagaggaa aaggcagagc tggagtcgga      1800
+     gatcgccgag ctgcaaaaag agaaggaacg cctggagttt gtcctggtgg cccacaaacc      1860
+     gggctgcaag atcccctacg aagaggggcc ggggccaggc ccgctggccg aggtgagaga      1920
+     tttgccaggg tcaacatccg ctaaggaaga cggcttcggc tggctgctgc cgccccctcc      1980
+     accacccccc ctgcccttcc agagcagccg agacgcaccc cccaacctga cggcttctct      2040
+     ctttacacac agtgaagttc aagtcctcgg cgaccccttc cccgttgtta gcccttcgta      2100
+     cacttcctcg tttgtcctca cctgcccgga ggtctccgcg ttcgccggcg cccaacgcac      2160
+     cagcggcagc gagcagccgt ccgacccgct gaactcgccc tcccttcttg ctctgtaaac      2220
+     tctttagaca aacaaaacaa acaaacccgc aaggaacaag gaggaggaag atgaggagga      2280
+     gaggggagga agcagtccgg gggtgtgtgt gtggaccctt tgactcttct gtctgaccac      2340
+     ctgccgcctc tgccatcgga catgacggaa ggacctcctt tgtgttttgt gctccgtctc      2400
+     tggttttctg tgccccggcg agaccggaga gctggtgact ttggggacag ggggtggggc      2460
+     ggggatggac acccctcctg catatctttg tcctgttact tcaacccaac ttctggggat      2520
+     agatggctgg ctgggtgggt agggtggggt gcaacgccca cctttggcgt cttgcgtgag      2580
+     gctggagggg aaagggtgct gagtgtgggg tgcagggtgg gttgaggtcg agctggcatg      2640
+     cacctccaga gagacccaac gaggaaatga cagcaccgtc ctgtccttct tttcccccac      2700
+     ccacccatcc accctcaagg gtgcagggtg accaagatag ctctgttttg ctccctcggg      2760
+     ccttagctga ttaacttaac atttccaaga ggttacaacc tcctcctgga cgaattgagc      2820
+     ccccgactga gggaagtcga tgcccccttt gggagtctgc taaccccact tcccgctgat      2880
+     tccaaaatgt gaacccctat ctgactgctc agtctttccc tcctgggaaa actggctcag      2940
+     gttggatttt tttcctcgtc tgctacagag ccccctccca actcaggccc gctcccaccc      3000
+     ctgtgcagta ttatgctatg tccctctcac cctcaccccc accccaggcg cccttggccg      3060
+     tcctcgttgg gccttactgg ttttgggcag cagggggcgc tgcgacgccc atcttgctgg      3120
+     agcgctttat actgtgaatg agtggtcgga ttgctgggtg cgccggatgg gattgacccc      3180
+     cagccctcca aaactttccc tgggcctccc cttcttccac ttgcttcctc cctccccttg      3240
+     acagggagtt agactcgaaa ggatgaccac gacgcatccc ggtggccttc ttgctcaggc      3300
+     cccagacttt ttctctttaa gtccttcgcc ttccccagcc taggacgcca acttctcccc      3360
+     accctgggag ccccgcatcc tctcacagag gtcgaggcaa ttttcagaga agttttcagg      3420
+     gctgaggctt tggctcccct atcctcgata tttgaatccc caaatatttt tggactagca      3480
+     tacttaagag ggggctgagt tcccactatc ccactccatc caattccttc agtcccaaag      3540
+     acgagttctg tcccttccct ccagctttca cctcgtgaga atcccacgag tcagatttct      3600
+     attttttaat attggggaga tgggccctac cgcccgtccc ccgtgctgca tggaacattc      3660
+     cataccctgt cctgggccct aggttccaaa cctaatccca aaccccaccc ccagctattt      3720
+     atccctttcc tggttcccaa aaagcactta tatctattat gtataaataa atatattata      3780
+     tatgagtgtg cgtgtgtgtg cgtgtgcgtg cgtgcgtgcg tgcgtgcgag cttccttgtt      3840
+     ttcaagtgtg ctgtggagtt caaaatcgct tctggggatt tgagtcagac tttctggctg      3900
+     tccctttttg tcaccttttt gttgttgtct cggctcctct ggctgttgga gacagtcccg      3960
+     gcctctccct ttatcctttc tcaagtctgt ctcgctcaga ccacttccaa catgtctcca      4020
+     ctctcaatga ctctgatctc cggtntgtct gttaattctg gatttgtcgg ggacatgcaa      4080
+     ttttacttct gtaagtaagt gtgactgggt ggtagatttt ttacaatcta tatcgttgag      4140
+     aattc                                                                  4145
+<a name="TERM" id="TERM"></a>//
+</pre></span> </div>
+                <br>
+                <br>
+                <br></td>
+            </tr>
+          </tbody></table></blockquote>
+      <br>
+      
+      
+      
+          <h2>FASTA Format:</h2>
+        <a name="fasta" id="fasta"></a>       
+<ul>     
+<li>This format contains a single header line providing the sequence 
+name, and optionally a description, followed by lines of sequence data.</li>
+<li>Sequences in FASTA formatted files are preceded by a line 
+starting with a " &gt;" symbol.</li>
+<li>The first word on this line is the name of the sequence. The rest 
+of the line is a description of the sequence.</li></ul> 
+<div class="commentsbox"><span class="insidecommentsbox"><pre>       Term 	Entry Name 	Molecule Type 	Gene Name 	Sequence Length
+       e.g. 	FOSB_MOUSE 	Protein 	fosB 	338 bp
+</pre></span></div> 
+<ul> <li>The remaining lines contain the sequence itself, usually formated 
+to 60 characters per line.</li>
+<li>Depending on the application blank lines in a FASTA file are 
+ignored or treated as terminating the sequence
+</li><li>Depending on the application spaces or other non-sequence symbols 
+(dashes, underscores, periods) in a sequence are either ignored or 
+treated as gaps.</li>
+<li>FASTA files containing multiple sequences are just the same, with 
+one sequence listed right after another. This format is accepted for 
+many multiple sequence alignment programs.</li></ul> 
+
+
+ <div class="commentsbox"><span class="insidecommentsbox"><pre><br>     &gt;FOSB_MOUSE Protein fosB. 338 bp
+     MFQAFPGDYDSGSRCSSSPSAESQYLSSVDSFGSPPTAAASQECAGLGEMPGSFVPTVTA
+     ITTSQDLQWLVQPTLISSMAQSQGQPLASQPPAVDPYDMPGTSYSTPGLSAYSTGGASGS
+     GGPSTSTTTSGPVSARPARARPRRPREETLTPEEEEKRRVRRERNKLAAAKCRNRRRELT
+     DRLQAETDQLEEEKAELESEIAELQKEKERLEFVLVAHKPGCKIPYEEGPGPGPLAEVRD
+     LPGSTSAKEDGFGWLLPPPPPPPLPFQSSRDAPPNLTASLFTHSEVQVLGDPFPVVSPSY
+     TSSFVLTCPEVSAFAGAQRTSGSEQPSDPLNSPSLLAL
+</pre></span></div> 
+      
+      
+      
+      
+      
+      
+      <!--
+      <br />
+        <h2>FASTA Format:</h2>
+        <a   name="fasta" id="fasta"></a><br />
+        <ul>
+        <li>This format contains a one line header followed by lines of sequence data.</li>
+        <li>Sequences in FASTA formatted files are preceded by a line starting with a &quot; &gt;&quot; symbol.</li>
+        <li>The first word on this line is the name of the sequence. The rest of the line is a description of the sequence.<br />
+            <br />
+            <table width="80%" class="contenttable_lmenu">
+              <tr>
+                <th>Term</th>
+                <th>Entry Name</th>
+                <th>Molecule Type</th>
+                <th>Gene Name</th>
+                <th>Sequence Length</th>
+              </tr>
+              <tr>
+                <td>e.g.</td>
+                <td>FOSB_MOUSE</td>
+                <td>Protein</td>
+                <td>fosB</td>
+                <td>338 bp</td>
+              </tr>
+            </table>
+            <br />
+        </li>
+        <span > </span>
+        <li><span >The remaining lines contain the sequence itself.<br />
+        </span></li>
+        <li><span >Blank lines in a FASTA file are ignored, and so are spaces or other gap symbols (dashes, underscores, periods) in a sequence.</span></li>
+        <li><span >FASTA files containing multiple sequences are just the same, with one sequence listed right after another. This format is accepted for many multiple sequence alignment programs.</span></li>
+      </ul><blockquote>
+          <table width="80%" border="0" cellspacing="0" cellpadding="8" >
+            <tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre><br />&gt;FOSB_MOUSE Protein fosB. 338 bp <br />MFQAFPGDYDSGSRCSSSPSAESQYLSSVDSFGSPPTAAASQECAGLGEMPGSFVPTVTA<br />ITTSQDLQWLVQPTLISSMAQSQGQPLASQPPAVDPYDMPGTSYSTPGLSAYSTGGASGS<br />GGPSTSTTTSGPVSARPARARPRRPREETLTPEEEEKRRVRRERNKLAAAKCRNRRRELT<br />DRLQAETDQLEEEKAELESEIAELQKEKERLEFVLVAHKPGCKIPYEEGPGPGPLAEVRD<br />LPGSTSAKEDGFGWLLPPPPPPPLPFQSSRDAPPNLTASLFTHSEVQVLGDPFPVVSPSY<br />TSSFVLTCPEVSAFAGAQRTSGSEQPSDPLNSPSLLAL<br />
+              </pre></span> </div></td>
+            </tr>
+          </table></blockquote>
+          
+          
+          
+          -->
+          
+          
+          
+          
+          
+          
+          
+      <p><br>
+          <a name="MSF" id="MSF"></a>
+          </p><h2>GCG/MSF Format</h2>
+          <br>
+      <p></p>
+      <ul>
+        <li> The file may begin with as many lines of comment or description as required. <br>
+        </li>
+        <li> The comments are terminated with a line starting with two slashes.<br>
+        </li>
+        <li> The first mandatory line that is recognised as part of the 
+MSF file is the line containing the text "MSF:", this line also includes
+ the sequence length, type and date plus an internal check sum value. </li>
+        <li> The next line is a mandatory blank line inserted before the sequence names. </li>
+        <li> There then follows one line per sequence describing the 
+sequence name, length, checksum and a weight value. Only one name per 
+line is allowed; the qualifier "Name: " is followed by the sequence 
+name. Names are restricted to 10 characters or less. Extra characters, 
+between the sequence names and "Len: " are acceptable if they contain no
+ blank characters. Another blank line is added followed by a line 
+starting with two slashes "//" , this indicates the end of the name 
+list. </li>
+        <li> There then follows another blank line. </li>
+        <li> Sequences are interleaved on separate lines with gaps 
+represented by periods. Each sequence line starts with the sequence name
+ which is separated from the aligned sequence residues by white space.<br>
+        </li>
+      </ul><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre>				
+			
+   MSF:  510  Type: P    Check:  7736   .. 
+
+ Name: ACHE_BOVIN oo  Len:  510  Check:  7842  Weight:  16.0
+ Name: ACHE_HUMAN oo  Len:  510  Check:  8553  Weight:  17.8
+ Name: ACHE_MOUSE oo  Len:  510  Check:   229  Weight:  12.5
+ Name: ACHE_RAT oo  Len:  510  Check:  8410  Weight:  14.2
+ Name: ACHE_XENLA oo  Len:  510  Check:  2702  Weight:  39.2
+
+//
+
+
+
+ACHE_BOVIN      MAGALLCALL LLQLLGRGEG KNEELRLYHY LFDTYDPGRR PVQEPEDTVT 
+ACHE_HUMAN      MARAPLGVLL LLGLLGRGVG KNEELRLYHH LFNNYDPGSR PVREPEDTVT 
+ACHE_MOUSE      MAGALLGALL LLTLFGRSQG KNEELSLYHH LFDNYDPECR PVRRPEDTVT 
+ACHE_RAT        MTMALLGTLL LLALFGRSQG KNEELSLYHH LFDNYDPECR PVRRPEDTVT 
+ACHE_XENLA      MESGVRILSL LILLHNSLAS ESEESRLIKH LFTSYDQKAR PSKGLDDVVP 
+
+
+ACHE_BOVIN      ISLKVTLTNL ISLNEKEETL TTSVWIGIDW QDYRLNYSKG DFGGVETLRV 
+ACHE_HUMAN      ISLKVTLTNL ISLNEKEETL TTSVWIGIDW QDYRLNYSKD DFGGIETLRV 
+ACHE_MOUSE      ITLKVTLTNL ISLNEKEETL TTSVWIGIDW HDYRLNYSKD DFAGVGILRV 
+ACHE_RAT        ITLKVTLTNL ISLNEKEETL TTSVWIGIEW QDYRLNFSKD DFAGVEILRV 
+ACHE_XENLA      VTLKLTLTNL IDLNEKEETL TTNVWVQIAW NDDRLVWNVT DYGGIGFVPV 
+
+
+</pre></span> </div></td>
+            </tr>
+          </tbody></table></blockquote>
+      <p> <br>
+          <br>
+          </p><h2>GDE Format:</h2>
+          <a name="gde" id="gde"></a><br>
+          <br>
+        GDE format is a tagged field format used for storing all 
+available information about a sequence. The format matches very closely 
+the GDE internal structures for sequence data. The format consists of 
+text records starting and ending with braces ('{}'). Between the open 
+and close braces are several tagged field lines specifying different 
+pieces of information about a given sequence. The tag values can be 
+wrapped with double quote characters ('""') as needed. If quotes are not
+ used, the first white space delimited string is taken as the value.Any 
+fields that are not specified are assumed to be the default values. 
+Offsets can be negative as well as positive. Genbank entries written out
+ in this format will have all (") converted to ('), and all ({}) 
+converted to ([]) to avoid confusion in the parser. Leading and trailing
+ gaps are removed prior to writing each sequence. This format is 
+deliberately verbose in order to be simple to duplicate. <br>
+        <br>
+        <br>
+                <p></p>
+      <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>			
+{ 
+name "Short name for sequence" 
+longname "Long (more descriptive) name for sequence" 
+sequence-ID "Unique ID number" 
+creation-date "mm/dd/yy hh:mm:ss" 
+direction [-1|1] 
+strandedness [1|2] 
+type [DNA|RNA<span class="pipe"> || </span>PROTEIN|TEXT|MASK] 
+offset (-999999,999999) 
+group-ID (0,999) 
+creator "Author's name" 
+descrip "Verbose description" 
+comments "Lines of comments that can be fairly arbitrary text about a 
+sequence. Return characters are allowed, but no internal double quotes 
+or brace characters. Remember to close with a double quote" 
+sequence "gctagctagctagctagctcttagctgtagtcgtagctgatgctagct 
+gatgctagctagctagctagctgatcgatgctagctgatcgtagctgacg 
+gactgatgctagctagctagctagctgtctagtgtcgtagtgcttattgc" 
+}
+
+</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table>
+          <br>
+      <br>
+      <h2>Genebank Format:<a name="Genebank" id="Genebank"></a></h2>
+      <span><br>
+      GenBank is the NIH genetic sequence database, an annotated 
+collection of all publicly available DNA sequences. Although there is 
+daily exchange of information with the <a href="#embl">EMBL Nucleotide Sequence Database</a>,
+ it has it's own sequence format shown below. Each GenBank entry 
+includes a concise description of the sequence, the scientific name and 
+taxonomy of the source organism, and a table of features that identifies
+ coding regions and other sites of biological significance, such as 
+transcription units, sites of mutations or modifications, and repeats. 
+Protein translations for coding regions are included in the feature 
+table. Bibliographic references are included along with a link to the 
+Medline unique identifier for all published sequences. Each sequence 
+entry is composed of lines. Different types of lines, each with their 
+own format, are used to record the various data that make up the entry. </span><br>
+      <ul>
+        <li> LOCUS: Short name for this sequence (Maximum of 32 characters).</li>
+        <li> DEFINITION: Definition of sequence (Maximum of 80 characters).</li>
+        <li>ACCESSION: accession number of the entry.</li>
+        <li>VERSION: Version of the entry.</li>
+        <li>DBSOURCE: Shows the source, the date of creation and last modification of the database entry.</li>
+        <li>KEYWORDS: Keywords for the entry.</li>
+        <li>AUTHORS: Authors for the work.</li>
+        <li>TITLE: Title of the publication.</li>
+        <li>JOURNAL: Journal reference for the entry.</li>
+        <li>MEDLINE: Medline ID.</li>
+        <li>COMMENT: Lines of comments.</li>
+        <li>SOURCE ORGANISM: The organism from which the sequence was derived.</li>
+        <li> ORGANISM: Full name of organism (Maximum of 80 characters). </li>
+        <li> AUTHORS: Authors of this sequence (Maximum of 80 characters). </li>
+        <li> ACCESSION: ID Number for this sequence (Maximum of 80 characters). </li>
+        <li>FEATURES: Features of the sequence.</li>
+        <li> ORIGIN: Beginning of sequence data.</li>
+        <li> // End of sequence data.</li>
+      </ul><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre>LOCUS       MMFOSB                  4145 bp    mRNA    linear   ROD 12-SEP-1993
+DEFINITION  Mouse fosB mRNA.
+ACCESSION   X14897
+VERSION     X14897.1  GI:50991
+KEYWORDS    fos cellular oncogene; fosB oncogene; oncogene.
+SOURCE      Mus musculus.
+  ORGANISM  <a title="External link" target="_blank" class="pre_anchor" href="http://www.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wgetorg?id=10090">Mus musculus</a>
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Rodentia; Sciurognathi; Muridae; Murinae; Mus.
+REFERENCE   1  (bases 1 to 4145)
+  AUTHORS   Zerial,M., Toschi,L., Ryseck,R.P., Schuermann,M., Muller,R. and
+            Bravo,R.
+  TITLE     The product of a novel growth factor activated gene, fos B,
+            interacts with JUN proteins enhancing their DNA binding activity
+  JOURNAL   EMBO J. 8 (3), 805-813 (1989)
+  MEDLINE   <a title="External link" target="_blank" class="pre_anchor" href="http://www.ncbi.nlm.nih.gov/entrez/utils/qmap.cgi?uid=89251612&amp;form=6&amp;db=m&amp;Dopt=r">89251612</a>
+   PUBMED   <a title="External link" target="_blank" class="pre_anchor" href="http://www.ncbi.nlm.nih.gov/entrez/utils/qmap.cgi?uid=2498083&amp;form=6&amp;db=m&amp;Dopt=r">2498083</a>
+COMMENT     clone=AC113-1; cell line=NIH3T3.
+FEATURES             Location/Qualifiers
+     source          1..4145
+                     /organism="Mus musculus"
+                     /db_xref="taxon:10090"
+     <a title="External link" target="_blank" class="pre_anchor" href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?val=50991&amp;itemid=1&amp;view=gbwithparts">CDS</a>             1202..2218
+                     /note="fosB protein (AA 1-338)"
+                     /codon_start=1
+                     /protein_id="<a title="External link" target="_blank" class="pre_anchor" href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?val=CAA33026.1">CAA33026.1</a>"
+                     /db_xref="GI:50992"
+                     /db_xref="MGD:<a title="External link" target="_blank" class="pre_anchor" href="http://www.informatics.jax.org/searches/accession_report.cgi?id=MGI:95575">95575</a>"
+                     /db_xref="SWISS-PROT:P13346"
+                     /translation="MFQAFPGDYDSGSRCSSSPSAESQYLSSVDSFGSPPTAAASQEC
+                     AGLGEMPGSFVPTVTAITTSQDLQWLVQPTLISSMAQSQGQPLASQPPAVDPYDMPGT
+                     SYSTPGLSAYSTGGASGSGGPSTSTTTSGPVSARPARARPRRPREETLTPEEEEKRRV
+                     RRERNKLAAAKCRNRRRELTDRLQAETDQLEEEKAELESEIAELQKEKERLEFVLVAH
+                     KPGCKIPYEEGPGPGPLAEVRDLPGSTSAKEDGFGWLLPPPPPPPLPFQSSRDAPPNL
+                     TASLFTHSEVQVLGDPFPVVSPSYTSSFVLTCPEVSAFAGAQRTSGSEQPSDPLNSPS
+                     LLAL"
+BASE COUNT      960 a   1186 c   1007 g    991 t      1 others
+ORIGIN      
+        1 ataaattctt attttgacac tcaccaaaat agtcacctgg aaaacccgct ttttgtgaca
+       61 aagtacagaa ggcttggtca catttaaatc actgagaact agagagaaat actatcgcaa
+      121 actgtaatag acattacatc cataaaagtt tccccagtcc ttattgtaat attgcacagt
+      181 gcaattgcta catggcaaac tagtgtagca tagaagtcaa agcaaaaaca aaccaaagaa
+      241 aggagccaca agagtaaaac tgttcaacag ttaatagttc aaactaagcc attgaatcta
+      301 tcattgggat cgttaaaatg aatcttccta caccttgcag tgtatgattt aacttttaca
+      361 gaacacaagc caagtttaaa atcagcagta gagatattaa aatgaaaagg tttgctaata
+      421 gagtaacatt aaataccctg aaggaaaaaa aacctaaata tcaaaataac tgattaaaat
+      481 tcacttgcaa attagcacac gaatatgcaa cttggaaatc atgcagtgtt ttatttaaga
+      541 aaacataaaa caaaactatt aaaatagttt tagagggggt aaaatccagg tcctctgcca
+      601 ggatgctaaa attagacttc aggggaattt tgaagtcttc aattttgaaa cctattaaaa
+      661 agcccatgat tacagttaat taagagcagt gcacgcaaca gtgacacgcc tttagagagc
+      721 attactgtgt atgaacatgt tggctgctac cagccacagt caatttaaca aggctgctca
+      781 gtcatgaact taatacagag agagcacgcc taggcagcaa gcacagcttg ctgggccact
+      841 ttcctccctg tcgtgacaca atcaatccgt gtacttggtg tatctgaagc gcacgctgca
+      901 ccgcggcact gcccggcggg tttctgggcg gggagcgatc cccgcgtcgc cccccgtgaa
+      961 accgacagag cctggacttt caggaggtac agcggcggtc tgaaggggat ctgggatctt
+     1021 gcagagggaa cttgcatcga aacttgggca gttctccgaa ccggagacta agcttccccg
+     1081 agcagcgcac tttggagacg tgtccggtct actccggact cgcatctcat tccactcggc
+     1141 catagccttg gcttcccggc gacctcagcg tggtcacagg ggcccccctg tgcccaggga
+     1201 aatgtttcaa gcttttcccg gagactacga ctccggctcc cggtgtagct catcaccctc
+     1261 cgccgagtct cagtacctgt cttcggtgga ctccttcggc agtccaccca ccgccgccgc
+     1321 ctcccaggag tgcgccggtc tcggggaaat gcccggctcc ttcgtgccaa cggtcaccgc
+     1381 aatcacaacc agccaggatc ttcagtggct cgtgcaaccc accctcatct cttccatggc
+     1441 c
+</pre></span> </div>              </td>
+            </tr>
+          </tbody></table></blockquote>
+ 
+      <p>&nbsp;</p>
+      <h2>NBRF/PIR Format:<a name="pir" id="pir"></a></h2>
+      <ul>
+        <li>The PIR format is similar to FASTA format.</li>
+        <li>The first line of each sequence entry begins with a "greater than", (&gt;) sign. </li>
+        <li>Each sequence starts with a sequence type code (described in the table below), then a semi-colon</li>
+        .
+        <li>On the next line the sequence name and a description appears<l i="">.        </l></li>
+        <li>The sequence is on the following line and is ended with an asterisk (*)<l i="">.      </l></li>
+      </ul>        
+	  <blockquote>
+	  
+	  <table class="contenttable_lmenu" width="40%">
+            <tbody><tr>
+              <th>Sequence type</th>
+              <th>Code</th>
+            </tr>
+            <tr>
+              <td>Protein (complete)</td>
+              <td>P1</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>Protein (fragment)</td>
+              <td>F1</td>
+            </tr>
+            <tr>
+              <td>DNA (linear)</td>
+              <td>DL</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>DNA (circular)</td>
+              <td>DC</td>
+            </tr>
+            <tr>
+              <td>RNA (linear)</td>
+              <td>RL</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>RNA (circular)</td>
+              <td>RC</td>
+            </tr>
+            <tr>
+              <td>tRNA</td>
+              <td>N3</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>other functional RNA</td>
+              <td>N1</td>
+            </tr>
+        </tbody></table>
+        <br>          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>&gt;P1;FOSB_MOUSE<br>FOSB_MOUSE  338 bases  <br> MFQAFPGDYD SGSRCSSSPS AESQYLSSVD SFGSPPTAAA SQECAGLGEM<br> PGSFVPTVTA ITTSQDLQWL VQPTLISSMA QSQGQPLASQ PPAVDPYDMP<br> GTSYSTPGLS AYSTGGASGS GGPSTSTTTS GPVSARPARA RPRRPREETL<br> TPEEEEKRRV RRERNKLAAA KCRNRRRELT DRLQAETDQL EEEKAELESE<br> IAELQKEKER LEFVLVAHKP GCKIPYEEGP GPGPLAEVRD LPGSTSAKED<br> GFGWLLPPPP PPPLPFQSSR DAPPNLTASL FTHSEVQVLG DPFPVVSPSY<br> TSSFVLTCPE VSAFAGAQRT SGSEQPSDPL NSPSLLAL*<br>
+</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table>
+		   </blockquote>
+          <br>
+      <h2>Pfam/Stockholm Format:<a name="pfam" title="Go to the SRS server" class="pre_anchor" id="pfam"></a></h2>
+      <br>
+      The "<a title="External link" target="_blank" href="http://www.cgr.ki.se/cgb/groups/sonnhammer/Stockholm.html">Pfam/Stockholm</a>"
+ format is a system for marking up features in a multiple alignment. 
+These mark-up annotations are preceded by a 'magic' label, of which 
+there are four types. <br>
+      <br>
+      <b>Header:</b><br>
+      The first line in the file must contain a format and version identifier, currently:
+      <p># STOCKHOLM 1.0<br>
+          <br>
+          <b>The sequence alignment:</b><br>
+          <br>
+&lt; seqname&gt; &lt;aligned sequence&gt; <br>
+&lt; seqname&gt; &lt;aligned sequence&gt; <br>
+&lt; seqname&gt; &lt;aligned sequence&gt; <br>
+        .<br>
+        .<br>
+        //</p>
+      <p>&lt;seqname&gt; stands for "sequence name", typically in the form "name/start-end" or just "name".<br>
+        The "//" line indicates the end of the alignment.<br>
+        Sequence letters may include any characters except whitespace. Gaps may be indicated by "." or "-".<br>
+        Wrap-around alignments are allowed in principle, mainly for 
+historical reasons, but are not used in e.g. Pfam. Wrapped alignments 
+are discouraged since they are much harder to parse.<br>
+        <br>
+        <b>The alignment mark-up:</b><br>
+        <br>
+        Mark-up lines may include any characters except whitespace. Use underscore ("_") instead of space.</p>
+      <p>#=GF &lt;feature&gt; &lt;Generic per-File annotation, free text&gt;<br>
+        #=GC &lt;feature&gt; &lt;Generic per-Column annotation, exactly 1 char per column&gt;<br>
+        #=GS &lt;seqname&gt; &lt;feature&gt; &lt;Generic per-Sequence annotation, free text&gt;<br>
+        #=GR &lt;seqname&gt; &lt;feature&gt; &lt;Generic per-Sequence AND per-Column markup, exactly 1 char per column&gt;<br>
+        <br>
+        <b>Example:</b> <br> </p><blockquote>
+      <p></p>          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre># STOCKHOLM 1.0<br>#=GF ID CBS<br>#=GF AC PF00571<br>#=GF DE CBS domain<br>#=GF AU Bateman A<br>#=GF CC CBS domains are small intracellular modules mostly found  <br>#=GF CC in 2 or four copies within a protein. <br>#=GF SQ 67<br>#=GS O31698/18-71 AC O31698<br>#=GS O83071/192-246 AC O83071<br>#=GS O83071/259-312 AC O83071<br>#=GS O31698/88-139 AC O31698<br>#=GS O31698/88-139 OS Bacillus subtilis<br>O83071/192-246          MTCRAQLIAVPRASSLAE..AIACAQKM....RVSRVPVYERS<br>#=GR O83071/192-246 SA  999887756453524252..55152525....36463774777<br>O83071/259-312          MQHVSAPVFVFECTRLAY..VQHKLRAH....SRAVAIVLDEY<br>#=GR O83071/259-312 SS  CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEEEE<br>O31698/18-71            MIEADKVAHVQVGNNLEH..ALLVLTKT....GYTAIPVLDPS<br>#=GR O31698/18-71 SS    CCCHHHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEHHH<br>O31698/88-139           EVMLTDIPRLHINDPIMK..GFGMVINN......GFVCVENDE<br>#=GR O31698/88-139 SS   CCCCCCCHHHHHHHHHHH..HEEEEEEE....EEEEEEEEEEH<br>#=GC SS_cons            CCCCCHHHHHHHHHHHHH..EEEEEEEE....EEEEEEEEEEH<br>O31699/88-139           EVMLTDIPRLHINDPIMK..GFGMVINN......GFVCVENDE<br>#=GR O31699/88-139 AS   ________________*__________________________<br>#=GR_O31699/88-139_IN   ____________1______________2__________0____<br>//</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table></blockquote>
+          <h2>Phylip Format:<a name="Phylip" id="Phylip"></a></h2>
+          <ul>
+        <li> The first line of the input file contains the number of 
+species, the number of sequences and their length (in 
+characters)separated by blanks.</li>
+        <li> The next line contains the sequence name, followed by the sequence in blocks of 10 characters.</li>
+      </ul><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre> 1 338 I <br>FOSB_MOUSE   MFQAFPGDYD SGSRCSSSPS AESQYLSSVD SFGSPPTAAA SQECAGLGEM<br>             PGSFVPTVTA ITTSQDLQWL VQPTLISSMA QSQGQPLASQ PPAVDPYDMP<br>             GTSYSTPGLS AYSTGGASGS GGPSTSTTTS GPVSARPARA RPRRPREETL<br>             TPEEEEKRRV RRERNKLAAA KCRNRRRELT DRLQAETDQL EEEKAELESE<br>             IAELQKEKER LEFVLVAHKP GCKIPYEEGP GPGPLAEVRD LPGSTSAKED<br>             GFGWLLPPPP PPPLPFQSSR DAPPNLTASL FTHSEVQVLG DPFPVVSPSY<br>             TSSFVLTCPE VSAFAGAQRT SGSEQPSDPL NSPSLLAL<br><br>
+</pre></span> </div>              </td>
+            </tr>
+          </tbody></table></blockquote>
+ 
+      <p>&nbsp;</p>
+      <h2>Raw Format:<a name="raw" id="raw"></a></h2>
+      <span>Like text/plain format except that it removes any white 
+space or digits, accepts only alphabetic characters and rejects anything
+ else. This means that it is safer to use this format that plain format.
+ If you have digits and spaces or TAB characters, these are removed and 
+ignored. If you have other non-alphabetic characters (for example, 
+punctuation characters), then the sequence will be rejected as 
+erroneous. </span><br>
+      <br><blockquote>   <table border="0" cellpadding="8" cellspacing="0" width="80%">
+                <tbody><tr>
+                  <td>
+                     <div class="commentsbox"><span class="insidecommentsbox"><pre>			
+     ataaattcttattttgacactcaccaaaatagtcacctggaaaacccgctttttgtgaca       
+     aagtacagaaggcttggtcacatttaaatcactgagaactagagagaaatactatcgcaa       
+     actgtaatagacattacatccataaaagtttccccagtccttattgtaatattgcacagt       
+     gcaattgctacatggcaaactagtgtagcatagaagtcaaagcaaaaacaaaccaaagaa       
+     aggagccacaagagtaaaactgttcaacagttaatagttcaaactaagccattgaatcta       
+     tcattgggatcgttaaaatgaatcttcctacaccttgcagtgtatgatttaacttttaca            
+			</pre></span> </div>                  </td>
+                </tr>
+          </tbody></table></blockquote>
+        
+          <br>
+      <br>
+      <h2>RSF Format:<a name="rsf" id="rsf"></a></h2>
+      <span><br>
+      RSF means rich sequence format and it is created by the Editor in 
+SeqLab. The format is recognised by the word !!RICH_SEQUENCE at the 
+beginning of<br>
+      the file. It contains one or more sequences that may or may not be
+ related. In addition to the sequence data, each sequence can be 
+annotated with descriptive sequence information such as: </span>
+      <ul>
+        <li> Creator/author of the sequence </li>
+        <li> Sequence weight </li>
+        <li> Creation date </li>
+        <li> One-line description of the sequence </li>
+        <li> Offset, or the number of leading gaps in a sequence that is
+ part of an alignment or fragment assembly project Known sequence 
+features <br>
+        </li>
+      </ul><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre>			
+!!RICH_SEQUENCE 1.0           
+..                             
+{
+name  chkhba                  
+type    DNA
+longname  chkhba
+checksum    980
+creation-date  4/15/98 16:42:47
+strand  1
+sequence                      
+  ACACAGAGGTGCAACCATGGTGCTGTCCGCTGCTGACAAGAACAACGTCAAGGGCATCTT
+  CACCAAAATCGCCGGCCATGCTGAGGAGTATGGCGCCGAGACCTTGGAAAGGATGTTCAC
+  CACCTACCCCCCAACCAAGACCTACTTCCCCCACTTCGATCTGTCACACGGCTCCGCTCA
+  ...
+}
+{
+name  davagl
+type    DNA
+longname  davagl
+checksum    7399
+creation-date  4/15/98 16:42:47
+strand  1
+sequence  
+  GTGCTCTCGGATGCTGACAAGACTCACGTGAAAGCCATCTGGGGTAAGGTGGGAGGCCAC
+  GCCGGTGCCTACGCAGCTGAAGCTCTTGCCAGAACCTTCCTCTCCTTCCCCACTACCAAA
+  ...
+}
+
+            
+			</pre></span> </div>              </td>
+            </tr>
+          </tbody></table></blockquote>
+      <br>
+      <br>
+      <h2><a name="swiss" id="swiss"></a>UniProtKB/Swiss-Prot Format:</h2>
+      <br>
+      <span>UniProtKB/Swiss-Prot is an annotated protein sequence 
+database. The UniProtKB/Swiss-Prot protein knowledgebase consists of 
+sequence entries. Sequence entries are composed of different line types,
+ each with their own format. For standardization purposes the format of 
+UniProtKB/Swiss-Prot follows as closely as possible that of the EMBL 
+Nucleotide Sequence Database. The UniProtKB/Swiss-Prot user manual is 
+available <a href="http://ca.expasy.org/sprot/userman.html">here</a>. 
+The entries in the UniProtKB/Swiss-Prot database are structured so as to
+ be usable by human readers as well as by computer programs. The 
+explanations, descriptions, classifications and other comments are in 
+ordinary English. Wherever possible, symbols familiar to biochemists, 
+protein chemists and molecular biologists are used. Each sequence entry 
+is composed of lines. Different types of lines, each with their own 
+format, are used to record the various data that make up the entry. </span><br>
+      <br>
+      <ul>
+                    <li>The <a href="#id">ID (<b>ID</b>entification) line</a> is always the first line of an entry. The general form of the ID line is: <br>
+            <br>
+                      <table class="contenttable_lmenu" width="80%">
+                        <tbody><tr>
+                          <th>Term</th>
+                          <th>ID</th>
+                          <th>ENTRY_NAME</th>
+                          <th>DATA_CLASS</th>
+                          <th>MOLECULE_TYPE</th>
+                          <th>SEQUENCE_LENGTH.</th>
+                        </tr>
+                        <tr>
+                          <td>e.g.</td>
+                          <td>ID</td>
+                          <td>FOSB_MOUSE</td>
+                          <td>STANDARD</td>
+                          <td>PRT</td>
+                          <td>338 AA</td>
+                        </tr>
+                      </tbody></table>
+                      <br>
+        </li>
+                    <span> </span>
+                    <li><span>The <a href="#sac">AC (<b>AC</b>cession number) line</a> lists the accession number(s) associated with an entry.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#sdt">DT (<b>D</b>a<b>T</b>e) lines</a> show the date of creation and last modification of the database entry. <br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#sde">DE (<b>DE</b>scription) lines</a> contain general descriptive information about the sequence stored. <br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#sgn">GN (<b>G</b>ene <b>N</b>ame) line</a> contains the name(s) of the gene(s) that code for the stored protein sequence.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#sos">OS (Organism Species) line</a> specifies the organism(s) which was (were) the source of the stored sequence. <br>
+              <br>
+        </span></li>
+                    <li><span>The OG (<b>O</b>r<b>G</b>anelle) line 
+indicates if the gene coding for a protein originates from the 
+mitochondria, the chloroplast, a cyanelle, or a plasmid.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#soc">OC (<b>O</b>rganism <b>C</b>lassification) lines</a> contain the taxonomic classification of the source organism. <br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#sox">OX (<b>O</b>rganism taxonomy <b>Cross</b>-Reference) line</a> is used to indicate the identifier to a specific organism in a taxonomic database.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#srn">RN (<b>R</b>eference <b>N</b>umber) line</a> gives a sequential number to each reference citation in an entry.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#srp">RP (Reference Position) line</a> describes the extent of the work carried out by the authors of the reference cited. <br>
+              <br>
+        </span></li>
+                    <li><span>The RC (<b>R</b>eference <b>C</b>omment) lines are optional lines which are used to store comments relevant to the reference cited. <br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#srx">RX (<b>R</b>eference <b>Cross</b>-Reference) line</a> is an optional line which is used to indicate the identifier assigned to a specific reference in a bibliographic database.</span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#sra">RA (<b>R</b>eference <b>A</b>uthor) lines</a> list the authors of the paper (or other work) cited.</span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#srt">RT (<b>R</b>eference <b>T</b>itle) lines</a> give the title of the paper (or other work) cited.</span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#srl">RL (<b>R</b>eference <b>L</b>ocation) lines</a> contain the conventional citation information for the reference.</span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#scc">CC lines</a> are free text comments on the entry, and are used to convey any useful information. </span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#sdr">DR (<b>D</b>atabase cross-<b>R</b>eference) lines</a> are used as pointers to information related to UniProtKB/Swiss-Prot entries and found in other data collections.<br>
+              <br>
+        </span></li>
+                    <li><span>The <a href="#skw">KW (<b>K</b>ey<b>W</b>ord) lines</a>
+ provide information that can be used to generate indexes of the 
+sequence entries based on functional, structural, or other categories. </span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#sft">FT (<b>F</b>eature <b>T</b>able) lines </a>provide
+ a precise but simple means for the annotation of the sequence data. The
+ table describes regions or sites of interest in the sequence. In 
+general the feature table lists posttranslational modifications, binding
+ sites, enzyme active sites, local secondary structure or other 
+characteristics reported in the cited references. </span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#ssq">SQ (<b>S</b>e<b>Q</b>uence header) line</a> marks the beginning of the sequence data and gives a quick summary of its content.</span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#ssd">sequence data line</a> 
+has a line code consisting of two blanks rather than the two-letter 
+codes used until now. The sequence counts 60 amino acids per line, in 
+groups of 10 amino acids, beginning in position 6 of the line. </span></li>
+                    <span><br>
+        <br>
+        </span>
+                    <li><span>The <a href="#send">// (terminator) line</a> contains no data or comments and designates the end of an entry.</span></li>
+                  </ul>
+      <br>
+      <br><blockquote>
+          <table border="0" cellpadding="8" cellspacing="0" width="80%">
+            <tbody><tr>
+              <td>
+                 <div class="commentsbox"><span class="insidecommentsbox"><pre><a name="sid" id="sid"></a>ID   FOSB_MOUSE     STANDARD;      PRT;   338 AA.
+<a name="sac" id="sac"></a>AC   P13346;
+<a name="sdt" id="sdt"></a>DT   01-JAN-1990 (Rel. 13, Created)
+DT   01-JAN-1990 (Rel. 13, Last sequence update)
+DT   15-JUN-2002 (Rel. 41, Last annotation update)
+<a name="sde" id="sde"></a>DE   Protein fosB.
+<a name="sgn" id="sgn"></a>GN   FOSB.
+<a name="sos" id="sos"></a>OS   Mus musculus (Mouse).
+<a name="soc" id="soc"></a>OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Rodentia; Sciurognathi; Muridae; Murinae; Mus.
+<a name="sox" id="sox"></a>OX   NCBI_Taxid=<a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[taxonomy-ID:10090]+-e">10090</a>;
+<a name="srn" id="srn"></a>RN   [1]
+<a name="srp" id="srp"></a>RP   SEQUENCE FROM N.A.
+<a name="srx" id="srx"></a>RX   MEDLINE=<a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[medline-ID:89251612]+-e">89251612</a>; PubMed=<a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[medline-PMID:2498083]+-e">2498083</a>;
+<a name="sra" id="sra"></a>RA   Zerial M., Toschi L., Ryseck R.-P., Schuermann M., Mueller R.,
+RA   Bravo R.;
+<a name="srt" id="srt"></a>RT   "The product of a novel growth factor activated gene, fos B, interacts
+RT   with JUN proteins enhancing their DNA binding activity.";
+<a name="srl" id="srl"></a>RL   EMBO J. 8:805-813(1989).
+RN   [2]
+RP   SEQUENCE FROM N.A.
+RX   MEDLINE=<a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[medline-ID:92158623]+-e">92158623</a>; PubMed=<a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[medline-PMID:1741260]+-e">1741260</a>;
+RA   Lazo P.S., Dorfman K., Noguchi T., Mattei M.-G., Bravo R.;
+RT   "Structure and mapping of the fosB gene. FosB downregulates the
+RT   activity of the fosB promoter.";
+RL   Nucleic Acids Res. 20:343-350(1992).
+<a name="scc" id="scc"></a>CC   -!- FUNCTION: FOSB INTERACTS WITH JUN PROTEINS ENHANCING THEIR DNA
+CC       BINDING ACTIVITY.
+CC   -!- SUBUNIT: HETERODIMER (BY SIMILARITY).
+CC   -!- SUBCELLULAR LOCATION: NUCLEAR.
+CC   -!- INDUCTION: BY GROWTH FACTORS.
+CC   -!- SIMILARITY: BELONGS TO THE BZIP FAMILY. FOS SUBFAMILY.
+CC   --------------------------------------------------------------------------
+CC   This Swiss-Prot entry is copyright. It is produced through a collaboration
+CC   between  the Swiss Institute of Bioinformatics  and the  EMBL outstation -
+CC   the European Bioinformatics Institute.  There are no  restrictions on  its
+CC   use  by  non-profit  institutions as long  as its content  is  in  no  way
+CC   modified and this statement is not removed.  Usage  by  and for commercial
+CC   entities requires a license agreement (See http://www.isb-sib.ch/announce/
+CC   or send an email to license@isb-sib.ch).
+CC   --------------------------------------------------------------------------
+<a name="sdr" id="sdr"></a>DR   EMBL; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+%28z%3d[libs%3d%7BEMBL%20EMBLNEW%7D-acc:X14897]%29%21%28z%3CEMBLNEW%29">X14897</a>; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?%28%28[embl-ProteinID:CAA33026]%29_AMP_gt;parent%29+-e">CAA33026</a>.1; -.
+DR   EMBL; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+%28z%3d[libs%3d%7BEMBL%20EMBLNEW%7D-acc:AF093624]%29%21%28z%3CEMBLNEW%29">AF093624</a>; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?%28%28[embl-ProteinID:AAD13196]%29_AMP_gt;parent%29+-e">AAD13196</a>.1; -.
+DR   PIR; S04108; TVMSFB.
+DR   PIR; S35477; S35477.
+DR   HSSP; P01100; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[hssp-ID:1FOS]+-e">1FOS</a>.
+DR   TRANSFAC; <a class="pre_anchor" title="External link" target="_blank" href="http://transfac.gbf.de/cgi-bin/qt/getEntry.pl?T00291">T00291</a>; -.
+DR   MGD; <a class="pre_anchor" title="External link" target="_blank" href="http://www.informatics.jax.org/searches/accession_report.cgi?id=MGI:95575">MGI:95575</a>; Fosb.
+DR   InterPro; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[interpro-AccNumber:IPR000837]+-e">IPR000837</a>; Leuzip_Fos.
+DR   InterPro; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[interpro-AccNumber:IPR004827]+-e">IPR004827</a>; TF_bZIP.
+DR   Pfam; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[pfama-AccNumber:PF00170]+-e">PF00170</a>; bZIP; 1.
+DR   PRINTS; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[prints-AccNumber:PR00042]+-e">PR00042</a>; LEUZIPPRFOS.
+DR   SMART; <a class="pre_anchor" title="External link" target="_blank" href="http://smart.embl-heidelberg.de/smart/do_annotation.pl?BLAST=DUMMY&amp;ACC=SM00338">SM00338</a>; BRLZ; 1.
+DR   PROSITE; <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[prosite-AccNumber:PS00036]+-e">PS00036</a>; BZIP_BASIC; 1.
+<a name="skw" id="skw"></a>KW   <a class="pre_anchor" title="External link" target="_blank" href="http://expasy.cbr.nrc.ca/cgi-bin/get-entries?KW=Nuclear+protein">Nuclear protein</a>; <a class="pre_anchor" title="External link" target="_blank" href="http://expasy.cbr.nrc.ca/cgi-bin/get-entries?KW=DNA-binding">DNA-binding</a>.
+<a name="sft" id="sft"></a>FT   <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+[SWISSPROT_features-id:FOSB_MOUSE_1]">DNA_BIND</a>    161    179       BASIC MOTIF.
+FT   <a title="Go to the SRS server" class="pre_anchor" href="http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-e+[SWISSPROT_features-id:FOSB_MOUSE_2]">DOMAIN</a>      183    211       LEUCINE-ZIPPER.
+<a name="ssq" id="ssq"></a>SQ   SEQUENCE   338 AA;  35976 MW;  E9D031A4BEAE48EC CRC64;
+ <a name="ssd" id="ssd"></a>    MFQAFPGDYD SGSRCSSSPS AESQYLSSVD SFGSPPTAAA SQECAGLGEM PGSFVPTVTA
+     ITTSQDLQWL VQPTLISSMA QSQGQPLASQ PPAVDPYDMP GTSYSTPGLS AYSTGGASGS
+     GGPSTSTTTS GPVSARPARA RPRRPREETL TPEEEEKRRV RRERNKLAAA KCRNRRRELT
+     DRLQAETDQL EEEKAELESE IAELQKEKER LEFVLVAHKP GCKIPYEEGP GPGPLAEVRD
+     LPGSTSAKED GFGWLLPPPP PPPLPFQSSR DAPPNLTASL FTHSEVQVLG DPFPVVSPSY
+     TSSFVLTCPE VSAFAGAQRT SGSEQPSDPL NSPSLLAL
+<a name="send" id="send"></a>//
+</pre></span> </div>              </td>
+            </tr>
+          </tbody></table></blockquote>
+      <br>
+      <h2>Known biosequence format Extensions </h2>
+	  
+	  
+	  <blockquote>
+          <table class="contenttable_lmenu" width="80%">
+            <tbody><tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Read</th>
+              <th>Write</th>
+              <th>Int'leaf</th>
+              <th>Document</th>
+              <th>Content-type</th>
+              <th>Suffix</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>IG|Stanford</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/ig</td>
+              <td>.ig</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>2</td>
+              <td>GenBank|GB</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>biosequence/genbank</td>
+              <td>.gb</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>NBRF</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/nbrf</td>
+              <td>.nbrf</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>4</td>
+              <td>EMBL</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>biosequence/embl</td>
+              <td>.embl</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>GCG</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/gcg</td>
+              <td>.gcg</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>6</td>
+              <td>DNAStrider</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/strider</td>
+              <td>.strider</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Fitch</td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/fitch</td>
+              <td>.fitch</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>8</td>
+              <td>Pearson|FASTA</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/FASTA</td>
+              <td>.fasta</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Zuker</td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/zuker</td>
+              <td>.zuker</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>10</td>
+              <td>Olsen</td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/olsen</td>
+              <td>.olsen</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Phylip3.2</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/phylip2</td>
+              <td>.phylip2</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>12</td>
+              <td>Phylip|Phylip4</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/phylip</td>
+              <td>.phylip</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Plain|Raw</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/plain</td>
+              <td>.seq</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>14</td>
+              <td>PIR|CODATA</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/codata</td>
+              <td>.pir</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>MSF</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/msf</td>
+              <td>.msf</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>16</td>
+              <td>PAUP|NEXUS</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/nexus</td>
+              <td>.nexus</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>Pretty</td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/pretty</td>
+              <td>.pretty</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>18</td>
+              <td>XML</td>
+              <td>yes </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>biosequence/xml</td>
+              <td>.xml</td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>BLAST</td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>biosequence/BLAST</td>
+              <td>.BLAST</td>
+            </tr>
+            <tr class="alternaterowcolour">
+              <td>20</td>
+              <td>SCF</td>
+              <td>yes </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/scf</td>
+              <td>.scf</td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>ASN.1</td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>-- </td>
+              <td>biosequence/asn1</td>
+              <td>.asn</td>
+            </tr>
+          </tbody></table>
+		  </blockquote>
+      <br>                      </td>
+                    </tr>
+                  </tbody></table>
+				  <hr>
+				  <table class="contenttable_lmenu" style="width: 100%;">
+                    <tbody><tr>
+                      <td style="text-align: center;"><b>General Help Topics</b> <br>
+                          <a href="http://www.ebi.ac.uk/2can/tutorials/aa.html">Amino Acid and Nucleotide Codes</a> <span class="pipe">|</span> <a href="http://www.ebi.ac.uk/2can/tutorials/alignment.html">Optimal Alignments</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/formats.html">Sequence Formats</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/gaps.html">Gaps</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/matrices.html">Matrices</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/transcription.html#strand">DNA Strand</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/transcription.html#frames">Reading Frames</a><span class="pipe">|</span><a href="http://www.ebi.ac.uk/2can/tutorials/transcription.html#mol">Molecule Types</a><br>
+                          <br>
+                      </td>
+                    </tr>
+                  </tbody></table>					
+		<script type="text/javascript">
+			tableruler();
+			tablestriper();
+		</script>			
+					
+		<!-- InstanceEndEditable -->
+		<img src="formats_fichiers/spacer.gif" class="spacer" alt="spacer"> </td>
+	    <td class="rightmenucell" id="rightmenucell"><div style="visibility: hidden; display: none; width: 1px;" class="rightmenu" id="rightmenu"><img src="formats_fichiers/spacer.gif" class="spacer" alt="spacer"></div></td></tr></tbody></table>
+
+	</div>
+
+
+</body><!-- InstanceEnd --></html>

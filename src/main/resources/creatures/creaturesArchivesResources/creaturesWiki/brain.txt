@@ -1,0 +1,53 @@
+Brain
+From Creatures Wiki
+The brain in Creatures is a very complex thing built of about 10 lobes, maybe 900 neurons and many
+thousands of dendrites. The brain works with the creature's biochemistry in order to keep itself alive.
+Contents
+	1 Brain Organ
+	2 Lobes
+	3 Neurons
+	4 Dendrites
+	5 SVRules
+	5.1 A note from the programmer
+
+Brain Organ
+In the games after C2, one way in which creatures can die is by the lifeforce of the brain organ - which contains only the brain lobes - becoming too low. This happens when the organ receives sufficient damage which, due to the lack of other biochemistry inside the organ, only happens when a creature has insufficient ATP.
+
+Lobes
+A lobe is a part of the brain that is dedicated to a certain function. A common mutation of the brain is the Multi-lobed creature, with duplicate and/or new brain lobes. For articles on particular lobes, see the Brain category
+
+Neurons
+In the Creatures series of games, a neuron is a place where you can store a number value. Most neurons lose the saved value over time, but some do this faster than others. More information about simulated neurons in general is available in Wikipedia's Artificial Neuron article.
+Neurons can work together in "neural networks", or neural nets.
+
+Dendrites
+Dendrites are the connections between different neurons. Dendrites work unidirectionally (one-way), so the value of neuron 1 may influence the value of neuron 2, but not vice versa. Dendrites may have different behaviours and some just transfer the value of one neuron to another one, while others may negate the value or do even more complex work. See also concept lobe.
+
+SVRules
+Creature brains use a neuronal processing system, called "State Value Rules", commonly shortened to SVRules. 
+
+These were fairly simple in Creatures 1 and Creatures 2, essentially designed to let you perform simple manipulations upon Creature variables (ie, biochemistry and brain values), with the possibility of adding conditions based upon these variables.
+
+In Creatures Evolution Engine games such as Creatures 3, each neuron and dendrite is a fully functional register machine. That means that you have several registers (places where you can store something) and one special working register. The most important commands on a register machine are LOAD, which loads a value into the working register and STORE, which stores a value from it into one of the other registers. Operations like ADD always use the value of the working register. Look at the following example, which adds the value from register 1 to the one of register 0 and stores the new value in register 2:
+LOAD 0
+ADD 1
+STORE 2
+
+The SVRules system adds some extensions to the usual register machine, like access to the Creature's chemical system or to its reception.
+
+Take your favourite genetic editor and take a look into one of the Brain Lobe or Brain Tract genes to get a full (?) list of supported operations.
+
+A good place to learn more about the brain is The Creatures Developer Resource
+
+A note from the programmer
+This SVRule system was designed to deal with an interesting problem: How could I specify arbitrary behaviours for my neurons in a way that evolution could freely change, without it generating endless syntax errors in the process? For instance, imagine that a mutation were to occur in a line of conventional C++ code, such as "for (i=0; i<num; i++)". Almost every possible mutation would render the code unreadable (e.g. "fxr (i-0; ibnum; i4+)") and the chances of a useful (or even viable) mutation would be extremely low.
+At worst the whole simulation would crash. To solve this problem I designed the SVRule system in such a way that EVERY statement you can write in it is legal and meaningful, even if it is not biologically useful. If a token was originally the operand for a command, for example, and the command later mutated to one that didn't require operands, the token would now be interpreted instead as a new command or a variable. The details of this aren't very important, but I guess it's an interesting example of the ways in which biology differs from computer programming. Biology tends to have this sort of robustness built into the design.
+Digitalgod 12:39, 4 Apr 2005 (EDT)
+
+Retrieved from "http://creatures.wikia.com/wiki/Brain?oldid=45676"
+
+Categories: Internals Brain
+
+This page was last modified on December 15, 2009, at 00:59.
+Brain - Creatures Wiki http://creatures.wikia.com/wiki/Brain?printable=yes
+2 sur 2 28/08/2013 15:50

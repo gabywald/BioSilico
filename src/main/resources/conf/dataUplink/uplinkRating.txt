@@ -1,0 +1,17 @@
+Unregistered
+Registered
+Beginner     
+Novice     
+Confident    
+Intermediate    
+Skilled    
+Experienced    
+Knowledgeable   
+Uber-Skilled   
+Professional   
+Elite   
+Mage   
+Expert   
+Veteren  
+Techno-mage  
+TERMINAL

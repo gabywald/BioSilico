@@ -1,0 +1,59 @@
+C3 Organs
+From Creatures Wiki
+It is important to realize that organs in Creatures 3 are not defined in terms of what they are, but what they do. In turn, what they do is defined by the creature's genome. See the C3 Chemical List for information on chemicals involved.
+Contents
+	1 CNS: drive lobe support
+	2 Digestive functions
+	3 Liver anabolic
+	4 Liver catabolic
+	5 Mitochondrial function
+	6 Regulation functions
+	7 Lung
+	8 Floating loci
+	9 Kidney bladder
+	10 Skin cooling function
+	11 Time line
+	12 Uterus
+	13 Gonad
+	14 Fight or flight
+	15 Constitutive drive maintenance
+	16 Painly drive overwhelmsion
+	17 Fearly drive overwhelmsion
+	18 Stress system
+	19 Immune system
+	20 Bones
+	21 Muscles
+CNS: drive lobe support -- CNS stands for "Central Nervous System". This organ has many receptors and helps the brain figure out what drives exist. In Norns it is attacked by antigens 3 and 4.
+Digestive functions -- Converts fuel e.g. starch to more base chemicals. In Norns it is attacked by antigens 4 and 5.
+Liver anabolic -- Stores excess energy as glycogen, apidose tissue, and muscle tissue. In Norns it is attacked by antigens 6 and 7.
+Liver catabolic -- Retrieves energy from glycogen, apidose tissue and muscle tissue. In Norns it is attacked by antigens 1 and 2.
+Mitochondrial function -- Responsable for the production of ATP. In Norns it is attacked by antigens 5 and 6.
+Regulation functions -- Control involuntary actions, as well as a few "housekeeping" tasks like cancelling out hotness and coldness. Belladonna can interfere with them. In Norns they are attacked by antigens 3 and 4.
+Lung -- Controls breathing functions, of course. In Norns it is attacked by antigens 4 and 5.
+Floating loci -- Controls the production of loneliness, crowdedness, upatrophin and downatrophin. Creates pistle in the presence of urea, adrenaline when energy is low, hunger for protein when muscle tissue is low, and protease when apidose tissue is low or amino acid is high. This organ also produces sleepase when the creature is asleep or has decided to sleep. In Norns they are attacked by antigens 5 and 6.
+Kidney bladder -- Controls urination. In Norns it is attacked by antigens 0 and 7.
+Skin cooling function -- Helps creature regulate temperature. In Norns it is attacked by antigens 1 and 2. The clock rate is altered by fever toxin.
+Time line -- Controls aging, death by old age, death by low energy, death by low ATP, and death by wounds. Antigens cannot harm it, because if this organ were to be killed off, your creature would become virtually immortal :)
+Uterus -- Only in females (and some male gay norns). Without a uterus a female cannot become pregnant, except via artificial insemination, and in this case she will not be able to lay the egg naturally. Heavy metals can injure it. In Norns it is attacked by antigens 0 and 1.
+Gonad -- Controls general mating functions. In Norns it is attacked by antigens 2 and 3.
+Fight or flight -- This organ intensifies the effects of fear and anger in the presence of Adrenaline. In Norns it is attacked by antigens 3 and 4.
+Constitutive drive maintenance -- Turns drive backup chemicals back into normal chemicals. Belladonna can interfere with this organ. In Norns it is attacked by antigens 1 and 2.
+Painly drive overwhelmsion -- This strangely-named organ converts some drive chemicals into drive backup chemicals when the creature is in pain. In Norns it is attacked by antigens 0 and 1.
+It converts pain itself into hunger for protein backup, (an apparent typo) and converts the following drives to their backup drives: hungers for starch and fat, coldness, hotness, tiredness, loneliness, crowdedness, boredom, sex drive.
+Fearly drive overwhelmsion -- This organ converts some drive chemicals (hungers, coldness, hotness, tiredness, boredom and sex drive) into drive backup chemicals when the creature is deathly afraid. In Norns it is attacked by antigens 2 and 3.
+Stress system --- When a drive is too high, this organ produces the stress chemical. Antigens cannot harm this organ. Drives that produce stress in this way are:
+	Crowded
+	Sleepiness
+	Tiredness
+	Pain
+	Fear
+	The three hungers
+	Anger
+Immune system -- Produces antibodies for antigens. Oddly enough, this organ also causes many toxins to have their effects. Heavy metal poisioning can damage the immune system. In Norns it is attacked by antigens 4 and 5.
+Bones -- This organ produces prostaglandin when the norn is injured. Prostaglandin is used to help repair all other organs. Vitamin C helps this organ work faster. In Norns they are attacked by antigens 6 and 7.
+
+Muscles -- This organ is responsable for changing the creature's gait in responce to certain drives and chemicals. It also emits Anabolic Steroid when the 'muscle energy' is used. This in turn is used to synthesis new muscle tissue. In Norns it is damaged by the presence of muscle toxin and lactate, and is attacked by antigens 0 and 7.
+
+Retrieved from "http://creatures.wikia.com/wiki/C3_Organs?oldid=50434"
+Category: Internals
+This page was last modified on June 12, 2012, at 01:40.

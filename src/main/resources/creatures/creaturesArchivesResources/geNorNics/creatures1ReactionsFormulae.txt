@@ -1,0 +1,89 @@
+http://meliweb.net/creatures/formulae.htm
+
+Generation 1 Reaction Formulae
+Gene Number 	Description 				Formula
+57  	drive raiser - pain 				1 pain++ --> 1 pain + 1 punishment (08)
+58  	drive raiser - need for pleasure 	1 need for pleasure++ --> 1 n.f.p. + 1 punishment (08)
+59  	drive raiser - hunger 				1 hunger++ --> 1 hunger + 1 punishment (08)
+60  	drive raiser - coldness 			1 coldness++ --> 1 coldness + 1 punishment (08)
+61  	drive raiser - hotness 				1 hotness++ --> 1 hotness + 1 punishment (08)
+62  	drive raiser - tiredness 			1 tiredness++ --> 1 tiredness + 1 punishment (08)
+64  	drive raiser - sleepiness 			1 sleepiness++ --> 1 sleepiness + 1 punishment (08)
+65  	drive raiser - loneliness 			1 loneliness++ --> 1 loneliness + 1 punishment (08)
+66  	drive raiser - crowded 				1 crowded++ --> 1 crowded + 1 punishment (08)
+67  	drive raiser - fear 				1 fear++ --> 1 fear + 1 punishment (08)
+68  	drive raiser - boredom 				1 boredom++ --> 1 boredom + 1 punishment (08)
+69  	drive raiser - anger 				1 anger++ --> 1 anger + 1 punishment (08)
+71  	drive reducer - pain 				1 pain-- + 1 pain --> 1 reward (08)
+72  	drive reducer - need for pleasure 	1 need for pleasure-- + 1 need for pleasure --> 1 reward (08)
+73  	drive reducer - hunger 				1 hunger-- + 1 hunger --> 1 reward (08)
+74  	drive reducer - coldness 			1 coldness-- + 1 coldness --> 1 reward (08)
+75  	drive reducer - hotness 			1 hotness-- + 1 hotness --> 1 reward (08)
+76  	drive reducer - tiredness 			1 tiredness-- + 1 tiredness --> 1 reward (08)
+78  	drive reducer - sleepiness 			1 sleepiness-- + 1 sleepiness --> 1 reward (08)
+79  	drive reducer - loneliness 			1 loneliness-- + 1 loneliness --> 1 reward (08)
+80  	drive reducer - crowded 			1 crowded-- + 1 crowded --> 1 reward (08)
+82  	drive reducer - fear 				1 fear-- + 1 fear --> 1 reward (08)
+84  	drive reducer - boredom 			1 boredom-- + 1 boredom --> 1 reward (08)
+85  	drive reducer - anger 				1 anger-- + 1 anger --> 1 reward (08)
+111 	reward -> reinforce 				1 reward --> 1 reinforcement + 1 rewardecho (10)
+112 	punish -> reinforce 				1 punishment --> 1 reinforcement + 1 punishecho (10)
+142 	digestion 							1 starch --> 2 glucose (40)
+144 	glucose -> glycogen 				3 glucose --> 1 glycogen + 1 hunger-- (38)
+145 	glycogen -> glucose 				1 glycogen --> 3 glucose + 1 hunger (40)
+146 	glucose -> energy 					1 glucose + 2 hexokinase --> 4 CO2 (18)
+158 	pregnancy kills estrus cycle 		1 gonadotropin + 2 estrogen --> 1 gonadotropin (28)
+70  	drive raiser - sex drive 			1 sexdrive++ --> 1 sexdrive + 1 punishment (08)
+86  	drive reducer - sex drive 			1 sexdrive-- + 1 sexdrive --> 1 reward (08)
+174 	glycotoxin poisoning 				1 glycotoxin + 2 glycogen --> 2 pain++ + 2 sleepiness++ (48)
+225 	immune response - antibody 0 		2 Ag0 + 4 glucose --> 1 Ab0 + 1 hotness (58)
+226 	immune response - antibody 1 		2 Ag1 + 4 glucose --> 1 Ab1 + 1 hotness (58)
+228 	immune response - antibody 2 		2 Ag2 + 4 glucose --> 1 Ab2 + 1 hotness (58)
+229 	immune response - antibody 3 		2 Ag3 + 4 glucose --> 1 Ab3 + 1 hotness (50)
+230 	immune response - antibody 4 		2 Ag4 + 4 glucose --> 1 Ab4 + 1 hotness (50)
+231 	immune response - antibody 5 		2 Ag5 + 1 glucose --> 1 Ab5 + 1 hotness (50)
+232 	immune response - antibody 6 		2 Ag6 + 1 glucose --> 1 Ab6 + 1 hotness (50)
+233 	immune response - antibody 7 		2 Ag7 + 1 glucose --> 1 Ab7 + 1 hotness (50)
+238 	fever 								4 fever toxin --> 2 hotness + 1 hexokinase (50)
+239 	sleeping sickness 					2 sleep toxin --> 2 sleepiness + 1 tiredness (40)
+280 	alcohol makes males angry 			1 alcohol --> 2 anger + 1 sleepiness (40)
+281 	alcohol makes females randy 		1 alcohol --> 3 sexdrive + 1 sleepiness (40)
+289 	stress reduces energy 				4 adrenaline + 1 glucose --> nothing (60)
+290 	stress red. M sex drive/fertil. 	1 adrenaline + 1 testosterone --> 1 sexdrive-- (48)
+291 	stress red. F sex drive/fertil. 	1 adrenaline + 1 estrogen --> 1 sexdrive-- (48)
+292 	stress reduces life-span 			1 adrenaline --> nothing (58)
+308 	hunger reduction * 					1 hunger-- + 1 hunger --> nothing (20)
+313 	eating for two 						1 gonadotropin +1 glucose --> 1 gonadotropin (60)
+314 	IV energy 							1 energy --> 2 glucose + 1 pain++ (20)
+315 	IV adrenaline 						1 IVadrenaline --> 2 adrenaline (20)
+316 	IV pain killer 						1 pain killer --> 2 pain-- + 1 sleepiness++ (20)
+317 	IV cough medicine 					1 cough medicine + 2 histamine A --> 2 sleepiness++ (20)
+318 	IV sleeping pill 					1 sleeping pill --> + 2 sleepiness++ (20)
+319 	IV wake-up pill 					1 wake-up pill + 1 glucose --> 2 sleepiness++ + 1 adren. (20)
+320 	IV anti-oxidant 					4 anti-oxidant --> 1 aging (38)
+
+321 	geddonase breaks down glucose P F(m,f) R 		5 geddonase + 5 glucose --> 5 geddonase (48)
+322 	geddonase reduces glycogen P F(m,f) R 			2 geddonase + 3 glycogen --> 1 geddonase (58)
+323 	n.f.p. builds chem 50 P F(m,f) R 				1 50 + 1 need for pleasure --> 3 50 (80)
+324 	chem 50 reduces boredom P F(m,f) R 				1 50 + 2 boredom --> 1 boredom (70)
+338 	activity reduces adrenaline F(f) R 				8 adrenaline + 1 activase --> 1 fear-- + 1 anger-- (20)
+343 	flight to fight when cornered R 				1 fear + 1 turnase --> 1 anger ( )
+344 	fight to flight when retreating R 				1 anger + 1 collapsase --> 1 fear (20)
+
+* missing in U.S. Norns
+P Purple Mountain Norns
+F(m) Forest Norns - male
+F(f) Forest Norns - female
+R Ron Norns
+
+line
+Reaction Types
+
+All transformations are allowed, except 'nothing --> something.'
+Examples:
+
+    A + B --> C + D 	normal reaction with two products
+    A + B --> C 	'fusion'
+    A --> nothing 	exponential decay
+    A + B --> A + C 	catalysis (A is unchanged)
+    A + B --> A 	catalytic breakdown (of B)

@@ -1,0 +1,47 @@
+Mot-clé		Description
+abstract		Permet de rendre une classe, une méthode ou une interface abstraite
+boolean		Type booléen
+break		Sortie prématurée d'une itération ; également utilisé en liaison avec les constructions switch & ??
+byte		Type entier sur 8 bits
+case		Permet d'étiqueter les différents cas dans une construction switch
+catch		Récupération d'une exception
+char		Type caractère
+class		Définition d'une classe
+continue		Rebouclage prématuré sur le début d'une boucle d'itération
+default		Étiquette par défaut dans les constructions switch
+do		Variante de la construction while
+double		Type réel double précision
+else		Partie sinon d'une conditionnelle
+extends		Déclaration d'une sous-classe
+final		Déclaration d'une constante. Accolé à une classe, indique qu'on interdit à cette classe d'avoir des sous-classes. & ??
+finally		Dans le mécanisme de traitement des exceptions, définition d'un bloc d'instructions qui doivent toujours être exécutées, qu'il y ait eu exception ou non
+float		Type réel simple précision
+for		Construction d'une itération
+if		Partie si ...alors d'une conditionnelle
+implements		Indique qu'une classe met en oeuvre une interface
+import		"Importation" d'une ou plusieurs classes d'un package
+instanceof		Opérateur permettant de tester l'appartenance d'un objet à une classe
+int		Type entier sur 32 bits
+interface		Définition d'une interface
+long		Type entier sur 64 bits
+native		Mot clé permettant de qualifier des fonctions écrites dans un autre langage que Java, mais qu'on souhaite appeler à partir d'un programme en Java
+new		Création d'un nouvel objet par allocation de la mémoire nécessaire et appel éventuel du constructeur approprié & ??
+null		Valeur d'une référence nulle (à un objet inexistant ou non valide)
+package		Déclaration du package d'appartenance de la classe
+private		Définition d'une variable ou méthode privée
+protected		Définition d'une variable ou méthode protégée
+public		Définition d'une variable ou méthode publique
+return		Valeur rendue par une fonction
+short		Type entier sur 16 bits
+static		Définition d'une variable ou méthode de classe
+super		Référence à la méthode masquée par héritage, ou au constructeur de la super-classe
+switch		Construction conditionnelle permettant de traiter différents cas
+synchronized		Déclaration d'une méthode qui peut être appelée par plusieurs threads
+this		Référence de l'objet courant
+throw		Déclenchement d'une exception
+throws		Déclaration du fait qu'une exception peut être déclenchée par une méthode donnée
+transient		Utilisé pour marquer des variables qui ne doivent pas être sérialisées
+try		Bloc d'instructions dans lequel une exception est suceptible d'être déclenchée
+void		Indique une procédure ("fonction" qui ne rend rien)
+volatile		Indique au compilateur qu'il ne faut pas effectuer certains types d'optimisation sur la variable ainsi marquée
+while		Construction d'une itération

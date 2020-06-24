@@ -1,0 +1,84 @@
+ID   BN000319; SV 1; linear; mRNA; STD; ROD; 912 BP.
+XX
+AC   BN000319;
+XX
+DT   27-APR-2004 (Rel. 79, Created)
+DT   25-APR-2006 (Rel. 87, Last updated, Version 2)
+XX
+DE   TPA: Rattus norvegicus mRNA for HIV-induced protein-7-like protease (hshin7
+DE   gene)
+XX
+KW   HIV-induced protein-7-like protease; hshin7 gene; Third Party Annotation;
+KW   TPA; TPA:inferential.
+XX
+OS   Rattus norvegicus (Norway rat)
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Glires; Rodentia; Sciurognathi; Muroidea;
+OC   Muridae; Murinae; Rattus.
+XX
+RN   [1]
+RP   1-912
+RA   Puente X.S.;
+RT   ;
+RL   Submitted (02-OCT-2003) to the INSDC.
+RL   Puente X.S., Biomiquimica y Biologia Molecular-IUOPA, Universidad de
+RL   Oviedo, Fernando Bongera, 6, Oviedo, 33006, SPAIN.
+XX
+RN   [2]
+RX   DOI; 10.1101/gr.1946304.
+RX   PUBMED; 15060002.
+RA   Puente X.S., Lopez-Otin C.;
+RT   "A genomic analysis of rat proteases and protease inhibitors";
+RL   Genome Res. 14(4):609-622(2004).
+XX
+DR   Ensembl-Gn; ENSRNOG00000025704; Rattus_norvegicus.
+DR   Ensembl-Tr; ENSRNOT00000030476; Rattus_norvegicus.
+XX
+AH   LOCAL_SPAN      PRIMARY_IDENTIFIER   PRIMARY_SPAN   COMP
+AS   1-208           AC111727.4           81982-82189    c   
+AS   209-912         AC111727.4           80472-81175    c   
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   source          1..912
+FT                   /organism="Rattus norvegicus"
+FT                   /chromosome="13"
+FT                   /map="13q13"
+FT                   /strain="Sprague-Dawley"
+FT                   /mol_type="mRNA"
+FT                   /db_xref="taxon:10116"
+FT   CDS             1..912
+FT                   /gene="hshin7"
+FT                   /product="HIV-induced protein-7-like protease"
+FT                   /function="cystein protease"
+FT                   /db_xref="GOA:Q32Q05"
+FT                   /db_xref="InterPro:IPR003323"
+FT                   /db_xref="InterPro:IPR007087"
+FT                   /db_xref="InterPro:IPR015880"
+FT                   /db_xref="UniProtKB/Swiss-Prot:Q32Q05"
+FT                   /protein_id="CAE48374.1"
+FT                   /translation="MWRLRCKAKGGTHVLQGLSNRTRLRELQGQIAAITGIAPGSQRIL
+FT                   VGYPPECLDLSDRDITLGDLPIQSGDMLIVEEDQTRPKASPAFSKHGAPSYVRETLPVL
+FT                   TRTAVPADNSCLFTSVYYVVEGGVLNPACAPEMRRLIAQIVASDPDLYSEAILGKTNEE
+FT                   YCDWIRRDDTWGGAIEISILSKFYQCEICVVDTQTVRIDRFGEDAGYTKRVLLIYDGIH
+FT                   YDPLQRNFPDPDTPPLTIFSSNDDIVLVQALELADEARRKRQFTDVNRFTLRCMLCQKG
+FT                   LTGQAEARDHARETGHTNFGEV"
+XX
+SQ   Sequence 912 BP; 245 A; 227 C; 231 G; 209 T; 0 other;
+     atgtggcggc tccgctgcaa ggccaagggt ggcacccacg ttttgcaggg tctttccaac        60
+     cggacccgct tacgggaact gcagggccaa atcgccgcta tcaccggcat cgctcctggc       120
+     agtcagcgaa tcctcgtcgg ctacccacca gagtgcctgg atctcagcga ccgggacatc       180
+     actctcgggg acctgcccat ccagtcaggt gacatgctga ttgttgaaga agaccaaacc       240
+     agaccaaaag cttcacctgc gttttcaaaa catggtgctc ctagttatgt cagggaaact       300
+     ctgcctgtgc ttaccagaac cgcagtccca gcagacaact cttgcctctt taccagtgtg       360
+     tactatgtag ttgaaggagg agtcttgaat ccagcttgtg cccctgagat gagacgcctc       420
+     atagcacaaa ttgtagccag tgatccagac ttgtatagtg aggcaatact gggaaagaca       480
+     aacgaagagt actgtgattg gatcagaagg gatgatactt gggggggagc aattgagata       540
+     tcaatcctgt ccaagtttta tcaatgtgaa atatgtgtag tagatacaca gacagtcaga       600
+     attgatcgtt ttggggaaga tgcaggctat accaaaaggg ttctactcat ctacgatggc       660
+     attcactacg atccgcttca gcgaaacttc cctgatccgg atacccctcc tctgaccatt       720
+     ttctcctcaa atgatgatat tgttctcgta caagcactgg aattagctga tgaagctaga       780
+     agaaagagac agttcactga tgtaaaccgc ttcaccctga gatgcatgct gtgtcagaag       840
+     ggcctaaccg gacaagctga agcaagggac catgccaggg agacaggcca taccaacttt       900
+     ggagaggtgt ga                                                           912
+//

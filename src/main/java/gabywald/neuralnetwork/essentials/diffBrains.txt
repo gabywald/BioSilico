@@ -1,0 +1,208 @@
+1c1
+< package gabywald.neuralnetwork.essentials.version1;
+---
+> package gabywald.neuralnetwork.essentials.version2;
+3,5c3
+< public class Brain extends Thread {
+< 	private int width,height;
+< 	private Neuron[][] map;
+---
+> import java.util.ArrayList;
+7,10c5,16
+< 	public Brain(int width, int height) {
+< 		this.width	= width;
+< 		this.height	= height;
+< 		this.map	= new Neuron[this.width][this.height];
+---
+> 
+> public class Brain  extends Thread {
+> 	private Neuron[][] content;
+> 
+> 	private boolean continued;
+> 
+> 	private int count;
+> 
+> 	public Brain(int width, int height) { 
+> 		this.content	= new Neuron[width][height];
+> 		this.continued	= false;
+> 		this.count		= 0;
+13,14c19,21
+< 	public int getWith()	{ return this.width; }
+< 	public int getHeight()	{ return this.height; }
+---
+> 	public int getWidth()	{ return this.content.length; }
+> 	public int getHeight()	
+> 		{ return (this.content.length > 0)?this.content[0].length:0; }
+17,19c24,26
+< 		if ( ( (x >= 0) && (x < this.width) )
+< 				&& ( (y >= 0) && (y < this.height) ) ) {
+< 			Neuron neu = this.map[x][y];
+---
+> 		if ( ( (x >= 0) && (x < this.getWidth()) )
+> 				&& ( (y >= 0) && (y < this.getHeight()) ) ) {
+> 			Neuron neu = this.content[x][y];
+26,28c33,51
+< 		if ( ( (x >= 0) && (x < this.width) )
+< 				&& ( (y >= 0) && (y < this.height) ) )
+< 		{ this.map[x][y] = neu; }
+---
+> 		if ( ( (x >= 0) && (x < this.getWidth()) )
+> 				&& ( (y >= 0) && (y < this.getHeight()) ) )
+> 		{ this.content[x][y] = neu; }
+> 	}
+> 
+> 	public void compute() {
+> 		for (int i = this.getWidth()-1 ; i >= 0 ; i--) {
+> 			for (int j = this.getHeight()-1 ; j > 0 ; j--) { 
+> 				if (this.content[i][j] != null) 
+> 					{ this.content[i][j].compute(); }
+> 			}
+> 		}
+> 	}
+> 
+> 	public void submit(double[] dataEnter) {
+> 		for (int i = 0 ; (i < this.getWidth()) 
+> 		&& (i < dataEnter.length) ; i++) 
+> 		{ this.content[i][0].activateWith(dataEnter[i]); }
+> 		this.compute();
+32,35c55,58
+< 		if ( (height >= 0) && (height < this.height) ) {
+< 			Neuron[] result = new Neuron[this.width];
+< 			for (int i = 0 ; i < this.width ; i++) 
+< 			{ result[i] = this.map[i][height]; }
+---
+> 		if ( (height >= 0) && (height < this.getHeight()) ) {
+> 			Neuron[] result = new Neuron[this.getWidth()];
+> 			for (int i = 0 ; i < this.getWidth() ; i++) 
+> 			{ result[i] = this.content[i][height]; }
+42,49c65,81
+< 	public void compute() {
+< 		//		for (int i = 0 ; i < this.width ; i++) {
+< 		//			for (int j = 0 ; j < this.height ; j++) { 
+< 		for (int i = this.width-1 ; i >= 0 ; i--) {
+< 			for (int j = this.height-1 ; j >= 0 ; j--) { 
+< 				// System.out.println(i+"\t"+j);
+< 				this.map[i][j].compute(); 
+< 			}
+---
+> 	public Neuron[] getLastLine() 
+> 	{ return this.getLineAt(this.getHeight()-1); }
+> 
+> 
+> 	/**
+> 	 * To get a whole list from a Neuron instance to start. 
+> 	 * @param last (Neuron) where to start. 
+> 	 * @return (Neuron[])
+> 	 */
+> 	public static Neuron[] backtracking(Neuron last) {
+> 		ArrayList<Neuron> listing = new ArrayList<Neuron>();
+> 		Neuron[] inputs = last.getInputs();
+> 		for (int i = 0 ; i < inputs.length ; i++) { 
+> 			listing.add(inputs[i]);
+> 			Neuron[] more = Brain.backtracking(inputs[i]);
+> 			for (int j = 0 ; j < more.length ; j++) 
+> 			{ listing.add(more[j]); }
+50a83
+> 		return listing.toArray(new Neuron[0]);
+53,57c86,103
+< 	public void submit(double[] dataEnter) {
+< 		for (int i = 0 ; (i < this.width) 
+< 				&& (i < dataEnter.length) ; i++) 
+< 			{ this.map[i][0].activateWith(dataEnter[i]); }
+< 		this.compute();
+---
+> 	/**
+> 	 * To get a whole list from a Neuron instance to a certain depth.
+> 	 * @param last (Neuron) where to start. 
+> 	 * @param depth (int) maximal depth (0 for first level). 
+> 	 * @return (Neuron[])
+> 	 */
+> 	public static Neuron[] backtracking(Neuron last, int depth) {
+> 		ArrayList<Neuron> listing = new ArrayList<Neuron>();
+> 		Neuron[] inputs = last.getInputs();
+> 		for (int i = 0 ; i < inputs.length ; i++) { 
+> 			listing.add(inputs[i]);
+> 			if (depth > 0) { 
+> 				Neuron[] more = Brain.backtracking(inputs[i], depth-1);
+> 				for (int j = 0 ; j < more.length ; j++) 
+> 				{ listing.add(more[j]); }
+> 			}
+> 		}
+> 		return listing.toArray(new Neuron[0]);
+59a106,113
+> 	/**
+> 	 * Useful to un-learn a path...
+> 	 * @param list (Neuron[])
+> 	 */
+> 	public static void decreaseWeight(Neuron[] list) {
+> 		for (int i = 0 ; i < list.length ; i++) 
+> 		{ list[i].decreaseAllWeights(1); }
+> 	}
+62,77c116,135
+< 		int count = 0;
+< 		while (true) {
+< 			this.compute();
+< 			try { Thread.sleep(100); }
+< 			catch (InterruptedException e) 
+< 			{ e.printStackTrace(); }
+< 			count++;
+< 			if (count%(this.height/2) == 0) {
+< 				double[] datas = new double[this.width];
+< 				//    			for (int j = 0 ; j < datas.length ; j++) 
+< 				//				{ datas[j] = Math.random()*10+1; }
+< 				int loc = 0; // (int)(Math.random()*datas.length);
+< 				// System.out.println(loc+"");
+< 				for (int j = 0 ; j < datas.length ; j++) { 
+< 					if (j == loc) { datas[j] = 1; }
+< 					else { datas[j] = 0; }
+---
+> 		while(true) {
+> 			try {
+> 				while (this.continued) {
+> 					this.compute();
+> 					Thread.sleep(100);
+> 					this.count++;
+> 					// System.out.println(this.count);
+> 					if (this.count%(this.getHeight()/2) == 0) {
+> 						// double[] datas = new double[this.getWidth()];
+> 						// int loc = (int)(Math.random()*datas.length); // this.getWidth()/2; // 
+> 						// for (int j = 0 ; j < datas.length ; j++) { 
+> 						// 		if (j == loc) { datas[j] = 200; }
+> 						//		else { datas[j] = 0; }
+> 						// }
+> 						double[] datas = new double[this.getWidth()];
+> 						for (int j = 0 ; j < datas.length ; j++) { 
+> 							datas[j] = (int)(Math.random()*5);
+> 						}
+> 						this.submit(datas);
+> 					}
+79,84c137,140
+< 				this.submit(datas);
+< //	    		try { Thread.sleep((int)Math.random()*100); }
+< //	    		catch (InterruptedException e) 
+< //	    			{ e.printStackTrace(); }
+< 			}
+< 		}
+---
+> 				if (!this.continued) 
+> 					{ while (!this.continued)	{ Thread.sleep(100); } }
+> 			} catch (InterruptedException e)	{ e.printStackTrace(); }
+> 		} /** END while(true) */
+87,97c143,147
+< 	public String toString() {
+< 		String result = new String("");
+< 		result += "Width : "+this.width+"\tHeight : "+this.height+"\n";
+< 		for (int i = 0 ; i < this.width ; i++) {
+< 			for (int  j = 0 ; j < this.height ; j++) {
+< 				result += "("+j+", "+i+") : \n"
+< 				+((this.map[i][j]!=null)?this.map[i][j].toString():"null\n");
+< 			}
+< 		}
+< 		return result;
+< 	}
+---
+> 	public synchronized void begin() { this.continued = true; }
+> 	public synchronized void endin() { this.continued = false; }
+> 	public synchronized boolean getContinued()	{ return this.continued; }
+> 
+> 

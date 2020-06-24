@@ -1,0 +1,84 @@
+Organ			Tissue						Site
+00 - Brain		00 - Perceptible i/ps		00 - Threshold
+				01 - Drive i/ps				01 - Leakage
+				02 - Stim Source i/ps		02 - Gain
+				03 - Verb i/ps				03 - Den(0) relax susceptibility
+				04 - Noun i/ps				04 - Den(0) relax STW
+				05 - General Sensory i/ps	05 - Den(0) relax LTW
+				06 - Decision o/ps			06 - Den(0) Strength gain rate
+				07 - Attention/Seek o/ps	07 - Den(0) Strength loss rate
+				08 - Lobe 8					08 - Den(1) relax susceptibility
+				09 - Lobe 9					09 - Den(1) relax STW
+				0A - Lobe 10				0A - Den(1) relax LTW
+				0B - Lobe 11				0B - Den(1) Strength gain rate
+				0C - Lobe 12				0C - Den(1) Strength loss rate
+				0D - Lobe 13				0D - Chemical 0
+				0E - Lobe 14				0E - Chemical 1
+				0F - Lobe 15				0F - Chemical 2
+				10 - Lobe 16				10 - Chemical 3
+				11 - Lobe 17				11 - Cell(0) State
+				12 - Lobe 18				12 - Cell(1) State
+				13 - Lobe 19				13 - Cell(2) State
+				14 - Lobe 20				14 - Cell(3) State
+				15 - Lobe 21				15 - Cell(4) State
+				16 - Lobe 22				16 - Cell(5) State
+				17 - Lobe 23				17 - Cell(6) State
+				18 - Lobe 24				18 - Cell(7) State
+				19 - Lobe 25				19 - Cell(8) State
+				1A - Lobe 26				1A - Cell(9) State
+				1B - Lobe 27				1B - Cell(10) State
+				1C - Lobe 28				1C - Cell(11) State
+				1D - Lobe 29				1D - Cell(12) State
+				1E - Lobe 30				1E - Cell(13) State
+				1F - Lobe 31				1F - Cell(14) State
+											20 - Cell(15) State
+01 - Creature	00 - Somatic				00 - Become a child
+											01 - Become youth
+											02 - Become adolescent
+											03 - Become adult
+											04 - Become old
+											05 - Become senile
+											06 - Die of old age
+				01 - Circulatory 			00 - Floating recep-emit 0
+											01 - Floating recep-emit 1
+											02 - Floating recep-emit 2
+											03 - Floating recep-emit 3
+											04 - Floating recep-emit 4
+											05 - Floating recep-emit 5
+											06 - Floating recep-emit 6
+											07 - Floating recep-emit 7
+				02 - Reproductive 			00 - Become fertile if high
+											01 - Receptive to sperm if > 0
+				03 - Immune					00 - Die if non-zero!
+				04 - Sensorimotor			00 - Involuntary action 0
+											01 - Involuntary action 1
+											02 - Involuntary action 2
+											03 - Involuntary action 3
+											04 - Involuntary action 4
+											05 - Involuntary action 5
+											06 - Involuntary action 6
+											07 - Involuntary action 7
+											08 - Normal walk gait (DO NOT USE)
+											09 - Special gait 1
+											0A - Special gait 2
+											0B - Special gait 3
+											0C - Special gait 4
+											0D - Special gait 5
+											0E - Special gait 6
+											0F - Special gait 7
+				05 - Drive					00 - Pain
+											01 - Need for pleasure
+											02 - Hunger
+											03 - Coldness
+											04 - Hotness
+											05 - Tiredness
+											06 - Sleepiness
+											07 - Loneliness
+											08 - Crowded
+											09 - Fear
+											0A - Boredom
+											0B - Anger
+											0C - Sex drive
+											0D - Not allocated 2
+											0E - Not allocated 3
+											0F - Not allocated 4 

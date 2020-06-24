@@ -1,0 +1,33 @@
+GNO File Format
+What a genome description and comment file consists of.
+
+GNO files contain notes to accompany GEN files. The format is as follows:
+
+BYTE[2] (Integer) Number of bytes to be read next = 2
+BYTE[2] (Integer) Number of SV notes
+SVNoteFileStruct[Number of SV notes]
+BYTE[2] (Integer) Number of bytes to be read next = 2
+BYTE[2] (Integer) Number of gene notes
+GeneNoteStruct[Number of gene notes]
+
+SVNotesStruct:
+
+BYTE[2] (Integer) Gene type
+BYTE[2] (Integer) Gene Sub-type
+BYTE[2] (Integer) Unique ID
+BYTE[2] (Integer) Rule Number
+STRING Annotation[16]
+STRING General Notes
+
+GeneNoteStruct
+
+BYTE[2] (Integer) Gene type
+BYTE[2] (Integer) Gene Sub-type
+BYTE[2] (Integer) Unique ID
+STRING Caption
+STRING Rich Text Annotation
+
+STRING:
+
+BYTE[2] (Integer) Number of bytes in string
+BYTE[Number of bytes in string] Text string
