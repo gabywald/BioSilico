@@ -1,0 +1,289 @@
+http://double.co.nz/creatures/brainlobes/lobes.htm -- 
+
+CDR
+Brain Lobes
+Overview
+
+The norn brain is divided into a number of lobes. In the standard Creatures 1 genome there are nine and in the Creatures 2 genome there are ten.
+
+The brain lobes numbered from 0 through to 8 are hard coded by the Creatures executable to perform a particular function. For example, firing a cell in lobe 6 (decision) causes the creature to perform a particular action. The genetic definition of that lobe then defines what happens as a result of this firing. In the case of the decision lobe it is to manage the learning of whether the decision was a good one or a bad one.
+
+The higher numbered brain lobes are not controlled by the Creatures executable at all. They are controlled completely through genetics. So for these lobes to do anything a system of receptors, emitters and dendrites must be set up to fire cells or act upon cells firing.
+
+The purpose and function of each lobe is outlined below with links to more detailed descriptions.
+
+Lobe 0 - Perception
+	Copies data from other lobes to form a composite lobe containing all cells that can be used to form concepts.
+Lobe 1 - Drive
+	Holds the current values of the creatures drives.
+Lobe 2 - Stimulus source
+	Stimulating objects near to the creature cause cells in this lobe to fire so the creature can react to them.
+Lobe 3 - Verb
+	Cells in this lobe fire when the user types a verb in the speech box.
+Lobe 4 - Noun
+	Cells in this lobe fire when the user types a noun in the speech box or types 'look' with the hand hovering over an object.
+Lobe 5 - General Sensory
+	Indicates events that the norn can sense. Usually caused by the effects of processing stimulus genes.
+Lobe 6 - Decision
+	An output lobe. By firing a cell in this lobe you cause the creature to perform a particular action.
+Lobe 7 - Attention
+	An output lobe. By firing a cell in this lobe you cause the creature to look at a particular object.
+Lobe 8 - Concept
+	A storehouse of memories and concepts.
+Lobe 9 - Regulator
+	This lobe is not really part of the norn brain/decision mechanism as such. It provides functionality similar to the hunger/glycogen floating receptor emitters used by the norns in the Creatures 1 life kit. Special thanks to Lis Morris for the description of this lobe.
+
+While the lobes have individual functionality it is how they work together that results in the norn brain working. There lobes combine to form a couple of main learning systems that are described briefly in the individual lobe descriptions but will be covered in more detail in future updates:
+
+	Attention seeking system
+	Concept learning system
+	Decision learning system
+
+Lobe 1 - Drive Lobe
+
+This lobe holds the current state of the creatures drives (such as hunger, pain, etc). It directly maps to the particular drive chemicals that can be viewed using the science kit. Changing the values of the cells directly in this lobe using CAOS is unlikely to have much of an effect on the norn as the cells are directly set by receptors in the genome. This means that whatever values you manipulate with CAOS commands will be immediately overwritten with the current value of the drive chemical. To change drive values it would seem to be best to change the values of the chemicals either directly or through the drive increaser/reducer chemicals.
+
+The size of the lobe was increased in Creatures 2 to cater for the addition of more drives. The cell values are outlined in the following table:
+Cell	Creatures 1	Creatures 2
+0	Pain	Pain
+1	Need for Pleasure	Need for Pleasure
+2	Hunger	Hunger
+3	Coldness	Coldness
+4	Hotness	Hotness
+5	Tiredness	Tiredness
+6	Sleepiness	Sleepiness
+7	Loneliness	Loneliness
+8	Overcrowdedness	Overcrowdedness
+9	Fear	Fear
+10	Boredom	Boredom
+11	Anger	Anger
+12	Sexdrive	Sexdrive
+13	Not Allocated	Injury
+14	Not Allocated	Suffocation
+15	Not Allocated	Thirst
+16	No such cell	Stress
+17	No such cell	Not Allocated
+
+The drive lobe feeds into the Perception lobe and is marked as mutally exclusive. This means that, at most, one cell from the drive lobe will exist in any given concept that the creature forms. So the creature cannot form the concept of 'hot and hungry'. Only 'hot' or 'hungry' or a combination of these drives with some other perception lobe cell.
+
+Lobe 2 - Stimulus Source Lobe
+
+Cells in this lobe are activated directly by the Creatures executable. The lobe has 40 cells - one for each object classification in Creatures.
+
+Each cell relates to a particular object classification. The cell fires for a given object if that object is within the creatures line of sight and is stimulating in some manner. Stimulus genes can be used to modify this lobe indirectly to indicate whether the object is more or less stimulating. The higher the cell value in a particular cell, the more stimulating that object currently is.
+
+It is a 'winner takes all' lobe, meaning that the highest firing cell will be the only firing cell. This means that the most stimulating object in the area of the norn will be the only object that will appear to be stimulating to the norn. The State value for all the cells is calculated and the cell with the highest state will be the only one with an output value - indicating that it is firing.
+
+In Creatures 1 this lobe has no state variable rule indicating that the state values are directly set by the executable or some other means (like cobs or genetics).
+
+In Creatures 2 there is a state variable rule set to 'random:0:chem 5:PLUS:state:end'. This means that the state is calculated by getting the previous state value and adding a random number (ranging from 0 through to the value of chemical 5) to it. Brain chemical 5 is set via a receptor gene that reacts to the chemical Triptophan (169). This receptor injects brain chemical 5 at the same level as the Triptophan chemical exists in the norn. Triptophan is described in the strategy guide as causing creatures to see objects that are not really there - a hallucinogenic. This state rule is how it works. If an amount of 100 units of Triptophan exists in the norn then 100 units of brain chemical 5 will exist. This will cause all cells in the stimulus source lobe to have their state calculated as the previous state plus a random number from 0 to 100. So the creature can end up thinking things are there when they are really not.
+
+The following table outlines the cell values for this lobe:
+Cell	Creatures 1	Creatures 2
+0	Current norn	Current norn
+1	Hand	Hand
+2	Call button	Call Button
+3	Water	Nature
+4	Plant	Plant
+5	Egg	Egg
+6	Food	Food
+7	Drink	Drink
+8	Vendor	Dispenser
+9	Music	Implement
+10	Animal	Cliff Edge
+11	Fire	Detritus
+12	Shower	Medicine
+13	Toy	Toy
+14	Bigtoy	Weather
+15	Weed	Badplant
+16	Incubator	Nest
+17	Blackboard word 33	Badbug
+18	Blackboard word 34	Bug
+19	Blackboard word 35	Badcritter
+20	Blackboard word 36	Critter
+21	Blackboard word 37	Seed
+22	Blackboard word 38	Leaf
+23	Blackboard word 39	Root
+24	Blackboard word 40	Flower
+25	Blackboard word 41	Fruit
+26	Mover	Mover
+27	Lift	Lift
+28	Computer	Computer
+29	Fun	Mediabox
+30	Bang	Message
+31	Blackboard word 47	Leftright
+32	Blackboard word 48	Incubator
+33	Blackboard word 49	Teleporter
+34	Blackboard word 50	Blackboard word 50
+35	Blackboard word 51	Machine
+36	Norn	Norn
+37	Grendel	Grendel
+38	Ettin	Ettin
+39	Shee	Shee
+
+The cell numbers appear to relate to the genus numbers for COBs. So a COB with a genus value of 21 sitting near a norn in Creatures 2 will stimulate cell 21 in the norn, making it think a Seed is nearby.
+
+Lobe 3 - Verb Lobe
+
+The Verb lobe is another lobe that is controlled directly by the Creatures executable. Whenever a verb is entered by the user in the speech box of Creatures then the cell associated with this verb will be fired in this lobe. It's also possible that verbs mentioned by other creatures nearby could fire cells in this lobe but I haven't checked into this yet.
+
+The following table outlines the cell values for this lobe:
+Cell	Creatures 1	Creatures 2
+0	Quiescent	Quiescent
+1	Push	Push
+2	Pull	Pull
+3	Stop	Stop
+4	Come	Come
+5	Run	Run
+6	Get	Get
+7	Drop	Drop
+8	Think	What
+9	Sleep	Sleep
+10	Left	Left
+11	Right	Right
+12	Not Allocated	Eat
+13	Not Allocated	Hit
+14	Not Allocated	Not Allocated
+15	Not Allocated	Not Allocated
+
+The word that was learnt for the particular verb slot is what must be typed in for that cell in this lobe to fire. So if the Norn knows 'Push' as 'foo' then typing 'foo' will fire the particular cell. If a complete command is entered like 'alice eat food' then cell 12 in this lobe (for eat) will fire along with the 'food' cell in the noun lobe.
+
+Lobe 4 - Noun Lobe
+
+Cells in the noun lobe are fired when a noun is entered by the user using the speech box of the Creatures executable. It works the same as the verb lobe described above but it is for the objects rather than the action to be performed on the object. It is another lobe controlled directly by the Creatures executable.
+
+The noun lobe will also fire if the user moves the hand over an object and types the command 'look'. This causes the cell for that particular object to fire in the noun lobe. The result of this is the norn usually ends up looking at the requested object. See the description of the Attention lobe for details on how this works.
+
+Lobe 5 - General Sensory Lobe
+
+The cells in this lobe define what the norn can currently sense in the environment. Where the stimulus source lobe is the objects within the environment this lobe is various environmental factors relating to those objects. For example, cells for detecting that the creatures has just been patted, slapped, fallen, whether nearby creatures are the same sex, same species, the parents of the current creature, etc.
+
+The cells in this lobe can be manipulated using the stimulus genes. When a particular stimulus occurs (either by the Creatures executable or using CAOS in a COB) the stimulus gene is activated. That gene can then cause a general sensory lobe cell to fire at a particular intensity so the norn can react or learn from that stimulus.
+
+The following table outlines the cell values for this lobe:
+Cell	Creatures 1	Creatures 2
+0	I've been patted	I've been patted
+1	I've been slapped	I've been slapped
+2	I've bumped into a wall	I've bumped into a wall
+3	I am near a wall	I am near a wall
+4	I am in a vehicle	I am in a vehicle
+5	User has spoken	User has spoken
+6	Creature has spoken	Creature has spoken
+7	Own kind has spoken	Own kind has spoken
+8	Audible event	Audible event
+9	Visible event	Visible event
+10	It is approaching	It is approaching
+11	It is retreating	It is retreating
+12	It is near me	It is near me
+13	It is active	It is active
+14	It is an object	It is an object
+15	It is a creature	It is a creature
+16	It is my sibling	It is my sibling
+17	It is my parent	It is my parent
+18	It is my child	It is my child
+19	It is opposite sex	It is opposite sex
+20	Not Allocated	It has pushed me
+21	Not Allocated	It has hit me
+22	Not Allocated	Not Allocated
+23	Not Allocated	Not Allocated
+24	Not Allocated	Not Allocated
+25	Not Allocated	Not Allocated
+26	Not Allocated	Not Allocated
+27	Not Allocated	Not Allocated
+28	Not Allocated	Approaching an edge
+29	Not Allocated	Retreating from an edge
+30	Not Allocated	Falling through the air
+31	Not Allocated	Hitting the ground post fall
+
+The lobe has a state variable rule of 'state:end' which means that the state is calculated as being the previous state value the leakage rate applied to it. This type of state rule usually indicates that the brain lobe is only modified via genetics rather than the Creatures executable itself.
+
+The lobe is copied to the Perception lobe allowing the cells to be used for forming concepts. This means that a norn can learn whether 'approaching an edge' is good or bad for example.
+
+Lobe 6 - Decision Lobe
+
+Each cell in the decision lobe relates to a particular action that the norn can perform. These actions are the same as the verbs in the verb lobe. See the table in that lobe for descriptions of the individual cells.
+
+The Verb lobe is an input lobe - it receives input typed in from the user. The decision lobe is an output lobe. By firing a cell in the decision lobe the Creatures executable will be directed to make the norn perform the particular decision related to the cell being fired. By manually firing cells in this lobe you can force a norn to perform certain decisions. This is how the 'shove' mode of the hand works. When you have the hand in 'shove' mode, pressing a norn results in either the 'left' (cell 10) or 'right' (cell 11) cell to be activated. This will usually cause the norn to move left or right.
+
+The decision lobe has a learning mechanism built into it. It will learn what decisions are the best ones to make when certain concepts are present. I call this the decision learning system and it will be described elsewhere as it is quiet detailed.
+
+The decision lobe is connected to the concept lobe using type 0 and type 1 dendrites. 128 dendrites of each type connect to the concept lobe. Each dendrite link is therefore linked to a particular concept. A concept is a combination of perceptable things (eg. hungry and looking at food, tired, sleepy and just been patted by the hand, etc).
+
+The type 0 dendrites link from decision lobe cells to the 128 concept lobe cells indicate that that particular decision is good if those particular concepts are active. This means that if the concepts become active then the norn will be more likely to choose that decision over other decisions.
+
+The type 1 dendrites link from decision lobe cells to the 128 concept lobe cells indicate that that particular decision is bad if those particular concepts are active. This means that if the concepts become active then the norn will be less likely to choose that decision over other decisions.
+
+See the upcoming description of the decision learning system for more detail.
+
+Lobe 7 - Attention Lobe
+
+Each cell in the attention lobe relates to a particular object classification in the same manner as the Stimulus Source lobe and the Noun lobe. See the table in those lobe descriptions for the meanings of the individual cells.
+
+The Simulus Source lobe and Noun lobes are input lobes - they receive input from the environment. The attention lobe is an output lobe. When a cell fires in the attention lobe then the Creatures executable is told to make the norn look at a particular object. If you manually fire a cell in this lobe you will see the 'Creatures View' in the game change to whatever object corresponds to the cell you fired.
+
+Like the stimulus source lobe, it is a 'winner takes all' lobe. This means that only one cell will actually fire - the cell with the highest state value. This makes sense as the norn can only look at one object at a time.
+
+A mechanism that I call the attention seeking system exists that makes the norn look at the most stimulating object nearby or an object that the user recently asked the norn to look at (by typing 'look' or entering the name of the object). This system works by using dendrite connections from the attention lobe to the stimulus source and noun lobes.
+
+There is one type 0 dendrite linking each cell in the attention lobe to the equivalent cell in the stimulus source lobe. This means that if a cell fires in the stimulus source lobe the value of the firing can be used in state variable calculations in the attention lobe.
+
+There is one type 1 dendrite linking each cell in the attention lobe to the equivalent cell in the noun lobe. Effectively there is a link passing information from the stimulus source and the noun lobe through to the attention lobe.
+
+The attention lobe has the following state variable rule: 'state:plus:type0:plus:type1:end'. This rule is used when calculating the state value of each cell in the attention lobe. So for cell 0 it will take the current state value and add the value of cell 0 from the type 0 dendrites (which will be cell 0 in the stimulus source lobe) and add the value of cell 0 from the type 1 dendrites (cell 0 in the noun lobe). So the calculation is current state plus the sum of whatever stimulation comes from the other two lobes. The cell in the Attention lobe with the highest state then fires at this level (due to it being a winner takes all lobe).
+
+From this it can be seen that a creature will always look at the most stimulating object, taking into account anything the user has typed as well. It never actually decides what to look at. No learning takes place in the attention seeking system. This is one of the limitations that I see with the current norn brain setup. It can be very hungry but unless it is actually looking at food it will never eat it and it can never decide to look at food - it can only look at it if it happens to be the most stimulating object in the area.
+
+The original Creatures 1 release in the UK had the following state variable rule in this lobe: 'state:plus:type0:end'. The noun lobe connection was inadvertantly left out. Usually this would mean the norns would not listen to commands typed by the user. I've heard from sources that the Creatures executable was modified to work around this problem before the game hit the shelves. Newly patched versions of the game don't exhibit this problem.
+
+The attention lobe copies its information to the perception lobe enabling the current object being looked at to be used in formating concepts.
+
+Lobe 8 - Concept Lobe
+
+To be completed.
+
+Lobe 9 - Regulator Lobe
+
+Lis Morris, co-creator of the Canny norns, was kind enough to supply the details of the Regulator lobe for me. Thanks Lis!
+
+The regulator lobe (or Sandrabellum named after Sandra Linkletter who created it) is not part of the norn attention, concept, and decision mechanism. It supplies functionality similar to that of the floar receptor/emitters in the receptor and emitter genes but provides a whole lot more flexibility. The following description is almost verbatim from Lis:
+
+It works like the hunger/glycogen neurones used in the life kit, except the whole lobe is dedicated to these kind of positive and negative feedback loops. Therefore, you always see neurones firing in the sandrabellum, since it simply records the amount of some chemicals in the blood stream (norn stream? they don't really have blood...).
+
+These are then coupled to an emitter that either emits something useful given the level of chemical, or controls future emission of the precursor of that chemical. Here's a list of all the receptor emitter couplings:
+
+Receptor	Neurone	Emitter
+lactate	0	suffocation
+	This detects drowning, and causes a choke reflex in the norn. Since my alterations to the gene, it should in fact detect myoglobin, IMO.
+Water	1	Thirst
+	Inverted receptor. nuff said :-)
+Glucose	2	Insulin, hunger
+	Oops, [name removed - you'll have to guess], two emitters on one locus! I think this is why sometimes norns suddenly collapse when their levels of glycogen, muscle tissue and adipose tissue are low...the emitter suddenly switches to producing hunger, not insulin, essentially knackering the glycogen/glucose equilibrium. I'm going to make a new locus for one of these reactions in my next released genome.
+Adrenaline	3	Stress
+	Again, pretty self explanatory
+Cholesterol	4	Steroidine
+	Steroidine is the precursor for cholesterol, and this is a negative feedback loop.
+Testosterone	5	Inhibin
+	Another negative feedback loop.
+Glycogen	6	Glycogen Synthetase
+	-ve feedback loop, stops very high levels of glycogen forming
+Bile acid	7	Bilin
+	-ve feedback, bilin is the precursor of bile acid.
+Adipose tissue	8	Hunger
+	Thin norns get hungry.
+Starch	9	Fullness
+Fat	10	Fullness
+Protein	11	Fullness
+	These cause that slow reduction in hunger often seen after the initial decrease after eating a fatty food, such as zander fish. I was worried it was production of hunger decrease doing this, and confusing the norns, but obviously not...
+Adipose Tissue	12	Adrenaline
+	You're too fat, go and exercise! <G>
+ADP	13	Phosphoglycerokinase
+	Inverted receptor, causes formation of more glucose for ATP production when ADP is high.
+Muscle Tissue	14	180
+	[snipped note about the history of this one - it's all available on dejanews for those who are curious].
+	Senses high levels of muscle tissue and metabolises them, and stops catabolisis of muscle tissue when levels are low.
+
+I should add that some of the comments above may have changed since Lis wrote it as it was about a month ago before the Canny norn release and some of the indicated problems may be fixed.
+
+Lobe 0 - Perception Lobe
+
+To be completed.

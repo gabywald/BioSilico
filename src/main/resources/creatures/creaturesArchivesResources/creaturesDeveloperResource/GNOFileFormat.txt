@@ -1,0 +1,25 @@
+GNO File Format
+
+The GNO file format is the same for Creatures 2 and Creatures 1. This is the file that holds the descriptions and comments for each gene in a particular genome (.gen) file. It is this file that the Creatures genetics kit uses to load the descriptions that appear in the gene list and the comments that appear in the notes for each gene.
+
+All values of WORD, DWORD, etc are encoded in the same format as if you had written the direct memory representation of a 'C' short or long respectively on an intel PC (ie. little endian format).
+
+The following is what I understand to be the format:
+
+File Header
+
+Description	Size	Type	Notes
+Unknown	2 bytes	WORD	I don't know what these two bytes are for. I ignore them when reading and writing .gno files in my own programs.
+Number of entries	2 bytes	WORD	The number of gene descriptions stored in this .gno file.
+
+Gene Information
+
+This is repeated as many times as there are gene entries in the file. ie. This block is repeated the number of times defined in 'number of entries' from the file header.
+Description	Size	Type	Notes
+Gene type	2 bytes	WORD	The gene type. See the .gen file format for a description of gene types.
+Gene subtype	2 bytes	WORD	The gene subtype. See the .gen file format for a description of gene types.
+Gene sequence number	4 bytes	DWORD	The gene sequence number. See the .gen file format for a description of gene types.
+Size of description	2 bytes	WORD	The size of the description for this gene. This is the single line description that appears in the gene list in the genetics editor.
+Description	N bytes	string	The description in ASCII text for the gene with the given type, subtype and sequence number. The number of characters held by this description is the 'size' field described previously.
+Size of comments	2 bytes	WORD	The size of the comments for this gene. This is the multiple line free form comments text can be optionally entered in the genetics kit.
+Comments	N bytes	string	The comments field in RTF format for the gene. If the above size for this comments field is 0 (zero) then this block is missing (ie. size zero = no characters to read).

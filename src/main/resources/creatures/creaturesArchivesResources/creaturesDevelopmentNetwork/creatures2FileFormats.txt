@@ -1,0 +1,241 @@
+Creatures 2 File Formats
+The low-down on the files that are used in Creatures 2.
+	General Terms & Definitions
+	EGG Format
+	S16 Sprite Format
+	COB Format
+	565/555 Image Formats
+	History File Format
+	GameLog Format
+
+General terms and definitions
+	Little Endian Format
+	Intel based CPU's use a method of storing numbers in memory called "Little Endian Format" In this way, the lease significant byte of the number is stored in a lower memory address than a more significant byte. E.g. the number 0xc0ffee would be stored as "EE FF c0" in memory.
+
+	LONG
+	A "Long" data item is an (unsigned) 32bit integer. DWORD in C, Cardinal in 32bit Delphi. (Little-Endian Format)
+
+	WORD
+	A "Word" data item is an (unsigned) 16bit Integer. WORD in C and Delphi. (Little-Endian Format)
+	
+	BYTE
+	A "Byte" is an 8bit value, identical to a "Char".
+	
+	STRING
+	Unless otherwise defined, a STRING is a Null terminated collection of "Chars". I.E. a set of chars terminated by a zero byte.
+	
+	Arrays
+	Arrays of data are defined using square brackets ['s and ]'s. E.g. BYTE[] is an open ended array of Bytes, whereas BYTE[4] is an array of four bytes. Arrays are not limited to BYTEs you can also have arrays of WORDs LONGs and even record structures.
+	
+	Record Structures
+	Record structures are defined with braces {'s and }'s. E.g. {BYTE X, STRING name}
+	
+	CStrings
+	CStrings are strings which have length data linked with them. The format is flexible and they are read as follows... READ BYTE Length If Length=255 then READ WORD Length READ Char[Length] into String
+
+Egg File Format
+ 
+BYTE[4]	'e' 'g' 'g' 'f'	The egg file specifier
+BYTE	Gender	0=random, 1=male, 2=female
+BYTE	Image	0..16 - Egg Image for Hatchery.
+LONG	Reserved1	Must be Zero
+LONG	Reserved2	Must be Zero
+BYTE[4]	MumMoniker	The moniker of the mother.
+BYTE[4]	DadMoniker	Can be 0,0,0,0 for virgin birth.
+LONG	DescriptionSize	Length in bytes of the Egg description.
+BYTE[]	Description	If DescriptionSize is 0, then there are no bytes here.
+LONG	MumGenSize	Size in bytes of Mum Genetics file
+BYTE[]	MumGenetics	Mother Genetics file.
+LONG	DadGenSize	Size in bytes of Dad Genetics file - Not here if no father
+BYTE[]	DadGenetics	Father Genetics file. Not here if no father.
+
+
+Sprite (S16) File Format
+
+	The Sprite file format for Creatures2 (The S16) files is not very complex. It consists of a file header, then sprite description blocks, and then sprite data...
+
+	S16	File Header
+	LONG flags
+	WORD SpriteCount
+
+	The Flags field is a 32bit field in which the upper 31 bits are reserved and should be zero. The least significant bit indicates the file format of the file. If the bit is set, then the file is in 565* format, if clear, then the file is in 555* format. The Sprite count is the number of images in the file. If the count is non-zero, then the following sections exist...
+
+	Sprite Headers
+
+	The Sprite Header section of the file is defined as follows...
+	
+	{
+		LONG	Offset	The offset into the sprite file of the image data.
+		WORD	Width	The width of the sprite.
+		WORD	Height	The height of the sprite.
+	}[SpriteCount]
+
+	Therefore, there are two words and one long per sprite in the file at this point...
+
+ 
+	
+	Sprite Data Section
+	
+	In the sprite Data Section, the following is defined...
+	
+	{
+	WORD [Widthn*Heightn]	Sprite Data	Each word is a single pixel.
+
+
+The Agent File Format (COB)
+
+	The Agent files are compound files containing several "chunks" of data. The file format is designed such that if a program is not designed to handle a specific type of data chunk, it can merely skip it.
+
+	The following chunk types are defined at the time of writing...
+		"agnt" - Agent Chunks contain the Object information.
+		"file" - File chunks contain the resource files for the Object.
+		"auth" - Author chunks contain information relating to the Agent Files' Authors.
+		
+	The agent file format is this:
+		BYTE[4]	'c' 'o' 'b' '2'	Header information
+		CHUNK[]	FileChunks	 
+
+	Where the CHUNK format is as follows...
+		BYTE[4]	ChunkType	The Chunk Type
+		LONG	ChunkSize	Size of chunk excluding header
+		BYTE[ChunkSize]	Data	The Chunk Data
+
+	Thus for those programs which cannot understand any particular chunks, they can skip the correct number of bytes and continue processing.
+
+	There is an additional format for agent files, which allows them to be automatically compressed. ".cob.gz" files are normal agent files which have their data compressed by the gzip program. These files are smaller than normal COB files, and can be handled natively by Agent Injector Version 1.1 and above.
+
+	The Agent Chunks "agnt"
+		The agent chunks are very complex and contain a lot of information. The following definition is for a file dependency...
+
+		{
+			WORD	FileType	0=Sprite (.s16) 1=Sound (.wav)
+			STRING	FileName	Name of file (no path info.)
+		} DEPENDENCY
+			
+	The following is the agent chunk...
+		BYTE[4]	'a' 'g' 'n' 't'	 
+		LONG	ChunkSize	 
+		WORD	QuantityRemaining	0xffff = Infinite
+		LONG	LastUsage	Time of last use.
+		LONG	ReuseInterval	In seconds.
+		BYTE	UseByDay	Expiry Date
+		BYTE	UseByMonth	Expiry Date
+		WORD	UseByYear	Expiry Date
+		LONG	Reserved1	Must be zero
+		LONG	Reserved2	Must be zero
+		LONG	Reserved3	Must be zero
+		STRING	AgentName	 
+		STRING	AgentDescription	 
+		STRING	InstallScript	 
+		STRING	RemovalScript	 
+		WORD	NumberOfEvents	 
+		STRING[NumberOfEvents]	EventScripts	 
+		WORD	NumberOfDeps	 
+		DEPENDENCY[NumberOfDeps]	FileDeps	 
+		WORD	ThumbnailWidth	Describes agent thumbnail image for injector.
+		WORD	ThumbnailHeight	Describes agent thumbnail image for injector.
+		WORD[Width*Height]	Thumbnail	Describes agent thumbnail image for injector.
+
+Notes about Agent Chunks
+	An agent can only be injected if QuantityRemaining is non-zero and the LastUsage time is more than ReuseInterval seconds ago.
+	
+	LastUsage is "the number of seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time".
+	
+	File Dependencies state which files to check/install. Without them file chunks are entirely useless.
+	
+	The Agent Thumbnail must be in 565 format.
+
+File Chunks "file"
+	File chunks are used to include non-standard resources in the COB files. Their format is very simple and is as follows...
+		BYTE[4]	'f' 'i' 'l' 'e'	 
+		LONG	ChunkSize	 
+		WORD	FileType	0=.s16, 1=.wav
+		LONG	Reserved	Must be Zero.
+		LONG	FileSize	Size of File
+		STRING	FileName	E.G. "foo1.s16"
+		BYTE[FileSize]	Data	The file data itself.
+
+Notes about Stored Sprite Files...
+	If you include a sprite file (.s16) in your agent file, it is imperative that you store it in 565 format. If you do not, then problems will occur during injection.
+
+Author Chunks "auth"
+	The author chunks contain a small amount of data allowing people to "sign" their agent files. They are not required by the injector. Here is the Author format:
+		BYTE[4]	'a' 'u' 't' 'h'	 
+		LONG	ChunkSize	 
+		BYTE	DayCreated	Creation date of file
+		BYTE	MonthCreated	Creation date of file
+		WORD	YearCreated	Creation date of file
+		BYTE	Version	 
+		BYTE	Revision	 
+		STRING	AuthorName	 
+		STRING	AuthorE-Mail	 
+		STRING	AuthorURL	 
+		STRING	AuthorComments	 
+
+
+Image Formats
+
+The images for Creatures2 are stored in one of two formats - the first is 565 format. However, some graphics cards do not use the full 16bits for colour and so 555 format images are used on those cards.
+
+The following tables indicate what the bits mean in each format...
+
+565 Format
+	<nothing?>
+
+555 Format
+	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	0
+	R	R	R	R	R	G	G	G	G	G	G	B	B	B	B	B
+	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	0
+	0	R	R	R	R	R	G	G	G	G	G	B	B	B	B	B
+
+Example of an S16 file
+	01 00 00 00	//565 set
+	01 00	//One Sprite in file
+	0E 00 00 00	//Sprite starts at byte 14
+	02 00	//2 Pixels Wide
+	02 00	//2 Pixels High
+	FF FF 00 00	//First Row - White/Transparent
+	00 00 FF FF	//Second Row - Transparent/White
+
+
+History File Format
+	BYTE[4]	Moniker	 
+	CString	Name	 
+	BYTE[4]	MumMoniker	 
+	CString	MumName	 
+	BYTE[4]	DadMoniker	 
+	CString	DadName	 
+	CString	Birthday	 
+	CString	Birthplace	 
+	CString	OwnerName	 
+	CString	OwnerURL	 
+	CString	OwnerNotes	 
+	CString	OwnerEMail	 
+	LONG	State	//0=alive, 1=dead, 2=exported
+	LONG	Gender	//1=male, 2=female
+	LONG	Age	 
+	CString	Epitaph	 
+	LONG	GravePhotoIndex	 
+	LONG	TimeOfDeath	 
+	LONG	TimeOfBirth	 
+	LONG	TimeOfAdolescence	 
+	LONG	DeathRegistered	//0=no,1=yes
+	LONG	Genus	//1=norn, 2=grendel, 3=ettin
+	LONG	LifeStage	 
+	BYTE[256]	ChemsAtDeath	 
+	LONG[9]	Padding	//Must be zero
+	
+Game Log File Format
+
+	The gamelog file in the history folder contains a simple event log of actions in your Albia. The log is a text file whose lines are constructed as follows...
+	
+	<MONIKER> | <TIMESTAMP> | <ACTION> | <PARAMS> |
+	
+	The Moniker is a four character moniker of the creature in question. The timestamp is an unsigned integer in decimal format. The timestamp is in the same format as the times for the history and agent files. The Action and parameters for the action are as follows...
+		Action	Meaning	Parameters
+		B	Creature was born	None
+		A	Creature has proceeded to next life stage	New Lifestage
+		D	Creature has died	None
+		N	Creature was named	New Name
+		E	Creature was exported	None
+		I	Creature was imported	None

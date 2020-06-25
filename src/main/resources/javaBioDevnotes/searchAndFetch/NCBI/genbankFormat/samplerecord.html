@@ -1,0 +1,1151 @@
+<html><head>
+  <title>GenBank Sample Record</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta name="author" content="NCBI_user_services">
+ <meta name="keywords" content="GenBank Sample Record, field, fields, description, guide, glossary,  definition, definitions, dictionary, education, teach, teacher, student, introduction, overview, accession number format, sequence identifiers, UID, GI number, version, accession.version, sequence revision history, biological features, annotation, feature annotations, CDS, GenBank division, GenBank divisions, abbreviation, abbreviations, acronym, acronyms">
+ <meta name="description" content="detailed description of each field in a GenBank record">
+  <!-- link rel="stylesheet" href="/corehtml/ncbi.css" -->
+
+<style type="text/css">
+    A {color: #336699; text-decoration:none;}
+    A:hover {text-decoration:underline;}
+
+    I { font-family:  Arial, Helvetica, sans-serif; color: #336699}
+
+    P { margin-top: 4pt; margin-bottom: 6pt}
+
+    .BAR     {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #FFFFFF;}
+    .HEAD1   {font-family: Arial, Helvetica, sans-serif; font-size: 14pt; color: #336699; font-weight: bold}
+    .HEAD2   {font-family: Arial, Helvetica, sans-serif; font-size: 12pt; color: #336699; font-weight: bold}
+    .HEAD3   {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #336699; font-weight: bold}
+    .HEAD3b  {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #336699}
+    .HEAD4   {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #336699; font-weight: bold}
+
+    .H1   {font-family: Arial, Helvetica, sans-serif; font-size: 14pt; color: #336699; font-weight: bold}
+    .H2   {font-family: Arial, Helvetica, sans-serif; font-size: 12pt; color: #336699; font-weight: bold}
+    .H3   {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #336699; font-weight: bold}
+    .H3b  {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #336699}
+    .H4   {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #336699; font-weight: bold}
+
+    .LARGE   {font-family: Arial, Helvetica, sans-serif; font-size: 14pt; color: #000000;}
+    .MEDIUM  {font-family: Arial, Helvetica, sans-serif; font-size: 12pt; color: #000000;}
+    .NORMAL  {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000000;}
+    .SMALL   {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #000000;}
+    .TEXT  {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000000;}
+    .TEXT2  {font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #336699;}
+
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF" link="#CC6600" text="#000000" vlink="#CC6600">
+
+<a name="Top"></a>
+
+<!-- ========== PAGE_HEADER ============= -->
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tbody><tr>
+<td width="140"><a href="http://www.ncbi.nlm.nih.gov/"><img src="samplerecord_fichiers/left.GIF" border="0" height="45" width="130"></a></td>
+
+<td class="H1" valign="BOTTOM" width="460">Sample GenBank Record</td>
+<!-- td VALIGN=BOTTOM WIDTH="360"><FONT family="arial,helvetica,sans-serif" size="7"><b>Site Map</b></font></td -->
+<!-- td VALIGN=BOTTOM WIDTH="360"><a href="index.html"><img SRC="sitemap3.gif" height="36" width="155" border="0"></a></td -->
+
+<!-- td width="100"><a href="index.html"><img SRC="sitemaplogo.gif" height="45" width="100" border="0"></a></td -->
+</tr>
+</tbody></table>
+
+<!-- ======================= PAGE_STRUCTURE ====================
+
+NAME="LocusA"			NAME="LocusB"
+NAME="LocusNameA"		NAME="LocusNameB"
+NAME="SequenceLengthA"		NAME="SequenceLengthB"
+NAME="MoleculeTypeA"		NAME="MoleculeTypeB"
+NAME="GenBankDivisionA"		NAME="GenBankDivisionB"
+NAME="ModificationDateA"	NAME="ModificationDateB"
+NAME="DefinitionA"		NAME="DefinitionB"
+NAME="AccessionA"		NAME="AccessionB"
+NAME="VersionA"			NAME="VersionB"
+NAME="GInA"			NAME="GInB"
+NAME="KeywordsA"		NAME="KeywordsB"
+NAME="SourceA"			NAME="SourceB"
+NAME="OrganismA"		NAME="OrganismB"
+NAME="ReferenceA"		NAME="ReferenceB"
+NAME="AuthorsA"			NAME="AuthorsB"
+NAME="TitleA"			NAME="TitleB"
+NAME="JournalA"			NAME="JournalB"
+[NAME="MedlineA"]		[NAME="MedlineB"]
+NAME="PubMedA"			NAME="PubMedB"
+NAME="SubmitterBlockA"		NAME="SubmitterBlockB"
+NAME="FeaturesA"		NAME="FeaturesB"
+NAME="FeaturesSourceA"		NAME="FeaturesSourceB"
+NAME="TaxonA"			NAME="TaxonB"
+NAME="CDSA"			NAME="CDSB"
+  NAME="BaseSpanA"		  NAME="BaseSpanB"
+  NAME="ProteinIDA"		  NAME="ProteinIDB"
+  NAME="GIpA"			  NAME="GIpB"
+  NAME="TranslationA"		  NAME="TranslationB"
+NAME="GeneA"			NAME="GeneB"
+NAME="ComplementA"		NAME="ComplementB"
+NAME="OtherFeaturesA"		NAME="OtherFeaturesB"
+[NAME="BaseCountA"]		[NAME="BaseCountB"]
+NAME="OriginA"			NAME="OriginB"
+
+===================== END_PAGE_STRUCTURE ================== -->
+
+<!-- ========== HORIZONTAL_NAVIGATION_BAR ============= -->
+
+<table class="BAR" bgcolor="#003366" border="0" cellpadding="3" cellspacing="0" width="100%">
+  <tbody><tr class="BAR" align="CENTER">
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/entrez/" class="BAR">PubMed</a></td>
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/Entrez/" class="BAR">Entrez</a></td>
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/BLAST/" class="BAR">BLAST</a></td>
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=OMIM" class="BAR">OMIM</a></td>
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html" class="BAR">Taxonomy</a></td>
+    <td width="16%"><a href="http://www.ncbi.nlm.nih.gov/Structure/" class="BAR">Structure</a></td>
+  </tr>
+</tbody></table>
+<!-- ======================= the contents ========================== -->
+
+<p></p>
+<!-- HR SIZE=4 NOSHADE -->
+
+<!-- ================ENTREZ FORMAT AND LINKS BUTTONS ================ -->
+
+<!-- FORM METHOD=POST ACTION=/htbin-post/Entrez/query?db=n_x>
+<strong>Other Formats:</strong> <a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=1293613&Dopt=f"><img src="fasta.gif" border=0 align=top alt="[FASTA Format]"></a>
+<a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=1293613&Dopt=z" target=_top><img src="graphic.gif" border=0 align=top alt="[Graphical View]"></a>
+<BR>
+<strong>Links:</strong> <a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=1293613&Dopt=m"><img src="medline.gif" border=0 align=top alt="[1 medline link]"></a>
+<a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=1293613&Dopt=p"><img src="protein.gif" border=0 align=top alt="[3 protein links]"></a>
+<a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=1293613&Dopt=n"><img src="relseq.gif" border=0 align=top alt="[3 nucleotide neighbors]"></a -->
+
+<!-- ==============END ENTREZ FORMAT AND LINKS BUTTONS============== -->
+
+<!-- ===================== SAMPLE RECORD U49845 =================== -->
+
+<table bgcolor="#FFFFFF" border="0" cellspacing="5" width="90%">
+<tbody><tr><td class="H2">GenBank Flat File Format</td></tr>
+<tr><td class="TEXT">
+<blockquote><i>Click on any link in this sample record to see a detailed
+ description of that data element or field.  All of the descriptions are
+ included on this page, so it can be printed as a single document.  <!-- The name of the data element beside each description links back up to the appropriate field in the sample record, for easy navigation between the sample record and field descriptions. --> You can also return to the <a href="http://www.ncbi.nlm.nih.gov/Sitemap/AlphaList.html"><font color="FF0000">Alphabetical Quicklinks Table</font></a> or <a href="http://www.ncbi.nlm.nih.gov/Sitemap/ResourceGuide.html"><font color="FF0000">Resource Guide</font></a> <!-- or <a href="index.html"><FONT color="FF0000">Site Map</FONT></a>. --></i></blockquote></td></tr>
+</tbody></table>
+
+<pre><a name="LocusA"></a><a href="#LocusB">LOCUS</a>       <a name="LocusNameA"></a><a href="#LocusNameB">SCU49845</a>     <a name="SequenceLengthA"></a><a href="#SequenceLengthB">5028 bp</a>    <a name="MoleculeTypeA"></a><a href="#MoleculeTypeB">DNA</a>             <a name="GenBankDivisionA"></a><a href="#GenBankDivisionB">PLN</a>       <a name="ModificationDateA"></a><a href="#ModificationDateB">21-JUN-1999</a>
+<a name="DefinitionA"></a><a href="#DefinitionB">DEFINITION</a>  Saccharomyces cerevisiae TCP1-beta gene, partial cds, and Axl2p
+            (AXL2) and Rev7p (REV7) genes, complete cds.
+<a name="AccessionA"></a><a href="#AccessionB">ACCESSION</a>   U49845
+<a name="VersionA"></a><a href="#VersionB">VERSION</a>     U49845.1  <a name="GInA"></a><a href="#GInB">GI</a>:1293613
+<a name="KeywordsA"></a><a href="#KeywordsB">KEYWORDS</a>    .
+<a name="SourceA"></a><a href="#SourceB">SOURCE</a>      Saccharomyces cerevisiae (baker's yeast)
+<a name="OrganismA"></a>  <a href="#OrganismB">ORGANISM</a>  Saccharomyces cerevisiae
+            Eukaryota; Fungi; Ascomycota; Saccharomycotina; Saccharomycetes;
+            Saccharomycetales; Saccharomycetaceae; Saccharomyces.
+<a name="ReferenceA"></a><a href="#ReferenceB">REFERENCE</a>   1  (bases 1 to 5028)
+<a name="AuthorsA"></a>  <a href="#AuthorsB">AUTHORS</a>   Torpey,L.E., Gibbs,P.E., Nelson,J. and Lawrence,C.W.
+<a name="TitleA"></a>  <a href="#TitleB">TITLE</a>     Cloning and sequence of REV7, a gene whose function is required for
+            DNA damage-induced mutagenesis in Saccharomyces cerevisiae
+<a name="JournalA"></a>  <a href="#JournalB">JOURNAL</a>   Yeast 10 (11), 1503-1509 (1994)
+<a name="PubMedA"></a>  <a href="#PubMedB">PUBMED</a>    7871890
+REFERENCE   2  (bases 1 to 5028)
+  AUTHORS   Roemer,T., Madden,K., Chang,J. and Snyder,M.
+  TITLE     Selection of axial growth sites in yeast requires Axl2p, a novel
+            plasma membrane glycoprotein
+  JOURNAL   Genes Dev. 10 (7), 777-793 (1996)
+  PUBMED    8846915
+<a name="SubmitterBlockA"></a>REFERENCE   3  (bases 1 to 5028)
+  AUTHORS   Roemer,T.
+  TITLE     <a href="#SubmitterBlockB">Direct Submission</a>
+  JOURNAL   Submitted (22-FEB-1996) Terry Roemer, Biology, Yale University, New
+            Haven, CT, USA
+<a name="FeaturesA"></a><a href="#FeaturesB">FEATURES</a>             Location/Qualifiers
+<a name="FeaturesSourceA"></a>     <a href="#FeaturesSourceB">source</a>          1..5028
+<a name="TaxonA"></a>                     /organism="Saccharomyces cerevisiae"
+                     /<a href="#TaxonB">db_xref="taxon:4932"</a>
+                     /chromosome="IX"
+                     /map="9"
+<a name="CDSA"></a>     <a href="#CDSB">CDS</a>             <a name="BaseSpanA"></a><a href="#BaseSpanB">&lt;1..206</a>
+                     /codon_start=3
+                     /product="TCP1-beta"
+<a name="ProteinIDA"></a>                     <a href="#ProteinIDB">/protein_id</a>="AAA98665.1"
+<a name="GIpA"></a>                     /db_xref="<a href="#GIpB">GI</a>:1293614"
+<a name="TranslationA"></a>                     <a href="#TranslationB">/translation</a>="SSIYNGISTSGLDLNNGTIADMRQLGIVESYKLKRAVVSSASEA
+                     AEVLLRVDNIIRARPRTANRQHM"
+<a name="GeneA"></a>     <a href="#GeneB">gene</a>            687..3158
+                     /gene="AXL2"
+     CDS             687..3158
+                     /gene="AXL2"
+                     /note="plasma membrane glycoprotein"
+                     /codon_start=1
+                     /function="required for axial budding pattern of S.
+                     cerevisiae"
+                     /product="Axl2p"
+                     <a href="#ProteinIDB">/protein_id</a>="AAA98666.1"
+                     /db_xref="<a href="#GIpB">GI</a>:1293615"
+                     <a href="#TranslationB">/translation</a>="MTQLQISLLLTATISLLHLVVATPYEAYPIGKQYPPVARVNESF
+                     TFQISNDTYKSSVDKTAQITYNCFDLPSWLSFDSSSRTFSGEPSSDLLSDANTTLYFN
+                     VILEGTDSADSTSLNNTYQFVVTNRPSISLSSDFNLLALLKNYGYTNGKNALKLDPNE
+                     VFNVTFDRSMFTNEESIVSYYGRSQLYNAPLPNWLFFDSGELKFTGTAPVINSAIAPE
+                     TSYSFVIIATDIEGFSAVEVEFELVIGAHQLTTSIQNSLIINVTDTGNVSYDLPLNYV
+                     YLDDDPISSDKLGSINLLDAPDWVALDNATISGSVPDELLGKNSNPANFSVSIYDTYG
+                     DVIYFNFEVVSTTDLFAISSLPNINATRGEWFSYYFLPSQFTDYVNTNVSLEFTNSSQ
+                     DHDWVKFQSSNLTLAGEVPKNFDKLSLGLKANQGSQSQELYFNIIGMDSKITHSNHSA
+                     NATSTRSSHHSTSTSSYTSSTYTAKISSTSAAATSSAPAALPAANKTSSHNKKAVAIA
+                     CGVAIPLGVILVALICFLIFWRRRRENPDDENLPHAISGPDLNNPANKPNQENATPLN
+                     NPFDDDASSYDDTSIARRLAALNTLKLDNHSATESDISSVDEKRDSLSGMNTYNDQFQ
+                     SQSKEELLAKPPVQPPESPFFDPQNRSSSVYMDSEPAVNKSWRYTGNLSPVSDIVRDS
+                     YGSQKTVDTEKLFDLEAPEKEKRTSRDVTMSSLDPWNSNISPSPVRKSVTPSPYNVTK
+                     HRNRHLQNIQDSQSGKNGITPTTMSTSSSDDFVPVKDGENFCWVHSMEPDRRPSKKRL
+                     VDFSNKSNVNVGQVKDIHGRIPEML"
+<a name="ComplementA"></a>     gene            <a href="#ComplementB">complement</a>(3300..4037)
+                     /gene="REV7"
+     CDS             <a href="#ComplementB">complement</a>(3300..4037)
+                     /gene="REV7"
+                     /codon_start=1
+                     /product="Rev7p"
+                     <a href="#ProteinIDB">/protein_id</a>="AAA98667.1"
+                     /db_xref="<a href="#GIpB">GI</a>:1293616"
+                     <a href="#TranslationB">/translation</a>="MNRWVEKWLRVYLKCYINLILFYRNVYPPQSFDYTTYQSFNLPQ
+                     FVPINRHPALIDYIEELILDVLSKLTHVYRFSICIINKKNDLCIEKYVLDFSELQHVD
+                     KDDQIITETEVFDEFRSSLNSLIMHLEKLPKVNDDTITFEAVINAIELELGHKLDRNR
+                     RVDSLEEKAEIERDSNWVKCQEDENLPDNNGFQPPKIKLTSLVGSDVGPLIIHQFSEK
+                     LISGDDKILNGVYSQYEEGESIFGSLF"
+<a name="OriginA"></a><a href="#OriginB">ORIGIN</a>
+        1 gatcctccat atacaacggt atctccacct caggtttaga tctcaacaac ggaaccattg
+       61 ccgacatgag acagttaggt atcgtcgaga gttacaagct aaaacgagca gtagtcagct
+      121 ctgcatctga agccgctgaa gttctactaa gggtggataa catcatccgt gcaagaccaa
+      181 gaaccgccaa tagacaacat atgtaacata tttaggatat acctcgaaaa taataaaccg
+      241 ccacactgtc attattataa ttagaaacag aacgcaaaaa ttatccacta tataattcaa
+      301 agacgcgaaa aaaaaagaac aacgcgtcat agaacttttg gcaattcgcg tcacaaataa
+      361 attttggcaa cttatgtttc ctcttcgagc agtactcgag ccctgtctca agaatgtaat
+      421 aatacccatc gtaggtatgg ttaaagatag catctccaca acctcaaagc tccttgccga
+      481 gagtcgccct cctttgtcga gtaattttca cttttcatat gagaacttat tttcttattc
+      541 tttactctca catcctgtag tgattgacac tgcaacagcc accatcacta gaagaacaga
+      601 acaattactt aatagaaaaa ttatatcttc ctcgaaacga tttcctgctt ccaacatcta
+      661 cgtatatcaa gaagcattca cttaccatga cacagcttca gatttcatta ttgctgacag
+      721 ctactatatc actactccat ctagtagtgg ccacgcccta tgaggcatat cctatcggaa
+      781 aacaataccc cccagtggca agagtcaatg aatcgtttac atttcaaatt tccaatgata
+      841 cctataaatc gtctgtagac aagacagctc aaataacata caattgcttc gacttaccga
+      901 gctggctttc gtttgactct agttctagaa cgttctcagg tgaaccttct tctgacttac
+      961 tatctgatgc gaacaccacg ttgtatttca atgtaatact cgagggtacg gactctgccg
+     1021 acagcacgtc tttgaacaat acataccaat ttgttgttac aaaccgtcca tccatctcgc
+     1081 tatcgtcaga tttcaatcta ttggcgttgt taaaaaacta tggttatact aacggcaaaa
+     1141 acgctctgaa actagatcct aatgaagtct tcaacgtgac ttttgaccgt tcaatgttca
+     1201 ctaacgaaga atccattgtg tcgtattacg gacgttctca gttgtataat gcgccgttac
+     1261 ccaattggct gttcttcgat tctggcgagt tgaagtttac tgggacggca ccggtgataa
+     1321 actcggcgat tgctccagaa acaagctaca gttttgtcat catcgctaca gacattgaag
+     1381 gattttctgc cgttgaggta gaattcgaat tagtcatcgg ggctcaccag ttaactacct
+     1441 ctattcaaaa tagtttgata atcaacgtta ctgacacagg taacgtttca tatgacttac
+     1501 ctctaaacta tgtttatctc gatgacgatc ctatttcttc tgataaattg ggttctataa
+     1561 acttattgga tgctccagac tgggtggcat tagataatgc taccatttcc gggtctgtcc
+     1621 cagatgaatt actcggtaag aactccaatc ctgccaattt ttctgtgtcc atttatgata
+     1681 cttatggtga tgtgatttat ttcaacttcg aagttgtctc cacaacggat ttgtttgcca
+     1741 ttagttctct tcccaatatt aacgctacaa ggggtgaatg gttctcctac tattttttgc
+     1801 cttctcagtt tacagactac gtgaatacaa acgtttcatt agagtttact aattcaagcc
+     1861 aagaccatga ctgggtgaaa ttccaatcat ctaatttaac attagctgga gaagtgccca
+     1921 agaatttcga caagctttca ttaggtttga aagcgaacca aggttcacaa tctcaagagc
+     1981 tatattttaa catcattggc atggattcaa agataactca ctcaaaccac agtgcgaatg
+     2041 caacgtccac aagaagttct caccactcca cctcaacaag ttcttacaca tcttctactt
+     2101 acactgcaaa aatttcttct acctccgctg ctgctacttc ttctgctcca gcagcgctgc
+     2161 cagcagccaa taaaacttca tctcacaata aaaaagcagt agcaattgcg tgcggtgttg
+     2221 ctatcccatt aggcgttatc ctagtagctc tcatttgctt cctaatattc tggagacgca
+     2281 gaagggaaaa tccagacgat gaaaacttac cgcatgctat tagtggacct gatttgaata
+     2341 atcctgcaaa taaaccaaat caagaaaacg ctacaccttt gaacaacccc tttgatgatg
+     2401 atgcttcctc gtacgatgat acttcaatag caagaagatt ggctgctttg aacactttga
+     2461 aattggataa ccactctgcc actgaatctg atatttccag cgtggatgaa aagagagatt
+     2521 ctctatcagg tatgaataca tacaatgatc agttccaatc ccaaagtaaa gaagaattat
+     2581 tagcaaaacc cccagtacag cctccagaga gcccgttctt tgacccacag aataggtctt
+     2641 cttctgtgta tatggatagt gaaccagcag taaataaatc ctggcgatat actggcaacc
+     2701 tgtcaccagt ctctgatatt gtcagagaca gttacggatc acaaaaaact gttgatacag
+     2761 aaaaactttt cgatttagaa gcaccagaga aggaaaaacg tacgtcaagg gatgtcacta
+     2821 tgtcttcact ggacccttgg aacagcaata ttagcccttc tcccgtaaga aaatcagtaa
+     2881 caccatcacc atataacgta acgaagcatc gtaaccgcca cttacaaaat attcaagact
+     2941 ctcaaagcgg taaaaacgga atcactccca caacaatgtc aacttcatct tctgacgatt
+     3001 ttgttccggt taaagatggt gaaaattttt gctgggtcca tagcatggaa ccagacagaa
+     3061 gaccaagtaa gaaaaggtta gtagattttt caaataagag taatgtcaat gttggtcaag
+     3121 ttaaggacat tcacggacgc atcccagaaa tgctgtgatt atacgcaacg atattttgct
+     3181 taattttatt ttcctgtttt attttttatt agtggtttac agatacccta tattttattt
+     3241 agtttttata cttagagaca tttaatttta attccattct tcaaatttca tttttgcact
+     3301 taaaacaaag atccaaaaat gctctcgccc tcttcatatt gagaatacac tccattcaaa
+     3361 attttgtcgt caccgctgat taatttttca ctaaactgat gaataatcaa aggccccacg
+     3421 tcagaaccga ctaaagaagt gagttttatt ttaggaggtt gaaaaccatt attgtctggt
+     3481 aaattttcat cttcttgaca tttaacccag tttgaatccc tttcaatttc tgctttttcc
+     3541 tccaaactat cgaccctcct gtttctgtcc aacttatgtc ctagttccaa ttcgatcgca
+     3601 ttaataactg cttcaaatgt tattgtgtca tcgttgactt taggtaattt ctccaaatgc
+     3661 ataatcaaac tatttaagga agatcggaat tcgtcgaaca cttcagtttc cgtaatgatc
+     3721 tgatcgtctt tatccacatg ttgtaattca ctaaaatcta aaacgtattt ttcaatgcat
+     3781 aaatcgttct ttttattaat aatgcagatg gaaaatctgt aaacgtgcgt taatttagaa
+     3841 agaacatcca gtataagttc ttctatatag tcaattaaag caggatgcct attaatggga
+     3901 acgaactgcg gcaagttgaa tgactggtaa gtagtgtagt cgaatgactg aggtgggtat
+     3961 acatttctat aaaataaaat caaattaatg tagcatttta agtataccct cagccacttc
+     4021 tctacccatc tattcataaa gctgacgcaa cgattactat tttttttttc ttcttggatc
+     4081 tcagtcgtcg caaaaacgta taccttcttt ttccgacctt ttttttagct ttctggaaaa
+     4141 gtttatatta gttaaacagg gtctagtctt agtgtgaaag ctagtggttt cgattgactg
+     4201 atattaagaa agtggaaatt aaattagtag tgtagacgta tatgcatatg tatttctcgc
+     4261 ctgtttatgt ttctacgtac ttttgattta tagcaagggg aaaagaaata catactattt
+     4321 tttggtaaag gtgaaagcat aatgtaaaag ctagaataaa atggacgaaa taaagagagg
+     4381 cttagttcat cttttttcca aaaagcaccc aatgataata actaaaatga aaaggatttg
+     4441 ccatctgtca gcaacatcag ttgtgtgagc aataataaaa tcatcacctc cgttgccttt
+     4501 agcgcgtttg tcgtttgtat cttccgtaat tttagtctta tcaatgggaa tcataaattt
+     4561 tccaatgaat tagcaatttc gtccaattct ttttgagctt cttcatattt gctttggaat
+     4621 tcttcgcact tcttttccca ttcatctctt tcttcttcca aagcaacgat ccttctaccc
+     4681 atttgctcag agttcaaatc ggcctctttc agtttatcca ttgcttcctt cagtttggct
+     4741 tcactgtctt ctagctgttg ttctagatcc tggtttttct tggtgtagtt ctcattatta
+     4801 gatctcaagt tattggagtc ttcagccaat tgctttgtat cagacaattg actctctaac
+     4861 ttctccactt cactgtcgag ttgctcgttt ttagcggaca aagatttaat ctcgttttct
+     4921 ttttcagtgt tagattgctc taattctttg agctgttctc tcagctcctc atatttttct
+     4981 tgccatgact cagattctaa ttttaagcta ttcaatttct ctttgatc
+//
+</pre>
+
+<!-- strong>Other Formats:</strong><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&db=Nucleotide&term=U49845[pacc]&doptcmdl=FASTA"><img src="fasta.gif" border=0 align=top alt="FASTA Format"></a><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&db=Nucleotide&term=U49845[pacc]&view=graph"><img src="graphic.gif" border=0 align=top alt="Graphical View"></a><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&db=Nucleotide&term=U49845[pacc]&doptcmdl=ASN.1"><img src="asn1.gif" border=0 align=top alt="ASN.1 Format"></a>
+<a href="#Top"><img SRC="top.gif" border="0" align="top"></a -->
+
+
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top">
+
+<b>The corresponding <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=Nucleotide&amp;list_uids=1293613&amp;dopt=GenBank" target="one">live record for U49845</a> can be viewed in Entrez.</b><br>
+
+<b><a href="#OtherFeaturesB">Examples</a> of other records that show a range of biological features are listed below.</b>
+
+</td>
+</tr>
+</tbody></table>
+<br>
+
+<hr noshade="noshade" size="5">
+<!-- ===================END SAMPLE RECORD U49845 =================== -->
+
+
+<!-- =========== TABLE ============== -->
+<a name="Legend"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="H2" valign="top" width="175">FIELD</td>
+<td class="H2" width="420">COMMENTS</td>
+</tr>
+</tbody></table>
+
+<hr noshade="noshade" size="2">
+
+<a name="LocusB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#LocusA">LOCUS</a></b></td>
+<td class="TEXT" width="395">The LOCUS field contains a number of 
+different data elements, including locus name, sequence length, molecule
+ type, GenBank division, and modification date.  Each element is 
+described below.</td>
+<td valign="top" width="20"> </td>
+</tr>
+</tbody></table>
+
+<a name="LocusNameB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#LocusA">Locus Name</a></b><img src="samplerecord_fichiers/spacer10.GIF" border="0" height="1" width="75"></li></ul></td>
+<td class="TEXT" width="395"><p>The locus name in this example is <a href="#LocusA">SCU49845</a>.</p>
+
+<p>The locus name was originally designed to help group entries with 
+similar sequences: the first three characters usually designated the 
+organism; the fourth and fifth characters were used to show other group 
+designations, such as gene product; for segmented entries, the last 
+character was one of a series of sequential integers.  (See GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a> section 3.4.4 for more info.)</p>
+
+<p>However, the 10 characters in the locus name are no longer sufficient
+ to represent the amount of information originally intended to be 
+contained in the locus name.  The only rule now applied in assigning a 
+locus name is that it must be unique.  For example, for GenBank records 
+that have 6-character accessions (e.g., U12345), the locus name is 
+usually the first letter of the genus and species names, followed by the
+ accession number.  For 8-character character accessions (e.g., 
+AF123456), the locus name is just the accession number.</p>
+
+<p>The <a href="http://www.ncbi.nlm.nih.gov/projects/RefSeq/" target="one">RefSeq</a>
+ database of reference sequences assigns formal locus names to each 
+record, based on gene symbol.  RefSeq is separate from the GenBank 
+database, but contains cross-references to corresponding GenBank 
+records.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Accession Number [ACCN]<br> <font color="FF0000">Search Tip</font>:
+ It is better to search for the actual accession number rather than the 
+locus name, because the accessions are stable and locus names can 
+change.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="SequenceLengthB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#SequenceLengthA">Sequence Length</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Number of nucleotide base pairs (or amino acid residues) in the sequence record.  In this example, the sequence length is <a href="#SequenceLengthA">5028 bp</a>.</p>
+
+<p>There is no maximum limit on the size of a sequence that can be 
+submitted to GenBank.  You can submit a whole genome if you have a 
+contiguous piece of sequence from a single molecule type.  However, 
+there is a limit of 350 kb on an individual GenBank record (with some 
+exceptions, as noted in section 1.3.2 of the release notes for <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb112.release.notes">GenBank 112.0</a>
+ target="one").  That limit was agreed upon by the international 
+collaboratoring sequence databases to facilitate handling of sequence 
+data by various software programs.  (For more information, see NCBI News
+ articles on <a href="http://www.ncbi.nlm.nih.gov/Web/Newsltr/july98.html#Complete%20Genomes" target="one">Complete Genomes</a> and <a href="http://www.ncbi.nlm.nih.gov/Web/Newsltr/sept95.html#Megabase" target="one">GenBank Enters Megabase Era.</a>)  The minimum length required for submission is 50 bp, although there might be some shorter records from past years.
+</p>
+
+<font color="FF0000">Entrez Search Field</font>: Sequence Length [SLEN]<br>  <font color="FF0000">Search Tips</font>:
+ (1) To retrieve records within a range of lengths, use the colon as the
+ range operator, e.g., 2500:2600[SLEN].  (2) To retrieve all sequences 
+shorter than a certain number, use 2 as the lower bound, e.g., 
+2:100[SLEN].  (3) To retrieve all sequences longer than a certain 
+number, use a series of 9's as the upper bound, e.g., 
+325000:99999999[SLEN].<p></p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="MoleculeTypeB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#MoleculeTypeA">Molecule Type</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>The type of molecule that was sequenced.  In this example, the molecule type is <a href="#MoleculeTypeA">DNA</a>.</p>
+
+<p>Each GenBank record must contain contiguous sequence data from a single molecule type.  The various <a href="http://www.ncbi.nlm.nih.gov/Sequin/sequin.hlp.html#Molecule" target="one">molecule types</a>
+ are described in the Sequin documentation and can include genomic DNA, 
+genomic RNA, precursor RNA, mRNA (cDNA), ribosomal RNA, transfer RNA, 
+small nuclear RNA, and small cytoplasmic RNA.</p>
+<font color="FF0000">Entrez Search Field</font>: Properties [PROP] <br>
+<font color="FF0000">Search Tip</font>: Search term should be in the format:  <b>biomol_genomic</b>, <b>biomol_mRNA</b>, etc.  For more examples, view the Properties field in the Index mode.<p></p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="GenBankDivisionB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#GenBankDivisionA">GenBank Division</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>The GenBank division to which a record 
+belongs is indicated with a three letter abbreviation.    In this 
+example, GenBank division is <a href="#GenBankDivisionA">PLN</a>.</p>
+
+<p>The GenBank database is divided into 18 divisions:</p>
+
+<p>
+&nbsp; 1. PRI - primate sequences<br>
+&nbsp; 2. ROD - rodent sequences<br>
+&nbsp; 3. MAM - other mammalian sequences<br>
+&nbsp; 4. VRT - other vertebrate sequences<br>
+&nbsp; 5. INV - invertebrate sequences<br>
+&nbsp; 6. PLN - plant, fungal, and algal sequences<br>
+&nbsp; 7. BCT - bacterial sequences<br>
+&nbsp; 8. VRL - viral sequences<br>
+&nbsp; 9. PHG - bacteriophage sequences<br>
+10. SYN - synthetic sequences<br>
+11. UNA - unannotated sequences<br>
+12. EST - EST sequences (expressed sequence tags)<br>
+13. PAT - patent sequences<br>
+14. STS - STS sequences (sequence tagged sites)<br>
+15. GSS - GSS sequences (genome survey sequences)<br>
+16.  HTG - HTG sequences (high-throughput genomic sequences)<br>
+17.  HTC - unfinished high-throughput cDNA sequencing<br>
+18.  ENV - environmental sampling sequences
+</p>
+
+<p>Some of the divisions contain sequences from specific groups of 
+organisms, whereas others (EST, GSS, HTG, etc.) contain data generated 
+by specific sequencing technologies from many different organisms.  The <b>organismal divisions are historical and do not reflect the current <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=Taxonomy" target="one">NCBI Taxonomy</a></b>.
+ Instead, they merely serve as a convenient way to divide GenBank into 
+smaller pieces for those who want to FTP the database.  Because of this,
+ and because sequences from a particular organism can exist in 
+technology-based divisions such as EST, HTG, etc., <b>the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/" target="one">NCBI Taxonomy Browser</a> should be used for retrieving all sequences from a particular organism</b>.</p>
+
+<p>The divisions are also listed in section 3.3 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a>.</p>
+
+<p>The RNA division of GenBank was removed in release 113.0 (August 
+1999).  Sequences that were previously in the RNA division have been 
+moved to the appropriate organismal division.  (See section 1.3.2 of the
+ <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb113.release.notes" target="one">GenBank 113.0 release notes</a> for additional information.)</p>
+
+<p>The HTC division was added to GenBank in release 123.0 (April 2001)
+and is described in Section 1.3.3 of the <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb123.release.notes" target="one">GenBank 123.0 release notes</a>.</p>
+
+<p>
+Another division, called CON, was added in release 115.0 (December 1999)
+but is not listed above because it records in that division contain no sequence data.
+Instead, they contain sequence assembly
+instructions on how to construct contigs from multiple GenBank records.
+See the <a href="http://www.ncbi.nlm.nih.gov/Web/Newsltr/Fall99/contig.html" target="one">Fall 1999 NCBI News</a> and section 1.3.3 of <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb115.release.notes" target="one">GenBank 115.0 release notes</a> for details.</p>
+
+<font color="FF0000">Entrez Search Field</font>: Properties [PROP] <br>
+<font color="FF0000">Search Tip</font>: Search term should be in the format: <b>gbdiv_pri</b>, <b>gbdiv_est</b>,
+ etc. For more examples, view the Properties field in the Index mode.  
+For example, to eliminate all sequences from a particular division, such
+ as all ESTs, you can use a Boolean query formatted such as: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;human[ORGN] NOT gbdiv_est[PROP]<br>
+For the reasons noted above, <b>do not use GenBank divisions to retrieve all sequences from a specific organism.  Instead, use the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/" target="one">NCBI Taxonomy Browser</a></b>.<p></p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="ModificationDateB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#ModificationDateA">Modification Date</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>The date in the LOCUS field is the <b>date of last modification</b>.  The sample record shown here was last modified on <a href="#ModificationDateA">21-JUN-1999</a>.
+
+</p><p>In some cases, the modification date might correspond to the 
+release date, but there is no way to tell just by looking at the record.
+  If you need to know the first date of public availability for a 
+specific sequence record, send a message to info@ncbi.nlm.nih.gov.  We 
+will check the history of the record for you, and let you know the date 
+of first public release.  If the sequence was originally submitted to 
+our collaborators at DDBJ or EMBL, rather than to GenBank, we will ask 
+them to send the release date information to you.  (See also notes re: 
+date in the <a href="#SubmitterBlockB">Direct Submission</a> reference.)</p>
+
+<font color="FF0000">Entrez Search Field</font>: Modification Date [MDAT] <br>
+<font color="FF0000">Search Tips</font>: (1) Enter search term in the 
+format:  yyyy/mm/dd, e.g., 1999/07/25.  (2) To retrieve records modified
+ between two dates, use the colon as a range operator, e.g., 
+1999/07/25:1999/07/31[MDAT].  (3) You can use the Publication Date 
+[PDAT] field of Entrez to limit search results by the date on which 
+records were added to the Entrez system. Publication date can be in the 
+form of a range, just like the Modification Date.
+<p></p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="DefinitionB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#DefinitionA">DEFINITION</a></b></td>
+<td class="TEXT" width="395"><p>Brief description of sequence; includes 
+information such as source organism, gene name/protein name, or some 
+description of the sequence's function  (if the sequence is non-coding).
+  If the sequence has a coding region (CDS), description may be followed
+ by a completeness qualifier, such as "complete cds".  (See GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a> section 3.4.5 for more info.)</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Title Word [TITL] <br>
+<font color="FF0000">Search Tip</font>: Although nucleotide definition lines follow a <a href="http://www.ncbi.nlm.nih.gov/Sequin/sequin.hlp.html#NucleotideDefinitionline" target="one">structured format</a>,
+ GenBank does not use a controlled vocabulary, and authors determine the
+ content of their records.  Therefore, if a search for a specific term 
+does not retrieve the desired records, try other terms that authors 
+might have used, such as synonyms, full spellings, or abbreviations.  
+The "related records" (or "neighbors") function of Entrez also allows 
+you to broaden your search by retrieving records with similar sequences,
+ regardless of the descriptive terms used by the submitters.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="AccessionB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#AccessionA">ACCESSION</a></b></td>
+<td class="TEXT" width="395"><p>The unique identifier for a sequence 
+record. An accession number applies to the complete record and is 
+usually a combination of a letter(s) and numbers, such as a single 
+letter followed by five digits (e.g., U12345) or two letters followed by
+ six digits (e.g., AF123456).  Some accessions might be longer, 
+depending on the type of sequence record.</p>
+
+<p>Accession numbers do not change, even if information in the record is
+ changed at the author's request.  Sometimes, however, an original 
+accession number might become secondary to a newer accession number, if 
+the authors make a new submission that combines previous sequences, or 
+if for some reason a new submission supercedes an earlier record.</p>
+
+<p>Records from the <a href="http://www.ncbi.nlm.nih.gov/RefSeq/" target="one">RefSeq</a> database of reference sequences have a <a href="http://www.ncbi.nlm.nih.gov/RefSeq/key.html#accessions" target="one">different accession number format</a> that begins with two letters followed by an underscore bar and six or more digits, for example:</p>
+
+<pre>NT_123456   constructed genomic contigs
+NM_123456   mRNAs
+NP_123456   proteins
+NC_123456   chromosomes
+</pre>
+
+<p>Note: compare accession number with Sequence Identifiers such as <a href="#VersionB">Version</a> and <a href="#GInB">GI</a> for nucleotide sequences and <a href="#ProteinIDB">protein_id</a> and <a href="#GIpB">GI</a> for amino acid sequences.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Accession [ACCN] <br>
+<font color="FF0000">Search Tip</font>: The letters in the accession 
+number can be written in upper- or lowercase.  RefSeq accessions must 
+contain an underscore bar between the letters and the numbers, e.g., 
+NM_002111.
+</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="VersionB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#VersionA">VERSION</a></b></td>
+<td class="TEXT" width="395"><p>A nucleotide sequence identification 
+number that represents a single, specific sequence in the GenBank 
+database.  This identification number uses the accession.version format 
+implemented by GenBank/EMBL/DDBJ in February 1999.</p>
+
+<p>If there is any change to the sequence data (even a single base), the
+ version number will be increased, e.g., U12345.1 &#8594; U12345.2, but the 
+accession portion will remain stable.</p>
+
+<p>The accession.version system of sequence identifiers runs parallel to the <a href="#GInB">GI</a> number system, i.e., when any change is made to a sequence, it receives a new GI number AND an increase to its version number.</p>
+
+<p>For more information, see section 1.3.2 of the <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb111.release.notes" target="one">GenBank 111.0 release notes</a>, and section 3.4.7 of the <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">current GenBank release notes</a>.</p>
+
+<p>A <a href="http://www.ncbi.nlm.nih.gov/entrez/sutils/girevhist.cgi" target="one">Sequence Revision History</a>
+ tool is available to track the various GI numbers, version numbers, and
+ update dates for sequences that appeared in a specific GenBank record (<a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequencerevisionhistory.html" target="one">more information and example</a>).</p>
+
+<p>More details about sequence identification numbers and the difference between GI number and version are provided in <a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequenceIDs.html">Sequence Identifiers: A Historical Note</a>.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: use the default setting of "All Fields"</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="GInB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#GInA">GI</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>"GenInfo Identifier" sequence 
+identification number, in this case, for the nucleotide sequence.  If a 
+sequence changes in any way, a new GI number will be assigned.</p>
+
+<p>A separate GI number is also assigned to each protein translation 
+within a nucleotide sequence record, and a new GI is assigned if the 
+protein translation changes in any way (see <a href="#GIpB">below</a>).</p>
+
+<p>GI sequence identifiers run parallel to the new <b>accession.version</b> system of sequence identifiers.  For more information, see the description of <a href="#VersionB">Version</a>, above, and section 3.4.7 of the current <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">GenBank release notes</a>.</p>
+
+<p>A <a href="http://www.ncbi.nlm.nih.gov/entrez/sutils/girevhist.cgi" target="one">Sequence Revision History</a>
+ tool is available to track the various GI numbers, version numbers, and
+ update dates for sequences that appeared in a specific GenBank record (<a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequencerevisionhistory.html" target="one">more information and example</a>).</p>
+
+<p>More details about sequence identification numbers and the difference between GI number and version are provided in <a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequenceIDs.html">Sequence Identifiers: A Historical Note</a>.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: use the default setting of "All Fields"</p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="KeywordsB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#KeywordsA">KEYWORDS</a></b></td>
+<td class="TEXT" width="395"><p>Word or phrase describing the sequence.  If no keywords are included in the entry, the field contains only a period.</p>
+
+<p>The Keywords field is present in sequence records primarily for 
+historical reasons, and is not based on a controlled vocabulary.  
+Keywords are generally present in older records.  They are <b>not</b> 
+included in newer records unless: (1) they are not redundant with any 
+feature, qualifier, or other information present in the record; or (2) 
+the submitter specifically asks for them to be added and #1 is true; or 
+(3) the record contains a special type of sequence such as EST, STS, 
+GSS, HTG, etc.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Keyword [KYWD] <br>
+<font color="FF0000">Search Tip</font>: Because keywords are not present
+ in many records, it is best not to search that field.  Instead, search 
+All Fields [ALL], the Text Word [WORD] field, or the Title Word [TITL] 
+field, for progressively narrower retrieval.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="SourceB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#SourceA">SOURCE</a></b></td>
+<td class="TEXT" width="395"><p>Free-format information including an 
+abbreviated form of the organism name, sometimes followed by a molecule 
+type.  (See section 3.4.10 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a> for more info.)</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Organism [ORGN] <br>
+<font color="FF0000">Search Tip</font>: For some organisms that have 
+well-established common names, such as baker's yeast, mouse, and human, a
+ search for the common name will yield the same results as a search for 
+the scientific name, e.g., a search for "baker's yeast" in the organism 
+field retrieves the same number of documents as "Saccharomyces 
+cerevisiae".  This is true because the Organism field is connected to 
+the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/tax.html" target="one">NCBI Taxonomy Database</a>,
+ which contains cross-references between common names, scientific names,
+ and synonyms for organisms represented in the Sequence databases.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="OrganismB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#OrganismA">Organism</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>The formal scientific name for the source organism (genus
+and species, where appropriate) and its lineage, based on the phylogenetic classification scheme used in the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/tax.html" target="one">NCBI Taxonomy Database</a>.
+  If the complete lineage of an organism is very long, an abbreviated 
+lineage will be shown in the GenBank record and the complete lineage 
+will be available in the Taxonomy Database.  (See also the <a href="#TaxonB">/db_xref=taxon:nnnn</a> Feature qualifer, below.)</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Organism [ORGN] <br>
+<font color="FF0000">Search Tip</font>: You can search the Organism 
+field by any node in the taxonomic hierarchy, e.g., you can search for 
+the term "Saccharomyces cerevisiae",  "Saccharomycetales", "Ascomycota",
+ etc. to retrieve all the sequences from organisms in a particular 
+taxon.
+</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="ReferenceB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#ReferenceA">REFERENCE</a></b></td>
+<td class="TEXT" width="395"><p>Publications by the authors of the 
+sequence that discuss the data reported in the record.  References are 
+automatically sorted within the record based on date of publication, 
+showing the oldest references first.</p>
+<p>Some sequences have not been reported in papers and show a status of 
+"unpublished" or "in press".  When an accession number and/or sequence 
+data has appeared in print, sequence authors should send the complete 
+citation of the article to update@ncbi.nlm.nih.gov and the GenBank staff
+ will revise the record.</p>
+<p>Various <a href="http://www.ncbi.nlm.nih.gov/Sequin/sequin.hlp.html#Class" target="one">classes</a>
+ of publication can be present in the References field, including 
+journal article, book chapter, book, thesis/monograph, proceedings 
+chapter, proceedings from a meeting, and patent.</p>
+
+<p>The <b>last citation</b> in the REFERENCE field usually contains 
+information about the submitter of the sequence, rather than a 
+literature citation.  It is therefore called the "<b>submitter block</b>" and shows the words "<b>Direct Submission</b>" instead of an article title. Additional information is provided below, under the header <a href="#SubmitterBlockB"><b>Direct Submission</b></a>.  Some older records do not contain a submitter block.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: The various subfields under References are searchable in the Entrez search fields noted below.<br>
+</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="AuthorsB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#AuthorsA">AUTHORS</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>List of authors in the order in which they appear
+in the cited article.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Author [AUTH] <br>
+<font color="FF0000">Search Tip</font>: Enter author names in the form: 
+ Lastname AB (without periods after the initials).  Initials can be 
+omitted.  Truncation can also be used to retrieve all names that begin 
+with a character string, e.g., Richards* or Boguski M*.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="TitleB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#TitleA">TITLE</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Title of the published work or tentative title of an unpublished work.</p>
+
+<p>Sometimes the words "<b>Direct Submission</b>" instead of an article title. This is usually true for the last citation in the <a href="#ReferenceB">REFERENCE</a>
+ field because it tends to contain information about the submitter of 
+the sequence, rather than a literature citation.  The last citation is 
+therefore called the "<b>submitter block</b>".  Additional information is provided below, under the header <a href="#SubmitterBlockB"><b>Direct Submission</b></a>.  Some older records do not contain a submitter block.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Text Word [WORD] <br>Note: For sequence records, the Title Word [TITL] field of Entrez searches the <a href="#DefinitionB">Definition Line</a>,
+ not the titles of references listed in the record.  Therefore, use the 
+Text Word field to search the titles of references (and other 
+text-containing fields).<br>
+<font color="FF0000">Search Tip</font>: If a search for a specific term 
+does not retrieve the desired records, try other terms that authors 
+might have used, such synonyms, full spellings, or abbreviations.  The 
+'related records' (or 'neighbors') function of Entrez also allows you to
+ broaden your search by retrieving records with similar sequences, 
+regardless of the descriptive terms used by the submitters.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="JournalB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#JournalA">JOURNAL</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>MEDLINE abbreviation of the journal name.  (Full spellings can be obtained from the Entrez <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=Journals" target="one">Journals Database</a>.)</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Journal Name [JOUR] <br>
+<font color="FF0000">Search Tip</font>: Journal names can be entered as 
+either the full spelling or the MEDLINE abbreviation.  You can search 
+the Journal Name field in the Index mode to see the index for that 
+field, and to select one or more journal names for inclusion in your 
+search.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<!-- a NAME="MedlineB"></a>
+<table BORDER="0" CELLSPACING="5" CELLPADDING=0 WIDTH="600">
+<tr>
+<td CLASS="TEXT" WIDTH="175" VALIGN="top"><ul><li><b><a href="#MedlineA">MEDLINE</a></b></ul></td>
+<td CLASS="TEXT" WIDTH="395"><p>MEDLINE unique identifier (UID).</p>
+<p>References that include MEDLINE UIDs contain links from the sequence record to the corresponding MEDLINE record.  Conversely, MEDLINE records that contain accession number(s) in the SI (secondary source identifier) field contain links back to the sequence record(s).</p>
+<FONT color="FF0000"><p>Entrez Search Field</FONT>: It is not possible to search the Nucleotide or Protein sequence databases by MEDLINE UID.  However, you can search the Literature (PubMed) database of Entrez for the MEDLINE UID, and then link to the associated sequence records.</p>
+<hr></td>
+<td WIDTH="20" VALIGN="top"><a href="#Top"><img SRC="arrowup.gif" border="0" width="14" height="14" ALT="back to top"></a></td>
+</tr>
+</table -->
+
+<a name="PubMedB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#PubMedA">PUBMED</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>PubMed Identifier (PMID).</p>
+<p>References that include PubMed IDs contain links from the sequence 
+record to the corresponding PubMed record.  Conversely, PubMed records 
+that contain accession number(s) in the SI (secondary source identifier)
+ field contain links back to the sequence record(s).</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>:
+ It is not possible to search the Nucleotide or Protein sequence 
+databases by PubMed ID.  However, you can search the PubMed (literature)
+ database of Entrez for the PubMed ID, and then link to the associated 
+sequence records.</p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="SubmitterBlockB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#SubmitterBlockA">Direct Submission</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Contact information of the submitter, 
+such as institute/department and postal address.  This is always the 
+last citation in the References field.  Some older records do not 
+contain the "Direct Submission" reference.  However, it is required in 
+all new records.</p>
+
+<p>The Authors subfield contains the submitter name(s), Title contains 
+the words "Direct Submission", and Journal contains the address.</p>
+
+<p>The date in the Journal subfield is the date on which the author 
+prepared the submission.  In many cases, it is also the date on which 
+the sequence was received by the GenBank staff, but it is not the date 
+of first public release.  If you need to know the latter, send a message
+ to info@ncbi.nlm.nih.gov. We will check the history of the record for 
+you.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>:
+ Use the Author Field [AUTH] if searching for the author name.  Use All 
+Fields [ALL] if searching for an element of the author's address (e.g., 
+Yale University).  Note, however, that retrieved records might contain 
+the institution name in a field such as Comment, rather than in the 
+Direct Submission reference, so you might get some false hits.<br>
+<font color="FF0000">Search Tip</font>: It is sometimes helpful to 
+search for both the full spelling and an abbreviation, e.g., "Washington
+ University" OR "WashU", because the spelling used by authors might 
+vary.</p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="FeaturesB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#FeaturesA">FEATURES</a></b></td>
+<td class="TEXT" width="395"><p>Information about genes and gene 
+products, as well as regions of biological significance reported in the 
+sequence.  These can include regions of the sequence that code for 
+proteins and RNA molecules, as well as a number of other features.  (See
+ section 3.4.12 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt">release notes</a> for more info.)</p>
+
+<p>A <b>complete list of features</b> is available in the following places:</p>
+
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.3" target="one">Appendix III: Feature keys reference</a> of the <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html" target="one">DDBJ/EMBL/GenBank Feature Table</a> provides definitions, optional qualifiers, and comments for each feature.  An <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.3.2" target="one">alphabetical list</a> is also available.  <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.4" target="one">Appendix IV: Summary of qualifiers for feature keys</a> provides definitions for the Feature qualifiers.</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/Sequin/sequin.hlp.html" target="one">Sequin Help documentation</a> (scroll down to 'Features' in the table of contents to see an alphabetical list of features with links to descriptions)</li>
+<li>section 3.4.12.1 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a></li>
+</ul>
+
+<p>The <b>location of each feature</b> is provided as well, and can be a
+ single base, a contiguous span of bases, a joining of sequence spans, 
+and other representations.  &nbsp;If a feature is located on the 
+complementary strand, the word "<a href="#ComplementA">complement</a>" will appear before the base span.  If the "<b>&lt;</b>" symbol precedes a base span, the sequence is partial on the 5' end (e.g., CDS &nbsp;&lt;1..206).  &nbsp;If the "<b>&gt;</b>" symbol follows a base span, the sequence is partial on the 3' end (e.g., CDS &nbsp; 435..915&gt;).</p>
+
+<p>For more information about feature locations, see the <a href="http://www.ncbi.nlm.nih.gov/Sequin/sequin.hlp.html#Locationpage" target="one">Sequin Help Documentation</a> and section 3.4.12.2 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a>.</p>
+
+<p>The sample record shown here only includes a small number of features
+ (source, CDS, and gene, all of which are described below).  The <a href="#OtherFeaturesB">Other Features</a> section, below, provides links to some GenBank records that show a variety of additional features.
+
+<font color="FF0000"></font></p><p><font color="FF0000">Entrez Search Field</font>: Feature Key [FKEY] <br>
+<font color="FF0000">Search Tip</font>: To scroll through the list of 
+available features, view the Feature Key field in Index mode.  You can 
+then select one or more features from the index to include in your 
+query.  For example, you can limit your search to records that contain 
+both primer_bind and promoter features.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="FeaturesSourceB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#FeaturesSourceA">source</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Mandatory feature in each record that 
+summarizes the length of the sequence, scientific name of the source 
+organism, and Taxon ID number.  Can also include other information such 
+as map location, strain, clone, tissue type, etc., if provided by 
+submitter.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: All Fields [ALL] can be used to search for some elements in the source field, such as strain, clone, tissue type.</p>
+<p>Use the <a href="#SequenceLengthB">Sequence Length</a> [SLEN] field to search by length and the <a href="#OrganismB">Organism</a> [ORGN] field to search by organism name.</p>
+<p>Because map location is written as free text and can be represented 
+in a number of ways (e.g., chromosome number, cytogenetic location, 
+marker name, physical map location), it is not directly searchable in 
+the Entrez Nucleotide or Protein databases.  However, there are a number
+ of resources that allow you to browse and/or search the <a href="http://www.ncbi.nlm.nih.gov/Sitemap/ResourceGuide.html#Genomes">maps of various genomes</a>.</p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="TaxonB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><blockquote><b><a href="#TaxonA">Taxon</a></b></blockquote></td>
+<td class="TEXT" width="395"><p>A stable unique identification number 
+for the taxon of the source oganism.  A taxonomy ID number is assigned 
+to each taxon (species, genus, family, etc.) in the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html" target="one">NCBI Taxonomy Database</a>.  See also the <a href="#OrganismB">Organism</a> field, above.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: The Taxonomy ID number is not seachable in the Organism search field of Entrez but is searchable in the <a href="http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html" target="one">Taxonomy Browser</a>.</p>
+
+Note: The <a href="#TaxonA">/db_xref qualifier</a> is one of many that can be applied to various features.  A complete list is available in <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.4" target="one">Appendix IV: Summary of qualifiers for feature keys</a> of the <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html" target="one">DDBJ/EMBL/GenBank Feature Table</a>, and in section 3.4.12.3 of the GenBank <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">release notes</a>.  <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.3" target="one">Appendix III: Feature keys reference</a> shows which qualifiers can be used with specific features (see <a href="http://www.ncbi.nlm.nih.gov/projects/collab/FT/index.html#7.3.2" target="one">alphabetical list</a>). <p></p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="CDSB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#CDSA">CDS</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Coding sequence; region of nucleotides 
+that corresponds with the sequence of amino acids in a protein (location
+ includes start and stop codons).  The CDS feature includes an amino 
+acid <a href="#TranslationB">translation</a>.    Authors can specify the nature of the CDS by using the qualifier "/evidence=experimental" or "/evidence=not_experimental".</p>
+
+<p>Submitters are also encouraged to annotate the mRNA feature, which 
+includes the 5' untranslated region (5'UTR), coding sequences (CDS, 
+exon), and 3' untranslated region (3'UTR).</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Feature Key [FKEY] <br>
+<font color="FF0000">Search Tip</font>: You can use this field to limit 
+your search to records that contain a particular feature, such as CDS.  
+To scroll through the list of available features, view the Feature Key 
+field in Index mode.  A complete list of features is also available from
+ the resources noted <a href="#FeaturesB">above</a>.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="BaseSpanB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#BaseSpanA">&lt;1..206</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>Base span of the biological feature indicated to the left, in this case, a CDS feature.  (The CDS feature is described <a href="#CDSB">above</a>, and its base span includes the start and stop codons.)  <b>Features can be complete, partial on the 5' end, partial on the 3' end, and/or on the complementary strand.</b>  Examples:</p>
+	<ol>
+	<li><b>complete</b> feature is simply written as
+	    <b><i>n</i>..<i>m</i></b><br><br>
+		Example: &nbsp;&nbsp;&nbsp;687..3158 <br>The feature extends from base 687 through base 3158 in the sequence shown
+		</li><hr><br>
+
+
+	<li><b>&lt;</b> &nbsp;&nbsp;&nbsp;&nbsp;indicates <b>partial on the 5' end</b><br><br>
+		Example: &nbsp;&nbsp;&nbsp;&lt;1..206 <br>The feature extends from base 1 through base 206 in the sequence shown, and is partial on the 5' end
+		</li><hr><br>
+
+
+	<li><b>&gt;</b> &nbsp;&nbsp;&nbsp;&nbsp;indicates <b>partial on the 3' end</b><br><br>
+		Example: &nbsp;&nbsp;&nbsp;4821..5028&gt; <br>The feature extends from base 4821 through base 5028 and is partial on the 3' end
+		</li><hr><br>
+
+
+	<li><b>(complement)</b> &nbsp;indicates that the feature is on the complementary strand<br><br>
+		Example: &nbsp;&nbsp;&nbsp;complement(3300..4037) <br>The feature 
+extends from base 3300 through base 4037 but is actually on the 
+complementary strand.  It is therefore read in the opposite direction on
+ the reverse complement sequence. (For an <a href="#ComplementA">example</a>,
+ see the third CDS feature in the sample record shown on this page.  In 
+this case, the amino acid translation is generated by taking the reverse
+ complement of bases 3300 to 4037 and reading that reverse complement 
+sequence in its 5' to 3' direction.)
+		</li><br>
+
+	</ol>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="ProteinIDB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><blockquote><b><a href="#ProteinIDA">protein_id</a></b></blockquote></td>
+<td class="TEXT" width="395"><p>A protein sequence identification number, similar to the <a href="#VersionB">Version</a>
+ number of a nucleotide sequence.  Protein IDs consist of three letters 
+followed by five digits, a dot, and a version number. If there is any 
+change to the sequence data (even a single amino acid), the version 
+number will be increased, but the accession portion will remain stable 
+(e.g., AAA98665.1 will change to AAA98665.2).  </p>
+
+<p>The accession.version format of protein sequence identification 
+numbers was implemented by GenBank/EMBL/DDBJ in February 1999 and runs 
+parallel to the GI number system.  More details about sequence 
+identification numbers and the difference between GI number and version 
+are provided in <a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequenceIDs.html">Sequence Identifiers: A Historical Note</a>.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: use the default setting of "All Fields"</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="GIpB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><blockquote><b><a href="#GIpA">GI</a></b></blockquote></td>
+<td class="TEXT" width="395"><p>"GenInfo Identifier" sequence identification number, in this case, for the protein translation.</p>
+
+<p>The <b>GI</b> system of sequence identifiers runs parallel to the <b>accession.version</b>
+ system, which was implemented by GenBank, EMBL, and DDBJ in February 
+1999.  Therefore, if the protein sequence changes in any way, it will 
+receive a new GI number, and the suffix of the <a href="#ProteinIDB">protein_id</a> will be incremented by one.</p>
+
+<p>For more information, see the description of <a href="#ProteinIDB">protein_id</a>, above, section 1.3.2 of the <a href="ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb111.release.notes" target="one">GenBank 111.0 release notes</a>, and section 3.4.7 of the <a href="ftp://ftp.ncbi.nih.gov/genbank/gbrel.txt" target="one">current GenBank release notes</a>.</p>
+
+<p>More details about sequence identification numbers and the difference between GI number and version are provided in <a href="http://www.ncbi.nlm.nih.gov/Sitemap/sequenceIDs.html">Sequence Identifiers: A Historical Note</a>.</p>
+
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: use the default setting of "All Fields"</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="TranslationB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><blockquote><b><a href="#TranslationA">translation</a></b></blockquote></td>
+<td class="TEXT" width="395"><p>The amino acid translation corresponding to the nucleotide coding sequence (<a href="#CDSB">CDS</a>).
+  In many cases, the translations are conceptual.  Note that authors can
+ indicate whether the CDS is based on experimental or non-experimental 
+evidence.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>:
+ It is not possible to search the translation subfield using Entrez.  If
+ you want use a string of amino acids as a query to retrieve similar 
+protein sequences, use <a href="http://www.ncbi.nlm.nih.gov/BLAST/">BLAST</a> instead.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="GeneB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><a href="#GeneA">gene</a></b></li></ul></td>
+<td class="TEXT" width="395"><p>A region of biological interest 
+identified as a gene and for which a name has been assigned.  The base 
+span for the gene feature is dependent on the furthest 5' and 3' 
+features.  Additional examples of records that show the relationship 
+between gene features and other features such as mRNA and CDS are <a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&amp;form=6&amp;uid=AF165912&amp;Dopt=g" target="one">AF165912</a> and <a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&amp;form=6&amp;uid=AF090832&amp;Dopt=g" target="one">AF090832</a>.</p>
+<font color="FF0000"></font><p><font color="FF0000">Entrez Search Field</font>: Feature Key [FKEY] <br>
+<font color="FF0000">Search Tip</font>: You can use this field to limit 
+your search to records that contain a particular feature, such as a 
+gene.  To scroll through the list of available features, view the 
+Feature Key field in Index mode.  A complete list of features is also 
+available from the resources noted <a href="#FeaturesB">above</a>.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="ComplementB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><blockquote><b><a href="#ComplementA">complement</a></b></blockquote></td>
+<td class="TEXT" width="395"><p>Indicates that the feature is located on the complementary strand.</p><hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<a name="OtherFeaturesB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><ul><li><b><font color="336699">Other Features</font></b></li></ul></td>
+<td class="TEXT" width="395"><p>Examples of other records that show a 
+variety of biological features; a graphic format is also available for 
+each sequence record and visually represents the annotated features:</p><p>
+
+</p><ul>
+<li><b>AF165912</b> (gene, promoter, TATA signal, mRNA, 5'UTR, CDS, 3'UTR) <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&amp;db=Nucleotide&amp;term=AF165912[pacc]&amp;doptcmdl=GenBank" target="one">GenBank flat file</a><!-- a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=AF165912&Dopt=z">graphic format</a --></li>
+
+<li><b>AF090832</b> (protein bind, gene, 5'UTR, mRNA, CDS, 3'UTR) <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&amp;db=Nucleotide&amp;term=AF090832[pacc]&amp;doptcmdl=GenBank" target="one">GenBank flat file</a><!-- a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=AF090832&Dopt=z">graphic format</a --></li>
+
+<li><b>L00727</b> (alternatively spliced mRNAs) <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&amp;db=Nucleotide&amp;term=L00727[pacc]&amp;doptcmdl=GenBank" target="one">GenBank flat file</a><!-- a href="http://www.ncbi.nlm.nih.gov/htbin-post/Entrez/query?db=n&form=6&uid=L00727&Dopt=z">graphic format</a --></li>
+</ul>
+
+<p>A complete list of features is available from the resources noted <a href="#FeaturesB">above</a>.</p>
+<hr></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+
+<!-- a NAME="BaseCountB"></a>
+<table BORDER="0" CELLSPACING="5" CELLPADDING=0 WIDTH="600">
+<tr>
+<td CLASS="TEXT" WIDTH="175" VALIGN="top"><b><a href="#BaseCountA">BASE COUNT</a></b></td>
+<td CLASS="TEXT" WIDTH="395"><p>The number of A, C, G, and T bases in a sequence.</p><hr></td>
+<td WIDTH="20" VALIGN="top"><a href="#Top"><img SRC="arrowup.gif" border="0" width="14" height="14" ALT="back to top"></a></td>
+</tr>
+</table -->
+
+<a name="OriginB"></a>
+<table border="0" cellpadding="0" cellspacing="5" width="600">
+<tbody><tr>
+<td class="TEXT" valign="top" width="175"><b><a href="#OriginA">ORIGIN</a></b></td>
+<td class="TEXT" width="395"><p>The ORIGIN may be left blank, may appear
+ as "Unreported," or may give a local pointer to the sequence start, 
+usually involving an experimentally determined restriction cleavage site
+ or the genetic
+locus (if available).  This information is present only in older 
+records.</p>
+
+<p>The sequence data begin on the line immediately below ORIGIN.  To view/save the sequence data only, display the record in <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Search&amp;db=Nucleotide&amp;term=U49845[pacc]&amp;doptcmdl=FASTA" target="one">FASTA format</a>.  A <a href="http://www.ncbi.nlm.nih.gov/BLAST/fasta.html" target="one">description</a> of FASTA format is accessible from the <a href="http://www.ncbi.nlm.nih.gov/BLAST/" target="one">BLAST</a> Web pages.</p></td>
+<td valign="top" width="20"><a href="#Top"><img src="samplerecord_fichiers/arrowup.gif" alt="back to top" border="0" height="14" width="14"></a></td>
+</tr>
+</tbody></table>
+<br>
+
+<!-- =========== END TABLE ============== -->
+
+
+<!-- HR SIZE=5 NOSHADE -->
+<!-- ===================END_OF_CONTENT============================ -->
+
+<table bgcolor="#003366" border="0" cellpadding="3" cellspacing="0" width="100%">
+<tbody><tr align="CENTER">
+
+<td width="20%"><a href="mailto:info@ncbi.nlm.nih.gov" class="BAR">Help Desk</a></td>
+
+<td width="20%"><a href="http://www.ncbi.nlm.nih.gov/" class="BAR">NCBI</a></td>
+
+<td width="20%"><a href="http://www.nlm.nih.gov/" class="BAR">NLM</a></td>
+
+<td width="20%"><a href="http://www.nih.gov/" class="BAR">NIH</a></td>
+
+<td width="20%"><a href="http://www.ncbi.nlm.nih.gov/Sitemap/credits.html" class="BAR">Credits</a></td>
+
+</tr>
+</tbody></table>
+
+<table bgcolor="#FFFFFF" border="0" cellpadding="3" cellspacing="0" width="100%">
+<tbody><tr>
+<td>
+<p><i><font size="2">Revised October 23, 2006</font></i><br>
+<font size="2"><i>Questions about NCBI resources to</i> &nbsp;<a href="mailto:info@ncbi.nlm.nih.gov">info@ncbi.nlm.nih.gov</a></font><br>
+<font size="2"><i>Comments about site map to Renata Geer</i> &nbsp;<a href="mailto:renata@ncbi.nlm.nih.gov">renata@ncbi.nlm.nih.gov</a></font></p>
+<p><font size="2"><a href="http://www.ncbi.nlm.nih.gov/About/disclaimer.html">Disclaimer</a></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="2"><a href="http://www.nlm.nih.gov/privacy.html">Privacy statement</a></font></p>
+</td>
+</tr>
+</tbody></table>
+
+
+
+</body></html>

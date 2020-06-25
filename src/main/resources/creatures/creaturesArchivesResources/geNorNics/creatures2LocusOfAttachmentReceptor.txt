@@ -1,0 +1,85 @@
+Organ			Tissue						Site
+00 - Brain		00 - Perceptible i/ps		00 - Threshold
+				01 - Drive i/ps				01 - Leakage
+				02 - Stim Source i/ps		02 - Gain
+				03 - Verb i/ps				03 - Den(0) relax susceptibility
+				04 - Noun i/ps				04 - Den(0) relax STW
+				05 - General Sensory i/ps	05 - Den(0) relax LTW
+				06 - Decision o/ps			06 - Den(0) Strength gain rate
+				07 - Attention/Seek o/ps	07 - Den(0) Strength loss rate
+				08 - Concept				08 - Den(1) relax susceptibility
+				09 - Lobe 9					09 - Den(1) relax STW
+											0A - Den(1) relax LTW
+											0B - Den(1) Strength gain rate
+											0C - Den(1) Strength loss rate
+											0D - Chemical 0
+											0E - Chemical 1
+											0F - Chemical 2
+											10 - Chemical 3
+											11 - Chemical 4
+											12 - Chemical 5
+											13 - Cell(0 State
+											14 - Cell(1) State
+											15 - Cell(2) State
+											16 - Cell(3) State
+											17 - Cell(4) State
+											18 - Cell(5) State
+											19 - Cell(6) State
+											1A - Cell(7) State
+											1B - Cell(8) State
+											1C - Cell(9) State
+											1D - Cell(10) State
+											1E - Cell(11) State
+											1F - Cell(12) State
+01 - Creature	00 - Somatic				00 - Become a child
+											01 - Enter puberty
+											02 - Become young adult
+											03 - Become adult
+											04 - Become old
+											05 - Become senile
+											06 - Die of old age
+				02 - Reproductive			00 - Become fertile if high
+											01 - Receptive to sperm if > 0
+				04 - Sensorimotor			00 - Involuntary action 0 (flinch)
+											01 - Involuntary action 1 (lay egg)
+											02 - Involuntary action 2 (sneeze)
+											03 - Involuntary action 3 (cough)
+											04 - Involuntary action 4 (shiver)
+											05 - Involuntary action 5 (sleep)
+											06 - Involuntary action 6 (languish)
+											07 - Involuntary action 7
+											08 - Normal walk gait (DO NOT USE)
+											09 - Special gait 1n (in pain)
+											0A - Special gait 2 (limping)
+											0B - Special gait 3 (frightened)
+											0C - Special gait 4 (angry)
+											0D - Special gait 5 (sleepy)
+											0E - Special gait 6 (tired)
+											0F - Special gait 7 (stagger)
+											10 - Special gait 8 (downhill)
+											11 - Special gait 9 (uphill)
+											12 - Special gait 10 (back off)
+											13 - Special gait 11 (wander)
+											14 - Special gait 12 (run)
+											15 - Special gait 13 (scuttle)
+											16 - Special gait 14 (dance)
+				05 - Drive					00 - Pain
+											01 - Need for pleasure
+											02 - Hunger
+											03 - Coldness
+											04 - Hotness
+											05 - Tiredness
+											06 - Sleepiness
+											07 - Loneliness
+											08 - Crowded
+											09 - Fear
+											0A - Boredom
+											0B - Anger
+											0C - Sex drive
+											0D - Injury
+											0E - Suffocation
+											0F - Thirst
+											10 - Stress
+02 - Body		00 - Organ					00 - Clock rate
+											01 - Repair rate
+											02 - Injury 

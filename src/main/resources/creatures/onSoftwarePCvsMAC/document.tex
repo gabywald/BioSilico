@@ -1,0 +1,306 @@
+\documentclass[11pt,twoside,a4paper]{article}
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/latex_maths+pix/node6.html symboles de math
+% http://fr.wikibooks.org/wiki/Programmation_LaTeX Programmation latex (wikibook)
+%=========================== En-Tete =================================
+%--- Insertion de paquetages (optionnel) ---
+\usepackage[french]{babel}   % pour dire que le texte est en fran{\'e}ais
+\usepackage{a4}	             % pour la taille   
+\usepackage[T1]{fontenc}     % pour les font postscript
+\usepackage{epsfig}          % pour gerer les images
+%\usepackage{psfig}
+\usepackage{amsmath, amsthm} % tres bon mode mathematique
+\usepackage{amsfonts,amssymb}% permet la definition des ensembles
+\usepackage{float}           % pour le placement des figure
+\usepackage{verbatim}
+
+\usepackage{longtable} % pour les tableaux de plusieurs pages
+
+\usepackage[table]{xcolor} % couleur de fond des cellules de tableaux
+
+\usepackage{lastpage}
+
+\usepackage{multirow}
+
+\usepackage{multicol} % pour {\'e}crire dans certaines zones en colonnes : \begin{multicols}{nb colonnes}...\end{multicols} 
+
+% \usepackage[top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+% gauche, haut, droite, bas, entete, ente2txt, pied, txt2pied
+\usepackage{vmargin}
+\setmarginsrb{1.00cm}{1.00cm}{1.00cm}{1.00cm}{15pt}{3pt}{50pt}{20pt}
+
+\usepackage{lscape} % changement orientation page
+%\usepackage{frbib} % enlever pour obtenir references en anglais
+% --- style de page (pour les en-tete) ---
+\pagestyle{empty}
+
+\def\txtTITLE{TITRE} %%%%% !! TITRE !! %%%%%
+\def\imgCORNER{\includegraphics[width=0.25cm]{../../../imgGraphics/logos/glider/logo-glider.png}}
+
+\def\imgGLIDERLEFTT{\includegraphics[width=1.95cm]{../../../imgGraphics/logos/glider/logo-glider-left.png}}
+\def\imgGLIDERRIGHT{\includegraphics[width=1.95cm]{../../../imgGraphics/logos/glider/logo-glider-right.png}}
+
+\def\imgGLIDERLEFTTsmall{\includegraphics[width=0.25cm]{../../../imgGraphics/logos/glider/logo-glider-left.png}}
+\def\imgGLIDERRIGHTsmall{\includegraphics[width=0.25cm]{../../../imgGraphics/logos/glider/logo-glider-right.png}}
+
+%--- Definitions de nouvelles couleurs ---
+\definecolor{verylightgrey}{rgb}{0.8,0.8,0.8}
+\definecolor{verylightgray}{gray}{0.80}
+\definecolor{lightgrey}{rgb}{0.6,0.6,0.6}
+\definecolor{lightgray}{gray}{0.6}
+
+% % % en-tete et pieds de page configurables : fancyhdr.sty
+
+% http://www.trustonme.net/didactels/250.html
+
+% http://ww3.ac-poitiers.fr/math/tex/pratique/entete/entete.htm
+% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+%% \usepackage{fancyhdr}
+%% \pagestyle{fancy}
+%% \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+%% \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+%% \fancyhf{}
+%% \fancyhead[LE,RO]{\bfseries\thepage}
+%% \fancyhead[LO]{\bfseries\rightmark}
+%% \fancyhead[RE]{\bfseries\leftmark}
+%% \fancyfoot[LE]{\thepage /\pageref{LastPage} \hfill
+%% 	\scriptsize{\txtTITLE} % TITLE
+%% \hfill \imgGLIDERLEFTTsmall }
+%% \fancyfoot[RO]{\imgGLIDERRIGHTsmall \hfill
+%% 	\scriptsize{\txtTITLE} % TITLE
+%% \hfill \thepage /\pageref{LastPage}}
+%% \renewcommand{\headrulewidth}{0.5pt}
+%% \renewcommand{\footrulewidth}{0.5pt}
+%% \addtolength{\headheight}{0.5pt}
+%% % \fancypagestyle{plain}{
+%% 	% \fancyhead{}
+%% 	% \renewcommand{\headrulewidth}{0pt}
+%% % }
+
+\usepackage{lettrine}
+\usepackage{fancybox}
+
+\title{\txtTITLE}
+\date{ --- }
+
+%============================= Corps =================================
+\begin{document}
+
+%% \fancypagestyle{plain}
+
+\setlength\parindent{0pt} % \noindent for all document
+
+-- https://groups.google.com/group/alt.games.creatures/browse\_thread/thread/2f6d97fc0f5a0399?hl=fr\&noredirect=true\&fwc=1 --
+
+\begin{multicols*}{2}
+	\footnotesize
+ 
+
+On software and PC vs Mac
+		
+
+	  	10 messages - Tout d{\'e}velopper  -  Traduire tous les contenus en Fran\c{c}ais 	
+	
+		
+~\\ ~\\ ~\\ \textbf{Mike Davisson -- -- -- 15 feb 1998, 10:00}~\\
+
+I think there's an underlying issue here that hasn't been addressed:~\\
+Why is it that PCs and Macs are so incompatible in the first place? Someday, computer manufacturers and companies that make operating systems will have to realize that, while people may prefer one kind of computer over another, or one operating system over another, it's really the PROGRAMS that make having a computer worthwhile. ~\\
+Who would want a brand new Pentium 800 if no software could be run on it? ~\\
+Would would want a super new Windows 4000 operating system if nobody made software that works with it?~\\
+Companies like Intel, Microsoft, and Apple should realize that cross-compatibility ought to be a requirement for any new kind of computer or operating system--make it so that new software can easily be used on any system, or at least be easily convertible to a new system.  (And it is possible to do this and still remain competitive.  I know not much about cars, but I know that it's usually possible to replace any part with any other kind of part. When I replaced my windshield wipers last year, I didn't have to go buy the Ford Brand Windshield Wipers!)~\\
+I'm sure that companies such as Cyberlife would love nothing more than to be able to develop a super new game and be able to send it out in all possible formats.  It's a shame that the people who make computers and operating systems don't make this possible.~\\
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{King Family -- -- -- 15 feb 1998, 10:00}~\\
+
+windows: go mac run go!~\\
+mac: no no no window go!~\\
+windows: norn come, norn push mac, mac go!~\\
+norn: norn push mac mac bad bad mac mac go!~\\
+mac: no norn, no windows, no no no!  go windows go norn go go go!~\\
+windows:bye mac bye~\\
+norn:get mac norn push mac bye mac bye.~\\
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{Shy Puppy -- -- -- 15 feb 1998, 10:00}~\\
+
+In article <01bd3a33$a7914320$868c8...@inlink.com>, "Mike Davisson" <mi...@inlink.com> wrote:~\\
+\emph{> I think there's an underlying issue here that hasn't been addressed: Why is it that PCs and Macs are so incompatible in the first place? Someday, computer manufacturers and companies that make operating systems will have to realize that, while people may prefer one kind of computer over another, or one operating system over another, it's really the PROGRAMS that make having a computer worthwhile. }~\\
+
+Look out for Apple's new OS "Rhapsody" ...   hopefully it will help alleviate most of these problems!~\\
+
+Someone mentioned that Creatures should be written for Rhapsody.  YEAH! But, Cyberlife will want to make sure there's a market for it first - that will take a while.~\\
+
+SP
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{rajamaki -- -- -- 15 feb 1998, 10:00}~\\
+
+ "Mike Davisson" <mi...@inlink.com> wrote:~\\
+...~\\
+
+Well, Apple is making a new operating system code-named Rhapsody that can run on Intel-type and PowerPC processors. No, that's not true, they are making 2 version of Rhapsody, one for Intel-type processros and the other for powerpcs.The great thing is that a company will have to write only one version of a program, and it can be run on both platforms if Rhapsody is installed :-) Now of course whether Rhapsody takes off depends on how eager companies are to write programs for it in the first place. I know Adobe have commited to porting their software over.~\\
+
+later, Sandy~\\
+-----------------~\\
+MacNorns - \texttt{http://www.crosswinds.net/brussels/\textasciitilde rajamaki}~\\
+
+-----== Posted via Deja News, The Leader in Internet Discussion ==-----~\\
+http://www.dejanews.com/   Now offering spam-free web-based newsreading~\\
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{Mike Davisson -- -- -- 16 feb 1998, 10:00}~\\
+
+I didn't know that.  It sounds like a good start. The only problem I see is that people dependent on the original Windows or Mac operating systems may not be able to use Rhapsody, but that problem would go away over time.~\\
+I guess another thing that could happen is, if Rhapsody does well, Microsoft may murky things up by making a new operating system to compete with it, and stupidly make it non-compatiable.  Then it would just be the same thing all over again.  :/~\\
+
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{Sean Ahern -- -- -- 16 feb 1998, 10:00}~\\
+
+On 15 Feb 1998 16:49:58 GMT, "Mike Davisson" <mi...@inlink.com> wrote:~\\
+\emph{>I think there's an underlying issue here that hasn't been addressed:}~\\
+\emph{>Why is it that PCs and Macs are so incompatible in the first place?}~\\
+
+   Different processors.   Different operating systems.  Different hardware.~\\
+   Its like asking why diesel and pertrol cars are incompatible, Im afraid.  Because they're incompatible.~\\  
+
+\emph{> Someday, computer manufacturers and companies that make operating systems will have to realize that, while people may prefer one kind of computer over another, or one operating system over another, it's really the PROGRAMS that make having a computer worthwhile.}~\\
+
+And since the makers of the most populat mainstream OS are the makers of the most popular office applications...~\\
+  y'think they gonna complain?~\\
+
+\emph{> Who would want a brand new Pentium 800 if no software could be run on it? Would would want a super new Windows 4000 operating system if nobody made software that works with it?}~\\
+
+   Yeah but it doesnt work like that, does it.  Intel make chips which are compatible with older Intel chips.  Older Intel chips already have an installed software base.~\\
+
+\emph{> Companies like Intel, Microsoft, and Apple should realize that cross-compatibility ought to be a requirement for any new kind of computer or operating system--make it so that new software can easily be used on any system, or at least be easily convertible to a new system.}~\\
+
+   Excuse me?  Microsoft 'ought to'?  Sorry mate.  The only thing MS reckon they ought to do is subvert, rewrite, or replace every standard going with one of their own...~\\
+
+  (And it is possible to do this and still remain~\\
+
+\emph{> competitive.  I know not much about cars, but I know that it's usually possible to replace any part with any other kind of part. When I replaced my windshield wipers last year, I didn't have to go buy the Ford Brand Windshield Wipers!)}~\\
+
+   Try that with the exhaust manifold.~\\
+
+\emph{> I'm sure that companies such as Cyberlife would love nothing more than to be able to develop a super new game and be able to send it out in all possible formats.  It's a shame that the people who make computers and operating systems don't make this possible.}~\\
+
+  Course not.  S'called world domination, innit guv.~\\
+
+                Sean~\\
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{Mike Davisson -- -- -- 17 feb 1998, 10:00}~\\
+
+Good points, although I still think it should be possible.~\\
+I'm not going to apologize for living in an idealistic dreamworld.~\\
+\{And I SAID I don't know much about cars! :)\}~\\
+\{Also, sorry if you see this message twice.  I never see my messages come up if they're over a certain length.\}~\\
+
+Sean Ahern <wrd...@clara.net> wrote in article %% <34e891bb.2368...@news.clara.net>...
+\emph{> On 15 Feb 1998 16:49:58 GMT, "Mike Davisson" <mi...@inlink.com> wrote:}~\\
+\emph{> >I think there's an underlying issue here that hasn't been addressed:}~\\
+\emph{> >Why is it that PCs and Macs are so incompatible in the first place?}~\\
+\emph{> Different processors.   Different operating systems.  Different hardware.}~\\
+\emph{> Its like asking why diesel and pertrol cars are incompatible, Im afraid.  Because they're incompatible.}~\\  
+
+\{Sorry, I have to trim because my newsgroup message-sender hates me.\}
+
+	
+	
+		
+~\\ ~\\ ~\\ \textbf{Fred Haineux -- -- -- 18 feb 1998, 10:00}~\\
+		
+Here's a long message about software engineering and design, which is what the original author seems to be inquiring about.~\\
+
+There's a computer industry saying, "The best thing about standards is that there's so many to choose from." Computers have various standards, and that doesn't stop anyone from making up new standards, certainly not Microsoft, which is happy to declare whatever their programmers have schlepped up as "standard" because it's "standard" on Windows 95.~\\
+
+But as people have noted, computers have vastly different hardware, and that hardware forces software to adapt. The chip inside PowerMacs, called PowerPC, is almost completely unlike the chip inside Windows machines, called Pentium.~\\
+
+Now, the funny thing is that Windows computers are the most incompatible set of computers ever thought up. This is because IBM wanted to keep control of the PC, but lost out, because Microsoft sold them out, and instead of having something resembling a controlling organization, hundreds and thousands of companies each went off in different directions making different PC stuff.~\\
+
+Microsoft has therefore adopted the enormous burden of supporting a zillion different kinds of hardware, and somehow making it all work together, even when that hardware is not even compatible with its own specification, nevermind anything else ever made. (This is why there are so many "voodoo windows" books.)~\\
+
+Microsoft deserves a LOT of credit for this. After all, although one-third of the PC installed base could not be made to run Windows 95 at all, and another one-third could only run it if you replaced hardware, that still means that Win95 supports several HUNDRED kinds of supposedly-but-not-actually compatible kinds of (for example) video cards, disk drive cards, memory cards, etc. The possibilities are mind-boggling.~\\
+
+Over the years, Apple has adopted some of the hardware things (such as the PCI bus, video cards, etc) that Windows PCs use. But there are fundamentally some things that haven't been made compatible, and they boil down to two things:~\\
+1) the operating system that the programs use, sometimes called the "OS APIs" (operating system applications programming interfaces);~\\
+2) the processor chip "machine language."~\\
+
+Still there are ways to make things compatible. And anyway, as people have said, there are several "cross platform" efforts going.~\\
+
+One is Java. It is not fast, yet, so it's kind of out of the question for Creatures, which requires a lot of computer to work. However, Java, if it were fast and stable enough, would be a fabulous solution, because you write just one application, compile it once, and then have it run anywhere. That's what's called OBJECT CODE compatible. (It solves both problems at once.)~\\
+
+A LOT of programmers want this, and believe me, many operating system companies, including Apple, Sun, and just about every company except Microsoft, wants it, too. The only problem: it isn't fast or stable, yet, and there's no telling when it will be.~\\
+
+Another approach is Rhapsody from Apple[1]. The idea is that only the SOURCE CODE would be compatible[2]. So let's say Cyberlife writes Creatures 3 in Rhapsody, and they then compiles it with Intel and PowerPC compilers. They ship both programs, which don't contain the same object code, but do contain the same source code.~\\
+
+Developers can already begin using Rhapsody, and ship real apps on several platforms. It is fast, and it is pretty stable. It's almost done, but not quite yet. Things like this take a LONG time to develop. There's a LOT of code involved.~\\
+
+There are other possibilities similar to Rhapsody. One WAS MFC, the Microsoft Foundation Classes. Theoretically, it would be the same story as Rhapsody -- write once, compile a bunch of times, run in bunches of places. This is what Creatures is written in, now. The problem is that Microsoft has not provided good support for these classes on Mac, and recently decided to stop supporting Macintosh MFC entirely. (Apparently, they are allowed to do this.)~\\
+
+Creatures was one "victim" of MFC. The Creatures people, who are not Mac experts, trusted Microsoft MFC to help them make a Mac version. The result was, well, not perfect. Because Cyberlife doesn't have Macintosh programmers, and because MFC has deserted them, the future of Mac Creatures is dim, indeed.~\\
+
+What can we do now? Not much. Hope that someone produces a Creatures-like product for Mac, and use that instead.~\\
+
+bc
+
+\[1\] There are actually several different things currently called "Rhapsody." This is because the different things don't have real names yet, and the group developing the different things is "The Rhapsody Group." This "cross platform API" thing is one of the Rhapsody things.~\\
+\[2\]  By building a "layer" on top of the hardware and the OS and making both computers have this layer, programs could write one piece of code that would work in several places. (For those keeping track, this is called a "cross-platform API".) It solves the first, Operating Sytem API part of the problem. It doesn't solve the second, Machine Language part of the problem, but that problem is a lot easier to solve.~\\ 
+	
+		
+~\\ ~\\ ~\\ \textbf{Mike Davisson -- -- -- 20 feb 1998, 10:00}~\\
+
+Thanks.  That informed me of several things I didn't know. . .~\\
+
+I figured Microsoft was a major culprit in all this.~\\
+
+I envision a future where computers, as well as other mechanical/electronic things, and also software, can be put together like Legos.~\\
+(Although with my luck, different companies will put out "Legos," "Loc-Blocs," "Fun Briks," "Lok Bloks," etc.)~\\
+
+Fred Haineux <b...@wetware.com> wrote in article <bc-1802982111270...@cappella.apple.com>...
+\emph{> Here's a long message about software engineering and design, which is what the original author seems to be inquiring about.}~\\
+\emph{> There's a computer industry saying, "The best thing about standards is that there's so many to choose from." Computers have various standards, and that doesn't stop anyone from making up new standards, certainly not Microsoft, which is happy to declare whatever their programmers have schlepped up as "standard" because it's "standard" on Windows 95.}~\\
+
+\{Sorry, I have to trim most of your message because of a problem I have.\}
+
+ 
+		
+	
+		
+~\\ ~\\ ~\\ \textbf{Fred Haineux -- -- -- 23 feb 1998, 10:00}~\\
+
+"Mike Davisson" <mi...@inlink.com> wrote:
+\emph{> I envision a future where computers, as well as other mechanical/electronic things, and also software, can be put together like Legos.}~\\ 
+\emph{> (Although with my luck, different companies will put out "Legos," "Loc-Blocs," "Fun Briks," "Lok Bloks," etc.)}~\\
+
+I agree with you, Mike. I would also like there to be "Lego-like" computers. Computers connect via "standards" (which is like the sum of the hardware and the software), and some standards are pretty well supported in all camps.~\\
+
+Apple recently designed a new standard, which is called IEEE-1944 "FireWire", which allows you to connect your monitor to your hard drive to your second monitor to your cpu box to your power supply to your keyboard, etc etc etc, with the same exact cable, just like a LEGO(R) computer.~\\
+
+I hear it's *slightly* popular in the PC camp, which is fine by me! More stuff that I can connect to my Mac. (Oh yes, there's also USB "Universal Serial Bus", which is kindof like FireWire Junior. Same idea, though.)~\\
+
+bc 
+
+\end{multicols*}
+
+\end{document}

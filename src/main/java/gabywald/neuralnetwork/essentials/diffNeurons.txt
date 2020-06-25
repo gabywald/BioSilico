@@ -1,0 +1,218 @@
+1,3c1
+< package gabywald.neuralnetwork.essentials.version1;
+< 
+< import gabywald.neuralnetwork.view.version1.NeuronButton;
+---
+> package gabywald.neuralnetwork.essentials.version2;
+25,27c23
+< 	/** studyGain,studyLoss,studyPosRecept,studyNegRecept */
+< 	private boolean[] studies;
+< 	
+---
+> 
+30c26
+< 	
+---
+> 
+33c29
+< 	
+---
+> 
+42,46c38
+< 		
+< 		this.studies		= new boolean[4];
+< 		for (int i = 0 ; i < this.studies.length ; i++) 
+< 			{ this.studies[i] = false; }
+< 		
+---
+> 
+51c43
+< 	
+---
+> 
+59a52,57
+> 
+> 	public int getDistance(Neuron other) 
+> 		{ return this.getDistance(other.posX, other.posY); }
+> 
+> 	public static int getDistance(Neuron un, Neuron de) 
+> 		{ return un.getDistance(de); }
+60a59,60
+> 	public Neuron[] getInputs() { return this.inputs; }
+> 
+66c66
+< 			{ this.weights[i] = 1.0; }
+---
+> 		{ this.weights[i] = 1.0; }
+68c68
+< 	
+---
+> 
+71c71
+< 	
+---
+> 
+87c87
+< 	
+---
+> 
+106a107,109
+> 
+> 	public void activate()					
+> 		{ this.active = true; }
+107a111,116
+> 	public void activateWith(double data)	{ 
+> 		this.active = (data >= this.threshold);
+> 		this.changeAndNotify();
+> 		// System.out.println("\t"+data+"\t"+this.active+"\t"+this.output());
+> 	}
+> 
+109d117
+< 		// if (this.posX == 0) { return; }
+112d119
+< 			/** this.inputs[i].compute(); */ /** AVOID border effects. */
+113a121
+> 			/** compute is done separately to avoid border effects. */
+115a124,128
+> 		
+> 		/** if (this.active) 
+> 		 * { System.out.println("\t"+this.toStringCoordinates()
+> 		 * +" : "+this.output()); } */
+> 		
+116a130
+> 		
+118d131
+< 
+120c133,136
+< 	
+---
+> 
+> 	public double output() 
+> 		{ return (this.active)?this.outputIfActive:0; }
+> 
+127,136c143,148
+< 			if (this.studies[0]) {
+< 				/** This input is enough to activate : gain of weight (10%). */ 
+< 				if (this.inputs[i].output() > this.threshold) 
+< 					{ this.weights[i] += (this.weights[i]/100) * (10/distance); /** 1 || this.weights[i]/10.0 */; }
+< 			}
+< 			if (this.studies[1]) {
+< 				/** This input is not activated : loss of weight (10%). */
+< 				if (this.inputs[i].output() == 0) 
+< 					{ this.weights[i] -= (this.weights[i]/100) * (50/distance); }
+< 			}
+---
+> 			/** This input is enough to activate : gain of weight (10%). */ 
+> 			if (this.inputs[i].output() > this.threshold) 
+> 				{ this.increaseWeight(i, distance); }
+> 			/** This input is not activated : loss of weight (10%). */
+> 			if (this.inputs[i].output() == 0) 
+> 				{ this.decreaseWeight(i, distance); }
+140c152
+< 		
+---
+> 
+142,156c154,162
+< 		if (this.studies[2]) {
+< 			/** Value gets better if activator and active. */
+< 			if ( (this.activator) && (this.active) ) 
+< 				{ this.outputIfActive++; }
+< 			/** Value gets lesser if inhibiter and active. */
+< 			if ( (!this.activator) && (this.active) ) 
+< 				{ this.outputIfActive--; }
+< 		}
+< 		
+< 		if (this.studies[3]) {
+< 			if ( (this.inputLength < 2) && (this.posX != 0) ) { 
+< 				this.addInput(this.brain.getNeuron(this.posX-1, this.posY));
+< 				System.out.println("Add an input !! "+this.toStringCoordinates());
+< 			}
+< 		}
+---
+> 		/** Value gets better if activator and active. */
+> 		if ( (this.activator) && (this.active) ) 
+> 			{ this.outputIfActive++; }
+> 		/** Value gets lesser if inhibiter and active. */
+> 		if ( (!this.activator) && (this.active) ) 
+> 			{ this.outputIfActive--; }
+> 
+> 		if ( (this.inputLength <= 5) && (this.posX != 0) ) 
+> 			{ this.addInput(this.brain.getNeuron(this.posX-1, this.posY)); }
+159,166c165,167
+< 	public double output() 
+< 		{ return (this.active)?this.outputIfActive:0; }
+< 	
+< 	public void activate()					{ this.active = true; }
+< 	
+< 	public void activateWith(double data)	{ 
+< 		this.active = (data >= this.threshold);
+< 		this.changeAndNotify();
+---
+> 	private void increaseWeight(int i, int distance)  { 
+> 		if (distance > 0) 
+> 			{ this.weights[i] += (this.weights[i]/100) * (10/distance); }
+168d168
+< 	public void setOutput(double output)	{ this.outputIfActive = output; }
+170,173c170,172
+< 	
+< 	public void activateStudy(int i) {
+< 		if ( (i >= 0) && (i < this.studies.length) ) 
+< 			{ this.studies[i] = true; }
+---
+> 	private void decreaseWeight(int i, int distance)  { 
+> 		if (distance > 0) 
+> 			{ this.weights[i] -= (this.weights[i]/100) * (10/distance); }
+176,184c175,177
+< 	
+< 	
+< 	public void addNeuronButtonObserver(NeuronButton button) 
+< 		{ this.addObserver(button); }
+< 	
+< 	public void changeAndNotify() {
+< 		// System.out.println("\t"+this.active+"\t"+this.threshold+"\t"+this.outputIfActive);
+< 		this.setChanged();
+< 		this.notifyObservers();
+---
+> 	public void increaseAllWeights(int distance) {
+> 		for (int i = 0 ; i < this.inputLength ; i++) 
+> 			{ this.increaseWeight(i, distance); }
+187,191c180
+< 	public Neuron[] getInputs() 
+< 		{ return this.inputs; }
+< 	
+< 	public Neuron[] getInputsNotNull() {
+< 		int count = 0;
+---
+> 	public void decreaseAllWeights(int distance) {
+193,200c182
+< 			{ if (this.inputs[i] != null) { count++; } }
+< 		Neuron[] res = new Neuron[count];
+< 		for (int i = 0 ; i < this.inputLength ; i++) {
+< 			if ( (this.inputs[i] != null) 
+< 					&& (count < res.length) ) 
+< 				{ res[count++] = this.inputs[i]; }
+< 		}
+< 		return res;
+---
+> 			{ this.decreaseWeight(i, distance); }
+202c184,186
+< 	
+---
+> 
+> 	public int getInputLength() { return this.inputLength; }
+> 
+204c188
+< 		{ return "("+this.posX+", "+this.posY+") "; }
+---
+> 		{ return "("+this.posX+", "+this.posY+")"; }
+211c195,196
+< 			{ result += (this.inputs[i]!=null)?"\t"+this.weights[i]+"\t"+this.inputs[i].toStringCoordinates()+"\n":"\n"; }
+---
+> 			{ result += (this.inputs[i]!=null)?"\t"+this.weights[i]+"\t"
+> 							+this.inputs[i].toStringCoordinates()+"\n":"\n"; }
+215a201,205
+> 	
+> 	public void changeAndNotify() {
+> 		this.setChanged();
+> 		this.notifyObservers();
+> 	}

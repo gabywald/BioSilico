@@ -1,0 +1,211 @@
+https://eutils.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html
+
+++ https://www.ncbi.nlm.nih.gov/entrez/query/static/esoap_help.html
+
+++ https://eutils.ncbi.nlm.nih.gov/corehtml/query/static/efetchseq_help.html
+
+ESearch
+Last updated: December 17, 2008
+
+ESearch:  Searches and retrieves primary IDs (for use in EFetch, ELink and ESummary) and term translations, and optionally retains results for future use in the user's environment.
+
+    URL Parameters
+        Database
+        History  Web Environment  Query_key Tool  E-mailAddress
+            PubMed
+                Search Terms  Search Field  Relative Dates  Date Ranges  Date Type  Display Numbers  Retrieval Mode  Retrieval Type  Sort  Examples
+            Journals Example
+            PubMed Central Example
+            Sequence Database Example
+    User System Requirements
+    Entrez DTDs
+    Demonstration Program
+    Announcement Mailing List
+    Help Desk
+
+Base URL: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?
+URL parameters: (Note: utility parameters may be case sensitive. Use lower case characters in all parameters except for WebEnv.
+
+Database:
+
+    db=database name
+
+Entrez database values available from EInfo PubMed is the default db.
+
+History: Requests utility to maintain results in user's environment. Used in conjunction with WebEnv.
+
+    usehistory=y
+
+Web Environment: Value previously returned in XML results from ESearch or EPost. This value may change with each utility call. If WebEnv is used, History search numbers can be included in an ESummary URL, e.g., term=cancer+AND+%23X (where %23 replaces # and X is the History search number).
+
+    WebEnv=WgHmIcDG]B etc.
+
+Query_key:  The value used for a history search number or previously returned in XML results from ESearch or EPost.
+
+    query_key=6
+
+Note: WebEnv is similar to the cookie that is set on a user's computers when accessing PubMed on the web.  If the parameter usehistory=y is included in an ESearch URL both a WebEnv (cookie string) and query_key (history number) values will be returned in the results. Rather then using the retrieved PMIDs in an ESummary or EFetch URL you may simply use the WebEnv and query_key values to retrieve the records. WebEnv will change for each ESearch query, but a sample URL would be as follows:
+
+http://www.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed
+&WebEnv=%3D%5DzU%5D%3FIJIj%3CC%5E%5DA%3CT%5DEACgdn%3DF%5E%3Eh
+GFA%5D%3CIFKGCbQkA%5E_hDFiFd%5C%3D
+&query_key=6&retmode=html&rettype=medline&retmax=15
+
+Tool: A string with no internal spaces that identifies the resource which is using Entrez links (e.g., tool=flybase). This argument is used to help NCBI provide better service to third parties generating Entrez queries from programs. As with any query system, it is sometimes possible to ask the same question different ways, with different effects on performance. NCBI requests that developers sending batch requests include a constant 'tool' argument for all requests using the utilities.
+
+    tool=
+
+E-mail Address: If you choose to provide an email address, we will use it to contact you if there are problems with your queries or if we are changing software interfaces that might specifically affect your requests. If you choose not to include an email address we cannot provide specific help to you,  but you can still sign up for utilities-announce to receive general announcements.
+
+    email=
+
+PubMed:
+
+Search terms: This command uses search terms or phrases with or without Boolean operators.  See the PubMed or Entrez help for information about search field descriptions and tags. Search fields and tags are database specific.
+
+    term=search strategy
+
+For example:
+
+            term=asthma[mh]+OR+hay+fever[mh]
+
+You may also tag search terms using field=tag.
+
+Search Field: Use this command to specify a specific search field.
+
+    field=
+
+PubMed fields: affl, auth, ecno, jour, iss, mesh, majr, mhda, page, pdat, ptyp, si, subs, subh, tiab, word, titl, lang, uid, fltr, vol
+
+Relative Dates: Limit items a number of days immediately preceding today's date.
+
+    reldate=
+
+For example:
+
+    reldate=90
+    reldate=365
+
+Date Ranges:  Limit results bounded by two specific dates. Both mindate and maxdate are required if date range limits are applied using these variables.
+
+    mindate=
+    maxdate=
+
+For example:
+
+    mindate=2001
+    maxdate=2002/01/01
+
+Date Type:  Limit dates to a specific date field based on database.
+
+    datetype=
+
+For example:
+
+    datetype=edat 
+
+Display Numbers:
+
+    retstart=x  (x= sequential number of the first record retrieved - default=0 which will retrieve the first record)
+    retmax=y  (y= number of items retrieved)
+
+Retrieval Mode:
+
+    retmode=xml
+
+Use your web browser's View Page Source function to display results. Results are only available in XML; use in conjunction with Web Environment and EFetch to display data in text format.
+
+Retrieval Type:
+
+    rettype=
+
+PubMed values:
+
+    count
+    uilist (default)
+
+Sort:
+
+           sort=
+
+Use in conjunction with Web Environment to display sorted results in ESummary and EFetch.
+
+PubMed values:
+
+    author
+    last+author
+    journal
+    pub+date
+
+Gene values:
+
+    Weight
+    Name
+    Chromosome
+
+ Examples:
+Search in PubMed for the term cancer for the entrez date from the last 60 days and retrieve the first 100 IDs and translations using the history parameter:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=cancer&reldate=60&datetype=edat&retmax=100&usehistory=y
+
+Search in PubMed for the journal PNAS Volume 97, and retrieve 6 IDs starting at ID 7 using a tool parameter:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=PNAS[ta]+AND+97[vi]&retstart=6&retmax=6&tool=biomed3
+
+Search in Journals for the term obstetrics:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=journals&term=obstetrics
+
+Search in PubMed Central for stem cells in free fulltext articles:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term=stem+cells+AND+free+fulltext[filter]
+
+ 
+
+Search in Nucleotide for a property of the sequence:
+
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nucleotide&term=biomol+trna[prop]
+
+ 
+
+Search in Protein for a molecular weight:
+
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=protein&term=200020[molecular+weight]
+
+
+
+
+
+
+++ nucleotide
+Retrieval Type:
+
+output types based on database
+
+Note: Not all Retrieval Modes are possible with all Retrieval Types.
+
+Sequence Options:
+rettype 	scope 	retmode 	Comment
+xml 	text 	html* 	asn1
+native (full record) 	all but gene 	x 	x 	x 	x 	Default report for viewing sequences
+fasta 	sequence only 	x 	x 	x 	n/a 	FASTA view of a sequence. Existence of the mode depends on gi type
+gb 	nucleotide sequence only 	n/a 	x 	x 	n/a 	GenBank report for sequences, constructed sequences will be shown as contigs (by pointing to its parts)
+gp 	protein sequence only 	n/a 	x 	x 	n/a 	GenPept report
+gbwithparts 	nucleotide sequence only 	n/a 	x 	x 	n/a 	GenBank report for sequences, the sequence will always be shown
+gbc 	nucleotide sequence only 	n/a 	x 	x 	n/a 	INSDSeq structured flat file
+gpc 	protein sequence only 	n/a 	x 	x 	n/a 	INSDSeq structured flat file
+est 	dbEST sequence only 	n/a 	x 	x 	n/a 	EST Report
+gss 	dbGSS sequence only 	n/a 	x 	x 	n/a 	GSS Report
+seqid 	sequence only 	n/a 	x 	x 	n/a 	To convert list of gis into list of seqids
+acc 	sequence only 	n/a 	x 	x 	x 	To convert list of gis into list of accessions
+ft 	sequence only 	n/a 	x 	x 	n/a 	Feature Table report
+
+x – retrieval mode available. Click to it to run an example
+*  – the same content as text report but with some HTML links
+n/a – not available
+SNP options:
+rettype 	Descriptions
+chr 	SNP Chromosome report
+flt 	SNP Flat File report
+rsr 	SNP RS Cluster report
+brief 	SNP ID list
+docset 	SNP RS summary
+
+Example:
+    rettype=fasta 

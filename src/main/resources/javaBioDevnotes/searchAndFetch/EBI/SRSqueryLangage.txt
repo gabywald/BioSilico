@@ -1,0 +1,160 @@
+-- http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:srsquerylanguage -- 
+
+SRS Query Language Quick Guide
+Basic syntax
+
+Most SRS queries are of the form:
+
+[libName-fieldName:searchTerm]
+
+For example a search for SWISSPROT entries containing the word “protease” in their description field can be performed using this query:
+
+[SWISSPROT-description:protease]
+
+Wildcards
+
+The SRS query language support two types of wildcard * which matches zero or more characters and ? which matches a single character.
+
+For example protease* will match:
+	protease
+	protease-10
+	protease-activated
+	protease-c
+	protease-inhibitor-4
+	protease-like
+	protease/dutpase
+	protease/helicase
+	protease/hemagglutinin
+	proteases
+
+but protease? would only match:
+	proteases
+
+Retriving a specific entry
+
+If searching for a specific entry for which the SRS entry Id is known a simpler form can be used, where the search field is omitted (SRS 6+):
+	[SWISSPROT:YSP3_YEAST]
+
+In this case the field used to provide the entry Id will be searched. This is usually the field called ID, but in some cases may be another field, for example Accession for BLOCKS.
+
+Retriving a whole library
+
+When testing an parser, or for a small library it can be useful to be able to retrieve all the entries in a library.
+	GENETICCODE
+
+Searching for a range of values
+
+Range searching can only be used with int, real or date type fields. A range search is of the form:
+	[libName-fieldName#startVal:stopVal]
+
+So to find the proteins in SWISSPROT which are between 7000 and 8000 (inclusive) amino acids long the following search can be used:
+	[SWISSPROT-SeqLength#7000:8000]
+
+So to find the proteins in SWISSPROT which are between 7000 and 8000 (exclusive) amino acids long the following search can be used:
+
+	[SWISSPROT-SeqLength#!7000:!8000]
+
+To find the proteins in SWISSPROT which are 7000 or more amino acids:
+	[SWISSPROT-SeqLength#7000:]
+
+To find the proteins in SWISSPROT which are more than 7000 amino acids:
+	[SWISSPROT-SeqLength#!7000:]
+
+To find the proteins in SWISSPROT which are 3 or less amino acids:
+	[SWISSPROT-SeqLength#:3]
+
+To find the proteins in SWISSPROT which are less than 3 amino acids:
+	[SWISSPROT-SeqLength#:!3]
+
+Logical Operations
+
+The results of a query in SRS are known as a set. Sets can be combine using the logical operators & (AND), | (OR) and ! (BUTNOT).
+
+To find kinase and protease proteins, i.e. proteins which are kinase OR protease:
+	[SWISSPROT-des:kinase*]|[SWISSPROT-des:protease*]
+
+To find kinase proteins which are inhibitors:
+	[SWISSPROT-des:kinase*]&[SWISSPROT-des:inhibit*]
+
+To find kinase proteins which are not inhibitors:
+	[SWISSPROT-des:kinase*]![SWISSPROT-des:inhibit*]
+
+In the web interface the “Query Manager”/“Results”/“Query History” page shows the set names of previously performed queries. These set names can be used in the “Expression” box to build more complex queries by just using the set name:
+	Q1!(Q2|Q3)
+
+Linking
+
+The SRS query language provides operators to find entries that are releated to a result set in another databank.
+
+Find entries in TAXONOMY that are releated to entries in SWISSPROT:
+	SWISSPROT>TAXONOMY
+
+Find entries in SWISSPROT that have releated entries in TAXONOMY:
+	SWISSPROT<TAXONOMY
+
+Since these operators are used to releate sets more complex expressions can be built.
+
+Protease proteins from SWISSPROT which occur in Zebra fish (Brachydanio rerio) using TAXONOMY:
+	[SWISSPROT-all:protease]<[TAXONOMY-all:"Zebra fish"]
+
+To support databanks with an internal hierarchical structure (e.g. TAXONOMY) the query language provides tree link operators:
+
+The link leaves operator ”>_” gets only the entries that are the leaves of the tree, the name of the link used determines the direction.
+
+For example to find the most specific taxa in the genus Xenopus (TAXONOMY entry 8353):
+	[TAXONOMY-id:8353]>_tax_down
+
+For example to find the most generic taxa for the genus Xenopus (TAXONOMY entry 8353):
+	[TAXONOMY-id:8353]>_tax_up
+
+To get all the nodes in the branch the link branch operator ”>^” can be used, for example
+
+To find the all the species, including subspecies, in the genus Xenopus (TAXONOMY entry 8353):
+	[TAXONOMY-id:8353]>^tax_down
+
+To find the taxa to which the genus Xenopus (TAXONOMY entry 8353) belongs:
+	[TAXONOMY-id:8353]>^tax_up
+
+Note that unlike the other link operators the tree operators, operate on a set and a link name, not on two sets.
+Regular expressions
+
+The query language supports using a regular expression as the query term. Simple regular expressions (RE) are supported in all SRS verisons, from SRS 7.1 support has been extended to Perl compatible regular expressions (PCRE). To use a regular expression the search term must be delimited with slashes. For example:
+
+	[SWISSPROT-acc:/[pq]00040/]
+
+Which returns entries with the accession P00040 or Q00040.
+Date searching
+
+Dates are normally indexed as an 8 digit date code, e.g. 23rd October 1986 = 19861023.
+	[SWISSPROT-crd:19861023]
+
+Since they are indexed as numbers they can also be range searched:
+	[SWISSPROT-crd#19860101:19861231]
+
+They can also be searched with dates of the form 23-OCT-1986
+	[SWISSPROT-crd#1-JAN-1986:31-DEC-1986]
+
+Author searching
+
+The convention in SRS is to reformat author names into Surname,Initals. For example:
+	[SWISSPROT-aut:Hilbers,C.W.]
+
+Searching multiple libraries
+
+Note the field to be searched must exist in all the libraries to be searched this usualy limits searching to the alltext field.
+
+To search a whole library group, the name or short name of the group can be used. For example to search all the libraries in the SeqRelated library group.
+	[SeqRelated-all:xenopus]
+
+Sets of libraries can also be defined for searching:
+	[{ENZYME SWISSPROT}-all:xenopus]
+
+Assignment
+
+Assignments can be used to give a query a symbolic name for later use in the query string:
+	(U1=[SWISSPROT-des:kinase]>ENZYME)|(U1>LENZYME)
+
+Or to save a list of library names for later use in the query:
+	[libs1={SWISSPROT EMBL}-des:kinase]&[libs1-org:human]
+
+guides/srsquerylanguage.txt · Last modified: 2011/09/28 09:36 by hpm

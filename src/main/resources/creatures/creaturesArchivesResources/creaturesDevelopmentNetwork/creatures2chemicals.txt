@@ -1,0 +1,292 @@
+http://www.gamewaredevelopment.com/cdn/CDN_more.php?CDN_article_id=88 -- 
+
+Creatures 2 Allocated Chemicals
+There are a limited number of chemical slots. These are currently registered with us, both Creature Labs' and CDN member chemicals.
+There are a limited number of chemical slots. These are currently registered with us, both Creature Labs' and CDN member chemicals.
+
+    Drive Levels
+    Drive-Raising Chemicals
+    Drive-Reducing Chemicals
+    Brain Chemicals
+    Digestive System Chemicals
+    Respiratory Chemicals
+    Reproduction Chemicals
+    Toxins
+    Movement and Gait Chemicals
+    Third Party Chemicals
+    More Toxins
+    Antibodies
+    Antigens
+
+
+Drive Levels
+	1	Pain	Drive levels...
+	2	Need for Pleasure	Drive levels...
+	3	Hunger	Drive levels...	
+	4	Coldness	Drive levels...
+	5	Hotness	Drive levels...
+	6	Tiredness	Drive levels...
+	7	Sleepiness	Drive levels...
+	8	Loneliness	Drive levels...
+	9	Crowded	Drive levels...
+	10	Fear	Drive levels...
+	11	Boredom	Drive levels...
+	12	Anger	Drive levels...
+	13	Sex Drive	Drive levels...
+	14	Injury	Drive levels...
+	15	Suffocation	Drive levels...
+	16	Thirst	Drive levels...
+	17	Stress	Drive levels...
+Drive-Raising Chemicals 	
+	18	Pain Increase	Drive-raising chemical
+	19	Need for Pleasure Increase	Drive-raising chemical
+	20	Hunger Increase	Drive-raising chemical
+	21	Coldness Increase	Drive-raising chemical
+	22	Hotness Increase	Drive-raising chemical
+	23	Tiredness Increase	Drive-raising chemical
+	24	Sleepiness Increase	Drive-raising chemical
+	25	Loneliness Increase	Drive-raising chemical
+	26	Crowded Increase	Drive-raising chemical
+	27	Fear Increase	Drive-raising chemical
+	28	Boredom Increase	Drive-raising chemical
+	29	Anger Increase	Drive-raising chemical
+	30	Sex Drive Increase	Drive-raising chemical
+	31	Injury Increase	Drive-raising chemical
+	32	Suffocation Increase	Drive-raising chemical
+	33	Thirst Increase	Drive-raising chemical
+	34	Stress Increase	Drive-raising chemical
+Drive-reducing Chemicals 	
+	35	Pain Decrease	Drive-reducing chemical
+	36	Need for Pleasure Decrease	Drive-reducing chemical
+	37	Hunger Decrease	Drive-reducing chemical
+	38	Coldness Decrease	Drive-reducing chemical
+	39	Hotness Decrease	Drive-reducing chemical
+	40	Tiredness Decrease	Drive-reducing chemical
+	41	Sleepiness Decrease	Drive-reducing chemical
+	42	Loneliness Decrease	Drive-reducing chemical
+	43	Crowded Decrease	Drive-reducing chemical
+	44	Fear Decrease	Drive-reducing chemical
+	45	Boredom Decrease	Drive-reducing chemical
+	46	Anger Decrease	Drive-reducing chemical
+	47	Sex Drive Decrease	Drive-reducing chemical
+	48	Injury Decrease	Drive-reducing chemical
+	49	Suffocation Decrease	Drive-reducing chemical
+	50	Thirst Decrease	Drive-reducing chemical
+	51	Stress Decrease	Drive-reducing chemical
+Brain Chemicals 	
+	52	Reward	learning reinforcer
+	53	Punishment	learning reinforcer
+	54	Reinforcement	Both punishment and reward chems decay to produce this short-life chemical. It allows eg. concept space dens to get stronger when ANY form of reinforcement occurs
+	55	ConASH	Concept layer Atrophy Suppressing Hormone - emitted by loose CON NEUS - stops further con neu dens from atrophying, thus ensuring a minimal supply of unallocated cells for new concepts.
+	56	DecASH1	Decision layer Atrophy Suppressing Hormone - emitted by loose DEC DENS (type0) - stops further dec dens from atrophying, thus ensuring a minimal supply of unallocated dens for new associations.	
+	57	Reward Echo	Reward chem must decay rapidly, this longer lasting chem is generated during that decay. Useful chem to monitor to see if reward has occurred. Biochemical use as a measure of 'recent' reward.
+	58	Punish Echo	Punishment chem must decay rapidly, this longer lasting chem is generated during that decay. Useful chem to monitor to see if punishment has occurred. Biochemical use as a measure of 'recent' punishment.
+	59	DecASH2	Decision layer Atrophy Suppressing Hormone - emitted by loose DEC DENS (type1) - stops further dec dens from atrophying, thus ensuring a minimal suppky of unallocated dens for new associations.	
+	60	60	 
+	61	61	 
+	62	62	 
+	63	63	 
+	64	64	 
+	65	65	 
+	66	66	 
+	67	67	 
+Digestive System Chemicals 	
+	68	Lactate	Product of fermentation of pyruvate. Causes muscle burn
+	69	Pyruvate	An intermediate, the product of anaerobic respiration
+	70	Glucose	Produced from starch and in a reversible reaction from glycogen. Used up by muscle action.
+	71	Fatty Acid	Building Block
+	72	Glycogen	Short-term energy reserve, produced in reversible reaction from glucose. Produces glucose to replenish supplies for muscle action.
+	73	Starch	Emitted by food objects - converts to Glucose for energy. Does NOT decrease hunger - this is done directly by Hunger-- (saccharin), so that junk food can contain high saccharin levels but low starch, etc.
+	74	Fat	Food source of Fatty Acid
+	75	Adipose Tissue	High-density Carbon Storage in Albian Lifeforms
+	76	Life	Decays over time, switching on receptors to change the stage of life from embryo through to senile. Stage changes then switch on new genes.
+	77	Muscle Tissue	Amino Acid storage
+	78	Triglyceride	First step in forming Adipose Tissue
+	79	Protein	Food source of Amino Acid
+	80	Amino Acid	Building Block
+	81	81	 
+	82	82	 
+	83	83	 
+	84	84	 
+	85	85	 
+	86	86	 
+	87	87	 
+	88	88	 
+	89	89	 
+Respiratory Chemicals 	
+	90	Dissolved carbon dioxide	Waste product from the conversion of glucose to energy. May deplete naturally, or may cause behaviour changes!!!
+	91		
+	92	Urea	Non-toxic product of Carbon Dioxide and Ammonia
+	93	Ammonia	Toxic product of using Amino Acid for fuel
+	94	94	 
+	95	Oxygen	Vital Gas
+	96	Air	Signals Breathable Air
+	97	Water	Vital Fluid
+	98	Energy	Phosphorylation Cycle
+	99	ATP	High-Energy side of Phosphate Chemistry
+	100	ADP	Low-Energy side of Phosphate Chemistry
+	101	Myoglobin	oxygen transporting chemical
+	102	Oxymyoglobin	oxygen transporting chemical, with oxygen
+	103	Pistle	Regulates urination
+	104	Bilin	Signal to produce bile acid
+Reproduction chemicals 	
+	105	Oestrogen	Controls fertility cycle in females
+	106	Testosterone	Controls fertility in males
+	107	Parturase	Produced on egg laying, used to reset menstrual cycle.
+	108	Progesterone	Produced progressively during pregnancy. When it reaches a threshold, it fires a receptor to cause the egg to be laid.
+	109	Inhibin	Testosterone feedback
+	110	LH	Signals Ovulation
+	111	NCG	Nornal chorionic gonadotrophin signals pregnancy, regulates fetal growth
+	112	Steroidone	Idealized signal to make steroids from fatty acids
+	113	Cholesterol	Vital Steroid
+	114	Arousal Potential	Biological readiness to mate
+	115	Mating Pheromone	Turns potential arousal into arousal (sex drive)
+	116	Species Pheromone	Species recognition signal
+	117	Parent Pheromone	Parental recognition signal
+	118	Child Pheromone	Child recognition signal
+	119	Sibling Pheromone	Sibling recognition signal
+	120	Opposite Sex Pheromone	Opposite sex recognition signal
+	121	Norn Smell	A signal that a Norn is near
+	122	Grendel smell	A signal that a Grendel is near
+	123	Ettin smell	A signal that an Ettin is near
+	124	Anabolic steroid	Regulates muscle growth
+	125	125	 
+	126	126	 
+	127	127	 
+	128	128	 
+	129	129	 
+	130	130	 
+	131	131	 
+	132	SeaASH	Canny Norn Search Lobe Atrophy Suppressing Hormone
+	133	133	 
+	134	134	 
+	135	135	 
+	136	136	 
+	137	137	 
+	138	138	 
+	139	139	 
+Toxins 	
+	140	Heavy Metals	Lead, Thallium, etc.
+	141	Cyanide	Any chemical containing cyanide anion
+	142	142	 
+	143	Belladonna	Weapon of the Deadly Nightshade
+	144	Geddonase	Toxin secreted by some insects in Albia
+	145	Glycotoxin	Extreme poison - breaks down glycogen.
+	146	Fullness	Negates hunger
+	147	147	 
+	148	148	 
+	149		
+	150	Vitamin E	Fat Soluble vitamin, deficiency can cause infertility.
+	151	Vitamin C	Water soluble vitamin, used to maintain healthy connective tissue..
+	152	Bile Acid	Aid to digestion
+	153	Insulin	Regulates storage of glucose
+	154	Glycogen Synthetase	Liver glycogen synthesis activity
+	155	Dehydrogenase	Detoxifies alcohol
+	156	Prostaglandin	speeds recovery from injury
+	157	EDTA	chelates heavy metals
+	158	Sodium thiosulphite	cure for cyanide poisoning
+	159	Arnica	Extract of arnica flower - cures glycotoxin poisoning
+	160	Carbos	
+	161	161	 
+	162	162	 
+	163	163	 
+	164	164	 
+	165	165	 
+	166		
+	167		
+	168	Tyrosine	essential amino acid
+	169	Triptophan	essential amino acid
+Movement and gait chemicals 	
+	170	Alcohol	Ingested from fermented fruit etc. Causes drunken gait and possible sickness, etc.
+	171	Dancing	Purple Mountain Norn music inebriation
+	172	Adrenaline	Natural adrenaline level builds up due to stress from excessive boredom, anger and suchlike. Has various deleterious effects on health.
+	173	Hexokinase	Enzyme which increases ATP use as muscles build up.
+	174	Activase	Generated by Muscular Activity
+	175	Turnase	Generated by being Cornered
+	176	Collapsase	Generated by Retreating
+	177	Downatrophin	emitted on downslopes
+	178	Upatrophin	emitted on upslopes
+	179	Glycolase	Splits glucose to release energy during glycolysis
+	180	Protease	Regulates muscle mass of norns
+	181	Hormonase	Regulates production of sex hormones
+Third Party chemicals 	
+	182	The Monkey	
+	183	183	 
+	184	184	 
+	185	185	 
+	186	186	 
+	187	187	 
+	188	188	 
+	189	189	 
+	190	SeaASH1	
+	191	SeaASH2	
+	192	Broodiness Increaser	
+	193	Broodiness Decreaser	
+	194	Milk 	
+	195	Milk Biproducts	
+	196	Maternal Pheromone	
+	197	Broodiness Echo	
+	198	Oxytocin	
+	199	Broodiness	
+	200	Pain Echo	Canny Norn
+	201	Nfp Echo	Canny Norn
+	202	Hunger Echo	Canny Norn
+	203	Coldness Echo	Canny Norn
+	204	Hotness Echo	Canny Norn
+	205	Tiredness Echo	Canny Norn
+	206	Sleepiness Echo	Canny Norn
+	207	Loneliness Echo	Canny Norn
+	208	Crowded Echo	Canny Norn
+	209	Fear Echo	Canny Norn
+	210	Boredom Echo	Canny Norn
+	211	Anger Echo	Canny Norn
+	212	Sec Drive Echo	Canny Norn
+	213	Injury Echo	Canny Norn
+	214	Suffocation Echo	Canny Norn
+	215	Thirst Echo	Canny Norn
+	216	Stress Echo	Canny Norn
+	217	217	 
+	218	218	 
+	219	219	 
+	220	220	 
+	221	221	 
+	222	222	 
+	223	223	 
+	224	224	 
+	225	225	 
+	226	226	 
+	227	227	 
+	228	228	 
+	229	229	 
+	230	230	 
+	231	231	 
+More Toxins 	
+	232	Histamine A	produced by some bacteria; causes sneezing (thus making disease contagious)
+	233	Histamine B	as for histamine A, but causes coughing instead of sneezing
+	234	Sleep toxin	produced by some bacteria; causes sleepiness
+	235	Fever toxin	produced by some bacteria; raises body temperature
+	236	unknown toxin	NUMTOXINS currently set to exclude these chems, as they aren't used!
+	237	unknown toxin	 
+	238	unknown toxin	 
+	239	unknown toxin	 
+Antibodies 	
+	240	Antibody 0	Antibody to bacteria sporting Antigen 0	
+	241	Antibody 1	 
+	242	Antibody 2	 
+	243	Antibody 3	 
+	244	Antibody 4	 
+	245	Antibody 5	 
+	246	Antibody 6	 
+	247	Antibody 7	 
+Antigens 	
+	248	Antigen 0	Present on infecting bacteria - causes antibody production	
+	249	Antigen 1	 
+	250	Antigen 2	 
+	251	Antigen 3	 
+	252	Antigen 4	 
+	253	Antigen 5	 
+	254	Antigen 6	 
+	255	Antigen 7	 
+
+
+Topic Keywords: creatures2 genetics biochem

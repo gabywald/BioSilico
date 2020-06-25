@@ -1,0 +1,69 @@
+Addresses;;;;;;"{ ""article"", ""An article from a journal or magazine."", ";
+Autobiography;;;;;;;author, title, journal, year, volume, number, pages, month, note, key }, 
+Bibliography;;;;;;"{ ""book"", ""A book with an explicit publisher."", ";
+Biography;;;;;;;author/editor, title, publisher, year, volume, series, address, edition, month, note, key }, 
+Case Reports;;;;;;"{ ""booklet"", ""A work that is printed and bound, but without a named publisher or sponsoring institution."", ";
+Classical Article;article;;;;;;title, author, howpublished, address, month, year, note, key }, 
+Clinical Conference;;;;;;"{ ""conference"", ""The same as inproceedings, included for Scribe compatibility."", ";
+Clinical Trial;;;;;;;author, title, booktitle, year, editor, pages, organization, publisher, address, month, note, key }, 
+Clinical Trial, Phase I;;;;;;"{ ""inbook"", ""A part of a book, usually untitled. May be a chapter (or section or whatever) and/or a range of pages."", ";
+Clinical Trial, Phase II;;;;;;;author/editor, title, chapter/pages, publisher, year, volume, series, address, edition, month, note, key }, 
+Clinical Trial, Phase III;;;;;;"{ ""incollection"", ""A part of a book having its own title."", ";
+Clinical Trial, Phase IV;;;;;;;author, title, booktitle, year, editor, pages, organization, publisher, address, month, note, key }, 
+Collected Works;;;;;;"{ ""inproceedings"", ""An article in a conference proceedings."", ";
+Comment;;;;;;;author, title, booktitle, year, editor, series, pages, organization, publisher, address, month, note, key }, 
+Comparative Study;;;;;;"{ ""manual"", ""Technical documentation."", ";
+Congresses;proceedings;;;;;;title, author, organization, address, edition, month, year, note, key }, 
+Consensus Development Conference;proceedings;;;;;"{ ""mastersthesis"", ""A Master's thesis."", ";
+Consensus Development Conference, NIH;proceedings;;;;;;author, title, school, year, address, month, note, key }, 
+Controlled Clinical Trial;article;;;;;"{ ""misc"", ""For use when nothing else fits."", ";
+Corrected and Republished Article;;;;;;;author, title, howpublished, month, year, note, key }, 
+Dictionary;;;;;;"{ ""phdthesis"", ""A Ph.D. thesis."", ";
+Directory;;;;;;;author, title, school, year, address, month, note, key }, 
+Duplicate Publication;article||book;;;;;"{ ""proceedings"", ""The proceedings of a conference."", ";
+Editorial;;;;;;;title, year, editor, publisher, organization, address, month, note, key }, 
+English Abstract;;;;;;"{ ""techreport"", ""A report published by a school or other institution, usually numbered within a series."", ";
+Evaluation Studies;;;;;;;author, title, institution, year, type, number, address, month, note, key }, 
+Festschrift;;;;;;;
+Government Publications;;;;;;;
+Guideline;;;;;;;
+Historical Article;;;;;;;
+In Vitro;;;;;;;
+Interactive Tutorial;;;;;;;
+Interview;;;;;;;
+Introductory Journal Article;article;;;;;;
+Journal Article;article;;;;;;
+Lectures;;;;;;;
+Legal Cases;;;;;;;
+Legislation;;;;;;;
+Letter;;;;;;;
+Meta-Analysis;;;;;;;
+Multicenter Study;;;;;;;
+News;;;;;;;
+Newspaper Article;article;;;;;;
+Overall;;;;;;;
+Patient Education Handout;;;;;;;
+Periodical Index;;;;;;;
+Portraits;;;;;;;
+Practice Guideline;;;;;;;
+Publication Components;;;;;;;
+Publication Formats;;;;;;;
+Publication Type Category;;;;;;;
+Published Erratum;;;;;;;
+Randomized Controlled Trial;;;;;;;
+Research Support, American Recovery and Reinvestment Act;;;;;;;
+Research Support, N.I.H., Extramural;;;;;;;
+Research Support, N.I.H., Intramural;;;;;;;
+Research Support, Non-U.S. Gov't Research Support, U.S. Gov't, Non-P.H.S.;;;;;;;
+Research Support, U.S. Gov't, P.H.S.;;;;;;;
+Retracted Publication;;;;;;;
+Retraction of Publication;;;;;;;
+Review;;;;;;;
+Scientific Integrity Review;;;;;;;
+Study Characteristics;;;;;;;
+Support of Research;;;;;;;
+Technical Report;;;;;;;
+Twin Study;;;;;;;
+Validation Studies;;;;;;;
+Video-Audio Media;;;;;;;
+Webcasts;;;;;;;

@@ -1,0 +1,67 @@
+Organ			Tissue						Site
+00 - Brain		00 - Perceptible i/ps		00 - Lobe activity
+				01 - Drive i/ps				01 - # Loose dens/cells type 0
+				02 - Stim Source i/ps		02 - # Loose dens/cells type 1
+				03 - Verb i/ps				03 - Cell(0) Output
+				04 - Noun i/ps				04 - Cell(1) Output
+				05 - General Sensory i/ps	05 - Cell(2) Output
+				06 - Decision o/ps			06 - Cell(3) Output
+				07 - Attention/Seek o/ps	07 - Cell(4) Output
+				08 - Lobe 8					08 - Cell(5) Output
+				09 - Lobe 9					09 - Cell(6) Output
+				0A - Lobe 10				0A - Cell(7) Output
+				0B - Lobe 11				0B - Cell(8) Output
+				0C - Lobe 12				0C - Cell(9) Output
+				0D - Lobe 13				0D - Cell(10) Output
+				0E - Lobe 14				0E - Cell(11) Output
+				0F - Lobe 15				0F - Cell(12) Output
+				10 - Lobe 16				10 - Cell(13) Output
+				11 - Lobe 17				11 - Cell(14) Output
+				12 - Lobe 18				12 - Cell(15) Output
+				13 - Lobe 19
+				14 - Lobe 20
+				15 - Lobe 21
+				16 - Lobe 22
+				17 - Lobe 23
+				18 - Lobe 24
+				19 - Lobe 25
+				1A - Lobe 26
+				1B - Lobe 27
+				1C - Lobe 28
+				1D - Lobe 29
+				1E - Lobe 30
+				1F - Lobe 31
+01 - Creature 	00 - Somatic				00 - Muscle energy used
+				01 - Circulatory			00 - Floating recep-emit 0
+											01 - Floating recep-emit 1
+											02 - Floating recep-emit 2
+											03 - Floating recep-emit 3
+											04 - Floating recep-emit 4
+											05 - Floating recep-emit 5
+											06 - Floating recep-emit 6
+											07 - Floating recep-emit 7
+				02 - Reproductive			00 - I am fertile (egg/sperm ready)
+											01 - I am pregnant (egg&sperm ready)
+				03 - Immune					00 - I'm dead (post-mortem chemistry)
+				04 - Sensorimotor			00 - Permanently active (255)
+											01 - I'm asleep (255)
+											02 - Air is this cold
+											03 - Air is this hot
+											04 - Light level
+											05 - Crowdedness
+				05 - Drive					00 - Pain
+											01 - Need for pleasure
+											02 - Hunger
+											03 - Coldness
+											04 - Hotness
+											05 - Tiredness
+											06 - Sleepiness
+											07 - Loneliness
+											08 - Crowded
+											09 - Fear
+											0A - Boredom
+											0B - Anger
+											0C - Sex drive
+											0D - Not allocated 2
+											0E - Not allocated 3
+											0F - Not allocated 4 

@@ -1,0 +1,100 @@
+NONE
+01 Reach lowish near
+02 Reach highish near
+03 Reach high near
+04 Reach low medium
+05 Reach lowish medium
+06 Reach highish medium
+07 Reach high medium
+08 Reach low far
+09 Reach lowish far
+10 Reach highish far
+11 Reach high far
+12 Stand
+13 Approach 1
+14 Approach 2
+15 Approach 3
+16 Approach 4
+17 Pain Approach 1
+18 Pain Approach 2
+19 Pain Approach 3
+20 Pain Approach 4
+21 Tired Approach 1
+22 Tired Approach 2
+23 Tired Approach 3
+24 Tired Approach 4
+25 Fear Approach 1
+26 Fear Approach 2
+27 Fear Approach 3
+28 Fear Approach 4
+29 Anger Approach 1
+30 Anger Approach 2
+31 Anger Approach 3
+32 Anger Approach 4
+33 To Camera
+34 Express general need
+35 Express Pain
+36 Express Hunger
+37 Express Tired
+38 Express Lonely
+39 Express Fear
+40 Toe Tap 1
+41 Toe Tap 2
+42 Angry 1
+43 Angry 2
+44 Swing Arms 1
+45 Swing Arms 2
+46 Shiver 1
+47 Shiver 2
+48 Crouch / Lay egg
+49 Walk Away 1
+50 Walk Away 2
+51 Walk Away 3
+52 Walk Away 4
+53 Flee 1
+54 Flee 2
+55 Flee 3
+56 Flee 4
+57 Rest
+58 Sleep
+59 East
+60 West
+61 Wander 1
+62 Wander 2
+63 Wander 3
+64 Wander 4
+65 Throw 1
+66 Throw 2
+67 Kick 1
+68 Kick 2
+69 Drum 1
+70 Drum 2
+71 Sneeze 1
+72 Sneeze 2
+73 Eat 1
+74 Eat 2
+75 Startled
+76 Kiss
+77 Dead
+78 Limp 1
+79 Limp 2
+80 Limp 3
+81 Limp 4
+82 Drunken Stagger 1
+83 Drunken Stagger 2
+84 Drunken Stagger 3
+85 Drunken Stagger 4
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99

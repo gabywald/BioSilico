@@ -1,0 +1,11 @@
+Genetic Kit
+	-- 
+Lecture de fichiers '.gen'
+	-- 
+Executer génome
+	-- 
+Interfaces graphiques
+	-- console interaction (avec quelques commandes)
+	-- création de gènes (CardLayout)
+	-- import / export
+Formats ?

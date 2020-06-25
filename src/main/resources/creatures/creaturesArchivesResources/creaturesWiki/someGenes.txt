@@ -1,0 +1,62 @@
+Initial concentration
+From Creatures Wiki
+The Initial concentration genes dictate how much of one chemical is in a creature's "bloodstream" at birth.
+These can include:
+	glycogen
+	glucose
+	boredom
+	ageing or life
+	antibodies
+Common mutations in these genes are stillbirths caused by lack of glycogen, and 'infantile advancement' -
+where the ageing or life is at a level so that a norn is seemingly born as an adult.
+Retrieved from "http://creatures.wikia.com/wiki/Initial_concentration?oldid=21106"
+Category: Gene types
+This page was last modified on July 24, 2005, at 05:35.
+
+Instinct
+From Creatures Wiki
+Instincts are predefined "good" responses to stimuli, contained in their genome, that are automatically learnt by creatures while they sleep. When a creature sleeps, it is as if their mind is detatched from their body and run through a series of scenarios to train their brain - effectively, they dream.
+A good way of looking at what a norn is "supposed" to do is to look at the instincts in their genome using the Genetics Kit. It is possible to find out several interesting facts about your creatures through this method.
+For example, taking a Creatures 2 norn genome:
+	Norns have instincts to push things when suffocating - and there just happens to be a bouncer in the ocean . . .
+	You weren't just imagining it - norns really do like sleeping in vehicles!
+	Norns have instincts to associate actions with words for push, pull, come, get, rest and eat while in the egg, but will probably find it hard to understand what deactivate, run, drop, west, east or hit means, or how to express what they need, until they reach the Child life stage. Of course, they have to be taught the words that you want to use for these actions first!
+	It may be obvious, but Adolescent norns do dream of petting other norns (of the opposite sex)
+	Norns start dreaming of getting their own (less crowded) place when they reach the Youth stage
+	Norns dislike staying still when hungry, and are trained to retreat from cliff edges
+	When you're a baby, eating almost everything seems like a good idea
+	Good plants smell good, while bad plants smell bad
+On the other hand, due to instincts the average C2 grendel:
+	Tends to understand come, get and eat when it is born, and hit after it becomes a Child
+	Favours using lifts when its Need for Pleasure is high
+	Likes to approach norns when bored, and likes to hit them when angry
+C2 Ettins have special instincts to escape overcrowding by using lifts, and for some reason to fall asleep when frightened.
+A problem with the Creatures 2 genome was that many norns were unable to sleep properly due to an imbalance in reward and punishment, and therefore did not get trained by instincts to do vital things like eat and sleep normally - the latter just made things worse until the former killed them (see also Socrates). As with rats, sleep deprivation can kill! This problem was solved with Nova Subterra and the Canny Norns.
+Retrieved from "http://creatures.wikia.com/wiki/Instinct?oldid=46140"
+Category: Gene types
+This page was last modified on January 14, 2010, at 21:09.
+
+Neuro-emitter
+From Creatures Wiki
+Like an emitter, it gives a small amount of four chemicals. The neuro-emitter is triggered by neurons, rather than chemical levels. The sole neuro-emitter in the standard C3 norn gives adrenalin, fear and crowded when the norn sees a grendel.
+Retrieved from "http://creatures.wikia.com/wiki/Neuro-emitter?oldid=50428"
+Category: Gene types
+This page was last modified on June 9, 2012, at 01:58.
+
+Stimulus
+From Creatures Wiki
+A stimulus is the message that an agent or COB sends to a creature, usually because the creature is interacting with it. The stimulus tells the creature that an event has just occurred (such as I have played with a toy or I have been tickled by the pointer), alters predefined chemicals by a specific amount, and in the later games, can prompt the creature to react in a certain way. Stimuli form one of the major ways that a creature experiences the world, and instincts are geared to help guide creatures towards pleasant stimuli and away from painful stimuli.
+Stimulus genes within the creature's genome are responsible for determining which chemicals are raised or lowered when a stimulus is received, and how much, and how the creature may be prompted to respond. Unlike an instinct gene, which suggests which action a creature should perform to get a certain result, a stimulus gene describes the outcome of performing an action.
+See Also
+	Source lobe - the lobe which determines which object a creature focuses on.
+	STIM SHOU - CAOS command which sends a stimulus to all creatures within earshot of an object.
+	STIM SIGN - CAOS command which sends a stimulus to all creatures who can see an object.
+	STIM TACT - CAOS command which sends a stimulus to all creatures who are touching an object.
+	STIM WRIT - CAOS command which sends a stimulus to all creatures who are using an object.
+External Links
+	CDR - Creatures Stimulus (http://double.co.nz/creatures/genetics/stimulus.htm)
+	Instinct and Stimulus Genes (http://www.creaturesvillage.com/creatures1/library/science/gen_tut/sci_genkit_tut5.htm)
+	Notes on the C3/DS Stimuli (https://www.box.com/s/siclx94l94u1oovpxhoj) , with a general list of effects on a Civet Norn.
+Retrieved from "http://creatures.wikia.com/wiki/Stimulus?oldid=50615"
+Categories: Gene types Terms
+This page was last modified on July 29, 2012, at 02:01.

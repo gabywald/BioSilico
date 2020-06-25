@@ -1,0 +1,116 @@
+
+CDR
+EXP File Format
+
+The EXP file contains information about a specific norn that has been exported. It includes a snapshot of the chemical condition of the norn, the genetic D-DNA, the state of the norn brain among other things. I've decoded the meaning of some portions of this file format and the information is presented below. I've used this information to create a tool for viewing the details of the norn brain and it is correct to the best of my knowledge. All byte content numbers in this document are in hexadecimal (base 16). This is the format most often used by hex editors and was the easiest to deal with for my uses. All byte offset numbers are in decimal.
+Sections
+
+The EXP file is split up into sections, each section containing information for particular parts of the norn. There are sections for holding the vocabulary, genetics, chemicals, brain state, etc. Each section starts with a section marker which is a string of ASCII characters. To read the data from a section you must search through the file looking for the ASCII string for the given section. The data following this string will then conform to the byte layouts outlined later in this document. I haven't decoded many sections, but what I have decoded may prove useful to some people.
+Brain State
+
+The brain state section stores all information currently held within the brain of the norn. Everything the norn has learnt is stored here allowing retrieval of the exact knowledgebase of a norn at the time of export.
+Section Marker
+
+43 42 72 61 69 63
+
+These numbers represent the ASCII string 'CBrain'.
+Section Header
+Description 	Size 	Type 	Notes
+Unknown 	54 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+Number of brain lobes 	4 bytes 	DWORD 	The number of brain lobes that this exported norn has.
+Lobe Information 	Variable. 	LOBE 	Holds the per-lobe information. See the lobe information breakdown later in this document. There is one Lobe Information section for each lobe in the norn.
+Neuron Information 	Variable. 	NEURON 	
+
+Holds the data stored in each neuron for each brain lobe. See the neuron information breakdown later in this document.
+
+A neuron information block exists for each cell in each lobe. Each neuron is stored sequentially within this block.
+
+To know which neuron belongs to a given lobe you must calculate it based upon the height and width of each lobe. So if the first lobe is 10 neurons in size, then the first 10 neuron information blocks will be for the 10 cells in that lobe. The 11th neuron information block will be for a cell in the second lobe, etc.
+Lobe Information
+
+Most of the lobe information is the same data as stored in the brain lobe section of the norn genome. See the brain lobe or genetics pages for information if you don't understand some of the terms used in the table below. One of these lobe information blocks will exist for each brain lobe in the creature.
+Description 	Size 	Type 	Notes
+X 	4 bytes 	DWORD 	X position of the lobe in the brain grid.
+Y 	4 bytes 	DWORD 	Y position of the lobe in the brain grid.
+Width 	4 bytes 	DWORD 	Width of the lobe in cells.
+Height 	4 bytes 	DWORD 	Height of the lobe in cells. The complete size of the brain lobe is Width * Height.
+Unknown 	12 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+Leakage Rate 	1 byte 	BYTE 	See the brain lobe page for information on this field.
+Rest State 	1 byte 	BYTE 	See the brain lobe page for information on this field.
+Input gain lo-hi 	1 byte 	BYTE 	See the brain lobe page for information on this field.
+Unknown 	16 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+D0 source lobe 	4 bytes 	DWORD 	Dendrite type 0 source lobe. See the brain lobe page for information on this field.
+D0 minimum 	1 byte 	BYTE 	Dendrite type 0 minimum number of dendrites.
+D0 maximum 	1 byte 	BYTE 	Dendrite type 0 maximum number of dendrites.
+D0 spread 	1 byte 	BYTE 	Dendrite type 0 spread.
+D0 fanout 	1 byte 	BYTE 	Dendrite type 0 fanout.
+D0 min LTW 	1 byte 	BYTE 	Dendrite type 0 minimum long term weight.
+D0 max LTW 	1 byte 	BYTE 	Dendrite type 0 maximum long term weight.
+D0 min str 	1 byte 	BYTE 	Dendrite type 0 minimum strength.
+D0 max str 	1 byte 	BYTE 	Dendrite type 0 maximum strength.
+Unknown 	96 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+D1 minimum 	1 byte 	BYTE 	Dendrite type 1 minimum number of dendrites.
+D1 maximum 	1 byte 	BYTE 	Dendrite type 1 maximum number of dendrites.
+D1 spread 	1 byte 	BYTE 	Dendrite type 1 spread.
+D1 fanout 	1 byte 	BYTE 	Dendrite type 1 fanout.
+D1 min LTW 	1 byte 	BYTE 	Dendrite type 1 minimum long term weight.
+D1 max LTW 	1 byte 	BYTE 	Dendrite type 1 maximum long term weight.
+D1 min str 	1 byte 	BYTE 	Dendrite type 1 minimum strength.
+D1 max str 	1 byte 	BYTE 	Dendrite type 1 maximum strength.
+Unknown 	96 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+Number of cells 	4 bytes 	DWORD 	Total number of cells for this lobe. Should be width * height.
+Number of dendrites 	4 bytes 	DWORD 	Total number of dendrites that are attached to this lobe as the destination lobe (ie. sourced from other lobes).
+Neuron Information
+
+The neuron information block holds the data for individual neurons within the norn brain. The size of this block is variable as it depends on the number of dendrites connected to each neuron.
+Description 	Size 	Type 	Notes
+X 	1 byte 	BYTE 	The X position within the lobe for this cell. Note this is the offset within the lobe itself, not within the brain grid. To get the actual brain grid cell address you need to add this to the X value for the lobe.
+Y 	1 byte 	BYTE 	The Y position within the lobe for this cell. Note this is the offset within the lobe itself, not within the brain grid. To get the actual brain grid cell address you need to add this to the Y value for the lobe.
+Output 	1 byte 	BYTE 	The current output value for this cell.
+State 	1 byte 	BYTE 	The current state value for this cell.
+Unknown 	4 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+D0 Dendrite Header 	5 bytes 	DENDRITE HEADER 	Holds header information pertaining to the type 0 dendrites that are connected to this cell. See the dendrite header information breakdown later in this document.
+D0 Dendrite Details 	Variable 	DENDRITE DETAILS 	
+
+Holds information pertaining to each type 0 dendrite connected to this cell. See the dendrite detail information breakdown later in this document.
+
+If there are 10 type 0 dendrites for this cell then there will be 10 type 0 dendrite detail blocks.
+
+If there are no type 0 dendrites for a cell then this block will not exist.
+D1 Dendrite Header 	5 bytes 	DENDRITE HEADER 	Holds header information pertaining to the type 1dendrites that are connected to this cell. See the dendrite header information breakdown later in this document.
+D1 Dendrite Details 	Variable 	DENDRITE DETAILS 	
+
+Holds information pertaining to each type 1dendrite connected to this cell. See the dendrite detail information breakdown later in this document.
+
+If there are 10 type 1dendrites for this cell then there will be 10 type 1 dendrite detail blocks.
+
+If there are no type 1 dendrites for a cell then this block will not exist.
+Dendrite Header Information
+
+Holds information pertaining to all dendrites. This header will always exist even if there are no dendrites for the given type for the lobe.
+Description 	Size 	Type 	Notes
+Number 	1 byte 	BYTE 	Number of dendrites attached to this cell. Note that this is dendrites that have this cell as a destination. This number should be used to calculate how many dendrite detail blocks will follow this header.
+Type 	1 byte 	BYTE 	Type of the dendrite.
+Unknown 	3 bytes 	DATA 	I don't know what these bytes represent. I haven't needed the information contained within for my purposes.
+Dendrite Detail Information
+
+Holds information pertaining to each dendrite. One of these detail blocks will exist for each dendrite attached to a given cell. The number of detail information blocks for a cell can be obtained from the dendrite header. If there are no dendrites for a given type for a cell then this block will not exist for that cell.
+Description 	Size 	Type 	Notes
+ID 	4 bytes 	DWORD 	Some sort of identification or incrementing count for the dendrite.
+X 	1 byte 	BYTE 	
+
+The X offset into the source lobe used to identify the source cell for this dendrite.
+
+Note this is the offset within the lobe itself, not within the brain grid. To get the actual brain grid cell address you need to add this to the X value for the source lobe.
+
+The source lobe itself doesn't seem to be stored within the brain information itself. It is perhaps identified from the genetics of the norn.
+Y 	1 byte 	BYTE 	The Y offset into the source lobe used to identify the source cell for this dendrite.
+
+Note this is the offset within the lobe itself, not within the brain grid. To get the actual brain grid cell address you need to add this to the X value for the source lobe.
+
+The source lobe itself doesn't seem to be stored within the brain information itself. It is perhaps identified from the genetics of the norn.
+Unknown 	1 byte 	BYTE 	I don't know what this byte represents. I haven't needed the information contained within for my purposes.
+STW 	1 byte 	BYTE 	Short Term Weight value for this dendrite.
+LTW 	1 byte 	BYTE 	Long Term Weight value for this dendrite.
+str 	1 byte 	BYTE 	Strength value for this dendrite.
+

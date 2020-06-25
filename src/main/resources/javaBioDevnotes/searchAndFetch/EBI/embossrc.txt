@@ -1,0 +1,124 @@
+DB uniprot_srs [
+        type: P
+        method: srswww
+        format: swiss
+        url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz"
+        dbalias: "uniprot"
+        fields: "id acc"
+        comment: "UniProt using srs.ebi.ac.uk"
+]
+
+DB uniprot [
+        type: P
+        comment: "UniProtKB"
+        methodquery: srswww
+        format: swiss
+        url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz"
+        dbalias: "uniprot"
+        fields: "id acc sv"
+        methodall: direct
+        formatall: fasta
+        dir: /ebi/services/idata/latest/fastadb/
+        file: uniprot
+]
+
+
+DB swissprot_sanger
+[ 
+    type: P method: url format: swiss
+    url: "http://srs.sanger.ac.uk/srs7bin/cgi-bin/wgetz?-ascii+-e+[swissprot:'%s']"
+    comment: "Swissprot via Sanger SRS" 
+]
+
+DB swissprot
+[
+    type: P method: url format: swiss
+    url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-ascii+-e+[swissprot-id:'%s']|[swissprot-acc:'%s']"
+    comment: "Swissprot via Sanger SRS"
+]
+
+
+DB zuniprot [ 
+methodquery: srswww
+format: swiss
+type: P
+fields: "id acc sv des key org"
+dbalias: uniprot
+url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-lv+5"
+comment: "uniprot/swiss via srswww"
+]
+
+
+DB embl___ [
+        type: N
+        method: srswww
+        format: embl
+        url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz"
+        dbalias: "embl"
+        fields: "id acc"
+        comment: "EMBL using srs.ebi.ac.uk"
+]
+
+DB embl__sanger 
+[ 
+    type: N method: url format: embl
+    url: "http://srs.sanger.ac.uk/srs7bin/cgi-bin/wgetz?-ascii+-e+[embl:'%s']"
+    comment: "EMBL via Sanger SRS" 
+]
+
+
+
+DB urldbfetch [ type: N methodentry: url format: embl
+  url: http://www.ebi.ac.uk/cgi-bin/dbfetch?db=embl&id=%s&style=raw
+]
+##SET EMBOSS_PROXY www-proxy.ebi.ac.uk:3128
+
+DB urldbfetchall [ type: N method: url format: embl
+  url: http://www.ebi.ac.uk/cgi-bin/dbfetch?db=embl&id=%s&style=raw
+]
+DB embl_ [
+# required parameters
+    method: "url"
+    format: "embl"
+    type: "N"
+    url: 
+"http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-vn+2+-e+[embl-id:%s]|[embl-acc:%s]|([emblidacc-id:%s]>embl)"
+#optional parameters
+    comment: "EMBL from SRS inc old IDs"
+]
+
+
+DB embl [
+        type: N
+        method: url
+        format: embl
+        url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-vn+2+-e+[embl-id:%s]|[embl-acc:%s]|([emblidacc-id:%s]>embl)"
+        dbalias: "embl"
+        fields: "id acc"
+        comment: "EMBL using srs.ebi.ac.uk, recognizes old EMBL ids"
+]
+
+DB testdbfetch [ type: N method: dbfetch format: embl dbalias: embl
+               url: http://www.ebi.ac.uk/ws/services/Dbfetch ]
+
+DB dbfetchembl [ type: N
+                 comment: "EMBL dbfetch"
+                 methodentry: dbfetch
+                 dbalias: embl
+                 format: embl
+                 url: "http://www.ebi.ac.uk/cgi-bin/dbfetch"
+]
+
+
+# This is only here because EMBOSS Tutorial has swallid,
+# database is UniProt
+DB swallid [
+        type: P
+        method: srswww
+        format: swiss
+        url: "http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz"
+        dbalias: "uniprot"
+        fields: "id acc"
+        comment: "UniProt using srs.ebi.ac.uk"
+]
+

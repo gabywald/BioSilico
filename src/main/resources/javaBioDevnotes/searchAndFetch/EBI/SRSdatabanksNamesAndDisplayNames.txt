@@ -1,0 +1,360 @@
+
+ -- http://www.biowisdom.com/download/srs-parser-and-software-downloads/databanks/ --
+Databanks and tools supported in SRS
+
+This page lists the databanks and tools officially supported in SRS for which BioWisdom provides regular updates and maintenance. Please remember that due to its dynamic nature SRS allows the integration of many more data sources (see the List of Public SRS installation for a a list of the ones we know about).
+
+If you have a request for a new database or tool to be added to the list or are interested on how to integrate your own data into SRS please email srs_support@biowisdom.com
+Libraries currently supported in SRS by BioWisdom Ltd
+Dataset	Description /
+Member database names in SRS (between brackets: display name)
+	UniProtKB (Flat File)	UniProt protein sequence knowledgebase
+		http://www.uniprot.org
+		UNIPROT
+		UNIPROTVARSPLICE (Uniprot Splice Variants)
+		UNIPROT_SWISSPROT (UniProtKB/Swiss-Prot)
+		UNIPROT_TREMBL (UniProtKB/TrEMBL)
+	EMBL (Flat File)	EMBL primary DNA sequence database
+		http://www.ebi.ac.uk/embl/
+		EMBL
+		EMBLRELEASE (EMBL (Release))
+		EMBLNEW (EMBL (Updates))
+		EMBLWGS (EMBL (Whole Genome Shotgun Sequences))
+		EMBLWGSRELEASE (EMBL (Whole Genome Shotgun Sequences - full release))
+		EMBLWGSNEW (EMBL (Whole Genome Shotgun Sequences - updates))
+	GenBank (Flat File)	NCBI primary DNA sequence database
+		http://www.ncbi.nlm.nih.gov/genbank/
+		GENBANK
+		GENBANKRELEASE (GENBANK (Release))
+		GENBANKNEW (GENBANK (Updates))
+		GENBANKWGS (GENBANK (Whole Genome Shotgun))
+	DDBJ (Flat File)	DDBJ primary DNA sequence database
+		http://www.ddbj.nig.ac.jp/
+		DDBJ
+		DDBJRELEASE (DDBJ (Release))
+		DDBJNEW (DDBJ (Updates))
+		DDBJWGS (DDBJ (Whole Genome Shotgun))
+	RefSeq (Flat File)	NCBI non-redundant curated DNA sequence database
+		http://www.ncbi.nlm.nih.gov/RefSeq/
+		REFSEQ (RefSeq)
+		REFSEQVARIATIONS
+		REFSEQRELEASE (RefSeq (Release))
+		REFSEQNEW (RefSeq (Updates))
+		REFSEQVARIATIONSRELEASE1
+		REFSEQVARIATIONSRELEASE2
+		REFSEQVARIATIONSNEW1
+		REFSEQVARIATIONSNEW2
+	RefSeqP (Flat File)	NCBI non-redundant curated Protein sequence database
+		http://www.ncbi.nlm.nih.gov/RefSeq/
+		REFSEQP (RefSeq Protein)
+		REFSEQPRELEASE (RefSeq Protein (Release))
+		REFSEQPNEW (RefSeq Protein (Updates))
+	MEDLINE (Flat File)	MEDLINE is the National Library of Medicine's premier bibliographic database covering the fields of medicine, nursing, dentistry, veterinary medicine, the health care system, and the preclinical sciences.
+		http://www.nlm.nih.gov/databases/databases_medline.html
+		MEDLINE (Medline)
+		MEDLINERELEASE (Medline Full Release)
+		MEDLINENEW
+		MEDLINENEWFILES
+		MEDLINEUPDATES (Medline Updates)
+		MED2PUB (Medline to Pubmed)
+	PubChem (XML)	NCBI database of chemical structures of small organic molecules and information on their biological activities
+		Added to SRS8.3 in September 2010
+		http://pubchem.ncbi.nlm.nih.gov/
+		PUBCHEMCOMPOUND (PubChem Compounds)
+		PUBCHEMSUBSTANCE (PubChem Substances)
+		PUBCHEMASSAYRESULT
+		PUBCHEMASSAY
+	Entrez Gene (XML)	NCBI's database for gene-specific information
+		http://www.ncbi.nlm.nih.gov/gene
+		ENTREZGENE
+	PDB (Flat File)	Protein Data Bank - Biological Macromolecular Structures
+		http://www.pdb.org/pdb/home/home.do
+		PDB
+		PDBMODEL
+	GenPept (Flat File)	Protein sequence database translated from GenBank
+		ftp://ftp.ncifcrf.gov/pub/genpept/announce.txt
+		GENPEPT
+		GENPEPTRELEASE (GENPEPT (Release))
+		GENPEPTNEW (GENPEPT (Updates))
+	GeneSeq (Flat File)	Sequences from worldwide patents
+		PATENTNUMBERS added to SRS8.3 in March 2008
+		http://thomsonreuters.com/products_services/science/science_products/a-z/geneseq
+		NAGENESEQ (GENESEQ (Nucleic Acid))
+		AAGENESEQ (GENESEQ (Peptide))
+		NAGENESEQSUPP (GENESEQ Supplement (Nucleic Acid))
+		AAGENESEQSUPP (GENESEQ Supplement (Peptide))
+		FASTASEQP
+		FASTASEQN
+	PATENTNUMBERS (GeneSeq Patent Numbers)
+	IMGT/LIGM-DB (Flat File)	Immunoglobulin DNA sequence database
+		http://imgt.cines.fr/
+		IMGTLIGM (IMGT/LIGM-DB)
+	CCDS (Flat File)	Consensus Coding Sequences
+		http://www.ncbi.nlm.nih.gov/projects/CCDS/CcdsBrowse.cgi
+		CCDSNUC (CCDS (Nucleotide))
+		CCDSPROT (CCDS (Protein))
+	UniGene (Flat File)	Database of gene clusters
+		http://www.ncbi.nlm.nih.gov/unigene
+		UNIGENE
+		UNISEQ
+		UNIEST
+	UniLib (Flat File)	Unified Library of EST and SAGE clusters
+		ftp://ftp.ncbi.nih.gov/repository/UniLib/
+	dbEST (Flat File)	Expressed Sequence Tags database
+		http://www.ncbi.nlm.nih.gov/dbEST/
+	dbSTS (Flat File)	database of Sequence Tagged Sites
+		http://www.ncbi.nlm.nih.gov/dbSTS/
+	dbGSS (Flat File)	Genome Survey Sequences Database
+		http://www.ncbi.nlm.nih.gov/dbGSS/
+	GENETICCODE (Flat File)	CDS translation tables for various taxons from the NCBI
+		http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi
+	TAXONOMY (Flat File)	NCBI Taxonomy database
+		http://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/
+	dbSNP (Flat File)	NCBI database off Single Nucleotide Polymorphism
+		Added to SRS8.3 in March 2008
+		http://www.ncbi.nlm.nih.gov/projects/SNP/index.html
+		DBSNP
+		DBSNPLOCATION
+	HomoloGene (XML)	Database of homologs among the annotated genes of several completely sequenced eukaryotic genomes
+		http://www.ncbi.nlm.nih.gov/homologene
+	KEGG (Flat File)	Kyoto Encyclopedia of Genes and Genomes (and also pathways, compounds..)
+		Kegg Disease was added to SRS8.3 in Feb 2010
+		http://www.genome.jp/kegg/ http://www.pathway.jp
+		KEGGGENES_AA (KEGG Genes (Amino Acid))
+		KEGGGENES_NA (KEGG Genes (Nucleic Acid))
+		LCOMPOUND
+		LDRUG
+		LENZYME
+		LGLYCAN
+		LREACTION
+		KEGGGENOME (KEGG Genome)
+		KEGGORTHOLOGY (KEGG Orthology)
+		KEGGDISEASE (KEGG Disease)
+		PATHWAY
+	DrugBank (Flat File)	Database of drugs and their targets
+		Added to SRS8.3 in Sep 2009
+		http://www.drugbank.ca/
+		DRUGBANKPARTNER (DrugBank (Partners))
+		DRUGBANK (DrugBank (Drugs))
+	HMDB (Flat File)	Human Metabolome Database
+		Added to SRS8.3 in Oct 2009
+		http://www.hmdb.ca/
+		HMDB (HMDB Metabolites)
+		HMDBENZYME (HMDB Enzymes)
+	Reactome (RDB)	A curated knowledgebase of biological pathways
+		http://www.reactome.org/
+		(Not maintained by Prisma)
+	ChEBI (RDB)	Chemical Entities of Biological Interest
+		http://www.ebi.ac.uk/chebi/
+		(Not maintained by Prisma)
+		CHEBI (ChEBI)
+	ChEMBL (RDB)	Database of bioactive drug-like small molecules
+		Added to SRS8.3 in March 2010
+		http://www.ebi.ac.uk/chembldb/index.php
+		(Not maintained by Prisma)
+		CHEMBLBIOACTIVITY (ChEMBL Bioactivities)
+		CHEMBLCOMPOUND (ChEMBL Compounds)
+		CHEMBLTARGET (ChEMBL Targets)
+	UniRef (XML)	UniProt Reference Clusters
+		http://www.ebi.ac.uk/uniref/
+		UNIREF100
+		UNIREF90
+		UNIREF50
+	InterPro (XML)	Integrated database of predictive protein "signatures"
+		http://www.ebi.ac.uk/interpro/
+		IPRMATCHES
+		INTERPRO
+	PROSITE (Flat File)	Database of protein domains, families and functional sites
+		http://www.expasy.ch/prosite/
+		PROSITE
+		PROSITEDOC
+	PRINTS (Flat File)	Compendium of protein fingerprints
+		http://www.bioinf.manchester.ac.uk/dbbrowser/PRINTS/index.php
+	Pfam (Flat File)	Collection of protein families, each represented by multiple sequence alignments and hidden Markov models (HMMs).
+		http://pfam.sanger.ac.uk/
+		PFAMA
+		PFAMB
+		PFAMC
+		PFAMHMM
+		PFAMSEED
+	SWISSPFAM
+	ENZYME (Flat File)	Enzyme nomenclature database
+		http://expasy.org/enzyme/
+	EPD (Flat File)	Eukaryotic Promoter Database
+		http://www.epd.isb-sib.ch/
+	GeneCards (Flat File)	Database of human genes that provides concise genomic, transcriptomic, genetic, proteomic, functional and disease related information on all known and predicted human genes
+		http://www.genecards.org/index.shtml
+	PDBFINDER (Flat File)	The PDBFINDER database holds for each PDB file a structured, search-engine-friendly-formatted entry that holds the data-items most likely needed for people search for certain types of PDB entries
+		http://swift.cmbi.kun.nl/gv/pdbfinder/
+	CATH (Flat File)	Manually curated classification of protein domain structures
+		http://www.cathdb.info/
+	DSSP (Flat File)	The DSSP database of secondary structure assignments of PDB entries.
+		http://swift.cmbi.kun.nl/gv/dssp/
+	HSSP (Flat File)	Homology-derived Secondary Structure of Proteins
+		http://swift.cmbi.kun.nl/gv/hssp/
+	FSSP (Flat File)	Families of Structurally Similar Proteins
+		http://en.wikipedia.org/wiki/Families_of_structurally_similar_proteins
+	REBASE (Flat File)	Restriction Enzyme Database
+		http://rebase.neb.com/rebase/rebase.html
+		REBASE
+		REBCOMM
+	RESID (Flat File)	RESID Database of Protein Modifications is a comprehensive collection of annotations and structures for protein modifications including amino-terminal, carboxyl-terminal and peptide chain cross-link post-translational modifications.
+		Added to SRS8.3 in January 2011
+		http://www.ebi.ac.uk/RESID/
+	MEROPS (RDB)	The peptidase database
+		Added to SRS8.3 in Dec 2009
+		http://merops.sanger.ac.uk/
+		(Not maintained by Prisma)
+		MEROPSPRO
+		MEROPSSEQ
+		MEROPSFAM
+		MEROPSSMI
+	IntAct (XML)	Database for protein interaction data
+		http://www.ebi.ac.uk/intact/main.xhtml
+		INTACTINTERACTION (INTACT Interaction)
+		INTACTINTERACTOR (INTACT Interactor)
+		INTACTEXPERIMENT (INTACT Experiment)
+	BioGRID (XML)	Database of Protein and Genetic Interactions
+		http://thebiogrid.org/
+		(Not maintained by Prisma)
+		BIOGRIDINTERACTION (BIOGRID Interaction)
+		BIOGRIDINTERACTOR (BIOGRID Interactor)
+		BIOGRIDEXPERIMENT (BIOGRID Experiment)
+	MINT (XML)	Molecular INTeraction database
+		http://mint.bio.uniroma2.it
+		MINTINTERACTION (MINT Interaction)
+		MINTINTERACTOR (MINT Interactor)
+		MINTEXPERIMENT (MINT Experiment)
+	DIP (XML)	the Database of Interacting Proteins
+		http://dip.doe-mbi.ucla.edu
+		(Not maintained by Prisma)
+		DIPINTERACTION (DIP Interaction)
+		DIPINTERACTOR (DIP Interactor)
+		DIPEXPERIMENT (DIP Experiment)
+	IREFINDEX (Flat File)	iRefIndex provides an index of protein interactions available in a number of primary interaction databases including BIND, BioGRID, CORUM, DIP, HPRD, IntAct, MINT, MPact, MPPI and OPHID.
+		http://irefindex.uio.no/wiki/iRefIndex
+	Gene Ontology (XML)	Ontology of genes and gene products (XML version)
+		http://www.geneontology.org/
+		GO
+	Gene Ontology (RDB)	Ontology of genes and gene products (MySql version)
+		http://www.geneontology.org/
+		(Not maintained by Prisma)
+		GOTERM (GO Terms)
+		GOGENPROD (GO Gene Products)
+	Ensembl (RDB)	Genome databases for various species
+		http://www.ensembl.org/
+		(Not maintained by Prisma)
+		EnsemblGene (EnsemblGene (All Species))
+		HumanGene
+		MouseGene
+		RatGene
+		DogGene
+		ZebrafishGene
+		C_elegansGene
+		ChimpGene
+		FruitflyGene
+		MosquitoGene
+		PufferfishGene
+	User 	End user owned libraries to store sequence information in SRS for analysis ot to annotate entries in other databases
+		USERDNA (My Nucleotide Sequences)
+		USERPROTEIN (My Protein Sequences)
+	Data Display/Export 	These are databases which are invisible to the user, but which are used for data display, or to provide export functionality in certain data formats
+		UNIPROTXML UNIPROT_SWISSPROTXML UNIPROT_TREMBLXML INTACTMITAB BIOGRIDMITAB MINTMITAB DIPMITAB PDBML PDBCIF DRUGBANKSDF HMDBSDF MESH chebivert chebidown EnsemblTranscript HumanTranscript MouseTranscript RatTranscript DogTranscript ZebrafishTranscript C_elegansTranscript ChimpTranscript FruitflyTranscript MosquitoTranscript PufferfishTranscript EnsemblMarker HumanMarker MouseMarker RatMarker DogMarker ZebrafishMarker EnsemblAffy HumanAffy MouseAffy RatAffy DogAffy ZebrafishAffy C_elegansAffy ChimpAffy FruitflyAffy MosquitoAffy EnsemblSeq HumanSeq MouseSeq RatSeq DogSeq ZebrafishSeq C_elegansSeq ChimpSeq FruitflySeq MosquitoSeq PufferfishSeq EnsemblKar HumanKar MouseKar RatKar Compara
+	Data Management 	These are databases which are invisible to the user, but which are used in data management by prisma
+		MEDLINEDELETED PATHWAYTAR GENECARDSTAR HMDBSPECTRA RESIDDATA REFSEQFILES REFSEQPFILES EMBLNEWFILES EMBLWGSNEWFILES GBNEWFILES DDBJNEWFILES GPNEWFILES NAGENESEQTAR AAGENESEQTAR CHEBICHEMSEARCH INTACTDATA MINTDATA
+	
+	54 datasets	219 libraries
+	
+	Most Flat file and XML databases listed here can be maintaind using SRS Prisma. Prisma cannot maintain RDB databases.
+	Databases marked as 'Added in SRS8.3' are not supported for earlier versions of SRS.
+	
+	Libraries no longer maintained
+	These are datasets which are no longer maintained or to which we no longer have access. We still provide parsers, frozen at the last version for which we had access. These parser will probably not be included in future versions of SRS
+	Dataset	Description / Member database names in SRS (between brackets: display name)
+	
+	IPI (Flat File)	International Protein Index
+		No longer updated/maintained - last release in September 2011
+		http://www.ebi.ac.uk/IPI/IPIhelp.html
+	OMIM (Flat File)	Online Mendelian Inheritance in Man
+		No access to the latest version of the data - frozen at February 2011
+		http://www.ncbi.nlm.nih.gov/omim
+	BLOCKS (Flat File)	Database of multiple aligned ungapped segments corresponding to the most highly conserved regions of proteins
+		No longer updated/maintained - last release in April 2007
+		http://blocks.fhcrc.org/blocks/help/about_blocks.html
+	ProDom (Flat File)	Cmprehensive set of protein domain families automatically generated from the UniProt Knowledge Database
+		No access to latest version of data - frozen at last public release (May 2006)
+		http://prodom.prabi.fr/prodom/current/html/home.php
+	DOMO (Flat File)	Database of aligned protein domains
+		No longer updated/maintained - last release in 1998
+		http://abcis.cbs.cnrs.fr/domo/
+	RHdb (Flat File)	The Radiation Hybridization Database
+		No longer updated/maintained - last release in 2001
+		ftp://ftp.ebi.ac.uk/pub/databases/RHdb/
+		RHPANEL
+		RHMAP
+		RHEXP
+		RHDB
+	TransFac (Flat File)	Transcription factor Database
+		No access to the latest version of the data - frozen at April 2007
+		http://www.biobase-international.com/
+		TFSITE
+		TFCELL
+		TFFACTOR
+		TFCLASS
+		TFGENE
+		TFMATRIX
+		TFFRAGMENT
+	TransPath (XML)	Pathway Database
+		No access to the latest version of the data - frozen at April 2007
+		http://www.biobase-international.com/
+		TRANSPATHPATHWAY (TRANSPATH Pathway)
+		TRANSPATHREACTION (TRANSPATH Reaction)
+		TRANSPATHMOLECULE (TRANSPATH Molecule)
+		TRANSPATHREFERENCE (TRANSPATH Reference)
+		TRANSPATHAnnotate (TRANSPATH Annotate)
+		TRANSPATHGENE (TRANSPATH Gene)
+	BIND (XML)	Biomolecular Interaction Network Database.
+		No longer available
+		http://www.bind.ca
+		BINDInteraction (BIND Interaction)
+		BINDPathway (BIND Pathway)
+		BINDComplex (BIND Complex)
+	
+	Tools supported in SRS by BioWisdom Ltd.
+	Tool group	Description / Tool names in SRS
+	
+	BLAST	Basic Local Alignment Search Tool
+		http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs
+		BLASTP BLASTX BLASTN TBLASTX TBLASTN PSIBLAST ALIPSIBLAST BL2SEQ
+	FASTA	The FASTA programs find regions of local or global (new) similarity between Protein or DNA sequences, either by searching Protein or DNA databases, or by identifying local duplications within a sequence.
+		http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml
+		FASTA NFASTA FASTX FASTY TFASTA TFASTX TFASTY SSEARCH GLSEARCH GGSEARCH
+	HMMER	Biosequence analysis using profile hidden Markov models
+		http://hmmer.janelia.org/
+		HMMSEARCH HMMSCAN HMMBUILD
+	ClustalW	General purpose multiple sequence alignment program for DNA or proteins
+		http://www.ebi.ac.uk/Tools/clustalw2/index.html
+		CLUSTALW NCLUSTALW CLUSTALO
+	MUSCLE	MUltiple Sequence Comparison by Log-Expectation
+		Added in the initial release of SRS8.3
+		http://www.ebi.ac.uk/Tools/muscle/
+		PMUSCLE NMUSCLE
+	QuickTree	Building huge Neighbour-Joining trees of protein sequences.
+		Added to SRS8.3 in Jan 2008
+		http://www.sanger.ac.uk/resources/software/quicktree/
+		QUICKTREE NQUICKTREE
+	tacg	Fast command line application for pattern matching and analysis of nucleic acids and protein
+		http://sourceforge.net/projects/tacg/
+		RESTRICTIONMAP
+	EMBOSS	The European Molecular Biology Open Software Suite
+		http://emboss.sourceforge.net/
+		ANTIGENIC BACKTRANSEQ BACKTRANAMBIG BANANA BIOSEDN BIOSEDP BTWISTED CAI CHAOS CHARGE CHECKTRANS CHIPS COMPSEQN COMPSEQP CONSAMBIGP CONSAMBIGN CONSN CONSP CPGPLOT CPGREPORT CUSP CUTSEQN CUTSEQP DAN DEGAPSEQN DEGAPSEQP DESCSEQN DESCSEQP DENSITY DIFFSEQN DIFFSEQP DISTMATN DISTMATP DOTMATCHERN DOTMATCHERP DOTPATHN DOTPATHP DOTTUPN DOTTUPP DREG EDIALIGNN EDIALIGNP EINVERTED EPESTFIND EPRIMER3 EPRIMER32 EPRIMERS EQUICKTANDEM EST2GENOME ETANDEM EXTRACTSEQN EXTRACTSEQP FREAKN FREAKP FUZZNUC FUZZPRO FUZZTRAN GARNIER GEECEE GETORF HELIXTURNHELIX HMOMENT IEP INFOALIGNN INFOALIGNP INFOSEQN INFOSEQP ISOCHORE JASPSCAN MARSCAN MASKSEQN MASKAMBIGNUC MASKAMBIGPROT MASKSEQP MATCHERN MATCHERP MEGAMERGER MERGERN MERGERP MSBARN MSBARP NEEDLEALLN NEEDLEALLP NEEDLEN NEEDLEP NEWCPGREPORT NEWCPGSEEK OCTANOL PALINDROME PASTESEQN PASTESEQP PATMATDB PATMATMOTIFS PEPCOIL PEPDIGEST PEPINFO PEPNET PEPSTATS PEPWHEEL PEPWINDOW PEPWINDOWALL PLOTCONN PLOTCONP PLOTORF POLYDOTN POLYDOTP PREG PRETTYPLOTN PRETTYPLOTP PRETTYSEQ PSCAN RECODER REMAP RESTOVER RESTRICT REVSEQ SEQMATCHALLN SEQMATCHALLP SEQRETN SEQRETP SHOWALIGNN SHOWALIGNP SHOWORF SHOWPEP SHOWSEQ SHUFFLESEQN SHUFFLESEQP SIGCLEAVE SILENT SIXPACK SIRNA SPLITTERN SPLITTERP STRETCHERN STRETCHERP SUPERMATCHERN SUPERMATCHERP SYCO TCODE TFSCAN TMAP TRANSEQ TRIMEST TRIMSEQN TRIMSEQP UNIONN UNIONP VECTORSTRIP WATERN WATERP WOBBLE WORDCOUNTN WORDCOUNTP WORDMATCHN WORDMATCHP WORDFINDERN WORDFINDERP FDNACOMP FDNADIST FDNAML FDNAMLK FDNAPARS FDNAPENNY FFITCH FKITSCH FPROML FPROMLK FPROTDIST FNEIGHBOR FPROTPARS
+	PrintScan	Search of PRINTS database for matching fingerprints
+		http://www.bioinf.manchester.ac.uk/fingerPRINTScan/
+		PRINTSCAN
+	ChemicalSearch	Chemical Structure searching using OpenBabel
+		Added to SRS8.3 in September 2010
+		http://openbabel.org/wiki/Main_Page
+		CHEMICALSEARCH
+		
+10 tool groups	201 tools

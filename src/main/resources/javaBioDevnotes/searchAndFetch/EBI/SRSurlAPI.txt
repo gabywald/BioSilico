@@ -1,0 +1,104 @@
+-- http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:srsurlapi -- 
+
+SRS URL API
+Introduction
+	It is sometimes useful to have a program or script access SRS to perform a specific query or retrieve some data. This can be done by using SRS wgetz URLs as an API. 
+	For details of the SRS query language see our quick guide, for the URL syntax see our linking to SRS guide. 
+	Note: for retrieving entries where you already know the entry ID or accession number please consider using dbfetch or WSDbfetch instead. 
+
+Existing Tools and APIs
+	On the basis that if it has already been written, why implement it again. Here we present an brief overview of the tools and APIs that we are aware of that can access SRS to perform data retrival. 
+	Note: these tools are provided by third parties. As such EBI is unable to provide support for these tools. If you require support, we suggest, you contact the authors. 
+
+Command-line Tools
+	EMBOSS: supports using SRS servers as sources for obtaining sequences
+		[ http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:emboss ]
+APIs
+	Java [ http://java.sun.com/ ]
+		A Java example client from bionet.software.srs	[ http://www.bio.net/bionet/mm/bio-srs/1998-June/000746.html ]
+	Perl	[  ]
+		SrsUrlApi (includes a getz-like client)	[  ]
+		BioPerl (see Bio::LiveSeq::IO::SRS)	[  ]
+	Ruby	[  ]
+		BioRuby	[  ]
+		
+Getting Data From SRS
+	Getting data from an SRS server is simple:
+
+	1. Build SRS wgetz URL
+	2. Request data from server
+	3. Process response from server
+		I. Check return status
+		II. Check for SRS errors
+	4. Use the data
+	Note: When scripting requests to SRS@EBI please show consideration for other users of the service and leave a 3-5 second gap between requests. Failure to do this may result in your access our the SRS server being blocked. Also note that individual SRS wgetz requests are limited to a maximum menory usage of 2GB and a CPU time limit of 20 seconds, thus if you are making large requests the response may be truncated when these limits are encountered. 
+
+Building URLs
+For most requests the following templates are a good stating point: 
+	http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+<query>
+
+To get the list of SRS entry IDs that match the query <query> (see our quick guide for details of the query language). 
+	http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+<query>
+	
+To get the text of the entries matching the query <query>. 
+
+See our linking to SRS guide for more details of constructing SRS wgetz URLs. [ http://www.ebi.ac.uk/~srs/wiki/doku.php?id=guides:linkingtosrs ]
+
+Requesting Data
+Most programming languages feature a method for performing http requests, either bundled with the language or as a seperate add-on. So all you need to do is construct the required URL, make the request and handle the result. 
+
+For example in Perl the LWP module can be used to perform the request: 
+
+	use LWP;
+	 
+	$pageUrl = 'http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+[UNIPROT:104K_THEAN]';
+	$request = HTTP::Request->new(GET => $pageUrl);
+	$response = $self->{'_browser'}->request($request);
+	
+If the programming or scripting language you are using does not directly support http requests another possibilty is to use an external program that can to fetch the required page. 
+
+The following command-line tools are commonly used to do this: 
+
+	GNU wget
+	lynx
+	links
+	elinks
+	curl
+
+For example using GNU wget in a shell script: 
+
+	pageUrl='http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+[UNIPROT:104K_THEAN]'
+	pageFile='outfile.txt'
+	wget -O $pageFile $pageUrl
+
+Process Response
+Hopefully the response from the request contain the desired data, however things may go wrong so check: 
+
+Return status: anything other than 200 OK may means something went wrong with your request so check carefully (see What Do Those 404 and Other HTTP Return Codes Mean? for details of commonly used status codes). Note: if your IP has been blocked the status returned is 503 Service Unavailable, please contact us as described in the page contents to restore your access.
+SRS errors: if SRS cannot complete your request due to an error then an error message will appear in the response (the status will be 200 OK). SRS wgetz error messages always appear as HTML documents so searching the document returned for something like <TITLE>SRS error</TITLE> will find most errors. Note however that SRS will reports “no entries found” using the error page, so you'll want to look at the contents of the error message to check if it is a real error. For example try the following URLs:
+No entries found: http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+%5bUNIPROT-id:XXXX%5d
+Non existing field: http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+%5bUNIPROT-blah:XXXX%5d
+Unknown set or databank: http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-noSession+-ascii+-e+%5bUNKNOWN-blah:XXXX%5d
+Use the Response
+Once the response has been checked for any problems, you can then use it in the same way as the results of any other http request. The exact details of this depend on the programing language and method used so see their documentation. 
+
+SRS@EBI Restrictions
+Resources at EBI are not unlimited and many users are using the services concurrently. Thus we impose some limits on wgetz processes: 
+
+	Memory usage is limited to 2GB
+	CPU time is restricted to 20 minutes
+
+This means that some large requests may return errors or truncated results. So always check the result matches the expected number of entries. 
+
+The following restrictions on requests must also be implemented in any system using SRS for automated queries: 
+
+	A pause between automated requests of 3 to 5 seconds is required
+	Parallel queries are no permitted
+	
+Note: failure to adhere to the restrictions on requests will lead to the host issuing these requests having its access to SRS blocked. 
+
+Related Articles
+Automated SRS using Perl and LWP	[ http://nsaunders.wordpress.com/2006/12/01/automated-srs-retrieval-using-perl-and-lwp/ ]
+Automating SRS searches				[ http://nsaunders.wordpress.com/2006/10/11/automating-srs-searches/ ]
+
+guides/srsurlapi.txt · Last modified: 2009/03/16 16:26 by hpm 

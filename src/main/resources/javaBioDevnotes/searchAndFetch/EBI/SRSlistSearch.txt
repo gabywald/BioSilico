@@ -1,0 +1,81 @@
+
+
+List Search
+
+The List Search on the “Quick Search” page allows you to perform a search with a list of SRS entry IDs.
+
+Note:
+
+    Each ID must occur on a single line.
+    The IDs must be in the format SrsDatabank:EntryId.
+    Up to 500 IDs will be searched per request.
+
+ID Format
+
+The list of IDs to be used with the List Search should be formatted as one ID per line and each ID should be of the form:
+	SrsDatabank:EntryId
+
+This is case insensitive so the following examples are all equivalent:
+    UNIPROT:104K_THEAN
+    UniProt:104K_THEAN
+    uniprot:104k_thean
+
+SRS Databank Name
+
+Databanks in SRS can have two names:
+
+    Name (e.g. “SWISSPROT”)
+    Display name (e.g. “UniProtKB/Swiss-Prot”)
+
+The display name is optional, and if it is not defined the name will be always used.
+
+For the “List Search” the databank name, not the display name, must be used. To find the databank name look on the “Databank Information” page for the databank. You can find this by following the link on the “Library Page” or from the “Databanks” page.
+Entry ID
+
+The ID used for an entry in SRS is not always the item in the ID field. For some databanks the Accession field is used instead. To find out which field is used for the SRS ID look on the “Databank Information” page for the databank in the list of fields. The field which is of type id is the field used for the SRS entry ID.
+Examples
+UniProtKB
+
+For UniProtKB the SRS databank name is UNIPROT so using it as a database prefix:
+	UNIPROT:104K_THEAN
+	UNIPROT:104K_THEPA
+	UNIPROT:108_SOLLC
+	UNIPROT:10KD_VIGUN
+	UNIPROT:110KD_PLAKN
+
+EMBL-Bank
+
+For EMBL-Bank the SRS databank name is EMBL so using it as a database prefix:
+	EMBL:BW633289
+	EMBL:BW633290
+	EMBL:BW633291
+	EMBL:BW633292
+	EMBL:BW633293
+
+EMBL (Release)
+
+For EMBL (Release) the SRS databank name is EMBLRELEASE so using it as a database prefix:
+	EMBLRELEASE:AJ879808
+	EMBLRELEASE:AJ879809
+	EMBLRELEASE:AJ879810
+	EMBLRELEASE:AJ879812
+	EMBLRELEASE:AJ879813
+
+Mixed Set
+
+More than one databank can be queried for example a mixed set of UniProtKB, PDB and IPI entries:
+	UNIPROT:AFB2_ARATH
+	UNIPROT:AFB3_ARATH
+	PDB:1LR5
+	IPI:IPI00516468.1
+	PDB:1LRH
+	IPI:IPI00517307.1
+
+Further Information
+
+See the following for more details about using the “List Search”:
+
+    Get Sequences From a List of IDs [ http://www.ebi.ac.uk/~srs/wiki/doku.php?id=tutorial:ids2sequences ]
+
+    faq/listsearch.txt · Last modified: 2011/09/28 08:05 by hpm
+    

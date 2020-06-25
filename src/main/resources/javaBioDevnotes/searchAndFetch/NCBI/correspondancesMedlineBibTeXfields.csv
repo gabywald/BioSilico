@@ -1,0 +1,65 @@
+;MEDLINE;;BIBTEX;;;;;;
+# Abstract;(AB);AB;abstract;;    # address : L'adresse de l'Èditeur;;;;
+# Copyright Information;(CI);CI;;;    # abstract : RÈsumÈ de l'article;;;;
+# Affiliation;(AD);AD;;;    # annote : Une annotation;;;;
+# Investigator Affiliation;(IRAD);IRAD;;;    # author : Nom(s) puis prÈnom(s) des auteurs sÈparÈs par and. Exemple : author;;;;
+# Article Identifier;(AID);AID;;;    # booktitle : Le titre du livre;;;;
+# Author;(AU);AU;author;;    # chapter : Le numÈro de chapitre;;;;
+# Full Author;(FAU);FAU;;;    # crossref : La clÈ d'une rÈfÈrence croisÈe;;;;
+# Book Title;(BTI);BTI;booktitle;;    # edition : L'Èdition du livre;;;;
+# Collection Title;(CTI);CTI;;;    # editor : Le nom de l'Èditeur;;;;
+# Comments/Corrections;;;;;    # eprint : La spÈcification d'un publication Èlectronique.;;;;
+# Corporate Author;(CN);CN;;;    # howpublished : Comment il a ÈtÈ publiÈ, si ce n'est pas avec une mÈthode standard;;;;
+# Create Date;(CRDT);CRDT;;;    # institution : L'institution qui ÈtÈ impliquÈ dans la publication (pas forcÈment l'Èditeur);;;;
+# Date Completed;(DCOM);DCOM;;;    # journal : Le journal ou le magazine dans lequel le travail a ÈtÈ publiÈ;;;;
+# Date Created;(DA);DA;;;"    # key : Un champ cachÈ utilisÈ pour spÈcifier ou remplacer l'ordre alphabÈtique des entrÈes (quand ""author et ""editor"" ne sont pas prÈsents).";;;;
+# Date Last Revised;(LR);LR;;;    # month : Le mois de la crÈation ou de la publication;;;;
+# Date of Electronic Publication;(DEP);DEP;eprint;;    # note : Informations diverses.;;;;
+# Date of Publication;(DP);DP;;;    # number : Le numÈro du journal ou du magazine.;;;;
+# Edition;(EN);EN;edition;;    # organization : Le sponsor d'une confÈrence;;;;
+# Editor and Full Editor Name;(ED) (FED);ED FED;editor;;    # pages : Le nombre de pages, sÈparÈs par des virgules.;;;;
+# Entrez Date;(EDAT);EDAT;;;    # publisher : Le nom de la maison d'Èdition;;;;
+# Gene Symbol;(GS);GS;;;    # school : L'Ècole dans laquelle la thËse a ÈtÈ Ècrite;;;;
+# General Note;(GN);GN;note;;    # series : La sÈrie de livres dans laquelle la livre a ÈtÈ publiÈ;;;;
+# Grant Number;(GR);GR;;;    # title : Le titre du document;;;;
+# Investigator Name and Full Investigator Name;(IR) (FIR);IR FIR;;;    # type : Le type;;;;
+# ISBN;(ISBN);ISBN;;isbn;    # url : L'adresse URL;;;;
+# ISSN;(IS);IS;;issn;    # volume : Le volume, dans le cas o˘ù il y a plusieurs volumes;;;;
+# Issue;(IP);IP;number;;    # year : L'annÈe de publication (ou de crÈation s'il n'a pas ÈtÈ publiÈ);;;;
+# Journal Title Abbreviation;(TA);TA;journal;;;;;;
+# Journal Title;(JT);JT;journal;;;;;;
+# Language;(LA);LA;;;MORE MEDLINE about Comments && Corrections;;;;
+# Location Identifier;(LID);LID;;;Comment on ;(CON) ;CON ;;"cites the reference upon which the article comments; began use with journal issues published in 1989."
+# Manuscript Identifier;(MID);MID;;;Comment in ;(CIN) ;CIN ;;"cites the reference containing a commentary about the article (appears on citation for original article); began use with journal issues published in 1989."
+# MeSH Date;(MHDA);MHDA;;;Erratum in ;(EIN) ;EIN ;;"cites a published erratum to the article (appears on citation for original article); began use in 1987."
+# MeSH Terms;(MH);MH;;;Erratum for ;(EFR) ;EFR ;;cites the original article for which there is a published erratum.
+# NLM Unique ID;(JID);JID;;;Corrected and Republished in ;(CRI) ;CRI ;;"cites the final, correct version of a corrected and republished article (appears on citation for original article). Began use in 1987 as Republished in (RPI); renamed in 2006."
+# Number of References;(RF);RF;;;Corrected and Republished from ;(CRF) ;CRF ;;"cites the original article subsequently corrected and republished. Began use in 1987 as Republished from (RPF); renamed in 2006."
+# Other Abstract;(OAB);OAB;;;Partial retraction in ;(PRIN) ;PRIN ;;"cites the reference containing a partial retraction of the article (appears on citation for original article); began use in 2007."
+# Other Copyright Information;(OCI);OCI;;;Partial retraction of ;(PROF) ;PROF ;;"cites the article being partially retracted; began use in 2007."
+# Other ID;(OID);OID;;;Republished in ;(RPI) ;RPI ;;"cites the subsequent (and possibly abridged) version of a republished article (appears on citation for original article); began use in 2006."
+# Other Term;(OT);OT;;;Republished from ;(RPF) ;RPF ;;"cites the first, originally published article; began use in 2006."
+# Other Term Owner;(OTO);OTO;;;Retraction in ;(RIN) ;RIN ;;"cites the retraction of the article (appears on citation for original article); began use in August 1984."
+# Owner;(OWN);OWN;;;Retraction of ;(ROF) ;ROF ;;"cites the article(s) being retracted; began use in August 1984."
+# Pagination;(PG);PG;pages;;Update in ;(UIN) ;UIN ;;"cites an updated version of the article (appears on citation for original article); began limited use in 2001."
+# Personal Name as Subject;(PS);PS;;;Update of ;(UOF) ;UOF ;;"cites the article being updated; limited use; began limited use in 2001."
+# Full Personal Name as Subject;(FPS);FPS;;;Summary for patients in ;(SPIN) ;SPIN ;;"cites a patient summary article; began use in November 2001 (these records contain Publication Type, Patient Education Handout). See the article 'Patient Education Handouts in MEDLINEÆ/PubMedÆ' in the NLM Technical Bulletin at http:www.nlm.nih.gov/pubs/techbull/ma02/ma02_new_pt.html for more information."
+# Place of Publication;(PL);PL;;;Original report in ;(ORI);ORI;;
+# Publication History Status;(PHST);PHST;;;;;;;
+# Publication Status;(PST);PST;;;;;;;
+# Publication Type;(PT);PT;howpublished;;;;;;
+# Publishing Model;(PUBM);PUBM;;;;;;;
+# PubMed Central Identifier;(PMC);PMC;;;;;;;
+# PubMed Central Release;(PMCR);PMCR;;;;;;;
+# PubMed Unique Identifier;(PMID);PMID;id;;;;;;
+# Registry Number/EC Number;(RN);RN;;;;;;;
+# Substance Name;(NM);NM;;;;;;;
+# Secondary Source ID;(SI);SI;;;;;;;
+# Source;(SO);SO;;;;;;;
+# Space Flight Mission;(SFM);SFM;;;;;;;
+# Status;(STAT);STAT;;;;;;;
+# Subset;(SB);SB;;;;;;;
+# Title;(TI);TI;title;;;;;;
+# Transliterated Title;(TT);TT;;;;;;;
+# Volume;(VI);VI;volume;;;;;;
+# Volume Title;(VTI);VTI;;;;;;;

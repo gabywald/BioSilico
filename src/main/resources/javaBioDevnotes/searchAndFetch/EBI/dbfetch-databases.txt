@@ -1,0 +1,928 @@
+-- http://www.ebi.ac.uk/Tools/dbfetch/dbfetch/dbfetch.databases -- 
+
+EBIDatabasesDatabase BrowsingDbfetchDatabases
+EBI Dbfetch Databases
+Introduction
+
+The databases available via dbfetch are listed below, the name in parenthesis should be used when:
+
+    Constructing a dbfetch URL (see Syntax).
+    Constructing an identifier file for upload (see Search Items).
+    Making a request via the web services (see WSDbfetch).
+
+An overview of each database is also provided, which includes a short description of the database, a link to the database, a collection of example identifiers and details of the available data formats and result styles.
+Databases
+
+    EDAM (edam)
+    EMBL-Bank (embl)
+    EMBLCDS (emblcds)
+    EMBLCON (emblcon)
+    EMBLCONEXP (emblconexp)
+    EMBL-SVA (emblsva)
+    Ensembl Gene (ensemblgene)
+    Ensembl Genomes Gene (ensemblgenomesgene)
+    Ensembl Genomes Transcript (ensemblgenomestranscript)
+    Ensembl Transcript (ensembltranscript)
+    EPO Proteins (epo_prt)
+    GenomeReviews (genomereviews)
+    GenomeReviews Gene (genomereviewsgene)
+    GenomeReviews Transcript (genomereviewstranscript)
+    HGNC (hgnc)
+    HGVBase (hgvbase)
+    IMGT/HLA (imgthla)
+    IMGT/LIGM-DB (imgtligm)
+    InterPro (interpro)
+    IPD-KIR (ipdkir)
+    IPD-MHC (ipdmhc)
+    IPI (ipi)
+    IPI History (ipihistory)
+    IPRMC (iprmc)
+    IPRMC UniParc (iprmcuniparc)
+    JPO Proteins (jpo_prt)
+    KIPO Proteins (kipo_prt)
+    LiveLists (livelists)
+    MEDLINE (medline)
+    Patent DNA NRL1 (nrnl1)
+    Patent DNA NRL2 (nrnl2)
+    Patent Protein NRL1 (nrpl1)
+    Patent Protein NRL2 (nrpl2)
+    PDB (pdb)
+    RefSeq (nucleotide) (refseqn)
+    RefSeq (protein) (refseqp)
+    RESID (resid)
+    SGT (sgt)
+    Taxonomy (taxonomy)
+    Trace Archive (tracearchive)
+    UniParc (uniparc)
+    UniProtKB (uniprotkb)
+    UniRef100 (uniref100)
+    UniRef50 (uniref50)
+    UniRef90 (uniref90)
+    UniSave (unisave)
+    USPTO Proteins (uspto_prt)
+
+EDAM (edam)
+
+http://edamontology.sourceforge.net/
+
+EMBRACE Data and Methods (EDAM) Ontology.
+
+Format	Styles				Example Identifiers
+default	default, html, raw	Id: 0000352, 0001929
+obo 	default, html, raw	Id: 0000352, 0001929
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+EMBL-Bank (embl)
+
+http://www.ebi.ac.uk/embl/
+
+EMBL Nucleotide Sequence Database, Europe's primary nucleotide sequence resource. The main sources of the DNA and RNA sequences in the database are submissions from individual researchers, genome sequencing projects and patent applications.
+
+Format		Styles					Example Identifiers
+default 	default, raw, html		Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+embl		default, raw, html		Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+emblxml-1.2	default, raw			Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+fasta		default, raw, html		Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+annot		default, html, raw		Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+emblxml 	default, raw			Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+entrysize	default, html, raw		Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+insdxml		default, raw			Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+seqxm		default, raw			Accession: M10051, K00650, D87894, AJ242600
+Name: HSINSR, HSFOS, ROD894, LOP242600
+Sequence version: J00231.1, K00650.1, D87894.1, AJ242600.1
+
+Data resources: ENA Browser, SRS@EBI, Xembl, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+EMBLCDS (emblcds)
+
+http://www.ebi.ac.uk/embl/
+
+EMBLCDS is a database of nucleotide sequences of the CDS (coding sequence) features, as annotated in EMBL database. EMBLCDS record contains the nucleotide sequence of the CDS region, accompanying annotation from the parent nucleotide entry and the additional automatically generated annotation.
+
+Format		Styles				Example Identifiers
+default		default, raw, html	Accession: AAA59452
+Sequence version: AAA59452.1
+embl 	default, raw, html 	Accession: AAA59452
+Sequence version: AAA59452.1
+emblxml-1.2 	default, raw 	Accession: AAA59452
+Sequence version: AAA59452.1
+fasta 	default, raw, html 	Accession: AAA59452
+Sequence version: AAA59452.1
+annot 	default, html, raw 	Accession: AAA59452
+Sequence version: AAA59452.1
+emblxml 	default, raw 	Accession: AAA59452
+Sequence version: AAA59452.1
+entrysize 	default, html, raw 	Accession: AAA59452
+Sequence version: AAA59452.1
+seqxml 	default, raw 	Accession: AAA59452
+Sequence version: AAA59452.1
+
+Data resources: ENA Browser, SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+EMBLCON (emblcon)
+
+http://www.ebi.ac.uk/embl/
+
+The EMBLCON database division represents complete genomes and other long sequences constructed from segment entries.
+
+Format	Styles	Example Identifiers
+default 	default, raw, html 	Accession: CH003588
+Sequence version: CH003588.1
+embl 	default, raw, html 	Accession: CH003588
+Sequence version: CH003588.1
+emblxml-1.2 	default, raw 	Accession: CH003588
+Sequence version: CH003588.1
+fasta 	default, raw, html 	Accession: CH003588
+Sequence version: CH003588.1
+annot 	default, html, raw 	Accession: CH003588
+Sequence version: CH003588.1
+emblxml 	default, raw 	Accession: CH003588
+Sequence version: CH003588.1
+entrysize 	default, html, raw 	Accession: CH003588
+Sequence version: CH003588.1
+insdxml 	default, raw 	Accession: CH003588
+Sequence version: CH003588.1
+seqxml 	default, raw 	Accession: CH003588
+Sequence version: CH003588.1
+
+Data resources: ENA Browser, SRS@EBI
+***** ***** ***** ***** ***** 
+EMBLCONEXP (emblconexp)
+
+http://www.ebi.ac.uk/embl/
+
+The EMBLCON database division represents complete genomes and other long sequences constructed from segment entries. Expanded entries including the complete sequence.
+
+Format	Styles	Example Identifiers
+default 	default, raw, html 	Accession: AL672111
+Sequence version: AL672111.1
+embl 	default, raw, html 	Accession: AL672111
+Sequence version: AL672111.1
+emblxml-1.2 	default, raw 	Accession: AL672111
+Sequence version: AL672111.1
+fasta 	default, html, raw 	Accession: AL672111
+Sequence version: AL672111.1
+annot 	default, html, raw 	Accession: AL672111
+Sequence version: AL672111.1
+entrysize 	default, html, raw 	Accession: AL672111
+Sequence version: AL672111.1
+seqxml 	default, raw 	Accession: AL672111
+Sequence version: AL672111.1
+
+Data resources: ENA Browser, SRS@EBI
+***** ***** ***** ***** ***** 
+EMBL-SVA (emblsva)
+
+http://www.ebi.ac.uk/cgi-bin/sva/sva.pl
+
+The EMBL Sequence Version Archive is a repository of all entries which have ever appeared in the EMBL Nucleotide Sequence Database.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Accession: Y09633
+Sequence version: Y09633.1, Y09633.4
+embl 	default, raw 	Accession: Y09633
+Sequence version: Y09633.1, Y09633.4
+fasta 	default, raw 	Accession: Y09633
+Sequence version: Y09633.1, Y09633.4
+
+Data resources: EMBL-SVA
+***** ***** ***** ***** ***** 
+Ensembl Gene (ensemblgene)
+
+http://www.ensembl.org/
+
+Ensembl genome databases for vertebrate species and model organisms, for other species see Ensembl Genomes instead of Ensembl. Gene sequences and annotations.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+csv 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+embl 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+fasta 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+genbank 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+gff 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+gff3 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+tab 	default, raw 	Id: ENSAMEG00000011969, ENSBTAG00000000988, ENSG00000139618, ENSMUSG00000041147
+
+Data resources: Ensembl UK, Ensembl USA East, Ensembl USA West, Ensembl Asia
+***** ***** ***** ***** ***** 
+Ensembl Genomes Gene (ensemblgenomesgene)
+
+http://www.ensemblgenomes.org/
+
+Ensembl Genomes genome databases for metazoa, plants, fungi, protists and bacteria, for vertebrate species and model organisms see Ensembl instead of Ensembl Genomes. Gene sequences and annotations.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+csv 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+embl 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+fasta 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+genbank 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+gff 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+gff3 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+tab 	default, raw 	Id: AAEL000001, AGAP006864, GB19834, EBESCG00000002314
+
+Data resources: EnsemblGenomes UK
+***** ***** ***** ***** ***** 
+Ensembl Genomes Transcript (ensemblgenomestranscript)
+
+http://www.ensemblgenomes.org/
+
+Ensembl Genomes genome databases for metazoa, plants, fungi, protists and bacteria, for vertebrate species and model organisms see Ensembl instead of Ensembl Genomes. Transcript sequences.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: AAEL000001-RA, AGAP006864-RA, GB19834-RA, EBESCT00000002837
+fasta 	default, raw 	Id: AAEL000001-RA, AGAP006864-RA, GB19834-RA, EBESCT00000002837
+
+Data resources: EnsemblGenomes UK
+***** ***** ***** ***** ***** 
+Ensembl Transcript (ensembltranscript)
+
+http://www.ensembl.org/
+
+Ensembl genome databases for vertebrate species and model organisms, for other species see Ensembl Genomes instead of Ensembl. Transcript sequences.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: ENSAMET00000013126, ENSBTAT00000001311, ENST00000380152, ENSMUST00000044620
+fasta 	default, raw 	Id: ENSAMET00000013126, ENSBTAT00000001311, ENST00000380152, ENSMUST00000044620
+
+Data resources: Ensembl UK, Ensembl USA East, Ensembl USA West, Ensembl Asia
+***** ***** ***** ***** ***** 
+EPO Proteins (epo_prt)
+
+http://www.ebi.ac.uk/patentdata/proteins/
+
+Protein sequences appearing in patents from the European Patent Office (EPO).
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: A00022
+Sequence version: A00022.1
+annot 	default, html, raw 	Accession: A00022
+Sequence version: A00022.1
+embl 	default, html, raw 	Accession: A00022
+Sequence version: A00022.1
+entrysize 	default, html, raw 	Accession: A00022
+Sequence version: A00022.1
+fasta 	default, html, raw 	Accession: A00022
+Sequence version: A00022.1
+seqxml 	default, raw 	Accession: A00022
+Sequence version: A00022.1
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+GenomeReviews (genomereviews)
+
+http://www.ebi.ac.uk/GenomeReviews/
+
+The Genome Reviews Database consists of curated versions of complete genome entries from the EMBL/GenBank/DDBJ nucleotide sequence database.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+annot 	default, html, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+embl 	default, html, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+entrysize 	default, html, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+fasta 	default, html, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+seqxml 	default, raw 	Accession: AE000784_GR
+Sequence version: AE000784_GR.1
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+GenomeReviews Gene (genomereviewsgene)
+
+http://www.ebi.ac.uk/GenomeReviews/
+
+Genome Reviews Gene records are available for all archaeal, bacterial, phage and eukaryotic genomes present in Genome Reviews. Each record represents one gene present in a Genome Reviews component record.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+annot 	default, html, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+embl 	default, html, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+entrysize 	default, html, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+fasta 	default, html, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+seqxml 	default, raw 	Accession: IGI16125284
+Sequence version: IGI14519461.1
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+GenomeReviews Transcript (genomereviewstranscript)
+
+http://www.ebi.ac.uk/GenomeReviews/
+
+Genome Reviews transcript records are available for all archaeal, bacterial, phage and eukaryotic genomes present in Genome Reviews. Each record represents one transcript present in a Genome Reviews component record.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+annot 	default, html, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+embl 	default, html, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+entrysize 	default, html, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+fasta 	default, html, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+seqxml 	default, raw 	Accession: ITI06683295
+Sequence version: ITI06683295.1
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+HGNC (hgnc)
+
+http://genenames.org/
+
+HUGO Gene Nomenclature Committee (HGNC) approved gene name and symbol (short-form abbreviation) for each human gene.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: 1101, 3566
+Id: BRCA2, FACD
+tab 	default, html, raw 	Accession: 1101, 3566
+Id: BRCA2, FACD
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+HGVBase (hgvbase)
+
+http://www.hgvbaseg2p.org/
+
+The Human Genic Bi-Allelic Sequences Database is an attempt to summarize all known sequence variations in the human genome and to facilitate research into how genotypes affect common diseases, drug responses, and other complex phenotypes.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: GEN000002654, IND000000198, SNP000002179, STR000008969
+fasta 	default, html, raw 	Id: GEN000002654, IND000000198, SNP000002179, STR000008969
+hgbase 	default, html, raw 	Id: GEN000002654, IND000000198, SNP000002179, STR000008969
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS seqret
+***** ***** ***** ***** ***** 
+IMGT/HLA (imgthla)
+
+http://www.ebi.ac.uk/imgt/hla/
+
+Sequences of the human major histocompatibility complex (HLA) including the official sequences for the WHO Nomenclature Committee For Factors of the HLA System.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: HLA00001
+annot 	default, html, raw 	Accession: HLA00001
+embl 	default, html, raw 	Accession: HLA00001
+entrysize 	default, html, raw 	Accession: HLA00001
+fasta 	default, html, raw 	Accession: HLA00001
+seqxml 	default, raw 	Accession: HLA00001
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+IMGT/LIGM-DB (imgtligm)
+
+http://imgt.cines.fr/cgi-bin/IMGTlect.jv
+
+A comprehensive database of Immunoglobulins and T cell Receptors from human and other vertebrates.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: A00673
+annot 	default, html, raw 	Accession: A00673
+embl 	default, html, raw 	Accession: A00673
+entrysize 	default, html, raw 	Accession: A00673
+fasta 	default, html, raw 	Accession: A00673
+seqxml 	default, raw 	Accession: A00673
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+InterPro (interpro)
+
+http://www.ebi.ac.uk/interpro/
+
+The InterPro database (Integrated Resource of Protein Domains and Functional Sites) is an integrated documentation resource for protein families, domains and functional sites. It was developed initially as a means of rationalising the complementary efforts of the PROSITE, PRINTS, Pfam and ProDom database projects, but now also includes the SMART, TIGRFAMs, PIR SuperFamilies and most recently SUPERFAMILY databases.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: IPR006212, IPR008266, IPR008958, IPR009030, IPR011009
+interpro 	default, html, raw 	Id: IPR006212, IPR008266, IPR008958, IPR009030, IPR011009
+interproxml 	default, raw 	Id: IPR006212, IPR008266, IPR008958, IPR009030, IPR011009
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+IPD-KIR (ipdkir)
+
+http://www.ebi.ac.uk/ipd/kir/
+
+A centralised repository for human Killer-cell Immunoglobulin-like Receptor (KIR) sequences.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: KIR00001
+annot 	default, html, raw 	Accession: KIR00001
+embl 	default, html, raw 	Accession: KIR00001
+entrysize 	default, html, raw 	Accession: KIR00001
+fasta 	default, html, raw 	Accession: KIR00001
+seqxml 	default, raw 	Accession: KIR00001
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+IPD-MHC (ipdmhc)
+
+http://www.ebi.ac.uk/ipd/mhc/
+
+Sequences of the the major histocompatibility complex in a number of species.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: MHC00001
+annot 	default, html, raw 	Accession: MHC00001
+embl 	default, html, raw 	Accession: MHC00001
+entrysize 	default, html, raw 	Accession: MHC00001
+fasta 	default, html, raw 	Accession: MHC00001
+seqxml 	default, raw 	Accession: MHC00001
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+IPI (ipi)
+
+http://www.ebi.ac.uk/ipi/
+
+The International Protein Index (IPI) provides non-redundant proteome sets for a selection of higher eukaryotes, e.g. Arabidopsis, Chicken, Mouse, Human, etc. Cross-references are provided to the various source databases.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+annot 	default, html, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+entrysize 	default, html, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+fasta 	default, html, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+seqxml 	default, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+swissprot 	default, html, raw 	Accession: IPI00025803, IPI00220325
+Sequence version: IPI00025803.3, IPI00220325.4
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+IPI History (ipihistory)
+
+http://www.ebi.ac.uk/ipi/
+
+IPI History provides details of the history of identifiers in the International Protein Index (IPI) database. Includes details of entry creation, deletion and replacement.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: IPI00025803, IPI00817963
+tab 	default, html, raw 	Accession: IPI00025803, IPI00817963
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+IPRMC (iprmc)
+
+http://www.ebi.ac.uk/interpro/
+
+InterPro Matches Complete (IPRMC) for UniProtKB proteins.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: A0A000
+iprmc 	default, html, raw 	Id: A0A000
+iprmctab 	default, html, raw 	Id: A0A000
+iprmcxml 	default, raw 	Id: A0A000
+
+Data resources: SRS@EBI, SRS@WBW
+***** ***** ***** ***** ***** 
+IPRMC UniParc (iprmcuniparc)
+
+http://www.ebi.ac.uk/interpro/
+
+InterPro Matches Complete (IPRMC) for UniParc proteins.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: UPI0000000001
+iprmc 	default, html, raw 	Id: UPI0000000001
+iprmctab 	default, html, raw 	Id: UPI0000000001
+iprmcxml 	default, raw 	Id: UPI0000000001
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+JPO Proteins (jpo_prt)
+
+http://www.ebi.ac.uk/patentdata/proteins/
+
+Protein sequences appearing in patents from the Japanese Patent Office (JPO).
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: E50010
+annot 	default, html, raw 	Accession: E50010
+embl 	default, html, raw 	Accession: E50010
+entrysize 	default, html, raw 	Accession: E50010
+fasta 	default, html, raw 	Accession: E50010
+seqxml 	default, raw 	Accession: E50010
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+KIPO Proteins (kipo_prt)
+
+http://www.ebi.ac.uk/patentdata/proteins/
+
+Protein sequences appearing in patents from the Korean Intellectual Property Office (KIPO).
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: DI500001
+annot 	default, html, raw 	Accession: DI500001
+embl 	default, html, raw 	Accession: DI500001
+entrysize 	default, html, raw 	Accession: DI500001
+fasta 	default, html, raw 	Accession: DI500001
+seqxml 	default, raw 	Accession: DI500001
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+LiveLists (livelists)
+
+ftp://ftp.ncbi.nlm.nih.gov/genbank/livelists/
+
+NCBI LiveLists provides a mapping between NCBI gi numbers and INSDC (i.e. DDBJ, EMBL-Bank and GenBank) accessions.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: AF093062, AAC64372
+Id: 6019463, 6019464
+Sequence version: AF093062.2, AAC64372.2
+livelists 	default, html, raw 	Accession: AF093062, AAC64372
+Id: 6019463, 6019464
+Sequence version: AF093062.2, AAC64372.2
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+MEDLINE (medline)
+
+http://www.ebi.ac.uk/Databases/MEDLINE/medline.html
+
+MEDLINE contains bibliographic citations and author abstracts from more than 4,000 biomedical journals published in the United States and 70 other countries. The files contains over 11 million citations dating back to the mid-1960's, updated weekly.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: 1, 2859121, 17567924
+bibtex 	default, raw 	Id: 1, 2859121, 17567924
+endnote 	default, raw 	Id: 1, 2859121, 17567924
+isi 	default, raw 	Id: 1, 2859121, 17567924
+medlinefull 	default, html, raw 	Id: 1, 2859121, 17567924
+medlineref 	default, html, raw 	Id: 1, 2859121, 17567924
+medlinexml 	default, raw 	Id: 1, 2859121, 17567924
+modsxml 	default, raw 	Id: 1, 2859121, 17567924
+ris 	default, raw 	Id: 1, 2859121, 17567924
+wordbibxml 	default, raw 	Id: 1, 2859121, 17567924
+
+Data resources: SRS@EBI, CiteXplore, NCBI E-utilities
+***** ***** ***** ***** ***** 
+Patent DNA NRL1 (nrnl1)
+
+http://www.ebi.ac.uk/patentdata/nr/
+
+Non-redundant patent nucleotides level-1. Nucleotide sequences from patents clustered by 100% sequence identity over whole length.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: NRN_DJ207917
+annot 	default, html, raw 	Id: NRN_DJ207917
+entrysize 	default, html, raw 	Id: NRN_DJ207917
+fasta 	default, html, raw 	Id: NRN_DJ207917
+nrl1 	default, html, raw 	Id: NRN_DJ207917
+seqxml 	default, raw 	Id: NRN_DJ207917
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+Patent DNA NRL2 (nrnl2)
+
+http://www.ebi.ac.uk/patentdata/nr/
+
+Non-redundant patent nucleotides level-2. Nucleotide sequences from patents clustered by patent family and then by 100% sequence identity over whole length.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: NRN006674C5
+annot 	default, html, raw 	Id: NRN006674C5
+entrysize 	default, html, raw 	Id: NRN006674C5
+fasta 	default, html, raw 	Id: NRN006674C5
+nrl2 	default, html, raw 	Id: NRN006674C5
+seqxml 	default, raw 	Id: NRN006674C5
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+Patent Protein NRL1 (nrpl1)
+
+http://www.ebi.ac.uk/patentdata/nr/
+
+Non-redundant patent proteins level-1. Protein sequences from patents clustered by 100% sequence identity over whole length.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: NRP_AX013047
+annot 	default, html, raw 	Id: NRP_AX013047
+entrysize 	default, html, raw 	Id: NRP_AX013047
+fasta 	default, html, raw 	Id: NRP_AX013047
+nrl1 	default, html, raw 	Id: NRP_AX013047
+seqxml 	default, raw 	Id: NRP_AX013047
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+Patent Protein NRL2 (nrpl2)
+
+http://www.ebi.ac.uk/patentdata/nr/
+
+Non-redundant patent proteins level-2. Protein sequences from patents clustered by patent family and then by 100% sequence identity over whole length.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: NRP00000001
+annot 	default, html, raw 	Id: NRP00000001
+entrysize 	default, html, raw 	Id: NRP00000001
+fasta 	default, html, raw 	Id: NRP00000001
+nrl2 	default, html, raw 	Id: NRP00000001
+seqxml 	default, raw 	Id: NRP00000001
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+PDB (pdb)
+
+http://www.ebi.ac.uk/pdbe/
+
+Macromolecular structures from the Brookhaven Protein Data Bank (PDB). Contains protein and nucleotide structure and sequence data.
+
+Format	Styles	Example Identifiers
+default 	default, raw, html 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+fasta 	default, raw 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+mmcif 	default, raw 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+pdb 	default, raw, html 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+pdbml 	default, raw 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+annot 	default, html, raw 	Id: 101D, 1GAG, 10MH, 3E3Q, 3E3Q_A, 3E3Q_a, 3E3QA, 3E3Qa
+
+Data resources: EMBOSS seqret, RCSB FTP@EBI, SRS@EBI, PDBe FTP@EBI
+***** ***** ***** ***** ***** 
+RefSeq (nucleotide) (refseqn)
+
+http://www.ncbi.nlm.nih.gov/refseq/
+
+The NCBI Reference Sequence project (RefSeq) provides reference sequence standards for the naturally occurring molecules of the central dogma, from chromosomes to mRNAs to proteins.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+annot 	default, html, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+entrysize 	default, html, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+fasta 	default, html, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+refseq 	default, html, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+seqxml 	default, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+insdxml 	default, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+tinyseq 	default, raw 	Accession: AC_000014, NC_004952, NG_000865, NM_000231, NR_000003, NS_000193, NT_113950, NW_001031896, NZ_DS990632, XM_001000025
+Id: 110189662, 32455353, 300797863, 209529740
+Sequence version: AC_000014.1, NC_004952.1, NG_000865.5, NM_000231.2
+
+Data resources: SRS@EBI, NCBI E-utilities
+***** ***** ***** ***** ***** 
+RefSeq (protein) (refseqp)
+
+http://www.ncbi.nlm.nih.gov/refseq/
+
+The NCBI Reference Sequence project (RefSeq) provides reference sequence standards for the naturally occurring molecules of the central dogma, from chromosomes to mRNAs to proteins.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+annot 	default, html, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+entrysize 	default, html, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+fasta 	default, html, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+refseqp 	default, html, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+seqxml 	default, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+insdxml 	default, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+tinyseq 	default, raw 	Accession: AP_000130, NP_862703, XP_001001333, YP_000022, ZP_00047513
+Id: 56160459, 32455307
+Sequence version: AP_000130.1, NP_862703.1
+
+Data resources: SRS@EBI, NCBI E-utilities
+***** ***** ***** ***** ***** 
+RESID (resid)
+
+http://www.ebi.ac.uk/RESID/
+
+A comprehensive collection of annotations and structures for protein modifications including amino-terminal, carboxyl-terminal and peptide chain cross-link post-translational modifications.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: AA0330
+pdb 	default, raw 	Id: AA0330
+resid 	default, raw 	Id: AA0330
+
+Data resources: SRS@EBI
+***** ***** ***** ***** ***** 
+SGT (sgt)
+
+http://targetdb.pdb.org/
+
+Structural Genomics Targets (SGT) is a protein target registration database, providing information on the experimental progress and status of target amino acid sequences selected for structural determination.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: 1, 283832, APC4091, IGBMC-0038-000, IPRv2949cPALZ, YCL050c
+annot 	default, html, raw 	Id: 1, 283832, APC4091, IGBMC-0038-000, IPRv2949cPALZ, YCL050c
+fasta 	default, html, raw 	Id: 1, 283832, APC4091, IGBMC-0038-000, IPRv2949cPALZ, YCL050c
+seqxml 	default, raw 	Id: 1, 283832, APC4091, IGBMC-0038-000, IPRv2949cPALZ, YCL050c
+sgtxml 	default, raw 	Id: 1, 283832, APC4091, IGBMC-0038-000, IPRv2949cPALZ, YCL050c
+
+Data resources: SRS@EBI, TargetDB, NCBI BLAST blastdbcmd, EMBOSS seqret
+***** ***** ***** ***** ***** 
+Taxonomy (taxonomy)
+
+http://www.ncbi.nlm.nih.gov/Taxonomy/
+
+Taxonomic classification of organisms for which there are sequences in the INSDC databases (i.e. DDBJ, EMBL-Bank and GenBank) and many other biological databases.
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Id: 3702, 9606
+taxonomy 	default, html, raw 	Id: 3702, 9606
+enataxonomyxml 	default, raw 	Id: 3702, 9606
+uniprottaxonomyrdfxml 	default, raw 	Id: 3702, 9606
+
+Data resources: SRS@EBI, ENA Browser, UniProt.org
+***** ***** ***** ***** ***** 
+Trace Archive (tracearchive)
+
+http://www.ebi.ac.uk/ena/
+
+An archive of capillary electrophoresis trace data.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: TI1, TI1941166100
+fasta 	default, raw 	Id: TI1, TI1941166100
+fastq 	default, raw 	Id: TI1, TI1941166100
+tracexml 	default, raw 	Id: TI1, TI1941166100
+
+Data resources: ENA Browser
+***** ***** ***** ***** ***** 
+UniParc (uniparc)
+
+http://www.uniprot.org/
+
+The UniProt Archive (UniParc) contains available protein sequences collected from many different sources. The sequence data are archived to facilitate examination of changes to sequence data. Search UniParc if you want to examine the "history" of a particular sequence.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Accession: UPI0000000001, UPI0000046364, UPI00001B3DCE
+fasta 	default, raw 	Accession: UPI0000000001, UPI0000046364, UPI00001B3DCE
+uniparc 	default, raw 	Accession: UPI0000000001, UPI0000046364, UPI00001B3DCE
+uniprotrdfxml 	default, raw 	Accession: UPI0000000001, UPI0000046364, UPI00001B3DCE
+seqxml 	default, raw 	Accession: UPI0000000001, UPI0000046364, UPI00001B3DCE
+
+Data resources: UniProt.org, SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS seqret
+***** ***** ***** ***** ***** 
+UniProtKB (uniprotkb)
+
+http://www.uniprot.org/
+
+The UniProt Knowledgebase (UniProtKB) is the central access point for extensive curated protein information, including function, classification, and cross-references. Search UniProtKB to retrieve “everything that is known” about a particular sequence.
+
+Format	Styles	Example Identifiers
+default 	default, raw, html 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+fasta 	default, raw, html 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+gff3 	default, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+uniprot 	default, raw, html 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+uniprotrdfxml 	default, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+uniprotxml 	default, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+annot 	default, html, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+entrysize 	default, html, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+seqxml 	default, raw 	Accession: P06213, P29306, P68255
+Name: INSR_HUMAN, 1433X_MAIZE, 1433T_RAT
+
+Data resources: UniProt.org, SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+UniRef100 (uniref100)
+
+http://www.uniprot.org/
+
+The UniProt Reference Clusters (UniRef) databases combine closely related sequences into a single record to speed searches. There are three different non-redundant databases with different sequence identity cut-offs. In UniRef100, UniRef90 and UniRef50 databases no pair of sequences in the representative set has >100%, >90% or >50% mutual sequence identity. The three UniRef databases allow the user to choose between a fast search and a truly comprehensive one.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: UniRef100_P06213
+fasta 	default, raw 	Id: UniRef100_P06213
+uniprotrdfxml 	default, raw 	Id: UniRef100_P06213
+uniref100 	default, raw 	Id: UniRef100_P06213
+seqxml 	default, raw 	Id: UniRef100_P06213
+
+Data resources: UniProt.org, SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+UniRef50 (uniref50)
+
+http://www.uniprot.org/
+
+The UniProt Reference Clusters (UniRef) databases combine closely related sequences into a single record to speed searches. There are three different non-redundant databases with different sequence identity cut-offs. In UniRef100, UniRef90 and UniRef50 databases no pair of sequences in the representative set has >100%, >90% or >50% mutual sequence identity. The three UniRef databases allow the user to choose between a fast search and a truly comprehensive one.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: UniRef50_P06213
+fasta 	default, raw 	Id: UniRef50_P06213
+uniprotrdfxml 	default, raw 	Id: UniRef50_P06213
+uniref50 	default, raw 	Id: UniRef50_P06213
+seqxml 	default, raw 	Id: UniRef50_P06213
+
+Data resources: UniProt.org, SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+UniRef90 (uniref90)
+
+http://www.uniprot.org/
+
+The UniProt Reference Clusters (UniRef) databases combine closely related sequences into a single record to speed searches. There are three different non-redundant databases with different sequence identity cut-offs. In UniRef100, UniRef90 and UniRef50 databases no pair of sequences in the representative set has >100%, >90% or >50% mutual sequence identity. The three UniRef databases allow the user to choose between a fast search and a truly comprehensive one.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Id: UniRef90_P06213
+fasta 	default, raw 	Id: UniRef90_P06213
+uniprotrdfxml 	default, raw 	Id: UniRef90_P06213
+uniref90 	default, raw 	Id: UniRef90_P06213
+seqxml 	default, raw 	Id: UniRef90_P06213
+
+Data resources: UniProt.org, SRS@EBI, NCBI BLAST blastdbcmd
+***** ***** ***** ***** ***** 
+UniSave (unisave)
+
+http://www.ebi.ac.uk/unisave/
+
+The UniProtKB Sequence/Annotation Version Archive (UniSave) is a repository of UniProtKB/Swiss-Prot and UniProtKB/TrEMBL entry versions.
+
+Format	Styles	Example Identifiers
+default 	default, raw 	Accession: P06213
+Name: INSR_HUMAN
+Entry version: P06213.157, P06213.3
+fasta 	default, raw 	Accession: P06213
+Name: INSR_HUMAN
+Entry version: P06213.157, P06213.3
+uniprot 	default, raw 	Accession: P06213
+Name: INSR_HUMAN
+Entry version: P06213.157, P06213.3
+
+Data resources: UniSave
+***** ***** ***** ***** ***** 
+USPTO Proteins (uspto_prt)
+
+http://www.ebi.ac.uk/patentdata/proteins/
+
+Protein sequences appearing in patents from the United States Patent and Trademark Office (USPTO).
+
+Format	Styles	Example Identifiers
+default 	default, html, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+annot 	default, html, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+embl 	default, html, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+entrysize 	default, html, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+fasta 	default, html, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+seqxml 	default, raw 	Accession: AAA00053
+Name: I02590
+Sequence version: AAA00053.1
+
+Data resources: SRS@EBI, NCBI BLAST blastdbcmd, EMBOSS entret
+***** ***** ***** ***** ***** 
+

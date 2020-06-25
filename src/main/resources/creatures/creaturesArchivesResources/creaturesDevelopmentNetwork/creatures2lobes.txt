@@ -1,0 +1,11 @@
+http://www.gamewaredevelopment.com/cdn/CDN_more.php?CDN_article_id=90 -- 
+0	Perception Lobe
+1	Drive Lobe
+2	Stim Source Lobe
+3	Verb Lobe
+4	Noun Lobe
+5	General Sense Lobe
+6	Decision Lobe
+7	Attention Lobe
+8	Concept Lobe
+9	Regulator Lobe

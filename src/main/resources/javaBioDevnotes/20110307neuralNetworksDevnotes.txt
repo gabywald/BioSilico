@@ -1,0 +1,56 @@
+
+Jusqu'ici reprise d'idées pré-existantes
+	- Classe 'Neuron' : 
+		- état courant (actif, inactif)
+		- seuil d'activation [threshold]
+		- ensemble / liste de Neurones d'entrée
+		- ensemble / liste de poids / pondérations des entrées
+		- inhibiteur ou activateur
+		- somme pondérée des valeurs d'entrées (autres Neurones) pour déterminer l'état courant
+		- état peut être fixé par une valeur extérieure (flux d'entrée, vecteurs de données...)
+		- modification des poids et des connexions dans le réseau (orientation)
+		=> idées tranverses : 
+			a- pondération positive liée au fait que les Neurones sont activateurs ou inhibiteurs (valeur de sortie positive ou négative)
+			b- la pondération pourrait être négative, auquel cas ce ne serait plus les neurones qui puissent être inhibiteurs
+			[point _a_ plus réaliste que _b_point de vue bio, connexions synaptiques aidant, à la sortie...]
+			c- changement des poids si actif ? [tout le temps ?]
+			d- perte d'entrée si poid nul ou négatif ?
+			e- nouvelles entrée / conenctions (reconstruction)
+			
+	- Class 'Brain' : 
+		- première ligne (ou colonne) sert d'entrée (écriture pour soumission vecteur de sortie)
+		- dernière ligne (ou colonne) sert de sortie (lecture pour obtenir vecteur de sortie)
+		- couches successives connectées 
+			1- uniquement à la précédente
+			2- au(x) précédente(s) ??
+			=> premier choix à priori (impact sur les entrées / nouvelles conenctions)
+		- tableau de Neurones à deux dimensions (2D)
+		- ordre de calcul du réseau, neurone par neurone : choix possibles (biais)
+			- [haut, gauche] à [bas, droite] : influence entrée, transmission directe flux. 
+			- [bas, droite] à [haut, gauche] : biais solution opposée est enlevé, reste biais de proximité si sur un seul état
+			- [calcul aléatoire] : peut enlever de nombreux biais, si par deux états (idem prec.)
+	
+	Construction pleine ?
+		=> Brain est totalement rempli de neurones au début ?
+	
+	Construction partiellement vide ?
+		=> comment s'établissent les connections (toujours proximité précédente ?) ??
+		=> reproduction / desctruction des neurones ?
+		
+	Construction "pré-définie" ?
+		=> équivalent à des groupes de neurones (lobes, ganglions, bulbe, cortex...)
+		=> "design" du réseau de neurone (complément à la construction automatique "par défaut")
+		
+	Apprentissage, idées à préciser : 
+		- par soummission de vecteurs d'entrée, récupération de vecteurs de sorties
+			=> modification des poids (voire connections d'entrée) par rétro-propagation / _backtrack_ : 
+				On considère un neurone de sortie dont l'activation n'est pas voulue et on diminue les poids de connexion
+				de proche en proche jusqu'à l'entrée ??
+		- plusieurs itérations du cas précédent (avant meêm application de la rétro-propagation ?)
+		- design conceptuel semi-automatique (modification manuelle) en plus de apprentissage automatique ??
+			=> ajout / suppression de connexion 
+			=> modification de poids de connexion
+		- "effet endocrinien" : renforcement ou relâchement en fonction correlation avec résultat attendu ??
+			=> impact sur les poids faibles de connexion de points d'entrée
+		- "effet gagnant unique" : dans le résultat, partiellement ou totalement, un seul neurone actif dans [le|un] groupe ??
+		

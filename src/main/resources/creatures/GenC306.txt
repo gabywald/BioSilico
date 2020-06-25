@@ -1,0 +1,568 @@
+Genetic Makeup of C306
+Slink's Improved C2 Genomes
+
+Heart 
+Rate Regulation: inverse ATP, added to a constant value of 127 
+Detriments to Performance: Belladonna in excess of 15 
+Causes Injury: Antigen 0,Antigen 6, Cholesterol in excess of 212 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: Pacerine is emitted by the Regulator Lobe 
+
+1 Energy + 6 ADP => 6 ATP + 1 Hotness 
+1 Cyanide + 1 Energy => 1 Cyanide 
+1 Glucose + 1 Pacerine => 2 Pyruvic Acid + 2 Energy 
+1 Pyruvic Acid + 3 Oxygen => 2 Energy + 3 Dissolved CO2 
+1 Pyruvic Acid => 1 Lactic Acid 
+
+Lung 
+Rate Regulation: Dissolved CO2 and Hotness, added to a constant value of 48 
+Detriments to Performance: Histamine A in excess of 63, Histamine B in excess of 63 
+Causes Injury: Antigen 1 in excess of 16,Antigen 7 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: There are two of this organ, one a duplicate of the other which can mutate freely on its own 
+Invol 2='sneeze', receptor for chem=HistamineA, thresh=58 
+Invol 3='cough', receptor for chem=HistamineB, thresh=42 
+3 Oxygen + 1 Dissolved CO2 => 1 Water 
+1 Air => 5 Oxygen 
+1 Hotness + 1 Water => Nothing (leaves the body) 
+
+Stomach 
+Rate Regulation: Hunger and Fullness, added to a constant value of 75 
+Detriments to Performance: 
+Causes Injury: Antigen 4 in excess of 16,Antigen 7 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+1 Starch => 2 Glucose 
+1 Fat + 1 Cholesterol => 3 Fatty Acid 
+1 Protein => 6 Amino Acid 
+
+Liver 
+Rate Regulation: Amino Acid and Fatty Acid, added to constant value of 16 
+Detriments to Performance: 
+Causes Injury: Antigen 1 in excess of 16,Antigen 4 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+1 Fatty Acid + 1 Steroidone => 2 Cholesterol 
+2 Dissolved CO2 + 1 Ammonia => 1 Urea + 2 Water 
+1 Glycotoxin + 1 Glycotoxin Cure => Nothing (leaves the body) 
+1 Glycogen + 1 Adrenaline => 3 Glucose + 1 Adrenaline 
+1 Alcohol + 3 Water => 1 Dehydrogenase + 1 Alcohol 
+3 Alcohol + 1 Dehydrogenase => 1 Glucose 
+1 Oxygen + 2 Lactic Acid => 1 Glucose 
+
+Pancreas Alpha Cells 
+Rate Regulation: inverse Glucose, added to a constant value of 103 
+Detriments to Performance: 
+Causes Injury: Antigen 2 in excess of 16,Antigen 5 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+1 Geddonase + 1 Adipose Tissue => 5 Glucose 
+1 Muscle Tissue => 6 Amino Acid 
+1 Glycogen => 3 Glucose 
+1 Fatty Acid => 6 Glucose 
+1 Triglyceride => 3 Fatty Acid 
+1 Amino Acid => 3 Glucose; should also have ammonia as a product, I can't believe I missed this mistake 
+1 Adipose Tissue => 6 Triglyceride 
+
+Pancreas Beta Cells 
+Rate Regulation: Glucose and Insulin Shots, added to a constant value of 8 
+Detriments to Performance: 
+Causes Injury: Antigen 3 in excess of 16,Antigen 6 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+1 Glycotoxin + 1 Glycogen => 1 Pain + 1 Coldness 
+6 Amino Acid => 1 Muscle Tissue 
+3 Glucose + 1 Glycogen Synthetase => 1 Glycogen 
+6 Glucose => 1 Fatty Acid 
+3 Fatty Acid => 1 Triglyceride 
+6 Triglyceride => 1 Adipose Tissue 
+
+Pituitoid 
+Rate Regulation: value constant at 128 
+Detriments to Performance: 
+Causes Injury: Antigen 2 in excess of 16,Antigen 6 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: Pitoids #1, #2 and #3 are emitted by the Regulator Lobe 
+6 Amino Acid + 1 Pitoid #1 => 1 Muscle Tissue 
+1 Adipose Tissue + 1 Pitoid #2 => 6 Triglyceride 
+1 Triglyceride + 1 Pitiod #2 => 3 Fatty Acid 
+1 Fatty Acid + 1 Pitoid #2 => 6 Glucose 
+1 Muscle Tissue + 1 Pitoid #3 => 6 Amino Acid 
+
+Kidney 
+Rate Regulation: Water, added to constant value of 64 
+Detriments to Performance: 
+Causes Injury: Antigen 0 in excess of 16,Antigen 5 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+6 Urea + 2 Water => 1 Coldness 
+2 Urea + 2 Water => 1 Coldness 
+1 Urea + 6 Water => 3 Coldness 
+6 Water => 3 Coldness 
+1 Cholesterol + 1 Bilin => Nothing (leaves the body) 
+1 Cyanide + 1 sodium thiosulfite => Nothing (leaves the body) 
+1 Heavy Metals + 1 EDTA => Nothing (leaves the body) 
+
+Spleen 
+Rate Regulation: Amino Acid and Fatty Acid, added to constant value of 16 
+Detriments to Performance: 
+Causes Injury: Antigen 1 in excess of 16,Antigen 6 in excess of 16 
+Healed by: Prostaglandin, Vitamin C in excess of 64 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+2 Antigen0 => 1 Antibody0 + 4 FeverToxin 
+2 Antigen1 => 1 Antibody1 + 4 FeverToxin 
+2 Antigen2 => 1 Antibody2 + 4 FeverToxin 
+2 Antigen3 => 1 Antibody3 + 4 FeverToxin 
+2 Antigen4 => 1 Antibody4 + 4 FeverToxin 
+2 Antigen5 => 1 Antibody5 + 1 FeverToxin 
+2 Antigen6 => 1 Antibody6 + 1 FeverToxin 
+2 Antigen7 => 1 Antibody7 + 1 FeverToxin 
+
+Bones 
+Rate Regulation: value constant at 192, should be dependent on Injury or Injury Increaser 
+Detriments to Performance: 
+Causes Injury: Heavy Metals in excess of 16 
+Healed by: Prostaglandin, Vitamin C in excess of 64 
+Healing inhibited by: Stress in excess of 127 
+Notes: Rate Regulation should be dependent on Injury or Injury Increaser 
+Permanently Active, emit chem=Prostaglandin 
+Temporarily Deactivated, possibly should reference Injury Increaser 
+3 Amino Acid + 1 Injury => 1 Injury + 1 Prostaglandin 
+3 Fatty Acid + 1 Injury => 1 Injury + 1 Prostaglandin 
+3 Glucose + 1 Injury => 1 Injury + 1 Prostaglandin 
+
+Skin 
+Rate Regulation: Water, added to a constant value of 48 
+Detriments to Performance: Fever Toxin in excess of 7 
+Causes Injury: Antigen 2 in excess of 16,Antigen 7 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+3 Hotness + 1 Water => Nothing (leaves the body) 
+3 Adrenaline + 1 Water => 1 Coldness + 3 Adrenaline 
+
+Muscles 
+Rate Regulation: constant value of 127 
+Detriments to Performance: 
+Causes Injury: Antigen 5 in excess of 16,Antigen 7 in excess of 16,Lactic Acid in excess of 128 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: I am dubious of injury by Lactic Acid 
+Invol 0='flinch', receptor for chem=Pain++, thresh=65 
+Invol 4='shiver', receptor for chem=Coldness, thresh=141 
+in pain, receptor for chem=Pain, thresh=48 
+fearful, receptor for chem=Fear, thresh=144 
+angry, receptor for chem=Anger, thresh=128 
+limping, receptor for chem=Glycogen, thresh=16 
+stagger, receptor for chem=Alcohol, thresh=86 
+Invol 5='sleep', receptor for chem=Sleepiness, thresh=230 
+Invol 6='languish', receptor for chem=Glycogen, thresh=20 
+locus 16, receptor for chem=Upatrophin, thresh=200 
+locus 17, receptor for chem=Downatrophin, thresh=200 
+limping, receptor for chem=Injury, thresh=16 
+Child: 
+locus 19, receptor for chem=Boredom, thresh=128 
+locus 20, receptor for chem=Adrenaline, thresh=16 
+sleepy, receptor for chem=Sleepiness, thresh=180 
+tired, receptor for chem=Tiredness, thresh=174 
+Adolescent: 
+locus 21, receptor for chem=SexDrive, thresh=112 
+Embryo: 
+Somatic, muscle energy used, emit chem=Hexokinase 
+Sensorimotor, Upwards slope, emit chem=Upatrophin 
+Sensorimotor, Downwards slope, emit chem=Downatrophin 
+1 Hexokinase + 1 ATP => 1 ADP + 1 Activase 
+1 Myglobin + 5 Oxygen => 1 Oxymyoglobin ; Lis Morris gets the credit for suggesting these two reactions 
+1 Oxymyglobin => 1 Myoglobin + 5 Oxygen; in lieu of the metal-sponge-in-an-air-bladder that I initially envisioned. 
+1 Muscle Tissue => 6 Amino Acid; not sure why I left this here . . . 
+
+Gonad 
+Rate Regulation: Females: FSH added to constant value of 5,Males: inverse Inhibin added to constant value of 111 
+Detriments to Performance: 
+Causes Injury: Antigen 0 in excess of 16,Antigen 4 in excess of 16 
+Healed by: Prostaglandin, Vitamin E in excess of 64 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Male Adolescent: 
+Reproductive, become fertile if high, receptor for chem=Testosterone, thresh=127 
+1 Cholesterol => 3 Testosterone + 1 Cholesterol 
+Female Adolescent: 
+1 Cholesterol => 2 Oestrogen + 1 Cholesterol 
+
+Uterus 
+Rate Regulation: constant value of 127 
+Detriments to Performance: 
+Causes Injury: Antigen 1 in excess of 16,Antigen 5 in excess of 16 
+Healed by: Prostaglandin, Vitamin E in excess of 32 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+In Adolescence: 
+Reproductive, become fertile if high, receptor for chem=Oestrogen, thresh=73 
+Sensorimotor, Invol 1='lay egg', receptor for chem=Progesterone, thresh=223 
+Reproductive, become fertile if high, receptor for chem=Progesterone, thresh=150 
+In Youth: 
+Reproductive, receptive to sperm if > 0, receptor for chem=LH 
+In Adolescence: 
+Reproductive, I am pregnant, emit chem=Gonadotrophin 
+Reproductive, I am pregnant, emit chem=Progesterone 
+Reproductive, I am fertile, emit chem=LH 
+Reproductive, I am pregnant, emit chem=Oestrogen 
+Reproductive, I am fertile, emit less chem=FSH 
+Reproductive, I am fertile, emit chem=Progesterone 
+1 Progesterone + 2 FSH => 1 Progesterone 
+4 Amino Acid + 2 Gonadotrophin => Nothing (leaves the body) 
+1 Fatty Acid + 2 Gonadotrophin => Nothing (leaves the body) 
+6 Glucose + 2 Gonadotrophin => Nothing (leaves the body) 
+
+Drive Lobe Support 
+Rate Regulation: constant value of 127 
+Detriments to Performance: 
+Causes Injury: Antigen 0 in excess of 16,Antigen 2 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Drive Levels Pain, receptor for chem=Pain, thresh=0 
+Drive Levels NFP, receptor for chem=NFP, thresh=0 
+Drive Levels Hunger, receptor for chem=Hunger, thresh=0 
+Drive Levels Coldness, receptor for chem=Coldness, thresh=0 
+Drive Levels Hotness, receptor for chem=Hotness, thresh=0 
+Drive Levels Tiredness, receptor for chem=Tiredness, thresh=0 
+Drive Levels Sleepiness, receptor for chem=Sleepiness, thresh=0 
+Drive Levels Loneliness, receptor for chem=Loneliness, thresh=0 
+Drive Levels Crowdedness, receptor for chem=Crowdedness, thresh=0 
+Drive Levels Fear, receptor for chem=Fear, thresh=0 
+Drive Levels Boredom, receptor for chem=Boredom, thresh=0 
+Drive Levels Anger, receptor for chem=Anger, thresh=0 
+Drive Levels SexDrive, receptor for chem=SexDrive, thresh=0 
+Drive Levels Injury, receptor for chem=Injury, thresh=0 
+Drive Levels Suffocation, receptor for chem=Suffocation, thresh=0 
+Drive Levels Thirst, receptor for chem=Thirst, thresh=0 
+Drive Levels Stress, receptor for chem=Stress, thresh=0 
+
+I'm Asleep, emit less chem=Boredom, thresh=0 
+I'm Asleep, emit less chem=NFP, thresh=0 
+Crowdedness, emit less chem=Loneliness, thresh=0 
+Crowdedness, emit chem=Crowdedness, thresh=2 
+Drive Levels Pain, emit chem=Adrenaline, thresh=64 
+Drive Levels Hunger, emit chem=Adrenaline, thresh=240 
+Drive Levels Loneliness, emit chem=Adrenaline, thresh=159 
+Drive Levels Crowdedness, emit chem=Adrenaline, thresh=159 
+Drive Levels Fear, emit chem=Adrenaline, thresh=159 
+Drive Levels Boredom, emit chem=Adrenaline, thresh=223 
+Drive Levels Anger, emit chem=Adrenaline, thresh=159 
+Drive Levels NFP, emit chem=Adrenaline, thresh=175 
+Drive Levels Coldness, emit chem=Adrenaline, thresh=175 
+Drive Levels Hotness, emit chem=Adrenaline, thresh=127 
+Drive Levels Tiredness, emit chem=Adrenaline, thresh=191 
+Drive Levels Sleepiness, emit chem=Adrenaline, thresh=208 
+Drive Levels SexDrive, emit chem=Adrenaline, thresh=127 
+Drive Levels Injury, emit chem=Adrenaline, thresh=80 
+Drive Levels Suffocation, emit chem=Adrenaline, thresh=40 
+Drive Levels Thirst, emit chem=Adrenaline, thresh=127 
+Adolescent 
+Reproductive, I am fertile, chem=Arousal Potential, thresh=0, samp=8, gain=127, features=Analogue 
+Reproductive, I am fertile, chem=Arousal Potential, thresh=0, samp=8, gain=95, features=Analogue 
+Adult 
+Sensorimotor, I'm Asleep, emit less chem=Boredom, thresh=0, samp=47, gain=8, features=Inverted Analogue 
+1 Pain++ => 1 Pain + 1 Punishment 
+1 NFP++ => 1 NFP 
+1 Hunger++ => 1 Hunger 
+1 Coldness++ => 1 Coldness + 1 Punishment 
+1 Hotness++ => 1 Hotness + 1 Punishment 
+1 Tiredness++ => 1 Tiredness 
+1 Sleepiness++ => 1 Sleepiness 
+1 Loneliness++ => 1 Loneliness + 1 Punishment 
+1 Crowdedness++ => 1 Crowdedness + 1 Punishment 
+1 Fear++ => 1 Fear + 1 Punishment 
+1 Boredom++ => 1 Boredom + 1 Punishment 
+1 Anger++ => 1 Anger + 1 Punishment 
+1 Pain-- + 1 Pain => 1 Reward 
+1 NFP-- + 1 NFP => 1 Reward 
+1 Hunger-- + 1 Hunger => 1 Reward 
+1 Coldness-- + 1 Coldness => 1 Reward 
+1 Hotness-- + 1 Hotness => 1 Reward 
+1 Tiredness-- + 1 Tiredness => 1 Reward 
+1 Sleepiness-- + 1 Sleepiness => 1 Reward 
+1 Loneliness-- + 1 Loneliness => 1 Reward 
+1 Crowdedness-- + 1 Crowdedness => 1 Reward 
+1 Fear-- + 1 Fear => 1 Reward 
+1 Boredom-- + 1 Boredom => 1 Reward 
+1 Anger-- + 1 Anger => 1 Reward 
+1 SexDrive++ => 1 SexDrive + 1 Punishment 
+1 SexDrive-- + 1 SexDrive => 1 Reward 
+4 Adrenaline + 1 Activase => 1 Fear-- + 1 Anger-- 
+1 Turnase + 1 Fear => 1 Anger 
+1 Collapsase + 1 Anger => 1 Fear 
+1 Injury++ => 1 Injury + 1 Punishment 
+1 Injury + 1 Injury-- => 1 Reward 
+1 Suffocation++ => 1 Suffocation + 1 Punishment 
+1 Suffocation + 1 Suffocation-- => 1 Reward 
+1 Thirst++ => 1 Thirst + 1 Punishment 
+1 Thirst-- + 1 Thirst => 1 Reward 
+1 Stress-- + 1 Stress => 1 Reward 
+1 Stress++ => 1 Stress 
+1 Hotness + 1 Coldness => Nothing 
+Adolescent 
+1 Arousal Potential + 1 Mating Pheramone => 1 SexDrive 
+
+Concept Lobe Support 
+Rate Regulation: 
+Detriments to Performance: 
+Causes Injury: Antigen 1 in excess of 32,Antigen 3 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Concept, Chemical 1, inverse receptor for chem=conASH, thresh=0 
+Concept, Chemical 0, receptor for chem=Reinforcement, thresh=0 
+Stim source i/ps, Chemical 5, receptor for chem=<169>, thresh=0 
+Perceptible i/ps, Threshold, receptor for chem=<168>, thresh=0 
+Concept, # Loose dens/cells type 0, emit chem=conASH 
+1 Reward + 1 Punishment => Nothing 
+
+Decision Lobe Support 
+Rate Regulation: constant value of 127 
+Detriments to Performance: 
+Causes Injury: Antigen 2 in excess of 16,Antigen 4 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Decision i/ps, Chemical 0, receptor for chem=Reward, thresh=0 
+Decision i/ps, Chemical 1, receptor for chem=Punishment, thresh=0 
+Decision i/ps, Chemical 2, inverse receptor for chem=decASH1, thresh=0 
+Decision i/ps, Chemical 3, inverse receptor for chem=decASH2, thresh=0 
+Decision i/ps, # Loose dens/cells type 0, emit chem=decASH1 
+Decision i/ps, # Loose dens/cells type 1, emit chem=decASH2 
+1 Reward => 1 Reinforcement + 1 RewardEcho 
+1 Punishment => 1 Reinforcement + 1 PunishmentEcho 
+
+Regulatory Lobe Support 
+Rate Regulation: 
+Detriments to Performance: 
+Causes Injury: Antigen 3 in excess of 16,Antigen 3 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Lobe 9, Cell 2 State, receptor for chem=Glucose, thresh=144 
+Lobe 9, Cell 1 State, receptor for chem=Water, thresh=128 
+Lobe 9, Cell 0 State, receptor for chem=Lactic Acid, thresh=16 
+Lobe 9, Cell 4 State, receptor for chem=Cholesterol, thresh=128 
+Lobe 9, Cell 5 State, receptor for chem=Testosterone, thresh=212 
+Lobe 9, Cell 6 State, receptor for chem=Glycogen, thresh=192 
+Lobe 9, Cell 3 State, receptor for chem=Adrenaline, thresh=0 
+Lobe 9, Cell 8 State, receptor for chem=Amino Acid, thresh=127 
+Lobe 9, Cell 7 State, receptor for chem=Cholesterol, thresh=152 
+Lobe 9, Cell 9 State, receptor for chem=Starch, thresh=127 
+Lobe 9, Cell 10 State, receptor for chem=Fat, thresh=127 
+Lobe 9, Cell 11 State, receptor for chem=Protein, thresh=127 
+Lobe 9, Cell 12 State, receptor for chem=Hunger, thresh=127 
+Lobe 9, Cell 13 State, receptor for chem=Amino Acid, thresh=64 
+Lobe 9, Cell 14 State, receptor for chem=Glycogen, thresh=64 
+Lobe 9, Cell 15 State, receptor for chem=Energy, thresh=212 
+Lobe 9, Cell 2 Output, emit less chem=Hunger 
+Lobe 9, Cell 1 Output, emit less chem=Thirst 
+Lobe 9, Cell 0 Output, emit chem=Suffocation 
+Lobe 9, Cell 5 Output, emit chem=Inhibin 
+Lobe 9, Cell 3 Output, emit chem=Stress 
+Lobe 9, Cell 4 Output, emit less chem=Steroidone 
+Lobe 9, Cell 6 Output, emit less chem=Glycogen Synthetase 
+Lobe 9, Cell 9 Output, chem=Fullness 
+Lobe 9, Cell 10 Output, chem=Fullness 
+Lobe 9, Cell 7 Output, chem=<104> 
+Lobe 9, Cell 8 Output, chem=<147> 
+Lobe 9, Cell 11 Output, chem=Fullness 
+Lobe 9, Cell 12 Output, chem=<148> 
+Lobe 9, Cell 13 Output, emit less chem=<149> 
+Lobe 9, Cell 14 Output, emit less chem=<148> 
+Lobe 9, Cell 15 Output, emit less chem=<103> 
+3 Fullness + 1 Hunger => Nothing 
+
+Environmental Interface 
+Rate Regulation: contant value of 127 
+Detriments to Performance: 
+Causes Injury: Antigen 4 in excess of 16,Antigen 6 in excess of 16 
+Healed by: Prostaglandin 
+Healing inhibited by: Stress in excess of 127 
+Notes: 
+Sensorimotor, Air is this hot, emit chem=Hotness 
+Sensorimotor, Air is this cold, emit chem=Coldness 
+Sensorimotor, Light level, emit less chem=Sleepiness 
+Sensorimotor, Air Quality, emit chem=Air 
+General Sensory i/ps, Cell 17 Output, emit chem=Parent Pheromone 
+Stim source i/ps, Cell 37 Output, emit chem=grendel smell 
+Stim source i/ps, Cell 38 Output, emit chem=ettin smell 
+Sensorimotor, Ambient Radiation, emit chem=Heavy Metals 
+General Sensory i/ps, Cell 18 Output, emit chem=Child Pheromone 
+General Sensory i/ps, Cell 16 Output, emit chem=Sibling Pheromone 
+General Sensory i/ps, Cell 19 Output, emit chem=Opposite Sex Pheromone 
+Stim source i/ps, Cell 36 Output, emit chem=Species Pheromone 
+1 FeverToxin => 4 Hotness + 1 FeverToxin 
+1 SleepToxin + 1 Sleepiness-- => 1 Sleepiness 
+1 Parent Pheramone => 1 NFP-- + 1 Fear-- 
+Adolescence: 
+1 Parent Pheromone => 1 Crowdedness++ 
+1 Species Pheromone + 1 Opposite Sex Pheromone => 1 Mating Pheromone 
+
+Time's Arrow 
+Rate Regulation: constant value of 127 
+Detriments to Performance: 
+Causes Injury: 
+Healed by: Prostaglandin 
+Healing inhibited by: 
+Notes: 
+become a child, receptor for chem=Ageing, thresh=235 
+Child: 
+become adolescent, receptor for chem=Ageing, thresh=192 
+Adolescent: 
+become youth, receptor for chem=Ageing, thresh=154 
+Youth: 
+become adult, receptor for chem=Ageing, thresh=119 
+Adult: 
+become old, receptor for chem=Ageing, thresh=76 
+Old: 
+become senile, receptor for chem=Ageing, thresh=34 
+Senile: 
+die of old age, receptor for chem=Ageing, thresh=5 
+
+Brain Organ: 1 CyberLife standard 
+
+Appearances: 5 CyberLife standard 
+
+Poses: 242 CyberLife standard 
+
+Gaits: 14 CyberLife standard 
+
+Pigments: 12 CyberLife standard 
+
+Pigment Bleeds: 12 CyberLife standard 
+
+Instincts 
+Verb i/ps Push + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Push => 255*Reward 
+Verb i/ps Pull + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Pull => 255*Reward 
+Verb i/ps Come + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Come => 255*Reward 
+Drive i/ps Boredom + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Stay => 177*Punishment 
+Drive i/ps Tiredness + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Rest => 239*Reward 
+Verb i/ps Get + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Get => 255*Reward 
+Verb i/ps Rest + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Rest => 255*Reward 
+Stim source i/ps Food + Drive i/ps Hunger + (Lobe/Cell=0/0) and I Come => 255*Reward 
+Drive i/ps Sleepiness + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Rest => 255*Reward 
+Drive i/ps Hunger + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Stay => 127*Punishment 
+Drive i/ps NFP + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Stay => 127*Punishment 
+Verb i/ps Eat + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Stim source i/ps Food + Drive i/ps Hunger + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Drive i/ps Suffocation + Stim source i/ps Toy + (Lobe/Cell=0/0) and I Push => 255*Reward 
+Drive i/ps Hunger + Stim source i/ps Fruit + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Stim source i/ps Edge + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Run => 255*Reward 
+Child 
+Drive i/ps Boredom + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Push => 136*Reward 
+Drive i/ps Boredom + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Pull => 139*Reward 
+Verb i/ps Stop + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Stop => 255*Reward 
+Verb i/ps Run + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Run => 255*Reward 
+Drive i/ps Anger + General Sensory i/ps IT is approaching + (Lobe/Cell=0/0) and I Hit => 127*Reward 
+Verb i/ps Hit + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Hit => 255*Reward 
+Verb i/ps Left + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Left => 255*Reward 
+Verb i/ps Right + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Right => 255*Reward 
+Verb i/ps Drop + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Drop => 255*Reward 
+Verb i/ps Think + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Think => 255*Reward 
+Drive i/ps NFP + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Push => 127*Reward 
+Drive i/ps NFP + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Pull => 127*Reward 
+Drive i/ps Fear + General Sensory i/ps IT is approaching + (Lobe/Cell=0/0) and I Run => 127*Reward 
+Drive i/ps Hunger + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Push => 127*Reward 
+Drive i/ps Hunger + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Pull => 127*Reward 
+Adolescent 
+Drive i/ps SexDrive + General Sensory i/ps IT is opposite sex + (Lobe/Cell=0/0) and I Pull => 107*Reward 
+Drive i/ps SexDrive + General Sensory i/ps IT is opposite sex + General Sensory i/ps I've been patted and I Push => 207*Reward 
+Drive i/ps SexDrive + General Sensory i/ps IT is opposite sex + (Lobe/Cell=0/0) and I Pull => 112*Reward 
+Drive i/ps Hunger + Stim source i/ps Fruit + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Drive i/ps Hunger + Stim source i/ps Food + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Youth 
+Verb i/ps Rest + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Rest => 255*Reward 
+Verb i/ps Eat + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Drive i/ps Crowdedness + General Sensory i/ps IT is a creature + (Lobe/Cell=0/0) and I Run => 255*Reward 
+Adult 
+Drive i/ps Hunger + Stim source i/ps Food + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+Drive i/ps Hunger + Stim source i/ps Fruit + (Lobe/Cell=0/0) and I Eat => 255*Reward 
+General Sensory i/ps I am in a vehicle + (Lobe/Cell=0/0) + (Lobe/Cell=0/0) and I Rest => 255*Reward 
+
+Stimuli 
+'Disappointment' causes sig=0 GS neu=255 int=0, , , => 16*Boredom++ + 16*NFP++ + 16*Anger++ + 0*<NONE> 
+'Pointer pats me' causes sig=32 GS neu=0(I've been patted) int=255, , , Sensed Even When Asleep => 64*NFP-- + 16*Pain-- + 16*Loneliness-- + 16*Reward 
+'Creature pats me' causes sig=80 GS neu=0(I've been patted) int=255, , , Sensed Even When Asleep => 48*NFP-- + 16*Loneliness-- + 16*Crowdedness + 0*<NONE> 
+'Pointer slaps me' causes sig=32 GS neu=1(I've been slapped) int=255, , , Sensed Even When Asleep => 32*Pain++ + 16*Fear++ + 16*Anger++ + 0*<NONE> 
+'Creature slaps me' causes sig=128 GS neu=1(I've been slapped) int=255, , , Sensed Even When Asleep => 32*Pain + 16*Fear + 16*Anger + 0*<NONE> 
+'It is approaching' causes sig=82 GS neu=10(IT is approaching) int=255, Modulate Using Sensory Signal, , => 6*Loneliness-- + 0*<NONE> + 0*<NONE> + 0*<NONE> 
+'It is retreating' causes sig=36 GS neu=11(IT is retreating) int=255, Modulate Using Sensory Signal, , => 4*Fear-- + 4*Anger-- + 6*Loneliness + 0*<NONE> 
+'I bump into wall' causes sig=128 GS neu=2(I've bumped a wall) int=255, , , Sensed Even When Asleep => 24*Pain++ + 64*Turnase + 0*<NONE> + 0*<NONE> 
+'Object comes into view' causes sig=64 GS neu=9(Visible event) int=255, Modulate Using Sensory Signal, , => 4*NFP-- + 4*Boredom-- + 0*<NONE> + 0*<NONE> 
+'Unrecognized word' causes sig=48 GS neu=8(Audible event) int=255, , , Sensed Even When Asleep => 0*<NONE> + 0*<NONE> + 0*<NONE> + 0*<NONE> 
+'Heard user speak' causes sig=128 GS neu=5(User has spoken) int=255, , , Sensed Even When Asleep => 32*Boredom-- + 16*Loneliness-- + 0*<NONE> + 0*<NONE> 
+'Heard creature speak' causes sig=128 GS neu=6(Creature has spoken) int=255, , , => 16*Boredom-- + 16*Loneliness-- + 16*Crowdedness + 0*<NONE> 
+'I am quiescent' causes sig=0 GS neu=255 int=0, , , => 8*Boredom++ + 8*Sleepiness + 8*Tiredness + 0*<NONE> 
+'I've Activated1' causes sig=0 GS neu=255 int=0, , , => 4*Tiredness + 16*Boredom-- + 0*<NONE> + 0*<NONE> 
+'I've Activated2' causes sig=0 GS neu=255 int=0, , , => 4*Tiredness + 16*Boredom-- + 0*<NONE> + 0*<NONE> 
+'I've Deactivated' causes sig=0 GS neu=255 int=0, , , => 6*Tiredness + 0*<NONE> + 0*<NONE> + 0*<NONE> 
+'I am approaching' causes sig=0 GS neu=255 int=0, , , => 2*Tiredness++ + 8*Loneliness-- + 8*Crowdedness++ + 0*<NONE> 
+'I have got' causes sig=0 GS neu=255 int=0, , , => 4*Tiredness + 8*Loneliness-- + 0*<NONE> + 0*<NONE> 
+'I am Resting' causes sig=0 GS neu=255 int=0, , , Sensed Even When Asleep => 16*Tiredness-- + 8*Sleepiness + 8*Boredom + 16*Stress-- 
+'I am sleeping' causes sig=0 GS neu=255 int=0, , , Sensed Even When Asleep => 32*Tiredness-- + 32*Sleepiness-- + 16*Boredom-- + 24*Stress-- 
+'I am travelling' causes sig=0 GS neu=255 int=0, , , => 4*Tiredness + 16*Boredom-- + 6*Sleepiness + 16*Crowdedness-- 
+'Invol 2='sneeze'' causes sig=0 GS neu=255 int=0, , , => 32*Pain + 8*Tiredness + 8*Fear + 16*Hexokinase 
+'Invol 3='cough'' causes sig=0 GS neu=255 int=0, , , => 32*Pain + 8*Tiredness + 0*<NONE> + 0*<NONE> 
+'Invol 4='shiver'' causes sig=0 GS neu=255 int=0, , , => 16*Hotness + 32*Coldness-- + 16*Tiredness + 0*<NONE> 
+'I have retreated' causes sig=0 GS neu=255 int=0, , , => 64*Collapsase + 16*Crowdedness-- + 0*<NONE> + 0*<NONE> 
+'I've been pushed' causes sig=127 GS neu=20(IT has pushed me) int=255, , , Sensed Even When Asleep => 16*Pain + 16*Fear + 24*NFP + 0*Anger 
+'I've been hit' causes sig=127 GS neu=21(IT has hit me) int=255, , , Sensed Even When Asleep => 64*Pain + 32*Fear + 16*Anger + 0*<NONE> 
+'I've eaten something' causes sig=0 GS neu=255 int=0, , , => 16*Boredom-- + 16*NFP-- + 4*Tiredness + 8*Stress-- 
+'Approaching edge' causes sig=127 GS neu=28(Approaching an edge) int=255, Modulate Using Sensory Signal, , => 64*Fear++ + 64*Loneliness++ + 0*<NONE> + 0*<NONE> 
+'Retreating from edge' causes sig=127 GS neu=29(Retreating from an edge) int=255, Modulate Using Sensory Signal, , => 64*Fear-- + 64*Loneliness-- + 0*<NONE> + 0*<NONE> 
+'Falling through air' causes sig=128 GS neu=30(Falling through the air) int=255, Modulate Using Sensory Signal, , => 64*Fear + 64*Boredom-- + 64*NFP-- + 0*<NONE> 
+'Impact post fall' causes sig=128 GS neu=31(Hitting the ground post fall) int=255, Modulate Using Sensory Signal, , => 255*Pain++ + 0*<NONE> + 0*<NONE> + 0*<NONE> 
+'I've stated need' causes sig=127 GS neu=255 int=0, , , => 2*Loneliness-- + 2*NFP++ + 4*Boredom-- + 16*Stress-- 
+'I've performed a hit' causes sig=0 GS neu=255 int=0, , , => 64*Crowdedness++ + 48*Fear + 48*Boredom-- + 32*NFP 
+'I've mated' causes sig=0 GS neu=255 int=0, , , => 128*SexDrive-- + 96*Sleepiness + 64*Stress-- + 128*NFP-- 
+Adolescent 
+'Invol 1='lay egg'' causes sig=0 GS neu=255 int=0, , , => 190*Pain + 160*Tiredness + 112*Sleepiness + 0*<NONE> 
+'I've been pushed' causes sig=127 GS neu=20(IT has pushed me) int=255, , , Sensed Even When Asleep => 8*Pain + 8*Fear + 32*NFP + 32*Anger 
+Adult 
+'I've been pushed' causes sig=127 GS neu=20(IT has pushed me) int=255, , , Sensed Even When Asleep => 0*Pain + 0*Fear + 24*NFP + 16*Anger 
+Old 
+'I am travelling' causes sig=0 GS neu=255 int=0, , , => 22*Tiredness++ + 16*Boredom-- + 32*Sleepiness + 0*<NONE> 
+
+Halflives 
+Myoglobin, Oxymyglobin, Pitone #1,Pitone #2, Pitone #3, Pacerine 
+
+Initial Concentrations 
+91 1 0 Emb B Mut 128 Initial Concentration of Glycogen is 122. 
+93 2 0 Emb B Mut 128 Initial Concentration of Glucose is 100. 
+95 3 0 Emb B Mut (128) Initial Concentration of Boredom is 74. 
+96 4 0 Emb B Mut 128 Initial Concentration of Ageing is 255. 
+97 5 0 Emb B Mut 128 Initial Concentration of Antibody0 is 130. 
+98 6 0 Emb B Mut 128 Initial Concentration of Antibody1 is 140. 
+102 7 0 Emb B Mut 128 Initial Concentration of Antibody3 is 147. 
+106 8 0 Emb B Mut 128 Initial Concentration of Antibody4 is 130. 
+107 9 0 Emb B Mut 128 Initial Concentration of ADP is 255. 
+113 10 0 Emb B Mut 128 Initial Concentration of ATP is 255. 
+115 11 0 Emb B Mut 128 Initial Concentration of Water is 255. 
+116 12 0 Emb B Mut 128 Initial Concentration of Dissolved CO2 is 31. 
+118 13 0 Emb B Mut 128 Initial Concentration of Injury is 0. 
+124 14 0 Emb B Mut 128 Initial Concentration of Fatty Acid is 16. 
+127 15 0 Emb B Mut 128 Initial Concentration of Amino Acid is 255. 
+128 16 0 Emb B Mut 128 Initial Concentration of Adipose Tissue is 255. 
+129 17 0 Emb B Mut 128 Initial Concentration of Muscle Tissue is 255. 
+130 18 0 Emb B Mut 128 Initial Concentration of Suffocation is 0. 
+131 19 0 Emb B Mut 128 Initial Concentration of Hunger is 0. 
+132 20 0 Emb B Mut 128 Initial Concentration of Energy is 255. 
+242 21 0 Emb B 128 Initial Concentration of Cholesterol is 128. 
+134 22 0 Emb B MutDup 128 Initial Concentration of <101> is 128. 
+135 23 0 Emb B MutDup 128 Initial Concentration of <102> is 128. 
+
+Lobes: 10 CyberLife standard 
+

@@ -1,0 +1,17 @@
+my %hashCorresponding = (
+	'AB'	=>	'abstract', 
+	'AU'	=>	'author', 
+	'BTI'	=>	'booktitle', 
+	'DEP'	=>	'eprint', 
+	'ED FED'	=>	'editor', 
+	'EN'	=>	'edition', 
+	'GN'	=>	'note', 
+	'IP'	=>	'number', 
+	'JT'	=>	'journal', 
+	'PG'	=>	'pages', 
+	'PMID'	=>	'id', 
+	'PT'	=>	'howpublished', 
+	'TA'	=>	'journal', 
+	'TI'	=>	'title', 
+	'VI'	=>	'volume', 
+);

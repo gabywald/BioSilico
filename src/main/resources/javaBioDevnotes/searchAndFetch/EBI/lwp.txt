@@ -1,0 +1,228 @@
+-- http://www.ebi.ac.uk/Tools/webservices/tutorials/06_programming/perl/rest/lwp -- 
+
+LWP
+
+The standard method for accessing Hypertext Transfer Protocol (HTTP) 1) 2) based services using Perl 3) is using libwww-perl (LWP) 4) (CPAN). Since REST Web Services are based on HTTP, LWP can be used to access any REST service.
+Installation
+
+The libwww-perl modules are part of the standard Perl distribution and should be installed by default. However if the modules are missing or it needs to be re-installed or updated:
+
+    Using the system package manager install/update the appropriate package, for example libwww-perl for Debain based Linux systems (e.g. Ubuntu or Bio-Linux)
+    Using CPAN to install/update Bundle::LWP (CPAN).
+    Downloading the LWP distribution (see CPAN) and installing manually
+
+For an overview of the how to install a module see Installing Perl Modules.
+HTTP GET
+
+HTTP GET is simplest of the HTTP requests and is used to get a document given a URL. So to use a GET the URL of the required Web Service resource is needed. Depending on the service this may be a static URL or more commonly the URL has to be constructed based on the parameters for the request. The following examples illustrate the process using the dbfetch, WSDbfetch (REST) and SRS services.
+dbfetch
+
+The dbfetch service (http://www.ebi.ac.uk/Tools/dbfetch/dbfetch) provides a generic interface to retrieve data entries given an identifier (Id or accession) from a wide range of biological databases available at EMBL-EBI. Two styles of URL can be used to access dbfetch:
+
+    Parametrised URL:
+
+    http://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db={DB}&id={IDS}&format={FORMAT}&style={STYLE}
+
+    Document style URL:
+
+    http://www.ebi.ac.uk/Tools/dbfetch/dbfetch/{DB}/{IDS}/{FORMAT}
+
+The dbfetch documentation (http://www.ebi.ac.uk/Tools/dbfetch/dbfetch) details the valid values for the database name ({DB}), data format ({FORMAT}) and data style ({STYLE}). The identifier list ({IDS}) is a comma separated list of entry identifiers. The identifiers can be either Ids, names or accessions. For example to retrieve the rat and mouse WAP proteins from UniProtKB:
+
+    Parametrised URL:
+
+    http://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=uniprotkb&id=WAP_RAT,WAP_HUMAN&format=uniprot&style=raw
+
+    Document style URL:
+
+    http://www.ebi.ac.uk/Tools/dbfetch/dbfetch/uniprotkb/WAP_RAT,WAP_MOUSE/uniprot
+
+LWP offers a number of methods for retrieving documents from a URL, for example using the document style URL above:
+
+    LWP::Simple→get($url) (examples/REST/LWP/dbfetch_lwp_simple_get.pl)
+
+    # Load LWP
+    use LWP::Simple;
+     
+    # Parameters for the request
+    my $db = 'uniprotkb'; # Database: UniProtKB
+    my $id = 'WAP_RAT,WAP_MOUSE'; # Entry identifiers
+    my $format = 'uniprot'; # Result format
+     
+    # Construct document style URL for entry
+    my $baseUrl = 'http://www.ebi.ac.uk/Tools/dbfetch/dbfetch';
+    my $url = "$baseUrl/$db/$id";
+    $url .= "/$format" if(defined($format));
+     
+    # Get the document from the URL
+    my $content = get($url);
+     
+    # Check for fetch failure
+    die 'Unable to get document from: ' . $url unless ($content); 
+     
+    # Output the entries
+    print $content;
+
+    LWP::UserAgent→get($url) (examples/REST/LWP/dbfetch_lwp_useragent_get.pl)
+
+    # Load LWP
+    use LWP::UserAgent;
+     
+    # Parameters for the request
+    my $db = 'uniprotkb'; # Database: UniProtKB
+    my $id = 'WAP_RAT,WAP_MOUSE'; # Entry identifiers
+    my $format = 'uniprot'; # Result format
+     
+    # Create a user agent
+    my $ua = LWP::UserAgent->new();
+     
+    # Construct document style URL for entry
+    my $baseUrl = 'http://www.ebi.ac.uk/Tools/dbfetch/dbfetch';
+    my $url = "$baseUrl/$db/$id";
+    $url .= "/$format" if(defined($format));
+     
+    # Perform the request
+    my $response = $ua->get($url);
+     
+    # Check for HTTP error codes
+    die 'http status: ' . $response->code . ' ' . $response->message unless ($response->is_success); 
+     
+    # Output the entry
+    print $response->content();
+
+Using the more powerful LWP::UserAgent methods is recommended since these give full access to all the information in the response, including the status code, header and the document content. This makes it simpler to deal with errors originating from the Web Service and eases debugging the client.
+Exercise 1: RESTful dbfetch
+
+In the sample project a dbfetch client using LWP::UserAgent is provided (examples/REST/LWP/dbfetch_lwp_useragent_get.pl). Starting from this client use dbfetch to get the EMBL-Bank entries with accessions: M28668, M60493 and M76128.
+
+See the dbfetch and WSDbfetch REST documentation for details of the valid values for the parameters and the structure of the request URL.
+
+Sample solution: solutions/REST/LWP/q1_dbfetch_lwp.pl
+SRS
+
+While dbfetch provides a useful interface for entry retrieval, it is not a general query system. One option for performing queries is SRS (http://srs.ebi.ac.uk/). SRS offers a URL based interface which can be used to perform complex multi-database queries in a single request.
+
+The simplest form of an SRS URL retrieves a list of entry identifiers in DB:ID format, for example to retrieve the entries in UniProtKB which contain the term “auxin”:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?[uniprot-all:azurin*]
+
+By default only the first 30 entries are returned. To get the number of entries matching the query the “cResult” page can be used:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-page+cResult+[uniprot-all:azurin*]
+
+This returns the number of entries matched by the query:
+
+170 entries for [uniprot-all:azurin*]
+
+Given the number of entries found the results can retrieved in chunks by using -bv to specify the number of the first entry in the chunk and -lv to specify the length of the chunk. For example to get the first two chunks of 30 entries for the query:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-bv+1+-lv+30+[uniprot-all:azurin*]
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-bv+31+-lv+30+[uniprot-all:azurin*]
+
+As well as getting the identifiers of the entries matching the query the complete entry can be obtained using -e, or a specific view of the data using -view. For example to get a summary of the results of our query the “SeqSimpleView” could be used:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-view+SeqSimpleView+[uniprot-all:azurin*]
+
+or to get fasta formatted sequence the “FastaSeqs” view:
+
+http://srs.ebi.ac.uk/srsbin/cgi-bin/wgetz?-view+FastaSeqs+[uniprot-all:azurin*]
+
+For more information about SRS URLs see the Linking to SRS guide.
+Exercise 2: REST and SRS
+
+In the sample project a dbfetch client using LWP::UserAgent is provided (examples/REST/LWP/dbfetch_lwp_useragent_get.pl). Starting from this client use SRS to find the number of entries in the EMBL Coding Sequences database (EMBLCDS) which contain the gene name CFTR.
+
+See the Linking to SRS guide for details of how to construct a URL for SRS and the SRS Query Language Quick Guide for details of how to construct the query string.
+
+Hint: use the SRS web interface (http://srs.ebi.ac.uk/) to perform the query and copy the query string created into the URL you construct.
+
+Sample solution: solutions/REST/LWP/q2_srs_lwp.pl
+HTTP POST
+
+While HTTP GET is great for retrieving information there are restrictions on the amount of data that can be sent using GET. Thus for transferring large amounts of data or complex parameters an alternative method has to be used. Since HTTP POST sends the data independently of the URL, POST is used in circumstances where complex or large data needs to be transferred.
+dbfetch
+
+The dbfetch service accepts HTTP POST requests as well as HTTP GET requests, this is useful when using list of identifiers.
+
+Unlike HTTP GET, a POST request can only be performed using LWP::UserAgent (examples/REST/LWP/dbfetch_lwp_useragent_post.pl):
+
+# Load LWP
+use LWP::UserAgent;
+ 
+# Parameters for the request
+my $db = 'uniprotkb'; # Database: UniProtKB
+my $id = 'WAP_RAT,WAP_MOUSE'; # Entry identifiers
+my $format = 'uniprot'; # Result format
+my $style = 'raw'; # Result style
+ 
+# Create a user agent
+my $ua = LWP::UserAgent->new();
+ 
+# URL for service (endpoint)
+my $url = 'http://www.ebi.ac.uk/Tools/dbfetch/dbfetch';
+ 
+# Populate POST data fields (key => value pairs)
+my (%post_data) = (
+		   'db' => $db,
+		   'id' => $id,
+		   'format' => $format,
+		   'style' => $style
+		   );
+ 
+# Perform the request
+my $response = $ua->post($url, \%post_data);
+ 
+# Check for HTTP error codes
+die 'http status: ' . $response->code . ' ' . $response->message unless ($response->is_success); 
+ 
+# Output the entry
+print $response->content();
+
+Proxies
+
+In some environments it is necessary to configure an HTTP proxy before a client can connect to external services. LWP supports the configuration of proxies through:
+
+    Environment variables (see Perl and Proxies): http_proxy, ftp_proxy, no_proxy, etc.
+    Specification when creating the user agent:
+
+    my $ua = LWP::UserAgent->new(
+        env_proxy => 1, # Read proxy configuration from environment.
+    );
+
+    User agent methods:
+        Set protocols to use a proxy:
+
+        $ua->proxy(['http', 'ftp'], 'http://proxy.example.org:8000/');
+
+        Domains for which proxy should not be used:
+
+        $ua->no_proxy('localhost', 'example.org');
+
+        Load proxy details from environment:
+
+        $ua->env_proxy();
+
+User-Agent
+
+HTTP clients usually provide information about what they are, allowing services to handle specific clients differently if necessary, and giving service providers some information about how their services are being used. By default LWP sets the HTTP User-Agent header (see RFC2616 section 14.43) to something like libwww-perl/5.831, where the version number (5.831) is the version of LWP. If additional identification of the client is required a more specific product token (see RFC2616 section 3.8) should be added to the beginning of the User-Agent string:
+
+# Modify the user-agent to add a more specific prefix (see RFC2616 section 14.43)
+$ua->agent("Example-Client/1.0 ($OSNAME) " . $ua->agent());
+
+Sample Clients
+
+Most REST Web Services at EMBL-EBI have sample clients which provide command-line access to the service and example code. For Perl most of the clients are based on LWP, for example:
+Service 	Sample client
+ClustalW2 (REST) 	clustalw2_lwp.pl
+InterProScan (REST) 	iprscan_lwp.pl
+NCBI BLAST (REST) 	ncbiblast_lwp.pl
+WSDbfetch (REST) 	dbfetch_lwp.pl
+
+
+Up 	Perl 	Contents 	Contents
+1) RFC1945 - Hypertext Transfer Protocol – HTTP/1.0 - http://www.faqs.org/rfcs/rfc1945.html
+2) RFC2616 - Hypertext Transfer Protocol – HTTP/1.1 - http://www.faqs.org/rfcs/rfc2616.html
+3) Perl - http://www.perl.com/
+4) libwww-perl - http://gitorious.org/libwww-perl
+ 
+tutorials/06_programming/perl/rest/lwp.txt · Last modified: 2011/03/22 11:58 by hpm

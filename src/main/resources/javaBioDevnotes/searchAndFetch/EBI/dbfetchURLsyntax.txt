@@ -1,0 +1,191 @@
+-- http://www.ebi.ac.uk/Tools/dbfetch/syntax.jsp -- 
+
+EBIDatabasesDatabase BrowsingDbfetchSyntax
+EBI Dbfetch URL Syntax
+Contents
+
+    Dbfetch
+        Entry Retrieval
+        Alternative Endpoints
+        Meta-information
+        WSDbfetch (REST)
+    Open Biological Database Access
+        OBDA biofetch
+        OBDA Registry
+    EMBOSS
+
+Dbfetch
+Entry Retrieval
+
+The general format of the dbfetch URL is:
+
+dbfetch?db={db}&format={format}&style={style}&id={id}&pageHtml={pageHtml}
+
+Where the parameters are:
+Name 	Description 	Default value
+db 	Database name. See databases for available values. 	default (currently EMBL-Bank)
+format 	Data format for entries. Available values depend on the database. 	default
+style 	Result style for entries. Either html or raw. 	default
+id 	Entry identifiers. A comma or space separated list of entry identifiers. Required. 	 
+pageHtml 	Include HTML page header and footer for html result style requests. To disable to header and footer set to false 	true
+
+For example:
+
+    dbfetch?db=embl&format=fasta&style=raw&id=L12344,L12345
+    dbfetch?db=embl;format=fasta;style=raw;id=L12344,L12345
+
+If omitted the db, format and style parameters use default values:
+
+    dbfetch?id=L12344,L12345
+    dbfetch?db=embl&id=L12344,L12345
+    dbfetch?db=embl&format=embl&id=L12344,L12345
+
+For the default database (EMBL-Bank) an abbreviated syntax can be used:
+
+    dbfetch?L12345
+
+Alternative Endpoints
+
+To support old links and applications a series of alternative endpoints are provided which have appropriate defaults:
+
+    emblfetch?L12345
+    expasyfetch?L12345
+    medlinefetch?12345
+    pdbfetch?1gag
+    swissfetch?WAP_RAT
+    uniparcfetch?UPI0000000001
+    uniprotfetch?WAP_RAT
+    uniref100fetch?UniRef100_P06213
+    uniref90fetch?UniRef90_P06213
+    uniref50fetch?UniRef50_P06213
+
+Meta-information
+
+Details of the databases, formats and styles available in dbfetch in a range of formats:
+
+    JSON: dbfetch/dbfetch.databases?style=json
+    XHTML: dbfetch/dbfetch.databases
+    XML: dbfetch/dbfetch.databases?style=xml (XML Schema)
+    YAML: dbfetch/dbfetch.databases?style=yaml
+
+The following information is provided for each of the available databases:
+
+    aliasList: list of other names for the database.
+        alias: alternative name for the database, can be used in requests.
+    databaseTerms: list of ontology terms describing the database. Typically from EDAM.
+        databaseTerm: ontology term describing the database. May be represented as a namespace:id identifier (e.g. EDAM:0000640) or as a URI (e.g. http://purl.org/edam/topic/0000640).
+    defaultFormat: name of the data format used when a format name is not supplied or the value "default" is used.
+    description: a short description of the database, suitable for use in help documentation.
+    displayName: name of the database to be displayed in user interfaces. Not to be used for retrieval.
+    exampleIdentifiers: a set of example identifiers for entries appearing in the database.
+        accessionList: list of example accession numbers.
+            accession: example accession number.
+        entryVersionList: list of example entry version identifiers.
+            entryVersion: example entry version identifier.
+        idList: list of example Ids.
+            id: example Id.
+        nameList: list of example entry names.
+            name: example entry name.
+        sequenceVersionList: list of sequence version identifiers.
+            sequenceVersion: sequence version identifier.
+    formatInfoList: list of available data formats.
+        formatInfo: details of an available data format.
+            aliases: list of other names for this data format, can be used in requests.
+                alias: an alternative name for the data format.
+            dataTerms: list of ontology terms describing the content of the data format. Typically from EDAM.
+                dataTerm: ontology term describing the content of the data format. May be represented as a namespace:id identifier (e.g. EDAM:0000849) or as a URI (e.g. http://purl.org/edam/data/0000849).
+            name: name for the data format, used in requests.
+            styleInfoList: list of details of available result styles.
+                styleInfo: details of an available result style.
+                    mimeType: MIME type for results in this format and style.
+                    name: name of this result style, to be used in requests.
+            syntaxTerms: list of ontology terms describing the syntax of the data format. Typically from EDAM.
+                syntaxTerm: ontology term describing the syntax of the format. May be represented as a namespace:id identifier (e.g. EDAM:0001927) or as a URI (e.g. http://purl.org/edam/format/0001927).
+    href: URL to the main database web site, for use in help or documentation.
+    name: Name for the database, used in requests.
+
+WSDbfetch (REST)
+
+Entries can also be retrieved using RESTful URLs, of the form:
+
+dbfetch/{db}/{id}/{format}?style={style}
+
+Where the parameters are:
+Name 	Description 	Default value
+db 	Database name. See databases for available values. 	default (currently EMBL-Bank). Required.
+id 	Entry identifiers. A comma or space separated list of entry identifiers. Required. 	 
+format 	Data format for entries. Available values depend on the database. 	default
+style 	Result style for entries. Either html or raw. 	raw
+
+If omitted the format and style parameters use default values.
+
+For example:
+
+    dbfetch/embl/L12344,L12345
+    dbfetch/embl/L12344,L12345?style=html
+    dbfetch/embl/L12344,L12345/fasta
+    dbfetch/embl/L12344,L12345/insdxml
+
+See the WSDbfetch (REST) documentation for more details.
+Open Biological Database Access
+
+The Open Biological Database Access (OBDA) specifications provide standardised interfaces for accessing sequence data resources. The biofetch and Registry specifications are implemented by dbfetch.
+OBDA biofetch
+
+The OBDA biofetch specification describes the behaviour of a generic database entry retrival system.
+
+For details see:
+
+    OBDA
+    BioPerl OBDA HOWTO
+
+Dbfetch provides a partical implementation of the OBDA biofetch specification. In addition to dbfetch the biofetch sepecification has also been implemented elsewhere:
+
+    BioPerl examples/db/dbfetch
+    BioRuby biofetch service
+
+In addition to the data access methods detailed above, BioRuby biofetch defines additional methods to access meta-information describing the available databases and formats. Dbfetch has been extended to also support these methods:
+
+    Databases: dbfetch?info=dbs.
+    Formats for a database: dbfetch?info=formats&db=embl.
+    Styles for a format of a database: dbfetch?info=styles&db=embl&format=fasta.
+    Maximum number of identifiers: dbfetch?info=maxids 
+
+The biofetch specification defines a set of error messages:
+
+    Error 1: Unknown database.
+    Error 2: Unknown style.
+    Error 3: Unknown format.
+    Error 4: ID not found.
+        Note: the use of batch queries in dbfetch means that identifiers which occur in the request but not in the result cannot easily be identified. Thus this error is not used and a "no entries" found error is used instead.
+    Error 5: Too many identifiers.
+
+The BioRuby biofetch extension for meta-information adds another error message:
+
+    Error 6: Unknown information.
+
+Dbfetch also uses some additional error messages, which are of the same form as the biofetch messages:
+
+    Error 11: Unable to connect to database.
+    Error 12: No entries found.
+    Error 0: Unknown error.
+
+OBDA Registry
+
+OBDA registry defintion for databases available through dbfetch: seqdatabase.ini
+
+Support for using the OBDA registry to access databases is available in:
+
+    BioJava
+    BioPerl
+    BioPython
+    BioRuby
+
+EMBOSS
+
+The EMBOSS suite can use dbfetch as a data source, see EMBOSS Sequence Databases. To simplify the use of dbfetch with EMBOSS the following sample configurations are available:
+
+    emboss4.databases for EMBOSS releases 4.0.0 and higher.
+    emboss1.databases for EMBOSS releases before 4.0.0.
+
+These configurations are derived from the dbfetch configration and are automatically updated as databases and formats are added to or removed from dbfetch.
