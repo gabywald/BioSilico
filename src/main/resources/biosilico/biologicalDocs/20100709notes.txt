@@ -1,0 +1,47 @@
+OK pour BiochemicalReactions
+
+Emettre / recevoir Chemicals : O2, H2O, CO2...
+	utiliser StimulusDecision
+	actions '865' (emit) et '866' (receive) dans paramètre script
+	indicator à '800' (localisation 'locale')
+	threshold à '000' (théorique, entraîne à priori action automatique)
+	variable : celle à émettre / recevoir
+	
+Concentrations initiales à réfléchir :  
+	[ACGT]TP (et usage) : mort si 0 (sur un ou plusieurs)
+	idem [ACGT]DP (+ conversions des AMP)
+	éléments atomiques "de base" : P (n°15), H...
+	OxaloAcetate, citrate...(initier Cycle de Krebs)
+	CoASH (pour cycle de Krebs, glycolyse, Lynen...)
+	NAD, FAD...
+
+Créer des objets simples 
+	- Agents avec TypeOf de '900' à '919' inclus
+	- Variables avec valeurs spécifiques selon type (nourriture, boisson, usage...)
+	
+	
+Tests d'organismes
+	- Agents particuliers avec TypeOf de '935' à '939' inclus
+	- Calcul du Taxon ID ?
+		- fonction TypeOf
+		- fonction génome (taille chromosome, nombre de gènes)
+		- fonction lineage (taille, rank, division...)
+		- fonction génération ? (recalcul pour génération : '(moyenne lineage)+1')
+		- calcul taux consanguinité
+	Daemons : 
+		- déplacement
+			système nerveux "automatique"
+		- biochimie(s)
+			combinaisons pathways / InitConc / SD
+		- capture objet, lacher objet...
+		- ...
+	Bactéries : 
+		- biochimie(s)
+			combinaisons pathways / InitConc / SD
+	Plantes : 	
+		- SD + biochimie
+		- production objets (+ lacher)
+
+Nutrition
+	- capture d'un objet (Movable)
+	- "digestion" (Eatable)

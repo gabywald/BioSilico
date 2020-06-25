@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ******************************************************************************* -->
+<!-- 	Biosilico Gattaca Organism (KnowledgeBase has [taxons|genes|.*]+...)		 -->
+<!-- 	Version: 	$Revision: 0.1 $												 -->
+<!-- 	Date:		$Date: 2009/30/12 17:05:50 $									 -->
+<!-- 																				 -->
+<!-- 	Copyright (c) 2009 Gabriel Chandesris										 -->
+<!-- 	All rights reserved.														 -->
+<!-- ******************************************************************************* -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://gabriel.chandesris.free.fr/projects/biosilico/GattacaOrganismV01" elementFormDefault="qualified" xmlns:Q1="http://gabriel.chandesris.free.fr/projects/biosilico/GattacaOrganismV02">
+
+<xs:element name="copyright" type="xs:string"/>
+
+<!-- Definition of the content of the root element "taxon" -->
+<xs:element name="taxon" type="Q1:organismType">
+	<xs:annotation>
+		<xs:documentation>Contains definition of an organism.</xs:documentation>
+	</xs:annotation>
+</xs:element>
+
+
+
+
+    <xs:simpleType name="idType">
+    	<xs:restriction base="xs:int">
+    		<xs:minInclusive value="0000000000"></xs:minInclusive>
+    		<xs:maxInclusive value="9999999999"></xs:maxInclusive>
+    		<xs:whiteSpace value="collapse"></xs:whiteSpace>
+    	</xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="organismType">
+    	<xs:sequence>
+    		<xs:element name="taxonID" type="Q1:idType">
+    			<xs:annotation>
+    				<xs:documentation>
+    					IDentification of the Taxon (number between
+    					0000000000 and 9999999999).
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="scientificName" type="xs:string">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Name of the organism following model
+    					&quot;Silico[Daemon|Bacta|Viridita|Anima|Viria]
+    					[A-Z][a-z]*&quot;.
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="otherNames" type="Q1:otherNamesType"></xs:element>
+    		<xs:element name="rank" type="xs:string">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Rank of Organism (&quot;species&quot; or
+    					&quot;tests&quot; for example).
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="division" type="xs:string">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Subdivision of rank.
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="geneticCode" type="Q1:geneticCodeType"></xs:element>
+    		<xs:element name="subGeneticCode" type="Q1:geneticCodeType"
+    			minOccurs="0" maxOccurs="unbounded">
+    		</xs:element>
+    		<xs:element name="lineage" type="Q1:lineageType">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Simple lineage of the organism
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="extendedLineage" type="Q1:lineageExtendedType"></xs:element>
+    		<xs:element name="createdDate" type="Q1:dateType"></xs:element>
+    		<xs:element name="updatedDate" type="Q1:dateType"></xs:element>
+    		<xs:element name="publicationDate" type="Q1:dateType"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="dateType">
+    	<xs:simpleContent>
+    		<xs:extension base="xs:dateTime"></xs:extension>
+    	</xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="otherNamesType">
+        <xs:annotation>
+        	<xs:documentation>Other names for the organism / Taxon</xs:documentation></xs:annotation>
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xs:choice>
+    			<xs:element name="biosilicoCommonName"
+    				type="xs:string">
+                    <xs:annotation>
+                    	<xs:documentation>In other names, what specific common used names are also included.  </xs:documentation></xs:annotation>
+    			</xs:element>
+    			<xs:element name="commonName" type="xs:string">
+    				<xs:annotation>
+    					<xs:documentation>In other names, what common used names are also included.  </xs:documentation></xs:annotation></xs:element>
+    			<xs:element name="includes" type="xs:string">
+    				<xs:annotation>
+    					<xs:documentation>In other names, what generic names are also included.</xs:documentation></xs:annotation></xs:element>
+    			<xs:element name="name" type="Q1:subNameType">
+    				<xs:annotation>
+    					<xs:documentation>Specificaly defined other names. </xs:documentation>
+    				</xs:annotation>
+    			</xs:element>
+    		</xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="subNameType">
+    	<xs:sequence>
+    		<xs:element name="class" type="xs:string">
+    			<xs:annotation>
+    				<xs:documentation>Class of the specific other name. (should be attribute, misnomer, mispelling...).   </xs:documentation></xs:annotation></xs:element>
+    		<xs:element name="display" type="xs:string">
+    			<xs:annotation>
+    				<xs:documentation>Pure displaying of the specific other name. </xs:documentation></xs:annotation></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="geneticCodeType">
+    	<xs:sequence>
+    		<xs:element name="id" type="Q1:idType"></xs:element>
+    		<xs:element name="name">
+    			<xs:simpleType>
+    				<xs:restriction base="xs:string">
+    					<xs:enumeration value="standard"></xs:enumeration>
+    					<xs:enumeration value="Gattaca01"></xs:enumeration>
+    					<xs:enumeration value="PhaseTwo01"></xs:enumeration>
+    				</xs:restriction>
+    			</xs:simpleType>
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="lineageType">
+    	<xs:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xs:element name="lineageTaxon" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="lineageExtendedTaxonType">
+    	<xs:annotation>
+    		<xs:documentation>Taxon for Extended lineage of the organism
+    		</xs:documentation>
+    	</xs:annotation>
+    	<xs:sequence>
+    		<xs:element name="id" type="Q1:idType"></xs:element>
+    		<xs:element name="name" type="xs:string"></xs:element>
+    		<xs:element name="rank" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="lineageExtendedType">
+    	<xs:sequence maxOccurs="unbounded" minOccurs="1">
+    		<xs:element name="extendedtaxon" type="Q1:lineageExtendedTaxonType">
+    			<xs:annotation>
+    				<xs:documentation>Extended lineage of the organism</xs:documentation></xs:annotation></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+</xs:schema>
+
+
+<!-- 
+<xs:complexType name="exampleType">
+	<xs:annotation>
+		<xs:documentation>
+		</xs:documentation>
+	</xs:annotation>
+	<xs:simpleContent>
+		<xs:extension base="xs:string">
+			<xs:attribute name="evidence" type="xs:string" use="optional"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="primary"/>
+						<xs:enumeration value="synonym"/>
+						<xs:enumeration value="ordered locus"/>
+						<xs:enumeration value="ORF"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:extension>
+	</xs:simpleContent>
+</xs:complexType>
+ -->
+ 
+<!-- 
+<xs:element name="entry">
+	<xs:annotation>
+		<xs:documentation>A (public) SPTr entry</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="accession" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="name" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="protein" type="proteinType"/>
+			<xs:element name="gene" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="geneNameType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="organism" type="organismType" maxOccurs="unbounded"/>
+			<xs:element name="organismHost" type="organismType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="geneLocation" type="geneLocationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="reference" type="referenceType" maxOccurs="unbounded"/>
+			<xs:element name="comment" type="commentType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dbReference" type="dbReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="proteinExistence" type="proteinExistenceType"/>
+			<xs:element name="keyword" type="keywordType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="feature" type="featureType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="evidence" type="evidenceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="sequence" type="sequenceType"/>
+		</xs:sequence>
+		<xs:attribute name="dataset" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Swiss-Prot"/>
+					<xs:enumeration value="TrEMBL"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="created" type="xs:date" use="required"/>
+		<xs:attribute name="modified" type="xs:date" use="required"/>
+		<xs:attribute name="version" type="xs:integer" use="required"/>
+	</xs:complexType>
+</xs:element>
+ -->

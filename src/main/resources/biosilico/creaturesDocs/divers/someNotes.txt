@@ -1,0 +1,37 @@
+Cerveau
+        • Lobe frontal : émotions, associations de mots, réponses à 
+l'environnement, jugement, conscience, mémoire, habitudes, activités 
+motrices, odorat
+        • Lobe parietal : toucher, lecture, écriture, orientation, nombres, 
+attention visuelle et spatiale, aptitudes manuelles
+        • Lobe occipital : vision
+        • Lobe temporal : goût, langage, écoute, acquisition de la mémoire, 
+catégorisation des objets
+        • Cervelet : actes réflexes, coordination des actions volontaires
+        • Tronc cérébral : pression sanguine, coeur, digestion, respiration, 
+réflexes (actes involontaires du système nerveux)
+
+
+Taxonomie : Phylum, Classe, Ordre, Famille, Genre, Espèce, Variété
+
+	http://fr.wikipedia.org/wiki/Classification_scientifique_des_espèces
+	http://fr.wikipedia.org/wiki/Rang_taxinomique
+Rang taxonomique : Monde vivant, Domaine, Règne, Embranchement (Phylum, Division), Classe, Ordre, Famille, Genre, Espèce
+	(vivant) → règne → embranchement → classe → ordre → famille → genre → espèce
+	RECOFGE est le sigle mnémotechnique des 7 rangs principaux: Règne/Embranchement/Classe/Ordre/Famille/Genre/Espèce.
+Kingdom, phylum/division, class, order, family, genus, species. "Domain", a level above kingdom, has become popular in recent years, but has not (yet) been accepted into the codes
+
+Processus théoriques (informatique)
+Création : Born->Ready->Running
+Execution : Running
+                        <-> Wait (Event)
+                        <-> Sleep
+                        <-> Blocked
+Arrêt : Running -> Zombie -> Dead
+
+Cycle de calcul :
+        1- Reproduction
+        2- Mutation
+        3- Mouvement
+        4- Compétition
+        5- Sélection

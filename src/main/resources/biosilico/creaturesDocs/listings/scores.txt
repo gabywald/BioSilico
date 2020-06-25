@@ -1,0 +1,211 @@
+Scores successifs 	B.O.R.G. Creature-Info V1.1
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 5
+	Egg disc eggs: 2
+	Natural eggs: 2
+	Dead Norns: 0
+	Norns in game: 4
+	playtime: 3:2
+	B.O.R.G. score: 723
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 8
+	Egg disc eggs: 2
+	Natural eggs: 5
+	Dead Norns: 0
+	Norns in game: 7
+	playtime: 5:31
+	B.O.R.G. score: 1892
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 8
+	Egg disc eggs: 3
+	Natural eggs: 8
+	Dead Norns: 1
+	Norns in game: 7
+	playtime: 7:49
+	B.O.R.G. score: 3201
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 12
+	Egg disc eggs: 3
+	Natural eggs: 17
+	Dead Norns: 3
+	Norns in game: 11
+	playtime: 10:4
+	B.O.R.G. score: 6135
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 24
+	Dead Norns: 8
+	Norns in game: 12
+	playtime: 12:14
+	B.O.R.G. score: 8702
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 11
+	Egg disc eggs: 3
+	Natural eggs: 24
+	Dead Norns: 11
+	Norns in game: 10
+	playtime: 13:1
+	B.O.R.G. score: 8978
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 28
+	Dead Norns: 13
+	Norns in game: 12
+	playtime: 15:3
+	B.O.R.G. score: 10736
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 33
+	Dead Norns: 16
+	Norns in game: 12
+	playtime: 16:19
+	B.O.R.G. score: 12458
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 12
+	Egg disc eggs: 3
+	Natural eggs: 34
+	Dead Norns: 20
+	Norns in game: 11
+	playtime: 17:0
+	B.O.R.G. score: 12994
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 37
+	Dead Norns: 20
+	Norns in game: 12
+	playtime: 17:27
+	B.O.R.G. score: 13915
+
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 37
+	Dead Norns: 22
+	Norns in game: 12
+	playtime: 18:2
+	B.O.R.G. score: 14129
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 12
+	Egg disc eggs: 3
+	Natural eggs: 39
+	Dead Norns: 25
+	Norns in game: 11
+	playtime: 18:42
+	B.O.R.G. score: 14869
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 11
+	Egg disc eggs: 3
+	Natural eggs: 41
+	Dead Norns: 28
+	Norns in game: 10
+	playtime: 19:19
+	B.O.R.G. score: 15590
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 11
+	Egg disc eggs: 3
+	Natural eggs: 45
+	Dead Norns: 32
+	Norns in game: 10
+	playtime: 20:23
+	B.O.R.G. score: 16989
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 13
+	Egg disc eggs: 3
+	Natural eggs: 48
+	Dead Norns: 32
+	Norns in game: 12
+	playtime: 21:10
+	B.O.R.G. score: 18030
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 11
+	Egg disc eggs: 3
+	Natural eggs: 50
+	Dead Norns: 32
+	Norns in game: 10
+	playtime: 22:21
+	B.O.R.G. score: 18947
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 12
+	Egg disc eggs: 3
+	Natural eggs: 52
+	Dead Norns: 33
+	Norns in game: 11
+	playtime: 23:8
+	B.O.R.G. score: 19732
+
+-----SCORE STATISTICS-----
+
+BREEDER INFO:
+	Creatures in game: 10
+	Egg disc eggs: 3
+	Natural eggs: 55
+	Dead Norns: 36
+	Norns in game: 9
+	playtime: 23:59
+	B.O.R.G. score: 20755
+
+B.O.R.G. Creature-Info is (c) 1997 by Alexander Laemmle!
+Use this (or parts of this) to describe your .EXP or .SFC files
+e.g. when you post them in the internet,
+or just to show your friends that you are the better breeder...

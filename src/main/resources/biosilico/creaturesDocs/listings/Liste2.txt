@@ -1,0 +1,1548 @@
+-----LIST OF CREATURES:-----
+
+CREATURE:
+	Name: grendel
+	Species: GRENDEL
+	Sex: male
+	Ingame ID: 	7041720
+				(ne change pas)
+				2:40 (Pensioner)
+				5:08 (Pensioner)
+				7:26 (Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 6JHJ
+	Fingerprint: 0
+
+	Rezeptors: 39
+	Sender: 12
+	Reactions: 44
+	Look: 4
+	Attitude: 103
+	Walk: 8
+	Instinct: 5
+	Pigmentation: 0
+	Total genes: 215
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Malun
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7166428 - 	7273188
+				2:57(Adult)	5:25(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 6BAD
+	Fingerprint: 1180
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Femun
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7272552 -	7380540
+				2:51(Adult)	5:19(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 7RMN
+	Fingerprint: 1581
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Toby
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12405824 - 	7168528
+				0:56(Child)	3:24(Adult)
+
+GENETICS:
+	Genetic file (moniker): 4BLS
+	Fingerprint: 1378
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Waza
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7511684 -	7493660 -		7703268
+				0:15(Child)	2:43(Pensioner)	4:54(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 7ESX
+	Fingerprint: 1455
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Alice
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7598404
+				1:58(Ados)
+
+GENETICS:
+	Genetic file (moniker): 0QTF
+	Fingerprint: 1260
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ralph
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7832904 -	7379852
+				1:12(Child)	3:30(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 8PLA
+	Fingerprint: 1170
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Nova
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7783712 -	7274660
+				0:20(Baby)	2:35(Adult)
+
+GENETICS:
+	Genetic file (moniker): 5PWJ
+	Fingerprint: 1226
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+
+CREATURE:
+	Name: Bibi
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7160824
+				2:11 (Ados)
+
+GENETICS:
+	Genetic file (moniker): 1IET
+	Fingerprint: 1138
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Bimbo
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7489700 -	7275540
+				1:37(Ados)	3:53(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 2TTE
+	Fingerprint: 1463
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Eva
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7595652 -	7380800
+				1:36(Ados)	3:51(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 7WKO
+	Fingerprint: 1574
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Virga
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7810984
+				1:00(Ados)
+
+GENETICS:
+	Genetic file (moniker): 4XTO
+	Fingerprint: 1183
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Loana
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7488152
+				2:05(Adult)
+
+GENETICS:
+	Genetic file (moniker): 8JBX
+	Fingerprint: 1146
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Laure
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7595488
+				1:54(Adult)
+
+GENETICS:
+	Genetic file (moniker): 1SAB
+	Fingerprint: 1408
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Bobby
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7702752
+				1:22(Ados)
+
+GENETICS:
+	Genetic file (moniker): 8EKC
+	Fingerprint: 1241
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Mike
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7156192 -	7156692
+				1:20(Ados)	3:30(Adult)
+
+GENETICS:
+	Genetic file (moniker): 5XTQ
+	Fingerprint: 1138
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Steph
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7811044 -	7379752
+				0:58(Child)	3:08(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 0DNX
+	Fingerprint: 1066
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Lara
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7918620 -	7487468
+				0:55(Ados)	3:05(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 2LFG
+	Fingerprint: 1733
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Angela
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12485404 -	759480 -	7487716
+				0:32(Child)	2:41(Adult)	3:29(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 5HHO
+	Fingerprint: 1481
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Sarah
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12381904 -	7701864 -	759532
+				0:32(child)	2:41(Adult)	3:29(Adult)
+
+GENETICS:
+	Genetic file (moniker): 4WJI
+	Fingerprint: 1262
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Marcus
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12533552 -	780924 -	7702192 -		727120
+				0:08(baby)	2:18(Adult)	3:05(Pensioner)	5:07(Id.)
+
+GENETICS:
+	Genetic file (moniker): 7TOB
+	Fingerprint: 1428
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: RON
+	Species: GRENDEL
+	Sex: male
+	Ingame ID: 	7041720
+				Toujours id.
+				1:42 (Adolescent)
+				2:29 (Adolescent)
+				4:30 (Pensioner)
+				5:47 (Pensioner)
+				6:27 (Pensioner)
+				6:54 (Pensioner)
+				7:30 (Pensioner)
+				8:10 (Pensioner)
+				8:47 (Pensioner)
+				9:51 (Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 8PEQ
+	Fingerprint: 0
+
+	Rezeptors: 39
+	Sender: 12
+	Reactions: 44
+	Look: 4
+	Attitude: 103
+	Walk: 8
+	Instinct: 5
+	Pigmentation: 0
+	Total genes: 215
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Buffy
+	Species: NORN
+	Sex: female
+	Ingame ID: 	7916724 -	7809496 -	7489268
+				1:56 (Ados)	2:43(Adult)	4:44 (Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 4CSK
+	Fingerprint: 1104
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Angel
+	Species: NORN
+	Sex: male
+	Ingame ID: 	8024648 -	7917484 -		7158668
+				1:51 (Ados)	2:38(Pensioner)	4:39(id.)
+
+GENETICS:
+	Genetic file (moniker): 5EXE
+	Fingerprint: 1340
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Paula
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12390680 -	8024484 -	759394 -		7378588
+				1:32 (Ados)	2:19(Adult)	4:20(Pensioner)	5:37 (Id.)
+
+GENETICS:
+	Genetic file (moniker): 6DJE
+	Fingerprint: 1309
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Peter
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12494676 -		1239076 -	7701760 -		7488052
+				1:00(Child)	1:47(Ados)	3:49(Pensioner)	5:05 (Id.)
+
+GENETICS:
+	Genetic file (moniker): 5FZM
+	Fingerprint: 1333
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Valentine
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12605508 -		12498152 -	780916 -	7158668
+				0:37(Child)	1:24(Ados)	3:25(Adult)	4:42(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 4XLH
+	Fingerprint: 1183
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ender
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7276388 -		7168400 -	7381784 - 	7273936
+				0:36(Child)	1:24(Ados)	3:25(Adult)	4:42(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 8CEB
+	Fingerprint: 1358
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Petra
+	Species: NORN
+	Sex: female 
+	Ingame ID: 	12783136 - 		7915952 -	7593512 -	7382132 -	7167836
+				0:38(Child)	2:39(Pensioner)	3:55(Id.)	4:36(Id.)	5:03(Id.)
+
+GENETICS:
+	Genetic file (moniker): 5XDT
+	Fingerprint: 1428
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Tuck
+	Species: NORN
+	Sex: male
+	Ingame ID: 	8026904 -	7705240 -	7490128 -		7275444
+				1:50(Ados)	3:06(Adult)	3:46(Pensioner)	4:13(Id.)
+
+GENETICS:
+	Genetic file (moniker): 0WKW
+	Fingerprint: 1146
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+	--------------------------------------------------
+
+CREATURE:
+	Name: Kenza
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12393052 -	7812048 -	7596936 -		7382252 -	7382252
+				1:41(Ados)	2:58(Adult)	3:38(Pensioner)	4:05(Id.)	4:41(Id.)
+
+GENETICS:
+	Genetic file (moniker): 0EKI
+	Fingerprint: 1333
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Jason
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12497964 -	7919400 - 	7705064 -		7489604 -	7489604
+				0:38(Child)	1:55(Adult)	2:35(Pensioner)	3:02(Id.)	3:38(Id.)
+
+GENETICS:
+	Genetic file (moniker): 6OAT
+	Fingerprint: 1451
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Lou
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12605076 -	8026512 -	7812176 -	7596716 -		7596716
+				0:38(Child) 1:54(Adult)	2:35(Id.)	3:02(Pensioner) 3:37(Id.)
+
+GENETICS:
+	Genetic file (moniker): 6AFR
+	Fingerprint: 1346
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Sean
+	Species: NORN
+	Sex: male
+	Ingame ID:  12393452 -	7919384 -	7704700 -	7704700 -	7486380
+				0:50(Child)	1:30(Ados)	1:57(Id.)	2:33(Adult)	3:12(Pensionner)
+
+GENETICS:
+	Genetic file (moniker): 6XSB
+	Fingerprint: 1340
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Colin
+	Species: NORN
+	Sex: male
+	Ingame ID:  12498636 -	8027008 -	7812324 -	7812324 -	7594004
+				0:42(Child)	1:23(Ados)	1:50(Id.)	2:25(Id.)	3:05(Adult)
+
+GENETICS:
+	Genetic file (moniker): 0GSH
+	Fingerprint: 1333
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Dave
+	Species: NORN
+	Sex: male
+	Ingame ID:  12605620 -	12396136 -	7919308 -	7919308 -	7701764
+				0:37(Child)	1:18(Ados)	1:45(Adult)	2:20(Id.)	3:00(Pensionner)
+
+GENETICS:
+	Genetic file (moniker): 1HIZ
+	Fingerprint: 1259
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ben
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12498136 -	8026516 -	8026516 -	7808972 -	759394
+				0:33(Child)	1:00(Id.)	1:36(Ados)	2:15(Id.)	2:52(Adult)
+
+GENETICS:
+	Genetic file (moniker): 4KGT
+	Fingerprint: 1451
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Clara
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12605472 -	12393580 -	12393580 -	7916308 -	7702056
+				0:33(Child)	1:00(Ados)	1:35(Id.)	2:15(Adult)	2:52(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 6DCY
+	Fingerprint: 1358
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Steevy
+	Species: NORN
+	Sex: male  
+	Ingame ID: 	13225260 -	12498124 -	12498124 -	8023292 -	7809040
+				0:08(Baby)	0:35(Child)	1:10(Id.)	1:50(Ados)	2:27(Adult)
+
+GENETICS:
+	Genetic file (moniker): 8ARU
+	Fingerprint: 1121
+
+	Rezeptors: 40
+	Sender: 23
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 265
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Diana
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12608552 -	12608552 -	7167836 -	7167836
+				0:20(Child)	0:56(Ados)	1:35(Ados)	2:12(Adult)
+
+GENETICS:
+	Genetic file (moniker): 9PST
+	Fingerprint: 1308
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Nana
+	Species: NORN
+	Sex: female
+	Ingame ID: 	13379728 -	12391016 -	7916376 -	7593784 -	7379300
+				0:28(Child)	1:08(Id.)	1:45(Ados)	2:49(Adult)	3:36(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 1TVM
+	Fingerprint: 1340
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Fucky
+	Species: NORN
+	Sex: female
+	Ingame ID:  13211548 -	12495380 -	8023824 -	770208 -	7160696
+				0:28(Child)	1:08(Ados)	1:45(Ados)	2:49(Adult)	3:36(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 0SFQ
+	Fingerprint: 1333
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Alima
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12698560 -	12390840 -	7809168 -	7486748
+				0:17(Child)	0:54(Id.)	1:58(Ados)	2:46(Adult)
+
+GENETICS:
+	Genetic file (moniker): 1ATH
+	Fingerprint: 1308
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Danny
+	Species: NORN
+	Sex: male
+	Ingame ID:	13157888 -	12495044 -	7916328 -	7593908
+				0:06(Baby)	0:43(Child)	1:47(Adult)	2:35(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 8DSH
+	Fingerprint: 1366
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Cola
+	Species: NORN
+	Sex: female
+	Ingame ID:	12877088 -	8026228 -	7701748
+				0:21(Child)	1:25(Ados)	2:13(Id.)
+
+GENETICS:
+	Genetic file (moniker): 9BKB
+	Fingerprint: 1121
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Coca
+	Species: NORN
+	Sex: female
+	Ingame ID:	13495188 -	12390888 -	7808956 -	7486284
+				0:12(Baby)	1:16(Child)	2:04(Ados)	3:14(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 5QIZ
+	Fingerprint: 1424
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Monica
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12495156 -	7916308 -	7174848 -	7380940
+				0:40(Child)	1:28(Ados)	2:38(Adult)	3:24(Adult)
+
+GENETICS:
+	Genetic file (moniker): 5XCE
+	Fingerprint: 1308
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 57
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 268
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Pepsi
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12837588 -	8024392 -	7596216 -	7595864
+				0:27(Child)	1:14(Ados)	2:24(Adult)	3:11(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 1KLA
+	Fingerprint: 1246
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Mail
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7250372 -	12390696 - 	7379316 -	7486316 -	7378996
+				0:07(Baby)	0:55(Child)	2:38(Adult)	2:52(Adult)	3:43(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 8PTH
+	Fingerprint: 1359
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Wanda
+	Species: NORN
+	Sex: female
+	Ingame ID: 	12960404 -	7273644 -	7162784 -	7162784 -	7162784
+				0:07 (Baby)	0:55(Child)	2:05(Ados)	2:52(Adult)	3:42(Adult)
+
+GENETICS:
+	Genetic file (moniker): 3FHJ
+	Fingerprint: 1308
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ganja
+	Species: NORN
+	Sex: female 
+	Ingame ID:	12494580 - 	7701428 -	7701076
+				0:35(Child) 1:45(Ados)	2:32(Adult)
+
+GENETICS:
+	Genetic file (moniker): 0CFZ
+	Fingerprint: 1377
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ronde
+	Species: GRENDEL
+	Sex: male
+	Ingame ID:	13350716 -	704120 -	7041720 -	7041720
+				0:09(Baby)	1:19(Child)	2:05(Ados)	2:56(Adult)
+
+GENETICS:
+	Genetic file (moniker): 7WEW
+	Fingerprint: 0
+
+	Rezeptors: 39
+	Sender: 12
+	Reactions: 44
+	Look: 4
+	Attitude: 103
+	Walk: 8
+	Instinct: 5
+	Pigmentation: 0
+	Total genes: 215
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Quint
+	Species: NORN
+	Sex: male
+	Ingame ID: 	12838344 -	7808684 -	7808332 -	759588
+				0:08(Baby)	1:18(Ados)	2:05(Adult)	2:56(Adult)
+
+GENETICS:
+	Genetic file (moniker): 9HYB
+	Fingerprint: 1404
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Joker
+	Species: NORN
+	Sex: male 
+	Ingame	ID: 7916020 -	7915668 -	7701412
+				1:10(Ados)	1:57(Adult)	2:48(Pensioner)
+
+GENETICS:
+	Genetic file (moniker): 0UBY
+	Fingerprint: 1320
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Ken
+	Species: NORN
+	Sex: male
+	Ingame ID:	8023432 -	802308 -	788428
+				0:54(Child)	1:40(Ados)	2:31(Adult)
+
+GENETICS:
+	Genetic file (moniker): 6YOL
+	Fingerprint: 1308
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Blanka
+	Species: NORN
+	Ingame ID:	12781700 -	72391272 -	7916020
+				0:08(Baby)	0:54(Child)	1:45(Ados)
+
+GENETICS:
+	Genetic file (moniker): 1LYO
+	Fingerprint: 1359
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Banga
+	Species: NORN
+	Sex: female
+	Ingame ID:	12494444 -	8023832
+				0:34(Child)	1:25(Ados)
+
+GENETICS:
+	Genetic file (moniker): 3QBR
+	Fingerprint: 1204
+
+	Rezeptors: 42
+	Sender: 24
+	Reactions: 56
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 17
+	Pigmentation: 12
+	Total genes: 267
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Bahun
+	Species: NORN
+	Sex: male
+	Ingame ID:	7274848 -	7274848
+				0:22(Child)	1:13(Child)
+
+GENETICS:
+	Genetic file (moniker): 3AQO
+	Fingerprint: 1323
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------
+
+CREATURE:
+	Name: Kahde
+	Species: NORN
+	Sex: male
+	Ingame ID: 	7485964
+				0:30 (Child)
+
+GENETICS:
+	Genetic file (moniker): 0QIU
+	Fingerprint: 1377
+
+	Rezeptors: 40
+	Sender: 22
+	Reactions: 55
+	Look: 4
+	Attitude: 104
+	Walk: 8
+	Instinct: 19
+	Pigmentation: 12
+	Total genes: 264
+
+BRAIN:
+	Lobi: 9
+	Total neurons: 954
+--------------------------------------------------

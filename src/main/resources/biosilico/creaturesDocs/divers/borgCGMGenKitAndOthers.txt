@@ -1,0 +1,388 @@
+
+BORG : 
+Suite de menus en plus :
+	• Files
+		Quit BORG
+		QUIT BORG and Creatures
+	• Edit Chemicals
+		Standart Infusion 50 moles
+			Energy
+			Adrenalin
+			Pain killer
+			Cough medecine
+			Sleeping pill
+			Wake-up pill
+			Anti-oxidant
+		Morality
+			Fear++
+			Fear--
+			Loneliness++
+			Loneliness--
+			Tiredness++
+			Tiredness--
+			Sleepiness++
+			Sleepiness--
+			Boredom++
+			Boredom--
+		Digestion
+			Hunger++
+			Hunger--
+			----------
+			Starch++
+			Glucose++
+			Glycogen++
+			----------
+		Annoyance
+			Anger++
+			Anger--
+			Coldness++
+			Coldness--
+			Hotness++
+			Hotness--
+			NdP++
+			NdP--
+			Pain++
+			Pain--
+			Crowded++
+			Crowded--
+		Sex
+			Sexdrive++
+			Sexdrive--
+			----------
+			Oestrogen++
+			Testoteron++
+			Gonadotrophin++
+			Progesterone++
+		Antibodies
+			Type 0 ++
+			Type 1 ++
+			Type 2 ++
+			Type 3 ++
+			Type 4 ++
+			Type 5 ++
+			Type 6 ++
+			Type 7 ++
+		Antigenes
+			Antigen 0 ++
+			Antigen 1 ++
+			Antigen 2 ++
+			Antigen 3 ++
+			Antigen 4 ++
+			Antigen 5 ++
+			Antigen 6 ++
+			Antigen 7 ++
+		Waste
+			Waste Water++
+			Hexokinase++
+			CO2++
+		Toxines
+			Glycotoxin++
+			HistaminA++
+			HistaminB++
+			Sleep toxin++
+			Fever toxin++
+		----------
+		Full Power !
+		Full power to all !
+
+	• Grendel
+		Select the grendel
+		Export the grendel
+		Kill the grendel
+		----------
+		Delete the grendel machine
+		----------
+		New grendel (egg)
+
+	• Creatures Info
+		Status
+		----------
+		Creatures Info
+
+
+	• Cheats
+		World
+			New World
+			Open world
+			Close world
+			Save world
+			Save world as...
+			----------
+			Send world as E-Mail...
+		Testing
+			Unlimited scroll
+			----------
+			Create male norn
+			Create female norn
+			Forced ageing
+			----------
+			Instant verbs
+			----------
+			Infect norn
+			Kill norn
+		Auto save (use with Cheat mode!)
+			No Autosave
+			Save every minute
+			Save every 2 minutes
+			Save every 5 minutes
+			Save every 10 minutes
+	• Windows
+		Arrange windows
+		...
+	• Help
+		About
+		
+=========================================================
+=========================================================
+=========================================================
+
+CGM : Creatures GenMan
+CGM (Creatures GenMan) pour Creatures : 
+
+Écran principal : 
+-----------------------------------------------------------------------------
+| Mum :	 |	Dad : 	 |	Type			| [sélection dans l'une des listes]	|
+|		†|			†|	Ø clone mum		|	Genetic info :					|
+|		I|			I|	O clone dad		|									|
+|		I|			I|	O mate mum+dad	|	Total genes : xxx				|
+|		I|			I|------------------|									|
+|		I|			I|	Import as : 	|	Moniker : ID					|
+|		I|			I|	O Egg			|									|
+|		I|			I|	Ø Creature		|	Gen type : 0 (Norn)				|
+|		I|			I|------------------|	Mum genes : IDm					|
+|		I|			I|	Sex : 			|	Dad genes : IDp					|
+|		I|			I|	Ø Male			|									|
+|		I|			I|	O Female		|------------------------------------
+|		I|			I|	O Random		|	Inject	|	??? |Edit			|
+|		\|			\|------------------|			|		|				|
+-----------------------------------------------------------------------------
+
+Ecran "Éditeur génétique"  (Par bouton "Edit")
+	Affichage de la liste des gènes, sélectionnables ligne par ligne
+		Header Data
+		Chemical Halflives
+		Initial Concentration
+		Pigmentation
+		Gait
+		Chem. Reaction
+		Chem. Emitter
+		Chem. Rezeptor
+		Instinct
+		Lobe
+		Stimulus
+		Pose
+		Appereance
+
+	Détail que l'on obtient en cliquant sur un gène : 
+		[Menu Activate : "Embryo,Child,Youth,Adolescence,Adult,Senior"]
+		[Menu Type : "Norn,Grendel,Ettin,Shee"]
+
+	• Genetic Header
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can :		|
+|		Gennumber : O		|	O Male		|	O Mutate	|
+|		Activate : "Embryo"	|	O Female	|	O Duplicate	|
+|							|	Ø Both		|	O Cut	  	|
+|-----------------------------------------------------------|
+|	Type : "Norn"	Mum : [IDm]				Dad : [IDp]  	|
+-------------------------------------------------------------
+
+	• Chemical Halflives
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can : 		|
+|		Gennumber : O		|	O Male		|	Ø Mutate    |
+|		Activate : "Embryo"	|	O Female	|	O Duplicate |
+|							|	Ø Both		|	O Cut		|
+|------------------------------------------------------------
+|		Chemical			|	T1/2		|				|
+|			[Var1]			| [Valeur1]		|				|
+|			[Var2]			| [Valeur2]		|				|
+|			[Var3]			| [Valeur3]		|				|
+|			[...]			| [...]			|				|
+|			[Varx]			| [Valeurx]		|				|
+|			[...]			| [...]			|				|
+|			[Varn]			| [Valeurn]		|				|
+-----------------------------------------------------------
+
+	• Initial Concentration : revoir
+	• Pigment
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can :       |
+|		Gennumber : O		|	O Male		|	Ø Mutate    |
+|		Activate : "Embryo"	|	O Female	|	Ø Duplicate |
+|							|	Ø Both		|	Ø Cut       |
+|------------------------------------------------------------
+|	Color "[Red,Green,Blue]"			Amount : "[0;256]"  |
+-------------------------------------------------------------
+
+	• Gait
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can :       |
+|		Gennumber : O		|	O Male		|	Ø Mutate    |
+|		Activate : "Embryo"	|	O Female	|	Ø Duplicate |
+|							|	Ø Both		|	Ø Cut       |
+|------------------------------------------------------------
+|	Sequence for "[Normal,In pain,Limping,Fearful,Angry,Sleepy,Tired,Stagger]"|
+|		1. [Choix entre les postures possibles (104)]		|
+|		2. [Choix entre les postures possibles (104)]		|
+|		3. [Choix entre les postures possibles (104)]		|
+|		4. [Choix entre les postures possibles (104)]		|
+|		5. [Choix entre les postures possibles (104)]		|
+|		6. [Choix entre les postures possibles (104)]		|
+|		7. [Choix entre les postures possibles (104)]		|
+|		8. [Choix entre les postures possibles (104)]		|
+----------------------------------------------------------
+
+	• Appearance
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can :       |
+|		Gennumber : O		|	O Male		|	Ø Mutate    |
+|		Activate : "Embryo"	|	O Female	|	O Duplicate |
+|							|	Ø Both		|	O Cut       |
+|------------------------------------------------------------
+|	Bodypart "[Nead,Body,Legs,Arms,Tail]"		Type : [ID] |
+-------------------------------------------------------------
+
+	• Chem. Reaction
+-------------------------------------------------------------
+|	Index					|	Sex			|	Can :       |
+|		Gennumber : O		|	O Male		|	Ø Mutate    |
+|		Activate : "Embryo"	|	O Female	|	Ø Duplicate |
+|							|	Ø Both		|	Ø Cut       |
+|------------------------------------------------------------
+| 		[num>0]			Variable							|
+|					+										|
+| 		[num>0]			Variable							|
+|					=										|
+| 		[num>0]			Variable							|
+|					+										|
+| 		[num>0]			Variable							|
+|															|
+|					1/2 time [Multiple de 8]				|
+-------------------------------------------------------------
+
+=========================================================
+=========================================================
+=========================================================
+
+
+Creatures GenKit
+Genetic Kit
+
+MENUS : File/Advanced/Window/Help
+Onglets : Cover/Genotype/Gene Editor/Biochemistry/Poses/Export
+
+Menus					Renvoi vers : 
+• File
+	New Genome			Fenêtre "001 Header Gene (Creature: Genus)"
+	Load Genome			Fenêtre [ouverture de fichier]
+	Save Genome As		Fenêtre [enregistrement de fichier]
+	--------------
+	Quit
+
+• Advanced
+	Save Pose Description
+	Reset Pose Names
+	---------------------
+	Save Chemical List
+	Reset Chemical
+	Install Chemical List
+	---------------------
+	Plot Chromosome Map
+
+• Window
+	Close all windows
+
+• Help
+	Contents
+	Important Read Me !
+	-------------------
+	About
+
+
+Fenêtre "001 Header Gene (Creature: Genus)"
+MenuAge="Embryo;Child;Youth;Adolescence;Adult;Senior;Old"
+MenuSpe="Norn;Grendel;Ettin;Shee"
+
+--GeneHeader-----------------------------------------------------
+|[MenuAge]	O Dup	O Mut	O Cut	O Both O Male	O Female	|
+--Species Gene---------------------------------------------------
+|			Species of Creatures [MenuSpe]						|
+|			Mothers genome moniker []							|
+|			Fathers genome moniker []							|
+|(moniker information is automatic after the first generation)	|
+-----------------------------------------------------------------
+|							|	  Notes		|	 Close			|
+-----------------------------------------------------------------
+
+
+Onglets
+• Cover
+	Image du kit, bouton "Load Genome"
+
+• Genotype
+--Genetic Breakdown----------------------------------------------
+| 	Type		|	Total present	|	Mutations from Template	|
+-----------------------------------------------------------------
+|																|
+|																|
+|																|
+|																|
+|																|
+-----------------------------------------------------------------
+| [Infos]											     		|
+-----------------------------------------------------------------
+
+--Brain----------------------------------------------------------
+| Lobe#	| Name		| Width	| Height | Neurones	| State Rule	|
+-----------------------------------------------------------------
+|																|
+|																|
+|																|
+|																|
+|																|
+-----------------------------------------------------------------
+| [Infos]											     		|
+-----------------------------------------------------------------
+
+• Gene Editor
+-----------------------------------------------------------------
+| #	| Gen #	| Switch on	| Sex	| Description	|	Type		|
+-----------------------------------------------------------------
+|																|
+-----------------------------------------------------------------
+| Edit Gene	| Delete Gene	| Rename Gene	|		| New Gene	|
+-----------------------------------------------------------------
+
+• Biochemistry
+--Chemical List--------------------------------------------------
+| Number	| Name			| Description				  		|
+-----------------------------------------------------------------
+|[0 à 256]	|[<NONE> à Ag0] | [cf. fiche]						|
+-----------------------------------------------------------------
+|   Delete	| 	Rename	|   Edit description |		|  Add |	|
+-----------------------------------------------------------------
+| 152 chemicals in use, 104 slots free	|		Add Here		|
+-----------------------------------------------------------------
+
+• Poses
+--Pose List--------------------------------------------------
+| Number	| Pose Name		| Pose Description			 	|
+-------------------------------------------------------------
+|[0 à 104]	|[??? à ???] 	| [cf. fiche]				 	|
+-------------------------------------------------------------
+|   Delete	| 	Rename		|  Edit description		|		|
+-------------------------------------------------------------
+| 14 poses in use 86 slots free						|		|
+-------------------------------------------------------------
+
+• Export
+Menusex:[Either;Male;Female]
+Menuegg:[Light blue swirly;Light green speckled;Green;Purple speckled;Red with yellow bits;Light blue spotty]
+
+--Interface Control--------------------------------------------------------------
+| Sex : [Menusex] 		 Choice of egg graphic : [menuegg]						|
+| [O/Ø] Virgin birth (no other parent) [] (Gene Moniker for non virgin birth	|
+| Lay Egg |	idle									 							|
+---------------------------------------------------------------------------------
+

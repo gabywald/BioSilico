@@ -1,0 +1,1000 @@
+<NONE00>	<NONE00>
+H	Hydrogen
+He	Helium
+Li	Lithium
+Be	Beryllium
+B	Bore
+C	Carbon
+N	Nitrogen (Azote)
+O	Oxygen
+F	Fluor
+Ne	Neon
+Na	Natrium (Sodium)
+Mg	Magnesium
+Al	Aluminium
+Si	Silicium
+P	Phosphor
+S	Sulfur (Soufre)
+Cl	Chlore
+Ar	Argon
+K	Kalium (Potassium)
+Ca	Calcium
+Sc	Scandium
+Ti	Titanium (Titane)
+V	Vanadium
+Cr	Chromium (Chrome)
+Mn	Manganese
+Fe	Iron (Fer)
+Co	Cobalt
+Ni	Nickel
+Cu	Copper (Cuivre)
+Zn	Zinc
+Ga	Gallium
+Ge	Germanium
+As	Arsenic
+Se	Selenium
+Br	Brome
+Kr	Krypton
+Rb	Rubidium
+Sr	Strontium
+Y	Yttirum
+Zr	Zirconium
+Nb	Niobium
+Mo	Molybdenum (Molybdene)
+Tc	Technetium
+Ru	Ruthenium
+Rh	Rhodium
+Pd	Palladium
+Ag	Silver (Argent)
+Cd	Cadmium
+In	Indium
+Sn	Sin (Etain)
+Sb	Stibium / Antymony (antimoine)
+Te	Tellurium
+I	Iodine (Iode)
+Xe	Xenon
+Cs	Caesium (Cesium)
+Ba	Barium
+La	Lanthane
+Ce	Cerium
+Pr	Praseodyne
+Nd	Neodyme
+Pm	Promethium
+Sm	Samarium
+Eu	Europium
+Gd	Gadolnium
+Tb	Terbium
+Dy	Dysprosium
+Ho	Holmium
+Er	Erbium
+Tm	Thulium
+Yb	Ytterbium
+Lu	Lutécium
+Hf	Hafnium
+Ta	Tantale
+W	Wolfram (Tungstène)
+Re	Rhenium
+Os	Osmium
+Ir	Iridium
+Pt	Platinium
+Au	Auri (Gold / Or)
+Hg	Mercury (Mercure)
+Tl	Thallium
+Pb	Lead (Plomb)
+Bi	Bismuth
+Po	Polonium
+At	Astate
+Rn	Radon
+Fr	Francium
+Ra	Radium
+Ac	Actinium
+Th	Thorium
+Pa	Proctatinium
+U	Uranium
+Np	Neptunium
+Pu	Plutonium
+Am	Americanium
+Cm	Curium
+Bk	Berkelium
+Cf	Californium
+Es	Einsteinium
+Fm	Fermium
+Md	Mendelevium
+No	Nobelium
+Lr	Lawrencium
+Rf	Rutherfordium
+Db	Dubnium
+Sg	Seaborgium
+Bh	Bohrium
+Hs	Hassium
+Mt	Meitnerium
+Ds	Darmstatdium
+Rg	Roentgenium
+Cn	Copernicium
+Uut	Uut
+Uuq	Uuq
+Uup	Uup
+Uuh	Uuh
+Uus	Uus
+Uuo	Uuo
+<NONE01>	<NONE01>
+<NONE02>	<NONE02>
+<NONE03>	<NONE03>
+<NONE04>	<NONE04>
+<NONE05>	<NONE05>
+<NONE06>	<NONE06>
+<NONE07>	<NONE07>
+<NONE08>	<NONE08>
+<NONE09>	<NONE09>
+<NONE10>	<NONE10>
+<NONE11>	<NONE11>
+<NONE12>	<NONE12>
+<NONE13>	<NONE13>
+<NONE14>	<NONE14>
+<NONE15>	<NONE15>
+<NONE16>	<NONE16>
+<NONE17>	<NONE17>
+<NONE18>	<NONE18>
+<NONE19>	<NONE19>
+<NONE20>	<NONE20>
+<NONE21>	<NONE21>
+<NONE22>	<NONE22>
+<NONE23>	<NONE23>
+<NONE24>	<NONE24>
+<NONE25>	<NONE25>
+<NONE26>	<NONE26>
+<NONE27>	<NONE27>
+<NONE28>	<NONE28>
+<NONE29>	<NONE29>
+<NONE30>	<NONE30>
+<NONE31>	<NONE31>
+ATP	Adenine TriPhosphate
+ADP	Adenine DiPhosphate
+AMP	Adenine MonoPhosphate
+CTP	Cytosine TriPhosphate
+CDP	Cytosine DiPhosphate
+CMP	Cytosine MonoPhosphate
+GTP	Guanine TriPhosphate
+GDP	Guanine DiPhosphate
+GMP	Guanine MonoPhosphate
+TTP	Thymine TriPhosphate
+TDP	Thymine DiPhosphate
+TMP	Thymine MonoPhosphate
+UTP	Uracile TriPhosphate
+UDP	Uracile DiPhosphate
+UMP	Uracile MonoPhosphate
+NAD	NAD
+NADH2	NADH,H+
+FAD	FAD
+FADH2	FADH2
+Glucose	Glucose(G6)
+Fructose	Fructose(F5)
+G6P	Glucose-6-Phosphate
+F6P	Fructose-6-Phosphate
+FPP	Fructose-1,6-biphosphate
+DHAP	DiHydroxyAcetone Phosphate
+PGAL	GlycerAldeHyde-3-Phosphate
+13PPGLY	1,3-BisphosphoGlycerate
+3PGLY	3-PhosphoGlycerate
+2PGLY	2-PhosphoGlycerate
+PePyr	phosphoenolPyruvate
+O2	DiOxygen
+CO2	Carbon DiOxid
+H2O	DiHydrogen Monoxid (Water / Eau)
+HO-	Hydroxyd
+AcetylCoA	CH3OSCoA
+OxaloAcetate	(CO2-)2CH2CO
+Citrate	(CO2-)3CH2COHCH2
+CoASH	CoASH
+cis-Aconitate	(CO2-)3CH2(CH)2
+iso-Citrate	(CO2-)3(CH2)2COH
+Oxalosuccinate	(CO2-)3(CH2)2CO
+alpha-Cetoglutarate	CO2-CH2COCO2-	
+SuccinylCoA	CO2-CH2COSCoA
+Succinate	(CO2-)(CH2)2
+Fumarate	(CO2-)(CH)2
+Malate	(CO2-)CHCCO
+CyclicElement00	Element in cycle (00)
+CyclicElement01	Element in cycle (01)
+Pyr	Pyruvate
+Adenine	adenine
+Cytosine	cytosine
+Guanine	guanine
+Thymine	thymine
+Uracile	uracile
+BasicMole00	Other basic molecule 00
+BasicMole01	Other basic molecule 01
+BasicMole02	Other basic molecule 02
+BasicMole03	Other basic molecule 03
+BasicMole04	Other basic molecule 04
+BasicMole05	Other basic molecule 05
+AAA	Alanine
+AAR	Arginine
+AAN	Asparagine
+AAD	Aspartate / acide aspartique
+AAC	Cysteine
+AAE	Glutamate / Acide Glutamique
+AAQ	Glutamine
+AAG	Glycine
+AAH	Histidine
+AAI	IsoLeucine
+AAL	Leucine
+AAK	Lysine
+AAM	Methionine
+AAF	PhenylAlanine
+AAP	Proline
+AAO	Pyrolysine
+AAU	SelenoCysteine
+AAS	Serine
+AAT	Threonine
+AAW	Tryptophane
+AAY	Tyrosine
+AAV	Valine
+AA00	Other amino acid 00
+AA01	Other amino acid 01
+AA02	Other amino acid 02
+AA03	Other amino acid 03
+AA04	Other amino acid 04
+AA05	Other amino acid 05
+AA06	Other amino acid 06
+AA07	Other amino acid 07
+AG01	Acide Formique / methanoique
+AG02	Acide Acétique / ethanoique
+AG03	Acide Propionique / propanoique
+AG04	Acide Butyrique / butanoique
+AG05	Acide Valerique / pentanoique
+AG06	Acide Caproique / hexanoique
+AG07	Acide Enanthique / heptanoique
+AG08	Acide Caprylique / octanoique
+AG09	Acide Pelargonique / nonanoique
+AG10	Acide Caprique / décanoique
+AG11	Acide Undecylique / undécanoique
+AG12	Acide Laurique / dodécanoique
+AG13	Acide Tridecylique / tridécanoique
+AG14	Acide Myristique / tétradécanoique
+AG15	Acide Pentadecylique / pentadécanoique
+AG16	Acide Palmitique / hexadécanoique
+AG17	Acide Margarique / heptadécanoique
+AG18	Acide Stearique / octodécanoique
+AG19	Acide Nonadecylique / nonadécanoique
+AG20	Acide Arachidique / eicosanoique
+AG21	- / Acide hénéicosanoique
+AG22	Acide Béhénique / docosanoique
+AG23	- / Acide tricosanoique
+AG24	Acide Lignocerique / tétracosanoique
+AG25	- / Acide pentacosanoique
+AG26	Acide Cérotique / hexacosanoique
+AG27	- / Acide heptacosanoique
+AG28	Acide Montanique / octacosanoique
+AG29	- / Acide nonacosanoique
+AG30	Acide Melissique / triacontanoique
+AG31	- / Acide hentriacontanoique
+AG32	Acide Laceroique / dotriacontanoique 
+AG33	Autre Acide gras (33)
+AG34	Autre Acide gras (34)
+AG35	Autre Acide gras (35)
+AG36	Autre Acide gras (36)
+AG37	Autre Acide gras (37)
+AG38	Autre Acide gras (38)
+AG39	Autre Acide gras (39)
+AG40	Autre Acide gras (40)
+AG01CoA	AG01CoA
+AG02CoA	AG02CoA
+AG03CoA	AG03CoA
+AG04CoA	AG04CoA
+AG05CoA	AG05CoA
+AG06CoA	AG06CoA
+AG07CoA	AG07CoA
+AG08CoA	AG08CoA
+AG09CoA	AG09CoA
+AG10CoA	AG10CoA
+AG11CoA	AG11CoA
+AG12CoA	AG12CoA
+AG13CoA	AG13CoA
+AG14CoA	AG14CoA
+AG15CoA	AG15CoA
+AG16CoA	AG16CoA
+AG17CoA	AG17CoA
+AG18CoA	AG18CoA
+AG19CoA	AG19CoA
+AG20CoA	AG20CoA
+AG21CoA	AG21CoA
+AG22CoA	AG22CoA
+AG23CoA	AG23CoA
+AG24CoA	AG24CoA
+AG25CoA	AG25CoA
+AG26CoA	AG26CoA
+AG27CoA	AG27CoA
+AG28CoA	AG28CoA
+AG29CoA	AG29CoA
+AG30CoA	AG30CoA
+AG31CoA	AG31CoA
+AG32CoA	AG32CoA
+AG33CoA	AG33CoA
+AG34CoA	AG34CoA
+AG35CoA	AG35CoA
+AG36CoA	AG36CoA
+AG37CoA	AG37CoA
+AG38CoA	AG38CoA
+AG39CoA	AG39CoA
+AG40CoA	AG40CoA
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+Hormone 00	hormone 00
+Progesterone	progesterone
+Oestrogene	oestrogene
+Testosterone	testosterone
+Hormone 04	hormone04
+Hormone 05	hormone05
+Hormone 06	hormone06
+Hormone 07	hormone07
+Hormone 08	hormone08
+Hormone 09	hormone09
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+Pheromone00	pheromonone 00
+Pheromone01	pheromonone 01
+Pheromone02	pheromonone 02
+Pheromone03	pheromonone 03
+Pheromone04	pheromonone 04
+Pheromone05	pheromonone 05
+Pheromone06	pheromonone 06
+Pheromone07	pheromonone 07
+Pheromone08	pheromonone 08
+Pheromone09	pheromonone 09
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+LLL	Local / Current Position
+LNW	Local North-West
+LNN	Local North
+LNE	Local North-East
+LEE	Local East
+LSE	Local South-East
+LSS	Local South
+LSW	Local South-West
+LWW	Local West
+(free)	(free)
+UUU	UP Position
+UNW	UP North-West
+UNN	UP North
+UNE	UP North-East
+UEE	UP East
+USE	UP South-East
+USS	UP South
+USW	UP South-West
+UWW	UP West
+(free)	(free)
+DDD	Down Position
+DNW	Down North-West
+DNN	Down North
+DNE	Down North-East
+DEE	Down East
+DSE	Down South-East
+DSS	Down South
+DSW	Down South-West
+DWW	Down West
+(free)	(free)
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+Stay	stay
+Push	push
+Pull	pull
+Stop	stop
+Move to	move to
+Move Away	move away
+Get	get
+Drop	drop
+Think	think
+Slap	slap
+Rest	rest
+Sleep	sleep
+Eat	eat
+Death	death
+Emit	emit
+Receive	receive
+Has	has
+Is	is
+MakeGamet	makegamet
+LayEgg	layegg
+Mate	mate
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+Current	current
+Small Elt	small elt
+Midd Elt	midd elt
+Big Elt	big elt
+Food	food
+Drink	drink
+Vehicle	vehicle
+Automaton	automaton
+Computer	computer
+Laptop	laptop
+Phone	phone
+CellPhone	cellphone
+Ant	ant
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+Gamet	gamet
+Egg	egg
+Embryo	embryo
+Larva	larva
+Child	child
+"Teen"	"teen"
+Adult	adult
+Senior	senior
+Dead	dead
+(free)	(free)
+Movable	movable
+Eatable	eatable
+Fertile	fertile
+Pregnant	pregnant
+(free)	(free)
+Daemon	daemon
+Bacta	bacta
+Plant	plant
+Anima	anima
+Virus	virus
+Gender	gender
+Aging	aging
+TypeOf	typeof
+Movable	movable
+Eatable	eatable
+Fertile	fertile
+Pregnant	pregnant
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>

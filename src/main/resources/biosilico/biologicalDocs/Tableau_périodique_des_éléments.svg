@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.47 r22583"
+   width="1750"
+   height="1090"
+   version="1.1"
+   sodipodi:docname="Tableau_périodique_des_éléments.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5">
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path   id="path4207" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"   d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 C 6.97309,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z"   transform="scale(0.6,0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Send"
+       style="overflow:visible">
+      <path   id="path4216" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"   d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 C 6.97309,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z"   transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <style
+       type="text/css"
+       id="style10">
+<!--                     Styles de TEXTE   :   T_ : text ; C_ : color | _S : small ; _s : smaller ; _M : medium   -->
+<!--                     Styles de DESSIN  :   F_ : fill ; S_ : stroke -->
+
+
+       <![CDATA[
+      .T_title    { font-size:36px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;line-height:100%;writing-mode:lr-tb;fill:black;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans }
+
+      .T_start    { font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;line-height:100%;writing-mode:lr-tb;fill:black;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans }
+      .T_center   { font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;line-height:100%;writing-mode:lr-tb;fill:black;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans }
+
+      .T_size_s   { font-size:11px }
+      .T_size_S   { font-size:12px }
+      .T_size_M   { font-size:18px }
+      .T_size_B   { font-weight:bold }
+
+      .C_gas       { fill:red  ;stroke:red  ;stroke-width:0.3}
+      .C_liquid    { fill:blue }
+      .C_solid     { fill:black}
+
+      .F_NonMetal  { fill:#a0ffa0 }
+      .F_AlkaliM   { fill:#ff6666 }
+      .F_AlkEarth  { fill:#ffdead }
+      .F_TransitM  { fill:#ffc0c0 }
+      .F_Lanthan   { fill:#ffbfff }
+      .F_Actinide  { fill:#ff99cc }
+      .F_Metalloid { fill:#cccc99 }
+      .F_Halogen   { fill:#ffff99 }
+      .F_PoorMetal { fill:#cccccc }
+      .F_NobleGas  { fill:#c0ffff }
+      .F_Legend    { fill:#ebebeb }
+
+      .S_Primord   { stroke:black;stroke-width:2  ;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none  }
+      .S_Radioact  { stroke:black;stroke-width:2  ;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16, 2 }
+      .S_Synthetic { stroke:black;stroke-width:2  ;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray: 2, 2 }
+      .S_thin      { stroke:black;stroke-width:0.5;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none  }
+       ]]>
+       </style>
+
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="961"
+     inkscape:window-width="1680"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="true"
+     inkscape:zoom="0.63853211"
+     inkscape:cx="875"
+     inkscape:cy="637.44095"
+     inkscape:window-x="0"
+     inkscape:window-y="37"
+     inkscape:current-layer="languages"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2384"
+       visible="true"
+       enabled="true" />
+  </sodipodi:namedview>
+  <rect
+     style="fill:white;fill-opacity:1;stroke:none;display:inline"
+     id="rect9083"
+     width="1750"
+     height="1090"
+     x="0"
+     y="0" />
+  <g
+     inkscape:groupmode="layer"
+     id="indications"
+     inkscape:label="indications"
+     style="display:inline">
+<!-- Index des groupes ( chiffres arabes : recommandations UICPA ) -->
+    <g
+       id="gIdxH" class="T_center T_size_S"
+       xml:space="preserve">
+      <text id="T_IdxH1"  y="30"  x="120" >1</text>
+      <text id="T_IdxH2"  y="30"  x="210" >2</text>
+      <text id="T_IdxH3"  y="330" x="340" >3</text>
+      <text id="T_IdxH4"  y="330" x="430" >4</text>
+      <text id="T_IdxH5"  y="330" x="520" >5</text>
+      <text id="T_IdxH6"  y="330" x="610" >6</text>
+      <text id="T_IdxH7"  y="330" x="700" >7</text>
+      <text id="T_IdxH8"  y="330" x="790" >8</text>
+      <text id="T_IdxH9"  y="330" x="880" >9</text>
+      <text id="T_IdxH10" y="330" x="970" >10</text>
+      <text id="T_IdxH11" y="330" x="1060">11</text>
+      <text id="T_IdxH12" y="330" x="1150">12</text>
+      <text id="T_IdxH13" y="130" x="1240">13</text>
+      <text id="T_IdxH14" y="130" x="1330">14</text>
+      <text id="T_IdxH15" y="130" x="1420">15</text>
+      <text id="T_IdxH16" y="130" x="1510">16</text>
+      <text id="T_IdxH17" y="130" x="1600">17</text>
+      <text id="T_IdxH18" y="30"  x="1690">18</text>
+    </g>
+<!-- Index des groupes ( chiffres romains + lettre : historique ) -->
+    <g
+       id="gIdxHl" class="T_center T_size_S"
+       xml:space="preserve">
+      <text id="T_IdxHl1"  y="50"  x="120" >ⅠA</text>
+      <text id="T_IdxHl2"  y="50"  x="210" >ⅡA</text>
+      <text id="T_IdxHl3"  y="350" x="340" >ⅢB</text>
+      <text id="T_IdxHl4"  y="350" x="430" >ⅣB</text>
+      <text id="T_IdxHl5"  y="350" x="520" >ⅤB</text>
+      <text id="T_IdxHl6"  y="350" x="610" >ⅥB</text>
+      <text id="T_IdxHl7"  y="350" x="700" >ⅦB</text>
+      <text id="T_IdxHl9"  y="350" x="880" >ⅧB</text>
+      <text id="T_IdxHl11" y="350" x="1060">ⅠB</text>
+      <text id="T_IdxHl12" y="350" x="1150">ⅡB</text>
+      <text id="T_IdxHl13" y="150" x="1240">ⅢA</text>
+      <text id="T_IdxHl14" y="150" x="1330">ⅣA</text>
+      <text id="T_IdxHl15" y="150" x="1420">ⅤA</text>
+      <text id="T_IdxHl16" y="150" x="1510">ⅥA</text>
+      <text id="T_IdxHl17" y="150" x="1600">ⅦA</text>
+      <text id="T_IdxHl18" y="50"  x="1690">ⅧA</text>
+    </g>
+<!-- Index des périodes  -->
+    <g
+       id="gIdxP" class="T_center T_size_S"
+       xml:space="preserve">
+      <text id="T_IdxP1" y="130" x="50">1</text>
+      <text id="T_IdxP2" y="230" x="50">2</text>
+      <text id="T_IdxP3" y="330" x="50">3</text>
+      <text id="T_IdxP4" y="430" x="50">4</text>
+      <text id="T_IdxP5" y="530" x="50">5</text>
+      <text id="T_IdxP6" y="630" x="50">6</text>
+      <text id="T_IdxP7" y="730" x="50">7</text>
+    </g>
+<!-- Légende : cases  -->
+    <g
+       id="gd_legend">
+      <rect id="R_AlkM" class="F_AlkaliM   S_Legend"    x="100"  y="1020" width="80" height="50" />
+      <rect id="R_AlkE" class="F_AlkEarth  S_Legend"    x="210"  y="1020" width="80" height="50" />
+      <rect id="R_Lant" class="F_Lanthan   S_Legend"    x="320"  y="1020" width="80" height="50" />
+      <rect id="R_Acti" class="F_Actinide  S_Legend"    x="430"  y="1020" width="80" height="50" />
+      <rect id="R_Tran" class="F_TransitM  S_Legend"    x="540"  y="1020" width="80" height="50" />
+      <rect id="R_Poor" class="F_PoorMetal S_Legend"    x="650"  y="1020" width="80" height="50" />
+      <rect id="R_Moid" class="F_Metalloid S_Legend"    x="760"  y="1020" width="80" height="50" />
+      <rect id="R_NonM" class="F_NonMetal  S_Legend"    x="870"  y="1020" width="80" height="50" />
+      <rect id="R_Halo" class="F_Halogen   S_Legend"    x="980"  y="1020" width="80" height="50" />
+      <rect id="R_NblG" class="F_NobleGas  S_Legend"    x="1090" y="1020" width="80" height="50" />
+
+      <rect id="R_Prim" class="F_Legend    S_Primord"   x="1420" y="1020" width="90" height="50" />
+      <rect id="R_RadA" class="F_Legend    S_Radioact"  x="1530" y="1020" width="90" height="50" />
+      <rect id="R_Synt" class="F_Legend    S_Synthetic" x="1640" y="1020" width="90" height="50" />
+    </g>
+<!-- Flèches utilisées pour le tableau et la légende  -->
+    <g
+       id="gArrow_Tbl"
+       style="fill:none;stroke:black;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-mid:none;marker-end:url(#Arrow2Send)">
+      <path   id="Arrow_Tbl1"   d="M 80,25 90,25" />
+      <path   id="Arrow_Tbl2"   d="M 50,70 50,80" />
+      <path style="color:black;fill:none;stroke:black;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path3657" sodipodi:nodetypes="cccc" d="M 750,370 770,360 990,360 1010,370" />
+    </g>
+    <g
+       id="gArrow_Leg"
+       style="fill:none;stroke:black;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2Mstart);marker-mid:none;marker-end:none">
+      <path   id="Arrow_Leg1"   d="M 170,96  190,96" />
+      <path   id="Arrow_Leg2"   d="M 170,116 190,116" />
+      <path   id="Arrow_Leg3"   d="M 170,136 190,136" />
+      <path   id="Arrow_Leg4"   d="M 170,156 190,156" />
+    </g>
+  </g>
+<!-- Dessin du tableau  -->
+  <g
+     inkscape:groupmode="layer"
+     id="cases"
+     inkscape:label="cases"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <g
+       id="Dram"
+       class="S_Legend S_Primord">
+      <rect id="R_e1"   class="F_NonMetal "             x="80"   y="80"  width="80"  height="90" />
+      <rect id="R_e2"   class="F_NobleGas "             x="1650" y="80"  width="80"  height="90" />
+      <rect id="R_e3"   class="F_AlkaliM  "             x="80"   y="180" width="80"  height="90" />
+      <rect id="R_e4"   class="F_AlkEarth "             x="170"  y="180" width="80"  height="90" />
+      <rect id="R_e5"   class="F_Metalloid"             x="1200" y="180" width="80"  height="90" />
+      <rect id="R_e6"   class="F_NonMetal "             x="1290" y="180" width="80"  height="90" />
+      <rect id="R_e7"   class="F_NonMetal "             x="1380" y="180" width="80"  height="90" />
+      <rect id="R_e8"   class="F_NonMetal "             x="1470" y="180" width="80"  height="90" />
+      <rect id="R_e9"   class="F_Halogen  "             x="1560" y="180" width="80"  height="90" />
+      <rect id="R_e10"  class="F_NobleGas "             x="1650" y="180" width="80"  height="90" />
+      <rect id="R_e11"  class="F_AlkaliM  "             x="80"   y="280" width="80"  height="90" />
+      <rect id="R_e12"  class="F_TransitM "             x="480"  y="380" width="80"  height="90" />
+      <rect id="R_e13"  class="F_PoorMetal"             x="1200" y="280" width="80"  height="90" />
+      <rect id="R_e14"  class="F_Metalloid"             x="1290" y="280" width="80"  height="90" />
+      <rect id="R_e15"  class="F_NonMetal "             x="1380" y="280" width="80"  height="90" />
+      <rect id="R_e16"  class="F_NonMetal "             x="1470" y="280" width="80"  height="90" />
+      <rect id="R_e17"  class="F_Halogen  "             x="1560" y="280" width="80"  height="90" />
+      <rect id="R_e18"  class="F_NobleGas "             x="1650" y="280" width="80"  height="90" />
+      <rect id="R_e19"  class="F_AlkaliM  "             x="80"   y="380" width="80"  height="90" />
+      <rect id="R_e20"  class="F_AlkEarth "             x="170"  y="380" width="80"  height="90" />
+      <rect id="R_e21"  class="F_TransitM "             x="300"  y="380" width="80"  height="90" />
+      <rect id="R_e22"  class="F_TransitM "             x="390"  y="380" width="80"  height="90" />
+      <rect id="R_e23"  class="F_AlkEarth "             x="170"  y="280" width="80"  height="90" />
+      <rect id="R_e24"  class="F_TransitM "             x="570"  y="380" width="80"  height="90" />
+      <rect id="R_e25"  class="F_TransitM "             x="660"  y="380" width="80"  height="90" />
+      <rect id="R_e26"  class="F_TransitM "             x="750"  y="380" width="80"  height="90" />
+      <rect id="R_e27"  class="F_TransitM "             x="840"  y="380" width="80"  height="90" />
+      <rect id="R_e28"  class="F_TransitM "             x="930"  y="380" width="80"  height="90" />
+      <rect id="R_e29"  class="F_TransitM "             x="1020" y="380" width="80"  height="90" />
+      <rect id="R_e30"  class="F_TransitM "             x="1110" y="380" width="80"  height="90" />
+      <rect id="R_e31"  class="F_PoorMetal"             x="1200" y="380" width="80"  height="90" />
+      <rect id="R_e32"  class="F_Metalloid"             x="1290" y="380" width="80"  height="90" />
+      <rect id="R_e33"  class="F_Metalloid"             x="1380" y="380" width="80"  height="90" />
+      <rect id="R_e34"  class="F_NonMetal "             x="1470" y="380" width="80"  height="90" />
+      <rect id="R_e35"  class="F_Halogen  "             x="1560" y="380" width="80"  height="90" />
+      <rect id="R_e36"  class="F_NobleGas "             x="1650" y="380" width="80"  height="90" />
+      <rect id="R_e37"  class="F_AlkaliM  "             x="80"   y="480" width="80"  height="90" />
+      <rect id="R_e38"  class="F_AlkEarth "             x="170"  y="480" width="80"  height="90" />
+      <rect id="R_e39"  class="F_TransitM "             x="300"  y="480" width="80"  height="90" />
+      <rect id="R_e40"  class="F_TransitM "             x="390"  y="480" width="80"  height="90" />
+      <rect id="R_e41"  class="F_TransitM "             x="480"  y="480" width="80"  height="90" />
+      <rect id="R_e42"  class="F_TransitM "             x="570"  y="480" width="80"  height="90" />
+      <rect id="R_e43"  class="F_TransitM  S_Radioact"  x="660"  y="480" width="80"  height="90" />
+      <rect id="R_e44"  class="F_TransitM "             x="750"  y="480" width="80"  height="90" />
+      <rect id="R_e45"  class="F_TransitM "             x="840"  y="480" width="80"  height="90" />
+      <rect id="R_e46"  class="F_TransitM "             x="930"  y="480" width="80"  height="90" />
+      <rect id="R_e47"  class="F_TransitM "             x="1020" y="480" width="80"  height="90" />
+      <rect id="R_e48"  class="F_TransitM "             x="1110" y="480" width="80"  height="90" />
+      <rect id="R_e49"  class="F_PoorMetal"             x="1200" y="480" width="80"  height="90" />
+      <rect id="R_e50"  class="F_PoorMetal"             x="1290" y="480" width="80"  height="90" />
+      <rect id="R_e51"  class="F_Metalloid"             x="1380" y="480" width="80"  height="90" />
+      <rect id="R_e52"  class="F_Metalloid"             x="1470" y="480" width="80"  height="90" />
+      <rect id="R_e53"  class="F_Halogen  "             x="1560" y="480" width="80"  height="90" />
+      <rect id="R_e54"  class="F_NobleGas "             x="1650" y="480" width="80"  height="90" />
+      <rect id="R_e55"  class="F_AlkaliM  "             x="80"   y="580" width="80"  height="90" />
+      <rect id="R_e56"  class="F_AlkEarth "             x="170"  y="580" width="80"  height="90" />
+      <rect id="R_e57x" class="F_Lanthan   S_thin"      x="260"  y="580" width="120" height="90" />
+      <rect id="R_e57"  class="F_Lanthan  "             x="390"  y="800" width="80"  height="90" />
+      <rect id="R_e58"  class="F_Lanthan  "             x="480"  y="800" width="80"  height="90" />
+      <rect id="R_e59"  class="F_Lanthan  "             x="570"  y="800" width="80"  height="90" />
+      <rect id="R_e60"  class="F_Lanthan  "             x="660"  y="800" width="80"  height="90" />
+      <rect id="R_e61"  class="F_Lanthan   S_Radioact"  x="750"  y="800" width="80"  height="90" />
+      <rect id="R_e62"  class="F_Lanthan  "             x="840"  y="800" width="80"  height="90" />
+      <rect id="R_e63"  class="F_Lanthan  "             x="930"  y="800" width="80"  height="90" />
+      <rect id="R_e64"  class="F_Lanthan  "             x="1020" y="800" width="80"  height="90" />
+      <rect id="R_e65"  class="F_Lanthan  "             x="1110" y="800" width="80"  height="90" />
+      <rect id="R_e66"  class="F_Lanthan  "             x="1200" y="800" width="80"  height="90" />
+      <rect id="R_e67"  class="F_Lanthan  "             x="1290" y="800" width="80"  height="90" />
+      <rect id="R_e68"  class="F_Lanthan  "             x="1380" y="800" width="80"  height="90" />
+      <rect id="R_e69"  class="F_Lanthan  "             x="1470" y="800" width="80"  height="90" />
+      <rect id="R_e70"  class="F_Lanthan  "             x="1560" y="800" width="80"  height="90" />
+      <rect id="R_e71"  class="F_Lanthan  "             x="1650" y="800" width="80"  height="90" />
+      <rect id="R_e72"  class="F_TransitM "             x="390"  y="580" width="80"  height="90" />
+      <rect id="R_e73"  class="F_TransitM "             x="480"  y="580" width="80"  height="90" />
+      <rect id="R_e74"  class="F_TransitM "             x="570"  y="580" width="80"  height="90" />
+      <rect id="R_e75"  class="F_TransitM "             x="660"  y="580" width="80"  height="90" />
+      <rect id="R_e76"  class="F_TransitM "             x="750"  y="580" width="80"  height="90" />
+      <rect id="R_e77"  class="F_TransitM "             x="840"  y="580" width="80"  height="90" />
+      <rect id="R_e78"  class="F_TransitM "             x="930"  y="580" width="80"  height="90" />
+      <rect id="R_e79"  class="F_TransitM "             x="1020" y="580" width="80"  height="90" />
+      <rect id="R_e80"  class="F_TransitM "             x="1110" y="580" width="80"  height="90" />
+      <rect id="R_e81"  class="F_PoorMetal"             x="1200" y="580" width="80"  height="90" />
+      <rect id="R_e82"  class="F_PoorMetal"             x="1290" y="580" width="80"  height="90" />
+      <rect id="R_e83"  class="F_PoorMetal"             x="1380" y="580" width="80"  height="90" />
+      <rect id="R_e84"  class="F_Metalloid S_Radioact"  x="1470" y="580" width="80"  height="90" />
+      <rect id="R_e85"  class="F_Halogen   S_Radioact"  x="1560" y="580" width="80"  height="90" />
+      <rect id="R_e86"  class="F_NobleGas  S_Radioact"  x="1650" y="580" width="80"  height="90" />
+      <rect id="R_e87"  class="F_AlkaliM   S_Radioact"  x="80"   y="680" width="80"  height="90" />
+      <rect id="R_e88"  class="F_AlkEarth  S_Radioact"  x="170"  y="680" width="80"  height="90" />
+      <rect id="R_e89x" class="F_Actinide  S_thin"      x="260"  y="680" width="120" height="90" />
+      <rect id="R_e89"  class="F_Actinide  S_Radioact"  x="390"  y="900" width="80"  height="90" />
+      <rect id="R_e90"  class="F_Actinide "             x="480"  y="900" width="80"  height="90" />
+      <rect id="R_e91"  class="F_Actinide  S_Radioact"  x="570"  y="900" width="80"  height="90" />
+      <rect id="R_e92"  class="F_Actinide "             x="660"  y="900" width="80"  height="90" />
+      <rect id="R_e93"  class="F_Actinide  S_Radioact"  x="750"  y="900" width="80"  height="90" />
+      <rect id="R_e94"  class="F_Actinide "             x="840"  y="900" width="80"  height="90" />
+      <rect id="R_e95"  class="F_Actinide  S_Synthetic" x="930"  y="900" width="80"  height="90" />
+      <rect id="R_e96"  class="F_Actinide  S_Synthetic" x="1020" y="900" width="80"  height="90" />
+      <rect id="R_e97"  class="F_Actinide  S_Synthetic" x="1110" y="900" width="80"  height="90" />
+      <rect id="R_e98"  class="F_Actinide  S_Synthetic" x="1200" y="900" width="80"  height="90" />
+      <rect id="R_e99"  class="F_Actinide  S_Synthetic" x="1290" y="900" width="80"  height="90" />
+      <rect id="R_e100" class="F_Actinide  S_Synthetic" x="1380" y="900" width="80"  height="90" />
+      <rect id="R_e101" class="F_Actinide  S_Synthetic" x="1470" y="900" width="80"  height="90" />
+      <rect id="R_e102" class="F_Actinide  S_Synthetic" x="1560" y="900" width="80"  height="90" />
+      <rect id="R_e103" class="F_Actinide  S_Synthetic" x="1650" y="900" width="80"  height="90" />
+      <rect id="R_e104" class="F_TransitM  S_Synthetic" x="390"  y="680" width="80"  height="90" />
+      <rect id="R_e105" class="F_TransitM  S_Synthetic" x="480"  y="680" width="80"  height="90" />
+      <rect id="R_e106" class="F_TransitM  S_Synthetic" x="570"  y="680" width="80"  height="90" />
+      <rect id="R_e107" class="F_TransitM  S_Synthetic" x="660"  y="680" width="80"  height="90" />
+      <rect id="R_e108" class="F_TransitM  S_Synthetic" x="750"  y="680" width="80"  height="90" />
+      <rect id="R_e109" class="F_TransitM  S_Synthetic" x="840"  y="680" width="80"  height="90" />
+      <rect id="R_e110" class="F_TransitM  S_Synthetic" x="930"  y="680" width="80"  height="90" />
+      <rect id="R_e111" class="F_TransitM  S_Synthetic" x="1020" y="680" width="80"  height="90" />
+      <rect id="R_e112" class="F_TransitM  S_Synthetic" x="1110" y="680" width="80"  height="90" />
+      <rect id="R_e113" class="F_PoorMetal S_Synthetic" x="1200" y="680" width="80"  height="90" />
+      <rect id="R_e114" class="F_PoorMetal S_Synthetic" x="1290" y="680" width="80"  height="90" />
+      <rect id="R_e115" class="F_PoorMetal S_Synthetic" x="1380" y="680" width="80"  height="90" />
+      <rect id="R_e116" class="F_PoorMetal S_Synthetic" x="1470" y="680" width="80"  height="90" />
+      <rect id="R_e117" class="F_Halogen   S_Synthetic" x="1560" y="680" width="80"  height="90" />
+      <rect id="R_e118" class="F_NobleGas  S_Synthetic" x="1650" y="680" width="80"  height="90" />
+<!-- Flèche de redirection des lanthanides -->
+      <path id="A_e57x" class="F_Lanthan S_thin"   sodipodi:nodetypes="ccccccccccc"
+            d="M 389,845 381,837 381,842 370,842 370,670 360,670 360,848 381,848 381,853 z" />
+<!-- Flèche de redirection des actinides -->
+      <path id="A_e89x" class="F_Actinide S_thin"   sodipodi:nodetypes="ccccccccccc"
+            d="M 389,945 381,937 381,942 330,942 330,770 320,770 320,948 381,948 381,953 z" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="elements_x"
+     inkscape:label="elements_x"
+     xml:space="preserve"
+     style="display:inline">
+<!-- Données des éléments ( non liées à une langue particulière ) -->
+    <g
+   id="Teldatas" class="T_center T_size_M">
+    <text id="T_e1n"   x="120"  y="120" class="C_gas">1</text>
+    <text id="T_e1s"   x="120"  y="140" class="C_gas">H</text>
+    <text id="T_e1m"   x="120"  y="160" class="C_gas T_size_S">1,00794</text>
+
+    <text id="T_e2n"   x="1690" y="120" class="C_gas">2</text>
+    <text id="T_e2s"   x="1690" y="140" class="C_gas">He</text>
+    <text id="T_e2m"   x="1690" y="160" class="C_gas T_size_S">4,002602</text>
+
+    <text id="T_e3n"   x="120"  y="220" >3</text>
+    <text id="T_e3s"   x="120"  y="240" >Li</text>
+    <text id="T_e3m"   x="120"  y="260" class="T_size_S">6,941</text>
+
+    <text id="T_e4n"   x="210"  y="220" >4</text>
+    <text id="T_e4s"   x="210"  y="240" >Be</text>
+    <text id="T_e4m"   x="210"  y="260" class="T_size_S">9,012182</text>
+
+    <text id="T_e5n"   x="1240" y="220" >5</text>
+    <text id="T_e5s"   x="1240" y="240" >B</text>
+    <text id="T_e5m"   x="1240" y="260" class="T_size_S">10,811</text>
+
+    <text id="T_e6n"   x="1330" y="220" >6</text>
+    <text id="T_e6s"   x="1330" y="240" >C</text>
+    <text id="T_e6m"   x="1330" y="260" class="T_size_S">12,0107</text>
+
+    <text id="T_e7n"   x="1420" y="220" class="C_gas">7</text>
+    <text id="T_e7s"   x="1420" y="240" class="C_gas">N</text>
+    <text id="T_e7m"   x="1420" y="260" class="C_gas T_size_S">14,00674</text>
+
+    <text id="T_e8n"   x="1510" y="220" class="C_gas">8</text>
+    <text id="T_e8s"   x="1510" y="240" class="C_gas">O</text>
+    <text id="T_e8m"   x="1510" y="260" class="C_gas T_size_S">15,9994</text>
+
+    <text id="T_e9n"   x="1600" y="220" class="C_gas"   >9</text>
+    <text id="T_e9s"   x="1600" y="240" class="C_gas"   >F</text>
+    <text id="T_e9m"   x="1600" y="260" class="C_gas T_size_S">18,9984032</text>
+
+    <text id="T_e10n"  x="1690" y="220" class="C_gas"   >10</text>
+    <text id="T_e10s"  x="1690" y="240" class="C_gas"   >Ne</text>
+    <text id="T_e10m"  x="1690" y="260" class="C_gas T_size_S">20,1797</text>
+
+    <text id="T_e11n"  x="120"  y="320" >11</text>
+    <text id="T_e11s"  x="120"  y="340" >Na</text>
+    <text id="T_e11m"  x="120"  y="360" class="T_size_s">22,98976928</text>
+
+    <text id="T_e12n"  x="210"  y="320" >12</text>
+    <text id="T_e12s"  x="210"  y="340" >Mg</text>
+    <text id="T_e12m"  x="210"  y="360" class="T_size_S">24,3050</text>
+
+    <text id="T_e13n"  x="1240" y="320" >13</text>
+    <text id="T_e13s"  x="1240" y="340" >Al</text>
+    <text id="T_e13m"  x="1240" y="360" class="T_size_S">26,9815386</text>
+
+    <text id="T_e14n"  x="1330" y="320" >14</text>
+    <text id="T_e14s"  x="1330" y="340" >Si</text>
+    <text id="T_e14m"  x="1330" y="360" class="T_size_S">28,0855</text>
+
+    <text id="T_e15n"  x="1420" y="320" >15</text>
+    <text id="T_e15s"  x="1420" y="340" >P</text>
+    <text id="T_e15m"  x="1420" y="360" class="T_size_S">30,973762</text>
+
+    <text id="T_e16n"  x="1510" y="320" >16</text>
+    <text id="T_e16s"  x="1510" y="340" >S</text>
+    <text id="T_e16m"  x="1510" y="360" class="T_size_S">32,066</text>
+
+    <text id="T_e17n"  x="1600" y="320" class="C_gas"   >17</text>
+    <text id="T_e17s"  x="1600" y="340" class="C_gas"   >Cl</text>
+    <text id="T_e17m"  x="1600" y="360" class="C_gas T_size_S">35,4527</text>
+
+    <text id="T_e18n"  x="1690" y="320" class="C_gas"   >18</text>
+    <text id="T_e18s"  x="1690" y="340" class="C_gas"   >Ar</text>
+    <text id="T_e18m"  x="1690" y="360" class="C_gas T_size_S">39,948</text>
+
+    <text id="T_e19n"  x="120"  y="420" >19</text>
+    <text id="T_e19s"  x="120"  y="440" >K</text>
+    <text id="T_e19m"  x="120"  y="460" class="T_size_S">39,0983</text>
+
+    <text id="T_e20n"  x="210"  y="420" >20</text>
+    <text id="T_e20s"  x="210"  y="440" >Ca</text>
+    <text id="T_e20m"  x="210"  y="460" class="T_size_S">40,078</text>
+
+    <text id="T_e21n"  x="340"  y="420" >21</text>
+    <text id="T_e21s"  x="340"  y="440" >Sc</text>
+    <text id="T_e21m"  x="340"  y="460" class="T_size_S">44,955912</text>
+
+    <text id="T_e22n"  x="430"  y="420" >22</text>
+    <text id="T_e22s"  x="430"  y="440" >Ti</text>
+    <text id="T_e22m"  x="430"  y="460" class="T_size_S">47,867</text>
+
+    <text id="T_e23n"  x="520"  y="420" >23</text>
+    <text id="T_e23s"  x="520"  y="440" >V</text>
+    <text id="T_e23m"  x="520"  y="460" class="T_size_S">50,9415</text>
+
+    <text id="T_e24n"  x="610"  y="420" >24</text>
+    <text id="T_e24s"  x="610"  y="440" >Cr</text>
+    <text id="T_e24m"  x="610"  y="460" class="T_size_S">51,9961</text>
+
+    <text id="T_e25n"  x="700"  y="420" >25</text>
+    <text id="T_e25s"  x="700"  y="440" >Mn</text>
+    <text id="T_e25m"  x="700"  y="460" class="T_size_S">54,938045</text>
+
+    <text id="T_e26n"  x="790"  y="420" >26</text>
+    <text id="T_e26s"  x="790"  y="440" >Fe</text>
+    <text id="T_e26m"  x="790"  y="460" class="T_size_S">55,845</text>
+
+    <text id="T_e27n"  x="880"  y="420" >27</text>
+    <text id="T_e27s"  x="880"  y="440" >Co</text>
+    <text id="T_e27m"  x="880"  y="460" class="T_size_S">58,933195</text>
+
+    <text id="T_e28n"  x="970"  y="420" >28</text>
+    <text id="T_e28s"  x="970"  y="440" >Ni</text>
+    <text id="T_e28m"  x="970"  y="460" class="T_size_S">58,6934</text>
+
+    <text id="T_e29n"  x="1060" y="420" >29</text>
+    <text id="T_e29s"  x="1060" y="440" >Cu</text>
+    <text id="T_e29m"  x="1060" y="460" class="T_size_S">63,546</text>
+
+    <text id="T_e30n"  x="1150" y="420" >30</text>
+    <text id="T_e30s"  x="1150" y="440" >Zn</text>
+    <text id="T_e30m"  x="1150" y="460" class="T_size_S">65,39</text>
+
+    <text id="T_e31n"  x="1240" y="420" >31</text>
+    <text id="T_e31s"  x="1240" y="440" >Ga</text>
+    <text id="T_e31m"  x="1240" y="460" class="T_size_S">69,723</text>
+
+    <text id="T_e32n"  x="1330" y="420" >32</text>
+    <text id="T_e32s"  x="1330" y="440" >Ge</text>
+    <text id="T_e32m"  x="1330" y="460" class="T_size_S">72,61</text>
+
+    <text id="T_e33n"  x="1420" y="420" >33</text>
+    <text id="T_e33s"  x="1420" y="440" >As</text>
+    <text id="T_e33m"  x="1420" y="460" class="T_size_S">74,92160</text>
+
+    <text id="T_e34n"  x="1510" y="420" >34</text>
+    <text id="T_e34s"  x="1510" y="440" >Se</text>
+    <text id="T_e34m"  x="1510" y="460" class="T_size_S">78,96</text>
+
+    <text id="T_e35n"  x="1600" y="420" class="C_liquid">35</text>
+    <text id="T_e35s"  x="1600" y="440" class="C_liquid">Br</text>
+    <text id="T_e35m"  x="1600" y="460" class="C_liquid T_size_S">79,904</text>
+
+    <text id="T_e36n"  x="1690" y="420" class="C_gas">36</text>
+    <text id="T_e36s"  x="1690" y="440" class="C_gas">Kr</text>
+    <text id="T_e36m"  x="1690" y="460" class="C_gas T_size_S">83,80</text>
+
+    <text id="T_e37n"  x="120"  y="520" >37</text>
+    <text id="T_e37s"  x="120"  y="540" >Rb</text>
+    <text id="T_e37m"  x="120"  y="560" class="T_size_S">85,4678</text>
+
+    <text id="T_e38n"  x="210"  y="520" >38</text>
+    <text id="T_e38s"  x="210"  y="540" >Sr</text>
+    <text id="T_e38m"  x="210"  y="560" class="T_size_S">87,62</text>
+
+    <text id="T_e39n"  x="340"  y="520" >39</text>
+    <text id="T_e39s"  x="340"  y="540" >Y</text>
+    <text id="T_e39m"  x="340"  y="560" class="T_size_S">88,90585</text>
+
+    <text id="T_e40n"  x="430"  y="520" >40</text>
+    <text id="T_e40s"  x="430"  y="540" >Zr</text>
+    <text id="T_e40m"  x="430"  y="560" class="T_size_S">91,224</text>
+
+    <text id="T_e41n"  x="520"  y="520" >41</text>
+    <text id="T_e41s"  x="520"  y="540" >Nb</text>
+    <text id="T_e41m"  x="520"  y="560" class="T_size_S">92,90638</text>
+
+    <text id="T_e42n"  x="610"  y="520" >42</text>
+    <text id="T_e42s"  x="610"  y="540" >Mo</text>
+    <text id="T_e42m"  x="610"  y="560" class="T_size_S">95,94</text>
+
+    <text id="T_e43n"  x="700"  y="520" >43</text>
+    <text id="T_e43s"  x="700"  y="540" >Tc</text>
+    <text id="T_e43m"  x="700"  y="560" class="T_size_S">97,9072</text>
+
+    <text id="T_e44n"  x="790"  y="520" >44</text>
+    <text id="T_e44s"  x="790"  y="540" >Ru</text>
+    <text id="T_e44m"  x="790"  y="560" class="T_size_S">101,07</text>
+
+    <text id="T_e45n"  x="880"  y="520" >45</text>
+    <text id="T_e45s"  x="880"  y="540" >Rh</text>
+    <text id="T_e45m"  x="880"  y="560" class="T_size_S">102,90550</text>
+
+    <text id="T_e46n"  x="970"  y="520" >46</text>
+    <text id="T_e46s"  x="970"  y="540" >Pd</text>
+    <text id="T_e46m"  x="970"  y="560" class="T_size_S">106,42</text>
+
+    <text id="T_e47n"  x="1060" y="520" >47</text>
+    <text id="T_e47s"  x="1060" y="540" >Ag</text>
+    <text id="T_e47m"  x="1060" y="560" class="T_size_S">107,8682</text>
+
+    <text id="T_e48n"  x="1150" y="520" >48</text>
+    <text id="T_e48s"  x="1150" y="540" >Cd</text>
+    <text id="T_e48m"  x="1150" y="560" class="T_size_S">112,411</text>
+
+    <text id="T_e49n"  x="1240" y="520" >49</text>
+    <text id="T_e49s"  x="1240" y="540" >In</text>
+    <text id="T_e49m"  x="1240" y="560" class="T_size_S">114,818</text>
+
+    <text id="T_e50n"  x="1330" y="520" >50</text>
+    <text id="T_e50s"  x="1330" y="540" >Sn</text>
+    <text id="T_e50m"  x="1330" y="560" class="T_size_S">118,710</text>
+
+    <text id="T_e51n"  x="1420" y="520" >51</text>
+    <text id="T_e51s"  x="1420" y="540" >Sb</text>
+    <text id="T_e51m"  x="1420" y="560" class="T_size_S">121,760</text>
+
+    <text id="T_e52n"  x="1510" y="520" >52</text>
+    <text id="T_e52s"  x="1510" y="540" >Te</text>
+    <text id="T_e52m"  x="1510" y="560" class="T_size_S">127,60</text>
+
+    <text id="T_e53n"  x="1600" y="520" >53</text>
+    <text id="T_e53s"  x="1600" y="540" >I</text>
+    <text id="T_e53m"  x="1600" y="560" class="T_size_S">126,90447</text>
+
+    <text id="T_e54n"  x="1690" y="520" class="C_gas"   >54</text>
+    <text id="T_e54s"  x="1690" y="540" class="C_gas"   >Xe</text>
+    <text id="T_e54m"  x="1690" y="560" class="C_gas T_size_S">131,29</text>
+
+    <text id="T_e55n"  x="120"  y="620" >55</text>
+    <text id="T_e55s"  x="120"  y="640" >Cs</text>
+    <text id="T_e55m"  x="120"  y="660" class="T_size_s">132,9054519</text>
+
+    <text id="T_e56n"  x="210"  y="620" >56</text>
+    <text id="T_e56s"  x="210"  y="640" >Ba</text>
+    <text id="T_e56m"  x="210"  y="660" class="T_size_S">137,327</text>
+
+    <text id="T_e57-71" x="320" y="620" >57‒71</text>
+    <text id="T_e57n"  x="430"  y="840" >57</text>
+    <text id="T_e57s"  x="430"  y="860" >La</text>
+    <text id="T_e57m"  x="430"  y="880" class="T_size_S">138,90547</text>
+
+    <text id="T_e58n"  x="520"  y="840" >58</text>
+    <text id="T_e58s"  x="520"  y="860" >Ce</text>
+    <text id="T_e58m"  x="520"  y="880" class="T_size_S">140,116</text>
+
+    <text id="T_e59n"  x="610"  y="840" >59</text>
+    <text id="T_e59s"  x="610"  y="860" >Pr</text>
+    <text id="T_e59m"  x="610"  y="880" class="T_size_S">140,90765</text>
+
+    <text id="T_e60n"  x="700"  y="840" >60</text>
+    <text id="T_e60s"  x="700"  y="860" >Nd</text>
+    <text id="T_e60m"  x="700"  y="880" class="T_size_S">144,242</text>
+
+    <text id="T_e61n"  x="790"  y="840" >61</text>
+    <text id="T_e61s"  x="790"  y="860" >Pm</text>
+    <text id="T_e61m"  x="790"  y="880" class="T_size_S">[144,9127]</text>
+
+    <text id="T_e62n"  x="880"  y="840" >62</text>
+    <text id="T_e62s"  x="880"  y="860" >Sm</text>
+    <text id="T_e62m"  x="880"  y="880" class="T_size_S">150,36</text>
+
+    <text id="T_e63n"  x="970"  y="840" >63</text>
+    <text id="T_e63s"  x="970"  y="860" >Eu</text>
+    <text id="T_e63m"  x="970"  y="880" class="T_size_S">151,964</text>
+
+    <text id="T_e64n"  x="1060" y="840" >64</text>
+    <text id="T_e64s"  x="1060" y="860" >Gd</text>
+    <text id="T_e64m"  x="1060" y="880" class="T_size_S">157,25</text>
+
+    <text id="T_e65n"  x="1150" y="840" >65</text>
+    <text id="T_e65s"  x="1150" y="860" >Tb</text>
+    <text id="T_e65m"  x="1150" y="880" class="T_size_S">158,92535</text>
+
+    <text id="T_e66n"  x="1240" y="840" >66</text>
+    <text id="T_e66s"  x="1240" y="860" >Dy</text>
+    <text id="T_e66m"  x="1240" y="880" class="T_size_S">162,500</text>
+
+    <text id="T_e67n"  x="1330" y="840" >67</text>
+    <text id="T_e67s"  x="1330" y="860" >Ho</text>
+    <text id="T_e67m"  x="1330" y="880" class="T_size_S">164,93032</text>
+
+    <text id="T_e68n"  x="1420" y="840" >68</text>
+    <text id="T_e68s"  x="1420" y="860" >Er</text>
+    <text id="T_e68m"  x="1420" y="880" class="T_size_S">167,259</text>
+
+    <text id="T_e69n"  x="1510" y="840" >69</text>
+    <text id="T_e69s"  x="1510" y="860" >Tm</text>
+    <text id="T_e69m"  x="1510" y="880" class="T_size_S">168,93421</text>
+
+    <text id="T_e70n"  x="1600" y="840" >70</text>
+    <text id="T_e70s"  x="1600" y="860" >Yb</text>
+    <text id="T_e70m"  x="1600" y="880" class="T_size_S">173,04</text>
+
+    <text id="T_e71n"  x="1690" y="840" >71</text>
+    <text id="T_e71s"  x="1690" y="860" >Lu</text>
+    <text id="T_e71m"  x="1690" y="880" class="T_size_S">174,967</text>
+
+    <text id="T_e72n"  x="430"  y="620" >72</text>
+    <text id="T_e72s"  x="430"  y="640" >Hf</text>
+    <text id="T_e72m"  x="430"  y="660" class="T_size_S">178,49</text>
+
+    <text id="T_e73n"  x="520"  y="620" >73</text>
+    <text id="T_e73s"  x="520"  y="640" >Ta</text>
+    <text id="T_e73m"  x="520"  y="660" class="T_size_S">180,94788</text>
+
+    <text id="T_e74n"  x="610"  y="620" >74</text>
+    <text id="T_e74s"  x="610"  y="640" >W</text>
+    <text id="T_e74m"  x="610"  y="660" class="T_size_S">183,84</text>
+
+    <text id="T_e75n"  x="700"  y="620" >75</text>
+    <text id="T_e75s"  x="700"  y="640" >Re</text>
+    <text id="T_e75m"  x="700"  y="660" class="T_size_S">186,207</text>
+
+    <text id="T_e76n"  x="790"  y="620" >76</text>
+    <text id="T_e76s"  x="790"  y="640" >Os</text>
+    <text id="T_e76m"  x="790"  y="660" class="T_size_S">190,23</text>
+
+    <text id="T_e77n"  x="880"  y="620" >77</text>
+    <text id="T_e77s"  x="880"  y="640" >Ir</text>
+    <text id="T_e77m"  x="880"  y="660" class="T_size_S">194,217</text>
+
+    <text id="T_e78n"  x="970"  y="620" >78</text>
+    <text id="T_e78s"  x="970"  y="640" >Pt</text>
+    <text id="T_e78m"  x="970"  y="660" class="T_size_S">195,084</text>
+
+    <text id="T_e79n"  x="1060" y="620" >79</text>
+    <text id="T_e79s"  x="1060" y="640" >Au</text>
+    <text id="T_e79m"  x="1060" y="660" class="T_size_S">196,966569</text>
+
+    <text id="T_e80n"  x="1150" y="620" class="C_liquid">80</text>
+    <text id="T_e80s"  x="1150" y="640" class="C_liquid">Hg</text>
+    <text id="T_e80m"  x="1150" y="660" class="C_liquid T_size_S">200,59</text>
+
+    <text id="T_e81n"  x="1240" y="620" >81</text>
+    <text id="T_e81s"  x="1240" y="640" >Tl</text>
+    <text id="T_e81m"  x="1240" y="660" class="T_size_S">204,3833</text>
+
+    <text id="T_e82n"  x="1330" y="620" >82</text>
+    <text id="T_e82s"  x="1330" y="640" >Pb</text>
+    <text id="T_e82m"  x="1330" y="660" class="T_size_S">207,2</text>
+
+    <text id="T_e83n"  x="1420" y="620" >83</text>
+    <text id="T_e83s"  x="1420" y="640" >Bi</text>
+    <text id="T_e83m"  x="1420" y="660" class="T_size_S">208,98040</text>
+
+    <text id="T_e84n"  x="1510" y="620" >84</text>
+    <text id="T_e84s"  x="1510" y="640" >Po</text>
+    <text id="T_e84m"  x="1510" y="660" class="T_size_S">[208,9824]</text>
+
+    <text id="T_e85n"  x="1600" y="620" >85</text>
+    <text id="T_e85s"  x="1600" y="640" >At</text>
+    <text id="T_e85m"  x="1600" y="660" class="T_size_S">[209,9871]</text>
+
+    <text id="T_e86n"  x="1690" y="620" class="C_gas">86</text>
+    <text id="T_e86s"  x="1690" y="640" class="C_gas">Rn</text>
+    <text id="T_e86m"  x="1690" y="660" class="C_gas T_size_S">[222,0176]</text>
+
+    <text id="T_e87n"  x="120"  y="720" >87</text>
+    <text id="T_e87s"  x="120"  y="740" >Fr</text>
+    <text id="T_e87m"  x="120"  y="760" class="T_size_S">[223,0197]</text>
+
+    <text id="T_e88n"  x="210"  y="720" >88</text>
+    <text id="T_e88s"  x="210"  y="740" >Ra</text>
+    <text id="T_e88m"  x="210"  y="760" class="T_size_S">[226,0254]</text>
+
+    <text id="T_e89x"  x="320"  y="720" >89‒103</text>
+    <text id="T_e89n"  x="430"  y="940" >89</text>
+    <text id="T_e89s"  x="430"  y="960" >Ac</text>
+    <text id="T_e89m"  x="430"  y="980" class="T_size_S">[227,0277]</text>
+
+    <text id="T_e90n"  x="520"  y="940" >90</text>
+    <text id="T_e90s"  x="520"  y="960" >Th</text>
+    <text id="T_e90m"  x="520"  y="980" class="T_size_S">232,03806</text>
+
+    <text id="T_e91n"  x="610"  y="940" >91</text>
+    <text id="T_e91s"  x="610"  y="960" >Pa</text>
+    <text id="T_e91m"  x="610"  y="980" class="T_size_S">231,03588</text>
+
+    <text id="T_e92n"  x="700"  y="940" >92</text>
+    <text id="T_e92s"  x="700"  y="960" >U</text>
+    <text id="T_e92m"  x="700"  y="980" class="T_size_S">238,02891</text>
+
+    <text id="T_e93n"  x="790"  y="940" >93</text>
+    <text id="T_e93s"  x="790"  y="960" >Np</text>
+    <text id="T_e93m"  x="790"  y="980" class="T_size_S">[237,0482]</text>
+
+    <text id="T_e94n"  x="880"  y="940" >94</text>
+    <text id="T_e94s"  x="880"  y="960" >Pu</text>
+    <text id="T_e94m"  x="880"  y="980" class="T_size_S">[244,0642]</text>
+
+    <text id="T_e95n"  x="970"  y="940" >95</text>
+    <text id="T_e95s"  x="970"  y="960" >Am</text>
+    <text id="T_e95m"  x="970"  y="980" class="T_size_S">[243,0614]</text>
+
+    <text id="T_e96n"  x="1060" y="940" >96</text>
+    <text id="T_e96s"  x="1060" y="960" >Cm</text>
+    <text id="T_e96m"  x="1060" y="980" class="T_size_S">[247,0703]</text>
+
+    <text id="T_e97n"  x="1150" y="940" >97</text>
+    <text id="T_e97s"  x="1150" y="960" >Bk</text>
+    <text id="T_e97m"  x="1150" y="980" class="T_size_S">[247,0703]</text>
+
+    <text id="T_e98n"  x="1240" y="940" >98</text>
+    <text id="T_e98s"  x="1240" y="960" >Cf</text>
+    <text id="T_e98m"  x="1240" y="980" class="T_size_S">[251,0796]</text>
+
+    <text id="T_e99n"  x="1330" y="940" >99</text>
+    <text id="T_e99s"  x="1330" y="960" >Es</text>
+    <text id="T_e99m"  x="1330" y="980" class="T_size_S">[252,0830]</text>
+
+    <text id="T_e100n" x="1420" y="940" >100</text>
+    <text id="T_e100s" x="1420" y="960" >Fm</text>
+    <text id="T_e100m" x="1420" y="980" class="T_size_S">[257,0951]</text>
+
+    <text id="T_e101n" x="1510" y="940" >101</text>
+    <text id="T_e101s" x="1510" y="960" >Md</text>
+    <text id="T_e101m" x="1510" y="980" class="T_size_S">[258,0984]</text>
+
+    <text id="T_e102n" x="1600" y="940" >102</text>
+    <text id="T_e102s" x="1600" y="960" >No</text>
+    <text id="T_e102m" x="1600" y="980" class="T_size_S">[259,1011]</text>
+
+    <text id="T_e103n" x="1690" y="940" >103</text>
+    <text id="T_e103s" x="1690" y="960" >Lr</text>
+    <text id="T_e103m" x="1690" y="980" class="T_size_S">[262,110]</text>
+
+    <text id="T_e104n" x="430"  y="720" >104</text>
+    <text id="T_e104s" x="430"  y="740" >Rf</text>
+    <text id="T_e104m" x="430"  y="760" class="T_size_S">[263,1125]</text>
+
+    <text id="T_e105n" x="520"  y="720" >105</text>
+    <text id="T_e105s" x="520"  y="740" >Db</text>
+    <text id="T_e105m" x="520"  y="760" class="T_size_S">[262,1144]</text>
+
+    <text id="T_e106n" x="610"  y="720" >106</text>
+    <text id="T_e106s" x="610"  y="740" >Sg</text>
+    <text id="T_e106m" x="610"  y="760" class="T_size_S">[266,1219]</text>
+
+    <text id="T_e107n" x="700"  y="720" >107</text>
+    <text id="T_e107s" x="700"  y="740" >Bh</text>
+    <text id="T_e107m" x="700"  y="760" class="T_size_S">[264,1247]</text>
+
+    <text id="T_e108n" x="790"  y="720" >108</text>
+    <text id="T_e108s" x="790"  y="740" >Hs</text>
+    <text id="T_e108m" x="790"  y="760" class="T_size_S">[269,1341]</text>
+
+    <text id="T_e109n" x="880"  y="720" >109</text>
+    <text id="T_e109s" x="880"  y="740" >Mt</text>
+    <text id="T_e109m" x="880"  y="760" class="T_size_S">[268,1388]</text>
+
+    <text id="T_e110n" x="970"  y="720" >110</text>
+    <text id="T_e110s" x="970"  y="740" >Ds</text>
+    <text id="T_e110m" x="970"  y="760" class="T_size_S">[272,1463]</text>
+
+    <text id="T_e111n" x="1060" y="720" >111</text>
+    <text id="T_e111s" x="1060" y="740" >Rg</text>
+    <text id="T_e111m" x="1060" y="760" class="T_size_S">[272,1535]</text>
+
+    <text id="T_e112n" x="1150" y="720" class="C_gas"   >112</text>
+    <text id="T_e112s" x="1150" y="740" class="C_gas"   >Cn</text>
+    <text id="T_e112m" x="1150" y="760" class="C_gas T_size_S">[277]</text>
+
+    <text id="T_e113n" x="1240" y="720" >113</text>
+    <text id="T_e113s" x="1240" y="740" >Uut</text>
+    <text id="T_e113m" x="1240" y="760" class="T_size_S">[284]</text>
+
+    <text id="T_e114n" x="1330" y="720" >114</text>
+    <text id="T_e114s" x="1330" y="740" >Uuq</text>
+    <text id="T_e114m" x="1330" y="760" class="T_size_S">[289]</text>
+
+    <text id="T_e115n" x="1420" y="720" >115</text>
+    <text id="T_e115s" x="1420" y="740" >Uup</text>
+    <text id="T_e115m" x="1420" y="760" class="T_size_S">[288]</text>
+
+    <text id="T_e116n" x="1510" y="720" >116</text>
+    <text id="T_e116s" x="1510" y="740" >Uuh</text>
+    <text id="T_e116m" x="1510" y="760" class="T_size_S">[292]</text>
+
+    <text id="T_e117n" x="1600" y="720" >117</text>
+    <text id="T_e117s" x="1600" y="740" >Uus</text>
+    <text id="T_e117m" x="1600" y="760" class="T_size_S">[292]</text>
+
+    <text id="T_e118n" x="1690" y="720" >118</text>
+    <text id="T_e118s" x="1690" y="740" >Uuo</text>
+    <text id="T_e118m" x="1690" y="760" class="T_size_S">[294]</text>
+    </g>
+  </g>
+<!-- Textes spécifiques aux langues -->
+  <g
+     inkscape:groupmode="layer" id="languages" inkscape:label="languages"
+     style="display:inline">
+<!-- Français -->
+    <g
+       inkscape:groupmode="layer" id="fr" inkscape:label="fr"
+       style="display:inline"
+       xml:space="preserve">
+
+      <text id="fr.Title" x="875" y="52"
+       class="T_title"
+       >Tableau périodique des éléments</text>
+
+<!-- Intitulés des colonnes et des lignes -->
+      <g
+       id="fr.g_tbl"
+       class="T_size_S T_center">
+      <text id="fr.T_tbl_1" x="50" y="30">Groupe</text>
+      <text id="fr.T_tbl_2" x="50" y="60">Période</text>
+      </g>
+
+<!-- Légende signification des données des cases et des couleurs de texte utilisées -->
+      <g
+       id="fr.gleg">
+       <text id="fr.T_leg_1" x="200" y="100" class="T_start T_size_S"><tspan
+       id="fr.t_leg_1a">nom de l'élément (</tspan><tspan
+       id="fr.t_leg_1b" class="T_size_B C_gas"   >gaz</tspan><tspan
+       id="fr.t_leg_1c">, </tspan><tspan
+       id="fr.t_leg_1d" class="T_size_B C_liquid">liquide</tspan><tspan
+       id="fr.t_leg_1e"> ou </tspan><tspan
+       id="fr.t_leg_1f" class="T_size_B">solide</tspan><tspan
+       id="fr.t_leg_1g"> à 0°C et 101,3 kPa)</tspan></text>
+      <text id="fr.T_leg_2" x="200" y="120" class="T_start T_size_M">numéro atomique</text>
+      <text id="fr.T_leg_3" x="200" y="140" class="T_start T_size_M">symbole chimique</text>
+      <text id="fr.T_leg_4" x="200" y="160" class="T_start T_size_S">masse atomique relative ou [celle de l'isotope le plus stable ]</text>
+      </g>
+
+<!-- Légende : signification de la coloration et du type de contour des cases -->
+      <g
+       id="fr.g_col"
+       class="T_size_S T_center">
+       <text id="fr.T_col_1"  x="140" y="1040" sodipodi:linespacing="125%" style="line-height:125%"><tspan
+        sodipodi:role="line" id="fr.t_col_1a"  x="140"  y="1040">métaux</tspan><tspan
+        sodipodi:role="line" id="fr.t_col_1b"  x="140"  y="1055">alcalins</tspan></text>
+       <text id="fr.T_col_2"  x="250" y="1040" sodipodi:linespacing="125%" style="line-height:125%"><tspan
+        sodipodi:role="line" id="fr.t_col_2a"  x="250"  y="1040">alcalino-</tspan><tspan
+        sodipodi:role="line" id="fr.t_col_2b"  x="250"  y="1055">terreux</tspan></text>
+       <text                 id="fr.T_col_3"   x="360"  y="1050">lanthanides</text>
+       <text                 id="fr.T_col_4"   x="472"  y="1050">actinides</text>
+       <text id="fr.T_col_5"  x="580" y="1040"><tspan
+        sodipodi:role="line" id="fr.t_col_5a"  x="580"  y="1040">métaux de</tspan><tspan
+        sodipodi:role="line" id="fr.t_col_5b"  x="580"  y="1055">transition</tspan></text>
+       <text id="fr.T_col_6"  x="690" y="1040" sodipodi:linespacing="125%" style="line-height:125%"><tspan
+        sodipodi:role="line" id="fr.t_col_6a"  x="690"  y="1040">métaux</tspan><tspan
+        sodipodi:role="line" id="fr.t_col_6b"  x="690"  y="1055">pauvres</tspan></text>
+       <text                 id="fr.T_col_7"   x="800"  y="1050">métalloïdes</text>
+       <text                 id="fr.T_col_8"   x="910"  y="1050">non-métaux</text>
+       <text                 id="fr.T_col_9"   x="1020" y="1050">halogènes</text>
+       <text                 id="fr.T_col_10"  x="1130" y="1050">gaz nobles</text>
+
+       <text                 id="fr.T_str_1"  x="1465" y="1050">primordial</text>
+       <text                 id="fr.T_str_2"  x="1575" y="1034" sodipodi:linespacing="125%" style="line-height:125%"><tspan
+        sodipodi:role="line" id="fr.t_str_2a" x="1575" y="1034">désintégration</tspan><tspan
+        sodipodi:role="line" id="fr.t_str_2b" x="1575" y="1049">d'autres</tspan><tspan
+        sodipodi:role="line" id="fr.t_str_2c" x="1575" y="1064">éléments</tspan></text>
+       <text                 id="fr.T_str_3"  x="1685" y="1050">synthétique</text>
+      </g>
+<!-- Noms des éléments -->
+      <g
+        id="fr.names"
+        class="T_size_S T_center"
+        xml:space="preserve">
+   <text id="fr.T_e1"   x="120"  y="100" class="C_gas">hydrogène</text>
+   <text id="fr.T_e2"   x="1690" y="100" class="C_gas">hélium</text>
+   <text id="fr.T_e3"   x="120"  y="200">lithium</text>
+   <text id="fr.T_e4"   x="210"  y="200">bérylium</text>
+   <text id="fr.T_e5"   x="1240" y="200">bore</text>
+   <text id="fr.T_e6"   x="1330" y="200">carbone</text>
+   <text id="fr.T_e7"   x="1420" y="200" class="C_gas">azote</text>
+   <text id="fr.T_e8"   x="1510" y="200" class="C_gas">oxygène</text>
+   <text id="fr.T_e9"   x="1600" y="200" class="C_gas">fluor</text>
+   <text id="fr.T_e10"  x="1690" y="200" class="C_gas">néon</text>
+   <text id="fr.T_e11"  x="120"  y="300">sodium</text>
+   <text id="fr.T_e12"  x="210"  y="300">magnésium</text>
+   <text id="fr.T_e13"  x="1240" y="300">aluminium</text>
+   <text id="fr.T_e14"  x="1330" y="300">silicium</text>
+   <text id="fr.T_e15"  x="1420" y="300">phosphore</text>
+   <text id="fr.T_e16"  x="1510" y="300">soufre</text>
+   <text id="fr.T_e17"  x="1600" y="300" class="C_gas">chlore</text>
+   <text id="fr.T_e18"  x="1690" y="300" class="C_gas">argon</text>
+   <text id="fr.T_e19"  x="120"  y="400">potassium</text>
+   <text id="fr.T_e20"  x="210"  y="400">calcium</text>
+   <text id="fr.T_e21"  x="340"  y="400">scandium</text>
+   <text id="fr.T_e22"  x="430"  y="400">titane</text>
+   <text id="fr.T_e23"  x="520"  y="400">vanadium</text>
+   <text id="fr.T_e24"  x="610"  y="400">chrome</text>
+   <text id="fr.T_e25"  x="700"  y="400">manganèse</text>
+   <text id="fr.T_e26"  x="790"  y="400">fer</text>
+   <text id="fr.T_e27"  x="880"  y="400">cobalt</text>
+   <text id="fr.T_e28"  x="970"  y="400">nickel</text>
+   <text id="fr.T_e29"  x="1060" y="400">cuivre</text>
+   <text id="fr.T_e30"  x="1150" y="400">zinc</text>
+   <text id="fr.T_e31"  x="1240" y="400">gallium</text>
+   <text id="fr.T_e32"  x="1330" y="400">germanium</text>
+   <text id="fr.T_e33"  x="1420" y="400">arsenic</text>
+   <text id="fr.T_e34"  x="1510" y="400">sélénium</text>
+   <text id="fr.T_e35"  x="1600" y="400" class="C_liquid">brome</text>
+   <text id="fr.T_e36"  x="1690" y="400" class="C_gas">krypton</text>
+   <text id="fr.T_e37"  x="120"  y="500">rubidium</text>
+   <text id="fr.T_e38"  x="210"  y="500">strontium</text>
+   <text id="fr.T_e39"  x="340"  y="500">yttrium</text>
+   <text id="fr.T_e40"  x="430"  y="500">zirconium</text>
+   <text id="fr.T_e41"  x="520"  y="500">niobium</text>
+   <text id="fr.T_e42"  x="610"  y="500">molybdène</text>
+   <text id="fr.T_e43"  x="700"  y="500">technétium</text>
+   <text id="fr.T_e44"  x="790"  y="500">ruthérium</text>
+   <text id="fr.T_e45"  x="880"  y="500">rhodium</text>
+   <text id="fr.T_e46"  x="970"  y="500">palladium</text>
+   <text id="fr.T_e47"  x="1060" y="500">argent</text>
+   <text id="fr.T_e48"  x="1150" y="500">cadmium</text>
+   <text id="fr.T_e49"  x="1240" y="500">indium</text>
+   <text id="fr.T_e50"  x="1330" y="500">étain</text>
+   <text id="fr.T_e51"  x="1420" y="500">antimoine</text>
+   <text id="fr.T_e52"  x="1510" y="500">tellure</text>
+   <text id="fr.T_e53"  x="1600" y="500">iode</text>
+   <text id="fr.T_e54"  x="1690" y="500" class="C_gas">xénon</text>
+   <text id="fr.T_e55"  x="120"  y="600">césium</text>
+   <text id="fr.T_e56"  x="210"  y="600">baryum</text>
+   <text id="fr.T_e57x" x="320"  y="600">lanthanides</text>
+   <text id="fr.T_e57"  x="430"  y="820">lanthane</text>
+   <text id="fr.T_e58"  x="520"  y="820">cérium</text>
+   <text id="fr.T_e59"  x="610"  y="820">praséodyme</text>
+   <text id="fr.T_e60"  x="700"  y="820">néodyme</text>
+   <text id="fr.T_e61"  x="790"  y="820">prométhium</text>
+   <text id="fr.T_e62"  x="880"  y="820">samarium</text>
+   <text id="fr.T_e63"  x="970"  y="820">europium</text>
+   <text id="fr.T_e64"  x="1060" y="820">gadolnium</text>
+   <text id="fr.T_e65"  x="1150" y="820">terbium</text>
+   <text id="fr.T_e66"  x="1240" y="820">dysprosium</text>
+   <text id="fr.T_e67"  x="1330" y="820">holmium</text>
+   <text id="fr.T_e68"  x="1420" y="820">erbium</text>
+   <text id="fr.T_e69"  x="1510" y="820">thulium</text>
+   <text id="fr.T_e70"  x="1600" y="820">ytterbium</text>
+   <text id="fr.T_e71"  x="1690" y="820">lutécium</text>
+   <text id="fr.T_e72"  x="430"  y="600">hafnium</text>
+   <text id="fr.T_e73"  x="520"  y="600">tantale</text>
+   <text id="fr.T_e74"  x="610"  y="600">tungstène</text>
+   <text id="fr.T_e75"  x="700"  y="600">rhénium</text>
+   <text id="fr.T_e76"  x="790"  y="600">osmium</text>
+   <text id="fr.T_e77"  x="880"  y="600">iridium</text>
+   <text id="fr.T_e78"  x="970"  y="600">platine</text>
+   <text id="fr.T_e79"  x="1060" y="600">or</text>
+   <text id="fr.T_e80"  x="1150" y="600" class="C_liquid">mercure</text>
+   <text id="fr.T_e81"  x="1240" y="600">thallium</text>
+   <text id="fr.T_e82"  x="1330" y="600">plomb</text>
+   <text id="fr.T_e83"  x="1420" y="600">bismuth</text>
+   <text id="fr.T_e84"  x="1510" y="600">polonium</text>
+   <text id="fr.T_e85"  x="1600" y="600">astate</text>
+   <text id="fr.T_e86"  x="1690" y="600" class="C_gas">radon</text>
+   <text id="fr.T_e87"  x="120"  y="700">francium</text>
+   <text id="fr.T_e88"  x="210"  y="700">radium</text>
+   <text id="fr.T_e89x" x="320"  y="700">actinides</text>
+   <text id="fr.T_e89"  x="430"  y="920">actinium</text>
+   <text id="fr.T_e90"  x="520"  y="920">thorium</text>
+   <text id="fr.T_e91"  x="610"  y="920">protactinium</text>
+   <text id="fr.T_e92"  x="700"  y="920">uranium</text>
+   <text id="fr.T_e93"  x="790"  y="920">neptunium</text>
+   <text id="fr.T_e94"  x="880"  y="920">plutonium</text>
+   <text id="fr.T_e95"  x="970"  y="920">américium</text>
+   <text id="fr.T_e96"  x="1060" y="920">curium</text>
+   <text id="fr.T_e97"  x="1150" y="920">berkélium</text>
+   <text id="fr.T_e98"  x="1240" y="920">californium</text>
+   <text id="fr.T_e99"  x="1330" y="920">einsteinium</text>
+   <text id="fr.T_e100" x="1420" y="920">fermium</text>
+   <text id="fr.T_e101" x="1510" y="920">mendélévium</text>
+   <text id="fr.T_e102" x="1600" y="920">nobélium</text>
+   <text id="fr.T_e103" x="1690" y="920">lawrencium</text>
+   <text id="fr.T_e104" x="430"  y="700" class="T_size_s">rutherfordium</text>
+   <text id="fr.T_e105" x="520"  y="700">dubnium</text>
+   <text id="fr.T_e106" x="610"  y="700">seaborgium</text>
+   <text id="fr.T_e107" x="700"  y="700">bohrium</text>
+   <text id="fr.T_e108" x="790"  y="700">hassium</text>
+   <text id="fr.T_e109" x="880"  y="700">meitnerium</text>
+   <text id="fr.T_e110" x="970"  y="700" class="T_size_s">darmstadtium</text>
+   <text id="fr.T_e111" x="1060" y="700">roentgenium</text>
+   <text id="fr.T_e112" x="1150" y="700" class="C_gas">copernicium</text>
+   <text id="fr.T_e113" x="1240" y="700">ununtrium</text>
+   <text id="fr.T_e114" x="1330" y="700" class="T_size_s">ununquadium</text>
+   <text id="fr.T_e115" x="1420" y="700" class="T_size_s">ununpentium</text>
+   <text id="fr.T_e116" x="1510" y="700">ununhexium</text>
+   <text id="fr.T_e117" x="1600" y="700" class="T_size_s">ununseptium</text>
+   <text id="fr.T_e118" x="1690" y="700">ununoctium</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+BioSilico Gattaca Organism File v0.1+
+TAXON ID	[0-9]{10}
+SCIENTIFIC NAME	Silico[Daemon|Bacta|Viridita|Anima|Viria] [A-Z][a-z]*
+OTHER NAMES
+	BIOSILICO COMMON NAME	[A-Z][a-z]*
+	COMMON NAME	[A-Z][a-z]*
+	INCLUDES	[A-Z][a-z]*
+	NAME
+		CLASS	[A-Z][a-z]*
+		DISPLAY	[A-Z][a-z]*
+## [...]* (for other names)
+RANK	[A-Z][a-z]*
+DIVISION	[A-Z][a-z]*
+GENETIC CODE
+	ID	0000000010
+	NAME	Gattaca01
+SUB GENETIC CODE
+	ID	[0-9]{10}
+	NAME	[A-Z][a-z]*
+## [...]* (for sub genetic code)
+LINEAGE
+	[A-Z][a-z]*
+	[A-Z][a-z]*
+	## [...]+ (for taxon in lineage)
+EXTENDED LINEAGE
+	TAXON
+		ID [0-9]{10}
+		SCIENTIFIC NAME [A-Z][a-z]*
+		RANK	[norank|.*]
+	## [...]+ (for taxon in extended lineage)
+CREATED DATE	YYYY-MM-DD HH:mm:SS
+	## with Y/M/D/H/m/S [0-9]
+UPDATED DATE	YYYY-MM-DD HH:mm:SS
+	## with Y/M/D/H/m/S [0-9]
+PUBLICATION DATE	YYYY-MM-DD HH:mm:SS
+	## with Y/M/D/H/m/S [0-9]
+GENOME -- LIST of GENES
+	## list of encoded genes
+CHEMICAL VARIABLES
+	## [0-9]{3}::[0-9]{3} ## values > 0
+BRAIN HEIGHT	[0-9]{2}
+BRAIN WIDTH	[0-9]{2}
+NEURONS LIST DESCRIPTION
+	[TODO]
