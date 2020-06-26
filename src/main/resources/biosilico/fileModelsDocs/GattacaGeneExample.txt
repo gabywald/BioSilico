@@ -1,0 +1,375 @@
+BioSilico Gattaca Gene File vO.1+
+## cf. Genbank File Format http://www.ebi.ac.uk/embl/Documentation/FT_definitions/feature_table.html
+## especially section 7.2 'features'
+LOCUS	[A-Z]{5}	[0-9]+ bp	[sequence type]	linear	ROD DD-MMM-YYYY
+DEFINITION	Specie Gene name + type + sequence type.
+ACCESSION	[A-Z][0-9]{5}
+VERSION	[A-Z][0-9]{5}\.[0-9]	GI:[0-9]{5}
+KEYWORDS	([a-z]+; )*[a-Z]+.
+SOURCE	(Organism)[A-Z][a-z ]+\.
+ORGANISM	(Organism)[A-Z][a-z ]+\.
+			(Simple Lineage)([a-z]+; )*[a-Z]+.
+REFERENCE	(code number)	(bases [0-9]+ to [0-9]+)
+AUTHORS	(([A-Za-z,\. ]+)* and ) [A-Za-z,\. ]+. 
+TITLE	<Publication Title>
+JOURNAL	EMBO J. 8 (3), 805-813 (1989)
+MEDLINE	[0-9]+
+PUBMED	[0-9]+
+COMMENT	clone=AC113-1; cell line=NIH3T3.
+FEATURES	Location/Qualifiers
+	attenuator	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/phenotype="text"
+	CAAT_signal	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+	CDS	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/codon=(seq:"codon-sequence",aa:<amino_acid>)
+			/codon_start=<1 or 2 or 3>
+			/db_xref="<database>:<identifier>"
+			/EC_number="text"
+			/exception="text"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/number=unquoted text (single token)
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/product="text"
+			/protein_id="<identifier>"
+			/pseudo
+			/ribosomal_slippage
+			/standard_name="text"
+			/translation="text"
+			/transl_except=(pos:<base_range>,aa:<amino_acid>)
+			/transl_table =<integer>
+			/trans_splicing
+	conflict	[0-9]+..[0-9]+
+			** /citation=[number] || /compare=[accession-number.sequence-version]
+			/allele="text"
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/replace="text"
+	enhancer	[0-9]+..[0-9]+
+			/allele="text"
+			/bound_moiety="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"  
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/standard_name="text"
+	exon	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/EC_number="text"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label   
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/number=unquoted text (single token)
+			/old_locus_tag="text" (single token)
+			/product="text"
+			/pseudo
+			/standard_name="text"
+	gene	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label   
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/product="text"
+			/pseudo
+			/phenotype="text"
+			/standard_name="text"
+			/trans_splicing
+	LTR	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/standard_name="text"
+	misc_difference	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/clone="text"
+			/compare=[accession-number.sequence-version]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text" 
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/phenotype="text"
+			/replace="text" 
+			/standard_name="text"
+	misc_feature	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/number=unquoted text (single token)
+			/old_locus_tag="text" (single token)
+			/phenotype="text"
+			/product="text"
+			/pseudo
+			/standard_name="text"
+	misc_signal	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/phenotype="text"
+			/standard_name="text"
+	operon	[0-9]+..[0-9]+
+			** /operon="text"
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/map="text"
+			/note="text"
+			/phenotype="text"
+			/pseudo
+			/standard_name="text"
+	promoter	[0-9]+..[0-9]+
+			/allele="text"
+			/bound_moiety="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/phenotype="text"
+			/pseudo
+			/standard_name="text"
+	repeat_region	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>" 
+			/experiment="text"
+			/function="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/mobile_element=:"<mobile_element_type>
+			[:<mobile_element_name>]"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/rpt_family="text"
+			/rpt_type=<repeat_type>
+			/rpt_unit_range=<base_range>
+			/rpt_unit_seq="text"
+			/satellite="<satellite_type>[:<class>][ <identifier>]"
+			/standard_name="text"
+	source	[0-9]+..[0-9]+
+			** /organism="text"
+			** /mol_type="genomic DNA", "genomic RNA", "mRNA", "tRNA", "rRNA", "other RNA", "other DNA", "transcribed RNA", "viral cRNA", "unassigned DNA", "unassigned RNA"
+			/bio_material="[<institution-code>:[<collection-code>:]]<material_id>"
+			/cell_line="text"
+			/cell_type="text"
+			/chromosome="text"
+			/citation=[number]
+			/clone="text"
+			/clone_lib="text"
+			/collected_by="text" 
+			/collection_date="text"
+			/country="<country_value>[:<region>][, <locality>]"
+			/cultivar="text"
+			/culture_collection="<institution-code>:[<collection-code>:]<culture_id>"
+			/db_xref="<database>:<identifier>"
+			/dev_stage="text"
+			/ecotype="text"
+			/environmental_sample
+			/focus
+			/frequency="text"
+			/germline
+			/haplotype="text"
+			/host="text"
+			/identified_by="text"
+			/isolate="text"
+			/isolation_source="text"
+			/label=feature_label
+			/lab_host="text"
+			/lat_lon="text"
+			/macronuclear
+			/map="text"
+			/mating_type="text"
+			/note="text"
+			/organelle=<organelle_value>
+			/PCR_primers="[fwd_name: XXX, ]fwd_seq: xxxxx, 
+			[rev_name: YYY, ]rev_seq: yyyyy"
+			/plasmid="text"
+			/pop_variant="text"
+			/proviral
+			/rearranged
+			/segment="text"
+			/serotype="text"
+			/serovar="text"
+			/sex="text"
+			/specimen_voucher="[<institution-code>:[<collection-code>:]]<specimen_id>"
+			/strain="text"
+			/sub_clone="text"
+			/sub_species="text"
+			/sub_strain="text"
+			/tissue_lib="text"
+			/tissue_type="text"
+			/transgenic
+			/variety="text"
+	TATA_signal	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token) 
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+	terminator	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/operon="text"
+			/standard_name="text"
+	variation	[0-9]+..[0-9]+
+			/allele="text"
+			/citation=[number]
+			/compare=[accession-number.sequence-version]
+			/db_xref="<database>:<identifier>"
+			/experiment="text"
+			/frequency="text"
+			/gene="text"
+			/gene_synonym="text"
+			/inference="TYPE[ (same species)][:EVIDENCE_BASIS]"
+			/label=feature_label
+			/locus_tag="text" (single token)
+			/map="text"
+			/note="text"
+			/old_locus_tag="text" (single token)
+			/phenotype="text"
+			/product="text"
+			/replace="text"
+			/standard_name="text"
+BASE COUNT	[0-9]+ a	[0-9]+ c	[0-9]+ g	[0-9]+ t	([0-9]+ others)?
+ORIGIN  
+		1 ataaattctt attttgacac tcaccaaaat agtcacctgg aaaacccgct ttttgtgaca
+	   61 aagtacagaa ggcttggtca catttaaatc actgagaact agagagaaat actatcgcaa
+	  121 actgtaatag acattacatc cataaaagtt tccccagtcc ttattgtaat attgcacagt
+//

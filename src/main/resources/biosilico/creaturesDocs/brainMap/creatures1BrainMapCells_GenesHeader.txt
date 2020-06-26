@@ -1,0 +1,386 @@
+
+Creatures 1 -- Brain Map
+
+Lobe ID 	Gene #		X			Y    		Width		Height		Neurons
+	0		01			4 (04)		13 (0D)		7 (07)		16 (10)		112
+	1		02			34 (22)		30 (1E)		8 (08)		2 (02)		16
+	2		03			15 (0F)		24 (18)		8 (08)		5 (05)		40
+	3		04			37 (25)		24 (18)		8 (08)		2 (02)		16
+	4		08			21 (15)		3 (03)		20 (14)		2 (02)		40
+	5		09			32 (20)		34 (22)		8 (08)		4 (04)		32
+	6		05			53 (35)		15 (0F)		1 (01)		16 (10)		16
+	7		06			44 (2C)		30 (1E)		5 (05)		8 (08)		40
+	8		07			12 (0C)		6 (06)		40 (28)		16 (10)		640
+
+Creatures 1 -- Cell List
+
+01 - Drive
+		00 - Pain
+		01 - Need for pleasure
+		02 - Hunger
+		03 - Coldness
+		04 - Hotness
+		05 - Tiredness
+		06 - Sleepiness
+		07 - Loneliness
+		08 - Crowded
+		09 - Fear
+		0A - Boredom
+		0B - Anger
+		0C - Sex drive
+		0D - Not allocated 2
+		0E - Not allocated 3
+		0F - Not allocated 4
+02 - Stimulus source
+		00 - <ID 0>
+		01 - <ID 1> (Creature's name)
+		02 - <ID 2> (hand name)
+		03 - <ID 3> (red lift call button)
+		04 - <ID 4> (water)
+		05 - <ID 5> (herb/plant)
+		06 - <ID 6> (egg)
+		07 - <ID 7> (food)
+		08 - <ID 8> (drink)
+		09 - <ID 9> (vendor)
+		0A - <ID 10> (music)
+		0B - <ID 11> (animal)
+		0C - <ID 12> (fire)
+		0D - <ID 13> (shower/clock)
+		0E - <ID 14> (toy)
+		0F - <ID 15> (bigtoy)
+		10 - <ID 16> (weed)
+		11 - <ID 17>
+		12 - <ID 18>
+		13 - <ID 19>
+		14 - <ID 20>
+		15 - <ID 21>
+		16 - <ID 22>
+		17 - <ID 23>
+		18 - <ID 24>
+		19 - <ID 25>
+		1A - <ID 26> (mover)
+		1B - <ID 27> (lift)
+		1C - <ID 28> (computer)
+		1D - <ID 29> (fun/projector)
+		1E - <ID 30> (bang/cannon)
+		1F - <ID 31>
+		20 - <ID 32>
+		21 - <ID 33>
+		22 - <ID 34>
+		23 - <ID 35>
+		24 - <ID 36> (norn)
+		25 - <ID 37> (grendel)
+		26 - <ID 38>
+		27 - <ID 39>
+03 - Verb
+		00 - Default (quiescent/stay)
+		01 - Activate 1 it
+		02 - Activate 2 it
+		03 - Deactivate it
+		04 - Approach it
+		05 - Retreat frm it
+		06 - Get it
+		07 - Drop all
+		08 - Say what you need
+		09 - Rest
+		0A - Travel west
+		0B - Travel east
+		0C - <unallocated 1>
+		0D - <unallocated 2>
+		0E - <unallocated 3>
+		0F - <unallocated 4>
+04 - Noun
+		00 -  <ID 0>
+		01 - <ID 1> (Creature's name)
+		02 - <ID 2> (hand name)
+		03 - <ID 3> (red lift call button)
+		04 - <ID 4> (water)
+		05 - <ID 5> (herb/plant)
+		06 - <ID 6> (egg)
+		07 - <ID 7> (food)
+		08 - <ID 8> (drink)
+		09 - <ID 9> (vendor)
+		0A - <ID 10> (music)
+		0B - <ID 11> (animal)
+		0C - <ID 12> (fire)
+		0D - <ID 13> (shower/clock)
+		0E - <ID 14> (toy)
+		0F - <ID 15> (bigtoy)
+		10 - <ID 16> (weed)
+		11 - <ID 17>
+		12 - <ID 18>
+		13 - <ID 19>
+		14 - <ID 20>
+		15 - <ID 21>
+		16 - <ID 22>
+		17 - <ID 23>
+		18 - <ID 24>
+		19 - <ID 25>
+		1A - <ID 26> (mover)
+		1B - <ID 27> (lift)
+		1C - <ID 28> (computer)
+		1D - <ID 29> (fun/projector)
+		1E - <ID 30> (bang/cannon)
+		1F - <ID 31>
+		20 - <ID 32>
+		21 - <ID 33>
+		22 - <ID 34>
+		23 - <ID 35>
+		24 - <ID 36> (norn)
+		25 - <ID 37> (grendel)
+		26 - <ID 38>
+		27 - <ID 39>
+05 - General sensory
+		00 - I've been patted
+		01 - I've been slapped
+		02 - I've bumped a wall
+		03 - I am near a wall
+		04 - I am in a vehicle
+		05 - User has spoken
+		06 - Creature has spoken
+		07 - Own kind has spoken
+		08 - Audible event
+		09 - Visible event
+		0A - IT is approaching
+		0B - IT is retreating
+		0C - IT is near to me
+		0D - IT is Active
+		0E - IT is an object
+		0F - IT is a creature
+		10 - IT is my sibling
+		11 - IT is my parent
+		12 - IT is my child
+		13 - IT is opposite sex
+		14 - <spare2>
+		15 - <spare3>
+		16 - <spare4>
+		17 - <spare5>
+		18 - <spare6>
+		19 - <spare7>
+		1A - <spare8>
+		1B - <spare9>
+		1C - <spare10>
+		1D - <spare11>
+		1E - <spare12>
+		1F - <spare13>
+06 - Decision
+		00 - Default (quiescent/stay)
+		01 - Activate 1 it
+		02 - Activate 2 it
+		03 - Deactivate it
+		04 - Approach it
+		05 - Retreat frm it
+		06 - Get it
+		07 - Drop all
+		08 - Say what you need
+		09 - Rest
+		0A - Travel west
+		0B - Travel east
+		0C - <unallocated 1>
+		0D - <unallocated 1>
+		0E - <unallocated 1>
+		0F - <unallocated 1>
+07 - Attention/seek
+		00 -  <ID 0>
+		01 - <ID 1> (Creature's name)
+		02 - <ID 2> (hand name)
+		03 - <ID 3> (red lift call button)
+		04 - <ID 4> (water)
+		05 - <ID 5> (herb/plant)
+		06 - <ID 6> (egg)
+		07 - <ID 7> (food)
+		08 - <ID 8> (drink)
+		09 - <ID 9> (vendor)
+		0A - <ID 10> (music)
+		0B - <ID 11> (animal)
+		0C - <ID 12> (fire)
+		0D - <ID 13> (shower/clock)
+		0E - <ID 14> (toy)
+		0F - <ID 15> (bigtoy)
+		10 - <ID 16> (weed)
+		11 - <ID 17>
+		12 - <ID 18>
+		13 - <ID 19>
+		14 - <ID 20>
+		15 - <ID 21>
+		16 - <ID 22>
+		17 - <ID 23>
+		18 - <ID 24>
+		19 - <ID 25>
+		1A - <ID 26> (mover)
+		1B - <ID 27> (lift)
+		1C - <ID 28> (computer)
+		1D - <ID 29> (fun/projector)
+		1E - <ID 30> (bang/cannon)
+		1F - <ID 31>
+		20 - <ID 32>
+		21 - <ID 33>
+		22 - <ID 34>
+		23 - <ID 35>
+		24 - <ID 36> (norn)
+		25 - <ID 37> (grendel)
+		26 - <ID 38>
+		27 - <ID 39> 
+		
+Creatures 1 -- actions
+
+	00 - Move
+	01 - Activate 1 (push) it
+	02 - Activate 2 (pull) it
+	03 - Deactivate it
+	04 - Approach it
+	05 - Retreat frm it
+	06 - Get it
+	07 - Drop all
+	08 - Say what you need (how?)
+	09 - Rest
+	0A - Travel west
+	0B - Travel east
+	0C - Eat it
+	0D - Hit it
+	0E - <unallocated 3>
+	0F - <unallocated 4>
+
+	
+Creatures 1 -- Gene Header
+
+67 65 6E 65 | gt st ## 00 | so sm
+
+67 65 6E 65 This is a literal translation of the word 'gene' into hexadecimal code, and serves as the marker for the beginning of each gene. The genome as a whole ends with '67 65 6E 64' - gend.
+
+gt st : These two characters define the gene type and gene subtype, which together describe which category the gene falls into.
+Gene Type					Gene Subtype
+00 - Brain Genes			00 - Lobe
+							01 - Organ (C2 only)
+01 - Biochemistry Genes		00 - Receptor
+							01 - Emitter
+							02 - Reaction
+							03 - Half-Lives
+							04 - Initial Concentration
+02 - Creature Genes			00 - Stimulus
+							01 - Genus
+							02 - Appearance
+							03 - Pose
+							04 - Gait
+							05 - Instinct
+							06 - Pigment
+							07 - Pigment bleed (C2 only)
+03 - Body Gene				00 - Organ (C2 only)
+
+## ## ## ## '<type> <subtype> <number##> <UNK00> <SO> <SM>'
+
+## : This character identifies the specific gene within a type/subtype category. All genes on the geNorNics subtype pages are ordered by this gene ID number.
+
+00 : This byte may be an indicator of whether a gene is a duplicate gene, but this has not been confirmed.
+
+so : The 'switch-on' time for the gene - at what stage of life it becomes active.
+
+    * 00 - embryo
+    * 01 - child
+    * 02 - youth
+    * 03 - adolescent (teen)
+    * 04 - adult
+    * 05 - senior
+    * 06 - old 
+
+Please note that there are seven life stages, as described in the owner's manual, but there are no genes that switch on at 06 in the original generation 1 genome (although the Forest and Ron genomes contain one gene that switches on at 06).
+
+sm : Special thanks to Cameron Paine and MaDuesing, for providing the suggestions which helped crack this byte.
+
+The 'sex dependence' of the gene - whether it is only active in females, in males, in both. AND the 'mutability' information, describing whether the gene can be duplicated, mutated, deleted, or some combination of those three possibilities.
+
+This byte contains three types of information:
+     Sex dependence - whether the gene is active in females, in males, in both.
+     Mutability - whether the gene can be duplicated, mutated, deleted, or some combination.
+     Dormancy - whether the gene is active in the creature.
+
+All the values can be represented with the last five of eight bytes as follows:
+
+    bit # 7 6 5 4 3 2 1 0
+     00 - 0 0 0 0 0 0 0 0
+     01 - 0 0 0 0 0 0 0 1
+     03 - 0 0 0 0 0 0 1 1
+     07 - 0 0 0 0 0 1 1 1
+     0F - 0 0 0 0 1 1 1 1
+     11 - 0 0 0 1 0 0 0 1
+     17 - 0 0 0 1 0 1 1 1 	
+
+    Bit 0 - mutability
+    Bit 1 - duplication
+    Bit 2 - deletion
+    Bit 3 - male-specific gene
+    Bit 4 - female-specific gene
+
+In summary:
+   01  =  Mutable
+   03  =  Mutable  Duplicable
+   07  =  Mutable  Duplicable  Deletable
+   0F  =  Mutable  Duplicable  Deletable  Male
+   11  =  Mutable                         Female
+   17  =  Mutable  Duplicable  Deletable  Female
+
+This information implies that the following genes are not naturally mutable (have a 00 in this byte):
+    * Brain Lobes - 1, 2, 3, 4, 8, 9.
+    * Receptors - moving from one life stage to another, also death and 'languish when weak.'
+    * Reactions - eating for two, the IV injections, three of the four Purple Mountain reactions.
+    * Initial Concentrations - aging
+    * Genus
+    * Poses - all
+    * Gaits - all
+    * Instincts - eat food 
+
+Thus, any changes in these genes are either due to gene editing or program errors. 
+
+
+Creatures 1 -- Gene content and attributes / arguments
+	- Brain Lobes (in C1 : 64x48 grid of neurons)
+		xx	1	x-start (from upper left)
+		yy	1	y-start (from upper left)
+		ww	1	width
+		hh	1	heigth
+		pl	1	Perception lobe link	[No(00) | Yes (01) | Mutually Exclusive (02)]
+		nt	1	Nominal threshold
+		lr	1	Leakage Rate
+		rs	1	Rest State
+		ig	1	Input gain lo-hi
+		sr	8	State Rule				[8*SVR]
+		wt	1	Winner Take All
+		## ## then for Dendrites 0 (excitory) and 1 (inhibitory)
+		sl	1	Source Lobe
+		ld	1	min. dendrites
+		ud	1	max. dendrites
+		sp	1	spread					[0-3] : --- Flat, / \Normal, | \ Saw, / | waS, 
+		fo	1	fanout					[0-8]
+		ll	1	min. Long-Term-Weight	[0-255]
+		ul	1	max. LTW				[0-255]
+		ls	1	min. Strengh			[0-255]
+		us	1	max. Strengh			[0-255]
+		mr	1	Migration Rule
+					00 : do NOT migrate
+					01 : Migrate if ANY dendrite is loose and this cell is firing
+					02 : Migrate when ALL dendrites are loose
+		a1	1	relax susceptibility
+		a2	1	relax STW
+		a3	1	LTW gain rate
+		ge	1	gain every...
+		gr	8	gain rule				[8*SVR]
+		le	1	lose every...
+		lr	8	lose rule				[8*SVR]
+		ss	8	susceptibility			[8*SVR]
+		rr	8	reinforcement			[8*SVR]
+		
+	- instincts : 
+		lobe
+		cell [see cell list]
+		creature actions [see list of actions]
+		reward (31) or punish (32)
+		amount
+
+these two below have a MR of 80 (C2)
+	- pigments : 
+		pigment (00 = red ; 01 = green ; 02 = blue)
+		intensity
+	- pigment bleed (C2) : 
+		rotation
+		swap
+		

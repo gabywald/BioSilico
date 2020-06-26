@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- BioSilico Gattaca Organism File v0.1 -->
+<taxon>
+	<taxonID>[0-9]{10}</taxonID>
+	<scientificName>Silico[Daemon|Bacta|Viridita|Anima|Viria] [A-Z][a-z]*</scientificName>
+	<otherNames>
+		<biosilicoCommonName>[A-Z][a-z]*</biosilicoCommonName>
+		<commonName>[A-Z][a-z]*</commonName>
+		<includes>[A-Z][a-z]*</includes>
+		<name>
+			<class>[A-Z][a-z]*</class>
+			<display>[A-Z][a-z]*</display>
+		</name>
+	</otherNames>
+	<rank>[A-Z][a-z]*</rank>
+	<division>[A-Z][a-z]*</division>
+	<geneticCode>
+		<id>0000000010</id>
+		<name>[A-Z][a-z]*</name>
+	</geneticCode>
+	<subGeneticCode>
+		<id>[0-9]{10}</id>
+		<name>[A-Z][a-z]*</name>
+	</subGeneticCode>
+	<lineage>
+		<lineageTaxon>[A-Z][a-z]*</lineageTaxon>
+	</lineage>
+	<extendedLineage>
+		<extendedLineageTaxon>
+			<id>ID [0-9]{10}</id>
+			<scientificName>[A-Z][a-z]*</scientificName>
+			<rank></rank>
+		</extendedLineageTaxon>
+	</extendedLineage>
+	<createdDate>YYYY-MM-DD HH:mm:SS</createdDate>
+	<updatedDate>YYYY-MM-DD HH:mm:SS</udatedDate>
+	<publicationDate>YYYY-MM-DD HH:mm:SS</publicationDate>
+</taxon>

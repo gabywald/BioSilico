@@ -1,0 +1,596 @@
+http://double.co.nz/creatures/creatures2/gnoformat.htm
+The GNO file format is the same for Creatures 2 and Creatures 1.
+
+
+Creatures 2 genome file format
+==============================
+
+This document outlines the file format of the Creatures 2 .gen
+(genome) files. These are the files that contain the dDNA definition
+for the Norns and other inhabitants of the Creatures world.
+
+This document is intended as a resource for people developing tools
+for reading and manipulating the genome files. It may also be useful
+to people who wish to use a hex-editor for changing the files instead
+of a genetics editor program. 
+
+The information here is from a genetics editor I wrote in the
+programming language Dylan. This genetics editor was well tested by a
+number of third party testers and I'm confident that the information
+is correct. There appeared to be no problems with the reading and
+writing of genomes using that genetics editor. There is always the
+possibility of error while transcribing this data from the Dylan source
+code to this document - you use this information at your own risk.
+
+The information was gained through discussion with other Creatures
+users, and trial and error. In particular, Sandra Linkletter was very
+helpful in explaining and identifying much of the information here
+that I needed for writing the genetics editor. Without her input and
+her dDNA Analyser program this document would not exist.
+
+There is always the possibility the information here may be out of
+date or incorrect in parts. If you find any incorrect information,
+please email me at chris@double.co.nz and I'll update this document.
+
+Genome File
+===========
+
+The genome file begins with a file header to identify the file as a
+Creatures 2 genome file. 
+
+Following this identifier, each gene appears, delimited by a gene
+identifier.
+
+Following the gene identifier is a gene header, which describes the
+type of gene and the gene details. The contents and length of the gene
+details varies depending upon the type of the gene.
+
+The end of the gene list is signified by a file ending marker. There
+may be information contained after this marker but it is ignored by
+Creatures 2. Only information up to this marker is read as part of the
+genome.
+
+Unless otherwise mentioned, individual fields described below are
+bytes ranging from 0 to 255.
+
+File Header
+===========
+
+The first four bytes of a .gen file are an identifier indicating that
+the file is a Creatures 2 genome file. These bytes are 'dna2' in
+ascii:
+
+64 6E 61 32
+
+Gene Header
+===========
+
+Following the file header, each gene is listed. The order the genes
+are listed is important to Creatures 2 as it defines the brain lobe
+numbering and what genes belong to particular organs. Each gene has a
+header:
+
+67 65 6E 65 gt st sn dn ss fl mc
+
+Where:
+
+67 65 6E 65 = gene beginning mark = 'gene' in ascii
+gt = Gene Type
+st = Gene Subtype
+
+     Gene type and Gene subtype together define the type of gene that
+     this is:
+
+     Type  Subtype  Description
+     ====  =======  ===========
+     0     0        Brain lobe
+     0     1        Brain organ
+     1     0        Receptor
+     1     1        Emitter
+     1     2        Chemical reaction
+     1     3        Half lives
+     1     4        Initial concentration
+     2     0        Stimulus
+     2     1        Genus
+     2     2        Appearance
+     2     3        Pose
+     2     4        Gait
+     2     5        Instinct
+     2     6        Pigment
+     2     7        Pigment bleed
+     3     0        Organ
+
+sn = Sequence number
+     A number from 0 to 255 indicating the order within this gene
+     type/subtype for this particular gene.
+     
+dn = Duplicate number
+     Is the gene a duplicate as a result of genetic mutation. A number
+     from 0 to 255.
+
+ss = Switch on stage
+     A number indicating the life stage when this gene becomes active.
+     0 = Embryo
+     1 = Child
+     2 = Adolescent
+     3 = Youth
+     4 = Adult
+     5 = Old
+     6 = Senile
+
+fl = flags
+     A bitflag indicating particular characteristics of this
+     gene. These bitflags may be combined in any manner to produce a
+     number from 0 to 255.
+
+     bit  description
+     ===  ===========
+     0    Mutable
+     1    Duplicatable
+     2    Deletable (Cut)
+     3    Male
+     4    Female
+     5    Dormant (the gene has no effect if this is set)
+
+	 Note that if both bits 3 and 4 are zero then the gender for the
+	 gene is 'both'.
+
+mc = Mutation chance
+     Chance of mutation. A value ranging from 0 to 255.
+
+Following the gene header is the data for the gene itself. The size
+and content depends upon the type of the gene identified by the type
+and subtype described above.
+
+Brain Lobe - Type 0, Subtype 0
+==============================
+
+gh xx yy ww hh pf nt lr rs ig sv fl d1 d2
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+xx = Lobe x position
+yy = Lobe y position
+ww = Lobe width
+hh = Lobe height
+pf = Perception lobe flag
+nt = Nominal threshold
+lr = Leakage rate
+rs = Rest state
+ig = input gain hi-lo
+sv = Lobe State Variable Rule (12 bytes)
+	 Each of the 12 bytes can be one of the following opcode values
+	 (Note that the values are listed in decimal, not hexadecimal):
+
+	 Value  Opcode
+     =====  ======
+     0      <end>
+     1      0
+     2      1
+     3      64
+     4      255
+     5      chem0
+     6      chem1
+     7      chem2
+     8      chem3
+     9      state
+     10     output
+     11     thres
+     12     type0
+     13     type1
+     14     anded0
+     15     anded1
+     16     input
+     17     conduct
+     18     suscept
+     19     STW
+     20     LTW
+     21     strength
+     22     32
+     23     128
+     24     rnd const
+     25     chem4
+     26     chem5
+     27     leak in
+     28     leak out
+     29     curr src leak in
+     30     TRUE
+     31     PLUS
+     32     MINUS
+     33     TIMES
+     34     INCR
+     35     DECR
+     36     FALSE
+     37     multiply
+     38     average
+     39     move twrds
+     40     random
+     41     <ERROR>
+  
+fl = Lobe flags
+     A bitflag with the following meanings:
+
+     bit  description
+     ===  ===========
+     0    Winner takes all
+
+d1 = Dendrite type 0 data
+d2 = Dendrite type 1 data
+     Each dendrite data block is composed of the following
+	 information:
+
+     sl mn mx sp fn min-ltw max-ltw min-str max-str mf rs r-stw lg sg
+     sv1 sl sv2 sv3 sv4 sv5 sv6
+
+	 where:
+
+	 sl = Source lobe number
+     mn = Minimum number of dendrites
+     mx = Maximum number of dendrites
+     sp = Spread
+     fn = Fanout
+     min-ltw = Minimum long term weight
+     max-ltw = Maximum long term weight
+     min-str = Minimum initial dendrite strength
+     max-str = Maximum initial dendrite strength
+     mf = Migration flag
+     rs = Relaxation susceptibility
+     r-stw = Relaxation short term weight
+     lg = Long term weight gain rate
+     sg = Strength gain
+     sv1 = Strength gain svrule
+     sl = Strength loss
+     sv2 = Strength loss svrule
+     sv3 = Susceptibility svrule
+     sv4 = Relaxation svrule
+     sv5 = Backprop svrule
+     sv6 = Forwardprop svrule
+
+Brain Organ - Type 0, Subtype 1
+===============================
+
+gh cr rr ls bt dc
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+cr = Clock rate
+rr = Life force repair rate
+ls = Life force start
+bt = Biotick start
+dc = ATP damage coefficient
+
+Receptor - Type 1, Subtype 0
+============================
+
+gh og ts lc ch th nm gn fl
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+og = Organ
+ts = Tissue
+lc = Locus
+     The meanings of Organ, Tissue and Locus are listed in the
+	 Cyberlife Caos document.
+ch = Chemical
+th = Threshold
+nm = Nominal
+gn = Gain
+fl = Flags
+
+     A bitflag with the following meanings:
+
+     bit  description
+     ===  ===========
+     0    Inverted
+     1    Digital (if not set, then receptor is analogue)
+
+Emitter - Type 1, Subtype 1
+===========================
+
+gh og ts lc ch th sr gn fl
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+og = Organ
+ts = Tissue
+lc = Locus
+     The meanings of Organ, Tissue and Locus are listed in the
+	 Cyberlife Caos document.
+ch = Chemical
+th = Threshold
+nm = Sample rate
+gn = Gain
+fl = Flags
+
+     A bitflag with the following meanings:
+
+     bit  description
+     ===  ===========
+     0    Clear source
+     1    Digital (if not set, then receptor is analogue)
+	 2    Inverted
+
+Chemical Reaction - Type 1, Subtype 2
+=====================================
+
+gh l1a l1c l2a l2c r1a r1c r2a r2c rt
+
+Where:
+
+gh  = Gene header described previously (11 bytes)
+l1a = Left hand side chemical 1 amount
+l1c = Left hand side chemical 1
+l2a = Left hand side chemical 2 amount
+l2c = Left hand side chemical 2
+r1a = Right hand side chemical 1 amount
+r1c = Right hand side chemical 1
+r2a = Right hand side chemical 2 amount
+r2c = Right hand side chemical 2
+rt  = Reaction rate
+
+Half Lives - Type 1, Subtype 3
+=====================================
+
+gh c0 c1 c2 c3 ... c253 c254 c255
+
+Where:
+
+gh          = Gene header described previously (11 bytes)
+c0 ... c255 = 256 bytes, each one being the half life value for
+              chemicals 0 through to 255.
+
+Initial Concentration - Type 1, Subtype 4
+=========================================
+
+gh ch am
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+ch = Chemical
+am = Amount
+
+This gene represents the initial concentration of the given
+chemical. When the creature is first born it will contain 'amount'
+units of the specified chemical.
+
+Stimulus - Type 2, Subtype 0
+============================
+
+gh tp sg sn in fl c1 a1 c2 a2 c3 a3 c4 a4
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+tp = Stimulous type
+sg = Significance
+sn = Sensory neuron
+in = Intensity
+fl = Flags
+     A bitflag with the following meanings:
+
+     bit  description
+     ===  ===========
+     0    Modulate
+     1    Add offset to neuron
+	 2    Sensed when asleep
+
+c1 = Chemical 1
+a1 = Amount of chemical 1
+c2 = Chemical 2
+a2 = Amount of chemical 2
+c3 = Chemical 3
+a3 = Amount of chemical 3
+c4 = Chemical 4
+a4 = Amount of chemical 4
+
+Genus - Type 2, Subtype 1
+=========================
+
+gh sp m1 m2 m3 m4 d1 d2 d3 d4
+
+Where:
+
+gh      = Gene header described previously (11 bytes)
+sp      = Species
+          A number indicating the species of this genome:
+
+          0 = Norn
+          1 = Grendel
+          2 = Ettin
+          3 = Shee
+
+m1 - m4 = Moniker of mother of this genome
+d1 - d4 = Moniker of dad of this genome
+       
+Appearance - Type 2, Subtype 2
+==============================
+
+gh bp br sp
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+bp = Body part
+     A number indicating the body part this appearance gene applies
+	 to:
+
+	 0 = head
+	 1 = body
+	 2 = leg
+	 3 = arm
+	 4 = tail
+
+br = Breed
+     Indicates the breed slot that is used for the graphics of this
+     body part.
+
+sp = Species (See Genus gene)
+
+Pose - Type 2, Subtype 3
+========================
+
+gh pn ps
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+pn = Pose number
+ps = Pose string (15 bytes)
+
+Gait - Type 2, Subtype 4
+========================
+
+gh gn p1 p2 p3 p4 p5 p6 p7 p8
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+gn = Gait number
+p1 - p8 = Pose number to use for that step in the gait.
+
+Instinct - Type 2, Subtype 5
+============================
+
+gh l1 c1 l2 c2 l3 c3 dc ch am
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+l1 = Lobe number of first lobe in instinct
+c1 = Cell number of first lobe in instinct
+l2 = Lobe number of second lobe in instinct
+c2 = Cell number of second lobe in instinct
+l3 = Lobe number of third lobe in instinct
+c3 = Cell number of third lobe in instinct
+ch = Chemical to inject
+am = Amount of chemical to inject
+
+Pigment - Type 2, Subtype 6
+===========================
+
+gh co in
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+co = Pigment color
+     Where:
+
+	 0 = red
+     1 = green
+     2 = blue
+
+in = Intensity of color
+
+Pigment Bleed - Type 2, Subtype 7
+=================================
+
+gh rt sw
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+rt = Rotation
+sw = Swap
+
+Organ - Type 3, Subtype 0
+=========================
+
+gh cr rr ls bt dc
+
+Where:
+
+gh = Gene header described previously (11 bytes)
+cr = Clock rate
+rr = Life force repair rate
+ls = Life force start
+bt = Biotick start
+dc = ATP damage coefficient
+
+File End Marker
+===============
+
+The last four bytes of a genome is the ascii value 'gend':
+
+67 65 6E 64
+
+Example
+=======
+
+An example of reading in a genome file in Dylan could be:
+
+    let genome = make(<stretchy-vector>);
+    with-open-file ( fs = filename, element-type: <byte> )
+      if(as(<string>, read( fs, 4 )) = "dna2")
+        while(as(<string>, read(fs, 4)) = "gene")
+          let type = read-element( fs );
+          let subtype = read-element( fs );
+
+          let gene = create-gene( type, subtype );
+          read-gene ( fs, gene );
+
+          add!( genome, gene );        
+        end while;
+      end if;
+    end;
+
+Where read-gene is a function that reads in the individual data for
+particular gene types.
+
+Writing a genome file:
+
+    with-open-file( fs = filename, element-type: <byte>, direction: #"output" )
+      write(fs, "dna2");
+      
+      for(gene in genome)
+        write( fs, "gene" );        
+        write-gene( fs, gene );
+      end for;
+
+      write(fs, "gend");
+    end;
+
+The read-gene and write-gene methods for pigmentation bleed gene:
+
+define method read-gene( fs, gene :: <pigment-bleed-gene> ) => ()
+    next-method();
+    gene.gene-pigment-bleed-rotation := read-element( fs );
+    gene.gene-pigment-bleed-swap := read-element( fs );
+end method read-gene;
+
+define method write-gene( fs, gene :: <pigment-bleed-gene> ) => ()
+    next-method();
+    write-element( fs, gene.gene-pigment-bleed-rotation );
+    write-element( fs, gene.gene-pigment-bleed-swap );
+end method write-gene;
+
+Where 'next-method' calls the read-gene method for the base 'gene'
+class which reads the gene header:
+
+define method read-gene( fs, gene :: <gene> ) => ()
+    gene.gene-sequence-number := read-element( fs );
+    gene.gene-duplicate-number := read-element( fs );
+    gene.gene-switch-on-stage := read-element( fs );
+
+    let flags = read-element( fs );
+    gene.gene-allow-duplicates? := logbit?(1, flags);
+    gene.gene-allow-mutations? := logbit?(0, flags);
+    gene.gene-allow-deletions? := logbit?(2, flags);
+    gene.gene-is-dormant? := logbit?(5, flags);
+    gene.gene-switch-on-gender := convert-to-gender( flags );
+    gene.gene-mutation-percentage := read-element( fs );
+end method read-gene;
+
+Conclusion
+==========
+Any comments, suggestions, and corrections can be made to Chris Double
+(chris@double.co.nz).
+
+Chris Double.
+chris@double.co.nz
+http://www.double.co.nz/creatures

@@ -1,0 +1,189 @@
+
+Glycolyse : 
+	Glucose + ATP => ADP + G6P
+	Fructose + ATP => ADP + F6P
+	G6P => F6P
+	F6P => G6P
+	F6P + ATP => FPP + ADP
+	FPP => DHAP + PGAL
+	DHAP + PGAL => FPP
+	DHAP => PGAL
+	PGAL => DHAP
+	PGAL + NAD => 13PPGLY + NADH2	[*2]
+	13PPGLY + NADH2 => PGAL + NAD
+	13PPGLY + ADP => 3PGLY + ATP	[*2]
+	3PGLY + ATP => 13PPGLY + ADP
+	3PGLY => 2PGLY	[*2]
+	2PGLY => 3PGLY
+	2PGLY => PePyr + H2O	[*2]
+	PePyr + H2O => 2PGLY
+	PePyr + ADP => Pyr + ATP	[*2]
+	Pyr + CoASH => CO2 + AcetylCoA	[*2]
+	CO2 + NAD => CO2 + NADH2	[*2]	-- + Emitter du CO2 dans environnement
+
+Hélice de Lynen (XX pour chaque AG pair entre 02 et 40, combiner impairs avec AG01) : 
+	
+	AG39 + AG01 => AG40 + CO2
+	AG40 + ATP => AG40CoA + AMP
+	AG40CoA + 2*CoASH => AG40CoA + 2*P
+	AG40CoA + FAD => AG40CoA + FADH2
+	AG40CoA + NAD => AG40CoA + NADH2
+	AG40CoA + H2O => AG38CoA + AcetylCoA
+
+	AG37 + AG01 => AG38 + CO2
+	AG38 + ATP => AG38CoA + AMP
+	AG38CoA + 2*CoASH => AG38CoA + 2*P
+	AG38CoA + FAD => AG38CoA + FADH2
+	AG38CoA + NAD => AG38CoA + NADH2
+	AG38CoA + H2O => AG36CoA + AcetylCoA
+
+	AG35 + AG01 => AG36 + CO2
+	AG36 + ATP => AG36CoA + AMP
+	AG36CoA + 2*CoASH => AG36CoA + 2*P
+	AG36CoA + FAD => AG36CoA + FADH2
+	AG36CoA + NAD => AG36CoA + NADH2
+	AG36CoA + H2O => AG34CoA + AcetylCoA
+
+	AG33 + AG01 => AG34 + CO2
+	AG34 + ATP => AG34CoA + AMP
+	AG34CoA + 2*CoASH => AG34CoA + 2*P
+	AG34CoA + FAD => AG34CoA + FADH2
+	AG34CoA + NAD => AG34CoA + NADH2
+	AG34CoA + H2O => AG32CoA + AcetylCoA
+
+	AG31 + AG01 => AG32 + CO2
+	AG32 + ATP => AG32CoA + AMP
+	AG32CoA + 2*CoASH => AG32CoA + 2*P
+	AG32CoA + FAD => AG32CoA + FADH2
+	AG32CoA + NAD => AG32CoA + NADH2
+	AG32CoA + H2O => AG30CoA + AcetylCoA
+
+	AG29 + AG01 => AG30 + CO2
+	AG30 + ATP => AG30CoA + AMP
+	AG30CoA + 2*CoASH => AG30CoA + 2*P
+	AG30CoA + FAD => AG30CoA + FADH2
+	AG30CoA + NAD => AG30CoA + NADH2
+	AG30CoA + H2O => AG28CoA + AcetylCoA
+
+	AG27 + AG01 => AG28 + CO2
+	AG28 + ATP => AG28CoA + AMP
+	AG28CoA + 2*CoASH => AG28CoA + 2*P
+	AG28CoA + FAD => AG28CoA + FADH2
+	AG28CoA + NAD => AG28CoA + NADH2
+	AG28CoA + H2O => AG26CoA + AcetylCoA
+
+	AG25 + AG01 => AG26 + CO2
+	AG26 + ATP => AG26CoA + AMP
+	AG26CoA + 2*CoASH => AG26CoA + 2*P
+	AG26CoA + FAD => AG26CoA + FADH2
+	AG26CoA + NAD => AG26CoA + NADH2
+	AG26CoA + H2O => AG24CoA + AcetylCoA
+
+	AG23 + AG01 => AG24 + CO2
+	AG24 + ATP => AG24CoA + AMP
+	AG24CoA + 2*CoASH => AG24CoA + 2*P
+	AG24CoA + FAD => AG24CoA + FADH2
+	AG24CoA + NAD => AG24CoA + NADH2
+	AG24CoA + H2O => AG22CoA + AcetylCoA
+
+	AG21 + AG01 => AG22 + CO2
+	AG22 + ATP => AG22CoA + AMP
+	AG22CoA + 2*CoASH => AG22CoA + 2*P
+	AG22CoA + FAD => AG22CoA + FADH2
+	AG22CoA + NAD => AG22CoA + NADH2
+	AG22CoA + H2O => AG20CoA + AcetylCoA
+
+	AG19 + AG01 => AG20 + CO2
+	AG20 + ATP => AG20CoA + AMP
+	AG20CoA + 2*CoASH => AG20CoA + 2*P
+	AG20CoA + FAD => AG20CoA + FADH2
+	AG20CoA + NAD => AG20CoA + NADH2
+	AG20CoA + H2O => AG18CoA + AcetylCoA
+
+	AG17 + AG01 => AG18 + CO2
+	AG18 + ATP => AG18CoA + AMP
+	AG18CoA + 2*CoASH => AG18CoA + 2*P
+	AG18CoA + FAD => AG18CoA + FADH2
+	AG18CoA + NAD => AG18CoA + NADH2
+	AG18CoA + H2O => AG16CoA + AcetylCoA
+
+	AG15 + AG01 => AG16 + CO2
+	AG16 + ATP => AG16CoA + AMP
+	AG16CoA + 2*CoASH => AG16CoA + 2*P
+	AG16CoA + FAD => AG16CoA + FADH2
+	AG16CoA + NAD => AG16CoA + NADH2
+	AG16CoA + H2O => AG14CoA + AcetylCoA
+
+	AG13 + AG01 => AG14 + CO2
+	AG14 + ATP => AG14CoA + AMP
+	AG14CoA + 2*CoASH => AG14CoA + 2*P
+	AG14CoA + FAD => AG14CoA + FADH2
+	AG14CoA + NAD => AG14CoA + NADH2
+	AG14CoA + H2O => AG12CoA + AcetylCoA
+
+	AG11 + AG01 => AG12 + CO2
+	AG12 + ATP => AG12CoA + AMP
+	AG12CoA + 2*CoASH => AG12CoA + 2*P
+	AG12CoA + FAD => AG12CoA + FADH2
+	AG12CoA + NAD => AG12CoA + NADH2
+	AG12CoA + H2O => AG10CoA + AcetylCoA
+
+	AG09 + AG01 => AG10 + CO2
+	AG10 + ATP => AG10CoA + AMP
+	AG10CoA + 2*CoASH => AG10CoA + 2*P
+	AG10CoA + FAD => AG10CoA + FADH2
+	AG10CoA + NAD => AG10CoA + NADH2
+	AG10CoA + H2O => AG08CoA + AcetylCoA
+
+	AG07 + AG01 => AG08 + CO2
+	AG08 + ATP => AG08CoA + AMP
+	AG08CoA + 2*CoASH => AG08CoA + 2*P
+	AG08CoA + FAD => AG08CoA + FADH2
+	AG08CoA + NAD => AG08CoA + NADH2
+	AG08CoA + H2O => AG06CoA + AcetylCoA
+
+	AG05 + AG01 => AG06 + CO2
+	AG06 + ATP => AG06CoA + AMP
+	AG06CoA + 2*CoASH => AG06CoA + 2*P
+	AG06CoA + FAD => AG06CoA + FADH2
+	AG06CoA + NAD => AG06CoA + NADH2
+	AG06CoA + H2O => AG06CoA + AcetylCoA
+
+	AG03 + AG01 => AG04 + CO2
+	AG04 + ATP => AG04CoA + AMP
+	AG04CoA + 2*CoASH => AG04CoA + 2*P
+	AG04CoA + FAD => AG04CoA + FADH2
+	AG04CoA + NAD => AG04CoA + NADH2
+	AG04CoA + H2O => AG02CoA + AcetylCoA
+
+	AG01 + AG01 => AG02 + CO2
+	AG02 + ATP => AG02CoA + AMP
+	AG02CoA + 2*CoASH => AG02CoA + 2*P
+	AG02CoA + FAD => AG02CoA + FADH2
+	AG02CoA + NAD => AG02CoA + NADH2
+	AG02CoA + H2O => AcetylCoA + AcetylCoA
+
+	2*P + H2O => 2*P	[*40]
+
+
+Cycle de Krebs : 
+	AcetylCoA + OxaloAcetate => Citrate + CoASH
+	Citrate => cis-Aconitate	[+1]
+	cis-Aconitate => Citrate
+	cis-Aconitate + H2O => iso-Citrate	[+1]
+	iso-Citrate => cis-Aconitate + H2O
+	iso-Citrate + NAD => Oxalosuccinate + NADH2	[+1]
+	Oxalosuccinate + NADH2 => iso-Citrate + NAD
+	Oxalosuccinate => alpha-Cetoglutarate + 2*CO2
+	alpha-Cetoglutarate + NAD => SuccinylCoA + NADH2
+	SuccinylCoA + GDP => Succinate + GTP
+	Succinate + FAD => Fumarate + FADH2
+	Fumarate + 2*H2O => Malate
+	Malate + NAD => OxaloAcetate + NADH2
+	
+Chaine respiratoire : + Receptor O2 + Emitter H2O
+	NADH2 + O2 => NAD + 2*HO-
+	FADH2 + O2 => FAD + 2*HO-
+	HO- + P => HO- + H2O
+	ADP + HO- => ATP + H2O
+	

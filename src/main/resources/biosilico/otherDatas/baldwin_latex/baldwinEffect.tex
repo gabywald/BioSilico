@@ -1,0 +1,149 @@
+\documentclass[11pt,twoside,a4paper]{article}
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/latex_maths+pix/node6.html symboles de math
+% http://fr.wikibooks.org/wiki/Programmation_LaTeX Programmation latex (wikibook)
+%=========================== En-Tete =================================
+%--- Insertion de paquetages (optionnel) ---
+% \usepackage[french]{babel}   % pour dire que le texte est en fran{\'e}ais
+\usepackage{a4}	             % pour la taille   
+\usepackage[T1]{fontenc}     % pour les font postscript
+\usepackage{epsfig}          % pour gerer les images
+%\usepackage{psfig}
+\usepackage{amsmath, amsthm} % tres bon mode mathematique
+\usepackage{amsfonts,amssymb}% permet la definition des ensembles
+\usepackage{float}           % pour le placement des figure
+\usepackage{verbatim}
+\usepackage{lscape} % changement orientation page
+% \pagestyle{headings}
+
+% \usepackage[top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+% gauche, haut, droite, bas, entete, ente2txt, pied, txt2pied
+\usepackage{vmargin}
+\setmarginsrb{2.0cm}{2.0cm}{2.0cm}{2.0cm}{15pt}{15pt}{15pt}{15pt}
+
+% % % en-tete et pieds de page configurables : fancyhdr.sty
+
+% http://www.trustonme.net/didactels/250.html
+
+% http://ww3.ac-poitiers.fr/math/tex/pratique/entete/entete.htm
+% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\usepackage{fancyhdr}
+\def\makestylefancy_content{%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\thepage \hfill \emph{The American Naturalist} \hfill \scriptsize{[June,}}
+\fancyhead[RO]{\scriptsize{1896.]} \hfill \emph{A New Factor in Evolution} \hfill \thepage}
+\fancyfoot[LE,RO]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}%
+
+
+%--- Definitions de nouvelles commandes ---
+\newcommand{\N}{\mathbb{N}} % les entiers naturels
+
+
+%--- Pour le titre ---
+\def\maketitle{%
+	\begin{center}
+		~\\[\baselineskip]
+		~\\[\baselineskip]
+	
+		\huge{THE}~\\[\baselineskip]
+		\Huge{AMERICAN NATURALIST}~\\[\baselineskip]
+		
+		\begin{normalsize}
+		\hrulefill \\% \rule{\textwidth}{0.1mm}
+		\hrulefill \\% \rule{\textwidth}{0.1mm}
+		Vol. XXX \hfill June, 1896 \hfill 354 \\
+		\hrulefill \\% \rule{\textwidth}{0.1mm}
+		\hrulefill \\% \rule{\textwidth}{0.1mm}
+		\end{normalsize}~\\
+		
+		\Large{A NEW FACTOR IN EVOLUTION}~\\[\baselineskip]
+		
+		\large{\textsc{By J. Mark Baldwin}}
+
+	\end{center}
+
+}%
+
+%--- for references ---
+\def\makereferences{%
+References:
+\begin{enumerate}
+	\item[(1).] \emph{Imitation: a Chapter in the Natyural History of Consciousness, Mind} (London), Jan. 1894. Citations from earlier papers will be found in this article and in the next reference. 
+	\item[(2).] \emph{Mental Developpment in the Child and the Race} (1st. ed., April, 1895; 2nd. ed., Oct., 1895; Macmillan \& Co. The present paper expands an additionnal chapter (Chap. XVII) added in the German and French editions and to be incorporated in the third English edition. 
+	\item[(3).] \emph{Consciousness and Evolution}, \emph{Science}, N. Y., August 23, 1895 ; reprinted printed in the \textsc{American Naturalist}, April, 1896. 
+	\item[(4).] \emph{Heredity and Instinct} (I), \emph{Science}, March 20, 1896. Discussion before N. Y. Acad. of Sci., Jan. 31, 1896. 
+	\item[(5).] \emph{Heredity and Instinct} (I), \emph{Science}, April 10, 1896.
+	\item[(6).] \emph{Physical and Social Heredity}, \emph{Amer. Naturalist}, May, 1896. 
+	\item[(7).] \emph{Consciousness and Evolution}, \emph{Psychol. Review}, May, 1896. Discussion before Amer. Psychol. Association, Dec. 28, 1895. 
+\end{enumerate}
+}%
+
+%============================= Corps =================================
+\begin{document}
+% \begin{landscape}
+\maketitle
+\setcounter{page}{441}
+\thispagestyle{empty}
+
+In several recent publications I have developped, from different points of view, some considerations which tend to bring out a certain influence at work in organic evolution which I venture to call ``a new factor''. I give below a list of references\footnote{\makereferences} to these publications and shall refer to them by number as this paper proceeds. The object of the present paper is to gather into one sketch an outline of the view of the process of development which these different publications have hinged upon.~\\
+
+The problems involved in a theory of organic development may be gathered up under three great heads: Ontogeny, Phylogeny, Heredity. The general consideration, the ``factor'' which I propose to bring out, is operative in the first instance, in the field of \emph{Ontogeny}~; I shall consequently speak first of the problem of Ontogeny, then of that of Phylogeny, in so far as the topic dealt with makes it necessary, then of that of Heredity, under the same limitation, and finally, give some definitions and conclusion.~\\
+
+\makestylefancy_content
+
+\begin{center} \large{I.} \end{center}
+
+\emph{Ontogeny : ``Organic Selection''} (see ref. 2, chap. vii) --- The series of facts which investigation in this field has to deal with are those of the individual's creature's development~; and two sorts of facts may be distinguished from the point of view of the \emph{function which an organism performs in the course of his life history}. There is, in the first place, the development of his heredity impulse, the unfolding of his heredity in the forms and functions which characterize the particular individual -- the phylogenetic variations, chich are constitutional to him~; and there is, in the second place, the series of functions, acts, etc., \emph{which he learns to do himself in the course of his life}. All of these latter, the \emph{special modifications which an organism undergoes during its ontogeny}, thrown together, have been called ``acquired characters'', and we may use that expression or adopt one recently suggested by Osborn~\footnote{Reported in \emph{Science}, April 3rd.; also used by him before N. Y. Acad. of Sci., April 13th. there is some confusion between the two terminations ``genic'' and ` genetic'' I think the proper distinction is that which reserves the former, ` genic'', for application in cases in which the word to which it is affixed qualifies a term used \emph{actively}, while the other, ``genetic'', conveys similarly a \emph{passive} signification~; thus agencies, causes, influences, etc., and ``ontogenic phylogenic, etc.'' while effects consequences, etc., and ``ontogenetic, phylogenetic, etc.''. }, ``ontogenic variations'' (except that I should prefer the form ``ontogenetic variations''), if the word variations seems appropriate at all.~\\
+
+Assuming that there are such new or modified functions, in the first instance, and such ``acquired characters'', arising by the law of ``use and disuse'' from these new functions, our our farther question is about them. And the question is this: how does an organism come to be modified during his life history~?
+
+In answer to this question we find that there are three different sorts of ontogenic agencies which should be distinguished -- each of which works to produce ontogenetic modifications, adaptations, or variations. These are: first, the physical agencies and influences in the environment which work upon the organism to produce modifications of its form and funtions. They include all chemicals agents, strains, contacts, hindrance to growth, temperture changes, etc. As far as these forces work changes in the organism, the changes may be considered largely ``fortuitus'' or accidental. Considering the forces which produce them I propose to call them ``physico-genetic''. Spencer's theory of ontogenetic development rests largely upon the occurence of lucky movements brought out by such accidental influences. Second, there is a class of modifications which arise from the spontaneous activities of the organism itself in the carrying out of its normal congenital functions. These variations and adaptations are seen in a remarkable way in plants, in unicellular creatures, in very young children. There seems to be a readiness and capacity on the part of the organism to ``rise of the occasion'', as it were, and make gain out of the circumstances of its life. The facts have been put in evidence (for plants) by Henslow, Pfeffer, Sachs; (for micro-organism), by Binet, Bunge; (in human pathology) by Bernheim, Janet; (in children) by Baldwin (ref. 2, chap vi) (See citations in ref. 2, chap. ix, and in Orr, \emph{Theory of Development}, chap. iv). These changes I propose to call ``neuro-genetic'', laying emphasis on what is called by Romanes, Morgan and others, the ``selective property'' of the nervous system, and of life generally. Third, there is the great series of adaptations secured by conscious agency, which we may throw together as ``psycho-genetic''. The processes involved here are all classed broadly under the term ``intelligent'', i.e, imitation, gregariuous influence, maternal instruction, the lessons of pleasure and pain, and of experience generally, and reasoning from means to ends, etc.~\\
+
+\clearpage
+
+We reach, therefore, the following scheme:~\\
+\begin{tabular}{ p{5cm} p{5cm} }
+
+\emph{Ontogenetic Modifications} & \emph{Ontogenic Agencies} \\
+
+\begin{enumerate}
+	\item Physico-genetic
+	\item Neuro-genetic
+	\item Psycho-genetic
+\end{enumerate} & \begin{enumerate}
+	\item Mechanicam
+	\item Nervous
+	\item Intelligent
+	\begin{itemize}
+		\item[] Imitation
+		\item[] Pleasure an pain
+		\item[] Reasoning
+	\end{itemize}
+\end{enumerate}
+ \\
+\end{tabular}
+
+
+Now it is evident that there are two very distinct question which come up as soon as we admit modifications of function and of structure in ontogenic development: first, there is the question as to how these modifications can come to be adaptative in the life of the individual creature. Or in other words: What is the method of the individual's growth and adaptation as shown in the well known law of ``use and disuse''? Looked at functionnality, we see that the organism manages somehow to accomodate itself to conditions which are favorable, to repeat movement which are adaptative, and so to grow by the principle of use. This involves some sort of selection, from the actual ontogenetic variations, of certain ones -- certain functions, etc. Certain other possible and actual functions and structure decay from disuse. Whatever the method of doing this may be, we may simply, at this point, claim the law of use and disuse, as applicable in ontogenetic development, and apply the phrase, ``Organic Selection'', to the organism's behavior in acquiring new modes or modifications of adaptative function which its influence of structure. The question of the method of ``Organic Selection'' is taken up below (IV); here, I may repeat, we simply assume what every one admits in some form, that such adaptation of function -- ``accomodations'' the psychologist calls them, the processes of learning new movements, etc. -- \emph{do occur. } We then reach another question, second; what place these adaptations have in the general of development.~\\
+
+\emph{Effects of Organic Selection. } -- First, we may note the results of this principle in the creature's own private life. 
+\begin{enumerate}
+	\item \emph{By securing afaptations, accomodations, in special circumstances the creature is kept alive} (ref? 2, 1st ed., pp. 172 ff.). This is true in all the three spheres of ontogenetic variation distinguished in the table above. The creatures which can stand the ``storm and stress'' of the physical influence of the environment, and of the changes which occur in the environment, \emph{by undergoing modifications of their congenital functions or of the structures which they get congenitally -- these creatures will live; while those which cannot, will not. } In the sphere of neurogenetic variations we find a superb series of adaptations by loer as well as higher organism during the course of ontogenic development (ref. 2, chap. ix). And in the highest sphere, that of intelligence (including the phenomena of consciousness of all kinds, experience of pleasure and pain, imitation, etc.), we find individual accomodations of the tremendous scale which culminates in the skilful performances of human volition, invention, etc. The progress of the child in all the learning processes which lead him on to be a man, just illustrate this higher form of ontogenetic adaptation (ref. 2, chap. x-xiii).~\\
+	All these instances are associated in the higher organisms, and all of them unite to \emph{keep the creature alive}. 
+	\item By this means \emph{those congenital or phylogenetic variations are kept in existence, which lend themselves to intelligent, imitative, adaptative,and mechanical modification during the lifetime of the creature which have them. } Other congenital variations are not hus kept in existence. Sio there arises a more or less widespread series of \emph{determinate variations in each generations ontogenesis} (ref. 3, 4, 5)\footnote{``It is necessary to consider further how certain reactions of one single organsim can be selected so as to adapt the organism better and give it a life history. Let us at the outset call this process ``Organic Selection'' in contrast with the Natural Selection of whole organism. [...] If this (natural selection) worked alone, every change in the environment would weed out all life except those organism, which by accidental variation reacted already in the way demanded by the changed conditions -- in every case new organism showing variations, not, in any case, new element of life-history in the old organism. In order to the latter we would have to conceive [...] some modification of the old reactions in an organism through the influence of new conditions. [...] We are, accordingly, left to the view that the new stimulations brought by changes in the environment themselves modify the reactiobs of an organism. [...] The facts show that  individual organism do acquire new adaptations in their lifetime, and that is our first problem. If in solving we find aprinciple which may also serve as a principlr of race-development, then we may possibly use it against the `all sufficiency of natural selection' or in its support. '' (ref. 2, 1st ed., pp. 175--6}.~\\
+	The further applications of the principle lead us over into the field or our second question, i.e., phylogeny. 
+\end{enumerate}
+
+\begin{center} \large{II.} \end{center}
+
+% \clearpage
+% \section*{Bibliographie\markboth{Bibliographie}{Bibliographie}}
+% \addcontentsline{toc}{section}{Bibliographie}
+% \nocite{*}
+% \bibliography{baldwinEffect}
+
+% \end{landscape}
+\end{document}

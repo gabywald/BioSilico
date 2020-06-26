@@ -1,0 +1,32 @@
+Ajouter quelques oses supplémentaires (Lactose (Glucose + Galactose), Galactose (donne Glucose + H2O), Sacharose (Glucose + Fructose)), Polysaccharides (Glycogène, Amidon...) et BiochemicalReaction's associés dans la Glycolyse et le stockage...
+
+Voir et tester assimilation (lorsque 'eat') ainsi que production de fruits et oeufs...
+
+InitialConcentration sur Glucose...
+
+Réactions immunitaires...
+
+Gènes viraux / plasmidiques...
+
+
+Gènes Opérons : 
+**- mettre en place un exemple avec 'Opéron Lactose inhibiteur'
+- BiochemicalReaction utilisant le Lactose (basiquement) et transformant en Glucose + Galactose)
+- BiochemicalReaction combinant le Lactose en un autre produit avec catalyseur (Réaction majeure 2 ou 4)
+- BiochemicalReaction inverse (produit en Lactose, réaction simple 1)
+- Dans Lobe Monitor 'SandraBellum' + lobe 'Emetteur' : 
+- si présence Glucose + Lactose
+- EmitterReceptor sur Glucose (en Receptor)
+- EmitterReceptor sur Lactose (en Receptor)
+- Instinct vers un neurone précis de lobe Emetteur (ou réutilisation du signal)
+- EmitterReceptor produisant catalyseur combinant du lactose (en 2 pour 1)
+
+==> Provoque un ensemble de réactions conditionnelles sur l'utilisation du Lactose quand il n'y a plus de Glucose. 
+
+**- peut être amené à fonctionner dans l'autre sens (active utilisation du lactose si celui-ci est présent)  : 'Operon Lactose activateur')
+- EmitterReceptor sur le Lactose (Receptor)
+- Instinct vers un neurone (ou simplement ensuite réutilisation signal)
+- EmitterReceptor production 'catalyseur' (Emitter)
+- BiochemicalReceptor utilisant 'catalyseur' et Lactose pour produire Glucose + Galactose
+
+Réfléchir (+ biblio) sur aspects 'circuits électroniques' et 'biologie synthétique' et outils d'ingénierie (avec des exemples comme les deux ci-dessus, métabolisme 'basique' de Glycolyse, cycle de Krebs, Hélice de Lynen, métabolisme des AA, 'proteines'...)

@@ -1,0 +1,60 @@
+20100530 Ubuntu Party
+
+1530 Conférence président April
+
+	amélioration / échange constant
+	1969 ; IBM pour éviter abus procès position dominante (logiciels libres suite à limitations du logiciel propriétaire)
+	
+	4 libertés, extention et conséquence
+		- utiliser (moyen, nationalité, localisation, comparaison, publication...)
+		- diffuser (distribuer, conseiller, vendre...)
+		- étudier (comprendre, pour écrire nouveau, partage, sûreté / sécurité...)
+		- modifier (évolution selon habitudes, besoins...)
+		
+	devoirs (formalisation licences 1980's : GPL, BSD...)
+		- respect du travail (citation auteur(s)...)
+		- contributif (faire profiter communauté de modifications le cas échéant)
+			pas forcément obligatoire / fort
+	
+	"Gagner sa vie ?"
+		- informatique rend des services (coût du service, compétences, formation, besoins et adaptation), 
+		- libre pas forcément gratuit (logiciel mais pas forcément le service associé)
+	
+	Choix, maitrise, économie de la contribution...
+	50% des entreprise de moins de 1 000 salariés selon INSEE en France, diffusion sur internet
+	
+	début : rivalité des biens car matériel (CD, boite...), mais depuis réseaux : pas de rivalité dans acquisition (téléchargement)
+	
+	parade des "producteurs logiciels proprios" : trouver parades
+	4 risques / dangers /menaces pour logiciels libres [contre usage logiciels libres] : 
+		- DRM [Digital Right Management] : lien support / machine, visualisation publicité
+			problème liberté accès contenu acheté légalement avec autres solutions que propriétaires
+			recherche recettes, batailles légales pour lecture libre ("davsi", pénal de lire avec solution libre)
+		- liaison vente bien + service (ordinateur + OS)
+			normalement protection consommateur (achat bien + service, lié est interdit) 
+			mais pas forcément respecté (ordinateur + OS, or marqué dans loi que illégal)
+			remboursement, mais à quel prix ?
+		- brevets logiciels (bataille 2000's)
+			brevet = éviter perte sociale de l'invention (malgré problèmes économiques), 
+				concession monopole sur 25 ans en échange information sur innovation
+				bien quand modèle physique car description, mais idées et concepts ?
+			pas d'informations (donc brevets) de la part logiciels propriétaires, cloisonnement du marché, 
+			blocage innovation si brevets ou éléments de brevets
+		- "informatique de confiance" (ordinateur plus intelligent sur bon / mauvais)
+			activation / désactivation, permissivité installation logiciels
+			transmission information (contrôle de ce à quoi utilisateur a accès)
+	
+	problème HADOPI : impose logiciel de sécurité, criminalise défaut de sécurité (et non téléchargement)
+		considère que par défaut, utilisateur lambda ne veut pas télécharger (donc téléchargement est défaut sécurité)
+		fourniture logiciel sécurisation (nombreux logiciels libres disponibles, mais réaction avec logiciel propriétaire, inscrit dans la loi)
+		surveillance / espionnage / mouchard sécurisation (détecter origine téléchargement) : choix technologique
+	
+	accord international ACTA (accord sur la contrefaçon)
+		futures lois / traité international (sans consultation)
+		(brevets logiciels)++, mais effets néfastes sur innovation (avis commission européenne)
+		retours sur les DRM ("EICD", DADVSI : faire sauter DRM est rendu criminel pénalement...) mais à suivre...
+		travail de fond lobby(ies) logiciels propriétaires, peu d'information au sujet ACTA 
+	
+	standards ouverts ? mais dérange logiciels propriétaires (standards non ouverts, conditionnement licence logicielle)
+	mutualiser connaissances juridiques ? loi en préparations ? actions lobby(ies)
+	
