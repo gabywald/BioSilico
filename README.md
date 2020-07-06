@@ -4,4 +4,6 @@ Some ideas about Artificial Life, Creatures (game series) and Neural Networks. R
 
 Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2012 (and before then) ; ideas I didn't continue for times spent reasons and I wish to continue (year 2020). 
 
-Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here ! 
+Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here !
+
+Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some review for generics and some other for stream (Java 8 !). 
