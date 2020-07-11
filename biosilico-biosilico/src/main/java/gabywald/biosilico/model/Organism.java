@@ -2,7 +2,7 @@ package gabywald.biosilico.model;
 
 import gabywald.biosilico.genetics.BrainGene;
 import gabywald.biosilico.interfaces.AgentContent;
-import gabywald.biosilico.structures.ExtendedLineage;
+import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.biosilico.view.GeneJPanel;
 import gabywald.global.data.StringUtils;
 import gabywald.global.structures.StringCouple;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * This class intends to have generic organisms and test genes implementations. 
@@ -25,7 +26,7 @@ public class Organism extends Agent implements AgentContent {
 	/** Genome of the Organism. */
 	private List<Chromosome> genome;
 	/** Extended lineage of the Organism. */
-	private ExtendedLineage extendedlineage;
+	private List<ExtendedLineageItem> extendedlineage;
 	/** Set of Genetic code use. */
 	private List<StringCouple> geneticCodes;
 
@@ -73,19 +74,20 @@ public class Organism extends Agent implements AgentContent {
 		this.currentBrain	= null;
 		this.liste			= new ArrayList<Agent>();
 		this.geneticCodes.add(new StringCouple("0000000010", "Gattaca01"));
-		this.extendedlineage = new ExtendedLineage();
+		this.extendedlineage = new ArrayList<ExtendedLineageItem>();
 	}
 
 	public Brain getBrain() 				{ return this.currentBrain; }
 	public List<Chromosome> getGenome() 	{ return this.genome; }
 
 	public void setGenome(List<Chromosome> genome) 
-	{ this.genome = genome; }
+		{ this.genome = genome; }
 
-	public int lengthLineage()		{ return this.extendedlineage.length(); }
+	public int lengthLineage()
+		{ return this.extendedlineage.size(); }
 
-	public void setExtendedLineage(ExtendedLineage lineage) 
-	{ this.extendedlineage = lineage; }
+	public void setExtendedLineage(List<ExtendedLineageItem> lineage) 
+		{ this.extendedlineage = lineage; }
 
 	/**
 	 * Create an instance of ExtendedLineageItem and add it to the end of the list. 
@@ -93,27 +95,30 @@ public class Organism extends Agent implements AgentContent {
 	 * @param scientificName (String)
 	 * @param rank (String)
 	 */
-	public void addExtendedLineageItem(String uniqueID,
-			String scientificName,
-			String rank) 
-	{ this.extendedlineage.addExtendedLineageItem(uniqueID, scientificName, rank); }
+	public void addExtendedLineageItem(	String uniqueID,
+										String scientificName,
+										String rank) 
+		{ this.extendedlineage.add(new ExtendedLineageItem(uniqueID, scientificName, rank)); }
 
-	public List<String> getSimpleLinage() 
-	{ return this.extendedlineage.getSimpleLineage(); }
+	public List<String> getSimpleLinage() {
+		return this.extendedlineage.stream().map(el -> el.getScientificName()).collect(Collectors.toList());
+	}
 
 	public String getSimpleLineage(int i) 
-	{ return this.extendedlineage.getSimpleLineage(i); }
+		{ return this.extendedlineage.get(i).getScientificName(); }
 
 	public List<StringCouple> getGeneticCodes()
-	{ return this.geneticCodes; }
+		{ return this.geneticCodes; }
 
 	/**
 	 * Set a Brain for Organism (specific gene). instanciated by a specific Gene
-	 * @param cc (Brain)
+	 * @param cb (Brain)
 	 * @see BrainGene#BrainGene(boolean, boolean, boolean, boolean, int, int, int, int, int, int, int, int)
 	 * @see BrainGene#exec(Organism)
 	 */
-	public void setBrain(Brain cc) { this.currentBrain = cc; }
+	public void setBrain(Brain cb) { 
+		this.currentBrain = cb; 
+	}
 
 	public void setOrganismType(int type) {
 		switch(type) {
@@ -132,16 +137,16 @@ public class Organism extends Agent implements AgentContent {
 
 	public void execution(WorldCase local) {
 		this.current = local;
-		/** Genome is "executed". */
+		// ***** Genome is "executed". 
 		this.genome.stream().forEach( c -> c.execution(this) );
-		/** TODO genome length to 0 : death ?! */
-		/** Running the brain (if not null). */
+		// TODO genome length to 0 : death ?! 
+		// ***** Running the brain (if not null). 
 		if (this.currentBrain != null) 
-		{ this.currentBrain.networking(); }
+			{ this.currentBrain.networking(); }
 	}
 
 	/**
-	 * Ativity of organism (Decision)
+	 * Activity of organism (Decision)
 	 * @param which (int) code of script / action. 
 	 * @param object (int) code object. 
 	 * @param threshold (int)
@@ -149,7 +154,7 @@ public class Organism extends Agent implements AgentContent {
 	 * @param variable (int)
 	 * @param value (int)
 	 */
-	public void activity(int which,int object, int threshold, 
+	public void activity(int which, int object, int threshold, 
 			int attribute, int variable, int value) {
 		switch(which) {
 		case(851): this.decisionToStay();break;
@@ -164,16 +169,16 @@ public class Organism extends Agent implements AgentContent {
 		case(860): this.decisionToSlap(object);break;
 		case(861): this.decisionToRest();break;
 		case(862): this.decisionToSleep();break;
-		case(863): this.decisionToEat(object,threshold);break;
-		case(864): this.decisionToDeath(variable,value);break;
-		case(865): this.decisionEmit(object,variable,value);break;
-		case(866): this.decisionReceive(object,threshold,variable,value);break;
-		case(867): this.decisionHas(object,threshold,attribute,variable,value);break;
-		case(868): this.decisionIs(variable,value);break;
+		case(863): this.decisionToEat(object, threshold);break;
+		case(864): this.decisionToDeath(variable, value);break;
+		case(865): this.decisionEmit(object, variable, value);break;
+		case(866): this.decisionReceive(object, threshold, variable, value);break;
+		case(867): this.decisionHas(object, threshold, attribute, variable, value);break;
+		case(868): this.decisionIs(variable, value);break;
 		case(869): this.decisionToMakeGamet();break;
 		case(870): this.decisionToLayEgg();break;
 		case(871): this.decisionToMate();break;
-		case(872): break; /** 871 to 880 are free. */
+		case(872): break; /** 872 to 880 are free. */
 		case(873): break;
 		case(874): break;
 		case(875): break;
@@ -297,7 +302,7 @@ public class Organism extends Agent implements AgentContent {
 	 * @param object (int) type of agent. 
 	 */
 	private void decisionToThink(int object) 
-		{ this.addState("think about " + object + "\t"); }
+		{ this.addState("think about [" + object + "]\t"); }
 
 	private void decisionToRest() { ; }
 	
@@ -350,8 +355,7 @@ public class Organism extends Agent implements AgentContent {
 	private void decisionReceive(int object,int threshold,
 			int variable,int value) {
 		WorldCase tmp = this.current.getDirection(object);
-		if ( (tmp != null) 
-				&& (tmp.getVariables().getVariable(variable) > threshold) ) { 
+		if ( (tmp != null) && (tmp.getVariables().getVariable(variable) > threshold) ) { 
 			this.variables.setVarPlus(variable, value);
 			tmp.getVariables().setVarLess(variable, value);
 		}
@@ -378,7 +382,7 @@ public class Organism extends Agent implements AgentContent {
 	 * @param value (int) new value.
 	 */
 	private void decisionIs(int variable,int value) 
-	{ this.variables.setVariable(variable, value); }
+		{ this.variables.setVariable(variable, value); }
 
 	private void decisionToMakeGamet() { /** XXX */
 		if (this.isFertile()) {
@@ -387,7 +391,7 @@ public class Organism extends Agent implements AgentContent {
 	}
 
 	private void decisionToLayEgg() { /** XXX */
-		/** Change status about egg contenant (pregnancy). */
+		// ***** Change status about egg contenant (pregnancy). 
 		this.variables.setVariable(946, this.hasAgentType(921));
 
 		if ( (this.isFertile()) && (!this.isPregnant()) ) { ; }
@@ -395,17 +399,17 @@ public class Organism extends Agent implements AgentContent {
 		if (this.isPregnant()) {
 			Agent egg = this.getAgentType(921);
 			this.current.addAgent(egg);
-			/** Basic pregnancy signal : number of eggs. */
+			// ***** Basic pregnancy signal : number of eggs. 
 			this.variables.setVariable(946, this.hasAgentType(921));
 		}
 	}
 
 	private void decisionToMate() { /** XXX */
-		/** Gamets presence increases fertility signal. */
+		// ***** Gamets presence increases fertility signal. 
 		this.variables.setVarPlus(945, this.hasAgentType(920));
-		/** Eggs presence decreases fertility signal. */
+		// ***** Eggs presence decreases fertility signal. 
 		this.variables.setVarLess(945, this.hasAgentType(921));
-		/** Basic pregnancy signal : number of eggs. */
+		// ***** Basic pregnancy signal : number of eggs. 
 		this.variables.setVariable(946, this.hasAgentType(921));
 		if (this.isFertile()) {
 
@@ -419,7 +423,7 @@ public class Organism extends Agent implements AgentContent {
 
 	public int getAgentListLength()		{ return this.liste.size(); }
 	public List<Agent> getAgentListe()	{ return this.liste; }
-	public Agent remAgent(int i)			{ return this.liste.remove(i); }
+	public Agent remAgent(int i)		{ return this.liste.remove(i); }
 	public Agent getAgent(int i)		{ return this.liste.get(i); }	
 
 	public int hasAgentType(int type) {
@@ -433,7 +437,11 @@ public class Organism extends Agent implements AgentContent {
 	}
 
 	public Agent getAgentType(int type) {
+		
 		// TODO optimize with Java 8 stream ?!
+//		this.liste.stream()	.filter( p -> p.getChemicals().getVariable(942) == type )
+//							.forEach( p -> this.liste.remove(p) );
+		
 		for (int i = 0 ; i < this.liste.size() ; i++) {
 			if (this.liste.get(i).getChemicals().getVariable(942) == type) { 
 				return this.liste.remove(i);
@@ -447,55 +455,47 @@ public class Organism extends Agent implements AgentContent {
 	}
 
 	public String toString() {
-		// TODO Strong to StringBuilder
 		// TODO use of Java 8 streams
-		String result = new String();
-		/** Get String definition of SuperClass. */
-		result += super.toString();
-		/** Current instance. */
-		result += "GENETIC CODE\n\tID\t"
-				+this.geneticCodes.get(0).getValueA()+"\n";
-		result += "\tNAME\t"
-				+this.geneticCodes.get(0).getValueB()+"\n";
+		StringBuilder result = new StringBuilder();
+		// ***** Get String definition of SuperClass. 
+		result.append(super.toString());
+		// ***** Current instance. 
+		result.append("GENETIC CODE\n\tID\t").append(this.geneticCodes.get(0).getValueA()).append( "\n" );
+		result.append("\tNAME\t").append(this.geneticCodes.get(0).getValueB()).append( "\n" );
 		for (int i = 1 ; i < this.geneticCodes.size() ; i++) {
-			result += "SUB GENETIC CODE\n\tID\t"
-					+this.geneticCodes.get(i).getValueA()+"\n";
-			result += "\tNAME\t"
-					+this.geneticCodes.get(i).getValueB()+"\n";
+			result.append("SUB GENETIC CODE\n\tID\t").append(this.geneticCodes.get(i).getValueA()).append( "\n" );
+			result.append("\tNAME\t").append(this.geneticCodes.get(i).getValueB()).append( "\n" );
 		}
-		result += "LINEAGE\n";
-		if (this.extendedlineage.length() == 0) { result += "\tNO DATA\n"; }
-		for (int i = 0 ; i < this.extendedlineage.length() ; i++) { 
-			result += "\t"+this.extendedlineage.getSimpleLineage(i)
-			+" ("+this.extendedlineage.getUniqueID(i)+")\n";
+		result.append("LINEAGE\n");
+		if (this.extendedlineage.size() == 0)
+			{ result.append("\tNO DATA\n"); }
+		else {
+			this.extendedlineage.stream().forEach( el -> result.append( "\t" ).append( el.getScientificName() ).append(" (").append( el.getUniqueID() ).append(")\n") );
 		}
-		result += this.extendedlineage.toString();
+		
+		result.append(this.extendedlineage.toString());
 
-		result += "GENOME\n";
+		result.append("GENOME\n");
 		for (int i = 0 ; i < this.genome.size() ; i++) {
 			Chromosome chr = this.genome.get(i);
 			for (int j = 0 ; j < chr.length() ; j++) { 
-				result += "\t"+chr.getGene(j).getName()
-						+"\t"+chr.getGene(j).reverseTranslation(true)+"\n";
+				result.append( "\t" ).append(chr.getGene(j).getName()).append( "\t" ).append(chr.getGene(j).reverseTranslation(true)).append( "\n" );
 			}
 			if (i < this.genome.size()-1) { 
 				String delim = StringUtils.repeat("-", 50);
-				result += "\t"+delim+"\t"+delim+"\n"; 
+				result.append( "\t" ).append(delim).append( "\t" ).append(delim).append( "\n" );
 			}
-		}
+		} // END "for (int i = 0 ; i < this.genome.size() ; i++)"
 
 		if (this.currentBrain != null) { 
-			result += "BRAIN HEIGHT\t"+GeneJPanel.convertTwoChars
-					(this.currentBrain.getHeight())+"\n";
-			result += "BRAIN WIDTH\t"+GeneJPanel.convertTwoChars
-					(this.currentBrain.getWidth())+"\n";
-			result += "BRAIN DEPTH\t"+GeneJPanel.convertTwoChars
-					(this.currentBrain.getDepth())+"\n";
-			result += "NEURONS LIST DESCRIPTION\n\tNO DATA\n";
-			/** TODO enregistrer réseaux de neurones / lobes... */
-		} else { result += "NO DATA ABOUT BRAIN, LOBES AND NEURONS\n"; }
+			result.append("BRAIN HEIGHT\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getHeight())).append( "\n" );
+			result.append("BRAIN WIDTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getWidth() )).append( "\n" );
+			result.append("BRAIN DEPTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getDepth() )).append( "\n" );
+			result.append("NEURONS LIST DESCRIPTION\n\tNO DATA\n");
+			// ***** TODO enregistrer réseaux de neurones / lobes... 
+		} else { result.append("NO DATA ABOUT BRAIN, LOBES AND NEURONS\n"); }
 
-		return result;
+		return result.toString();
 	}
 
 }

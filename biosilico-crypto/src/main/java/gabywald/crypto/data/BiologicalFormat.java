@@ -72,7 +72,7 @@ public abstract class BiologicalFormat {
 	protected static void showDefault(Matcher[] matchers, int match) {
 		System.out.println("BiologicalFormat.showDefault(..., ...)");
 		System.out.println("\t"+match+"\t("
-				+Embl.EMBL_DATA_KEYS_PATTERNS[match][0]
+				+EmblFormat.EMBL_DATA_KEYS_PATTERNS[match][0]
 				+")\t'"+matchers[match].groupCount()+"'");
 		for (int i = 1 ; i <= matchers[match].groupCount() ; i++) 
 			{ System.out.println("\t\t"+i+" -- '"+matchers[match].group(i)+"'"); }
@@ -130,6 +130,4 @@ public abstract class BiologicalFormat {
 	public int[] getBasesCounts()			{ return this.basesCounts; }
 	public String[] getBasesNames()			{ return this.basesNames; }
 
-	
-	
 }

@@ -1,17 +1,19 @@
 package gabywald.cellmodel.model;
 
-import gabywald.cellmodel.structures.VesiculeListe;
+import java.util.ArrayList;
+import java.util.List;
+
 import gabywald.global.structures.ObservableObject;
 
 /**
  * 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Cellule extends ObservableObject {
 	private Noyau noyau;
 	private Cytoplasme cytoplasme;
 	private AppareilDeGolgi golgi;
-	private VesiculeListe transport;
+	private List<Vesicule> transport;
 	private Exocytose exterieur;
 	private Membrane membrane;
 	private Mitochondrie mitochondrie;
@@ -24,14 +26,14 @@ public class Cellule extends ObservableObject {
 	private boolean threadSuspended;
 	
 	private Cellule() {
-		this.noyau = new Noyau();
-		this.cytoplasme = new Cytoplasme();
-		this.golgi = new AppareilDeGolgi();
-		this.transport = new VesiculeListe();
-		this.exterieur = new Exocytose();
-		this.membrane = new Membrane();
-		this.mitochondrie = new Mitochondrie();
-		this.threadSuspended = false;
+		this.noyau				= new Noyau();
+		this.cytoplasme			= new Cytoplasme();
+		this.golgi				= new AppareilDeGolgi();
+		this.transport			= new ArrayList<Vesicule>();
+		this.exterieur			= new Exocytose();
+		this.membrane			= new Membrane();
+		this.mitochondrie		= new Mitochondrie();
+		this.threadSuspended	= false;
 	}
 	
 	public static Cellule getCelluleObservable() {
@@ -39,13 +41,13 @@ public class Cellule extends ObservableObject {
 		return Cellule.instance;
 	}
 	
-	public Noyau getNoyauObservable() { return this.noyau; }
-	public Cytoplasme getCytoplasmeObservable() { return this.cytoplasme; }
+	public Noyau getNoyauObservable()				{ return this.noyau; }
+	public Cytoplasme getCytoplasmeObservable()		{ return this.cytoplasme; }
 	public AppareilDeGolgi getAppareilDeGolgiObservable() { return this.golgi; }
-	public Exocytose getExocytose() { return this.exterieur; }
-	public VesiculeListe getTransport() { return this.transport; }
-	public Membrane getMembrane() { return this.membrane; }
-	public Mitochondrie getMitochondrieObservable() { return this.mitochondrie; }
+	public Exocytose getExocytose()					{ return this.exterieur; }
+	public List<Vesicule> getTransport()			{ return this.transport; }
+	public Membrane getMembrane()					{ return this.membrane; }
+	public Mitochondrie getMitochondrieObservable()	{ return this.mitochondrie; }
 	
 	public void transfertARN() {
 		ARN tmp = this.noyau.popARN();
@@ -56,24 +58,21 @@ public class Cellule extends ObservableObject {
 	}
 	
 	public void transfertProtein() {
-		VesiculeListe liste = this.cytoplasme.transport();
-		for (int i = 0 ; i < liste.length() ; i++) 
-			{ this.transport.addVesicule(liste.getVesicule(i)); }
-		VesiculeListe liste_bis = this.golgi.transport();
-		for (int i = 0 ; i < liste_bis.length() ; i++) 
-			{ this.transport.addVesicule(liste_bis.getVesicule(i)); }
+		List<Vesicule> liste = this.cytoplasme.transport();
+		for (int i = 0 ; i < liste.size() ; i++) 
+			{ this.transport.add(liste.get(i)); }
+		List<Vesicule> liste_bis = this.golgi.transport();
+		for (int i = 0 ; i < liste_bis.size() ; i++) 
+			{ this.transport.add(liste_bis.get(i)); }
 		
 	}
 	
 	public void deplaceVesicule() {
-		if (this.transport.length() > Vesicule.VESICULE_LEVEL/2) {
-			for (int i = 0 ; i < this.transport.length()/3 ; i++) {
-				this.transport.getVesicule(0)
-					.fusion(this.cytoplasme
-							,this.golgi
-							,this.exterieur
-							,this.membrane);
-				this.transport.removeVesicule(0);
+		if (this.transport.size() > Vesicule.VESICULE_LEVEL/2) {
+			for (int i = 0 ; i < this.transport.size()/3 ; i++) {
+				this.transport.get(0)
+					.fusion(this.cytoplasme, this.golgi, this.exterieur, this.membrane);
+				this.transport.remove(0);
 			}
 		}
 	}
@@ -110,9 +109,9 @@ public class Cellule extends ObservableObject {
 			if ( (this.noyau.length() > 50) && (noyauThread.getPriority() > 1) )
 				{ noyauThread.setPriority(noyauThread.getPriority()-1); }
 			
-			if ( (this.cytoplasme.length_arn() < 10) && (cytoplasmeThread.getPriority() > 1) )
+			if ( (this.cytoplasme.lengthARN() < 10) && (cytoplasmeThread.getPriority() > 1) )
 				{ cytoplasmeThread.setPriority(cytoplasmeThread.getPriority()-1); }
-			if ( (this.cytoplasme.length_arn() > 50) && (cytoplasmeThread.getPriority() < 10) ) 
+			if ( (this.cytoplasme.lengthARN() > 50) && (cytoplasmeThread.getPriority() < 10) ) 
 				{ cytoplasmeThread.setPriority(cytoplasmeThread.getPriority()+1); }
 			
 			
@@ -130,7 +129,7 @@ public class Cellule extends ObservableObject {
 				this.addState("*****\n*****\n*****\n*****");
 			}
 			this.addState(" Cellule "
-					+this.getTransport().length()+":"
+					+this.getTransport().size()+":"
 					+this.getExocytose().length()+":"
 					+this.getMembrane().length()+"\n\t"
 					+this.noyau.getState()+"\n\t"

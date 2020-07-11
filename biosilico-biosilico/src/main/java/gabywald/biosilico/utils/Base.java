@@ -7,7 +7,6 @@ package gabywald.biosilico.utils;
  * A class for codification and input memory sequences. At start, it was only 
  * for cible sequences (original sequences were used as test char sequences in some
  * parts of algorithms - profil computed data). 
- * @author St&eacute;fan Engelen (2006)
  * @author Gabriel Chandesris (2008)
  * @see Sequence
  */
@@ -21,17 +20,17 @@ public class Base {
 	 * @param base char
 	 * @param position int
 	 */
-	public Base (char base, int position){
+	public Base (char base, int position) {
 		this.acgt = base;
 		this.position = position;
 	}
 
 
-	public char getBase (){ return this.acgt; }
-	public int getPosition (){ return this.position; }
+	public char getBase ()				{ return this.acgt; }
+	public int getPosition ()			{ return this.position; }
 
-	public void setBase (char base){ this.acgt = base; }
-	public void setPosition (int pos){ this.position = pos; }
+	public void setBase (char base)		{ this.acgt = base; }
+	public void setPosition (int pos)	{ this.position = pos; }
 
 
 	/**
@@ -40,8 +39,8 @@ public class Base {
 	 * @return boolean
 	 */
 	public boolean equals(Base toCompare) {
-		if (this.acgt != toCompare.getBase()) { return false; }
-		if (this.position != toCompare.getPosition()) { return false; }
+		if (this.acgt != toCompare.getBase())			{ return false; }
+		if (this.position != toCompare.getPosition())	{ return false; }
 		return true;
 	}
 
@@ -73,7 +72,7 @@ public class Base {
 	 * @param base char
 	 * @return boolean
 	 */
-	public static boolean isBase(char base){
+	public static boolean isBase(char base) {
 		String regExpBases = "^[ACGTUIRYWKSMBVDHN]$";
 		String baseString = base+"";
 		if (baseString.matches(regExpBases)) { return true; }
@@ -84,7 +83,7 @@ public class Base {
 	 * To test if nucleotids or gap / indel symbolized with '-'.  
 	 * @param base char
 	 */
-	public static boolean isBaseOrGap (char base){
+	public static boolean isBaseOrGap(char base) {
 		if ( (Base.isBase(base)) || (base == '-') ) { return true; }
 		else { return false; }
 	}
@@ -98,7 +97,7 @@ public class Base {
 	 * @param y char
 	 * @return int
 	 */
-	public static int scoreBases(char x,char y){
+	public static int scoreBases(char x, char y) {
 		int sc = 0;
 		if ((x == 'A') && (y == 'T') || (x == 'T') && (y == 'A')) { return 2; }
 		if ((x == 'A') && (y == 'U') || (x == 'U') && (y == 'A')) { return 2; }
@@ -113,7 +112,7 @@ public class Base {
 	 * @param y char
 	 * @return boolean
 	 */
-	public static boolean matchBases(char x,char y){
+	public static boolean matchBases(char x, char y) {
 		if ( (x == 'A') && (y == 'U')
 				|| (x == 'C') && (y == 'G')
 				|| (x == 'G') && (y == 'C')
@@ -132,9 +131,8 @@ public class Base {
 	 * @param y char
 	 * @return boolean
 	 */
-	public static boolean matchBasesGap(char x,char y){
-		if ( (Base.matchBases(x,y)) 
-				|| ( (x == '-') && ( y == '-') ) ) { return true; }
+	public static boolean matchBasesGap(char x, char y) {
+		if ( (Base.matchBases(x,y)) || ( (x == '-') && ( y == '-') ) ) { return true; }
 		else { return false; }
 	}
 
@@ -144,8 +142,8 @@ public class Base {
 	 * @param y Base
 	 * @return boolean
 	 */
-	public static boolean matchBases(Base x,Base y) 
-	{ return Base.matchBases(x.getBase(), y.getBase()); }
+	public static boolean matchBases(Base x, Base y) 
+		{ return Base.matchBases(x.getBase(), y.getBase()); }
 
 	/**
 	 * To know if two Base's can go together (including gap's). 
@@ -153,7 +151,7 @@ public class Base {
 	 * @param y Base
 	 * @return boolean
 	 */
-	public static boolean matchBasesGap(Base x,Base y) 
-	{ return Base.matchBasesGap(x.getBase(), y.getBase()); }
+	public static boolean matchBasesGap(Base x, Base y) 
+		{ return Base.matchBasesGap(x.getBase(), y.getBase()); }
 
 }

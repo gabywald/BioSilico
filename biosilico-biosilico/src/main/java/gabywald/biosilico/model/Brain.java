@@ -12,8 +12,6 @@ import gabywald.global.structures.ObservableObject;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class Brain extends ObservableObject {
-	/** Unique brain instance. */
-	private static Brain instance = null;
 	/** A two-dimensional table of Neuron. */
 	private Neuron map[][];
 	/** Height of current Brain. */
@@ -24,12 +22,11 @@ public class Brain extends ObservableObject {
 	private int max_depth;
 	
 	/** The maximum height of a Brain. (100) */
-	private static final int MAX_HEIGHT = 100; // 20;
+	public static final int MAX_HEIGHT = 100; // 20;
 	/** The maximum width of a Brain.  (100) */
-	private static final int MAX_WIDTH = 100; // 20;
+	public static final int MAX_WIDTH = 100; // 20;
 	/** The maximum depth (3D) of a Brain.  (100) */
-	private static final int MAX_DEPTH = 100; // 20;
-	
+	public static final int MAX_DEPTH = 100; // 20;
 	
 	/**
 	 * Standard constructor, height and width must be between 0 and MAX for each. 
@@ -39,13 +36,7 @@ public class Brain extends ObservableObject {
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
 	 * @see Brain#setNeuronAt(Position, Neuron)
 	 */
-	public Brain(int height,int width,int depth) throws BrainLengthException {
-		if (height > Brain.MAX_HEIGHT)	{ height = Brain.MAX_HEIGHT; }
-		if (width > Brain.MAX_WIDTH) { width = Brain.MAX_WIDTH; }
-		if (width > Brain.MAX_DEPTH) { width = Brain.MAX_DEPTH; }
-		if (height <= 0) { throw new BrainLengthException("Height cannot be under 0. "); }
-		if (width <= 0) { throw new BrainLengthException("Width cannot be under 0. "); }
-		if (depth <= 0) { throw new BrainLengthException("depth cannot be under 0. "); }
+	Brain(int height, int width, int depth) {
 		this.max_height	= height;
 		this.max_width	= width;
 		this.max_depth	= depth;
@@ -60,50 +51,26 @@ public class Brain extends ObservableObject {
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
 	 * @see Brain#setNeuronAt(Position, Neuron)
 	 */
-	public Brain(int height,int width) throws BrainLengthException {
-		if (height > Brain.MAX_HEIGHT) { height = Brain.MAX_HEIGHT; }
-		if (width > Brain.MAX_WIDTH) { width = Brain.MAX_WIDTH; }
-		if (height <= 0) { throw new BrainLengthException("Height cannot be under 0. "); }
-		if (width <= 0) { throw new BrainLengthException("Width cannot be under 0. "); }
-		this.max_height	= height;
-		this.max_width	= width;
-		this.max_depth	= 0;
-		this.map = new Neuron[this.max_height][this.max_width];
+	Brain(int height, int width) {
+		this(height, width, 0);
 	}
 	
 	/** Default constructor : MAX_HEIGHT*MAX_WIDTH map. 
 	 * (<u>no instanciation of Neuron</u>) 
+	 * @throws BrainLengthException 
 	 * @see Brain#getBrain()
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
 	 * @see Brain#setNeuronAt(Position, Neuron)
 	 * @see Brain#MAX_HEIGHT
 	 * @see Brain#MAX_WIDTH
 	 */
-	private Brain() { 
-		this.max_height	= Brain.MAX_HEIGHT;
-		this.max_width	= Brain.MAX_WIDTH;
-		this.max_depth	= 0;
-		this.map = new Neuron[this.max_height][this.max_width];
+	Brain() { 
+		this(Brain.MAX_HEIGHT, Brain.MAX_WIDTH, 0);
 	}
 	
-	/**
-	 * In order to get an example instance of Brain
-	 * (and instantiate it if not).
-	 * @return (Brain)
-	 * @see Brain#Brain()
-	 */
-	public static Brain getBrain() {
-		if (Brain.instance == null) { Brain.instance = new Brain(); }
-		return Brain.instance;
-	}
-	
-	public static int getMaxHeight() { return Brain.MAX_HEIGHT; }
-	public static int getMaxWidth() { return Brain.MAX_WIDTH; }
-	public static int getMaxDepth() { return Brain.MAX_DEPTH; }
-	
-	public int getHeight() { return this.max_height; }
-	public int getWidth() { return this.max_width; }
-	public int getDepth() { return this.max_depth; }
+	public int getHeight()		{ return this.max_height; }
+	public int getWidth()		{ return this.max_width; }
+	public int getDepth()		{ return this.max_depth; }
 	
 	/**
 	 * Get a neuron at a specific position. 
@@ -274,21 +241,25 @@ public class Brain extends ObservableObject {
 	 * TODO lobe setting ; 
 	 * XXX lobe exception if replace is false and place is occupied ??
 	 */
-	public void setLobe (int height,int width,int x,int y,
-						Neuron sample,boolean replace) 
-						throws BrainLengthException,BrainLobeReplaceException
+	public void setLobe(int height, int width, int x, int y, 
+						Neuron sample, boolean replace) 
+						throws BrainLengthException, BrainLobeReplaceException
 						{
 		/** Throwing exceptions if necessary. */
 		boolean lengthExcept = false;
-		if ( (height == 0) || (width == 0) ) { lengthExcept = true; }
+		if ( (height == 0) || (width == 0) ) 	
+			{ lengthExcept = true; }
 		if ( (x >= this.map.length) || (y >= this.map[0].length) ) 
 			{ lengthExcept = true; }
-		if ( (x+height) > this.map.length) { lengthExcept = true; }
-		if ( (y+width) > this.map[0].length) { lengthExcept = true; }
-		if (lengthExcept) { throw new BrainLengthException("Capacity of brain exceeded. "); }
+		if ( (x+height) > this.map.length) 
+			{ lengthExcept = true; }
+		if ( (y+width) > this.map[0].length) 
+			{ lengthExcept = true; }
+		if (lengthExcept) 
+			{ throw new BrainLengthException("Capacity of brain exceeded. "); }
 		List<Neuron> currentLobe = new ArrayList<Neuron>();
 		if (!replace) {
-			/** Checking BEFORE changing anything !! */
+			// Checking BEFORE changing anything !! 
 			for (int i = x ; i < (x+height) ; i++) {
 				for (int j = y ; j < (y+width) ; j++) {
 					if (this.map[i][j] != null) { 
@@ -297,7 +268,7 @@ public class Brain extends ObservableObject {
 					}
 				}
 			}
-			/** If no exception thrown here... */
+			// If no exception thrown here... 
 			for (int i = x ; i < (x+height) ; i++) {
 				for (int j = y ; j < (y+width) ; j++) { 
 					this.map[i][j] = sample.getCopy();

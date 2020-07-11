@@ -149,7 +149,7 @@ import gabywald.biosilico.exceptions.GeneticTreeNodeException;
 		itemsPhaseTwo[254] = "[STOP]";itemsPhaseTwo[255] = "[STOP]";<br>
 		GeneticTreeNode testRootPhaseTwo = new GeneticTreeNode("UBVP",itemsPhaseTwo,false);</li>
  * </ul>
- * @author Gabriel Chandesris (2009-2010)
+ * @author Gabriel Chandesris (2009-2010, 2020)
  * @see GeneticTreeNode#getGeneticCodeStandard()
  * @see GeneticTreeNode#getGeneticCodeGattaca()
  * @see GeneticTreeNode#getGeneticCodePhaseTwo()
@@ -168,7 +168,7 @@ public class GeneticTreeNode {
 	/** List of potential results. */
 	private String[] endValues;
 	/** Son nodes of current node. */
-	private GeneticTreeNodeListe nodes;
+	private List<GeneticTreeNode> nodes;
 	/** Father of current node. */
 	private GeneticTreeNode father;
 
@@ -179,7 +179,7 @@ public class GeneticTreeNode {
 	 * @param triplet (boolean) Indicate if triplet of quadruplet. 
 	 * @throws GeneticTreeNodeException If length of <i>endValues</i> is not equal to (length of codeValues)^[3|4]. 
 	 */
-	public GeneticTreeNode(String codeValues,String endValues,boolean triplet) 
+	public GeneticTreeNode(String codeValues, String endValues, boolean triplet) 
 			throws GeneticTreeNodeException 
 		{ this.init(codeValues, GeneticTreeNode.toTable(endValues), triplet); }
 
@@ -190,7 +190,7 @@ public class GeneticTreeNode {
 	 * @param triplet (boolean) Indicate if triplet of quadruplet. 
 	 * @throws GeneticTreeNodeException If length of <i>endValues</i> is not equal to (length of codeValues)^[3|4]. 
 	 */
-	public GeneticTreeNode(String codeValues,String[] endValues,boolean triplet) 
+	public GeneticTreeNode(String codeValues, String[] endValues, boolean triplet) 
 			throws GeneticTreeNodeException 
 		{ this.init(codeValues, endValues, triplet); }
 
@@ -202,27 +202,22 @@ public class GeneticTreeNode {
 	 * @param father (GeneticTreeNode) Father of current node. 
 	 * @param lateral (int) Place of node at its level under its father node. 
 	 */
-	private GeneticTreeNode(String codeValues,
-							String[] endValues,
-							boolean triplet,
-							GeneticTreeNode father,
-							int lateral) {
-		this.father = father;
-		this.level = this.father.getLevel()+1;
-		this.lateral = lateral;
-		this.output = this.lateral;
-		this.codeValues = codeValues;
-		this.endValues = endValues;
-		this.triplet = triplet;
-		this.nodes = new GeneticTreeNodeListe();
-		/** limit is 3 for triplets and 4 for quadruplets */
+	private GeneticTreeNode(String codeValues, String[] endValues, boolean triplet,
+							GeneticTreeNode father, int lateral) {
+		this.father		= father;
+		this.level		= this.father.getLevel()+1;
+		this.lateral	= lateral;
+		this.output		= this.lateral;
+		this.codeValues	= codeValues;
+		this.endValues	= endValues;
+		this.triplet	= triplet;
+		this.nodes		= new ArrayList<GeneticTreeNode>();
+		// ***** limit is 3 for triplets and 4 for quadruplets
 		int limit = (this.triplet)?3:4;
 		if (this.level < limit ) {
 			for (int i = 0 ; i < this.codeValues.length() ; i++ ) {
-				this.nodes.addGeneticTreeNode(new GeneticTreeNode(
-						this.codeValues,
-						this.endValues,
-						triplet,this,i));
+				this.nodes.add(new GeneticTreeNode(	this.codeValues, this.endValues, 
+													triplet, this, i));
 			}
 		} else { this.output = this.cumulateLateral(); }
 	}
@@ -236,7 +231,8 @@ public class GeneticTreeNode {
 	 * @see GeneticTreeNode#GeneticTreeNode(String, String, boolean)
 	 * @see GeneticTreeNode#GeneticTreeNode(String, String[], boolean)
 	 */
-	private void init(String codeValues,String[] endValues,boolean triplet) throws GeneticTreeNodeException {
+	private void init(String codeValues, String[] endValues, boolean triplet) 
+			throws GeneticTreeNodeException {
 		int cube = codeValues.length()*codeValues.length()*codeValues.length();
 		int quad = cube*codeValues.length();
 		// System.out.println(code_values+":"+code_values.length()+":"+cube+":"+quad+":"+end_values.length()+"\t"+triplet);
@@ -254,45 +250,43 @@ public class GeneticTreeNode {
 		this.codeValues = codeValues;
 		this.endValues = endValues;
 		this.triplet = triplet;
-		this.nodes = new GeneticTreeNodeListe();
+		this.nodes = new ArrayList<GeneticTreeNode>();
 		/** Building the whole tree. */
 		for (int i = 0 ; i < this.codeValues.length() ; i++ ) {
-			this.nodes.addGeneticTreeNode(new GeneticTreeNode(
-					this.codeValues,
-					this.endValues,
-					triplet,this,i));
+			this.nodes.add(new GeneticTreeNode(	this.codeValues, this.endValues, 
+												triplet, this, i));
 		}
 	}
 
-	public int getLevel() { return this.level; }
-	public int getLateral() { return this.lateral; }
-	public int getOutput() { return this.output; }
-	public boolean getTriplet() { return this.triplet; }
-	public String getCodeValues() { return this.codeValues; }
-	public String[] getEndValues() { return this.endValues; }
-	public GeneticTreeNode getFather() { return this.father; }
-	public GeneticTreeNodeListe getNodes() { return this.nodes; }
+	public int getLevel()					{ return this.level; }
+	public int getLateral()					{ return this.lateral; }
+	public int getOutput()					{ return this.output; }
+	public boolean getTriplet()				{ return this.triplet; }
+	public String getCodeValues()			{ return this.codeValues; }
+	public String[] getEndValues()			{ return this.endValues; }
+	public GeneticTreeNode getFather()		{ return this.father; }
+	public List<GeneticTreeNode> getNodes()	{ return this.nodes; }
 
 	/**
 	 * This method to get all leaves of the whole current tree. 
 	 * <i>Get back to the root of the tree. </i>
-	 * @return (GeneticTreeNodeListe)
+	 * @return List of GeneticTreeNode. 
 	 */
-	public GeneticTreeNodeListe getLeaves() {
+	public List<GeneticTreeNode> getLeaves() {
 		/** Getting the root node of the tree. */
 		GeneticTreeNode root = this;
 		while (!root.isRoot()) { root = root.getFather(); }
-		GeneticTreeNodeListe tmp = new GeneticTreeNodeListe();
+		List<GeneticTreeNode> tmp = new ArrayList<GeneticTreeNode>();
 		/** if (root.isLeave()) { tmp.addGeneticTreeNode(root); } */
-		for (int i = 0 ; i < root.getNodes().length() ; i++) {
-			GeneticTreeNode level1 = root.getNodes().getGeneticTreeNode(i);
-			for (int j = 0 ; j < level1.getNodes().length() ; j++) {
-				GeneticTreeNode level2 = level1.getNodes().getGeneticTreeNode(j);
-				for (int k = 0 ; k < level2.getNodes().length() ; k++) {
-					GeneticTreeNode level3 = level2.getNodes().getGeneticTreeNode(k);
+		for (int i = 0 ; i < root.getNodes().size() ; i++) {
+			GeneticTreeNode level1 = root.getNodes().get(i);
+			for (int j = 0 ; j < level1.getNodes().size() ; j++) {
+				GeneticTreeNode level2 = level1.getNodes().get(j);
+				for (int k = 0 ; k < level2.getNodes().size() ; k++) {
+					GeneticTreeNode level3 = level2.getNodes().get(k);
 					if ( (this.triplet) && (level3.isLeave()) )
-					{ tmp.addGeneticTreeNode(level3); }
-					else { tmp.addGeneticTreeNode(level3.getNodes()); }
+						{ tmp.add(level3); }
+					else { tmp.addAll(level3.getNodes()); }
 				}
 			}
 		}
@@ -305,9 +299,7 @@ public class GeneticTreeNode {
 	 * @see GeneticTreeNode#getLastCode()
 	 */
 	public String getCode() {
-		// if (this.level != 0) { Terminal.ecrireString(this.lateral+"<= "); }
-		return (this.father == null)?"":
-			this.father.getCode()+""+this.getLastCode();
+		return (this.father == null) ? "" : this.father.getCode()+""+this.getLastCode();
 	}
 
 	/**
@@ -322,8 +314,8 @@ public class GeneticTreeNode {
 	 * @return (String) End or code value for current node. 
 	 */
 	public String getValue() {
-		return (this.isLeave())?this.endValues[this.output]
-		                       :this.codeValues.charAt(this.lateral)+"";
+		return (this.isLeave()) ? this.endValues[this.output]
+		                        : this.codeValues.charAt(this.lateral)+"";
 	}
 
 	/**
@@ -356,18 +348,18 @@ public class GeneticTreeNode {
 		GeneticTreeNode lvl3 = null;
 		int i = 0;
 		/** Checking first char (0) at first level, node selection. */
-		while ( (i < root.getNodes().length()) && (lvl1 == null) ) {
-			GeneticTreeNode tmp = root.getNodes().getGeneticTreeNode(i);
+		while ( (i < root.getNodes().size()) && (lvl1 == null) ) {
+			GeneticTreeNode tmp = root.getNodes().get(i);
 			if (code.charAt(0) == tmp.getLastCode()) { lvl1 = tmp;i = -1; }
 			i++;
 		}
-		while ( (i < lvl1.getNodes().length()) && (lvl2 == null) ) {
-			GeneticTreeNode tmp = lvl1.getNodes().getGeneticTreeNode(i);
+		while ( (i < lvl1.getNodes().size()) && (lvl2 == null) ) {
+			GeneticTreeNode tmp = lvl1.getNodes().get(i);
 			if (code.charAt(1) == tmp.getLastCode()) { lvl2 = tmp;i = -1; }
 			i++;
 		}
-		while ( (i < lvl2.getNodes().length()) && (lvl3 == null) ) {
-			GeneticTreeNode tmp = lvl2.getNodes().getGeneticTreeNode(i);
+		while ( (i < lvl2.getNodes().size()) && (lvl3 == null) ) {
+			GeneticTreeNode tmp = lvl2.getNodes().get(i);
 			if (code.charAt(2) == tmp.getLastCode()) { lvl3 = tmp;i = -1; }
 			i++;
 		}
@@ -377,8 +369,8 @@ public class GeneticTreeNode {
 		} else {
 			/** the fourth level when !this.triplet ; selecting fourth level node. */
 			GeneticTreeNode lvl4 = null;
-			while ( (i < lvl3.getNodes().length()) && (lvl4 == null) ) {
-				GeneticTreeNode tmp = lvl3.getNodes().getGeneticTreeNode(i);
+			while ( (i < lvl3.getNodes().size()) && (lvl4 == null) ) {
+				GeneticTreeNode tmp = lvl3.getNodes().get(i);
 				if (code.charAt(3) == tmp.getLastCode()) { lvl4 = tmp;i = -1; }
 				i++;
 			}
@@ -420,11 +412,11 @@ public class GeneticTreeNode {
 		GeneticTreeNode root = this;
 		while (!root.isRoot()) { root = root.getFather(); }
 		/** Encoding : Getting leaves. */
-		GeneticTreeNodeListe leaves = root.getLeaves();
+		List<GeneticTreeNode> leaves = root.getLeaves();
 		/** Encoding : Getting list of possibles codes. */
 		List<String> codes = new ArrayList<String>();
-		for (int i = 0 ; i < leaves.length() ; i++) {
-			GeneticTreeNode tmp = leaves.getGeneticTreeNode(i);
+		for (int i = 0 ; i < leaves.size() ; i++) {
+			GeneticTreeNode tmp = leaves.get(i);
 			if (simple) {
 				/** Simple coding : first occurence of value. */
 				if (tmp.getValue().equals(value)) { return tmp.getCode(); } 

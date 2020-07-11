@@ -1,9 +1,10 @@
 package gabywald.cellmodel.model;
 
-import gabywald.cellmodel.structures.ARNFile;
-import gabywald.cellmodel.structures.ProteinFile;
-import gabywald.cellmodel.structures.RibosomeListe;
-import gabywald.cellmodel.structures.VesiculeListe;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 import gabywald.global.structures.ObservableObject;
 
 /**
@@ -11,62 +12,62 @@ import gabywald.global.structures.ObservableObject;
  * @author Gabriel Chandesris (2009)
  */
 public class Cytoplasme extends ObservableObject implements ContentARN,ContentProtein { // extends Thread
-	private ARNFile tempo;
-	private ProteinFile tempa;
-	private RibosomeListe tempi;
+	private Queue<ARN> arns;
+	private Queue<Protein> proteins;
+	private List<Ribosome> ribosomes;
 
 	/** For the runnable part. */
 	private boolean alive;
 
 	public Cytoplasme() {
-		this.tempa = new ProteinFile();
-		this.tempo = new ARNFile();
-		this.tempi = new RibosomeListe();
+		this.proteins	= new LinkedList<Protein>();
+		this.arns		= new LinkedList<ARN>();
+		this.ribosomes	= new ArrayList<Ribosome>();
 
 		this.alive = true;
 	}
 
 	public boolean addARN(ARN elt) {
-		this.tempo.push(elt);
-		return true;
+		return this.arns.add(elt);
 	}
 
-	public boolean remARN(ARN elt)
-		{ return this.tempo.remove(elt); }
+	public boolean remARN(ARN elt) { 
+		return this.arns.remove(elt);
+	}
 
 	public boolean addProtein(Protein elt) {
-		this.tempa.push(elt);
-		return true;
+		return this.proteins.add(elt);
 	}
 
-	public boolean remProtein(Protein elt) 
-		{ return this.tempa.remove(elt); }
+	public boolean remProtein(Protein elt) { 
+		return this.proteins.remove(elt);
+	}
 	
-	public boolean isEmpty()	{ return (this.tempa.length() == 0); }
+	public boolean isEmpty()	{ return (this.proteins.size() == 0); }
 	public int length()			{ return 0; }
-	public int length_arn() 	{ return this.tempo.length(); }
-	public int length_pro() 	{ return this.tempa.length(); }
-	public int length_rib() 	{ return this.tempi.length(); }
-	public Protein popProtein()	{ return this.tempa.pop(); }
+	public int lengthARN() 		{ return this.arns.size(); }
+	public int lengthProtein() 	{ return this.proteins.size(); }
+	public int lengthRibosome() { return this.ribosomes.size(); }
+	public Protein popProtein()	{ return this.proteins.poll(); }
 
 	/**
 	 * Generate a list of Vesicule's. 
 	 * @return (VesiculeListe)
 	 * @see Vesicule#VESICULE_LEVEL
 	 */
-	public VesiculeListe transport() {
-		VesiculeListe liste = new VesiculeListe();
-		if (this.tempa.length() > Vesicule.VESICULE_LEVEL) {
-			for (int i = 0 ; i < this.tempa.length()%Vesicule.VESICULE_LEVEL ; i++) {
+	public List<Vesicule> transport() {
+		List<Vesicule> liste = new ArrayList<Vesicule>();
+		if (this.proteins.size() > Vesicule.VESICULE_LEVEL) {
+			for (int i = 0 ; i < this.proteins.size()%Vesicule.VESICULE_LEVEL ; i++) {
 				int j = 0;
-				Vesicule vesi = new Vesicule(Vesicule.TYPE_GOLGI);
-				Protein tmp = this.tempa.pop();
+				Vesicule vesi	= new Vesicule(Vesicule.TYPE_GOLGI);
+				Protein tmp		= this.proteins.poll();
 				while( (tmp != null) && (j < Vesicule.VESICULE_LEVEL) ) {
 					vesi.addProtein(tmp);
-					tmp = this.tempa.pop();
+					tmp = this.proteins.poll();
 					j++;
 				}
-				if (!vesi.isEmpty()) { liste.addVesicule(vesi); }
+				if (!vesi.isEmpty()) { liste.add(vesi); }
 			}
 		}
 		return liste;
@@ -74,22 +75,21 @@ public class Cytoplasme extends ObservableObject implements ContentARN,ContentPr
 	
 	
 	public void traduction() {
-		if (this.tempo.length() > Ribosome.DEFAULT_START_USE) {
-			ARN un = this.tempo.pop();
-			ARN de = this.tempo.pop();
-			ARN tr = this.tempo.pop();
-			this.tempi.addRibosome(new Ribosome(un,de,tr));
+		if (this.arns.size() > Ribosome.DEFAULT_START_USE) {
+			ARN un = this.arns.poll();
+			ARN de = this.arns.poll();
+			ARN tr = this.arns.poll();
+			this.ribosomes.add(new Ribosome(un,de,tr));
 		}
 		for (int i = 0 ; 
-				(i < this.tempi.length()) 
-						&& (!this.tempo.isFileEmpty()) ; 
+				(i < this.ribosomes.size()) && (!this.arns.isEmpty()) ; 
 				i++) {
-			Ribosome tmprib = this.tempi.getRibosome(i);
-			ARN tmparn		= this.tempo.pop();
+			Ribosome tmprib = this.ribosomes.get(i);
+			ARN tmparn		= this.arns.poll();
 			Protein tmppro	= tmprib.traduction(tmparn);
 			this.addProtein(tmppro);
 			if (tmprib.used()) 
-				{ this.tempi.removeRibosome(tmprib); }
+				{ this.ribosomes.remove(tmprib); }
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class Cytoplasme extends ObservableObject implements ContentARN,ContentPr
 	public void run() {
 		while(this.alive) {
 			this.traduction();
-			this.setState(" Cytoplasme "+this.tempo.length()+":"+this.tempa.length()+":"+this.tempi.length());
+			this.setState(" Cytoplasme "+this.arns.size()+":"+this.proteins.size()+":"+this.ribosomes.size());
 			try { Thread.sleep(1000); } 
 			catch (InterruptedException e) { e.printStackTrace(); }
 			this.change();

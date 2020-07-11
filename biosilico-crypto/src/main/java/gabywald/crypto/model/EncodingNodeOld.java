@@ -276,7 +276,7 @@ public class EncodingNodeOld {
 	}
 	
 	public static String treeView(EncodingNodeOld root) {
-		String result = Utils.multiple("\t", root.getLevel()) 
+		String result = Utils.repeat("\t", root.getLevel()) 
 							+ root.toString()+"\n";
 		EncodingNodeOld[] rootChilds = root.getChilds();
 		for (int i = 0 ; i < rootChilds.length ; i++) 

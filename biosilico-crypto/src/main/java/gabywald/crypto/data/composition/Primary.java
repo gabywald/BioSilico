@@ -3,8 +3,8 @@ package gabywald.crypto.data.composition;
 /**
  * <i>'Third Party Annotation (TPA) and Transcriptome Shotgun Assembly (TSA)'</i>
  * @author Gabriel Chandesris (2011)
- * @see gabywald.crypto.data.GenBank
- * @see gabywald.crypto.data.Embl
+ * @see gabywald.crypto.data.GenBankFormat
+ * @see gabywald.crypto.data.EmblFormat
  */
 public class Primary {
 	/** Some useful attributes [refSeqSpanStart, refSeqSpanEnd, primarySpanStart, primarySpanEnd]... */

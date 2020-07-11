@@ -3,6 +3,7 @@ package gabywald.biosilico.genetics;
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.model.Brain;
+import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -10,7 +11,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * This type of Gene is to instanciate a brain for organism, with specific size (2-Dimentionnal).
  * The third argument (depth) is here to differentiate this kind of GeneGattaca. 
  * Instantiation of lobes and Neurons is done with other genes. 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class BrainGene extends GeneGattaca {
 	/** Height of brain [00-99]. */
@@ -47,39 +48,48 @@ public class BrainGene extends GeneGattaca {
 	public BrainGene(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
 			int age_min, int age_max, int sex, int mut_rate,
-			int height,int width,int depth,int more) {
+			int height, int width, int depth, int more) {
 		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
-		this.height = (height > Brain.getMaxHeight())?
-				Brain.getMaxHeight():((height <= 0)?
-						Brain.getMaxHeight():height);
-		this.width = (width > Brain.getMaxWidth())?
-				Brain.getMaxWidth():((width <= 0)?
-						Brain.getMaxWidth():width);
-		this.depth = (depth > Brain.getMaxDepth())?
-				Brain.getMaxDepth():((depth <= 0)?
-						Brain.getMaxDepth():depth);
+		this.height	= BrainGene.obtainValueSpecific(0, Brain.MAX_HEIGHT, height);
+		this.width	= BrainGene.obtainValueSpecific(0, Brain.MAX_WIDTH, width);
+		this.depth	= BrainGene.obtainValueSpecific(0, Brain.MAX_DEPTH, depth);
 		this.more = more;
 		/** Instantiation of Brain done only one time 
 		 * (not at each execution of BrainGene if it is case). */
-		try { this.currentBrain = new Brain(height,width); } 
+		try { this.currentBrain = BrainBuilder.brainBuilder(height, width); } 
 		catch (BrainLengthException e) { this.currentBrain = null; }
+	}
+	
+	/**
+	 * Specific obtain value method for BrainGene. <br/>
+	 * if val under or equal 0 : max value ; val over max : max value. 
+	 * @param min (int) Minimal value. 
+	 * @param max (int) Maximal value. 
+	 * @param val (int) Current value of attribute. 
+	 * @return (int) Minimal, maximal or value. 
+	 */
+	public static final int obtainValueSpecific(int min, int max, int val) { 
+		return (val > max) ? max : ((val <= 0) ? max : val);
 	}
 
 	public String reverseTranslation(boolean end) {
-		String result = super.reverseTranslation(false);
-		String tmp = "";
-		tmp += ((this.height < 10)?"0":"")+this.height;
-		tmp += ((this.width < 10)?"0":"")+this.width;
-		tmp += ((this.depth < 10)?"0":"")+this.depth;
-		tmp += ((this.more < 10)?"0":"")+this.more;
+		String result		= super.reverseTranslation(false);
+		StringBuilder tmp	= new StringBuilder();
+		tmp.append(Gene.convert0to99(this.height));
+		tmp.append(Gene.convert0to99(this.width));
+		tmp.append(Gene.convert0to99(this.depth));
+		tmp.append(Gene.convert0to99(this.more));
+		
 		for (int i = 0 ; i < tmp.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
-		 /** end is given here "GGT" */
+		
+		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 	
-	protected void exec(Organism orga) throws GeneException 
-		{ orga.setBrain(this.currentBrain); }
+	protected void exec(Organism orga) throws GeneException { 
+		orga.setBrain(this.currentBrain); 
+	}
 	
 	public int getBrainHeight()	{ return this.height; }
 	public int getBrainWidth()	{ return this.width; }

@@ -5,6 +5,7 @@ import gabywald.cellmodel.model.Ribosome;
 /**
  * 
  * @author Gabriel Chandesris (2009)
+ * @deprecated ... 
  */
 public class RibosomeListe {
 	private Ribosome[] liste;

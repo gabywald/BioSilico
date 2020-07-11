@@ -9,10 +9,11 @@ import java.util.List;
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.genetics.GeneGattaca;
 import gabywald.biosilico.model.Brain;
+import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.Chemicals;
-import gabywald.biosilico.structures.ExtendedLineage;
+import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.biosilico.utils.Sequence;
 import gabywald.biosilico.view.GeneJPanel;
 import gabywald.global.data.StringUtils;
@@ -157,30 +158,28 @@ public class FileOrganism extends FileBiological {
 				currentLine = this.getChamp(++i);
 				while ( (i < this.lengthFile()) 
 						&& (currentLine.matches("^\t[0-9]{3}\t[0-9]{3}$")) ) {
-					String chemIndex = currentLine.substring(1,4);
-					String chemValue = currentLine.substring(5,8);
+					String chemIndex = currentLine.substring(1, 4);
+					String chemValue = currentLine.substring(5, 8);
 					// System.out.println("\t"+chemIndex+"\t"+chemValue);
-					this.orga.getChemicals().setVariable(chemIndex, chemValue);
-					//					this.chemicalVariables.addStringCouple(new StringCouple(chemIndex,chemValue));
+					this.orga.getChemicals().setVariable(	Integer.parseInt( chemIndex ), 
+															Integer.parseInt( chemValue ));
 					currentLine = this.getChamp(++i);
 				}
 				i--; /** rollback out of while **/
 			} else if (currentLine.matches("^BRAIN HEIGHT\t(.*)$")) 
-			{ this.brainHeight = Integer.parseInt(currentLine.substring(13)); } 
+				{ this.brainHeight = Integer.parseInt(currentLine.substring(13)); } 
 			else if (currentLine.matches("^BRAIN WIDTH\t(.*)$")) 
-			{ this.brainWidth = Integer.parseInt(currentLine.substring(12)); } 
+				{ this.brainWidth = Integer.parseInt(currentLine.substring(12)); } 
 			else if (currentLine.matches("^BRAIN DEPTH\t(.*)$")) 
-			{ this.brainDepth = Integer.parseInt(currentLine.substring(12)); }
+				{ this.brainDepth = Integer.parseInt(currentLine.substring(12)); }
 		}
 		// System.out.println("######");
 		if ( ( (this.brainHeight != 0) && (this.brainWidth != 0) ) 
 				&& (this.brainDepth != 0) ) {
-			/** TODO lecture réseau neuronal */
+			// ***** TODO lecture réseau neuronal 
 			Brain cc = null;
-			try { cc = new Brain(this.brainWidth,
-					this.brainHeight,
-					this.brainDepth); } 
-			catch (BrainLengthException e) { ; }
+			try { cc = BrainBuilder.brainBuilder(this.brainWidth, this.brainHeight, this.brainDepth); } 
+			catch (BrainLengthException e) { cc = null; }
 			this.orga.setBrain(cc);
 		}
 		if (currentChromosome.length() > 0) 
@@ -248,10 +247,9 @@ public class FileOrganism extends FileBiological {
 		for (int i = 0 ; i < chemicals.length() ; i++) {
 			if (chemicals.getVariable(i) > 0) {
 				String chemIndex = GeneJPanel.convertThreeChars(i);
-				String chemValue = 
-						GeneJPanel.convertThreeChars(chemicals.getVariable(i));
-				this.orga.getChemicals().setVariable(chemIndex, chemValue);
-				//				this.chemicalVariables.addStringCouple(new StringCouple(chemIndex,chemValue));
+				String chemValue = GeneJPanel.convertThreeChars(chemicals.getVariable(i));
+				this.orga.getChemicals().setVariable(	Integer.parseInt( chemIndex ), 
+						Integer.parseInt( chemValue ));
 			}
 		}
 
@@ -260,37 +258,38 @@ public class FileOrganism extends FileBiological {
 
 	public Organism getOrganism()		{ return this.orga; }
 
-	public int lengthLineage()			{ return this.orga.lengthLineage(); }
+	public int lengthLineage()			
+		{ return this.orga.lengthLineage(); }
 	public String getSimpleLinage(int i) 
-	{ return this.orga.getSimpleLineage(i); }
+		{ return this.orga.getSimpleLineage(i); }
 
 	public void setGenome(List<Chromosome> genome) 
 	{ this.orga.setGenome(genome); }
 
 	public List<String> getAllNames()	{ return this.orga.getAllNames(); }
 	public void setNameScientific(String scientificName) 
-	{ this.orga.setNameScientific(scientificName); }
+		{ this.orga.setNameScientific(scientificName); }
 	public void setNameBiosilico(String biosilicoName) 
-	{ this.orga.setNameBiosilico(biosilicoName); }
+		{ this.orga.setNameBiosilico(biosilicoName); }
 	public void setNameCommon(String commonName) 
-	{ this.orga.setNameCommon(commonName); }
+		{ this.orga.setNameCommon(commonName); }
 	public void setNameIncluded(String includedName) 
-	{ this.orga.setNameIncluded(includedName); }
+		{ this.orga.setNameIncluded(includedName); }
 	public void addOtherName(String otherName)
-	{ this.orga.addOtherName(otherName); }
+		{ this.orga.addOtherName(otherName); }
 
 	public String getBioSilicoName() 
-	{ return this.orga.getBioSilicoName(); }
+		{ return this.orga.getBioSilicoName(); }
 	public String getScientificName()	
-	{ return this.orga.getScientificName(); }
+		{ return this.orga.getScientificName(); }
 
 	public String getRank()				
-	{ return this.orga.getRank(); }
+		{ return this.orga.getRank(); }
 	public String getUniqueID()			
-	{ return this.orga.getUniqueID(); }
+		{ return this.orga.getUniqueID(); }
 
-	public void setExtendedLineage(ExtendedLineage lineage)
-	{ this.orga.setExtendedLineage(lineage); }
+	public void setExtendedLineage(List<ExtendedLineageItem> lineage)
+		{ this.orga.setExtendedLineage(lineage); }
 
 	public String printFile() throws DataException {
 		this.setChamps(this.toString().split("\n"));

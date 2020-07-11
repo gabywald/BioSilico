@@ -27,7 +27,7 @@ public class GeneticTranslator {
 		this.refOrNot	= ref;
 		if (ref)	{ table = GeneticCode.readFromNCBIG01(); } 
 		else		{ table = GeneticCode.readFromNCBIG02(); }
-		/** TODO make exception if (ncbiIndex < 0) or ( ncbiIndex > table.length) ?? */
+		/** TODO [DP builder] make exception if (ncbiIndex < 0) or ( ncbiIndex > table.length) ?? */
 		this.genCode	= table[ncbi];
 		this.root		= this.genCode.makeAsEncodingNode();
 	}

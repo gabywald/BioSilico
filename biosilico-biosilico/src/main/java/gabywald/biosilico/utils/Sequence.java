@@ -31,7 +31,7 @@ public class Sequence {
 	 * @param sequence String
 	 * @see Sequence#putSequence(String)
 	 */
-	public Sequence(String name,String sequence){
+	public Sequence(String name, String sequence) {
 		this.name = name;
 		this.putSequence(sequence); 
 	}
@@ -53,7 +53,7 @@ public class Sequence {
 		}
 		this.length = length;
 		this.lengthAlign = sequence.length();
-		/** Stockage de la sequence dans un tableau. */
+		// ***** Sequence in a table. 
 		this.sequenceBase = new Base[this.length];
 		this.sequenceChar = new char[this.length];
 		this.sequenceString = sequence;
@@ -64,21 +64,22 @@ public class Sequence {
 				if (Base.isBase(letter)){
 					this.sequenceBase[i] = new Base(letter,j);
 					this.sequenceChar[i] = letter;
-					i++; /** Count number of bases / chars. */
+					i++; // ***** Count number of bases / chars. 
 				}
-				j++; /** Count real nucleotids / gaps. */
+				j++; // ***** Count real nucleotids / gaps. 
 			}
-			k++; /** Count real length of sequence submitted.  */
+			k++; // ***** Count real length of sequence submitted. 
 		}
 	}
 
-	public void setNom(String name) { this.name = name; }
-	public String getNom() { return this.name; }
-	public int length() { return this.length; }
-	public int lengthAlign() { return this.lengthAlign; }
-	public String getSequence() { return this.sequenceString; }
-	public Base[] getSequenceBase() { return this.sequenceBase; }
-	public String getSequenceToString() { return this.getSequenceBaseToString(); }
+	public void setNom(String name)		{ this.name = name; }
+	public String getNom()				{ return this.name; }
+	public int length()					{ return this.length; }
+	public int lengthAlign()			{ return this.lengthAlign; }
+	public String getSequence()			{ return this.sequenceString; }
+	public Base[] getSequenceBase()		{ return this.sequenceBase; }
+	public String getSequenceToString()	{ return this.getSequenceBaseToString(); }
+	
 	public String getSequenceBaseToString() { 
 		String sequenceString = "";
 		/** pourrait aussi etre : i < this.longueur et += this.getBaseChar(i)... */
@@ -86,7 +87,9 @@ public class Sequence {
 		{ sequenceString += this.sequenceBase[i].getBase(); }
 		return sequenceString; 
 	}
-	public char[] getSequenceChar() { return this.sequenceChar; }
+	
+	public char[] getSequenceChar()		{ return this.sequenceChar; }
+	
 	public String getSequenceCharToString() { 
 		String sequenceString = "";
 		/** pourrait aussi etre : i < this.longueur et += this.getBaseChar(i)... */
@@ -195,7 +198,7 @@ public class Sequence {
 	 * Sum the percentage of each nucleotide. 
 	 * @return String
 	 */
-	public String pourcentageBases(){     	
+	public String pourcentageBases() {     	
 		String res = "";
 		double[] tab = new double[] {0.0,0.0,0.0,0.0};
 		for(int i = 0 ; i < this.length() ; i++){
@@ -220,7 +223,7 @@ public class Sequence {
 	 * @param begin (int) Beginning of removing (excluded). 
 	 * @param end (int) End of removing (excluded). 
 	 */
-	public void removeSubSequence(int begin,int end) {
+	public void removeSubSequence(int begin, int end) {
 		if (begin < 0) { begin = 0; }
 		if (end > this.length) { end = this.length; }
 		if ( (begin > end) && (end != 0) ) 
@@ -268,8 +271,8 @@ public class Sequence {
 	 */
 	public boolean equals(Sequence toCompare) {
 		/** if (!this.nom.equals(toCompare.getNom())) { return false; } */
-		if (this.length != toCompare.length()) { return false; }
-		if (this.lengthAlign != toCompare.lengthAlign()) { return false; }
+		if (this.length != toCompare.length())				{ return false; }
+		if (this.lengthAlign != toCompare.lengthAlign())	{ return false; }
 		if (!this.sequenceString.equals(toCompare.getSequence())) 
 			{ return false; }
 		return true;
@@ -280,8 +283,7 @@ public class Sequence {
 	 * @return (Sequence)
 	 */ 
 	public Sequence getCopy() {
-		Sequence nouvelleSequence = 
-			new Sequence(this.name+"**clone",this.getSequence());
+		Sequence nouvelleSequence = new Sequence(this.name+"**clone",this.getSequence());
 		return nouvelleSequence;
 	}
 	

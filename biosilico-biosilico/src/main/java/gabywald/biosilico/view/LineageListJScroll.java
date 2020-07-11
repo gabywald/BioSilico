@@ -1,8 +1,12 @@
 package gabywald.biosilico.view;
 
 import gabywald.biosilico.data.FileOrganism;
-import gabywald.biosilico.structures.ExtendedLineage;
+import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.global.view.graph.GenericJScroll;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,12 +23,12 @@ import javax.swing.JButton;
 public class LineageListJScroll extends GenericJScroll 
 								implements ActionListener {
 	/** To move up or down a lineage in the list. */
-	private JButton uppeLineage,downLineage;
+	private JButton uppeLineage, downLineage;
 	/** To add / remove a lineage in the list. */
-	private JButton addLineage,remLineage;
+	private JButton addLineage, remLineage;
 	
 	/** Extended lineage of the Organism. */
-	private ExtendedLineage extendedlineage;
+	private List<ExtendedLineageItem> extendedlineage;
 	
 	/** Default Constructor. */
 	public LineageListJScroll() {
@@ -37,7 +41,7 @@ public class LineageListJScroll extends GenericJScroll
 		this.uppeLineage.addActionListener(this);
 		this.downLineage.addActionListener(this);
 		
-		this.extendedlineage = new ExtendedLineage();
+		this.extendedlineage = new ArrayList<ExtendedLineageItem>();
 	}
 	
 	public JButton getAddButton()	{ return this.addLineage; }
@@ -45,7 +49,7 @@ public class LineageListJScroll extends GenericJScroll
 	public JButton getUppButton()	{ return this.uppeLineage; }
 	public JButton getDowButton()	{ return this.downLineage; }
 	
-	public ExtendedLineage getExtendedLineage() 
+	public List<ExtendedLineageItem> getExtendedLineage() 
 		{ return this.extendedlineage; }
 
 	public void actionPerformed(ActionEvent arg0) {
@@ -54,7 +58,7 @@ public class LineageListJScroll extends GenericJScroll
 			this.removeCurrentSelection();
 			int selected = this.getSelectedIndex();
 			if (selected != -1) 
-				{ this.extendedlineage.removeExtendedLineageItem(selected); }
+				{ this.extendedlineage.remove(selected); }
 			if (this.length() < 1) 
 				{ this.setEnabled(false); }
 		} else if (source.equals(this.addLineage)) {
@@ -65,7 +69,7 @@ public class LineageListJScroll extends GenericJScroll
 				String unID = toLoad.getUniqueID();
 				String scie = toLoad.getScientificName();
 				this.addString(scie);
-				this.extendedlineage.addExtendedLineageItem(unID, scie, rank);
+				this.extendedlineage.add(new ExtendedLineageItem(unID, scie, rank));
 			}
 		}
 		else if (source.equals(this.uppeLineage)) 
@@ -85,9 +89,9 @@ public class LineageListJScroll extends GenericJScroll
 		int selectedIndex = this.getSelectedIndex();
 		if (selectedIndex != -1) {
 			if (upOrDown) 
-				{ this.extendedlineage.exchange(selectedIndex-1, selectedIndex); } 
+				{ Collections.swap(this.extendedlineage, selectedIndex-1, selectedIndex); } 
 			else 
-				{ this.extendedlineage.exchange(selectedIndex+1, selectedIndex); }
+				{ Collections.swap(this.extendedlineage, selectedIndex+1, selectedIndex); }
 		}
 		super.moveCurrentSelection(upOrDown);
 	}

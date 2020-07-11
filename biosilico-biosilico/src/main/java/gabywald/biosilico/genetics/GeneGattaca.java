@@ -17,7 +17,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * <li><b>6 : </b>StimulusDecision</li>
  * <li><b>7 : </b>Instinct</li>
  * </ul>
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class GeneGattaca extends Gene {
 
@@ -38,8 +38,8 @@ public abstract class GeneGattaca extends Gene {
 	 * @see EmitterReceptor
 	 * @see Gene#Gene(boolean, boolean, boolean, boolean, int, int, int, int)
 	 */
-	public GeneGattaca(boolean mutate, boolean duplicate, boolean delete,
-			boolean activ, int age_min, int age_max, int sex,int mut_rate) 
+	public GeneGattaca(	boolean mutate, boolean duplicate, boolean delete, boolean activ, 
+						int age_min, int age_max, int sex, int mut_rate) 
 		{ super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate); }
 
 	/**
@@ -56,7 +56,7 @@ public abstract class GeneGattaca extends Gene {
 				i = i+3) {
 			String triplet = sequence.substring(i, i+3);
 			result += GeneticTranslator.translationGattaca(triplet.toUpperCase());
-				/** GeneGattaca.gattacaCode(triplet.toUpperCase()); */
+			// GeneGattaca.gattacaCode(triplet.toUpperCase());
 		}
 		return result;
 	}
@@ -67,36 +67,24 @@ public abstract class GeneGattaca extends Gene {
 	 * @return (String) Mostly header (if 'end' is false). 
 	 */
 	public String reverseTranslation(boolean end) {
-		/** Start with 'M' (begin) : "GGC" */
+		// Start with 'M' (begin) : "GGC" 
 		String result = GeneticTranslator.reverseGattaca("M");
-		/** true => 0 2 4 6 8 (divided by 2 rest is 0) : "CTG" */
-		/** false => 1 3 5 7 9 (divided by 2 rest is 1) : "CGT" */
-		result +=  (this.canMutate())?
-					GeneticTranslator.reverseGattaca("0") 
-					:GeneticTranslator.reverseGattaca("1");
-		result += (this.canDuplicate())?
-					GeneticTranslator.reverseGattaca("2")
-					:GeneticTranslator.reverseGattaca("3"); 
-		result += (this.canDelete())?
-					GeneticTranslator.reverseGattaca("4")
+		// true => 0 2 4 6 8 (divided by 2 rest is 0) : "CTG" 
+		// false => 1 3 5 7 9 (divided by 2 rest is 1) : "CGT" 
+		result +=  (this.canMutate()) ? GeneticTranslator.reverseGattaca("0") 
+					: GeneticTranslator.reverseGattaca("1");
+		result += (this.canDuplicate()) ? GeneticTranslator.reverseGattaca("2")
+					: GeneticTranslator.reverseGattaca("3"); 
+		result += (this.canDelete()) ? GeneticTranslator.reverseGattaca("4")
 					:GeneticTranslator.reverseGattaca("5");
-		result += (this.isActiv())?
-					GeneticTranslator.reverseGattaca("6")
-					:GeneticTranslator.reverseGattaca("7");
-		/** if (this.getAgeMin() < 100) { agemin = "0"+agemin; } */
-		/** if (this.getAgeMin() < 10) { agemin = "0"+agemin; } */
-		String agemin = ((this.getAgeMin() < 100)?
-			"0"+((this.getAgeMin() < 10)?"0":"")
-			:"")+this.getAgeMin();
-		String agemax = 
-			((this.getAgeMax() < 100)?"0"+((this.getAgeMax() < 10)?"0":""):"")
-			+this.getAgeMax();
-		String sexact = 
-			((this.getSexAct() < 100)?"0"+((this.getSexAct() < 10)?"0":""):"")
-			+this.getSexAct();
-		String mutrat = 
-			((this.getMutationRate() < 10)?"0":"")
-			+this.getMutationRate();
+		result += (this.isActiv()) ? GeneticTranslator.reverseGattaca("6")
+					: GeneticTranslator.reverseGattaca("7");
+		// if (this.getAgeMin() < 100)	{ agemin = "0"+agemin; } 
+		// if (this.getAgeMin() < 10)	{ agemin = "0"+agemin; } 
+		String agemin = Gene.convert0to999(this.getAgeMin());
+		String agemax = Gene.convert0to999(this.getAgeMax());
+		String sexact = Gene.convert0to999(this.getSexAct());
+		String mutrat = ((this.getMutationRate() < 10)?"0":"")+this.getMutationRate();
 		for (int i = 0 ; i < agemin.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(agemin.charAt(i)+""); }
 		for (int i = 0 ; i < agemax.length() ; i++) 
@@ -105,9 +93,9 @@ public abstract class GeneGattaca extends Gene {
 			{ result += GeneticTranslator.reverseGattaca(sexact.charAt(i)+""); }
 		for (int i = 0 ; i < mutrat.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(mutrat.charAt(i)+""); }
-		/** adding ":" to end header. */
+		// adding ":" to end header. 
 		result += GeneticTranslator.reverseGattaca(":");
-		/** End with '*' (end) if ended here, only header). "GGT" */
+		// End with '*' (end) if ended here, only header). "GGT" 
 		return (end)?result+GeneticTranslator.reverseGattaca("*"):result; 
 	}
 	

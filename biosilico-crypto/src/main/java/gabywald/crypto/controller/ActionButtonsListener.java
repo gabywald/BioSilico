@@ -68,9 +68,8 @@ public class ActionButtonsListener implements ActionListener {
 		case(2): /** 'Encrypt the file(s). ' */
 			String toEncrypt	= cfInstance.getClearContent();
 			String pathOfFile	= cfInstance.getFilePathToUse();
-			/** System.out.println("\t'"+pathOfFile+"'\n\""+toEncrypt+"\""); */
 			if (pathOfFile.equals("")) {
-				/** Direct content treatment... */
+				// ***** Direct content treatment... 
 				// this.gbfc.setContent(toEncrypt);
 				this.gbfc.setPathAndContent("", toEncrypt);
 				// cfInstance.setCryptContent(this.gbfc.getEncodedCont()
@@ -80,12 +79,10 @@ public class ActionButtonsListener implements ActionListener {
 				pathOfFile			= pathOfFile.replaceAll("\\\\", "/"); /** !! */
 				String current		= Utils.getExtension(new File(pathOfFile));
 				if (current != null) {
-					/** File treatment. */
-					// /** String encodedPath = */this.gbfc.setPath(pathOfFile);
-					// /** String encodedFile = */this.gbfc.setContent(toEncrypt);
+					// ***** File treatment. 
 					this.gbfc.setPathAndContent(pathOfFile, toEncrypt);
 				} else {
-					/** Directory(ies) treament. */
+					// ***** Directory(ies) treament. 
 					String[] pathes = toEncrypt.split("\n");
 					for (int i = 0 ; i <  pathes.length ; i++) {
 						File tmp			= new File(pathes[i]);
@@ -106,8 +103,8 @@ public class ActionButtonsListener implements ActionListener {
 							else { this.gbfc.addPathAndContent(pathOfDir, toEncrypt); }
 						}
 					}
-				} /** END (File|directory(ies)) treatment... */
-			} /** END else / if (pathOfFile.equals("")) */
+				} // END (File|directory(ies)) treatment... 
+			} // END else / if (pathOfFile.equals("")) 
 			cfInstance.setCryptContent(this.gbfc.getEncodedCont() + "\n\n" + this.gbfc.getFullEncryption());
 			break;
 		case(3): /** 'Decrypt the file(s). ' */

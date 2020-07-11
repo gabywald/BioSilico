@@ -1,18 +1,16 @@
 package gabywald.cellmodel.model;
 
-import gabywald.cellmodel.structures.VesiculeListe;
+import java.util.List;
 
 /**
  * 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public interface ContentProtein extends Content {
-	// abstract private ProteinFile tempa;
-	abstract public boolean addProtein(Protein elt);
-	abstract public boolean remProtein(Protein elt);
-	abstract public boolean isEmpty();
-	abstract public int length();
-	abstract public Protein popProtein();
-	abstract public VesiculeListe transport();
-	
+	public boolean addProtein(Protein elt);
+	public boolean remProtein(Protein elt);
+	public boolean isEmpty();
+	public int length();
+	public Protein popProtein();
+	public List<Vesicule> transport();
 }

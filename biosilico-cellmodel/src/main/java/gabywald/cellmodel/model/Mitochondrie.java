@@ -3,14 +3,14 @@ package gabywald.cellmodel.model;
 import gabywald.cellmodel.structures.ARNFile;
 import gabywald.cellmodel.structures.ProteinFile;
 import gabywald.cellmodel.structures.RibosomeListe;
-import gabywald.cellmodel.structures.VesiculeListe;
 import gabywald.global.structures.ObservableObject;
 
+import java.util.List;
 import java.util.Random;
 
 /**
  * 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Mitochondrie 
 		extends ObservableObject 
@@ -63,7 +63,7 @@ public class Mitochondrie
 	 * @return (VesiculeListe) here is <b>null</b> because do not externalize proteines
 	 * @see Vesicule#VESICULE_LEVEL
 	 */
-	public VesiculeListe transport() 
+	public List<Vesicule> transport() 
 		{ return null; }
 	
 	

@@ -22,7 +22,7 @@ public class BaseGattaca extends Base {
 	 * @param base char
 	 * @return boolean
 	 */
-	public static boolean isBase(char base){
+	public static boolean isBase(char base) {
 		String regExpBases = "^[ACGT]$";
 		String baseString = base+"";
 		if (baseString.matches(regExpBases)) { return true; }
@@ -33,7 +33,7 @@ public class BaseGattaca extends Base {
 	 * To test if nucleotids or gap / indel symbolized with '-'.  
 	 * @param base char
 	 */
-	public static boolean isBaseOrGap(char base){
+	public static boolean isBaseOrGap(char base) {
 		if ( (BaseGattaca.isBase(base)) || (base == '-') ) { return true; }
 		else { return false; }
 	}

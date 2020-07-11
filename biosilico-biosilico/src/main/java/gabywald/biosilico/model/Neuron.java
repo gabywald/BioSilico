@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Neuron {
 	/** Rest state of the neuron. */
-	private int rest_state;
+	private int restState;
 	/** Activation level of the neuron. */
 	private int threshold;
 	/** Current activity of the neuron. */
@@ -21,9 +21,9 @@ public class Neuron {
 	/** Position in the neural network. */
 	private Position position;
 	/** Minimal number of dendritic connections (inputs) [0 to 8]. */
-	private int dendritic_min;
+	private int dmin;
 	/** Maximal number of dendritic connections (inputs) [0 to 8]. */
-	private int dendritic_max;
+	private int dmax;
 	/** Table of neurones current Neuron is connected with (as dendrites). */
 	private List<Neuron> connections;
 	/** Respective weights attributed to input connections. */
@@ -47,9 +47,7 @@ public class Neuron {
 	 * min and max dendrites at 0 (and 0 spaces for connections).
 	 */
 	public Neuron() {
-		this(0, 100, 0, 10, null, 0, 0, new ArrayList<Neuron>(), new ArrayList<Integer>(), 0, 1, false, 0, false);
-		// this((int rest, int thre, int acti, int desc, Position pos, int dmin, int dmax, NeuronListe conn, List<Integer> weights, 
-		// int ind, int prox, boolean repr, int repy, boolean wta);
+		this(0, 100, 0, 10, 0, 0, 0, 1, false, 0, false, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/**
@@ -65,12 +63,10 @@ public class Neuron {
 	 * @param repy (int) number of maximum reproductions. 
 	 * @see Neuron#setPosition(int, int)
 	 */
-	public Neuron (int rest, int thre, int desc,
-			int dendriticmin, int dendriticmax,
-			int prox, boolean repr, int repy) {
-		this(rest, thre, rest, rest, null, dendriticmin, dendriticmax, new ArrayList<Neuron>(), new ArrayList<Integer>(), 0, prox, repr, repy, false);
-		// this((int rest, int thre, int acti, int desc, Position pos, int dmin, int dmax, NeuronListe conn, List<Integer> weights, 
-		// int ind, int prox, boolean repr, int repy, boolean wta);
+	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
+					int prox, boolean repr, int repy) {
+		this(	rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, false, 
+				null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/**
@@ -87,13 +83,10 @@ public class Neuron {
 	 * @param wta (boolean) Winner Take All parameter. 
 	 * @see Neuron#setPosition(int, int)
 	 */
-	public Neuron (int rest, int thre, int desc, 
-			int dendriticmin, int dendriticmax,
-			int prox, boolean repr, int repy, 
-			boolean wta) {
-		this(rest, thre, rest, rest, null, dendriticmin, dendriticmax, new ArrayList<Neuron>(), new ArrayList<Integer>(), 0, prox, repr, repy, wta);
-		// this((int rest, int thre, int acti, int desc, Position pos, int dmin, int dmax, NeuronListe conn, List<Integer> weights, 
-		// int ind, int prox, boolean repr, int repy, boolean wta);
+	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
+					int prox, boolean repr, int repy, boolean wta) {
+		this(	rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, wta, 
+				null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/** 
@@ -102,40 +95,40 @@ public class Neuron {
 	 * @param thre (int) threshold. 
 	 * @param acti (int) activity. 
 	 * @param desc (int) descent.
-	 * @param pos (Position)
 	 * @param dmin (int) dendritic minimal connections. 
 	 * @param dmax (int) dendritic maximal connections. 
-	 * @param conn (NeuronListe) set of input dendrites. 
-	 * @param weights (IntegerListe) set of weights of intputs. 
-	 * @param ind (int) index of sets. 
+	 * @param index (int) index of sets. 
 	 * @param prox (int) proximity. 
 	 * @param repr (boolean) if current Neuron can reproduce. 
 	 * @param repy (int) number of maximum reproductions. 
+	 * @param pos (Position)
+	 * @param conn (Neuron's Liste) set of input dendrites. 
+	 * @param weights (Integer's Liste) set of weights of intputs. 
 	 * @see Neuron#getCopy()
 	 */
-	private Neuron (int rest, int thre, int acti, int desc, 
-					Position pos, int dmin, int dmax, 
-					List<Neuron> conn, List<Integer> weights, 
-					int ind, int prox, boolean repr, int repy, 
-					boolean wta) {
-		this.activity			= acti;
-		this.connections		= conn;
-		this.dendritic_max		= dmax;
-		this.dendritic_min		= dmin;
-		this.descent			= desc;
-		this.index				= ind;
-		this.position			= pos;
-		this.rest_state			= rest;
+	Neuron(	int rest, int thre, int acti, int desc, int dmin, int dmax, 
+			int index, int prox, boolean repr, int repy, boolean wta, 
+			Position pos, List<Neuron> conn, List<Integer> weights) {
+		this.restState			= rest;
 		this.threshold			= thre;
-		this.weights			= weights;
+		this.activity			= acti;
+		this.descent			= desc;
+		
+		this.dmax				= dmax;
+		this.dmin				= dmin;
+		
+		this.index				= index;
+		this.position			= pos;
+
 		this.proximity			= prox;
 		this.reproduction		= repr;
 		this.reproductibility	= repy;
 		this.winnerTakeAll		= wta;
+		
+		this.connections		= conn;
+		this.weights			= weights;
 		this.currentLobe		= new ArrayList<Neuron>();
 	}
-	
-
 	
 	/**
 	 * Add a dendrite connection to current Neuron. 
@@ -168,11 +161,10 @@ public class Neuron {
 	
 	/** This method to recalculate activity of current Neuron. */
 	public void recompute() {
-		if (this.activity != this.rest_state) {
-			int relative = (this.threshold-this.rest_state);
+		if (this.activity != this.restState) {
+			int relative = (this.threshold - this.restState);
 			int i = 0;
-			while ( (i < this.descent) 
-					&& (this.activity != this.rest_state) ) {
+			while ( (i < this.descent) && (this.activity != this.restState) ) {
 				if (relative > 0) { this.activity--; }
 				else { this.activity++; }
 				i++;
@@ -192,16 +184,17 @@ public class Neuron {
 	 * @param nn (Brain) Neural Network where current Neuron is.
 	 */
 	public void reconnection(Brain nn) {
-		/** Not removing / changing if under dendritic_min */
-		if (this.connections.size() > this.dendritic_min) {
+		// ***** Not removing / changing if under dendritic_min 
+		if (this.connections.size() > this.dmin) {
 			for (int i = this.index-1 
-					; i >= this.dendritic_min /** 0 */ 
+					; i >= this.dmin /** 0 */ 
 					; i--) {
 				// ***** Change weights of Neurons, if activated or not. 
 				if (this.connections.get(i).isActivated()) {
 					if (this.weights.get(i).intValue() < 999)
 						{ this.weights.set(i,  this.weights.get(i) + 1); }
-				} else {/**  (!this.connections.getNeuron(i).isActivated()) */ 
+				} else {
+					/**  (!this.connections.getNeuron(i).isActivated()) */ 
 					if (this.weights.get(i).intValue() > 0)
 						{ this.weights.set(i,  this.weights.get(i) - 1); }
 				}
@@ -214,11 +207,11 @@ public class Neuron {
 				}
 			}
 		}
-		/** Add new Neuron's if necessary. */
-		if ( (this.index < this.dendritic_min) && (this.position != null) ){
+		// ***** Add new Neuron's if necessary. 
+		if ( (this.index < this.dmin) && (this.position != null) ) {
 			List<Neuron> candidates = /** here a set of activated Neurons */
-				nn.getNeuronBefore(this.position,this.proximity);
-			while ( (this.index < this.dendritic_max) 
+				nn.getNeuronBefore(this.position, this.proximity);
+			while ( (this.index < this.dmax) 
 						&& candidates.size() > 0 ) {
 				Neuron candidate = candidates.get(0);
 				// ***** Test if same Neuron at same position is present. 
@@ -242,9 +235,8 @@ public class Neuron {
 	public void reproduce(Brain nn) {
 		int proximity = 1;
 		if ( (this.reproduction) && (this.isActivated()) ) {
-			if ( (this.reproductibility > 0) && (this.position != null) ){
-				if (nn.getActivityBefore(this.position, proximity) 
-						<= this.dendritic_min) { 
+			if ( (this.reproductibility > 0) && (this.position != null) ){ 
+				if (nn.getActivityBefore(this.position, proximity) <= this.dmin) { 
 					Position nextpos = 
 						nn.getBestPositionNear(this.position, proximity);
 					if (nextpos != null) {
@@ -274,7 +266,7 @@ public class Neuron {
 			if ( (val != 0) && (this.activity != val) )
 				{ this.activity = 0; }
 		}
-		int relative = (this.threshold - this.rest_state);
+		int relative = (this.threshold - this.restState);
 		if ( (relative > 0) && (this.activity >= this.threshold) )
 			{ return true; }
 		else {
@@ -292,7 +284,7 @@ public class Neuron {
 	 * @see Brain#getActivityNear(Position, int)
 	 */
 	public boolean ckActivated() {
-		int relative = (this.threshold-this.rest_state);
+		int relative = (this.threshold - this.restState);
 		if ( (relative > 0) && (this.activity >= this.threshold) )
 			{ return true; }
 		else {
@@ -317,19 +309,19 @@ public class Neuron {
 			tmpconn.add(this.connections.get(i));
 			tmpweig.add(this.weights.get(i));
 		}
-		/** Avoiding a nullException... */
+		// ***** Avoiding a nullException... 
 		if (this.position == null) { this.position = new Position(-1,-1); }
-		/** Returning instanciation of copy / clone... */
-		return new Neuron(this.rest_state,this.threshold,
-						  this.activity,this.descent, 
-						  this.position.getCopy(), 
-						  this.dendritic_min, 
-						  this.dendritic_max, 
-						  tmpconn, tmpweig, this.index, 
+		// ***** Returning instanciation of copy / clone... 
+		return new Neuron(this.restState, this.threshold,
+						  this.activity, this.descent, 
+						  this.dmin, this.dmax, 
+						  this.index, 
 						  this.proximity, 
 						  this.reproduction, 
 						  this.reproductibility, 
-						  this.winnerTakeAll);
+						  this.winnerTakeAll, 
+						  this.position.getCopy(), 
+						  tmpconn, tmpweig);
 	}
 	
 	/**
@@ -353,15 +345,15 @@ public class Neuron {
 	 * @return (boolean)
 	 */
 	public boolean equals(Neuron toCompare) {
-		if (this.rest_state != toCompare.rest_state)		{ return false; }
-		if (this.threshold != toCompare.threshold)			{ return false; }
-		if (this.descent != toCompare.descent)				{ return false; }
-		if (this.dendritic_min != toCompare.dendritic_min)	{ return false; }
-		if (this.dendritic_max != toCompare.dendritic_max)	{ return false; }
-		if (this.proximity != toCompare.proximity)			{ return false; }
-		if (this.reproduction != toCompare.reproduction)	{ return false; }
-		if (this.winnerTakeAll != toCompare.winnerTakeAll)	{ return false; }
-		/** if any of previous has not append */
+		if (this.restState		!= toCompare.restState)		{ return false; }
+		if (this.threshold		!= toCompare.threshold)		{ return false; }
+		if (this.descent		!= toCompare.descent)		{ return false; }
+		if (this.dmin			!= toCompare.dmin)			{ return false; }
+		if (this.dmax			!= toCompare.dmax)			{ return false; }
+		if (this.proximity		!= toCompare.proximity)		{ return false; }
+		if (this.reproduction	!= toCompare.reproduction)	{ return false; }
+		if (this.winnerTakeAll	!= toCompare.winnerTakeAll)	{ return false; }
+		// ***** if any of previous is not happend !
 		return true;
 	}
 	
@@ -378,9 +370,15 @@ public class Neuron {
 		return true;
 	}
 		
-	public int getRestState()				{ return this.rest_state; }
+	public int getRestState()				{ return this.restState; }
 	public int getThreshold()				{ return this.threshold; }
 	public int getDescent()					{ return this.descent; }
+	public int getDmin()					{ return this.dmin; }
+	public int getDmax()					{ return this.dmax; }
+	public int getProximity()				{ return this.proximity; }
+	public boolean getReproduction()		{ return this.reproduction; }
+	public int getReproductibility()		{ return this.reproductibility; }
+
 	public int getActivity()				{ return this.activity; }
 	public List<Neuron> getConnections()	{ return this.connections; }
 	public List<Integer> getWeights()		{ return this.weights; }
@@ -391,46 +389,6 @@ public class Neuron {
 	public boolean isWTA()					{ return this.winnerTakeAll; }
 	public void setLobe(List<Neuron> lobe)	{ this.currentLobe = lobe; }
 	public List<Neuron> getLobe()			{ return this.currentLobe; }
-
-	/**
-	 * A typically receptor / perception Neuron. Rest at 0, threshold at 100 
-	 * (?) and descent at 10. All other parameters at 0 or false. 
-	 * WTA is false. 
-	 * @return (Neuron) typical receptor. 
-	 */
-	public static Neuron getReceptorNeuron() 
-		{ return new Neuron(0, 100, 10, 0, 0, 0, false, 0, false); }
-	
-	/**
-	 * A typically emitter Neuron. Rest at 0, threshold at 100 
-	 * (?) and descent at 10. Minimal dendritic inputs is 8 and maximal 
-	 * is 16 (very high ??). Proximity of 4. No reproduction (false and 0). 
-	 * WTA is false.  
-	 * @return (Neuron) typical emitter. 
-	 */
-	public static Neuron getEmitterNeuron() 
-		{ return new Neuron (0, 100, 10, 8, 16, 4, false, 0, false); }
-	
-	/**
-	 * A typically decision Neuron. Rest at 0, threshold at 100 
-	 * (?) and descent at 10. Minimal dendritic inputs is 8 and maximal 
-	 * is 16 (very high ??). Proximity of 4. No reproduction (false and 0). 
-	 * <b>WTA is true.</b> 
-	 * @return (Neuron) typical decision. 
-	 */
-	public static Neuron getDecisionNeuron() 
-		{ return new Neuron (0, 100, 10, 8, 16, 4, false, 0, true); }
-	
-	/**
-	 * A typically conception / middle network Neuron. Rest at 0, 
-	 * threshold at 100 (?) and descent at 10. 
-	 * Minimal dendritic input is 3, maximal is 8, proximity of 2. 
-	 * Can reproduce itself ten times (and copy inherits properties). 
-	 * WTA is false. 
-	 * @return (Neuron) typical conception. 
-	 */
-	public static Neuron getConceptionNeuron()
-		{ return new Neuron (0, 100, 10, 3, 8, 2, true, 10, false); }
 	
 	/**
 	 * Get the highest activity in a set of Neuron's. 

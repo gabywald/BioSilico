@@ -6,4 +6,14 @@ Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2
 
 Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here !
 
-Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some review for generics and some other for stream (Java 8 !). 
+Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some review for generics and some other for stream (Java 8 !). Adding some unit tests and more review !
+
+## Adding and notes
+
+Units Tests ; review...
+
+For dev on BioSilico : 
+
+* genetic execution / genes use  age and cycle (to avoid multiple instantiation of Brain / BrainLobe ++ execution of InitConcGene) : make good usage of age_min and age_max (0, 0) for initiation at start / 'birth'. 
+* ... 
+

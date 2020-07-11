@@ -28,8 +28,7 @@ public class GeneMoreListe implements StructureRecordFile {
 	/** Length of the list. */
 	private int length;
 	/** Location of the default file to record GeneMoreListe instance. */
-	public static final String GENE_LIST_FILE 
-		= FileBiological.DEFAULT_PATH_NAME+"definedGenes.txt";
+	public static final String GENE_LIST_FILE = FileBiological.DEFAULT_PATH_NAME + "definedGenes.txt";
 	/** Location of the current defined file to record GeneMoreListe instance. */
 	private String geneListFile = null;
 	/** File for Gene records. */

@@ -23,7 +23,7 @@ public class BioChemicalReactionGene extends CreatureGene {
 	 * @param rate (int)
 	 * @deprecated Use {@link BioChemicalReactionGene#ChemicalReactionGene(List)} instead !
 	 */
-	private BioChemicalReactionGene(	int qnt1, int react1, int qnt2, int react2, 
+	private BioChemicalReactionGene(int qnt1, int react1, int qnt2, int react2, 
 									int qnt3, int react3, int qnt4, int react4, 
 									int rate) {
 		super(1, 2);

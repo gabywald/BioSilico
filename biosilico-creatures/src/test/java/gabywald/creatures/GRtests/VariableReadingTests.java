@@ -14,9 +14,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 
-public class VariableReadingTests extends TestCase {
+public class VariableReadingTests {
 	
 	public void testGTC001() {
 		String variableFile = "creatures/creaturesArchivesResources/geNorNics/creatures1chemicals.txt";
@@ -46,7 +46,7 @@ public class VariableReadingTests extends TestCase {
 		
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + variableFile + "] -- {" + variableDefinitions.size() + " variables}");
 		
-		TestCase.assertEquals(true, (variableDefinitions.size() > 0) );
+		Assertions.assertEquals(true, (variableDefinitions.size() > 0) );
 	}
 	
 	public void testGTC002() {
@@ -77,6 +77,6 @@ public class VariableReadingTests extends TestCase {
 		
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + variableFile + "] -- {" + variableDefinitions.size() + " variables}");
 		
-		TestCase.assertEquals(true, (variableDefinitions.size() > 0) );
+		Assertions.assertEquals(true, (variableDefinitions.size() > 0) );
 	}
 }

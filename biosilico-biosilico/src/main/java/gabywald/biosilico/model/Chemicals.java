@@ -15,10 +15,9 @@ import gabywald.global.structures.StringCouple;
  */
 public class Chemicals {
 	/** Location of the file containing the list of chemicals (abbrev. and names). */
-	private static final String CHEMICAL_LIST_FILE = 
-			"biosilico/data/ChemicalList.txt";
+	private static final String CHEMICAL_LIST_FILE	= "biosilico/data/ChemicalList.txt";
 	/** Number of chemicals. */
-	private static final int CHEMICAL_LENGTH = 1000;
+	public static final int CHEMICAL_LENGTH			= 1000;
 	/** The table of variables. */
 	private List<Integer> vars;
 	
@@ -39,12 +38,6 @@ public class Chemicals {
 		if ( (i >= 0) && (i < this.vars.size()) )
 			{ this.vars.set(i, value); }
 		this.regulate(i);
-	}
-	
-	public void setVariable(String chemIndex,String chemValue) {
-		int i		= Integer.parseInt(chemIndex);
-		int value	= Integer.parseInt(chemValue);
-		this.setVariable(i, value);
 	}
 	
 	/**
@@ -88,8 +81,8 @@ public class Chemicals {
 	 * @param i (int) variable to regulate. 
 	 */
 	private void regulate(int i) {
-		if (this.vars.get(i).intValue() < 0)	{ this.vars.set(0, i); }
-		if (this.vars.get(i).intValue() > 999)	{ this.vars.set(999, i); }
+		if (this.vars.get(i).intValue() < 0)	{ this.vars.set(i, 0); }
+		if (this.vars.get(i).intValue() > 999)	{ this.vars.set(i, 999); }
 	}
 	
 	/**
@@ -97,9 +90,9 @@ public class Chemicals {
 	 * @param toSum (Variables) Vars to sum. 
 	 */
 	public void incorporate(Chemicals toSum) {
-		IntStream.iterate(0, i -> i++).limit( Chemicals.CHEMICAL_LENGTH )
+		IntStream.range(0, Chemicals.CHEMICAL_LENGTH )
 			.forEach( i -> {
-				this.setVarPlus(i, toSum.vars.get(i));
+				this.setVarPlus(i, toSum.vars.get(i).intValue());
 				this.regulate(i);
 			});
 	}
