@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * 
  * @author Gabriel Chandesris (2011)
- * @see gabywald.crypto.data.GenBank
- * @see gabywald.crypto.data.Embl
+ * @see gabywald.crypto.data.GenBankFormat
+ * @see gabywald.crypto.data.EmblFormat
  * @see Author
  */
 public class Reference {

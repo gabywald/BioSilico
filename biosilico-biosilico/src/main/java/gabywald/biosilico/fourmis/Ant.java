@@ -1,14 +1,16 @@
 package gabywald.biosilico.fourmis;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
  * 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Ant extends Agent implements AgentContent {
 	/** What the Ant has in its bag... */
-	private AgentListe liste;
+	private List<Agent> liste;
 	/**
 	 * Status of ant. 
 	 * <p></p>
@@ -47,7 +49,7 @@ public class Ant extends Agent implements AgentContent {
 		/** TODO genetic initial concentration. */
 		for (int i = 8 ; i < 11 ; i++) 
 			{ this.variables.setVariable(i, 999); }
-		this.liste = new AgentListe();
+		this.liste = new ArrayList<Agent>();
 		this.status = 0; /** start with an egg. */
 		this.direction = 0;
 	}
@@ -74,25 +76,25 @@ public class Ant extends Agent implements AgentContent {
 		case(7):local.getSW().addAgent(this);break;
 		case(8):local.getWW().addAgent(this);break;
 		}
-		local.getAgentListe().removeAgent(this);
+		local.getAgentListe().remove(this);
 	}
 	
 	protected void biochemistery() {
-		this.BioCHGene(20, 1,21, 1,22, 1,23, 1, 5);
-		this.BioCHGene(22, 1,23, 1,24, 1,25, 1, 5);
-		this.BioCHGene(24, 1,25, 1,26, 1,27, 1, 5);
-		this.BioCHGene(26, 1,27, 1,28, 1,29, 1, 5);
-		this.BioCHGene(28, 1,29, 1,30, 1,31, 1, 5);
-		this.BioCHGene(30, 1,31, 1,32, 1,33, 1, 5);
-		this.BioCHGene(32, 1,33, 1,34, 1,35, 1, 5);
-		this.BioCHGene(34, 1,35, 1,36, 1,37, 1, 5);
+		this.BioCHGene( 20, 1, 21, 1, 22, 1, 23, 1, 5);
+		this.BioCHGene( 22, 1, 23, 1, 24, 1, 25, 1, 5);
+		this.BioCHGene( 24, 1, 25, 1, 26, 1, 27, 1, 5);
+		this.BioCHGene( 26, 1, 27, 1, 28, 1, 29, 1, 5);
+		this.BioCHGene( 28, 1, 29, 1, 30, 1, 31, 1, 5);
+		this.BioCHGene( 30, 1, 31, 1, 32, 1, 33, 1, 5);
+		this.BioCHGene( 32, 1, 33, 1, 34, 1, 35, 1, 5);
+		this.BioCHGene( 34, 1, 35, 1, 36, 1, 37, 1, 5);
 		
-		this.BioCHGene(36, 1,37, 1, 0, 1, 1, 1, 5);
-		this.BioCHGene( 0, 1, 1, 1, 2, 1, 3, 1, 5);
-		this.BioCHGene( 2, 1, 3, 1, 4, 1, 5, 1, 5);
-		this.BioCHGene( 4, 1, 5, 1, 6, 1, 7, 1, 5);
-		this.BioCHGene( 6, 1, 7, 1, 8, 1, 9, 1, 5);
-		this.BioCHGene( 8, 1, 9, 1,10, 1,11, 1, 5);
+		this.BioCHGene( 36, 1, 37, 1,  0, 1,  1, 1, 5);
+		this.BioCHGene(  0, 1,  1, 1,  2, 1,  3, 1, 5);
+		this.BioCHGene(  2, 1,  3, 1,  4, 1,  5, 1, 5);
+		this.BioCHGene(  4, 1,  5, 1,  6, 1,  7, 1, 5);
+		this.BioCHGene(  6, 1,  7, 1,  8, 1,  9, 1, 5);
+		this.BioCHGene(  8, 1,  9, 1, 10, 1, 11, 1, 5);
 	}
 
 	protected void stimulus(WorldCase local) {
@@ -173,7 +175,7 @@ public class Ant extends Agent implements AgentContent {
 	 * @return (boolean)
 	 */
 	private boolean hasFruit() {
-		for (int i = 0 ; i < this.liste.length() ; i++) {
+		for (int i = 0 ; i < this.liste.size() ; i++) {
 			if (this.isAgentEatable(i))
 				{ return true; }
 		}
@@ -316,16 +318,14 @@ public class Ant extends Agent implements AgentContent {
 	
 	public int getDirection() { return this.direction; }
 	
-	public int getAgentListLength() { return this.liste.length(); }
-	public AgentListe getAgentListe() { return this.liste; }
-	public void addAgent(Agent elt) { this.liste.addAgent(elt); }
-	public void remAgent(int i) { this.liste.removeAgent(i); }
-	public Agent getAgent(int i) { return this.liste.getAgent(i); }
-	public boolean isAgentAlive(int i) 
-		{ return this.liste.getAgent(i).isAlive(); }
-	public boolean isAgentMovable(int i) 
-		{ return this.liste.getAgent(i).isMovable(); }
-	public boolean isAgentEatable(int i)
-		{ return this.liste.getAgent(i).isEatable(); }
+	public int getAgentListLength()			{ return this.liste.size(); }
+	public List<Agent> getAgentListe()		{ return this.liste; }
+	public void addAgent(Agent elt)			{ this.liste.add(elt); }
+	public void remAgent(int i)				{ this.liste.remove(i); }
+	public Agent getAgent(int i)			{ return this.liste.get(i); }
+	
+	public boolean isAgentAlive(int i) 		{ return this.liste.get(i).isAlive(); }
+	public boolean isAgentMovable(int i) 	{ return this.liste.get(i).isMovable(); }
+	public boolean isAgentEatable(int i)	{ return this.liste.get(i).isEatable(); }
 	
 }

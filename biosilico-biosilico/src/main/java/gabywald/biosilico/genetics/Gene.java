@@ -8,7 +8,7 @@ import gabywald.biosilico.model.Organism;
  * This class define a generic gene.<br>
  * The aim of building constructor and Getters / Setters is to instanciate a gene
  * and do not change it after that (genes can be added). 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  * @see gabywald.biosilico.genetics.InitialConcentration
  */
@@ -45,17 +45,16 @@ public abstract class Gene {
 	 * @param sex (int) Sex of activation. 
 	 * @param mutRate (int) Mutation rate. 
 	 */
-	public Gene(boolean mutate,boolean duplicate,boolean delete,
-				boolean activ,int age_min,int age_max,int sex,
-				int mutRate) {
-		this.mutate = mutate;
-		this.duplicate = duplicate;
-		this.delete = delete;
-		this.activ = activ;
-		this.age_min = (age_min < 0)?0:((age_min > 999)?999:age_min);
-		this.age_max = (age_max < 0)?0:((age_max > 999)?999:age_max);
-		this.sex = (sex < 000)?0:((sex > 999)?999:sex);
-		this.mutation_rate = (mutRate < 00)?0:((mutRate > 99)?99:mutRate);
+	public Gene(boolean mutate, boolean duplicate, boolean delete, boolean activ, 
+				int age_min, int age_max, int sex, int mutRate) {
+		this.mutate		= mutate;
+		this.duplicate	= duplicate;
+		this.delete		= delete;
+		this.activ		= activ;
+		this.age_min	= Gene.obtainValue(0, 999, age_min);
+		this.age_max	= Gene.obtainValue(0, 999, age_max);
+		this.sex		= Gene.obtainValue(0, 999, sex);
+		this.mutation_rate = Gene.obtainValue(0, 99, mutRate);
 	}
 	
 	/**
@@ -63,31 +62,34 @@ public abstract class Gene {
 	 * @param orga (Organism) Current organism. 
 	 */
 	public void execution(Organism orga) {
-		/** If gene is active and age is good. */
+		// ***** If gene is active and age is good. 
 		if ( (this.activ) && 
 				( (orga.getCycle() >= this.age_min) 
 						&& (orga.getCycle() <= this.age_max) ) ) {
-			/** If sex is strictly null or defined. */
+			// If sex is strictly null or defined. 
 			if ( (this.sex <= 0) || (this.sex == orga.getSex()) ) {
-				/** Execute current gene, can be excepted (nothing happened). */
-				try { this.exec(orga); } catch (GeneException e) { ; }
+				// Execute current gene, can be excepted (nothing happened). 
+				try { this.exec(orga); } 
+				catch (GeneException e) { ; }
 			}
 		}
 	}
 	
-	public boolean canMutate() { return this.mutate; }
-	public boolean canDuplicate() { return this.duplicate; }
-	public boolean canDelete() { return this.delete; }
+	public boolean canMutate()		{ return this.mutate; }
+	public boolean canDuplicate()	{ return this.duplicate; }
+	public boolean canDelete()		{ return this.delete; }
 	
-	public boolean isActiv() { return this.activ; }
-	public int getAgeMin() { return this.age_min; }
-	public int getAgeMax() { return this.age_max; }
-	public int getSexAct() { return this.sex; }
-	public int getMutationRate() { return this.mutation_rate; }
+	public boolean isActiv()		{ return this.activ; }
+	public int getAgeMin()			{ return this.age_min; }
+	public int getAgeMax()			{ return this.age_max; }
+	public int getSexAct()			{ return this.sex; }
+	public int getMutationRate()	{ return this.mutation_rate; }
 	
 	public void setName(String name) { this.name = name; }
+	
 	public String getName() {
-		if (this.name == null) { return Gene.DEFAULT_GENE_NAME; }
+		if (this.name == null) 
+			{ return Gene.DEFAULT_GENE_NAME; }
 		else { return this.name; }
 	}
 	
@@ -139,6 +141,25 @@ public abstract class Gene {
 	 * @param val (int) Current value of attribute. 
 	 * @return (int) Minimal, maximal or value. 
 	 */
-	public static final int obtainValue(int min,int max,int val) 
+	public static final int obtainValue(int min, int max, int val) 
 		{ return (val < min)?min:((val > max)?max:val); }
+	
+	/**
+	 * To export values. 
+	 * @param value (int)
+	 * @return '000' to '999'. 
+	 */
+	public static String convert0to999(int value) {
+		return ((value < 100) ? "0" + ((value < 10) ? "0" : "" ) : "" ) + value;
+	}
+	
+	/**
+	 * To export values. 
+	 * @param value (int)
+	 * @return '00' to '99'. 
+	 */
+	public static String convert0to99(int value) {
+		return ((value < 10) ? "0" : "" ) + value;
+	}
+	
 }

@@ -16,11 +16,7 @@ public class Atom {
 	private int[] extraInfo;
 	
 	public Atom(char[] symb) {
-		this.symbol		= symb;
-		this.posX		= 0;
-		this.posY		= 0;
-		this.posZ		= 0;
-		this.extraInfo	= new int[12];
+		this(symb, 0, 0, 0);
 	}
 	
 	public Atom(char[] symb, double xPos, double yPos, double zPos) {

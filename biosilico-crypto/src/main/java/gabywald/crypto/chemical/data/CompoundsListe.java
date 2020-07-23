@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * This class defines a set of Molecules'. 
  * @author Gabriel Chandesris (2011)
+ * @deprecated use List !!
  */
 public class CompoundsListe extends ArrayList<Molecule> {
 	

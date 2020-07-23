@@ -6,7 +6,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
  * Complete code gene. 
- * @author Gabriel Chandesris (2010)
+ * @author Gabriel Chandesris (2010, 2020)
  */
 public class GenePhaseTwo extends Gene {
 	/** Translated in a human-readable text. */
@@ -114,32 +114,20 @@ public class GenePhaseTwo extends Gene {
 		String result = GeneticTranslator.reversePhaseTwo("M");
 		/** true => 0 2 4 6 8 (divided by 2 rest is 0) */
 		/** false => 1 3 5 7 9 (divided by 2 rest is 1) */
-		result +=  (this.canMutate())?
-					GeneticTranslator.reversePhaseTwo("0") 
-					:GeneticTranslator.reversePhaseTwo("1");
-		result += (this.canDuplicate())?
-					GeneticTranslator.reversePhaseTwo("2")
-					:GeneticTranslator.reversePhaseTwo("3"); 
-		result += (this.canDelete())?
-					GeneticTranslator.reversePhaseTwo("4")
-					:GeneticTranslator.reversePhaseTwo("5");
-		result += (this.isActiv())?
-					GeneticTranslator.reversePhaseTwo("6")
-					:GeneticTranslator.reversePhaseTwo("7");
+		result +=  (this.canMutate()) ? GeneticTranslator.reversePhaseTwo("0") 
+									  : GeneticTranslator.reversePhaseTwo("1");
+		result += (this.canDuplicate()) ? GeneticTranslator.reversePhaseTwo("2")
+									  : GeneticTranslator.reversePhaseTwo("3"); 
+		result += (this.canDelete()) ? GeneticTranslator.reversePhaseTwo("4")
+									 : GeneticTranslator.reversePhaseTwo("5");
+		result += (this.isActiv()) ? GeneticTranslator.reversePhaseTwo("6")
+								   : GeneticTranslator.reversePhaseTwo("7");
 		/** if (this.getAgeMin() < 100) { agemin = "0"+agemin; } */
 		/** if (this.getAgeMin() < 10) { agemin = "0"+agemin; } */
-		String agemin = ((this.getAgeMin() < 100)?
-			"0"+((this.getAgeMin() < 10)?"0":"")
-			:"")+this.getAgeMin();
-		String agemax = 
-			((this.getAgeMax() < 100)?"0"+((this.getAgeMax() < 10)?"0":""):"")
-			+this.getAgeMax();
-		String sexact = 
-			((this.getSexAct() < 100)?"0"+((this.getSexAct() < 10)?"0":""):"")
-			+this.getSexAct();
-		String mutrat = 
-			((this.getMutationRate() < 10)?"0":"")
-			+this.getMutationRate();
+		String agemin = Gene.convert0to999( this.getAgeMin() );
+		String agemax = Gene.convert0to999( this.getAgeMax() );
+		String sexact = Gene.convert0to999( this.getSexAct() );
+		String mutrat = Gene.convert0to99( this.getMutationRate() );
 		for (int i = 0 ; i < agemin.length() ; i++) 
 			{ result += GeneticTranslator.reversePhaseTwo(agemin.charAt(i)+""); }
 		for (int i = 0 ; i < agemax.length() ; i++) 
@@ -150,8 +138,7 @@ public class GenePhaseTwo extends Gene {
 			{ result += GeneticTranslator.reversePhaseTwo(mutrat.charAt(i)+""); }
 		/** adding ":" to end header. */
 		result += GeneticTranslator.reversePhaseTwo(":");
-		/** ================================================================ */
-		/** ================================================================ */
+
 		/** ================================================================ */
 		/** Translate code content... */
 		/** TODO 
@@ -166,8 +153,7 @@ public class GenePhaseTwo extends Gene {
 		}
 		
 		/** ================================================================ */
-		/** ================================================================ */
-		/** ================================================================ */
+
 		/** End with '*' (end) if ended here, only header). */
 		end = true; /** Always in phase II code.  */
 		return (end)?result+GeneticTranslator.reversePhaseTwo("*"):result; 

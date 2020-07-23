@@ -47,12 +47,12 @@ public abstract class Agent extends ObservableObject
 	}
 	
 	/**
-	 * Construcotr with some parameters. 
+	 * Constructor with some parameters. 
 	 * @param alive (boolean)
 	 * @param movable (boolean)
 	 * @param eatable (boolean)
 	 */
-	public Agent(boolean alive,boolean movable,boolean eatable) {
+	public Agent(boolean alive, boolean movable, boolean eatable) {
 		this.init();
 		this.alive		= alive;
 		this.variables.setVariable(931, (eatable)?100:0); /** Eatable */
@@ -121,13 +121,13 @@ public abstract class Agent extends ObservableObject
 			this.setState("cycle "+this.getCycle()+" = = = = = \n");
 			this.execution(this.current);
 			this.deplace();
-			/** XXX to make organism death */
+			// ***** XXX to make organism death
 			if (this.getCycle() >= 999) { this.alive = false; }
-			/** some messages */
+			// ***** some messages
 			for (int i = 0 ; i < 40 ; i++) 
 				{ this.addState(this.variables.getVariable(i)+":"); }
-			/** next cycle */
-			/** XXX if cycle not managed biochemicaly. (aging++) */
+			// ***** next cycle
+			// ***** XXX if cycle not managed biochemicaly. (aging++)
 			this.cyclePlusPlus();
 			this.change();
 		}
@@ -166,34 +166,32 @@ public abstract class Agent extends ObservableObject
 		{ return ((this.taxonID == null)?"unknown":this.taxonID.toString()); }
 	
 	public String toString() {
-		// TODO StringBuilder ?!
-		String result = new String();
+		StringBuilder result = new StringBuilder();
 		
-		result += "TAXON ID\t"+
-					((this.taxonID == null)?"unknown":this.taxonID.toString())
-					+"\n";
-		/** Names export. */
-		result += "SCIENTIFIC NAME\t"+this.allOtherNames.get(0)+"\n";
-		result += "OTHER NAMES\n\tBIOSILICO COMMON NAME\t"+
-				this.allOtherNames.get(1)+"\n";
-		result += "\tCOMMON NAME\t\t"+this.allOtherNames.get(2)+"\n";
-		result += "\tINCLUDES\t\t"+this.allOtherNames.get(3)+"\n";
+		result	.append("TAXON ID\t")
+				.append( ((this.taxonID == null)?"unknown":this.taxonID.toString()) )
+				.append( "\n" );
+		// ***** Names export. 
+		result	.append("SCIENTIFIC NAME\t").append(this.allOtherNames.get(0)).append( "\n" );
+		result	.append("OTHER NAMES\n\tBIOSILICO COMMON NAME\t").append(this.allOtherNames.get(1)).append( "\n" );
+		result	.append("\tCOMMON NAME\t\t").append(this.allOtherNames.get(2)).append( "\n" );
+		result	.append("\tINCLUDES\t\t").append(this.allOtherNames.get(3)).append( "\n" );
 		if (this.allOtherNames.size() > 4) {
-			result += "\tNAMES\n";
+			result.append("\tNAMES\n");
 			for (int i = 4 ; i < this.allOtherNames.size() ; i++)
-				{ result += "\t\t"+this.allOtherNames.get(i)+"\n"; }
+				{ result.append("\t\t").append(this.allOtherNames.get(i)).append( "\n" ); }
 		}
-		result += "RANK\t"+this.rankDivision.getValueA()+"\n";
-		result += "DIVISION\t"+this.rankDivision.getValueB()+"\n";
-		result += "CHEMICAL VARIABLES\n";
-		result += this.variables.toString();
+		result	.append("RANK\t").append(this.rankDivision.getValueA()).append( "\n" );
+		result	.append("DIVISION\t").append(this.rankDivision.getValueB()).append( "\n" );
+		result	.append("CHEMICAL VARIABLES\n");
+		result	.append(this.variables.toString()).append( "\n" );
 //		for (int i = 0 ; i < this.variables.length() ; i++) { 
 //			String chemIndex = this.chemicalVariables
 //										.getStringCouple(i).getValueA();
 //			String chemValue = this.chemicalVariables
 //										.getStringCouple(i).getValueB();
-//			result += "\t"+chemIndex+"\t"+chemValue+"\n";
+//			result	.append("\t"+chemIndex+"\t"+chemValue+"\n";
 //		}
-		return result;
+		return result.toString();
 	}
 }

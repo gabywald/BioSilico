@@ -1,6 +1,8 @@
 package gabywald.crypto.chemical.data;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,11 +27,11 @@ public class CompoundsFile extends Fichier {
 	
 	private static final Pattern PATTERN_MORE_INFO = Pattern.compile("^>\\s+<(.*?)>$");
 	/** Set of compounds loaded. */
-	private CompoundsListe compounds;
+	private List<Molecule> compounds;
 	
 	private CompoundsFile() {
 		super("");
-		this.compounds = new CompoundsListe();
+		this.compounds = new ArrayList<Molecule>();
 	}
 	
 	/** 
@@ -38,7 +40,7 @@ public class CompoundsFile extends Fichier {
 	 */
 	public CompoundsFile(String name) {
 		super(name);
-		this.compounds = new CompoundsListe();
+		this.compounds = new ArrayList<Molecule>();
 		// Molecule currentMole			= null;
 		int[] generalInformation		= new int[11];
 		Atom[] atoms					= null;
@@ -143,14 +145,23 @@ public class CompoundsFile extends Fichier {
 	
 	public boolean hasError() {
 		if (super.hasError())			{ return true; }
-		if (this.compounds.hasError())	{ return true; }
+		if (CompoundsFile.hasErrorCompounds(this.compounds))	{ return true; }
 		return false;
 	}
 	
-	public CompoundsListe getCompounds() 
+	public static boolean hasErrorCompounds(List<Molecule> compounds) {
+		if (compounds.size() == 0) {
+			System.out.println("Compounds list empty ??");
+			return true;
+		}
+		
+		return compounds.stream().anyMatch( m -> m.hasError() );
+	}
+	
+	public List<Molecule> getCompounds() 
 		{ return this.compounds; }
 	
-	public void setCompounds(CompoundsListe comps)
+	public void setCompounds(List<Molecule> comps)
 		{ this.compounds = comps; }
 	
 	public void write() {

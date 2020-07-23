@@ -54,7 +54,6 @@ public class FileGene extends FileBiological {
 		GeneAnnotation lastGA = new GeneAnnotation();
 		this.genesAnnotated.add( lastGA );
 		
-
 		for (int i = 0 ; i < this.lengthFile() ; i++) {
 			String currentLine = this.getChamp(i);
 			// TODO see 'GattacaGeneExample.txt'

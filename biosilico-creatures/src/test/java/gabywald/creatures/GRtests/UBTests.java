@@ -1,18 +1,18 @@
 package gabywald.creatures.GRtests;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.model.UnsignedByte;
-import junit.framework.TestCase;
 
-public class UBTests extends TestCase {
+public class UBTests {
 
 	@Test
 	public void testUB001() {
 		int value = 0;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -20,7 +20,7 @@ public class UBTests extends TestCase {
 		int value = 1;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -28,7 +28,7 @@ public class UBTests extends TestCase {
 		int value = -1;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -36,7 +36,7 @@ public class UBTests extends TestCase {
 		int value = -127;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class UBTests extends TestCase {
 		int value = 100;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class UBTests extends TestCase {
 		int value = 128;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class UBTests extends TestCase {
 		int value = 127;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class UBTests extends TestCase {
 		int value = -256;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class UBTests extends TestCase {
 		int value = 253;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 
 	@Test
@@ -84,7 +84,7 @@ public class UBTests extends TestCase {
 		int value = 254;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class UBTests extends TestCase {
 		int value = 255;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -100,7 +100,7 @@ public class UBTests extends TestCase {
 		int value = 256;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -108,7 +108,7 @@ public class UBTests extends TestCase {
 		int value = 257;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class UBTests extends TestCase {
 		int value = 258;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
 		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
-		TestCase.assertEquals(expected, ub.getValue());
+		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
 }

@@ -23,7 +23,7 @@ public class BasePhaseTwo extends Base {
 	 * @param base char
 	 * @return boolean
 	 */
-	public static boolean isBase(char base){
+	public static boolean isBase(char base) {
 		String regExpBases = "^[UBVP]$";
 		String baseString = base+"";
 		if (baseString.matches(regExpBases)) { return true; }
@@ -34,7 +34,7 @@ public class BasePhaseTwo extends Base {
 	 * To test if nucleotids or gap / indel symbolized with '-'.  
 	 * @param base char
 	 */
-	public static boolean isBaseOrGap(char base){
+	public static boolean isBaseOrGap(char base) {
 		if ( (BasePhaseTwo.isBase(base)) || (base == '-') ) { return true; }
 		else { return false; }
 	}
@@ -48,7 +48,7 @@ public class BasePhaseTwo extends Base {
 	 * @param y char
 	 * @return boolean
 	 */
-	public static boolean matchBases(char x,char y){
+	public static boolean matchBases(char x, char y) {
 		if ( (x == 'B') && (y == 'U')
 				|| (x == 'U') && (y == 'B')
 				|| (x == 'P') && (y == 'V')
@@ -63,7 +63,7 @@ public class BasePhaseTwo extends Base {
 	 * @param y char
 	 * @return boolean
 	 */
-	public static boolean matchBasesGap(char x,char y){
+	public static boolean matchBasesGap(char x, char y) {
 		if ( (BasePhaseTwo.matchBases(x,y)) 
 				|| ( (x == '-') && ( y == '-') ) ) { return true; }
 		else { return false; }
@@ -75,8 +75,8 @@ public class BasePhaseTwo extends Base {
 	 * @param y BasePhaseTwo
 	 * @return boolean
 	 */
-	public static boolean matchBases(BasePhaseTwo x,BasePhaseTwo y) 
-	{ return BasePhaseTwo.matchBases(x.getBase(), y.getBase()); }
+	public static boolean matchBases(BasePhaseTwo x, BasePhaseTwo y) 
+		{ return BasePhaseTwo.matchBases(x.getBase(), y.getBase()); }
 
 	/**
 	 * To know if two Base's can go together (including gap's). 
@@ -85,5 +85,5 @@ public class BasePhaseTwo extends Base {
 	 * @return boolean
 	 */
 	public static boolean matchBasesGap(BasePhaseTwo x,BasePhaseTwo y) 
-	{ return BasePhaseTwo.matchBasesGap(x.getBase(), y.getBase()); }
+		{ return BasePhaseTwo.matchBasesGap(x.getBase(), y.getBase()); }
 }

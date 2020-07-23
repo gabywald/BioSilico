@@ -1,33 +1,35 @@
 package gabywald.cellmodel.model;
 
-import gabywald.cellmodel.structures.ProteinFile;
-import gabywald.cellmodel.structures.VesiculeListe;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Membrane implements ContentProtein {
-	private ProteinFile tempa;
+	private Queue<Protein> proteins;
 	
 	public Membrane() 
-		{ this.tempa = new ProteinFile(); }
+		{ this.proteins = new LinkedList<Protein>(); }
 	
 	public boolean addProtein(Protein elt) {
-		this.tempa.push(elt);
+		this.proteins.add(elt);
 		return true;
 	}
 
 	public boolean remProtein(Protein elt) 
-	{ return this.tempa.remove(elt); }
+		{ return this.proteins.remove(elt); }
 	
-	public boolean isEmpty() { return (this.tempa.length() == 0); }
-	public int length() { return this.tempa.length(); }
-	public Protein popProtein() { return this.tempa.pop(); }
+	public boolean isEmpty()	{ return (this.proteins.size() == 0); }
+	public int length()			{ return this.proteins.size(); }
+	public Protein popProtein()	{ return this.proteins.poll(); }
 
-	public VesiculeListe transport() {
-		/* this.tempa = new ProteinFile(); */
-		return new VesiculeListe();
+	public List<Vesicule> transport() {
+		/* this.proteins = new ProteinFile(); */
+		return new ArrayList<Vesicule>();
 	}
 
 }

@@ -8,18 +8,17 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
-
-public class PosesReading extends TestCase {
+public class PosesReading {
 	
 	@Test
 	public void testGTC001() {
 		// final String dir = System.getProperty("user.dir");
         // System.out.println("current dir = " + dir);
 		GeneticFileContentOld gtc = new GeneticFileContentOld("creatures/creaturesOriginals/PoseName.txt");
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -38,7 +37,7 @@ public class PosesReading extends TestCase {
 			} // END "for (int i = 0 ; i < gtc.length() ; i++)" 
 			System.out.println();
 		} // END "if (gtc.isReaded())" 
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -57,7 +56,7 @@ public class PosesReading extends TestCase {
 			} // END "for (int i = 0 ; i < gtc.length() ; i++)" 
 			System.out.println();
 		} // END "if (gtc.isReaded())" 
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -93,7 +92,7 @@ public class PosesReading extends TestCase {
 			} // END "for (int i = 0 ; i < gtc.length() ; i++)" 
 			System.out.println();
 		} // END "if (gtc.isReaded())" 
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -134,6 +133,6 @@ public class PosesReading extends TestCase {
 				{ System.out.println(chNames.get(i)); }
 			System.out.println();
 		} /** END "if (gtc.isReaded())" */
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 }

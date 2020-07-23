@@ -11,7 +11,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
 /**
  * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene. 
  * Specificity occurs here for some Neuron's (tests are good to understand how it works). 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class BrainLobeGene extends GeneGattaca {
 	/** Rest state of neurons. */
@@ -93,58 +93,61 @@ public class BrainLobeGene extends GeneGattaca {
 	}
 	
 	public String reverseTranslation(boolean end) {
-		String result = super.reverseTranslation(false);
-		String tmp = "";
-		tmp += ((this.rest < 100)?"0"+((this.rest < 10)?"0":""):"")+this.rest;
-		tmp += ((this.thre < 100)?"0"+((this.thre < 10)?"0":""):"")+this.thre;
-		tmp += ((this.desc < 100)?"0"+((this.desc < 10)?"0":""):"")+this.desc;
-		tmp += ((this.dendriticmin < 100)?"0"+((this.dendriticmin < 10)?"0":""):"")+this.dendriticmin;
-		tmp += ((this.dendriticmax < 100)?"0"+((this.dendriticmax < 10)?"0":""):"")+this.dendriticmax;
-		tmp += ((this.prox < 100)?"0"+((this.prox < 10)?"0":""):"")+this.prox;
-		tmp += (this.repr)?"0":"1"; 
-		tmp += ((this.repy < 100)?"0"+((this.repy < 10)?"0":""):"")+this.repy;
-		tmp += (this.wta)?"2":"3";
-		tmp += ((this.height < 10)?"0":"")+this.height;
-		tmp += ((this.width < 10)?"0":"")+this.width;
-		tmp += ((this.posx < 10)?"0":"")+this.posx;
-		tmp += ((this.posy < 10)?"0":"")+this.posy;
-		tmp +=  (this.replace)?"4":"5";
+		String result		= super.reverseTranslation(false);
+		StringBuilder tmp	= new StringBuilder();
+		tmp.append(Gene.convert0to999(this.rest));
+		tmp.append(Gene.convert0to999(this.thre));
+		tmp.append(Gene.convert0to999(this.desc));
+		tmp.append(Gene.convert0to999(this.dendriticmin));
+		tmp.append(Gene.convert0to999(this.dendriticmax));
+		tmp.append(Gene.convert0to999(this.prox));
+		tmp.append((this.repr)?"0":"1"); 
+		tmp.append(Gene.convert0to999(this.repy));
+		tmp.append((this.wta)?"2":"3");
+		tmp.append(Gene.convert0to99(this.height));
+		tmp.append(Gene.convert0to99(this.width));
+		tmp.append(Gene.convert0to99(this.posx));
+		tmp.append(Gene.convert0to99(this.posy));
+		tmp.append( (this.replace)?"4":"5");
 		
 		for (int i = 0 ; i < tmp.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
-		 /** end is given here "GGT" */
+		
+		//  end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
 	protected void exec(Organism orga) throws GeneException {
-		Neuron sample = new Neuron(this.rest,this.thre,this.desc,
-									this.dendriticmin,this.dendriticmax,
-									this.prox,this.repr,this.repy,this.wta);
 		Brain brain = orga.getBrain();
 		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
-		/** Re-load brain lobes on each execution. Nothing if error. */
+		
+		// ***** Re-load brain lobes on each execution. Nothing if error. 
+		// XXX NOTE just initiate on first execution of this gene ??
+		Neuron sample = new Neuron(	this.rest, this.thre, this.desc, 
+									this.dendriticmin, this.dendriticmax, 
+									this.prox, this.repr, this.repy, this.wta);
 		try {
-			brain.setLobe(this.height,this.width,
-							this.posx,this.posy, 
-							sample,this.replace);
+			brain.setLobe(	this.height, this.width, 
+							this.posx, this.posy, 
+							sample, this.replace);
 		} 
-		catch (BrainLengthException e) { /** e.printStackTrace()*/ ; } 
-		catch (BrainLobeReplaceException e) { /** e.printStackTrace() */; }
+		catch (BrainLengthException e)		{ /** e.printStackTrace() */; } 
+		catch (BrainLobeReplaceException e)	{ /** e.printStackTrace() */; }
 	}
 	
-	public int getRestState()	{ return this.rest; }
-	public int getThreshold()	{ return this.thre; }
-	public int getDescent() 	{ return this.desc; }
-	public int getDendritMin()	{ return this.dendriticmin; }
-	public int getDendritMax()	{ return this.dendriticmax; }
-	public int getProximity()	{ return this.prox; }
+	public int getRestState()		{ return this.rest; }
+	public int getThreshold()		{ return this.thre; }
+	public int getDescent() 		{ return this.desc; }
+	public int getDendritMin()		{ return this.dendriticmin; }
+	public int getDendritMax()		{ return this.dendriticmax; }
+	public int getProximity()		{ return this.prox; }
 	public boolean getReproduce()	{ return this.repr; }
-	public int getReproduct()	{ return this.repy; }
+	public int getReproduct()		{ return this.repy; }
 	public boolean getWTA()			{ return this.wta; }
-	public int getLobeHeight()	{ return this.height; }
-	public int getLobeWidth()	{ return this.width; }
-	public int getLobePosX()	{ return this.posx; }
-	public int getLobePosY()	{ return this.posy; }
+	public int getLobeHeight()		{ return this.height; }
+	public int getLobeWidth()		{ return this.width; }
+	public int getLobePosX()		{ return this.posx; }
+	public int getLobePosY()		{ return this.posy; }
 	public boolean getReplace() 	{ return this.replace; }
 	
 

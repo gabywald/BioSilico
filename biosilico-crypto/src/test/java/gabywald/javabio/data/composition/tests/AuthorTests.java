@@ -3,11 +3,17 @@ package gabywald.javabio.data.composition.tests;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+
 import gabywald.crypto.data.composition.Author;
 import gabywald.crypto.data.composition.ComposUtils;
 import junit.framework.TestCase;
 
-public class AuthorTests extends TestCase {
+/**
+ * 
+ * @author Gabriel Chandesris (2011, 2020)
+ */
+class AuthorTests {
 	private static final String DATA01 = "Mougey,R.";
 	private static final String DATA02 = 
 		"Blasko,B., Banlaki,Z., Gyapay,G., Pozsonyi,E., Sasvari-Szekely,M., "
@@ -47,33 +53,32 @@ public class AuthorTests extends TestCase {
 	private static final String RESU04 = 
 		 "  AUTHORS   Fust,G. and Szilagyi,A.";
 	
-	protected void setUp() throws Exception		{ super.setUp(); }
-	protected void tearDown() throws Exception	{ super.tearDown();System.out.println(); }
-
-
-
-	public void testParseAuthors01() {
+	@Test
+	void testParseAuthors01() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA01, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(1, table.size());
 	}
 	
-	public void testParseAuthors02() {
+	@Test
+	void testParseAuthors02() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA02, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(8, table.size());
 	}
 	
-	public void testParseAuthors03() {
+	@Test
+	void testParseAuthors03() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA03, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(23, table.size());
 	}
 	
-	public void testParseAuthors04() {
+	@Test
+	void testParseAuthors04() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA04, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
@@ -145,7 +150,8 @@ public class AuthorTests extends TestCase {
 		return toReturn;
 	}
 	
-	public void testProcessAuthors01() {
+	@Test
+	void testProcessAuthors01() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA01, true);
 		String result = AuthorTests.processAuthors(new ArrayList<Author>(table));
 		
@@ -163,8 +169,8 @@ public class AuthorTests extends TestCase {
 		TestCase.assertTrue(test);
 	}
 	
-	
-	public void testProcessAuthors02() {
+	@Test
+	void testProcessAuthors02() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA02, true);
 		String result = AuthorTests.processAuthors(new ArrayList<Author>(table));
 		
@@ -182,8 +188,8 @@ public class AuthorTests extends TestCase {
 		TestCase.assertTrue(test);
 	}
 	
-	
-	public void testProcessAuthors03() {
+	@Test
+	void testProcessAuthors03() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA03, true);
 		String result = AuthorTests.processAuthors(new ArrayList<Author>(table));
 		
@@ -201,8 +207,8 @@ public class AuthorTests extends TestCase {
 		TestCase.assertTrue(test);
 	}
 	
-	
-	public void testProcessAuthors04() {
+	@Test
+	void testProcessAuthors04() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA04, true);
 		String result = AuthorTests.processAuthors(new ArrayList<Author>(table));
 		
@@ -220,31 +226,32 @@ public class AuthorTests extends TestCase {
 		TestCase.assertTrue(test);
 	}
 	
-	
-	
-	
-	public void testParseAuthors11() {
+	@Test
+	void testParseAuthors11() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA11, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(1, table.size());
 	}
 	
-	public void testParseAuthors12() {
+	@Test
+	void testParseAuthors12() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA12, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(8, table.size());
 	}
 	
-	public void testParseAuthors13() {
+	@Test
+	void testParseAuthors13() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA13, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
 		TestCase.assertEquals(23, table.size());
 	}
 	
-	public void testParseAuthors14() {
+	@Test
+	void testParseAuthors14() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA14, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }

@@ -1,8 +1,10 @@
 package gabywald.crypto.model;
 
+import gabywald.global.data.Utils;
+
 /**
  * 
- * @author Gabriel Chandesris (2012)
+ * @author Gabriel Chandesris (2012, 2020)
  */
 public class EncodingNode {
 	/** Level of the node into the tree. */
@@ -44,13 +46,13 @@ public class EncodingNode {
 	 * @param val (String[]) table of values. 
 	 * @param lvl (int) level of the node into the tree. 
 	 * @param num (int) number of the node. 
-	 * @param fat (EncodingNodeNewer) father node. 
+	 * @param father (EncodingNodeNewer) father node. 
 	 * @see EncodingNode#EncodingNodeNewer(char, String[], int, int, EncodingNode)
 	 */
 	private EncodingNode(int maxLvls, char c[], String val[], 
-						 	  int lvl, int num, 
-						 	  EncodingNode fat)  {
-		this.init(lvl, num, fat, c, val);
+						 int lvl, int num, 
+						 EncodingNode father)  {
+		this.init(lvl, num, father, c, val);
 		
 		for (int i = 0 ; i < c.length ; i++) {
 			if (this.level < maxLvls-1) { /** Because refer to 0. */
@@ -78,17 +80,17 @@ public class EncodingNode {
 	 * Constructors Helper. 
 	 * @param lvl (int) level of the node into the tree. 
 	 * @param num (int) number of the node. 
-	 * @param fat (EncodingNodeNewer) father node. 
+	 * @param father (EncodingNodeNewer) father node. 
 	 * @param c (char)current character for this node. 
 	 * @param val (String[])  table of values. 
 	 */
 	private void init(int lvl, int num, 
-					  EncodingNode fat, 
+					  EncodingNode father, 
 					  char c[], String val[]) {
 		this.level		= lvl;
 		this.numbe		= num;
 		this.bases		= c.length;
-		this.father		= fat;
+		this.father		= father;
 		this.character	= c[this.numbe];
 		/** System.out.println(Utils.multiple("\t", this.level)
 				+this.level+":"+this.bases+":"+this.numbe+" -> "+this.getNumber()
@@ -265,24 +267,13 @@ public class EncodingNode {
 	}
 	
 	public static String treeView(EncodingNode root) {
-		String result = EncodingNode.multiple("\t", root.getLevel()) 
-							+ root.toString()+"\n";
+		StringBuilder toResult = new StringBuilder();
+		toResult.append( Utils.repeat("\t", root.getLevel()))
+				.append(root.toString()).append("\n" );
 		EncodingNode[] rootChilds = root.getChilds();
 		for (int i = 0 ; i < rootChilds.length ; i++) 
-			{ result += EncodingNode.treeView(rootChilds[i]); }
-		return result;
-	}
-	
-	/**
-	 * Make an append of txt 'multi' times. 
-	 * @param txt (String)
-	 * @param multi (String)
-	 * @return (String) 'txt' appended (multi) times. 
-	 */
-	public static String multiple(String txt, int multi) {
-		String result = "";
-		for (int i = 0 ; i < multi ; i++) { result += txt; }
-		return result;
+			{ toResult.append(EncodingNode.treeView(rootChilds[i])); }
+		return toResult.toString();
 	}
 	
 	private static EncodingNode[] addNodeInTable(EncodingNode[] table, EncodingNode toAdd) {

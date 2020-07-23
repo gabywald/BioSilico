@@ -9,7 +9,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
 /**
  * This type of gene instanciates connections between Neurons in the Brain. 
  * <br><i>Creatures inspired. </i>
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Instinct extends GeneGattaca {
 	/** Height position of input Neuron in Brain. */
@@ -51,35 +51,37 @@ public class Instinct extends GeneGattaca {
 	public Instinct(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
 			int age_min, int age_max, int sex, int mut_rate,
-			int in_posx,int in_posy,int out_posx,int out_posy,int weight,
-			int var,int thr, boolean check) {
+			int in_posx, int in_posy, int out_posx, int out_posy, int weight, 
+			int var, int thr, boolean check) {
 		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
 		this.inputPosX	= Gene.obtainValue(0, 99, in_posx);
 		this.inputPosY	= Gene.obtainValue(0, 99, in_posy);
 		this.outputPosX	= Gene.obtainValue(0, 99, out_posx);
 		this.outputPosY	= Gene.obtainValue(0, 99, out_posy);
-		this.weight		= Gene.obtainValue(0, 999, weight);
 		
+		this.weight		= Gene.obtainValue(0, 999, weight);
 		this.variable	= Gene.obtainValue(0, 999, var);
 		this.threshold	= Gene.obtainValue(0, 999, thr);
+		
 		this.check		= check;
 	}
 	
 	public String reverseTranslation(boolean end) {
-		String result = super.reverseTranslation(false);
-		String tmp = "";
-		tmp += ((this.inputPosX < 10)?"0":"")+this.inputPosX;
-		tmp += ((this.inputPosY < 10)?"0":"")+this.inputPosY;
-		tmp += ((this.outputPosX < 10)?"0":"")+this.outputPosX;
-		tmp += ((this.outputPosY < 10)?"0":"")+this.outputPosY;
-		tmp += ((this.weight < 100)?"0"+((this.weight < 10)?"0":""):"")+this.weight;
-		tmp += ((this.variable < 100)?"0"+((this.variable < 10)?"0":""):"")+this.variable;
-		tmp += ((this.threshold < 100)?"0"+((this.threshold < 10)?"0":""):"")+this.threshold;
-		tmp += (this.check)?"0":"1"; 
+		String result		= super.reverseTranslation(false);
+		StringBuilder tmp	= new StringBuilder();
+		tmp.append(Gene.convert0to99(this.inputPosX));
+		tmp.append(Gene.convert0to99(this.inputPosY));
+		tmp.append(Gene.convert0to99(this.outputPosX));
+		tmp.append(Gene.convert0to99(this.outputPosY));
+		tmp.append(Gene.convert0to999(this.weight));
+		tmp.append(Gene.convert0to999(this.variable));
+		tmp.append(Gene.convert0to999(this.threshold));
+		tmp.append((this.check)?"0":"1"); 
 		
 		for (int i = 0 ; i < tmp.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
-		 /** end is given here "GGT" */
+		
+		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 

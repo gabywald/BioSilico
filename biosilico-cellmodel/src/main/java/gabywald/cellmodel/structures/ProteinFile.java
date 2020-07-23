@@ -5,6 +5,7 @@ import gabywald.cellmodel.model.Protein;
 /**
  * 
  * @author Gabriel Chandesris (2009)
+ * @deprecated ... 
  */
 public class ProteinFile {
 	private Protein[] file;

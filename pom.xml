@@ -7,7 +7,7 @@
 	<groupId>gabywald</groupId>
 	<artifactId>BioSilico</artifactId>
 
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 
 	<name>BioSilico</name>
 	<description>Some ideas about Artificial Life, Creatures (game series) and Neural Networks. </description>
@@ -35,6 +35,8 @@
 
 		<lib.version>1.0.1</lib.version>
 		<plugin.version>3.1.8</plugin.version>
+		
+		<junit.version>5.3.1</junit.version>
 	</properties>
 
 	<dependencies>
@@ -91,6 +93,7 @@
 				</configuration>
 				<groupId>org.apache.maven.plugins</groupId>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>

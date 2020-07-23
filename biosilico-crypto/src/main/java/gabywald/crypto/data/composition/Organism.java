@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * 
  * @author Gabriel Chandesris (2011-2012)
- * @see gabywald.crypto.data.GenBank
- * @see gabywald.crypto.data.Embl
+ * @see gabywald.crypto.data.GenBankFormat
+ * @see gabywald.crypto.data.EmblFormat
  */
 public class Organism {
 	/** Some main attribute... */

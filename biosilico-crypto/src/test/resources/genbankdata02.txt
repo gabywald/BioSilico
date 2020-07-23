@@ -1,0 +1,64 @@
+LOCUS       MMFOSB                  4145 bp    mRNA    linear   ROD 12-SEP-1993
+DEFINITION  Mouse fosB mRNA.
+ACCESSION   X14897
+VERSION     X14897.1  GI:50991
+KEYWORDS    fos cellular oncogene; fosB oncogene; oncogene.
+SOURCE      Mus musculus.
+  ORGANISM  Mus musculus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;"+
+			"            Mammalia; Eutheria; Rodentia; Sciurognathi; Muridae; Murinae; Mus.
+REFERENCE   1  (bases 1 to 4145)
+  AUTHORS   Zerial,M., Toschi,L., Ryseck,R.P., Schuermann,M., Muller,R. and
+            Bravo,R.
+  TITLE     The product of a novel growth factor activated gene, fos B,
+            interacts with JUN proteins enhancing their DNA binding activity
+  JOURNAL   EMBO J. 8 (3), 805-813 (1989)
+  MEDLINE   89251612
+   PUBMED   2498083
+COMMENT     clone=AC113-1; cell line=NIH3T3.
+FEATURES             Location/Qualifiers
+     source          1..4145
+                     /organism=\"Mus musculus\"
+                     /db_xref=\"taxon:10090\"
+     CDS             1202..2218
+                     /note=\"fosB protein (AA 1-338)\"
+                     /codon_start=1
+                     /protein_id=\"CAA33026.1\"
+                     /db_xref=\"GI:50992\"
+                     /db_xref=\"MGD:95575\"
+                     /db_xref=\"SWISS-PROT:P13346\"
+                     /translation=\"MFQAFPGDYDSGSRCSSSPSAESQYLSSVDSFGSPPTAAASQEC
+                     AGLGEMPGSFVPTVTAITTSQDLQWLVQPTLISSMAQSQGQPLASQPPAVDPYDMPGT
+                     SYSTPGLSAYSTGGASGSGGPSTSTTTSGPVSARPARARPRRPREETLTPEEEEKRRV
+                     RRERNKLAAAKCRNRRRELTDRLQAETDQLEEEKAELESEIAELQKEKERLEFVLVAH
+                     KPGCKIPYEEGPGPGPLAEVRDLPGSTSAKEDGFGWLLPPPPPPPLPFQSSRDAPPNL
+                     TASLFTHSEVQVLGDPFPVVSPSYTSSFVLTCPEVSAFAGAQRTSGSEQPSDPLNSPS
+                     LLAL\"
+BASE COUNT      960 a   1186 c   1007 g    991 t      1 others
+ORIGIN      
+        1 ataaattctt attttgacac tcaccaaaat agtcacctgg aaaacccgct ttttgtgaca
+       61 aagtacagaa ggcttggtca catttaaatc actgagaact agagagaaat actatcgcaa
+      121 actgtaatag acattacatc cataaaagtt tccccagtcc ttattgtaat attgcacagt
+      181 gcaattgcta catggcaaac tagtgtagca tagaagtcaa agcaaaaaca aaccaaagaa
+      241 aggagccaca agagtaaaac tgttcaacag ttaatagttc aaactaagcc attgaatcta
+      301 tcattgggat cgttaaaatg aatcttccta caccttgcag tgtatgattt aacttttaca
+      361 gaacacaagc caagtttaaa atcagcagta gagatattaa aatgaaaagg tttgctaata
+      421 gagtaacatt aaataccctg aaggaaaaaa aacctaaata tcaaaataac tgattaaaat
+      481 tcacttgcaa attagcacac gaatatgcaa cttggaaatc atgcagtgtt ttatttaaga
+      541 aaacataaaa caaaactatt aaaatagttt tagagggggt aaaatccagg tcctctgcca
+      601 ggatgctaaa attagacttc aggggaattt tgaagtcttc aattttgaaa cctattaaaa
+      661 agcccatgat tacagttaat taagagcagt gcacgcaaca gtgacacgcc tttagagagc
+      721 attactgtgt atgaacatgt tggctgctac cagccacagt caatttaaca aggctgctca
+      781 gtcatgaact taatacagag agagcacgcc taggcagcaa gcacagcttg ctgggccact
+      841 ttcctccctg tcgtgacaca atcaatccgt gtacttggtg tatctgaagc gcacgctgca
+      901 ccgcggcact gcccggcggg tttctgggcg gggagcgatc cccgcgtcgc cccccgtgaa
+      961 accgacagag cctggacttt caggaggtac agcggcggtc tgaaggggat ctgggatctt
+     1021 gcagagggaa cttgcatcga aacttgggca gttctccgaa ccggagacta agcttccccg
+     1081 agcagcgcac tttggagacg tgtccggtct actccggact cgcatctcat tccactcggc
+     1141 catagccttg gcttcccggc gacctcagcg tggtcacagg ggcccccctg tgcccaggga
+     1201 aatgtttcaa gcttttcccg gagactacga ctccggctcc cggtgtagct catcaccctc
+     1261 cgccgagtct cagtacctgt cttcggtgga ctccttcggc agtccaccca ccgccgccgc
+     1321 ctcccaggag tgcgccggtc tcggggaaat gcccggctcc ttcgtgccaa cggtcaccgc
+     1381 aatcacaacc agccaggatc ttcagtggct cgtgcaaccc accctcatct cttccatggc
+     1441 c
+//

@@ -5,6 +5,7 @@ package gabywald.creatures.GRtests;
 //
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
@@ -30,16 +31,15 @@ import gabywald.creatures.model.UnsignedByte;
 //import gabywald.creatures.genetics.StimulusGene;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
-import junit.framework.TestCase;
 
-public class GTCTests extends TestCase {
+public class GTCTests {
 	
 	@Test
 	public void testGTC001() {
 		// final String dir = System.getProperty("user.dir");
         // System.out.println("current dir = " + dir);
 		GeneticFileContentOld gtc = new GeneticFileContentOld("creatures/creaturesOriginals/dad1.gen");
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class GTCTests extends TestCase {
 			} /** END "for (int i = 0 ; i < gtc.length() ; i++)" */
 			System.out.println();
 		} /** END "if (gtc.isReaded())" */
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class GTCTests extends TestCase {
 			} /** END "for (int i = 0 ; i < gtc.length() ; i++)" */
 			System.out.println();
 		} /** END "if (gtc.isReaded())" */
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 	@Test
@@ -94,7 +94,7 @@ public class GTCTests extends TestCase {
 			} /** END "for (int i = 0 ; i < gtc.length() ; i++)" */
 			System.out.println();
 		} /** END "if (gtc.isReaded())" */
-		TestCase.assertEquals(true, gtc.isReaded());
+		Assertions.assertEquals(true, gtc.isReaded());
 	}
 	
 //	public void testGTC005() {
@@ -322,7 +322,7 @@ public class GTCTests extends TestCase {
 //			
 //			System.out.println();
 //		} /** END "if (gtc.isReaded())" */
-//		TestCase.assertEquals(true, gtc.isReaded());
+//		Assertions.assertEquals(true, gtc.isReaded());
 //	}
 	
 	
@@ -334,7 +334,7 @@ public class GTCTests extends TestCase {
 //		String seve = Integer.toBinaryString( 7);System.out.println(" 7 => '" + seve + "'");
 //		String fift = Integer.toBinaryString(15);System.out.println("15 => '" + fift + "'");
 //		String tthr = Integer.toBinaryString(23);System.out.println("23 => '" + tthr + "'");
-//		TestCase.assertEquals(true, true);
+//		Assertions.assertEquals(true, true);
 //	}
 	
 //	public void testGTC043() {
@@ -347,7 +347,7 @@ public class GTCTests extends TestCase {
 		// final String dir = System.getProperty("user.dir");
         // System.out.println("current dir = " + dir);
 		GeneticFileContent gtc = new GeneticFileContent("creatures/creaturesOriginals/dad1.gen");
-		TestCase.assertEquals(true, gtc.isReadable());
+		Assertions.assertEquals(true, gtc.isReadable());
 	}
 	
 	@Test
@@ -359,7 +359,7 @@ public class GTCTests extends TestCase {
 				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gtc.isReadable()))" */
-		TestCase.assertEquals(true, !gtc.isReadable());
+		Assertions.assertEquals(true, !gtc.isReadable());
 	}
 	
 	@Test
@@ -371,7 +371,7 @@ public class GTCTests extends TestCase {
 				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gtc.isReadable()))" 
-		TestCase.assertEquals(true, !gtc.isReadable());
+		Assertions.assertEquals(true, !gtc.isReadable());
 	}
 	
 	@Test
@@ -383,7 +383,7 @@ public class GTCTests extends TestCase {
 				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gtc.isReadable()))" 
-		TestCase.assertEquals(true, !gtc.isReadable());
+		Assertions.assertEquals(true, !gtc.isReadable());
 	}
 	
 	@Test
@@ -407,7 +407,7 @@ public class GTCTests extends TestCase {
 				}
 			} // else { Logger.printlnLog(LoggerLevel.LL_WARNING, "not a char ?"); }
 		} // END "while (gtc.isReadable()))" 
-		TestCase.assertEquals(true, (!gtc.isReadable()) || (gtc.isReadable()));
+		Assertions.assertEquals(true, (!gtc.isReadable()) || (gtc.isReadable()));
 	}
 	
 	@Test
@@ -437,7 +437,7 @@ public class GTCTests extends TestCase {
 				}
 			} // else { Logger.printlnLog(LoggerLevel.LL_WARNING, "not a char ?"); }
 		} // END "while (gtc.isReadable()))" 
-		TestCase.assertEquals(true, (!gtc.isReadable()) || (gtc.isReadable()));
+		Assertions.assertEquals(true, (!gtc.isReadable()) || (gtc.isReadable()));
 	}
 	
 	@Test
@@ -447,7 +447,7 @@ public class GTCTests extends TestCase {
 
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFile + "] -- {" + genome.size() + " genes}");
 		
-		TestCase.assertEquals(true, (genome.size() > 0) );
+		Assertions.assertEquals(true, (genome.size() > 0) );
 	}
 	
 	@Test
@@ -457,7 +457,7 @@ public class GTCTests extends TestCase {
 
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFile + "] -- {" + genome.size() + " genes}");
 		
-		TestCase.assertEquals(true, (genome.size() > 0) );
+		Assertions.assertEquals(true, (genome.size() > 0) );
 	}
 	
 	@Test
@@ -467,7 +467,7 @@ public class GTCTests extends TestCase {
 
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFile + "] -- {" + genome.size() + " genes}");
 		
-		TestCase.assertEquals(true, (genome.size() > 0) );
+		Assertions.assertEquals(true, (genome.size() > 0) );
 	}
 }
 

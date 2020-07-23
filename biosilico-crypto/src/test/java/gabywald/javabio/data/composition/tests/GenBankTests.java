@@ -2,34 +2,33 @@ package gabywald.javabio.data.composition.tests;
 
 import java.util.List;
 
-import gabywald.crypto.data.GenBank;
+import org.junit.jupiter.api.Test;
+
+import gabywald.crypto.data.GenBankFormat;
 import junit.framework.TestCase;
 
-public class GenBankTests extends TestCase {
+/**
+ * 
+ * @author Gabriel Chandesris (2011, 2020)
+ */
+public class GenBankTests {
 
-	protected void setUp() throws Exception {
-		super.setUp();
-	}
-
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
-
-	public void testFromString01() {
-		List<GenBank> tmp = GenBank.fromString(GenBankTestsHelper.DATA01);
+	@Test
+	public void testFromFile01() {
+		List<GenBankFormat> tmp = GenBankFormat.fromString( TestsHelper.getDataFromFile(this.getClass().getClassLoader(), "genbankdata01.txt" ) );
 		
 		System.out.println(tmp.get(0).toString());
 		
 		TestCase.assertEquals(1, tmp.size());
 	}
 	
-	
-	public void testFromString02() {
-		List<GenBank> tmp = GenBank.fromString(GenBankTestsHelper.DATA02);
+	@Test
+	public void testFromFile02() {
+		List<GenBankFormat> tmp = GenBankFormat.fromString( TestsHelper.getDataFromFile(this.getClass().getClassLoader(), "genbankdata02.txt" ));
 		
 		System.out.println(tmp.get(0).toString());
 		
 		TestCase.assertEquals(1, tmp.size());
 	}
-
+	
 }

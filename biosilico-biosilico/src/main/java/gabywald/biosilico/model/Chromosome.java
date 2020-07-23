@@ -16,8 +16,9 @@ public class Chromosome {
 	private List<Gene> genes;
 
 	/** Default constructor. */
-	public Chromosome() 
-		{ this.genes = new ArrayList<Gene>(); }
+	public Chromosome() { 
+		this.genes = new ArrayList<Gene>();
+	}
 	
 	/** Constructor with a given table of Gene's. */
 	public Chromosome(Gene[] genes) { 
@@ -25,12 +26,15 @@ public class Chromosome {
 		this.genes.addAll(Arrays.asList(genes));
 	}
 	
-	/** Constructor with a given list of Gene's. */
-	public Chromosome(List<Gene> genes) 
-		{ this.genes = genes; }
+	/** Constructor with a given List of Gene's. */
+	public Chromosome(List<Gene> genes) { 
+		this();
+		this.genes.addAll(genes);
+	}
 	
-	public void addGene(Gene more) 
-		{ this.genes.add(more); }
+	public void addGene(Gene more) { 
+		this.genes.add(more);
+	}
 	
 	/**
 	 * This method execute gene by gene.
@@ -42,10 +46,9 @@ public class Chromosome {
 	
 	public int length() 		{ return this.genes.size(); }
 	
-	public int getGeneNumber()	{ return this.length(); }
+	public int getGeneNumber()	{ return this.genes.size(); }
 	
 	public Gene getGene(int i) 
-		{ return (i < this.genes.size())?((i < 0)?null
-							:this.genes.get(i)):null; }
+		{ return (i < this.genes.size()) ? ((i < 0) ? null : this.genes.get(i)) : null; }
 	
 }

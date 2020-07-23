@@ -5,6 +5,7 @@ import gabywald.cellmodel.model.ARN;
 /**
  * 
  * @author Gabriel Chandesris (2009)
+ *  @deprecated ... 
  */
 public class ARNFile {
 	private ARN[] file;

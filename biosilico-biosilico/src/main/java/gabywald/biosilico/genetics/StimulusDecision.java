@@ -8,7 +8,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * This type of Gene provoque some inputs or available behaviour of an organism. 
  * <br>This can although be used to import / export directly chemicals. 
  * <br><i>Creatures inspired. </i>
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class StimulusDecision extends GeneGattaca {
 	/** Indicates if gene is Stimulus or Decision. */
@@ -51,8 +51,8 @@ public class StimulusDecision extends GeneGattaca {
 	public StimulusDecision(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
 			int age_min, int age_max, int sex, int mut_rate,
-			boolean perc,boolean obje,int indi,int thre,int attr,
-			int vari,int valu,int scri) {
+			boolean perc, boolean obje, 
+			int indi, int thre, int attr, int vari, int valu, int scri) {
 		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
 		this.perception = perc;this.object = obje;
 		this.indicator	= Gene.obtainValue(0, 999, indi);
@@ -64,20 +64,21 @@ public class StimulusDecision extends GeneGattaca {
 	}
 	
 	public String reverseTranslation(boolean end) {
-		String result = super.reverseTranslation(false);
-		String tmp = "";
-		tmp += (this.perception)?"0":"1";
-		tmp += (this.object)?"2":"3";
-		tmp += ((this.indicator < 100)?"0"+((this.indicator < 10)?"0":""):"")+this.indicator;
-		tmp += ((this.threshold < 100)?"0"+((this.threshold < 10)?"0":""):"")+this.threshold;
-		tmp += ((this.attribute < 100)?"0"+((this.attribute < 10)?"0":""):"")+this.attribute;
-		tmp += ((this.varia < 100)?"0"+((this.varia < 10)?"0":""):"")+this.varia;
-		tmp += ((this.value < 100)?"0"+((this.value < 10)?"0":""):"")+this.value;
-		tmp += ((this.scrip < 100)?"0"+((this.scrip < 10)?"0":""):"")+this.scrip;
+		String result		= super.reverseTranslation(false);
+		StringBuilder tmp	= new StringBuilder();
+		tmp.append((this.perception)?"0":"1");
+		tmp.append((this.object)?"2":"3");
+		tmp.append(Gene.convert0to999(this.indicator));
+		tmp.append(Gene.convert0to999(this.threshold));
+		tmp.append(Gene.convert0to999(this.attribute));
+		tmp.append(Gene.convert0to999(this.varia));
+		tmp.append(Gene.convert0to999(this.value));
+		tmp.append(Gene.convert0to999(this.scrip));
 		
 		for (int i = 0 ; i < tmp.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
-		 /** end is given here "GGT" */
+		
+		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 

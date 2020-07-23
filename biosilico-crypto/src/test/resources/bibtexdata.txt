@@ -1,0 +1,125 @@
+@ARTICLE{89-1-33-full,
+  author = {Mazhari, Reza and Greenstein, Joseph L. and Winslow, Raimond L. and
+	Marbán, Eduardo and Nuss, H. Bradley},
+  title = {Molecular interactions between two long-QT syndrome gene products,
+	HERG and KCNE2, rationalized by in vitro and in silico analysis.},
+  journal = {Circulation Research},
+  year = {2001},
+  volume = {89},
+  pages = {33-38},
+  abstract = {The cardiac delayed rectifier potassium current mediates repolarization
+	of the action potential and underlies the QT interval of the ECG.
+	Mutations in either of the two molecular components of the rapid
+	delayed rectifier (I(K,r)), HERG and KCNE2, have been linked to heritable
+	or acquired long-QT syndrome. Mechanisms whereby mutations of KCNE2
+	produce fatal cardiac arrhythmias characteristic of long-QT syndrome
+	remain unclear. In this study, we characterize functional interactions
+	between HERG and KCNE2 with a view to defining underlying mechanisms
+	for action potential prolongation and long-QT syndrome. Whereas coexpression
+	of hKCNE2 with HERG alters both kinetics and density of ionic current,
+	incorporation of these effects into a quantitative model of the action
+	potential predicts that only changes in current density significantly
+	affect repolarization. Thus, the primary functional consequence of
+	hKCNE2 on action potential morphology is through modulation of I(K,r)
+	density, as predicted by the model. Mutations associated with long-QT
+	syndrome that result only in modest changes of gating kinetics may
+	be epiphenomena or may modulate action potential repolarization via
+	interaction with alternative pore-forming potassium channel alpha
+	subunits.},
+  file = {Free Download (PDF):http\\://circres.ahajournals.org/content/89/1/33.full.pdf:URL},
+  owner = {ChandesrisG},
+  review = {Publication Types, MeSH Terms, Substances, Grant Support
+	
+	Publication Types
+	
+	 Research Support, Non-U.S. Gov't
+	
+	 Research Support, U.S. Gov't, P.H.S.
+	
+	
+	MeSH Terms
+	
+	 Action Potentials
+	
+	 Cation Transport Proteins*
+	
+	 Cell Line
+	
+	 DNA-Binding Proteins*
+	
+	 Delayed Rectifier Potassium Channels
+	
+	 Electric Conductivity
+	
+	 Ether-A-Go-Go Potassium Channels
+	
+	 Humans
+	
+	 Ion Channel Gating
+	
+	 Kinetics
+	
+	 Long QT Syndrome/etiology*
+	
+	 Markov Chains
+	
+	 Models, Theoretical*
+	
+	 Potassium Channels/physiology*
+	
+	 Potassium Channels, Voltage-Gated*
+	
+	 Trans-Activators*
+	
+	
+	Substances
+	
+	 Cation Transport Proteins
+	
+	 DNA-Binding Proteins
+	
+	 Delayed Rectifier Potassium Channels
+	
+	 ERG protein, human
+	
+	 ERG1 potassium channel
+	
+	 Ether-A-Go-Go Potassium Channels
+	
+	 KCNH6 protein, human
+	
+	 Potassium Channels
+	
+	 Potassium Channels, Voltage-Gated
+	
+	 Trans-Activators
+	
+	 potassium channel protein I(sk)
+	
+	
+	Grant Support
+	
+	 HLO7227/HL/NHLBI NIH HHS/United States
+	
+	 P50 HL52307/HL/NHLBI NIH HHS/United States
+	
+	 R01 HL60133/HL/NHLBI NIH HHS/United States
+	
+	 R01 HL66381/HL/NHLBI NIH HHS/United States
+	
+	
+	LinkOut - more resources
+	
+	Full Text Sources
+	
+	 HighWire Press
+	
+	 Ovid Technologies, Inc.
+	
+	
+	Other Literature Sources
+	
+	 COS Scholar Universe},
+  timestamp = {2011.08.22},
+  url = {https://www.ncbi.nlm.nih.gov/pubmed/11440975}
+}

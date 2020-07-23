@@ -24,10 +24,11 @@ public class WorldCase implements VariableContent,AgentContent {
 	
 	/** Default constructor of element of environment. */
 	public WorldCase() {
-		this.variables = new Chemicals();
-		this.liste = new ArrayList<Agent>();
-		this.world = null;
-		this.posx = -1;this.posy = -1;
+		this.variables	= new Chemicals();
+		this.liste		= new ArrayList<Agent>();
+		this.world		= null;
+		this.posx		= -1;
+		this.posy		= -1;
 	}
 	
 	/**
@@ -35,11 +36,11 @@ public class WorldCase implements VariableContent,AgentContent {
 	 * @param world (World) Global environment. 
 	 */
 	public WorldCase(World world) {
-		this.variables = new Chemicals();
-		this.liste = new ArrayList<Agent>();
-		this.world = world;
-		this.posx = World.MAX_HEIGHT/2;
-		this.posy = World.MAX_WIDTH/2;
+		this.variables	= new Chemicals();
+		this.liste		= new ArrayList<Agent>();
+		this.world		= world;
+		this.posx		= World.MAX_HEIGHT/2;
+		this.posy		= World.MAX_WIDTH/2;
 	}
 	
 	public void setPosX(int posx) { this.posx = posx; }
@@ -50,11 +51,11 @@ public class WorldCase implements VariableContent,AgentContent {
 	 * @param dir (int) direction (from 800 to 829)
 	 * @return (Worldcase) Can be null. 
 	 */
-	public WorldCase getDirection(int dir) 
-		{ return (this.world == null)?null:
-			this.world.getDirection(dir,this.posx,this.posy); }
+	public WorldCase getDirection(int dir) { 
+		return (this.world == null) ? null : this.world.getDirection(dir, this.posx, this.posy); 
+	}
 	
-	public Chemicals getVariables() { return this.variables; }
+	public Chemicals getVariables()		{ return this.variables; }
 	
 	public int getAgentListLength()		{ return this.liste.size(); }
 	public List<Agent> getAgentListe()	{ return this.liste; }
@@ -63,12 +64,6 @@ public class WorldCase implements VariableContent,AgentContent {
 	
 	public int hasAgentType(int type) {
 		return (int) this.liste.stream().filter( a -> (a.getChemicals().getVariable(942) == type) ).count();
-//		int count  = 0;
-//		for (int i = 0 ; i < this.liste.length() ; i++) {
-//			if (this.liste.getAgent(i).getChemicals()
-//					.getVariable(942) == type) { count ++; }
-//		}
-//		return count;
 	}
 	
 	public Agent getAgentType(int type) {

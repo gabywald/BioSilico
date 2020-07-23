@@ -3,7 +3,7 @@ package gabywald.crypto.model;
 import java.util.List;
 
 import gabywald.crypto.data.BiologicalUtils;
-import gabywald.crypto.data.GenBank;
+import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.FeaturesListe;
 import gabywald.global.data.Utils;
 
@@ -11,7 +11,7 @@ public class GenBankFileReader {
 	private static final GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 	private static final GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
 	
-	private List<GenBank> genBank;
+	private List<GenBankFormat> genBank;
 	private String decodedPath;
 	private String decodedContent;
 	
@@ -27,9 +27,9 @@ public class GenBankFileReader {
 		this.decodedContent	= new String("");
 		if (!content.equals("")) { 
 			String separator = "\n"+Utils.repeat("=", 80)+"\n";
-			this.genBank = GenBank.fromString(content);
+			this.genBank = GenBankFormat.fromString(content);
 			for (int i = 0 ; i < this.genBank.size() ; i++) {
-				GenBank currentGB	= this.genBank.get(i);
+				GenBankFormat currentGB	= this.genBank.get(i);
 				FeaturesListe fl 	= currentGB.getFeatures().getFeaturesWith("CDS");
 				for (int j = 0 ; j < fl.size() ; j++) {
 					String encodedPath	= fl.get(i).get("translation");

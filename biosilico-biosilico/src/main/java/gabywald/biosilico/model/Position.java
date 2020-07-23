@@ -2,18 +2,18 @@ package gabywald.biosilico.model;
 
 /**
  * Position / Location of an item in a map (Neuron in Brain for example). 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class Position {
 	/** Height position in map. */ 
-	private int pos_x;
+	private int posX;
 	/** Width position in map. */
-	private int pos_y;
+	private int posY;
 	
 	/** Best constructor for a position. */
-	public Position(int posx,int posy){
-		this.pos_x = posx;
-		this.pos_y = posy;
+	public Position(int posx, int posy) {
+		this.posX = posx;
+		this.posY = posy;
 	}
 	
 	/**
@@ -23,8 +23,9 @@ public class Position {
 	 * @return Euclidian distance. 
 	 */
 	public double euclidianDistanceFrom(Position pos) {
-		return Math.sqrt((this.pos_x-pos.getPosX())
-								+(this.pos_y-pos.getPosY()));
+		return Math.sqrt(
+				Math.pow((this.posX - this.posY), 2) + 
+				Math.pow(( pos.posY -  pos.posY), 2));
 	}
 	
 	/**
@@ -32,17 +33,17 @@ public class Position {
 	 * @return (Position)
 	 */
 	public Position getCopy() 
-		{ return new Position(this.pos_x,this.pos_y); }
+		{ return new Position(this.posX, this.posY); }
 	
-	public int getPosX() { return this.pos_x; }
-	public int getPosY() { return this.pos_y; }
+	public int getPosX()			{ return this.posX; }
+	public int getPosY()			{ return this.posY; }
 
-	public void setPosX(int pos_x) { this.pos_x = pos_x; }
-	public void setPosY(int pos_y) { this.pos_y = pos_y; }
+	public void setPosX(int posX)	{ this.posX = posX; }
+	public void setPosY(int posY)	{ this.posY = posY; }
 	
 	public boolean equals(Position toCompare) {
-		if (this.pos_x != toCompare.getPosX()) { return false; }
-		if (this.pos_y != toCompare.getPosY()) { return false; }
+		if (this.posX != toCompare.posX) { return false; }
+		if (this.posY != toCompare.posY) { return false; }
 		return true;
 	}
 }

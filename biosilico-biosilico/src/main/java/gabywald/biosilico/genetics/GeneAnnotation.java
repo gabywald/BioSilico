@@ -8,6 +8,10 @@ import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.utils.Sequence;
 import gabywald.global.structures.StringCouple;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2010, 2020)
+ */
 public class GeneAnnotation extends Gene {
 	/** 
 	 * String properties annotations of the Gene. 
@@ -207,7 +211,7 @@ public class GeneAnnotation extends Gene {
 		}
 		result += "\n";
 		// result += this.sequence.toString();
-//		result += "\n"+StringListe.repeat("*", 80)+"\n";
+		// result += "\n"+StringListe.repeat("*", 80)+"\n";
 		result += "//\n";
 		
 		return result;

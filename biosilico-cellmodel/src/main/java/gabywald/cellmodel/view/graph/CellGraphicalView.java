@@ -1,8 +1,10 @@
 package gabywald.cellmodel.view.graph;
 
 import gabywald.cellmodel.model.Cellule;
-import gabywald.cellmodel.structures.VesiculeListe;
+import gabywald.cellmodel.model.Vesicule;
+
 import java.awt.BorderLayout;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
@@ -12,7 +14,7 @@ import javax.swing.JLabel;
 /**
  * Main Graphical view of modelization of a cell. 
  * <br>Design-Pattern <i>Singleton</i> 
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 @SuppressWarnings("serial")
 public class CellGraphicalView extends JFrame implements Observer {
@@ -181,17 +183,17 @@ public class CellGraphicalView extends JFrame implements Observer {
 		Cellule obj_change = (Cellule)arg0;
 		int sta = 0;
 		int glo = 0;
-		VesiculeListe liste = obj_change.getTransport();
-		for (int i = 0 ; i < liste.length() ; i++) {
-			if (liste.getVesicule(i).getType() == 1) { sta += liste.getVesicule(i).length(); }
-			else { glo += liste.getVesicule(i).length(); }
+		List<Vesicule> liste = obj_change.getTransport();
+		for (int i = 0 ; i < liste.size() ; i++) {
+			if (liste.get(i).getType() == 1) { sta += liste.get(i).length(); }
+			else { glo += liste.get(i).length(); }
 		}
 		this.vesicule_sta.setText(sta+"p");
 		this.vesicule_gol.setText(glo+"p");
 		this.noyau_arn.setText(obj_change.getNoyauObservable().length()+"a");
-		this.cytop_arn.setText(obj_change.getCytoplasmeObservable().length_arn()+"a");
-		this.cytop_ribo.setText(obj_change.getCytoplasmeObservable().length_rib()+"r");
-		this.cytop_prot.setText(obj_change.getCytoplasmeObservable().length_pro()+"p");
+		this.cytop_arn.setText(obj_change.getCytoplasmeObservable().lengthARN()+"a");
+		this.cytop_ribo.setText(obj_change.getCytoplasmeObservable().lengthRibosome()+"r");
+		this.cytop_prot.setText(obj_change.getCytoplasmeObservable().lengthProtein()+"p");
 		this.golgi_prot.setText(obj_change.getAppareilDeGolgiObservable().length()+"p");
 		this.exocy_prot.setText(obj_change.getExocytose().length()+"p");
 		this.membr_prot.setText(obj_change.getMembrane().length()+"p");

@@ -8,7 +8,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * This type of Gene has to initiate variables of an organism on a starting life.<br>
  * <b>sex</b>, <b>age_max</b> and <b>age_min</b> should be 0 (all and at start).
  * <br><i>Creatures inspired. </i>
- * @author Gabriel Chandesris (2009)
+ * @author Gabriel Chandesris (2009, 2020)
  */
 public class InitialConcentration extends GeneGattaca {
 	/** The variable indice to be affected. */
@@ -35,28 +35,28 @@ public class InitialConcentration extends GeneGattaca {
 	public InitialConcentration(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
 			int age_min, int age_max, int sex, int mut_rate,
-			int var,int val) {
+			int var, int val) {
 		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
-		this.varia = (var < 0)?0:((var > 999)?999:var);
-		this.value = (val < 0)?0:((val > 999)?999:val);
+		this.varia = Gene.obtainValue(0,  999, var);
+		this.value = Gene.obtainValue(0,  999, val);
 	}
 	
 	public String reverseTranslation(boolean end) {
-		String result = super.reverseTranslation(false);
-		String tmp = "";
-		tmp += ((this.varia < 100)?"0"+((this.varia < 10)?"0":""):"")+this.varia;
-		tmp += ((this.value < 100)?"0"+((this.value < 10)?"0":""):"")+this.value;
-		/** if (this.val > 99) { tmp += this.val; }
-		else if (this.val > 9) { tmp += "0"+this.val; }
-		else { tmp += "00"+this.val; } */
+		String result		= super.reverseTranslation(false);
+		StringBuilder tmp	= new StringBuilder();
+		tmp.append(Gene.convert0to999(this.varia));
+		tmp.append(Gene.convert0to999(this.value));
+		
 		for (int i = 0 ; i < tmp.length() ; i++) 
 			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
-		 /** end is given here "GGT" */
+		
+		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
-	protected void exec(Organism orga) throws GeneException 
-		{ orga.getChemicals().setVariable(this.varia,this.value); }
+	protected void exec(Organism orga) throws GeneException {
+		orga.getChemicals().setVariable(this.varia, this.value); 
+	}
 	
 	public int getVariable()	{ return this.varia; }
 	public int getValue()		{ return this.value; }
