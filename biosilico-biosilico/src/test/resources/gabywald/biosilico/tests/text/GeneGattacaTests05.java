@@ -12,7 +12,7 @@ public class GeneGattacaTests05 {
 
 	public static void main (String argv[]) {
 
-		GeneMoreListe liste = new GeneMoreListe("initialGenes.txt",true);
+		GeneMoreListe liste = new GeneMoreListe("initialGenes.txt", true);
 		liste.readFile();
 		for (int i = 0 ; i < liste.length() ; i++)
 			{ liste.removeChamps(0); }

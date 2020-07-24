@@ -13,8 +13,6 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class InitConJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 103L;
 	/** Some Label's. */
 	private JLabel varLabel,valLabel;
 	/** Some TextField's. */
@@ -56,20 +54,4 @@ public class InitConJPanel extends GeneJPanel {
 		this.valField.setText(GeneJPanel.convertThreeChars(gene.getValue()));
 	}
 	
-	/**
-			int varia = ((InitialConcentration)gene).getVariable();
-			int value = ((InitialConcentration)gene).getValue();
-			
-			((InitConJPanel)this.geneticParam[type]).setMutate(mutate);
-			((InitConJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((InitConJPanel)this.geneticParam[type]).setMutate(delete);
-			((InitConJPanel)this.geneticParam[type]).setMutate(activi);
-			((InitConJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((InitConJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((InitConJPanel)this.geneticParam[type]).setSex(sex);
-			((InitConJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((InitConJPanel)this.geneticParam[type]).setVariable(varia);
-			((InitConJPanel)this.geneticParam[type]).setValue(value);
-	 */
 }

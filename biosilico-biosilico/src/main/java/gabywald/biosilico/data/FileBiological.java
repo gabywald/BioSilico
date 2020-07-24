@@ -27,8 +27,8 @@ public abstract class FileBiological extends File {
 	 * @param type (String)
 	 * @param fileName (String) name with extension and without path. 
 	 */
-	public FileBiological(String type,String fileName) 
-		{ super(type,fileName); }
+	public FileBiological(String type, String fileName) 
+		{ super(type, fileName); }
 	
 	/**
 	 * To get the liste of current instance of FichierBiological's sub-class. 

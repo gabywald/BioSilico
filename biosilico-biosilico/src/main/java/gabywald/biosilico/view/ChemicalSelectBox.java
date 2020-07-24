@@ -41,9 +41,6 @@ public class ChemicalSelectBox extends SelectBox {
 		this.stringStock		= new ArrayList<String>();
 		this.removeAllItems();
 		for (int i = 0 ; i < this.chemicalStock.size() ; i++) {
-//			System.out.println(i+"    "
-//					+this.chemicalStock.getStringCouple(i).getValueA()+"    "
-//					+this.chemicalStock.getStringCouple(i).getValueB());
 			this.stringStock.add(i+"    "
 					+ this.chemicalStock.get(i).getValueA() + "    "
 					+ this.chemicalStock.get(i).getValueB());
@@ -51,6 +48,6 @@ public class ChemicalSelectBox extends SelectBox {
 		}
 	}
 	
-	public List<StringCouple> getChemicalStock() { return this.chemicalStock; }
-	public JLabel getChemicalStockJLabel() { return this.chemicalStockLabel; }
+	public List<StringCouple> getChemicalStock()	{ return this.chemicalStock; }
+	public JLabel getChemicalStockJLabel()			{ return this.chemicalStockLabel; }
 }

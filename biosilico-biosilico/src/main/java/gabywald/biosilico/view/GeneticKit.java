@@ -13,12 +13,10 @@ import gabywald.biosilico.structures.Pathway;
  * This class defines manipulation of an organism about its Gene's (add / remove, pathways...). 
  * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2009-2010, 2020)
- * TODO séparer la partie controller de cette vue
+ * TODO export controller part from this view !!
  */
 @SuppressWarnings("serial")
 public class GeneticKit extends GeneKitJFrame {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 101L;
 	/** Unique instance of this view. */
 	private static GeneticKit instance = null;
 	/** North Panel : to open a file or create an agent from scratch. */
@@ -60,7 +58,6 @@ public class GeneticKit extends GeneKitJFrame {
 	}
 	
 	private void initWesternPanel() {
-		// String geneListe[]		= {"Encoded Genes"};
 		this.geneScroll		= new GeneListJScroll();
 		this.westernPanel	= new GeneKitsGBJPanel();
 		
@@ -83,7 +80,6 @@ public class GeneticKit extends GeneKitJFrame {
 		this.addsavGene.setEnabled(false);
 		this.addPathWay.setEnabled(false);
 
-		/** Positions of elements in Center Panel */
 		this.initCenterPositions();
 	}
 	
@@ -110,6 +106,7 @@ public class GeneticKit extends GeneKitJFrame {
 //		GeneKitsGBJPanel more = new GeneKitsGBJPanel();
 //		more.addBagComponent(moreText, 0, 0);
 //		more.setBackground(Color.BLACK);
+		
 		this.centerPanel.addBagComponent(new JLabel(" "), 4, 0, 1, 2);
 	}
 	
@@ -141,7 +138,7 @@ public class GeneticKit extends GeneKitJFrame {
 				this.geneSelection.setSelection(0);
 			}
 		} else if (source.equals(this.pathSelection)) {
-			/** Selection in menu of previous defined pathways. */
+			// ***** Selection in menu of previous defined pathways. 
 			// this.selectedPath = this.pathSelection.getSelectedIndex();
 			if (this.pathSelection.getSelected() > 0) {
 				// this.sendMessage(this.pathSelection.getSelectedIndex()+" M");
@@ -156,7 +153,7 @@ public class GeneticKit extends GeneKitJFrame {
 				this.geneSelection.setSelection(0);
 			}
 		} else if (source.equals(this.geneSelection)) {
-			/** Selection in menu of previous defined genes. */
+			// ***** Selection in menu of previous defined genes. 
 			// this.selectedGene = this.geneSelection.getSelectedIndex();
 			if (this.geneSelection.getSelected() > 0) {
 				// System.out.println(this.geneSelection.getSelected() );
@@ -176,7 +173,7 @@ public class GeneticKit extends GeneKitJFrame {
 				this.pathSelection.setSelection(0);
 			}
 		} else if (source.equals(this.addsavGene)) {
-			/** Selection in menu of previous defined genes. */
+			// ***** Selection in menu of previous defined genes. 
 			// this.selectedGene = this.existentSelection.getSelectedIndex();
 			if (this.geneSelection.getSelected() > 0) {
 				// this.sendMessage("selected "+this.selectedGene);
@@ -185,7 +182,7 @@ public class GeneticKit extends GeneKitJFrame {
 				this.enableSouthPanel(true);
 			} else { ; }
 		} else if (source.equals(this.addPathWay)) {
-			/** Selection in menu of previous defined pathways. */
+			// ***** Selection in menu of previous defined pathways. 
 			// this.selectedPath = this.pathSelection.getSelectedIndex();
 			if (this.pathSelection.getSelected() > 0) {
 				Pathway pathSelected = this.pathSelection.getSelectedPathway();

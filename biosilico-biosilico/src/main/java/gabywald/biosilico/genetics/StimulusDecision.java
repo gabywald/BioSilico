@@ -75,8 +75,7 @@ public class StimulusDecision extends GeneGattaca {
 		tmp.append(Gene.convert0to999(this.value));
 		tmp.append(Gene.convert0to999(this.scrip));
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");

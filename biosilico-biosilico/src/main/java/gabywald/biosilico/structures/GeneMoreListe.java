@@ -16,17 +16,14 @@ import gabywald.global.view.text.Terminal;
  * This class describes a more complete list of Gene's with types. 
  * <br>Link to a file to record the list.  
  * @author Gabriel Chandesris (2010, 2020)
- * @see GeneListe
  * @see Pathway
  * @see gabywald.biosilico.view.GeneParametersViewer
  */
 public class GeneMoreListe implements StructureRecordFile {
-	/** List of Gene's. */
+	/** List of Gene's instances. */
 	private List<Gene> genesStock;
-	/** List of gene's types. */
+	/** List of Gene's types. */
 	private List<Integer> geneTypes;
-	/** Length of the list. */
-	private int length;
 	/** Location of the default file to record GeneMoreListe instance. */
 	public static final String GENE_LIST_FILE = FileBiological.DEFAULT_PATH_NAME + "definedGenes.txt";
 	/** Location of the current defined file to record GeneMoreListe instance. */
@@ -35,15 +32,22 @@ public class GeneMoreListe implements StructureRecordFile {
 	private File recordingGene;
 	
 	/** Default Constructor. */
-	public GeneMoreListe() 
-		{ this.init(); } // this.readGenesListeFile();
+	public GeneMoreListe() { 
+		this.genesStock	= new ArrayList<Gene>();
+		this.geneTypes	= new ArrayList<Integer>();
+	}
 	
 	public GeneMoreListe(String fileName, boolean defaultDir) {
-		this.init();
-		this.geneListFile = 
-			((defaultDir)?FileBiological.DEFAULT_PATH_NAME:"")
-			+fileName;
-		// this.readGenesListeFile();
+		this();
+		this.geneListFile = ((defaultDir)?FileBiological.DEFAULT_PATH_NAME:"")+fileName;
+	}
+	
+	/**
+	 * To add a Gene with given type. 
+	 * @param gene (Gene)
+	 */
+	public void addGene(Gene gene) {
+		this.addGene(gene, -1);
 	}
 	
 	/**
@@ -51,39 +55,28 @@ public class GeneMoreListe implements StructureRecordFile {
 	 * @param gene (Gene)
 	 * @param type (int)
 	 */
-	public void addGene(Gene gene,int type) {
+	public void addGene(Gene gene, int type) {
 		this.genesStock.add(gene);
-		// this.geneNames.addString(gene.getName());
 		this.geneTypes.add(type);
-		this.length++;
 	}
 	
-	/**
-	 * To add only a Gene instance (a default name and type are added). 
-	 * @param gene (Gene)
-	 * @deprecated use {@link GeneMoreListe#addGene(Gene, String, int)}
-	 */
-	public void addGene(Gene gene) {
-		this.genesStock.add(gene);
-		// this.geneNames.addString("UnNamedGene"+this.length);
-		this.geneTypes.add(0);
-		this.length++;
-	}
-	
-	public int length() { return this.length; }
+	public int length() { return this.genesStock.size(); }
 	
 	public List<String> getGenesNames() { 
 		List<String> geneNames = new ArrayList<String>();
-		for (int i = 0 ; i < this.genesStock.size() ; i++) {
-			String tmpName = this.genesStock.get(i).getName();
-			if (tmpName.equals(Gene.DEFAULT_GENE_NAME)) {
-				tmpName += geneNames.size();
-				this.genesStock.get(i).setName(tmpName);
+		
+		this.genesStock.stream().forEach( gene -> {
+			StringBuilder sbTmp = new StringBuilder();
+			sbTmp.append( gene.getName() );
+			if (gene.getName().equals(Gene.DEFAULT_GENE_NAME)) {
+				sbTmp.append( geneNames.size() );
+				gene.setName( sbTmp.toString() );
 			}
-			geneNames.add(tmpName);
-		}
+			geneNames.add( sbTmp.toString() );
+		});
 		return geneNames;
 	}
+	
 	public String getGeneName(int i)	{ return this.genesStock.get(i).getName(); }
 	public Gene getGene(int i)			{ return this.genesStock.get(i); }
 	
@@ -102,18 +95,9 @@ public class GeneMoreListe implements StructureRecordFile {
 		{ return this.geneTypes.get(i).intValue(); }
 	
 	public void removeGene(int i) {
-		// this.geneNames.removeString(i);
 		this.genesStock.remove(i);
 		this.geneTypes.add(i);
 		this.removeChamps(i);
-		this.length--;
-	}
-	
-	private void init() {
-		this.genesStock	= new ArrayList<Gene>();
-		// this.geneNames	= new StringListe();
-		this.geneTypes	= new ArrayList<Integer>();
-		this.length = 0;
 	}
 	
 	/**
@@ -126,27 +110,22 @@ public class GeneMoreListe implements StructureRecordFile {
 	 */
 	public Gene addLineOfGeneMoreListeFile(String line) throws DataException {
 		String[] cute = line.split("\t");
-		/** nom ; type ; code ; mutate ; duplicate ; delete ; 
-		 * active ; minimal age ; maximal age ; sex ; mutation rate ; 
-		 * others... */
-		if (cute.length <= 1) { throw new DataException
-				("GeneMoreListe File : Données incorrectes. "); }
-		/** GeneGattaca.translation(cute[2], 0) */
+		// ***** name ; type ; code ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others... 
+		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. "); }
+		// ***** GeneGattaca.translation(cute[2], 0) 
 		Gene result = GeneGattaca.getInstance(cute[2]);
 		result.setName(cute[0]);
-		if (result != null) { this.addGene
-			(result, Integer.parseInt(cute[1])); }
+		if (result != null)		{ this.addGene(result, Integer.parseInt(cute[1])); }
 		return result;
 	}
 	
 	/** To read the Gene List File.  */
 	private void readGenesListeFile() {
-		this.init();
 		try {
 			if ( (this.geneListFile == null) || (this.geneListFile.equals("")) )
 				{ this.geneListFile = GeneMoreListe.GENE_LIST_FILE; }
 			this.recordingGene = File.loadFile(this.geneListFile);
-			/** Terminal.ecrireStringln(this.geneListFile); */
+
 			if (this.recordingGene.lengthFile() == 1) {
 				String firstLine = this.recordingGene.getChamp(0);
 				if (firstLine.endsWith("File Not Found")) {
@@ -176,16 +155,16 @@ public class GeneMoreListe implements StructureRecordFile {
 		return "";
 	}
 	
-	public void readFile() { this.readGenesListeFile(); }
+	public void readFile()	{ this.readGenesListeFile(); }
 	
-	public void printFile() { this.printGenesListeFile(); }
+	public void printFile()	{ this.printGenesListeFile(); }
 	
 	public void addToChamps(String line) { 
 		this.recordingGene.addToChamps(line);
 		this.printGenesListeFile(); 
 	}
 	
-	public void setChamps(int index,String line) { 
+	public void setChamps(int index, String line) { 
 		this.recordingGene.setChamps(index, line);
 		this.printGenesListeFile(); 
 	}

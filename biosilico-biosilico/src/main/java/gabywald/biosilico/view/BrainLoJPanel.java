@@ -17,16 +17,14 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class BrainLoJPanel extends GeneJPanel implements ActionListener {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 106L;
 	/** Some Label's. */
-	private JLabel restLabel,threLabel,descLabel,dendrminLabel,dendrmaxLabel,
-					proxLabel,heightLabel,widthLabel,posxLabel,posyLabel; /** ,repyLabel */
+	private JLabel	restLabel, threLabel, descLabel, dendrminLabel, dendrmaxLabel,
+					proxLabel, heightLabel, widthLabel, posxLabel, posyLabel; 
 	/** Some TextField's. */
-	private JTextField restField,threField,descField,dendrminField,dendrmaxField,
-					proxField,repyField,heightField,widthField,posxField,posyField;
+	private JTextField	restField, threField, descField, dendrminField, dendrmaxField,
+						proxField, repyField, heightField, widthField, posxField, posyField;
 	/** Some ChecjBox'es. */
-	private JCheckBox reprBox,wtaaBox,replBox;
+	private JCheckBox reprBox, wtaaBox, replBox;
 	
 	public BrainLoJPanel() {
 		
@@ -40,7 +38,7 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.dendrminLabel	= new JLabel("Min. dendrites : ");
 		this.dendrmaxLabel	= new JLabel("Max. dendrites : ");
 		this.proxLabel		= new JLabel("Proximity : ");
-		/** this.repyLabel		= new JLabel("Reproduct. : "); */
+		// ***** this.repyLabel		= new JLabel("Reproduct. : "); 
 		this.heightLabel	= new JLabel("Heigth : ");
 		this.widthLabel		= new JLabel("Width : ");
 		this.posxLabel		= new JLabel("X Position : ");
@@ -52,7 +50,7 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.dendrminLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.dendrmaxLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.proxLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		/** this.repyLabel.setHorizontalAlignment(SwingConstants.RIGHT); */
+		// ***** this.repyLabel.setHorizontalAlignment(SwingConstants.RIGHT); 
 		this.heightLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.widthLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.posxLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -81,7 +79,7 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.addBagComponent(this.reprBox, 2, 7);
 		this.addBagComponent(this.repyField, 3, 7);
 		
-		/** Neuron's calculation parameters. */
+		// ***** Neuron's calculation parameters. 
 		this.addBagComponent(this.restLabel, 0, 8);
 		this.addBagComponent(this.restField, 1, 8);
 		this.addBagComponent(this.threLabel, 2, 8);
@@ -90,7 +88,7 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.addBagComponent(this.descField, 1, 9);
 		this.addBagComponent(this.proxLabel, 2, 9);
 		this.addBagComponent(this.proxField, 3, 9);
-		/** Size and position of lobe. */
+		// ***** Size and position of lobe. 
 		this.addBagComponent(this.heightLabel, 0, 10);
 		this.addBagComponent(this.heightField, 1, 10);
 		this.addBagComponent(this.widthLabel, 2, 10);
@@ -99,7 +97,7 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.addBagComponent(this.posxField, 1, 11);
 		this.addBagComponent(this.posyLabel, 2, 11);
 		this.addBagComponent(this.posyField, 3, 11);
-		/** Dendritic connections. */
+		// ***** Dendritic connections. 
 		this.addBagComponent(this.dendrminLabel, 0, 12);
 		this.addBagComponent(this.dendrminField, 1, 12);
 		this.addBagComponent(this.dendrmaxLabel, 2, 12);
@@ -171,44 +169,4 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.replBox.setSelected(gene.getReplace());
 	}
 	
-	/**
-			int rest			= ((BrainLobeGene)gene).getRestState();
-			int thre			= ((BrainLobeGene)gene).getThreshold();
-			int desc			= ((BrainLobeGene)gene).getDescent();
-			int dendriticmin	= ((BrainLobeGene)gene).getDendritMin();
-			int dendriticmax	= ((BrainLobeGene)gene).getDendritMax();
-			int prox			= ((BrainLobeGene)gene).getProximity();
-			boolean repr		= ((BrainLobeGene)gene).getReproduce();
-			int repy			= ((BrainLobeGene)gene).getReproduct();
-			boolean wta			= ((BrainLobeGene)gene).getWTA();
-			int heightl			= ((BrainLobeGene)gene).getLobeHeight();
-			int widthl			= ((BrainLobeGene)gene).getLobeWidth();
-			int posxBL			= ((BrainLobeGene)gene).getLobePosX();
-			int posyBL			= ((BrainLobeGene)gene).getLobePosY();
-			boolean replace		= ((BrainLobeGene)gene).getReplace();
-			
-			((BrainLoJPanel)this.geneticParam[type]).setMutate(mutate);
-			((BrainLoJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((BrainLoJPanel)this.geneticParam[type]).setMutate(delete);
-			((BrainLoJPanel)this.geneticParam[type]).setMutate(activi);
-			((BrainLoJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((BrainLoJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((BrainLoJPanel)this.geneticParam[type]).setSex(sex);
-			((BrainLoJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((BrainLoJPanel)this.geneticParam[type]).setRestState(rest);
-			((BrainLoJPanel)this.geneticParam[type]).setThreshold(thre);
-			((BrainLoJPanel)this.geneticParam[type]).setDescent(desc);
-			((BrainLoJPanel)this.geneticParam[type]).setDendritMin(dendriticmin);
-			((BrainLoJPanel)this.geneticParam[type]).setDendritMax(dendriticmax);
-			((BrainLoJPanel)this.geneticParam[type]).setProximity(prox);
-			((BrainLoJPanel)this.geneticParam[type]).setReproduce(repr);
-			((BrainLoJPanel)this.geneticParam[type]).setReproduct(repy);
-			((BrainLoJPanel)this.geneticParam[type]).setWTA(wta);
-			((BrainLoJPanel)this.geneticParam[type]).setLobeHeight(heightl);
-			((BrainLoJPanel)this.geneticParam[type]).setLobeWidth(widthl);
-			((BrainLoJPanel)this.geneticParam[type]).setLobePosX(posxBL);
-			((BrainLoJPanel)this.geneticParam[type]).setLobePosY(posyBL);
-			((BrainLoJPanel)this.geneticParam[type]).setReplace(replace);
-	 */
 }

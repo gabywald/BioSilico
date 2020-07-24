@@ -107,8 +107,6 @@ class NeuronTests {
 		Assertions.assertEquals(0, 		emittersTest.getActivity());
 	}
 		
-	
-	
 	@Test
 	void testNeuronInstanciationBuilder() {
 		NeuronBuilder nb = new NeuronBuilder();
@@ -185,6 +183,135 @@ class NeuronTests {
 		Assertions.assertEquals(0, 		decision.getReproductibility());
 		Assertions.assertEquals(true, 	decision.isWTA());
 		Assertions.assertEquals(0, 		decision.getActivity());
+	}
+	
+	@Test
+	void testNeuronRecompute() {
+		NeuronBuilder nb = new NeuronBuilder();
+		
+		Neuron receptor = nb.threshold(100).desc(10).build();
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals(0, 		receptor.getActivity());
+		Assertions.assertEquals(false, 	receptor.isActivated());
+		
+		receptor.recompute();
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals(0, 		receptor.getActivity());
+		Assertions.assertEquals(false, 	receptor.isActivated());
+		
+		receptor.addActivity(1000);
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals(1000, 	receptor.getActivity());
+		Assertions.assertEquals(true, 	receptor.isActivated());
+		
+		receptor.recompute();
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals( 990, 	receptor.getActivity());
+		Assertions.assertEquals(true, 	receptor.isActivated());
+		
+		receptor.recompute();
+		receptor.recompute();
+		receptor.recompute();
+		receptor.recompute();
+		receptor.recompute();
+		receptor.recompute();
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals( 930, 	receptor.getActivity());
+		Assertions.assertEquals(true, 	receptor.isActivated());
+		
+		receptor.setActivity( 100 );
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals( 100, 	receptor.getActivity());
+		Assertions.assertEquals(true, 	receptor.isActivated());
+		
+		receptor.recompute();
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals(  90, 	receptor.getActivity());
+		Assertions.assertEquals(false, 	receptor.isActivated());
+		
+		receptor.recompute();
+		
+		Assertions.assertNotNull( receptor );
+		Assertions.assertEquals(0, 		receptor.getRestState());
+		Assertions.assertEquals(100, 	receptor.getThreshold());
+		Assertions.assertEquals(10, 	receptor.getDescent());
+		Assertions.assertEquals(0, 		receptor.getDmin());
+		Assertions.assertEquals(0, 		receptor.getDmax());
+		Assertions.assertEquals(0, 		receptor.getProximity());
+		Assertions.assertEquals(false, 	receptor.getReproduction());
+		Assertions.assertEquals(0, 		receptor.getReproductibility());
+		Assertions.assertEquals(false, 	receptor.isWTA());
+		Assertions.assertEquals(  80, 	receptor.getActivity());
+		Assertions.assertEquals(false, 	receptor.isActivated());
 	}
 	
 	// TODO complete these tests !! NeuronTests

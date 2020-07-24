@@ -4,7 +4,7 @@ import gabywald.biosilico.genetics.Gene;
 
 /**
  * This class describes a group of Gene united by a global aim (a Pathway). 
- * @author Gabriel Chandesris (2010)
+ * @author Gabriel Chandesris (2010, 2020)
  * @see GeneMoreListe
  */
 public class Pathway {
@@ -28,10 +28,13 @@ public class Pathway {
 	 */
 	public String getName() { return this.name; }
 	
-	public GeneMoreListe getGeneMoreListe() { return this.genesStock; } 
+	public GeneMoreListe getGeneMoreListe() { 
+		return this.genesStock; 
+	} 
 	
 	/** Number of gene's in current pathway. */
-	public int length() { return this.genesStock.length(); }
+	public int length() 
+		{ return this.genesStock.length(); }
 	
 	public String getGeneName(int i) 
 		{ return this.genesStock.getGeneName(i); }
@@ -40,21 +43,20 @@ public class Pathway {
 		{ return this.genesStock.getGene(i); }
 	
 	/**
-	 * To add only a Gene. 
+	 * To add a Gene with given type. 
 	 * @param gene (Gene)
-	 * @see GeneMoreListe#addGene(Gene)
-	 * @deprecated use {@link Pathway#addGene(Gene, String, int)}
 	 */
-	public void addGene(Gene gene) { this.genesStock.addGene(gene); }
+	public void addGene(Gene gene) {
+		this.addGene(gene, -1);
+	}
 	
 	/**
 	 * To add a Gene with name and type. 
 	 * @param gene (Gene)
-	 * @param name (String)
 	 * @param type (int)
-	 * @see GeneMoreListe#addGene(Gene, String, int)
+	 * @see GeneMoreListe#addGene(Gene, int)
 	 */
 	public void addGene(Gene gene, int type) 
-		{ this.genesStock.addGene(gene,type); }
+		{ this.genesStock.addGene(gene, type); }
 	
 }

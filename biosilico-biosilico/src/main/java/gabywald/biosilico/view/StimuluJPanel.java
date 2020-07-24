@@ -14,8 +14,6 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class StimuluJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 108L;
 	/** Some Label's. */
 	private JLabel indicaLabel,threshLabel,attribLabel,variabLabel,valuesLabel,scriptLabel;
 	/** Some TextField's. */
@@ -33,7 +31,8 @@ public class StimuluJPanel extends GeneJPanel {
 		
 		this.indicaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.threshLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		this.attribLabel.setHorizontalAlignment(SwingConstants.RIGHT);		this.variabLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		this.attribLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		this.variabLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.valuesLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.scriptLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -105,32 +104,4 @@ public class StimuluJPanel extends GeneJPanel {
 		this.scriptField.setText(GeneJPanel.convertThreeChars(gene.getScript()));
 	}
 	
-	/**
-			boolean perception	= ((StimulusDecision)gene).getPerception();
-			boolean object		= ((StimulusDecision)gene).getObject();
-			int indicator		= ((StimulusDecision)gene).getIndicator();
-			int threshold		= ((StimulusDecision)gene).getThreshold();
-			int attribute		= ((StimulusDecision)gene).getAttribute();
-			int variaSD			= ((StimulusDecision)gene).getVariable();
-			int valueSD			= ((StimulusDecision)gene).getValue();
-			int scripSD			= ((StimulusDecision)gene).getScript();
-
-			((StimuluJPanel)this.geneticParam[type]).setMutate(mutate);
-			((StimuluJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((StimuluJPanel)this.geneticParam[type]).setMutate(delete);
-			((StimuluJPanel)this.geneticParam[type]).setMutate(activi);
-			((StimuluJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((StimuluJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((StimuluJPanel)this.geneticParam[type]).setSex(sex);
-			((StimuluJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((StimuluJPanel)this.geneticParam[type]).setPerception(perception);
-			((StimuluJPanel)this.geneticParam[type]).setObject(object);
-			((StimuluJPanel)this.geneticParam[type]).setIndicator(indicator);
-			((StimuluJPanel)this.geneticParam[type]).setThreshold(threshold);
-			((StimuluJPanel)this.geneticParam[type]).setAttribute(attribute);
-			((StimuluJPanel)this.geneticParam[type]).setVariable(variaSD);
-			((StimuluJPanel)this.geneticParam[type]).setValue(valueSD);
-			((StimuluJPanel)this.geneticParam[type]).setScript(scripSD);
-	 */
 }

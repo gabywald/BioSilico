@@ -63,6 +63,6 @@ public abstract class GeneKitJFrame extends GenericJFrame
 		{ return this.geneTypeSelection; }
 	
 	protected void setGeneTypeSelection(int geneType) 
-	{ this.geneTypeSelection.setSelection(geneType); }
+		{ this.geneTypeSelection.setSelection(geneType); }
 	
 }

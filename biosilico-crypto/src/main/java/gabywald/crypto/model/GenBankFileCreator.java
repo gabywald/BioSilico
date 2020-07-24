@@ -58,13 +58,10 @@ public class GenBankFileCreator {
 	public GenBankFileCreator(String path, String content) {
 		this.encodedPath	= new ArrayList<String>();
 		this.encodedContent	= new ArrayList<String>();
-//		if ( (!path.equals("")) && (!content.equals("")))
-//			{ this.setPath(path);this.setContent(content); }
 		if ( (path != null) && (! path.equals("")) ) 
 			{ this.setPath(path); }
 		if ( (content != null) && (! content.equals("")) ) 
 			{ this.setContent(content); }
-		/** this.initialize(); */
 	}
 	
 	private void initialize() {

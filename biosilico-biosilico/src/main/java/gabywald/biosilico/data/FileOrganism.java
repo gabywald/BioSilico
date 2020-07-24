@@ -26,11 +26,8 @@ import gabywald.global.structures.StringCouple;
  */
 @SuppressWarnings("serial")
 public class FileOrganism extends FileBiological {
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 526L;
 	/** Date Formatter (ddmmyyyy hh:mm:ss). */
-	private static final SimpleDateFormat GENERIC_FORMATER = 
-			new SimpleDateFormat("dd-MM-yyyy    HH:mm:ss");
+	private static final SimpleDateFormat GENERIC_FORMATER = new SimpleDateFormat("dd-MM-yyyy    HH:mm:ss");
 	/** Current instance of Organism */
 	private Organism orga;
 	/** Container of genome. */

@@ -14,8 +14,6 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class InstincJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 109L;
 	/** Some Label's. */
 	private JLabel posxOrgLabel,posyOrgLabel,posxDesLabel,posyDesLabel,
 					weightLabel,variablLabel,threshoLabel;
@@ -107,33 +105,4 @@ public class InstincJPanel extends GeneJPanel {
 		this.checkBox.setSelected(gene.getCheck());
 	}
 	
-	
-	/**
-	 		int posxInput	= ((Instinct)gene).getPosXOrg();
-			int posyInput	= ((Instinct)gene).getPosYOrg();
-			int posxOutput	= ((Instinct)gene).getPosXDes();
-			int posyOutput	= ((Instinct)gene).getPosYDes();
-			int weightIN	= ((Instinct)gene).getWeight();
-			int variaIN		= ((Instinct)gene).getVariable();
-			int thresIN		= ((Instinct)gene).getThreshold();
-			boolean check	= ((Instinct)gene).getCheck();
-
-			((InstincJPanel)this.geneticParam[type]).setMutate(mutate);
-			((InstincJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((InstincJPanel)this.geneticParam[type]).setMutate(delete);
-			((InstincJPanel)this.geneticParam[type]).setMutate(activi);
-			((InstincJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((InstincJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((InstincJPanel)this.geneticParam[type]).setSex(sex);
-			((InstincJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((InstincJPanel)this.geneticParam[type]).setPosXOrg(posxInput);
-			((InstincJPanel)this.geneticParam[type]).setPosYOrg(posyInput);
-			((InstincJPanel)this.geneticParam[type]).setPosXDes(posxOutput);
-			((InstincJPanel)this.geneticParam[type]).setPosYDes(posyOutput);
-			((InstincJPanel)this.geneticParam[type]).setWeight(weightIN);
-			((InstincJPanel)this.geneticParam[type]).setVariable(variaIN);
-			((InstincJPanel)this.geneticParam[type]).setThreshold(thresIN);
-			((InstincJPanel)this.geneticParam[type]).setCheck(check);
-	 */
 }

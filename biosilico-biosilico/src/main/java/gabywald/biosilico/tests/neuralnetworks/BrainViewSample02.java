@@ -1,4 +1,4 @@
-package gabywald.biosilico.tests;
+package gabywald.biosilico.tests.neuralnetworks;
 
 
 import gabywald.biosilico.exceptions.BrainLengthException;
@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.IntStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,12 +23,12 @@ import javax.swing.JPanel;
  * 
  * @author Gabriel Chandesris (2010)
  */
-public class BrainViewReduction extends JFrame implements Observer {
+public class BrainViewSample02 extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
-	private static BrainViewReduction instance = null;
-	private static int FRAME_HEIGHT = 800;
-	private static int FRAME_WIDTH = 600;
-	private static int LABEL_HEIGHT = 20;
+	private static BrainViewSample02 instance = null;
+	private static int FRAME_HEIGHT	= 800;
+	private static int FRAME_WIDTH	= 600;
+	private static int LABEL_HEIGHT	= 20;
 	
 	private JButton listButts[][];
 	private JPanel contentPanel;
@@ -36,7 +37,7 @@ public class BrainViewReduction extends JFrame implements Observer {
 	private int brainHeight;
 	private int brainWidth;
 
-	private BrainViewReduction() {
+	private BrainViewSample02() {
 		this.contentPanel = new JPanel();
 		this.contentPanel.setSize(FRAME_HEIGHT, FRAME_WIDTH-LABEL_HEIGHT);
 		this.contentLabel = new JLabel();
@@ -46,42 +47,46 @@ public class BrainViewReduction extends JFrame implements Observer {
 		try {
 			this.testBrain = BrainBuilder.brainBuilder(20, 20);
 
-			this.brainHeight = this.testBrain.getHeight();
-			this.brainWidth = this.testBrain.getWidth();
+			this.brainHeight	= this.testBrain.getHeight();
+			this.brainWidth		= this.testBrain.getWidth();
 			/** Building the Brain : lobes at first and last line
 			 * and 'conception' lobe between the two previous... */
 			// Neuron receptorType = Neuron.getReceptorNeuron();
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
 			receptorActi.setActivity(1000);
-			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 5, false, 2);
-			// Neuron emittersType = Neuron.getEmitterNeuron();
-			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 4, false, 0);
+			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 3, false, 2);
+			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 5, false, 0, true);
 
-			this.testBrain.setLobe(1, 1, 3, 8, receptorActi, false);
-			// this.testBrain.setLobe(1, 1, 4, 8, receptorActi, false);
-			this.testBrain.setLobe(1, 1, 3, 9, receptorActi, false);
-			// this.testBrain.setLobe(1, 1, 4, 9, receptorActi, false);
-			this.testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
-			// this.testBrain.setLobe(1, 1, 4, 10, receptorActi, false);
-			this.testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
-			// this.testBrain.setLobe(1, 1, 4, 11, receptorActi, false);
+			int interval = 4;
+			IntStream.iterate(2, i -> i+interval).limit( this.brainWidth / interval)
+			.forEach( i -> {
+				try {
+					this.testBrain.setLobe(1, 1, 1, i, receptorActi, false);
+				} catch (BrainLengthException | BrainLobeReplaceException e) {
+					e.printStackTrace();
+				}
+			});
 			
+			this.testBrain.setLobe(12, 20, 3, 0, conception, false);
 			
-			this.testBrain.setLobe(this.brainHeight/2, this.brainWidth/2, 5, 5, conception, true);
-
+//			IntStream.iterate(2, i -> i+interval).limit( this.brainWidth / interval)
+//			.forEach( i -> {
+//				try {
+//					this.testBrain.setLobe(15, interval, 3, i, conception, true);
+//				} catch (BrainLengthException | BrainLobeReplaceException e) {
+//					e.printStackTrace();
+//				}
+//			});
 			
-			this.testBrain.setLobe(1, 1, this.brainHeight-3, 8, emittersTest, false);
-			this.testBrain.setLobe(1, 1, this.brainHeight-3, 9, emittersTest, false);
-			this.testBrain.setLobe(1, 1, this.brainHeight-3, 10, emittersTest, false);
-			this.testBrain.setLobe(1, 1, this.brainHeight-3, 11, emittersTest, false);
+			this.testBrain.setLobe(1, this.brainWidth, this.brainHeight-1, 0, emittersTest, true);
 		} 
-		catch (BrainLengthException e) { e.printStackTrace(); } 
-		catch (BrainLobeReplaceException e) { e.printStackTrace(); }
+		catch (BrainLengthException e)		{ e.printStackTrace(); } 
+		catch (BrainLobeReplaceException e)	{ e.printStackTrace(); }
 		
-		/** Building graphical view */
-		int max_height = this.brainHeight;
-		int max_width = this.brainWidth;
-		this.listButts = new JButton[max_width][max_height];
+		// ***** Building graphical view 
+		int max_height	= this.brainHeight;
+		int max_width	= this.brainWidth;
+		this.listButts	= new JButton[max_width][max_height];
 		this.contentPanel.setLayout(new GridLayout(max_width,max_height));
 		for (int i = 0 ; i < max_height ; i++) {
 			for (int j = 0 ; j < max_width ; j++) {
@@ -111,14 +116,14 @@ public class BrainViewReduction extends JFrame implements Observer {
 	
 	public Brain getBrain() { return this.testBrain; }
 	
-	public static BrainViewReduction getBrainGraphicalView() {
-		if (BrainViewReduction.instance == null) 
-			{ BrainViewReduction.instance = new BrainViewReduction(); }
-		return BrainViewReduction.instance;
+	public static BrainViewSample02 getBrainGraphicalView() {
+		if (BrainViewSample02.instance == null) 
+			{ BrainViewSample02.instance = new BrainViewSample02(); }
+		return BrainViewSample02.instance;
 	}
 	
 	public static void main(String[] args) {
-		BrainViewReduction bgv = BrainViewReduction.getBrainGraphicalView();
+		BrainViewSample02 bgv = BrainViewSample02.getBrainGraphicalView();
 		try { Thread.sleep(2000); } 
 		catch (InterruptedException e) { e.printStackTrace(); }
 		Brain test = bgv.getBrain();

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  */
 @SuppressWarnings("serial")
 public class OrganismNamesJPanel extends GeneKitsGBJPanel {
-	/** to dhox and changes names of current organism (scientific, common and include). */
+	/** To dhox and changes names of current organism (scientific, common and include). */
 	private JTextField scientificName,biosilicosName,commonName,includName;
 	/** List of Other names. */
 	private GenericJScroll othersNamesList;

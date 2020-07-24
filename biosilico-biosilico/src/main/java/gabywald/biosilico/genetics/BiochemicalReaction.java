@@ -96,8 +96,7 @@ public class BiochemicalReaction extends GeneGattaca {
 		tmp.append(Gene.convert0to999(this.Dcoef));
 		tmp.append(Gene.convert0to999(this.KminVmax));
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");

@@ -71,8 +71,7 @@ public class EmitterReceptor extends GeneGattaca {
 		tmp.append((this.receptor)?"0":"1"); 
 		tmp.append((this.internal)?"2":"3");
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");

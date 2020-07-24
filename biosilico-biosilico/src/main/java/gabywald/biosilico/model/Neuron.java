@@ -1,6 +1,7 @@
 package gabywald.biosilico.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -43,14 +44,6 @@ public class Neuron {
 	private List<Neuron> currentLobe;
 	
 	/**
-	 * Default constructor, rest at 0, threshold at 100, 
-	 * min and max dendrites at 0 (and 0 spaces for connections).
-	 */
-	public Neuron() {
-		this(0, 100, 0, 10, 0, 0, 0, 1, false, 0, false, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
-	}
-	
-	/**
 	 * Constructor with basics parameters. 
 	 * Position has to be set before first activation of neural network. 
 	 * @param rest (int) rest state. 
@@ -65,8 +58,7 @@ public class Neuron {
 	 */
 	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 					int prox, boolean repr, int repy) {
-		this(	rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, false, 
-				null, new ArrayList<Neuron>(), new ArrayList<Integer>());
+		this(rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, false, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/**
@@ -85,8 +77,7 @@ public class Neuron {
 	 */
 	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 					int prox, boolean repr, int repy, boolean wta) {
-		this(	rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, wta, 
-				null, new ArrayList<Neuron>(), new ArrayList<Integer>());
+		this(rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, wta, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/** 
@@ -165,8 +156,8 @@ public class Neuron {
 			int relative = (this.threshold - this.restState);
 			int i = 0;
 			while ( (i < this.descent) && (this.activity != this.restState) ) {
-				if (relative > 0) { this.activity--; }
-				else { this.activity++; }
+				if (relative > 0)	{ this.activity--; }
+				else				{ this.activity++; }
 				i++;
 			}
 		}
@@ -174,33 +165,32 @@ public class Neuron {
 			if (this.connections.get(i).isActivated()) 
 				{ this.activity += this.weights.get(i).intValue(); }
 		}
-		this.activity = 
-			(this.activity<0)?0:(this.activity>999)?999:this.activity;
+		this.activity = (this.activity < 0) ? 0 : (this.activity > 999) ? 999 : this.activity;
 	}
 	
 	/**
 	 * This method to force current Neuron to (re)make inputs connections. 
-	 * Inputted dendrites / neurons are in back of the map.
+	 * Inputed dendrites / neurons are in back of the map.
 	 * @param nn (Brain) Neural Network where current Neuron is.
 	 */
 	public void reconnection(Brain nn) {
-		// ***** Not removing / changing if under dendritic_min 
+		
+		if (nn == null) { return; }
+		
+		// ***** Not removing / changing if under dmin 
 		if (this.connections.size() > this.dmin) {
-			for (int i = this.index-1 
-					; i >= this.dmin /** 0 */ 
-					; i--) {
+			for (int i = this.index-1 ; i >= this.dmin ; i--) {
 				// ***** Change weights of Neurons, if activated or not. 
+				// TODO change with a specific chemical ??
 				if (this.connections.get(i).isActivated()) {
 					if (this.weights.get(i).intValue() < 999)
-						{ this.weights.set(i,  this.weights.get(i) + 1); }
+						{ this.weights.set(i, this.weights.get(i) + 1); }
 				} else {
-					/**  (!this.connections.getNeuron(i).isActivated()) */ 
 					if (this.weights.get(i).intValue() > 0)
-						{ this.weights.set(i,  this.weights.get(i) - 1); }
+						{ this.weights.set(i, this.weights.get(i) - 1); }
 				}
 				// ***** If weight is 0 or less : remove. 
-				if ( (!this.winnerTakeAll) 
-							&& (this.weights.get(i).intValue() <= 0) ) { 
+				if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
 						this.connections.remove(i);
 						this.weights.remove(i);
 						this.index--;
@@ -209,20 +199,17 @@ public class Neuron {
 		}
 		// ***** Add new Neuron's if necessary. 
 		if ( (this.index < this.dmin) && (this.position != null) ) {
-			List<Neuron> candidates = /** here a set of activated Neurons */
-				nn.getNeuronBefore(this.position, this.proximity);
-			while ( (this.index < this.dmax) 
-						&& candidates.size() > 0 ) {
-				Neuron candidate = candidates.get(0);
+			// ***** Here a set of activated Neurons 
+			List<Neuron> candidates			= nn.getNeuronsBefore(this.position, this.proximity);
+			Iterator<Neuron> iteOnNeuron	= candidates.iterator();
+			while ( (this.index < this.dmax) && (iteOnNeuron.hasNext()) ) {
+				Neuron candidate = iteOnNeuron.next();
 				// ***** Test if same Neuron at same position is present. 
-				if (!this.connections.contains(candidate)) { 
-					this.connections.add(candidates.get(0));
+				if ( ! this.connections.contains(candidate)) { 
+					this.connections.add( candidate );
 					this.weights.add(new Integer(this.proximity));
-//					int activ = this.connections.get(this.index).getActivity();
-//					this.weights.add(new Integer(activ/2));
 					this.index++;
 				}
-				candidates.remove(0);
 			}
 		}
 	}
@@ -233,15 +220,16 @@ public class Neuron {
 	 * @param nn (Brain) Neural Network where current Neuron is.
 	 */
 	public void reproduce(Brain nn) {
+		
+		if (nn == null) { return; }
+		
 		int proximity = 1;
 		if ( (this.reproduction) && (this.isActivated()) ) {
-			if ( (this.reproductibility > 0) && (this.position != null) ){ 
+			if ( (this.reproductibility > 0) && (this.position != null) ) { 
 				if (nn.getActivityBefore(this.position, proximity) <= this.dmin) { 
-					Position nextpos = 
-						nn.getBestPositionNear(this.position, proximity);
+					Position nextpos = nn.getBestPositionNear(this.position, proximity);
 					if (nextpos != null) {
-						/** change reproductibility before cloning, 
-						 * avoid 'eternal reproduction' from clones. */
+						// ***** change reproductibility before cloning, avoid 'eternal reproduction' from clones. 
 						this.reproductibility--; 
 						Neuron nextneu = this.getCopy();
 						nn.setNeuronAt(nextpos, nextneu);
@@ -262,18 +250,13 @@ public class Neuron {
 	 */
 	public boolean isActivated() {
 		if (this.winnerTakeAll) {
-			int val = Neuron.getHighestActivity( this.currentLobe );
-			if ( (val != 0) && (this.activity != val) )
+			int max = Neuron.getHighestActivity( this.currentLobe );
+			if ( (max != 0) && (this.activity != max) )
 				{ this.activity = 0; }
+			// XXX if some neurons have the same maximal activity ?!
+			// keep it all these activated !
 		}
-		int relative = (this.threshold - this.restState);
-		if ( (relative > 0) && (this.activity >= this.threshold) )
-			{ return true; }
-		else {
-			if ( (relative < 0) && (this.activity <= this.threshold) )
-				{ return true; }
-			else { return false; }
-		}
+		return this.ckActivated();
 	}
 	
 	/**
@@ -285,13 +268,10 @@ public class Neuron {
 	 */
 	public boolean ckActivated() {
 		int relative = (this.threshold - this.restState);
-		if ( (relative > 0) && (this.activity >= this.threshold) )
+		if ( ( (relative > 0) && (this.activity >= this.threshold) )
+				|| ( (relative < 0) && (this.activity <= this.threshold) ) )
 			{ return true; }
-		else {
-			if ( (relative < 0) && (this.activity <= this.threshold) )
-				{ return true; }
-			else { return false; }
-		}
+		else { return false; }
 	}
 	
 	/**
@@ -364,7 +344,7 @@ public class Neuron {
 	 * @return (boolean)
 	 * @see Neuron#equals(Neuron)
 	 */
-	public boolean equals(Neuron toCompare,boolean hasPos) {
+	public boolean equals(Neuron toCompare, boolean hasPos) {
 		if (!this.equals(toCompare)) { return false; }
 		if (hasPos) { return this.position.equals(toCompare.position); }
 		return true;

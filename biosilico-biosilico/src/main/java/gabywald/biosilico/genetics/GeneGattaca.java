@@ -3,6 +3,7 @@ package gabywald.biosilico.genetics;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
@@ -17,9 +18,30 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * <li><b>6 : </b>StimulusDecision</li>
  * <li><b>7 : </b>Instinct</li>
  * </ul>
+ * @see InitialConcentration
+ * @see BiochemicalReaction
+ * @see BrainGene
+ * @see BrainLobeGene
+ * @see EmitterReceptor
+ * @see Instinct
+ * @see StimulusDecision
  * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class GeneGattaca extends Gene {
+	
+	/**
+	 * Enumeration types of this kind of Gene (GeneGattaca). 
+	 * @author Gabriel Chandesris (2020)
+	 */
+	public enum GeneGattacaType {
+		INITIAL_CONCENTRATION, 
+		BIOCHEMICHAL_REACTION, 
+		BRAIN, 
+		BRAIN_LOBE, 
+		EMITTER_RECEPTOR, 
+		STIMULUS_DECISION, 
+		INSTINCT
+	}
 
 	/**
 	 * Main "default" Constructor.  
@@ -27,20 +49,15 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
-	 * @see InitialConcentration
-	 * @see BiochemicalReaction
-	 * @see BrainGene
-	 * @see BrainLobeGene
-	 * @see EmitterReceptor
+	 * @param mutationRate (int) Mutation rate.
 	 * @see Gene#Gene(boolean, boolean, boolean, boolean, int, int, int, int)
 	 */
 	public GeneGattaca(	boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-						int age_min, int age_max, int sex, int mut_rate) 
-		{ super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate); }
+						int ageMin, int ageMax, int sex, int mutationRate) 
+		{ super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate); }
 
 	/**
 	 * Translation method for Gene encoded in Gattaca code. 
@@ -49,7 +66,7 @@ public abstract class GeneGattaca extends Gene {
 	 * @return (String) translated sequence. 
 	 * @see GeneGattaca#getInstance(String)
 	 */
-	public static String translation(String sequence,int startpos) {
+	public static String translation(String sequence, int startpos) {
 		String result = "";
 		for (int i = startpos ; 
 				(i < sequence.length()) && (i+2 < sequence.length()) ; 
@@ -79,24 +96,59 @@ public abstract class GeneGattaca extends Gene {
 					:GeneticTranslator.reverseGattaca("5");
 		result += (this.isActiv()) ? GeneticTranslator.reverseGattaca("6")
 					: GeneticTranslator.reverseGattaca("7");
-		// if (this.getAgeMin() < 100)	{ agemin = "0"+agemin; } 
-		// if (this.getAgeMin() < 10)	{ agemin = "0"+agemin; } 
+
 		String agemin = Gene.convert0to999(this.getAgeMin());
 		String agemax = Gene.convert0to999(this.getAgeMax());
 		String sexact = Gene.convert0to999(this.getSexAct());
 		String mutrat = ((this.getMutationRate() < 10)?"0":"")+this.getMutationRate();
-		for (int i = 0 ; i < agemin.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(agemin.charAt(i)+""); }
-		for (int i = 0 ; i < agemax.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(agemax.charAt(i)+""); }
-		for (int i = 0 ; i < sexact.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(sexact.charAt(i)+""); }
-		for (int i = 0 ; i < mutrat.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(mutrat.charAt(i)+""); }
+		
+		result += GeneticTranslator.reverseSequenceGattaca( agemin );
+		result += GeneticTranslator.reverseSequenceGattaca( agemax );
+		result += GeneticTranslator.reverseSequenceGattaca( sexact );
+		result += GeneticTranslator.reverseSequenceGattaca( mutrat );
+		
 		// adding ":" to end header. 
 		result += GeneticTranslator.reverseGattaca(":");
 		// End with '*' (end) if ended here, only header). "GGT" 
 		return (end)?result+GeneticTranslator.reverseGattaca("*"):result; 
+	}
+	
+	public static boolean detectBooleanValue(char testChar) 
+			throws GeneException {
+		if ( ! Character.isDigit(testChar)) {
+			throw new GeneException("Not a digit [" + testChar + "]");
+		}
+		int testInt = Integer.parseInt(testChar+"");
+		if (testInt%2 == 0) { return true; }
+		else { return false; }
+	}
+	
+	public static int detectIntegerValue(char... testChar) 
+			throws GeneException {
+		int toReturn	= 0;
+		int maxIndex	= testChar.length;
+		int index		= 1;
+		for (char aChar : testChar) {
+			if ( ! Character.isDigit(aChar)) { 
+				StringBuilder sb = new StringBuilder();
+				sb.append("Not a digit [").append(aChar).append("] in {").append(testChar).append("}");
+				throw new GeneException(sb.toString());
+			}
+			toReturn	+= Integer.parseInt(aChar + "") * ( (int)Math.pow(10, (maxIndex - index) ) );
+			index++;
+		}
+		return toReturn;
+	}
+	
+	public static int detectIntValue(int... intElt) {
+		int toReturn	= 0;
+		int maxIndex	= intElt.length;
+		int index		= 1;
+		for (int aInt : intElt) {
+			toReturn	+= aInt * ( (int)Math.pow(10, (maxIndex - index) ) );
+			index++;
+		}
+		return toReturn;
 	}
 	
 	/**
@@ -116,118 +168,74 @@ public abstract class GeneGattaca extends Gene {
 		/** no GeneGattaca under 10 triplet length : start+7 elts of header+1 elt+stop */
 		if (sequence.length() < (3*10) ) { return null; }
 		
-		/** Searching in 3 frames : 0 ; 1 ; 2. */
+		// ***** Searching in 3 frames : 0 ; 1 ; 2. 
 		for (int i = 0 ; i < 3 ; i++) {
 			String translated = GeneGattaca.translation(sequence, i);
-			int start_index = translated.indexOf("M");
-			int stops_index = translated.indexOf("*");
-			int diff = (stops_index-start_index);
-			if (diff > 15) { /** 15 is length of translated header */
-				/** Default values for header in Gene. */
+			int startIndex = translated.indexOf("M");
+			int stopsIndex = translated.indexOf("*");
+			int diff = (stopsIndex-startIndex);
+			// ***** 15 is length of translated header 
+			if (diff > 15) { 
+				// ***** Default values
 				boolean mutate		= false;
 				boolean duplicate	= false;
 				boolean delete		= false;
 				boolean activ		= false;
-				int age_min			= 0;
-				int age_max			= 0;
+				int ageMin			= 0;
+				int ageMax			= 0;
 				int sex				= 0;
-				int mut_rate		= 0;
+				int mutationRate	= 0;
+				// ***** start from 1 to ignore first letter 'M' 
+				try {
+					// ***** header [1] : mutate flag 
+					mutate			= GeneGattaca.detectBooleanValue(translated.charAt( 1));
+					// ***** header [2] : duplicate flag 
+					duplicate		= GeneGattaca.detectBooleanValue(translated.charAt( 2));
+					// ***** header [3] : delete flag 
+					delete			= GeneGattaca.detectBooleanValue(translated.charAt( 3));
+					// ***** header [4] : activity flag 
+					activ			= GeneGattaca.detectBooleanValue(translated.charAt( 4));
+					// ***** header [5-7] : ageMin flag 
+					ageMin			= GeneGattaca.detectIntegerValue(translated.charAt( 5), translated.charAt( 6), translated.charAt( 7));
+					// ***** header [8-10] : ageMax flag
+					ageMax			= GeneGattaca.detectIntegerValue(translated.charAt( 8), translated.charAt( 9), translated.charAt(10));
+					// ***** header [11-13] : sex flag
+					sex				= GeneGattaca.detectIntegerValue(translated.charAt(11), translated.charAt(12), translated.charAt(13));
+					// ***** header [14-15] : mutationRate flag
+					mutationRate	= GeneGattaca.detectIntegerValue(translated.charAt(14), translated.charAt(15));
+				} catch (GeneException e) {
+					return null;
+				}
 				List<Integer> memory = new ArrayList<Integer>();
 				
-				// TODO optimize this part !!
-				for (int j = start_index ; j < stops_index ; j++) {
-					char test_char = translated.charAt(j);
-					/** start from 1 to ignore first letter 'M' */
-					/** header 1 : mutate flag */
-					if (j == 1) { 
-						if (Character.isDigit(test_char)) {
-							int test_int = Integer.parseInt(test_char+"");
-							if (test_int%2 == 0) { mutate = true; }
-						} else { return null; }
-					}
-					/** header 2 : duplicate flag */
-					if (j == 2) { 
-						if (Character.isDigit(test_char)) {
-							int test_int = Integer.parseInt(test_char+"");
-							if (test_int%2 == 0) { duplicate = true; }
-						} else { return null; }
-					}
-					/** header 3 : delete flag */
-					if (j == 3) { 
-						if (Character.isDigit(test_char)) {
-							int test_int = Integer.parseInt(test_char+"");
-							if (test_int%2 == 0) { delete = true; }
-						} else { return null; }
-					}
-					/** header 4 : activ flag */
-					if (j == 4) { 
-						if (Character.isDigit(test_char)) {
-							int test_int = Integer.parseInt(test_char+"");
-							if (test_int%2 == 0) { activ = true; }
-						} else { return null; }
-					}
-					
-					/** header [5-7] : age_min flag */
-					if ( (j >= 5) && (j <= 7) )  { 
-						if (Character.isDigit(test_char)) { 
-							if (j == 5) { age_min += Integer.parseInt(test_char+"")*100; }
-							if (j == 6) { age_min += Integer.parseInt(test_char+"")*10; }
-							if (j == 7) { age_min += Integer.parseInt(test_char+"")*1; }
-						} else { return null; }
-					}
-					/** header [8-10] : age_max flag */
-					if ( (j >= 8) && (j <= 10) ) { 
-						if (Character.isDigit(test_char)) { 
-							if (j == 8) { age_max += Integer.parseInt(test_char+"")*100; }
-							if (j == 9) { age_max += Integer.parseInt(test_char+"")*10; }
-							if (j == 10) { age_max += Integer.parseInt(test_char+"")*1; }
-						} else { return null; }
-					}
-					/** header [11-13] : sex flag */
-					if ( (j >= 11) && (j <= 13) ) { 
-						if (Character.isDigit(test_char)) { 
-							if (j == 11) { sex += Integer.parseInt(test_char+"")*100; }
-							if (j == 12) { sex += Integer.parseInt(test_char+"")*10; }
-							if (j == 13) { sex += Integer.parseInt(test_char+"")*1; }
-						} else { return null; }
-					}
-					/** header [14-15] : mut_rate flag */
-					if ( (j >= 14) && (j <= 15) ) { 
-						if (Character.isDigit(test_char)) { 
-							if (j == 14) { mut_rate += Integer.parseInt(test_char+"")*10; }
-							if (j == 15) { mut_rate += Integer.parseInt(test_char+"")*1; }
-						} else { return null; }
-					}
-					
-					/** 15 = ":", from 16: rest of the parameters in memory. */
+				for (int j = startIndex ; j < stopsIndex ; j++) {
+					char testChar = translated.charAt(j);
+					// ***** 15 = ":", from 16: rest of the parameters in memory. 
 					if (j > 16) {
-						if (Character.isDigit(test_char)) 
-							{ memory.add(new Integer(Integer.parseInt(test_char+""))); } 
+						if (Character.isDigit(testChar)) 
+							{ memory.add(new Integer(Integer.parseInt(testChar+""))); } 
 						else { return null; }
 					}
-				} /** END for (int j = start_index ; j < stops_index ; j++) */
+				} // END "for (int j = startIndex ; j < stopsIndex ; j++)" 
 				
 				// TODO [optimization] switch / enum ?
 				
 				/** Initial Concentration Gene	length is 6 */
 				/** ex : M024600000000025:010100* */
 				if (memory.size() == (2*3) ) {
-					return GeneGattaca.getIC(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getIC(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** Biochemical Reaction Gene 	length is 27 */
 				/** ex : M135600099900025:001010002010003010004010005* */
 				if (memory.size() == (9*3) ) {
-					return GeneGattaca.getBR(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getBR(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** BrainGene 					length is 8 */
 				/** ex : M024600000000025:30303030* */
 				if (memory.size() == (4*2) ) {
-					return GeneGattaca.getBG(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getBG(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** BrainLobeGene 				length is 32 */
@@ -237,16 +245,14 @@ public abstract class GeneGattaca extends Gene {
 						 M024600000000025:00001000100200400401003013001005*
 				*/
 				if (memory.size() == ((7*3)+(4*2)+3) ) {
-					return GeneGattaca.getBLG(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getBLG(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** EmitterReceptor 			length is 15 */
 				/** ex : M024600099900025:001010010001502*	 
 				  		 M024600099900025:001010010001512*	 */
 				if (memory.size() == ((3*3)+(2*2)+2) ) {
-					return GeneGattaca.getER(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getER(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** StimulusDecision 			length is 20 */
@@ -255,23 +261,18 @@ public abstract class GeneGattaca extends Gene {
 				 		 M024600099900025:03800100880020020850*
 				 		 M024600099900025:02800100880020020850*		*/
 				if (memory.size() == (2+(6*3)) ) {
-					return GeneGattaca.getSD(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getSD(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
 				/** Instinct		 			length is 18 */
 				/** ex : M024600099900025:001099105550200201*
 				 		 M024600099900025:001099105550200200*	*/
 				if (memory.size() == ((4*2)+(3*3)+1) ) {
-					return GeneGattaca.getIN(mutate, duplicate, delete, activ, 
-							age_min, age_max, sex, mut_rate, memory);
+					return GeneGattaca.getIN(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
-				/** [WAS until 20090716] : Not a 'Gattaca' gene because memory do not contain a multiple of 3. */
-				// if (memory.length()%3 != 0) { return null; }
-				/** [20090716] not detected as a valid GeneGattaca, null. */
 				return null;
-			} /** END if (diff > 13) ; no header */
+			} // ***** END if (diff > 13) ; no header 
 		}
 		return null;
 	}
@@ -282,10 +283,10 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutationRate (int) Mutation rate.
 	 * @param memory (IntegerListe)
 	 * @return (InitialConcentration) (GeneGattaca) (Gene)
 	 * @see GeneGattaca#getInstance(String)
@@ -293,17 +294,12 @@ public abstract class GeneGattaca extends Gene {
 	 */
 	private static InitialConcentration getIC(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ,
-			int age_min, int age_max, int sex, int mut_rate,
+			int ageMin, int ageMax, int sex, int mutationRate,
 			List<Integer> memory) {
-		int var = memory.get(0).intValue()*100
-				+ memory.get(1).intValue()*10
-				+ memory.get(2).intValue()*1;
-		int val = memory.get(3).intValue()*100
-				+ memory.get(4).intValue()*10
-				+ memory.get(5).intValue()*1;
-		return new InitialConcentration(
-				mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate,
-				var, val);
+		int var = GeneGattaca.detectIntValue(memory.get(0), memory.get(1), memory.get(2));
+		int val = GeneGattaca.detectIntValue(memory.get(3), memory.get(4), memory.get(5));
+		return new InitialConcentration(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate,
+										var, val);
 	}
 	
 	/**
@@ -312,10 +308,10 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutationRate (int) Mutation rate.
 	 * @param memory (IntegerListe)
 	 * @return (BiochemicalReaction) (GeneGattaca) (Gene)
 	 * @see GeneGattaca#getInstance(String)
@@ -323,39 +319,19 @@ public abstract class GeneGattaca extends Gene {
 	 */
 	private static BiochemicalReaction getBR(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ,
-			int age_min, int age_max, int sex, int mut_rate,
+			int ageMin, int ageMax, int sex, int mutationRate,
 			List<Integer> memory) {
-		int Achem = memory.get(0).intValue()*100
-					+ memory.get(1).intValue()*10
-					+ memory.get(2).intValue()*1;
-		int Acoef = memory.get(3).intValue()*100
-					+ memory.get(4).intValue()*10
-					+ memory.get(5).intValue()*1;
-		int Bchem = memory.get(6).intValue()*100
-					+ memory.get(7).intValue()*10
-					+ memory.get(8).intValue()*1;
-		int Bcoef = memory.get(9).intValue()*100
-					+ memory.get(10).intValue()*10
-					+ memory.get(11).intValue()*1;
-		int Cchem = memory.get(12).intValue()*100
-					+ memory.get(13).intValue()*10
-					+ memory.get(14).intValue()*1;
-		int Ccoef = memory.get(15).intValue()*100
-					+ memory.get(16).intValue()*10
-					+ memory.get(17).intValue()*1;
-		int Dchem = memory.get(18).intValue()*100
-					+ memory.get(19).intValue()*10
-					+ memory.get(20).intValue()*1;
-		int Dcoef = memory.get(21).intValue()*100
-					+ memory.get(22).intValue()*10
-					+ memory.get(23).intValue()*1;
-		int KMVM = memory.get(24).intValue()*100
-					+ memory.get(25).intValue()*10
-					+ memory.get(26).intValue()*1;
-		return new BiochemicalReaction(
-				mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate, 
-				Achem, Acoef, Bchem, Bcoef, Cchem, Ccoef, Dchem, Dcoef, 
-				KMVM);
+		int Achem	= GeneGattaca.detectIntValue(memory.get( 0), memory.get( 1), memory.get( 2));
+		int Acoef	= GeneGattaca.detectIntValue(memory.get( 3), memory.get( 4), memory.get( 5));
+		int Bchem	= GeneGattaca.detectIntValue(memory.get( 6), memory.get( 7), memory.get( 8));
+		int Bcoef	= GeneGattaca.detectIntValue(memory.get( 9), memory.get(10), memory.get(11));
+		int Cchem	= GeneGattaca.detectIntValue(memory.get(12), memory.get(13), memory.get(14));
+		int Ccoef	= GeneGattaca.detectIntValue(memory.get(15), memory.get(16), memory.get(17));
+		int Dchem	= GeneGattaca.detectIntValue(memory.get(18), memory.get(19), memory.get(20));
+		int Dcoef	= GeneGattaca.detectIntValue(memory.get(21), memory.get(22), memory.get(23));
+		int KMVM	= GeneGattaca.detectIntValue(memory.get(24), memory.get(25), memory.get(26));
+		return new BiochemicalReaction(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
+										Achem, Acoef, Bchem, Bcoef, Cchem, Ccoef, Dchem, Dcoef, KMVM);
 	}
 	
 	/**
@@ -364,10 +340,10 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutationRate (int) Mutation rate.
 	 * @param memory (IntegerListe)
 	 * @return (BrainGene) (GeneGattaca) (Gene)
 	 * @see GeneGattaca#getInstance(String)
@@ -375,19 +351,14 @@ public abstract class GeneGattaca extends Gene {
 	 */
 	private static BrainGene getBG(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate, 
+			int ageMin, int ageMax, int sex, int mutationRate, 
 			List<Integer> memory) {
-		int height = memory.get(0).intValue()*10
-					+ memory.get(1).intValue()*1;
-		int width = memory.get(2).intValue()*10
-					+ memory.get(3).intValue()*1;
-		int depth = memory.get(4).intValue()*10
-					+ memory.get(5).intValue()*1;
-		int more = memory.get(6).intValue()*10
-					+ memory.get(7).intValue()*1;
-		return new BrainGene(
-				mutate,duplicate,delete,activ,age_min,age_max,sex,mut_rate,
-				height,width,depth,more);
+		int height	= GeneGattaca.detectIntValue(memory.get( 0), memory.get( 1));
+		int width	= GeneGattaca.detectIntValue(memory.get( 2), memory.get( 3));
+		int depth	= GeneGattaca.detectIntValue(memory.get( 4), memory.get( 5));
+		int more	= GeneGattaca.detectIntValue(memory.get( 6), memory.get( 7));
+		return new BrainGene(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
+								height, width, depth, more);
 	}
 	/**
 	 * Instantiate a BrainLobeGene GeneGattaca. 
@@ -395,10 +366,10 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutationRate (int) Mutation rate.
 	 * @param memory (IntegerListe)
 	 * @return (BrainLobeGene) (GeneGattaca) (Gene)
 	 * @see GeneGattaca#getInstance(String)
@@ -406,44 +377,25 @@ public abstract class GeneGattaca extends Gene {
 	 */
 	private static BrainLobeGene getBLG(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate, 
+			int ageMin, int ageMax, int sex, int mutationRate, 
 			List<Integer> memory) {
-		int rest = memory.get(0).intValue()*100
-					+ memory.get(1).intValue()*10
-					+ memory.get(2).intValue()*1;
-		int thre = memory.get(3).intValue()*100
-					+ memory.get(4).intValue()*10
-					+ memory.get(5).intValue()*1;
-		int desc = memory.get(6).intValue()*100
-					+ memory.get(7).intValue()*10
-					+ memory.get(8).intValue()*1;
-		int dendriticmin = memory.get(9).intValue()*100
-					+ memory.get(10).intValue()*10
-					+ memory.get(11).intValue()*1;
-		int dendriticmax = memory.get(12).intValue()*100
-					+ memory.get(13).intValue()*10
-					+ memory.get(14).intValue()*1;
-		int prox = memory.get(15).intValue()*100
-					+ memory.get(16).intValue()*10
-					+ memory.get(17).intValue()*1;
-		boolean repr = (memory.get(18).intValue()%2 == 0);
-		int repy = memory.get(19).intValue()*100
-					+ memory.get(20).intValue()*10
-					+ memory.get(21).intValue()*1;
-		boolean wta = (memory.get(22).intValue()%2 == 0);
-		int height = memory.get(23).intValue()*10
-					+ memory.get(24).intValue()*1;
-		int width = memory.get(25).intValue()*10
-					+ memory.get(26).intValue()*1;
-		int posx = memory.get(27).intValue()*10
-					+ memory.get(28).intValue()*1;
-		int posy = memory.get(29).intValue()*10
-					+ memory.get(30).intValue()*1;
+		int rest = GeneGattaca.detectIntValue(memory.get( 0), memory.get( 1), memory.get( 2));
+		int thre = GeneGattaca.detectIntValue(memory.get( 3), memory.get( 4), memory.get( 5));
+		int desc = GeneGattaca.detectIntValue(memory.get( 6), memory.get( 7), memory.get( 8));
+		int dmin = GeneGattaca.detectIntValue(memory.get( 9), memory.get(10), memory.get(11));
+		int dmax = GeneGattaca.detectIntValue(memory.get(12), memory.get(13), memory.get(14));
+		int prox = GeneGattaca.detectIntValue(memory.get(15), memory.get(16), memory.get(17));
+		boolean repr	= (memory.get(18).intValue()%2 == 0);
+		int repy		= GeneGattaca.detectIntValue(memory.get(19), memory.get(20), memory.get(21));
+		boolean wta 	= (memory.get(22).intValue()%2 == 0);
+		int height		= GeneGattaca.detectIntValue(memory.get(23), memory.get(24));
+		int width		= GeneGattaca.detectIntValue(memory.get(25), memory.get(26));
+		int posx		= GeneGattaca.detectIntValue(memory.get(27), memory.get(28));
+		int posy		= GeneGattaca.detectIntValue(memory.get(29), memory.get(30));
 		boolean replace = (memory.get(31).intValue()%2 == 0);
-		return new BrainLobeGene(
-				mutate,duplicate,delete,activ,age_min,age_max,sex,mut_rate,
-				rest,thre,desc,dendriticmin,dendriticmax,prox,repr,
-				repy,wta,height,width,posx,posy,replace);
+		return new BrainLobeGene(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
+									rest, thre, desc, dmin, dmax, prox, repr, 
+									repy, wta, height, width, posx, posy, replace);
 	}
 	
 	/**
@@ -452,10 +404,10 @@ public abstract class GeneGattaca extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutationRate (int) Mutation rate.
 	 * @param memory (IntegerListe)
 	 * @return (EmitterReceptor) (GeneGattaca) (Gene)
 	 * @see GeneGattaca#getInstance(String)
@@ -463,155 +415,49 @@ public abstract class GeneGattaca extends Gene {
 	 */
 	private static EmitterReceptor getER(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate, 
+			int ageMin, int ageMax, int sex, int mutationRate, 
 			List<Integer> memory) {
-		int var = memory.get(0).intValue()*100
-					+ memory.get(1).intValue()*10
-					+ memory.get(2).intValue()*1;
-		int thr = memory.get(3).intValue()*100
-					+ memory.get(4).intValue()*10
-					+ memory.get(5).intValue()*1;
-		int put = memory.get(6).intValue()*100
-					+ memory.get(7).intValue()*10
-					+ memory.get(8).intValue()*1;
-		int posx = memory.get(9).intValue()*10
-					+ memory.get(10).intValue()*1;
-		int posy = memory.get(11).intValue()*10
-					+ memory.get(12).intValue()*1;
+		int var		= GeneGattaca.detectIntValue(memory.get( 0), memory.get( 1), memory.get( 2));
+		int thr		= GeneGattaca.detectIntValue(memory.get( 3), memory.get( 4), memory.get( 5));
+		int put		= GeneGattaca.detectIntValue(memory.get( 6), memory.get( 7), memory.get( 8));
+		int posx	= GeneGattaca.detectIntValue(memory.get( 9), memory.get(10));
+		int posy	= GeneGattaca.detectIntValue(memory.get(11), memory.get(12));
 		boolean receptor = (memory.get(13).intValue()%2 == 0);
 		boolean internal = (memory.get(14).intValue()%2 == 0);
-		return new EmitterReceptor(
-				mutate,duplicate,delete,activ,age_min,age_max,sex,mut_rate,
-				var,thr,put,posx,posy,receptor,internal);
+		return new EmitterReceptor(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
+									var, thr, put, posx, posy, receptor, internal);
 	}
 	
 	private static StimulusDecision getSD(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate, 
+			int ageMin, int ageMax, int sex, int mutationRate, 
 			List<Integer> memory) {
 		boolean perc = (memory.get(0).intValue()%2 == 0);
 		boolean obje = (memory.get(1).intValue()%2 == 0);
-		int indi = memory.get(2).intValue()*100
-				+ memory.get(3).intValue()*10
-				+ memory.get(4).intValue()*1;
-		int thre = memory.get(5).intValue()*100
-				+ memory.get(6).intValue()*10
-				+ memory.get(7).intValue()*1;
-		int attr = memory.get(8).intValue()*100
-				+ memory.get(9).intValue()*10
-				+ memory.get(10).intValue()*1;
-		int vari = memory.get(11).intValue()*100
-				+ memory.get(12).intValue()*10
-				+ memory.get(13).intValue()*1;
-		int valu = memory.get(14).intValue()*100
-				+ memory.get(15).intValue()*10
-				+ memory.get(16).intValue()*1;
-		int scri = memory.get(17).intValue()*100
-				+ memory.get(18).intValue()*10
-				+ memory.get(19).intValue()*1;
-		return new StimulusDecision(
-				mutate,duplicate,delete,activ,age_min,age_max,sex,mut_rate,
-				perc,obje,indi,thre,attr,vari,valu,scri);
+		int indi = GeneGattaca.detectIntValue(memory.get( 2), memory.get( 3), memory.get( 4));
+		int thre = GeneGattaca.detectIntValue(memory.get( 5), memory.get( 6), memory.get( 7));
+		int attr = GeneGattaca.detectIntValue(memory.get( 8), memory.get( 9), memory.get(10));
+		int vari = GeneGattaca.detectIntValue(memory.get(11), memory.get(12), memory.get(13));
+		int valu = GeneGattaca.detectIntValue(memory.get(14), memory.get(15), memory.get(16));
+		int scri = GeneGattaca.detectIntValue(memory.get(17), memory.get(18), memory.get(19));
+		return new StimulusDecision(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate,
+										perc, obje, indi, thre, attr, vari, valu, scri);
 	}
 	
 	private static Instinct getIN(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate, 
+			int ageMin, int ageMax, int sex, int mutationRate, 
 			List<Integer> memory) {
-		int in_posx = memory.get(0).intValue()*10
-					+ memory.get(1).intValue()*1;
-		int in_posy = memory.get(2).intValue()*10
-					+ memory.get(3).intValue()*1;
-		int out_posx = memory.get(4).intValue()*10
-					 + memory.get(5).intValue()*1;
-		int out_posy = memory.get(6).intValue()*10
-					 + memory.get(7).intValue()*1;
-		int weight = memory.get(8).intValue()*100
-				+ memory.get(9).intValue()*10
-				+ memory.get(10).intValue()*1;
-		int var = memory.get(11).intValue()*100
-				+ memory.get(12).intValue()*10
-				+ memory.get(13).intValue()*1;
-		int thr = memory.get(14).intValue()*100
-				+ memory.get(15).intValue()*10
-				+ memory.get(16).intValue()*1;
+		int inPosX	= GeneGattaca.detectIntValue(memory.get( 0), memory.get( 1));
+		int inPosY	= GeneGattaca.detectIntValue(memory.get( 2), memory.get( 3));
+		int outPosX	= GeneGattaca.detectIntValue(memory.get( 4), memory.get( 5));
+		int outPosY	= GeneGattaca.detectIntValue(memory.get( 6), memory.get( 7));
+		int weight	= GeneGattaca.detectIntValue(memory.get( 8), memory.get( 9), memory.get(10));
+		int var		= GeneGattaca.detectIntValue(memory.get(11), memory.get(12), memory.get(13));
+		int thr		= GeneGattaca.detectIntValue(memory.get(14), memory.get(15), memory.get(16));
 		boolean check = (memory.get(17).intValue()%2 == 0);
-		return new Instinct(
-				mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate, 
-				in_posx, in_posy, out_posx, out_posy, weight, var, thr, check);
+		return new Instinct(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
+								inPosX, inPosY, outPosX, outPosY, weight, var, thr, check);
 	}
 	
-	/**
-	 * The private internal code to translate genetic code to GeneGattaca real sense. 
-	 * @param elt (String) a 3-length String. 
-	 * @return (char)
-	 *//**
-	private static char gattacaCode(String elt) {
-		if (elt.length() != 3) { return '-'; }
-		if (elt.equals("AAA")) { return 'a'; }
-		if (elt.equals("AAC")) { return 'b'; }
-		if (elt.equals("AAT")) { return 'c'; }
-		if (elt.equals("AAG")) { return 'd'; }
-		if (elt.equals("ACA")) { return 'e'; }
-		if (elt.equals("ACC")) { return 'f'; }
-		if (elt.equals("ACT")) { return 'g'; }
-		if (elt.equals("ACG")) { return 'h'; }
-		if (elt.equals("ATA")) { return 'i'; }
-		if (elt.equals("ATC")) { return 'j'; }
-		if (elt.equals("ATT")) { return 'k'; }
-		if (elt.equals("ATG")) { return 'l'; }
-		if (elt.equals("AGA")) { return 'm'; }
-		if (elt.equals("AGC")) { return 'n'; }
-		if (elt.equals("AGT")) { return 'o'; }
-		if (elt.equals("AGG")) { return 'p'; }
-		if (elt.equals("CAA")) { return 'q'; }
-		if (elt.equals("CAC")) { return 'r'; }
-		if (elt.equals("CAT")) { return 's'; }
-		if (elt.equals("CAG")) { return 't'; }
-		if (elt.equals("CCA")) { return 'u'; }
-		if (elt.equals("CCC")) { return 'v'; }
-		if (elt.equals("CCT")) { return 'w'; }
-		if (elt.equals("CCG")) { return 'x'; }
-		if (elt.equals("CTA")) { return 'y'; }
-		if (elt.equals("CTC")) { return 'z'; }
-		if (elt.equals("CTT")) { return '0'; }
-		if (elt.equals("CTG")) { return '0'; }
-		if (elt.equals("CGA")) { return '0'; }
-		if (elt.equals("CGC")) { return '1'; }
-		if (elt.equals("CGT")) { return '1'; }
-		if (elt.equals("CGG")) { return '1'; }
-		if (elt.equals("TAA")) { return '2'; }
-		if (elt.equals("TAC")) { return '2'; }
-		if (elt.equals("TAT")) { return '2'; }
-		if (elt.equals("TAG")) { return '3'; }
-		if (elt.equals("TCA")) { return '3'; }
-		if (elt.equals("TCC")) { return '3'; }
-		if (elt.equals("TCT")) { return '4'; }
-		if (elt.equals("TCG")) { return '4'; }
-		if (elt.equals("TTA")) { return '4'; }
-		if (elt.equals("TTC")) { return '5'; }
-		if (elt.equals("TTT")) { return '5'; }
-		if (elt.equals("TTG")) { return '5'; }
-		if (elt.equals("TGA")) { return '6'; }
-		if (elt.equals("TGC")) { return '6'; }
-		if (elt.equals("TGT")) { return '6'; }
-		if (elt.equals("TGG")) { return '7'; }
-		if (elt.equals("GAA")) { return '7'; }
-		if (elt.equals("GAC")) { return '7'; }
-		if (elt.equals("GAT")) { return '8'; }
-		if (elt.equals("GAG")) { return '8'; }
-		if (elt.equals("GCA")) { return '8'; }
-		if (elt.equals("GCC")) { return '9'; }
-		if (elt.equals("GCT")) { return '9'; }
-		if (elt.equals("GCG")) { return '9'; }
-		if (elt.equals("GTA")) { return ':'; }
-		if (elt.equals("GTC")) { return ':'; }
-		if (elt.equals("GTT")) { return '\''; }
-		if (elt.equals("GTG")) { return '\''; }
-		if (elt.equals("GGA")) { return 'M'; }
-		if (elt.equals("GGC")) { return 'M'; }
-		if (elt.equals("GGT")) { return '*'; }
-		if (elt.equals("GGG")) { return '*'; }
-		return '-';
-	}*/
 }

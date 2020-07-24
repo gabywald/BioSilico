@@ -9,8 +9,6 @@ import gabywald.global.exceptions.GenericException;
  */
 @SuppressWarnings("serial")
 public class GeneException extends GenericException { 
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 423L; 
 	/**
 	 * Default Constructor with message
 	 * @param request (String)

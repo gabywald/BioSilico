@@ -49,7 +49,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	public OrganismSelectJPanel() { this.init(this); }
 
 	/**
-	 * Constrcutor with given ActionListener implementation. 
+	 * Constructor with given ActionListener implementation. 
 	 * @param act (ActionListener)
 	 * @deprecated [auto-listener]
 	 */
@@ -95,11 +95,11 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		String name = this.getNameOrganism();
 		if (name.equals("")) { name = "anonymous"; }
 		switch(type) {
-		case(1):name = "SilicoDaemon "+name;break;
-		case(2):name = "SilicoBacter "+name;break;
+		case(1):name = "SilicoDaemon "	+name;break;
+		case(2):name = "SilicoBacter "	+name;break;
 		case(3):name = "SilicoViridita "+name;break;
-		case(4):name = "SilicoAnima "+name;break;
-		case(5):name = "SilicoViria "+name;break;
+		case(4):name = "SilicoAnima "	+name;break;
+		case(5):name = "SilicoViria "	+name;break;
 		}
 		
 		if (this.orgNamesPanel != null) {
@@ -134,9 +134,8 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 			String extension = FilterBioSilico.getExtension(completeFilePath);
 			if (extension.equals(FilterBioSilico.gatorg)) {
 				this.toLoad = new FileOrganism(completeFilePath);
-				// System.out.println(toLoad);
 				this.agentName.setText(this.toLoad.getBioSilicoName());
-				/** Gene's Scroll Treament */
+				// ***** Gene's Scroll Treament 
 				if (this.geneScroll != null) {
 					for (int i = 0 ; i < this.toLoad.lengthListe() ; i++) {
 						Sequence seqTmp = this.toLoad.getListe().get(i);
@@ -153,22 +152,22 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 					if (this.lineageScroll.length() > 0) 
 						{ this.lineageScroll.enableItemList(true); }
 				}
-				/** Names' Treatment ! */
+				// ***** Names' Treatment ! 
 				if (this.orgNamesPanel != null) {
 					List<String> allNames = this.toLoad.getAllNames();
 					this.orgNamesPanel.setScientificName(allNames.get(0));
 					this.orgNamesPanel.setBioSilicoName(allNames.get(1));
 					this.orgNamesPanel.setCommonName(allNames.get(2));
 					this.orgNamesPanel.setIncludeName(allNames.get(3));
-					/** Removing the first 4 items. */
+					// ***** Removing the first 4 items. 
 					allNames.remove(0);allNames.remove(0);
 					allNames.remove(0);allNames.remove(0);
-					/** Remaining are others names. */
+					// ***** Remaining are others names. 
 					this.orgNamesPanel.setOtherNames(allNames);
 				}
-				/** End Treatment */
+				// ***** End Treatment 
 				this.enablePanel(false);
-				/** Enable other elements */
+				// ***** Enable other elements 
 				if (this.mainFrame != null) { 
 					this.mainFrame.enableNorthernPanel(false);
 					this.mainFrame.enableCenterPanel(true);
@@ -260,7 +259,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		String[] parts = name.split(" ");
 		name = new String("");
 		for (int i = 0 ; i < parts.length ; i++) 
-		{ name += parts[i]; }
+			{ name += parts[i]; }
 		return name;
 	}
 
@@ -277,7 +276,6 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		{ this.orgNamesPanel = names; }
 	
 	
-	
-	
 	public FileOrganism getLoadOrganism() { return this.toLoad; }
+
 }

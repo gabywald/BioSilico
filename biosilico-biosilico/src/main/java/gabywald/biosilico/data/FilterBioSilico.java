@@ -18,7 +18,7 @@ public class FilterBioSilico extends FilterUtils {
 
 	/** Default Constructor. */
 	public FilterBioSilico() {
-		super(-1,"BioSilico Files");
+		super(FilterType.NONE, "BioSilico Files");
 		/** super();this.emptyListe(); */
 		this.addExtension(FilterBioSilico.ph2);
 		this.addExtension(FilterBioSilico.gatorg);

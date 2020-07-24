@@ -2,9 +2,12 @@ package gabywald.crypto.model.tests;
 
 import java.util.Arrays;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.model.EncodingNode;
+import gabywald.crypto.model.EncodingNodeBuilder;
+import gabywald.crypto.model.EncodingNodeException;
 
 /**
  * 
@@ -12,16 +15,43 @@ import gabywald.crypto.model.EncodingNode;
  */
 class EncodingNodeTests {
 
+//	@Test
+//	void testEncodingNode() {
+//		String bases	= "acgt";
+//		String values	= "A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z;A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z;1;2;3;4;5;6;7;8;9;0;1;2";
+//		// a 3-4based-64elts example !
+//		EncodingNode en	= new EncodingNode(3, bases.toCharArray(), values.split(";"));
+//		
+//		Arrays.asList(en.getCodons()).stream().forEach(System.out::println);
+//		
+//		System.out.println(EncodingNode.treeView(en));
+//	}
+	
 	@Test
-	void testEncodingNode() {
-		String bases	= "acgt";
-		String values	= "A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z;A;B;C;D;E;F;G;H;I;J;K;L;M;N;O;P;Q;R;S;T;U;V;W;X;Y;Z;1;2;3;4;5;6;7;8;9;0;1;2";
-		// a 3-4based-64elts example !
-		EncodingNode en	= new EncodingNode(3, bases.toCharArray(), values.split(";"));
+	void testEncodingNodeBuilder01() {
+		EncodingNodeBuilder enb	= new EncodingNodeBuilder();
+		EncodingNode en			= null;
+		try {
+			en = enb.build();
+		} catch (EncodingNodeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Assertions.assertNotNull( en );
 		
 		Arrays.asList(en.getCodons()).stream().forEach(System.out::println);
 		
 		System.out.println(EncodingNode.treeView(en));
+	}
+	
+	@Test
+	void testEncodingNodeBuilder02() {
+		EncodingNodeBuilder enb	= new EncodingNodeBuilder();
+		
+		EncodingNodeException ene = Assertions.assertThrows(EncodingNodeException.class, () -> enb.values("A;B;;D;E;F;G".split(";")).build());
+		// Assertions.assertThrows(expectedType, executable, message)
+		Assertions.assertEquals("maxLvls (3) nbBases (4) expElts (64) real [7]", ene.getMessage());
 	}
 	
 	// TODO complete these tests !! EncodingNodeTests

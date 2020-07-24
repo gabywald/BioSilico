@@ -1,5 +1,9 @@
 package gabywald.global.data.samples;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2012)
+ */
 public class GeneratorDataFile extends DataFile {
 	private static final String DEFAULT_DIRECTORY	= "dataSciGen/";
 	private static final String[] FILENAMES_SET		= {
@@ -14,6 +18,7 @@ public class GeneratorDataFile extends DataFile {
 	@Override
 	public String getDefaultDirectory() 
 		{ return GeneratorDataFile.DEFAULT_DIRECTORY; }
+	
 	@Override
 	public String[] getFileNamesSet() 
 		{ return GeneratorDataFile.FILENAMES_SET; }

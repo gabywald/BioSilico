@@ -5,7 +5,6 @@ import gabywald.utilities.others.PropertiesLoader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,8 +24,6 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings("serial")
 public class File extends Directory {
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 502L;
 	/** File directory. */
 	// private Directory directory;
 	/** Name / path to the directory (overload). */
@@ -47,7 +44,7 @@ public class File extends Directory {
 	 * @param fileName (String)
 	 */
 	public File(String fileName) {
-		this("notype", fileName);
+		this("notype", fileName, null);
 	}
 
 	/**
@@ -57,7 +54,7 @@ public class File extends Directory {
 	 * @param fileName (String)
 	 */
 	public File(String type, String fileName) {
-		this("notype", fileName, null);
+		this(type, fileName, null);
 	}
 
 	/**
@@ -81,7 +78,7 @@ public class File extends Directory {
 		super(File.buildDir(fileName));
 		this.datatype = type;
 		this.fileName = File.removeDirFromName(fileName);
-		this.pathName = super.getDirName(); // File.buildDir(fileName);
+		this.pathName = super.getDirName();
 		if (champs != null) {
 			this.champs = new ArrayList<String>(champs.length); 
 			this.champs.addAll(Arrays.asList(champs));
@@ -125,7 +122,7 @@ public class File extends Directory {
 	 */
 	protected static String removeDirFromName(String fileName) {
 		if (fileName.lastIndexOf("/") >= 0)
-			{ return fileName.substring(fileName.lastIndexOf("/")+1); }
+			{ return fileName.substring(fileName.lastIndexOf("/") + 1); }
 		else 
 			{ return fileName; }
 	}
@@ -177,16 +174,13 @@ public class File extends Directory {
 		String contenuFichier	= "";
 		BufferedReader br 		= null;
 		try {
-			br = new BufferedReader(new FileReader(filename));
+			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( filename ) ));
 			String line = "";
 			while((line = br.readLine()) != null)
-			{ contenuFichier += line+"\n"; }
-			/** br.close(); */
+				{ contenuFichier += line+"\n"; }
 		} 
 		catch (FileNotFoundException e) 
-		{ contenuFichier = filename+" : File Not Found"; } 
-		//		catch (IOException e) 
-		//			{ contenuFichier = filename+" : Input / Output Exception"; }
+			{ contenuFichier = filename+" : File Not Found"; } 
 		finally { 
 			if (br != null) { br.close(); } 
 		}
@@ -201,20 +195,16 @@ public class File extends Directory {
 	 * @throws IOException 
 	 */
 	public static File loadFile(String filename) throws IOException {
-		File instance = new File(filename);
+		File instance		= new File(filename);
 		BufferedReader br 	= null;
 		try {
-			// br = new BufferedReader(new FileReader(filename));
-			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( filename )));
+			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( filename ) ));
 			String line = "";
 			while((line = br.readLine()) != null)
-			{ instance.addToChamps(line); }
-			/** br.close(); */
+				{ instance.addToChamps(line); }
 		} 
 		catch (FileNotFoundException e) 
-		{ instance.addToChamps(filename+" : File Not Found"); } 
-		//		catch (IOException e) 
-		//			{ instance.addToChamps(filename+" : Input / Output Exception"); }
+			{ instance.addToChamps(filename+" : File Not Found"); } 
 		finally { 
 			if (br != null) { br.close(); } 
 		}
@@ -222,7 +212,7 @@ public class File extends Directory {
 	}
 
 	/**
-	 * To actualise the content in current instance. 
+	 * To actualize the content in current instance. 
 	 * Return name of the exception if throw...
 	 * @throws IOException 
 	 */
@@ -230,17 +220,13 @@ public class File extends Directory {
 		this.champs = new ArrayList<String>();
 		BufferedReader br 	= null;
 		try {
-			// br = new BufferedReader(new FileReader(this.getDirName() + this.fileName));
 			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( this.getDirName() + this.fileName )));
 			String line = "";
 			while ( (line = br.readLine()) != null )
 			{ this.addToChamps(line); }
-			/** br.close(); */
 		} 
 		catch (FileNotFoundException e) 
-		{ this.addToChamps(this.getDirName() + this.fileName + " : File Not Found"); } 
-		//		catch (IOException e) 
-		//			{ instance.addToChamps(filename+" : Input / Output Exception"); }
+			{ this.addToChamps(this.getDirName() + this.fileName + " : File Not Found"); } 
 		finally { 
 			if (br != null) { br.close(); } 
 		}

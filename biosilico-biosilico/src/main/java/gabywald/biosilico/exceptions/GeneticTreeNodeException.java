@@ -9,8 +9,6 @@ import gabywald.global.exceptions.GenericException;
  */
 @SuppressWarnings("serial")
 public class GeneticTreeNodeException extends GenericException { 
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 424L; 
 	/**
 	 * Default Constructor with message
 	 * @param request (String)

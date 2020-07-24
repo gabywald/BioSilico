@@ -52,11 +52,11 @@ public class OrganismKit extends GenericJFrame
 		this.initNorthPanel();
 		this.initSouthPanel();
 		
-		this.getContentPane().add(this.northPanel,"North");
-		this.getContentPane().add(this.southPanel,"South");
-		this.getContentPane().add(this.westernPanel,"West");
-		this.getContentPane().add(this.easternPanel,"East");
-		this.getContentPane().add(this.centerPanel,"Center");
+		this.getContentPane().add(this.northPanel, 		"North");
+		this.getContentPane().add(this.southPanel, 		"South");
+		this.getContentPane().add(this.westernPanel, 	"West");
+		this.getContentPane().add(this.easternPanel, 	"East");
+		this.getContentPane().add(this.centerPanel, 	"Center");
 		this.setTitle("Organism Kit");
 		this.setVisible(true);
 	}

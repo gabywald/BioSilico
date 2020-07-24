@@ -14,8 +14,6 @@ import gabywald.global.data.File;
  */
 @SuppressWarnings("serial")
 public class FileFasta extends FileBiological {
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 522L;
 	/** List of sequences contained in the fasta file. */
 	private List<Sequence> liste;
 	
