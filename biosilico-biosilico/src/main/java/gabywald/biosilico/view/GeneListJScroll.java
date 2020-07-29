@@ -22,7 +22,7 @@ public class GeneListJScroll extends GenericJScroll
 	/** Associated removing button. */
 	private JButton removeGene;
 	/** To move up or down a Gene in the list. */
-	private JButton uppeGene,downGene,addChromosomeDelim;
+	private JButton uppeGene, downGene, addChromosomeDelim;
 	
 	/** Default Constructor. */
 	public GeneListJScroll() { this.init(); }

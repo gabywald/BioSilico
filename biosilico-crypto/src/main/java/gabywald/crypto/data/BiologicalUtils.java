@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.crypto.model.EncodingNode;
+import gabywald.crypto.model.EncodingNodeBuilder;
+import gabywald.crypto.model.EncodingNodeException;
 import gabywald.crypto.model.GeneticTranslator;
 import gabywald.global.data.Fichier;
 import gabywald.global.data.Utils;
@@ -303,13 +305,25 @@ public abstract class BiologicalUtils extends Utils {
 			if (codes[index].equals("CR")) { codes[index] = "\r"; }
 		}
 		
-		EncodingNode root = new EncodingNode(levels, bases, codes);
-		/** DONE indicates start's and stop's */
-		for (int i = 0 ; i < starters.size() ; i++) 
-			{ root.getLeaves()[starters.get(i).intValue()].setStart(true); }
-		for (int i = 0 ; i < stoppers.size() ; i++) 
-			{ root.getLeaves()[stoppers.get(i).intValue()].setStop(true); }
-		// System.out.println(EncodingNode.treeView(root));
+		EncodingNodeBuilder enb	= new EncodingNodeBuilder();
+		EncodingNode root		= null;
+		try {
+			root = enb.maxLvls(levels).bases(bases).values(codes).build();
+			// new EncodingNode(levels, bases, codes);
+			
+			/** DONE indicates start's and stop's */
+			for (int i = 0 ; i < starters.size() ; i++) 
+				{ root.getLeaves()[starters.get(i).intValue()].setStart(true); }
+			for (int i = 0 ; i < stoppers.size() ; i++) 
+				{ root.getLeaves()[stoppers.get(i).intValue()].setStop(true); }
+			// System.out.println(EncodingNode.treeView(root));
+			
+		} catch (EncodingNodeException e) {
+			e.printStackTrace();
+			// TODO treat if problem here !
+		}
+		
+		// TODO specific treatment if root is null !!	
 		return new GeneticTranslator(root);
 	}
 }

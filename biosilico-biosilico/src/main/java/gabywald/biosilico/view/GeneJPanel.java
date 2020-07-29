@@ -17,8 +17,6 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public abstract class GeneJPanel extends GeneKitsGBJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 102L;
 	/** Some Title Label's. */
 	private JLabel generalLabel,specifiLabel;
 	/** Some ChecjBox'es. */
@@ -126,14 +124,4 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 		this.mutRatTexte.setText(GeneJPanel.convertThreeChars(gene.getMutationRate()));
 	}
 	
-	/**
-		boolean mutate = gene.canMutate();
-		boolean duplic = gene.canDuplicate();
-		boolean delete = gene.canDelete();
-		boolean activi = gene.isActiv();
-		int minimalAge = gene.getAgeMin();
-		int maximalAge = gene.getAgeMax();
-		int sex		   = gene.getSexAct();
-		int mutateRate = gene.getAgeMin();
-	 */
 }

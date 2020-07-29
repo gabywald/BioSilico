@@ -9,8 +9,9 @@ import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
- * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene. 
- * Specificity occurs here for some Neuron's (tests are good to understand how it works). 
+ * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene.  <br /> 
+ * Specificity occurs here for some Neuron's (tests are good to understand how it works). <br />
+ * NOTE : It is a 2D implementation of a Brain (could be extended to be 2D / 3D). 
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class BrainLobeGene extends GeneGattaca {
@@ -110,8 +111,7 @@ public class BrainLobeGene extends GeneGattaca {
 		tmp.append(Gene.convert0to99(this.posy));
 		tmp.append( (this.replace)?"4":"5");
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		//  end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");
@@ -127,9 +127,9 @@ public class BrainLobeGene extends GeneGattaca {
 									this.dendriticmin, this.dendriticmax, 
 									this.prox, this.repr, this.repy, this.wta);
 		try {
-			brain.setLobe(	this.height, this.width, 
-							this.posx, this.posy, 
-							sample, this.replace);
+			brain.setLobe(	this.height, 	this.width, 
+							this.posx, 		this.posy, 
+							sample, 		this.replace);
 		} 
 		catch (BrainLengthException e)		{ /** e.printStackTrace() */; } 
 		catch (BrainLobeReplaceException e)	{ /** e.printStackTrace() */; }

@@ -1,4 +1,4 @@
-package gabywald.biosilico.tests;
+package gabywald.biosilico.tests.neuralnetworks;
 
 
 import gabywald.biosilico.exceptions.BrainLengthException;

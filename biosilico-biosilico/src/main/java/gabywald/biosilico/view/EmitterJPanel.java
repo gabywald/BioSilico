@@ -14,14 +14,12 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class EmitterJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 107L;
 	/** Some Label's. */
-	private JLabel variabLabel,threshLabel,ionputLabel,posxneLabel,posyneLabel;
+	private JLabel variabLabel, threshLabel, ionputLabel, posxneLabel, posyneLabel;
 	/** Some TextField's. */
-	private JTextField variabField,threshField,ionputField,posxneField,posyneField;
+	private JTextField variabField, threshField, ionputField, posxneField, posyneField;
 	/** Some CheckBox's. */
-	private JCheckBox receptBox,internBox;
+	private JCheckBox receptBox, internBox;
 	
 	public EmitterJPanel() {
 		this.variabLabel	= new JLabel("Chemical : ");
@@ -95,32 +93,5 @@ public class EmitterJPanel extends GeneJPanel {
 		this.receptBox.setSelected(gene.getReceptor());
 		this.internBox.setSelected(gene.getInternal());
 	}
-	
-	/**
-			int var				= ((EmitterReceptor)gene).getVariable();
-			int thr				= ((EmitterReceptor)gene).getThreshold();
-			int put				= ((EmitterReceptor)gene).getIOnput();
-			int posxER			= ((EmitterReceptor)gene).getPosXNeurone();
-			int posyER			= ((EmitterReceptor)gene).getPosYNeurone();
-			boolean receptor	= ((EmitterReceptor)gene).getReceptor();
-			boolean internal	= ((EmitterReceptor)gene).getInternal();
-
-			((EmitterJPanel)this.geneticParam[type]).setMutate(mutate);
-			((EmitterJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((EmitterJPanel)this.geneticParam[type]).setMutate(delete);
-			((EmitterJPanel)this.geneticParam[type]).setMutate(activi);
-			((EmitterJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((EmitterJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((EmitterJPanel)this.geneticParam[type]).setSex(sex);
-			((EmitterJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((EmitterJPanel)this.geneticParam[type]).setVariable(var);
-			((EmitterJPanel)this.geneticParam[type]).setThreshold(thr);
-			((EmitterJPanel)this.geneticParam[type]).setIOnput(put);
-			((EmitterJPanel)this.geneticParam[type]).setPosXNeurone(posxER);
-			((EmitterJPanel)this.geneticParam[type]).setPosYNeurone(posyER);
-			((EmitterJPanel)this.geneticParam[type]).setReceptor(receptor);
-			((EmitterJPanel)this.geneticParam[type]).setInternal(internal);
-	 */
 	
 }

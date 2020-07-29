@@ -1,5 +1,6 @@
 package gabywald.biosilico.model.tests;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
@@ -10,6 +11,9 @@ import gabywald.biosilico.exceptions.BrainLobeReplaceException;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Neuron;
+import gabywald.biosilico.model.Position;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
@@ -107,10 +111,10 @@ class BrainTests {
 			
 		} catch (BrainLengthException e) {
 			e.printStackTrace();
-			Assertions.fail("BrainLengthException => failed");
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
 		} catch (BrainLobeReplaceException e) {
 			e.printStackTrace();
-			Assertions.fail("BrainLobeReplaceException => failed");
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
 		}
 		
 	}
@@ -127,71 +131,468 @@ class BrainTests {
 		Assertions.assertEquals(toCompare1.isWTA(), 				toCompare2.isWTA());
 	}
 	
-	// TODO complete these tests !!
+	@Test
+	void testGetNeuronBefore01() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			testBrain.setLobe(1, 1, 3,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 2,  7, receptor, false);
+			testBrain.setLobe(1, 1, 2,  8, receptor, false);
+			testBrain.setLobe(1, 1, 2,  9, receptor, false);
+			testBrain.setLobe(1, 1, 2, 10, receptor, false);
+			testBrain.setLobe(1, 1, 2, 11, receptor, false);
+			
+			List<Neuron> testList01 = testBrain.getNeuronsBefore(new Position(4, 7), 1);
+			Assertions.assertEquals(3, testList01.size());
+			
+			List<Neuron> testList02 = testBrain.getNeuronsBefore(new Position(4, 7), 2);
+			Assertions.assertEquals(4, testList02.size());
+			
+			List<Neuron> testList03 = testBrain.getNeuronsBefore(new Position(4, 7), 3);
+			Assertions.assertEquals(5, testList03.size());
+			
+			List<Neuron> testList04 = testBrain.getNeuronsBefore(new Position(4, 9), 1);
+			Assertions.assertEquals(4, testList04.size());
+			
+			List<Neuron> testList05 = testBrain.getNeuronsBefore(new Position(4, 9), 2);
+			Assertions.assertEquals(6, testList05.size());
+			
+			List<Neuron> testList06 = testBrain.getNeuronsBefore(new Position(4, 9), 3);
+			Assertions.assertEquals(6, testList06.size());
+			
+			List<Neuron> testList07 = testBrain.getNeuronsBefore(new Position(4, 5), 1);
+			Assertions.assertEquals(0, testList07.size());
+			
+			List<Neuron> testList08 = testBrain.getNeuronsBefore(new Position(4, 5), 2);
+			Assertions.assertEquals(1, testList08.size());
+			
+			List<Neuron> testList09 = testBrain.getNeuronsBefore(new Position(4, 5), 3);
+			Assertions.assertEquals(2, testList09.size());
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
 	
-//	@Test
-//	void testGetNeuronBefore() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetActivityBefore() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetActivityNear() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetBestPositionNear() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetNeuronAt() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testRemNeuronAt() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetLobe() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testNetworking() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testObservableObject() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testChange() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetState() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetState() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testAddState() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void testGetNeuronBefore02() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			IntStream.range(0, 20).forEach( i -> {
+				try {
+					testBrain.setLobe(1, 1, 3, i, receptorActi, false);
+				} catch (BrainLengthException | BrainLobeReplaceException e) {
+					e.printStackTrace();
+					Assertions.fail("BrainLengthException|BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+				}
+			} );
+			
+			IntStream.range(0, 20).forEach( i -> {
+				try {
+					testBrain.setLobe(1, 1, 2, i, receptor, false);
+				} catch (BrainLengthException | BrainLobeReplaceException e) {
+					e.printStackTrace();
+					Assertions.fail("BrainLengthException|BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+				}
+			} );
+			
+			List<Neuron> testList01 = testBrain.getNeuronsBefore(new Position(4, 7), 1);
+			Assertions.assertEquals(4, testList01.size());
+			
+			List<Neuron> testList02 = testBrain.getNeuronsBefore(new Position(4, 7), 2);
+			Assertions.assertEquals(6, testList02.size());
+			
+			List<Neuron> testList03 = testBrain.getNeuronsBefore(new Position(4, 7), 3);
+			Assertions.assertEquals(8, testList03.size());
+			
+			List<Neuron> testList04 = testBrain.getNeuronsBefore(new Position(4, 9), 1);
+			Assertions.assertEquals(4, testList04.size());
+			
+			List<Neuron> testList05 = testBrain.getNeuronsBefore(new Position(4, 9), 2);
+			Assertions.assertEquals(6, testList05.size());
+			
+			List<Neuron> testList06 = testBrain.getNeuronsBefore(new Position(4, 9), 3);
+			Assertions.assertEquals(8, testList06.size());
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		}
+	}
+
+	@Test
+	void testGetActivityBefore01() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			testBrain.setLobe(1, 1, 3,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 2,  7, receptor, false);
+			testBrain.setLobe(1, 1, 2,  8, receptor, false);
+			testBrain.setLobe(1, 1, 2,  9, receptor, false);
+			testBrain.setLobe(1, 1, 2, 10, receptor, false);
+			testBrain.setLobe(1, 1, 2, 11, receptor, false);
+			
+			int test01 = testBrain.getActivityBefore(new Position(4, 7), 1);
+			Assertions.assertEquals(1, test01);
+			
+			int test02 = testBrain.getActivityBefore(new Position(4, 7), 2);
+			Assertions.assertEquals(2, test02);
+			
+			int test03 = testBrain.getActivityBefore(new Position(4, 7), 3);
+			Assertions.assertEquals(3, test03);
+			
+			int test04 = testBrain.getActivityBefore(new Position(4, 9), 1);
+			Assertions.assertEquals(2, test04);
+			
+			int test05 = testBrain.getActivityBefore(new Position(4, 9), 2);
+			Assertions.assertEquals(4, test05);
+			
+			int test06 = testBrain.getActivityBefore(new Position(4, 9), 3);
+			Assertions.assertEquals(4, test06);
+			
+			int test07 = testBrain.getActivityBefore(new Position(4, 5), 1);
+			Assertions.assertEquals(0, test07);
+			
+			int test08 = testBrain.getActivityBefore(new Position(4, 5), 2);
+			Assertions.assertEquals(1, test08);
+			
+			int test09 = testBrain.getActivityBefore(new Position(4, 5), 3);
+			Assertions.assertEquals(2, test09);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
+	
+	@Test
+	void testGetActivityBefore02() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			testBrain.setLobe(1, 1, 3,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 5,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 5,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 5,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 5, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 5, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 2,  7, receptor, false);
+			testBrain.setLobe(1, 1, 2,  8, receptor, false);
+			testBrain.setLobe(1, 1, 2,  9, receptor, false);
+			testBrain.setLobe(1, 1, 2, 10, receptor, false);
+			testBrain.setLobe(1, 1, 2, 11, receptor, false);
+			
+			int test01 = testBrain.getActivityBefore(new Position(4, 7), 1);
+			Assertions.assertEquals(1, test01);
+			
+			int test02 = testBrain.getActivityBefore(new Position(4, 7), 2);
+			Assertions.assertEquals(2, test02);
+			
+			int test03 = testBrain.getActivityBefore(new Position(4, 7), 3);
+			Assertions.assertEquals(3, test03);
+			
+			int test04 = testBrain.getActivityBefore(new Position(4, 9), 1);
+			Assertions.assertEquals(2, test04);
+			
+			int test05 = testBrain.getActivityBefore(new Position(4, 9), 2);
+			Assertions.assertEquals(4, test05);
+			
+			int test06 = testBrain.getActivityBefore(new Position(4, 9), 3);
+			Assertions.assertEquals(4, test06);
+			
+			int test07 = testBrain.getActivityBefore(new Position(4, 5), 1);
+			Assertions.assertEquals(0, test07);
+			
+			int test08 = testBrain.getActivityBefore(new Position(4, 5), 2);
+			Assertions.assertEquals(1, test08);
+			
+			int test09 = testBrain.getActivityBefore(new Position(4, 5), 3);
+			Assertions.assertEquals(2, test09);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
+
+	@Test
+	void testGetActivityNear01() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			testBrain.setLobe(1, 1, 3,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 2,  7, receptor, false);
+			testBrain.setLobe(1, 1, 2,  8, receptor, false);
+			testBrain.setLobe(1, 1, 2,  9, receptor, false);
+			testBrain.setLobe(1, 1, 2, 10, receptor, false);
+			testBrain.setLobe(1, 1, 2, 11, receptor, false);
+			
+			int test01 = testBrain.getActivityNear(new Position(4, 7), 1);
+			Assertions.assertEquals(1, test01);
+			
+			int test02 = testBrain.getActivityNear(new Position(4, 7), 2);
+			Assertions.assertEquals(2, test02);
+			
+			int test03 = testBrain.getActivityNear(new Position(4, 7), 3);
+			Assertions.assertEquals(3, test03);
+			
+			int test04 = testBrain.getActivityNear(new Position(4, 9), 1);
+			Assertions.assertEquals(2, test04);
+			
+			int test05 = testBrain.getActivityNear(new Position(4, 9), 2);
+			Assertions.assertEquals(4, test05);
+			
+			int test06 = testBrain.getActivityNear(new Position(4, 9), 3);
+			Assertions.assertEquals(4, test06);
+			
+			int test07 = testBrain.getActivityNear(new Position(4, 5), 1);
+			Assertions.assertEquals(0, test07);
+			
+			int test08 = testBrain.getActivityNear(new Position(4, 5), 2);
+			Assertions.assertEquals(1, test08);
+			
+			int test09 = testBrain.getActivityNear(new Position(4, 5), 3);
+			Assertions.assertEquals(2, test09);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
+	
+	@Test
+	void testGetActivityNear02() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptorActi.setActivity(200);
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			
+			testBrain.setLobe(1, 1, 3,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 3,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 5,  7, receptorActi, false);
+			testBrain.setLobe(1, 1, 5,  8, receptorActi, false);
+			testBrain.setLobe(1, 1, 5,  9, receptorActi, false);
+			testBrain.setLobe(1, 1, 5, 10, receptorActi, false);
+			testBrain.setLobe(1, 1, 5, 11, receptorActi, false);
+			
+			testBrain.setLobe(1, 1, 2,  7, receptor, false);
+			testBrain.setLobe(1, 1, 2,  8, receptor, false);
+			testBrain.setLobe(1, 1, 2,  9, receptor, false);
+			testBrain.setLobe(1, 1, 2, 10, receptor, false);
+			testBrain.setLobe(1, 1, 2, 11, receptor, false);
+			
+			int test01 = testBrain.getActivityNear(new Position(4, 7), 1);
+			Assertions.assertEquals(2, test01);
+			
+			int test02 = testBrain.getActivityNear(new Position(4, 7), 2);
+			Assertions.assertEquals(4, test02);
+			
+			int test03 = testBrain.getActivityNear(new Position(4, 7), 3);
+			Assertions.assertEquals(6, test03);
+			
+			int test04 = testBrain.getActivityNear(new Position(4, 9), 1);
+			Assertions.assertEquals(4, test04);
+			
+			int test05 = testBrain.getActivityNear(new Position(4, 9), 2);
+			Assertions.assertEquals(8, test05);
+			
+			int test06 = testBrain.getActivityNear(new Position(4, 9), 3);
+			Assertions.assertEquals(8, test06);
+			
+			int test07 = testBrain.getActivityNear(new Position(4, 5), 1);
+			Assertions.assertEquals(0, test07);
+			
+			int test08 = testBrain.getActivityNear(new Position(4, 5), 2);
+			Assertions.assertEquals(2, test08);
+			
+			int test09 = testBrain.getActivityNear(new Position(4, 5), 3);
+			Assertions.assertEquals(4, test09);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
+	
+	@Test
+	void testWTAisActivated() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptor			= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			Neuron receptorNotWTA	= new Neuron(0, 100, 50, 0, 0, 0, false, 0, false);
+			Neuron receptorWTA		= new Neuron(0, 100, 50, 0, 0, 0, false, 0, true);
+			
+			testBrain.setLobe(1, 10, 1,  1, receptor, 		false);
+			testBrain.setLobe(1, 10, 3,  1, receptorNotWTA, false);
+			testBrain.setLobe(1, 10, 5,  1, receptorWTA, 	false);
+			
+			// ***** test if Neuron's instances are presents !!
+			BrainTests.testExistence(testBrain, 1, false);
+			BrainTests.testExistence(testBrain, 3, false);
+			BrainTests.testExistence(testBrain, 5, true);
+			
+			// NOTE : mValue will apply on this index, other will have aValue
+			int aValue = 500;
+			int mValue = 750;
+			int mIndex = 7;
+			
+			// ***** test if WTA apply correctly !!
+			BrainTests.initValuesToTestWTA(testBrain, 1, aValue, mValue, mIndex, false);
+			BrainTests.initValuesToTestWTA(testBrain, 3, aValue, mValue, mIndex, false);
+			BrainTests.initValuesToTestWTA(testBrain, 5, aValue, mValue, mIndex, true);
+			
+			// Check values of activity
+			BrainTests.checkWTAactivity(testBrain, 1, aValue, mValue, mIndex, false);
+			BrainTests.checkWTAactivity(testBrain, 3, aValue, mValue, mIndex, false);
+			BrainTests.checkWTAactivity(testBrain, 5, aValue, mValue, mIndex, true);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
+	
+	private static void testExistence(final Brain testBrain, final int xIndex, final boolean isWTA) {
+		IntStream.range(1, 11).forEach( i -> {
+			Neuron local = testBrain.getNeuronAt(xIndex, i);
+			Assertions.assertNotNull( local );
+			Assertions.assertEquals(0, local.getActivity());
+			Assertions.assertEquals( isWTA, local.isWTA() );
+			Assertions.assertEquals(10, local.getLobe().size());
+		} );
+	}
+	
+	private static void initValuesToTestWTA(final Brain testBrain, final int xIndex, final int aValue, final int mValue, final int mIndex, final boolean isWTA) {
+		IntStream.range(1, 11).forEach( i -> {
+			Neuron local = testBrain.getNeuronAt(xIndex, i);
+			Assertions.assertNotNull( local );
+			local.addActivity( (i == mIndex) ? mValue : aValue );
+			Assertions.assertEquals( isWTA, local.isWTA() );
+			// Assertions.assertEquals((i == mIndex) ? ((isWTA) ? 0 : aValue) : mValue, local.getActivity());
+			Assertions.assertEquals((i == mIndex) ? mValue : aValue, local.getActivity());
+		} );
+	}
+	
+	private static void checkWTAactivity(final Brain testBrain, final int xIndex, final int aValue, final int mValue, final int mIndex, final boolean isWTA) {
+		IntStream.range(1, 11).forEach( i -> {
+			Neuron local = testBrain.getNeuronAt(xIndex, i);
+			Assertions.assertNotNull( local );
+			Assertions.assertEquals((i == mIndex) ? mValue : aValue, local.getActivity());
+			Assertions.assertEquals( isWTA, local.isWTA() );
+			
+			Logger.printlnLog(LoggerLevel.LL_INFO, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
+			
+			if (isWTA) {
+				Assertions.assertEquals((i == mIndex), local.isActivated());
+			} else {
+				Assertions.assertEquals(true, local.isActivated());
+			}
+			
+			Logger.printlnLog(LoggerLevel.LL_INFO, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
+			
+			Assertions.assertEquals((i == mIndex) ? mValue : ((isWTA) ? 0 : aValue), local.getActivity());
+		} );
+	}
+	
+	@Test
+	void testGetBestPositionNear() {
+		try {
+			Brain testBrain		= BrainBuilder.brainBuilder(20, 20);
+			
+			Neuron receptor		= new Neuron(0, 100, 50, 0, 0, 0, false, 0);
+			receptor.addActivity( 500 );
+			
+			testBrain.setLobe(1, 1, 1, 1, receptor, false);
+			
+			Position test01 = testBrain.getBestPositionNear(new Position(1, 1), 1);
+			Assertions.assertEquals(new Position(0, 0), test01);
+			
+			testBrain.setLobe(1, 1, 0, 0, receptor, false);
+			
+			Position test02 = testBrain.getBestPositionNear(new Position(1, 1), 1);
+			Assertions.assertEquals(new Position(0, 1), test02);
+			
+			testBrain.setLobe(1, 1, 0, 1, receptor, false);
+			
+			Position test03 = testBrain.getBestPositionNear(new Position(1, 1), 1);
+			Assertions.assertEquals(new Position(1, 0), test03);
+			
+		} catch (BrainLengthException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLengthException => failed: {" + e.getMessage() + "}");
+		} catch (BrainLobeReplaceException e) {
+			e.printStackTrace();
+			Assertions.fail("BrainLobeReplaceException => failed: {" + e.getMessage() + "}");
+		}
+	}
 
 }

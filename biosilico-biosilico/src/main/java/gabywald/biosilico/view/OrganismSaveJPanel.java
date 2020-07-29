@@ -48,7 +48,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 	public OrganismSaveJPanel() { this.init(this); }
 	
 	/**
-	 * Constrcutor with given ActionListener implementation. 
+	 * Constructor with given ActionListener implementation. 
 	 * @param act (ActionListener)
 	 * @deprecated [auto-listener]
 	 */
@@ -94,7 +94,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 	
 	
 	private void saveOrganism() {
-		/** Establishing genome (gene list) ; Genetic / Organism Kit. */
+		// ***** Establishing genome (gene list) ; Genetic / Organism Kit. 
 		List<Chromosome> currentGenome	= new ArrayList<Chromosome>();
 		Chromosome currentChromosome	= new Chromosome();
 		if (this.geneScroll != null) {
@@ -122,15 +122,15 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		if (currentChromosome.length() > 0) 
 			{ currentGenome.add(currentChromosome); }
 
-		/** Setting Organism and FileOrganism. */
+		// ***** Setting Organism and FileOrganism. 
 		String pathAndFileName = this.saveToFile();
 		if (pathAndFileName != null) {
 			if (this.orgSelectPanel != null) {
-				/** If select Panel : FileOrganism instance already exists ! */
+				// ******* If select Panel : FileOrganism instance already exists ! 
 				this.toSave = this.orgSelectPanel.getLoadOrganism();
 				this.toSave.setGenome(currentGenome);
 				this.toSave.getOrganism().setOrganismType(this.orgSelectPanel.getTypeOrganism());
-			} else /** This case should not happen often. */
+			} else // ***** This case should not happen often. 
 				{ this.toSave = new FileOrganism(pathAndFileName,
 											new Organism(currentGenome)); }
 			
@@ -146,11 +146,11 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 					{ this.toSave.addOtherName(this.orgNamesPanel
 												.getOthersNames().get(i)); }
 			}
-			/** Establishing lineage (similar to gene list) if could be completed. */
+			// ***** Establishing lineage (similar to gene list) if could be completed. 
 			if (this.lineageScroll != null) 
 				{ this.toSave.setExtendedLineage
 							(this.lineageScroll.getExtendedLineage()); }
-			/** Recording the FileOrganism. */
+			// ***** Recording the FileOrganism. 
 			try { this.toSave.printFile(); } 
 			catch (DataException e) { e.printStackTrace(); }
 		}
@@ -165,7 +165,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		saver.setFileFilter(new FilterBioSilico());
 		saver.setAcceptAllFileFilterUsed(false);
 		saver.setDialogType(JFileChooser.SAVE_DIALOG);
-		/** To set a proposed name of file. */
+		// ***** To set a proposed name of file. 
 		saver.setSelectedFile(new java.io.File(completePathFile));
 		
 		int returnVal = saver.showSaveDialog(this);
@@ -179,4 +179,5 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		// return FileBiological.DEFAULT_PATH_NAME+this.orgSelectPanel.getNameOrganismUnited();
 		return null;
 	}
+	
 }

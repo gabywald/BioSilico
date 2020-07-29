@@ -12,8 +12,6 @@ import java.io.File;
  */
 @SuppressWarnings("serial")
 public class Directory extends java.io.File { 
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 501L;
 	/** Name / path to the directory. */
 	private String pathName;
 	

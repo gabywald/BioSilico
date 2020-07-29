@@ -13,8 +13,6 @@ import gabywald.global.view.graph.GridBagJPanel;
 public class GeneKitsGBJPanel 
 					extends GridBagJPanel 
 					implements ActionListener {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 100L;
 
 	public void actionPerformed(ActionEvent e) { ; }
 

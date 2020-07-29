@@ -13,8 +13,6 @@ import gabywald.global.data.File;
  */
 @SuppressWarnings("serial")
 public class FilePhaseTwo extends FileBiological {
-	/** To avoid Warning. */
-	// private static final long serialVersionUID = 525L;
 	
 	private List<Sequence> liste;
 

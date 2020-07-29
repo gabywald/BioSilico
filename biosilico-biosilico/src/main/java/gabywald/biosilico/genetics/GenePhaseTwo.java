@@ -22,15 +22,14 @@ public class GenePhaseTwo extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutRate (int) Mutation rate.
 	 */
 	public GenePhaseTwo(boolean mutate, boolean duplicate, boolean delete,
-			boolean activ, int ageMin, int ageMax, int sex, int mut_rate) { 
-		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mut_rate);
-		this.setInternal("");
+			boolean activ, int ageMin, int ageMax, int sex, int mutRate) { 
+		this(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate, "");
 	}
 	
 	/**
@@ -39,16 +38,16 @@ public class GenePhaseTwo extends Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Mutation rate.
+	 * @param mutRate (int) Mutation rate.
 	 * @param internal (String)
 	 */
 	public GenePhaseTwo(boolean mutate, boolean duplicate, boolean delete,
-			boolean activ, int ageMin, int ageMax, int sex, int mut_rate,
+			boolean activ, int ageMin, int ageMax, int sex, int mutRate,
 			String internal) { 
-		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mut_rate);
+		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
 		this.setInternal(internal);
 	}
 	
@@ -57,8 +56,7 @@ public class GenePhaseTwo extends Gene {
 	 * @param internal (String)
 	 */
 	public GenePhaseTwo(String internal) { 
-		super(true, true, true, true, 0, 999, 0, 25);
-		this.setInternal(internal);
+		this(true, true, true, true, 0, 999, 0, 25, internal);
 	}
 	
 	/**
@@ -68,20 +66,19 @@ public class GenePhaseTwo extends Gene {
 	public void setInternal(String internal) {
 		this.translated		= internal;
 		this.reversetra		= this.reverseTranslation(true);
-		// this.internalCode= new String("");
 	}
 	
 	/**
 	 * To get the whole translation in Phase II code (header included); 
 	 * @return (String)
 	 */
-	public String getTranscription() { return this.reversetra; }
+	public String getTranscription()		{ return this.reversetra; }
 	
 	/**
 	 * To get the saple translation in Phase II code (header excluded). 
 	 * @return (String)
 	 */
-	public String getSampleTranscription() { return this.internalCode; }
+	public String getSampleTranscription()	{ return this.internalCode; }
 
 	/** TODO dynamic code execution (auto-compilation ?). */
 	protected void exec(Organism orga) throws GeneException { ; }
@@ -93,7 +90,7 @@ public class GenePhaseTwo extends Gene {
 	 * @return (String) translated sequence. 
 	 * @see GeneGattaca#getInstance(String)
 	 */
-	public static String translation(String sequence,int startpos) {
+	public static String translation(String sequence, int startpos) {
 		String result = "";
 		for (int i = startpos ; 
 				(i < sequence.length()) && (i+3 < sequence.length()) ; 
@@ -122,21 +119,18 @@ public class GenePhaseTwo extends Gene {
 									 : GeneticTranslator.reversePhaseTwo("5");
 		result += (this.isActiv()) ? GeneticTranslator.reversePhaseTwo("6")
 								   : GeneticTranslator.reversePhaseTwo("7");
-		/** if (this.getAgeMin() < 100) { agemin = "0"+agemin; } */
-		/** if (this.getAgeMin() < 10) { agemin = "0"+agemin; } */
+
 		String agemin = Gene.convert0to999( this.getAgeMin() );
 		String agemax = Gene.convert0to999( this.getAgeMax() );
 		String sexact = Gene.convert0to999( this.getSexAct() );
 		String mutrat = Gene.convert0to99( this.getMutationRate() );
-		for (int i = 0 ; i < agemin.length() ; i++) 
-			{ result += GeneticTranslator.reversePhaseTwo(agemin.charAt(i)+""); }
-		for (int i = 0 ; i < agemax.length() ; i++) 
-			{ result += GeneticTranslator.reversePhaseTwo(agemax.charAt(i)+""); }
-		for (int i = 0 ; i < sexact.length() ; i++) 
-			{ result += GeneticTranslator.reversePhaseTwo(sexact.charAt(i)+""); }
-		for (int i = 0 ; i < mutrat.length() ; i++) 
-			{ result += GeneticTranslator.reversePhaseTwo(mutrat.charAt(i)+""); }
-		/** adding ":" to end header. */
+		
+		result += GeneticTranslator.reversePhaseTwo( agemin );
+		result += GeneticTranslator.reversePhaseTwo( agemax );
+		result += GeneticTranslator.reversePhaseTwo( sexact );
+		result += GeneticTranslator.reversePhaseTwo( mutrat );
+		
+		// ***** adding ":" to end header. 
 		result += GeneticTranslator.reversePhaseTwo(":");
 
 		/** ================================================================ */

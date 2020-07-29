@@ -78,8 +78,7 @@ public class Instinct extends GeneGattaca {
 		tmp.append(Gene.convert0to999(this.threshold));
 		tmp.append((this.check)?"0":"1"); 
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");

@@ -3,6 +3,7 @@ package gabywald.biosilico.structures;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 import gabywald.biosilico.exceptions.GeneticTreeNodeException;
 
@@ -17,137 +18,6 @@ import gabywald.biosilico.exceptions.GeneticTreeNodeException;
  * GeneticTreeNode standardGeneticCode = new GeneticTreeNode("aguc",itemsStandardGeneticCode,true);</li>
  * <li>String itemsGattaca = new String("abcdefghijklmnopqrstuvwxyz000111222333444555666777888999::''MM**");<br>
  * GeneticTreeNode testRootGattaca = new GeneticTreeNode("ACTG",itemsGattaca,true);</li>
- * 
- * <--<li>String itemsPhaseTwo[] = new String[256];
-		itemsPhaseTwo[0] = "a";itemsPhaseTwo[1] = "a";<br>
-		itemsPhaseTwo[2] = "b";itemsPhaseTwo[3] = "b";<br>
-		itemsPhaseTwo[4] = "c";itemsPhaseTwo[5] = "c";<br>
-		itemsPhaseTwo[6] = "d";itemsPhaseTwo[7] = "d";<br>
-		itemsPhaseTwo[8] = "e";itemsPhaseTwo[9] = "e";<br>
-		itemsPhaseTwo[10] = "f";itemsPhaseTwo[11] = "f";<br>
-		itemsPhaseTwo[12] = "g";itemsPhaseTwo[13] = "g";<br>
-		itemsPhaseTwo[14] = "h";itemsPhaseTwo[15] = "h";<br>
-		itemsPhaseTwo[16] = "i";itemsPhaseTwo[17] = "i";<br>
-		itemsPhaseTwo[18] = "j";itemsPhaseTwo[19] = "j";<br>
-		itemsPhaseTwo[20] = "k";itemsPhaseTwo[21] = "k";<br>
-		itemsPhaseTwo[22] = "l";itemsPhaseTwo[23] = "l";<br>
-		itemsPhaseTwo[24] = "m";itemsPhaseTwo[25] = "m";<br>
-		itemsPhaseTwo[26] = "n";itemsPhaseTwo[27] = "n";<br>
-		itemsPhaseTwo[28] = "o";itemsPhaseTwo[29] = "o";<br>
-		itemsPhaseTwo[30] = "p";itemsPhaseTwo[31] = "p";<br>
-		itemsPhaseTwo[32] = "q";itemsPhaseTwo[33] = "q";<br>
-		itemsPhaseTwo[34] = "r";itemsPhaseTwo[35] = "r";<br>
-		itemsPhaseTwo[36] = "s";itemsPhaseTwo[37] = "s";<br>
-		itemsPhaseTwo[38] = "t";itemsPhaseTwo[39] = "t";<br>
-		itemsPhaseTwo[40] = "u";itemsPhaseTwo[41] = "u";<br>
-		itemsPhaseTwo[42] = "v";itemsPhaseTwo[43] = "v";<br>
-		itemsPhaseTwo[44] = "w";itemsPhaseTwo[45] = "w";<br>
-		itemsPhaseTwo[46] = "x";itemsPhaseTwo[47] = "x";<br>
-		itemsPhaseTwo[48] = "y";itemsPhaseTwo[49] = "y";<br>
-		itemsPhaseTwo[50] = "z";itemsPhaseTwo[51] = "z";<br>
-		itemsPhaseTwo[52] = "A";itemsPhaseTwo[53] = "A";<br>
-		itemsPhaseTwo[54] = "B";itemsPhaseTwo[55] = "B";<br>
-		itemsPhaseTwo[56] = "C";itemsPhaseTwo[57] = "C";<br>
-		itemsPhaseTwo[58] = "D";itemsPhaseTwo[59] = "D";<br>
-		itemsPhaseTwo[60] = "E";itemsPhaseTwo[61] = "E";<br>
-		itemsPhaseTwo[62] = "F";itemsPhaseTwo[63] = "F";<br>
-		itemsPhaseTwo[64] = "G";itemsPhaseTwo[65] = "G";<br>
-		itemsPhaseTwo[66] = "H";itemsPhaseTwo[67] = "H";<br>
-		itemsPhaseTwo[68] = "I";itemsPhaseTwo[69] = "I";<br>
-		itemsPhaseTwo[70] = "J";itemsPhaseTwo[71] = "J";<br>
-		itemsPhaseTwo[72] = "K";itemsPhaseTwo[73] = "K";<br>
-		itemsPhaseTwo[74] = "L";itemsPhaseTwo[75] = "L";<br>
-		itemsPhaseTwo[76] = "M";itemsPhaseTwo[77] = "M";<br>
-		itemsPhaseTwo[78] = "N";itemsPhaseTwo[79] = "N";<br>
-		itemsPhaseTwo[80] = "O";itemsPhaseTwo[81] = "O";<br>
-		itemsPhaseTwo[82] = "P";itemsPhaseTwo[83] = "P";<br>
-		itemsPhaseTwo[84] = "Q";itemsPhaseTwo[85] = "Q";<br>
-		itemsPhaseTwo[86] = "R";itemsPhaseTwo[87] = "R";<br>
-		itemsPhaseTwo[88] = "S";itemsPhaseTwo[89] = "S";<br>
-		itemsPhaseTwo[90] = "T";itemsPhaseTwo[91] = "T";<br>
-		itemsPhaseTwo[92] = "U";itemsPhaseTwo[93] = "U";<br>
-		itemsPhaseTwo[94] = "V";itemsPhaseTwo[95] = "V";<br>
-		itemsPhaseTwo[96] = "W";itemsPhaseTwo[97] = "W";<br>
-		itemsPhaseTwo[98] = "X";itemsPhaseTwo[99] = "X";<br>
-		itemsPhaseTwo[100] = "Y";itemsPhaseTwo[101] = "Y";<br>
-		itemsPhaseTwo[102] = "Z";itemsPhaseTwo[103] = "Z";<br>
-		itemsPhaseTwo[104] = "0";itemsPhaseTwo[105] = "0";<br>
-		itemsPhaseTwo[106] = "0";itemsPhaseTwo[107] = "0";<br>
-		itemsPhaseTwo[108] = "1";itemsPhaseTwo[109] = "1";<br>
-		itemsPhaseTwo[110] = "1";itemsPhaseTwo[111] = "1";<br>
-		itemsPhaseTwo[112] = "2";itemsPhaseTwo[113] = "2";<br>
-		itemsPhaseTwo[114] = "2";itemsPhaseTwo[115] = "2";<br>
-		itemsPhaseTwo[116] = "3";itemsPhaseTwo[117] = "3";<br>
-		itemsPhaseTwo[118] = "3";itemsPhaseTwo[119] = "3";<br>
-		itemsPhaseTwo[120] = "4";itemsPhaseTwo[121] = "4";<br>
-		itemsPhaseTwo[122] = "4";itemsPhaseTwo[123] = "4";<br>
-		itemsPhaseTwo[124] = "5";itemsPhaseTwo[125] = "5";<br>
-		itemsPhaseTwo[126] = "5";itemsPhaseTwo[127] = "5";<br>
-		itemsPhaseTwo[128] = "6";itemsPhaseTwo[129] = "6";<br>
-		itemsPhaseTwo[130] = "6";itemsPhaseTwo[131] = "6";<br>
-		itemsPhaseTwo[132] = "7";itemsPhaseTwo[133] = "7";<br>
-		itemsPhaseTwo[134] = "7";itemsPhaseTwo[135] = "7";<br>
-		itemsPhaseTwo[136] = "8";itemsPhaseTwo[137] = "8";<br>
-		itemsPhaseTwo[138] = "8";itemsPhaseTwo[139] = "8";<br>
-		itemsPhaseTwo[140] = "9";itemsPhaseTwo[141] = "9";<br>
-		itemsPhaseTwo[142] = "9";itemsPhaseTwo[143] = "9";<br>
-		itemsPhaseTwo[144] = "=";itemsPhaseTwo[145] = "=";<br>
-		itemsPhaseTwo[146] = "!";itemsPhaseTwo[147] = "!";<br>
-		itemsPhaseTwo[148] = ".";itemsPhaseTwo[149] = ".";<br>
-		itemsPhaseTwo[150] = "-";itemsPhaseTwo[151] = "-";<br>
-		itemsPhaseTwo[152] = "+";itemsPhaseTwo[153] = "+";<br>
-		itemsPhaseTwo[154] = "/";itemsPhaseTwo[155] = "/";<br>
-		itemsPhaseTwo[156] = "*";itemsPhaseTwo[157] = "*";<br>
-		itemsPhaseTwo[158] = "\"";itemsPhaseTwo[159] = "\"";<br>
-		itemsPhaseTwo[160] = "'";itemsPhaseTwo[161] = "'";<br>
-		itemsPhaseTwo[162] = ":";itemsPhaseTwo[163] = ":";<br>
-		itemsPhaseTwo[164] = "++";itemsPhaseTwo[165] = "++";<br>
-		itemsPhaseTwo[166] = "--";itemsPhaseTwo[167] = "--";<br>
-		itemsPhaseTwo[168] = ";";itemsPhaseTwo[169] = ";";<br>
-		itemsPhaseTwo[170] = "\n";itemsPhaseTwo[171] = "\n";<br>
-		itemsPhaseTwo[172] = "\t";itemsPhaseTwo[173] = "\t";<br>
-		itemsPhaseTwo[174] = " ";itemsPhaseTwo[175] = " ";<br>
-		itemsPhaseTwo[176] = "(";itemsPhaseTwo[177] = "(";<br>
-		itemsPhaseTwo[178] = ")";itemsPhaseTwo[179] = ")";<br>
-		itemsPhaseTwo[180] = "[";itemsPhaseTwo[181] = "[";<br>
-		itemsPhaseTwo[182] = "]";itemsPhaseTwo[183] = "]";<br>
-		itemsPhaseTwo[184] = "{";itemsPhaseTwo[185] = "{";<br>
-		itemsPhaseTwo[186] = "}";itemsPhaseTwo[187] = "}";<br>
-		itemsPhaseTwo[188] = "<";itemsPhaseTwo[189] = "<";<br>
-		itemsPhaseTwo[190] = ">";itemsPhaseTwo[191] = ">";<br>
-		itemsPhaseTwo[192] = "class";itemsPhaseTwo[193] = "class";<br>
-		itemsPhaseTwo[194] = "class";itemsPhaseTwo[195] = "class";<br>
-		itemsPhaseTwo[196] = "interface";itemsPhaseTwo[197] = "interface";<br>
-		itemsPhaseTwo[198] = "interface";itemsPhaseTwo[199] = "interface";<br>
-		itemsPhaseTwo[200] = "static";itemsPhaseTwo[201] = "static";<br>
-		itemsPhaseTwo[202] = "static";itemsPhaseTwo[203] = "static";<br>
-		itemsPhaseTwo[204] = "final";itemsPhaseTwo[205] = "final";<br>
-		itemsPhaseTwo[206] = "final";itemsPhaseTwo[207] = "final";<br>
-		itemsPhaseTwo[208] = "private";itemsPhaseTwo[209] = "private";<br>
-		itemsPhaseTwo[210] = "private";itemsPhaseTwo[211] = "private";<br>
-		itemsPhaseTwo[212] = "public";itemsPhaseTwo[213] = "public";<br>
-		itemsPhaseTwo[214] = "public";itemsPhaseTwo[215] = "public";<br>
-		itemsPhaseTwo[216] = "void";itemsPhaseTwo[217] = "void";<br>
-		itemsPhaseTwo[218] = "void";itemsPhaseTwo[219] = "void";<br>
-		itemsPhaseTwo[220] = "int";itemsPhaseTwo[221] = "int";<br>
-		itemsPhaseTwo[222] = "int";itemsPhaseTwo[223] = "int";<br>
-		itemsPhaseTwo[224] = "double";itemsPhaseTwo[225] = "double";<br>
-		itemsPhaseTwo[226] = "double";itemsPhaseTwo[227] = "double";<br>
-		itemsPhaseTwo[228] = "true";itemsPhaseTwo[229] = "true";<br>
-		itemsPhaseTwo[230] = "true";itemsPhaseTwo[231] = "true";<br>
-		itemsPhaseTwo[232] = "false";itemsPhaseTwo[233] = "false";<br>
-		itemsPhaseTwo[234] = "false";itemsPhaseTwo[235] = "false";<br>
-		itemsPhaseTwo[236] = "if";itemsPhaseTwo[237] = "if";<br>
-		itemsPhaseTwo[238] = "else";itemsPhaseTwo[239] = "else";<br>
-		itemsPhaseTwo[240] = "while";itemsPhaseTwo[241] = "while";<br>
-		itemsPhaseTwo[242] = "while";itemsPhaseTwo[243] = "while";<br>
-		itemsPhaseTwo[244] = "&&";itemsPhaseTwo[245] = "&&";<br>
-		itemsPhaseTwo[246] = "||";itemsPhaseTwo[247] = "||";<br>
-		itemsPhaseTwo[248] = "return";itemsPhaseTwo[249] = "return";<br>
-		itemsPhaseTwo[250] = "return";itemsPhaseTwo[251] = "return";<br>
-		itemsPhaseTwo[252] = "[STOP]";itemsPhaseTwo[253] = "[STOP]";<br>
-		itemsPhaseTwo[254] = "[STOP]";itemsPhaseTwo[255] = "[STOP]";<br>
-		GeneticTreeNode testRootPhaseTwo = new GeneticTreeNode("UBVP",itemsPhaseTwo,false);</li>
  * </ul>
  * @author Gabriel Chandesris (2009-2010, 2020)
  * @see GeneticTreeNode#getGeneticCodeStandard()
@@ -159,7 +29,7 @@ public class GeneticTreeNode {
 	private int level;
 	/** Laterality of node at current level.  */
 	private int lateral;
-	/**  */
+	/** ... */
 	private int output;
 	/** If tree if made for triplets or quadruplets */
 	private boolean triplet;
@@ -235,27 +105,24 @@ public class GeneticTreeNode {
 			throws GeneticTreeNodeException {
 		int cube = codeValues.length()*codeValues.length()*codeValues.length();
 		int quad = cube*codeValues.length();
-		// System.out.println(code_values+":"+code_values.length()+":"+cube+":"+quad+":"+end_values.length()+"\t"+triplet);
-		// System.out.println(code_values+":"+(triplet)+":"+(end_values.length() != cube )+"\t=>\t"+(triplet)+" && "+end_values.length()+":"+cube );
-		// System.out.println(code_values+":"+(!triplet)+":"+(end_values.length() != quad )+"\t=>\t"+(!triplet)+" && "+end_values.length()+":"+quad );
 		if ( (triplet) && (endValues.length != cube ) )
 			{ throw new GeneticTreeNodeException("Length of end values not according to triplet. "); }
 		if ( (!triplet) && (endValues.length != quad ) )
 			{ throw new GeneticTreeNodeException("Length of end values not according to quadruplet. "); }
 		
-		this.father = null;
-		this.level = 0;
-		this.lateral = 0;
-		this.output = this.lateral;
-		this.codeValues = codeValues;
-		this.endValues = endValues;
-		this.triplet = triplet;
-		this.nodes = new ArrayList<GeneticTreeNode>();
-		/** Building the whole tree. */
-		for (int i = 0 ; i < this.codeValues.length() ; i++ ) {
-			this.nodes.add(new GeneticTreeNode(	this.codeValues, this.endValues, 
-												triplet, this, i));
-		}
+		this.father		= null;
+		this.level		= 0;
+		this.lateral	= 0;
+		this.output		= this.lateral;
+		this.codeValues	= codeValues;
+		this.endValues	= endValues;
+		this.triplet	= triplet;
+		this.nodes		= new ArrayList<GeneticTreeNode>();
+		
+		// ***** Building the whole tree. 
+		IntStream.range(0, this.codeValues.length()).forEach( i -> {
+			this.nodes.add(new GeneticTreeNode(	this.codeValues, this.endValues, this.triplet, this, i));
+		});
 	}
 
 	public int getLevel()					{ return this.level; }
@@ -273,11 +140,10 @@ public class GeneticTreeNode {
 	 * @return List of GeneticTreeNode. 
 	 */
 	public List<GeneticTreeNode> getLeaves() {
-		/** Getting the root node of the tree. */
+		// ***** Getting the root node of the tree. 
 		GeneticTreeNode root = this;
 		while (!root.isRoot()) { root = root.getFather(); }
-		List<GeneticTreeNode> tmp = new ArrayList<GeneticTreeNode>();
-		/** if (root.isLeave()) { tmp.addGeneticTreeNode(root); } */
+		List<GeneticTreeNode> toReturn = new ArrayList<GeneticTreeNode>();
 		for (int i = 0 ; i < root.getNodes().size() ; i++) {
 			GeneticTreeNode level1 = root.getNodes().get(i);
 			for (int j = 0 ; j < level1.getNodes().size() ; j++) {
@@ -285,12 +151,12 @@ public class GeneticTreeNode {
 				for (int k = 0 ; k < level2.getNodes().size() ; k++) {
 					GeneticTreeNode level3 = level2.getNodes().get(k);
 					if ( (this.triplet) && (level3.isLeave()) )
-						{ tmp.add(level3); }
-					else { tmp.addAll(level3.getNodes()); }
+						{ toReturn.add(level3); }
+					else { toReturn.addAll(level3.getNodes()); }
 				}
 			}
 		}
-		return tmp;
+		return toReturn;
 	}
 
 	/**
@@ -347,7 +213,7 @@ public class GeneticTreeNode {
 		GeneticTreeNode lvl2 = null;
 		GeneticTreeNode lvl3 = null;
 		int i = 0;
-		/** Checking first char (0) at first level, node selection. */
+		// ***** Checking first char (0) at first level, node selection. 
 		while ( (i < root.getNodes().size()) && (lvl1 == null) ) {
 			GeneticTreeNode tmp = root.getNodes().get(i);
 			if (code.charAt(0) == tmp.getLastCode()) { lvl1 = tmp;i = -1; }
@@ -367,7 +233,7 @@ public class GeneticTreeNode {
 			if (code.equals(lvl3.getCode())) { return lvl3.getValue(); }
 			else { throw new GeneticTreeNodeException("Not a good value according to triplet lvl 3. "); }
 		} else {
-			/** the fourth level when !this.triplet ; selecting fourth level node. */
+			// ***** The fourth level when ( ! this.triplet) ; selecting fourth level node. 
 			GeneticTreeNode lvl4 = null;
 			while ( (i < lvl3.getNodes().size()) && (lvl4 == null) ) {
 				GeneticTreeNode tmp = lvl3.getNodes().get(i);
@@ -406,33 +272,36 @@ public class GeneticTreeNode {
 	public String getCode(String value,boolean simple) 
 			throws GeneticTreeNodeException {
 		/** Checking that value should exists in tree. */
-		if (!GeneticTreeNode.valueRecognition(value,this.endValues))
+		if (!GeneticTreeNode.valueRecognition(value, this.endValues))
 			{ throw new GeneticTreeNodeException("Value is not recognized with according end values. "); }
-		/** This method must start from the root of the tree. */
+		// ***** This method must start from the root of the tree. 
 		GeneticTreeNode root = this;
 		while (!root.isRoot()) { root = root.getFather(); }
-		/** Encoding : Getting leaves. */
+		// ***** Encoding : Getting leaves. 
 		List<GeneticTreeNode> leaves = root.getLeaves();
-		/** Encoding : Getting list of possibles codes. */
+		// ***** Encoding : Getting list of possibles codes. 
 		List<String> codes = new ArrayList<String>();
+		
 		for (int i = 0 ; i < leaves.size() ; i++) {
 			GeneticTreeNode tmp = leaves.get(i);
 			if (simple) {
-				/** Simple coding : first occurence of value. */
+				// ***** Simple coding : first occurrence of value. 
 				if (tmp.getValue().equals(value)) { return tmp.getCode(); } 
 			} else {
-				/** Complex coding : get all possibles codes for values. */
+				// ***** Complex coding : get all possibles codes for values. 
 				if (tmp.getValue().equals(value)) 
 					{ codes.add(tmp.getCode()); }
 			}
 		}
-		/** Choice for complex coding. */
+		// ***** Choice for complex coding. 
 		if ( (!simple) && (codes.size() > 0) ) {
-			Random rand = new Random();
-			int choice = rand.nextInt(codes.size());
+			Random rand	= new Random();
+			int choice	= rand.nextInt(codes.size());
 			return codes.get(choice);
 		}
-		return root.getCode(); /** Empty String output. */
+		
+		// ***** Empty String output. 
+		return root.getCode(); 
 	}
 
 	/**
@@ -470,8 +339,8 @@ public class GeneticTreeNode {
 		if (!this.isLeave()) { return this.lateral; }
 		GeneticTreeNode tmp = this.father;
 		int sumLaterals = this.lateral;
-		int a = 16,b = 4,c = 1;
-		/** For quadruplets : coefficients change !! */
+		int a = 16, b = 4, c = 1;
+		// ***** For quadruplets : coefficients change !! 
 		if (!this.triplet) { a = 64;b = 16;c = 4; }
 		while(tmp != null) {
 			switch(tmp.getLevel()) {
@@ -495,8 +364,9 @@ public class GeneticTreeNode {
 	 */
 	private static String[] toTable(String input)  {
 		String table[] = new String[input.length()];
+		// ** input.toCharArray() but as String[]
 		for (int i = 0 ; i < input.length() ; i++) 
-		{ table[i] = input.charAt(i)+""; }
+			{ table[i] = input.charAt(i)+""; }
 		return table;
 	}
 	
@@ -548,10 +418,9 @@ public class GeneticTreeNode {
 	 * @return (GeneticTreeNode) Pre-build Tree of standard genetic code. 
 	 */
 	public static GeneticTreeNode getGeneticCodeStandard() {
-		String itemsStandardGeneticCode = 
-			"KKNNRRSSIMIITTTTEEDDGGGGVVVVAAAA**YY*WCCLLFFSSSSQQHHRRRRLLLLPPPP";
+		String itemsStandardGeneticCode = "KKNNRRSSIMIITTTTEEDDGGGGVVVVAAAA**YY*WCCLLFFSSSSQQHHRRRRLLLLPPPP";
 		try { 
-			return new GeneticTreeNode("aguc",itemsStandardGeneticCode,true);
+			return new GeneticTreeNode("aguc", itemsStandardGeneticCode, true);
 		} catch (GeneticTreeNodeException e) { return null; }
 	}
 	
@@ -560,10 +429,9 @@ public class GeneticTreeNode {
 	 * @return (GeneticTreeNode) Pre-build Tree of 'Gattaca' genetic code. 
 	 */
 	public static GeneticTreeNode getGeneticCodeGattaca() {
-		String itemsGattaca = 
-			"abcdefghijklmnopqrstuvwxyz000111222333444555666777888999::''MM**";
+		String itemsGattaca = "abcdefghijklmnopqrstuvwxyz000111222333444555666777888999::''MM**";
 		try { 
-			return new GeneticTreeNode("ACTG",itemsGattaca,true);
+			return new GeneticTreeNode("ACTG", itemsGattaca, true);
 		} catch (GeneticTreeNodeException e) { return null; }
 	}
 	
@@ -702,7 +570,7 @@ public class GeneticTreeNode {
 		itemsPhaseTwo[252] = "[STOP]";itemsPhaseTwo[253] = "[STOP]";
 		itemsPhaseTwo[254] = "[STOP]";itemsPhaseTwo[255] = "[STOP]";
 		try {
-			return new GeneticTreeNode("UBVP",itemsPhaseTwo,false);
+			return new GeneticTreeNode("UBVP", itemsPhaseTwo, false);
 		} catch (GeneticTreeNodeException e) { return null; }
 	}
 	

@@ -13,12 +13,10 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class BrainGeJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 105L;
 	/** Some Label's. */
-	private JLabel heightLabel,widthLabel,depthLabel,moreLabel;
+	private JLabel heightLabel, widthLabel, depthLabel, moreLabel;
 	/** Some TextField's. */
-	private JTextField heightField,widthField,depthField,moreField;
+	private JTextField heightField, widthField, depthField, moreField;
 	
 	public BrainGeJPanel() {
 		this.heightLabel	= new JLabel("Height : ");
@@ -41,7 +39,7 @@ public class BrainGeJPanel extends GeneJPanel {
 		this.addBagComponent(this.widthLabel, 2, 7);
 		this.addBagComponent(this.widthField, 3, 7);
 		
-		/** Not used parameters (but show and disabled). */
+		// ***** Not used parameters (but show and disabled). 
 		this.addBagComponent(this.depthLabel, 0, 8);
 		this.addBagComponent(this.depthField, 1, 8);
 		this.addBagComponent(this.moreLabel, 2, 8);
@@ -79,24 +77,4 @@ public class BrainGeJPanel extends GeneJPanel {
 		this.moreField.setText(GeneJPanel.convertTwoChars(gene.getBrainMore()));
 	}
 	
-	/**
-		int height  = ((BrainGene)gene).getBrainHeight();
-		int width	= ((BrainGene)gene).getBrainWidth();
-		int depth	= ((BrainGene)gene).getBrainDepth();
-		int more	= ((BrainGene)gene).getBrainMore();
-		
-		((BrainGeJPanel)this.geneticParam[type]).setMutate(mutate);
-		((BrainGeJPanel)this.geneticParam[type]).setDuplic(duplic);
-		((BrainGeJPanel)this.geneticParam[type]).setMutate(delete);
-		((BrainGeJPanel)this.geneticParam[type]).setMutate(activi);
-		((BrainGeJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-		((BrainGeJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-		((BrainGeJPanel)this.geneticParam[type]).setSex(sex);
-		((BrainGeJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-		
-		((BrainGeJPanel)this.geneticParam[type]).setBrainHeight(height);
-		((BrainGeJPanel)this.geneticParam[type]).setBrainWidth(width);
-		((BrainGeJPanel)this.geneticParam[type]).setBrainDepth(depth);
-		((BrainGeJPanel)this.geneticParam[type]).setBrainMore(more);
-	 */
 }

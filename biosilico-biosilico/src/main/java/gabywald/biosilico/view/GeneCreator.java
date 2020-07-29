@@ -17,8 +17,6 @@ import javax.swing.JTextField;
  */
 @SuppressWarnings("serial")
 public class GeneCreator extends GeneKitJFrame {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 111L;
 	/** Unique instance of this view. */
 	private static GeneCreator instance = null;
 	/** JPanel in Center of the JFrame. */
@@ -52,9 +50,9 @@ public class GeneCreator extends GeneKitJFrame {
 		this.initEasternPanel();
 		/** Positions in content of JFrame */
 		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(this.centerPanel,"Center");
-		this.getContentPane().add(this.westernPanel,"West");
-		this.getContentPane().add(this.easternPanel,"East");
+		this.getContentPane().add(this.centerPanel, "Center");
+		this.getContentPane().add(this.westernPanel, "West");
+		this.getContentPane().add(this.easternPanel, "East");
 		this.setTitle("Gene Creator");
 		this.setVisible(true);
 	}
@@ -134,10 +132,10 @@ public class GeneCreator extends GeneKitJFrame {
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (source.equals(this.geneTypeSelection)) {
-			// System.out.println("GENE TYPE SELECTION");
-			/** Selection in Gene type menu. */
+
+			// ***** Selection in Gene type menu. 
 			int type = this.geneTypeSelection.getSelectedIndex();
-			// System.out.println("Type selection : "+type);
+
 			this.parameterViewer.selectCard(type);
 			if (type > 0) { 
 				((GeneJPanel)this.parameterViewer.getCard(type)).setDefaultValues();
@@ -152,13 +150,8 @@ public class GeneCreator extends GeneKitJFrame {
 				this.geneSelection.setSelection(0);
 			}
 		} else if (source.equals(this.geneSelection)) {
-			/** Selection in menu of previous defined genes. */
-			// this.selectedGene = this.existentSelection.getSelectedIndex();
-			// System.out.println("Existent selection : "+this.selected);
+			// ***** Selection in menu of previous defined genes. 
 			if (this.geneSelection.getSelected() > 0) {
-//				System.out.print("gene selection : ");
-//				System.out.print(this.geneSelection.getSelectedGeneName());
-//				System.out.println();
 				this.geneName.setText(this.geneSelection.getSelectedGeneName());
 				int geneType = this.geneSelection.getSelectedType();
 				this.geneTypeSelection.setSelection(geneType);
@@ -188,7 +181,7 @@ public class GeneCreator extends GeneKitJFrame {
 										this.geneName.getText(),
 										this.geneTypeSelection.getSelectedIndex());
 				this.geneSelection.addGene(oneMoreGene);
-				// System.out.println(oneMoreGene);
+
 				this.createGene.setEnabled(false);
 				this.changeGene.setEnabled(true);
 				this.makeneGene.setEnabled(true);
@@ -197,23 +190,22 @@ public class GeneCreator extends GeneKitJFrame {
 			String oneMoreGene	= this.parameterViewer.getCompiledParameters(
 									this.geneName.getText(),
 									this.geneTypeSelection.getSelectedIndex());
-			// System.out.println(oneMoreGene);
 			this.geneSelection.setCurrentGene(oneMoreGene);
 		} else if (source.equals(this.deleteGene)) {
 			int selectedGene = this.buildingGene.getSelectedIndex();
 			this.buildingGene.removeCurrentSelection();
 			this.geneSelection.remGene(selectedGene);
 		} else if (source.equals(this.addGene2pathway)) {
-			/** Adding a Gene to current Pathway. */
+			// ******* Adding a Gene to current Pathway. 
 			this.buildingPathway.addString(this.geneSelection.getSelectedGeneName());
 			if (this.buildingPathway.length() > 1) 
 				{ this.createPathWay.setEnabled(true); }
 		} else if (source.equals(this.createPathWay)) {
-			/** Creating+Recording current Pathway. */
+			// ******* Creating+Recording current Pathway. 
 			String pathwayName			= this.pathwayName.getText();
 			List<String> genesNamesList	= this.buildingPathway.getStringListe();
 			if ( (!pathwayName.equals("")) && (genesNamesList.size() > 1) ) {
-				/** Name ; number of genes ; \n[\tgene\n]+ */
+				// ******* Name ; number of genes ; \n[\tgene\n]+ 
 				String compiledPathway = pathwayName + "\t" + genesNamesList.size();
 				
 				for (int i = 0 ; i < genesNamesList.size() ; i++) {

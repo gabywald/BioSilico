@@ -80,8 +80,7 @@ public class BrainGene extends GeneGattaca {
 		tmp.append(Gene.convert0to99(this.depth));
 		tmp.append(Gene.convert0to99(this.more));
 		
-		for (int i = 0 ; i < tmp.length() ; i++) 
-			{ result += GeneticTranslator.reverseGattaca(tmp.charAt(i)+""); }
+		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
 		// end is given here "GGT" 
 		return result+GeneticTranslator.reverseGattaca("*");

@@ -17,8 +17,6 @@ import gabywald.global.view.graph.CardJPanel;
  */
 @SuppressWarnings("serial")
 public class GeneParametersViewer extends CardJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 110L;
 	/** Unique instance of this view. */
 	private static GeneParametersViewer instance = null;
 	
@@ -32,23 +30,18 @@ public class GeneParametersViewer extends CardJPanel {
 	private static final String STIMULU_CARD	= "StimulusDecision";
 	private static final String INSTINC_CARD	= "Instinct";
 	/** This is used by {@link GeneKitJFrame#GeneKitJFrame()} and inheritant classes. */
-	public static final String geneTypeListe[] = 
-		{GeneParametersViewer.DEFAULT_CARD,GeneParametersViewer.INITCON_CARD, 
+	public static final String geneTypeListe[] = {
+		GeneParametersViewer.DEFAULT_CARD, GeneParametersViewer.INITCON_CARD, 
 		GeneParametersViewer.BIOCHEM_CARD, GeneParametersViewer.BRAINGE_CARD, 
 		GeneParametersViewer.BRAINLO_CARD, GeneParametersViewer.EMITTER_CARD, 
-		GeneParametersViewer.STIMULU_CARD, GeneParametersViewer.INSTINC_CARD};
+		GeneParametersViewer.STIMULU_CARD, GeneParametersViewer.INSTINC_CARD
+	};
 	/** List of Card JPanel's (GeneKitsGBJPanel). */
-	private static final GeneKitsGBJPanel[] geneticParam = 
-		GeneParametersViewer.getLocalPanelList();
-	
-	
-	/** For viewing the parameters. (Use CardLayout). */
-	// private JPanel parameterViewer;
+	private static final GeneKitsGBJPanel[] geneticParam = GeneParametersViewer.getLocalPanelList();
 	
 	/** Default Constructor. */
 	private GeneParametersViewer() { 
-		super(GeneParametersViewer.geneTypeListe,
-			  GeneParametersViewer.geneticParam);
+		super(GeneParametersViewer.geneTypeListe, GeneParametersViewer.geneticParam);
 	}
 	
 	/**
@@ -63,8 +56,8 @@ public class GeneParametersViewer extends CardJPanel {
 	
 	private static GeneKitsGBJPanel[] getLocalPanelList() {
 		GeneKitsGBJPanel liste[] = new GeneKitsGBJPanel[GeneParametersViewer.geneTypeListe.length];
-		/** TODO [??] Design Pattern [Abstract]?Factory 
-		/** 0 has no fields, initialize it then start to 1 */
+		// ***** TODO [??] Design Pattern [Abstract]?Factory 
+		// ***** 0 has no fields, initialize it then start to 1 !!
 		liste[0] = new GeneKitsGBJPanel();
 		liste[1] = new InitConJPanel();
 		liste[2] = new BiochemJPanel();
@@ -73,18 +66,15 @@ public class GeneParametersViewer extends CardJPanel {
 		liste[5] = new EmitterJPanel();
 		liste[6] = new StimuluJPanel();
 		liste[7] = new InstincJPanel();
-		/** Returning the list. */
+
 		return liste;
 	}
 	
-	public void setCompiledParameters(Gene gene,int type) {
-		/** code ; nom ;  type ; mutate ; duplicate ; delete ; 
-		 * active ; minimal age ; maximal age ; sex ; mutation rate ; 
-		 * others... */
-		// int index = this.existentSelection.getSelectedIndex()-1;
-		// String nom			= this.geneStock.getGeneName(index);
-		// GeneGattaca gene	= (GeneGattaca)this.geneStock.getGene(index);
-		// int type = this.geneTypeSelection.getSelectedIndex();
+	public void setCompiledParameters(Gene gene, int type) {
+		// ***** code ; name ;  type ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others... 
+		
+		// TODO HERE replace int with an ENUM !!
+		
 		switch (type) {
 		case(1): /** Initial Concentration */
 			((InitConJPanel)this.getCard(type))
@@ -117,12 +107,11 @@ public class GeneParametersViewer extends CardJPanel {
 		}
 	}
 	
-	public String getCompiledParameters(String geneName,int geneType) {
-		/** code ; nom ;  type ; mutate ; duplicate ; delete ; 
-		 * active ; minimal age ; maximal age ; sex ; mutation rate ; 
-		 * others... */
-		// String nom		= this.geneName.getText();
-		// int type = this.geneTypeSelection.getSelectedIndex();
+	public String getCompiledParameters(String geneName, int geneType) {
+		// ***** code ; name ;  type ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others...
+
+		// TODO HERE replace int with an ENUM !!
+		
 		boolean mutate = ((GeneJPanel)this.getCard(geneType)).getMutate();
 		boolean duplic = ((GeneJPanel)this.getCard(geneType)).getDuplic();
 		boolean delete = ((GeneJPanel)this.getCard(geneType)).getDelete();

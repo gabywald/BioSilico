@@ -15,5 +15,6 @@ Units Tests ; review...
 For dev on BioSilico : 
 
 * genetic execution / genes use  age and cycle (to avoid multiple instantiation of Brain / BrainLobe ++ execution of InitConcGene) : make good usage of age_min and age_max (0, 0) for initiation at start / 'birth'. 
+* Design Patterns 'Builder' to make better implements
 * ... 
 

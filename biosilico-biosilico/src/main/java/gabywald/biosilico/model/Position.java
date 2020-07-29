@@ -41,9 +41,20 @@ public class Position {
 	public void setPosX(int posX)	{ this.posX = posX; }
 	public void setPosY(int posY)	{ this.posY = posY; }
 	
+	@Override
+	public boolean equals(Object toCompare) {
+		if ( ! (toCompare instanceof Position) ) { return false; } 
+		return this.equals((Position) toCompare);
+	}
+	
 	public boolean equals(Position toCompare) {
 		if (this.posX != toCompare.posX) { return false; }
 		if (this.posY != toCompare.posY) { return false; }
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "[" + this.posX + ", " + this.posY + "]";
 	}
 }

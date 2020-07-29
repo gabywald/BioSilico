@@ -13,15 +13,13 @@ import javax.swing.SwingConstants;
  */
 @SuppressWarnings("serial")
 public class BiochemJPanel extends GeneJPanel {
-	/** To avoid a Warning. */
-	// private static final long serialVersionUID = 104L;
 	/** Some Label's. */
-	private JLabel AcoefLabel,BcoefLabel,CcoefLabel,DcoefLabel,
-					AchemLabel,BchemLabel,CchemLabel,DchemLabel,
+	private JLabel	AcoefLabel, BcoefLabel, CcoefLabel, DcoefLabel, 
+					AchemLabel, BchemLabel, CchemLabel, DchemLabel, 
 					KMLabel;
 	/** Some TextField's. */
-	private JTextField AcoefField,BcoefField,CcoefField,DcoefField,
-						AchemField,BchemField,CchemField,DchemField,
+	private JTextField	AcoefField, BcoefField, CcoefField, DcoefField, 
+						AchemField, BchemField, CchemField, DchemField, 
 						KMField;
 	
 	public BiochemJPanel() {
@@ -125,35 +123,4 @@ public class BiochemJPanel extends GeneJPanel {
 		this.KMField.setText(GeneJPanel.convertThreeChars(gene.getKMVMs()));
 	}
 	
-	/**
-			int Achem = ((BiochemicalReaction)gene).getAchem();
-			int Bchem = ((BiochemicalReaction)gene).getBchem();
-			int Cchem = ((BiochemicalReaction)gene).getCchem();
-			int Dchem = ((BiochemicalReaction)gene).getDchem();
-			int Acoef = ((BiochemicalReaction)gene).getAcoef();
-			int Bcoef = ((BiochemicalReaction)gene).getBcoef();
-			int Ccoef = ((BiochemicalReaction)gene).getCcoef();
-			int Dcoef = ((BiochemicalReaction)gene).getDcoef();
-			int KMVM  = ((BiochemicalReaction)gene).getKMVMs();
-			
-			((BiochemJPanel)this.geneticParam[type]).setMutate(mutate);
-			((BiochemJPanel)this.geneticParam[type]).setDuplic(duplic);
-			((BiochemJPanel)this.geneticParam[type]).setMutate(delete);
-			((BiochemJPanel)this.geneticParam[type]).setMutate(activi);
-			((BiochemJPanel)this.geneticParam[type]).setAgeMin(minimalAge);
-			((BiochemJPanel)this.geneticParam[type]).setAgeMax(maximalAge);
-			((BiochemJPanel)this.geneticParam[type]).setSex(sex);
-			((BiochemJPanel)this.geneticParam[type]).setMutRat(mutateRate);
-			
-			((BiochemJPanel)this.geneticParam[type]).setAchem(Achem);
-			((BiochemJPanel)this.geneticParam[type]).setBchem(Bchem);
-			((BiochemJPanel)this.geneticParam[type]).setCchem(Cchem);
-			((BiochemJPanel)this.geneticParam[type]).setDchem(Dchem);
-			((BiochemJPanel)this.geneticParam[type]).setAcoef(Acoef);
-			((BiochemJPanel)this.geneticParam[type]).setBcoef(Bcoef);
-			((BiochemJPanel)this.geneticParam[type]).setCcoef(Ccoef);
-			((BiochemJPanel)this.geneticParam[type]).setDcoef(Dcoef);
-			((BiochemJPanel)this.geneticParam[type]).setKMVMs(KMVM);
-		*/
-
 }

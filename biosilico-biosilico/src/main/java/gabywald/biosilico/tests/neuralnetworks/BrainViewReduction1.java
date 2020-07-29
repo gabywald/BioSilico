@@ -1,4 +1,4 @@
-package gabywald.biosilico.tests;
+package gabywald.biosilico.tests.neuralnetworks;
 
 
 import gabywald.biosilico.exceptions.BrainLengthException;
@@ -22,9 +22,9 @@ import javax.swing.JPanel;
  * 
  * @author Gabriel Chandesris (2010)
  */
-public class BrainViewReduction2 extends JFrame implements Observer {
+public class BrainViewReduction1 extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
-	private static BrainViewReduction2 instance = null;
+	private static BrainViewReduction1 instance = null;
 	private static int FRAME_HEIGHT = 800;
 	private static int FRAME_WIDTH = 600;
 	private static int LABEL_HEIGHT = 20;
@@ -36,7 +36,7 @@ public class BrainViewReduction2 extends JFrame implements Observer {
 	private int brainHeight;
 	private int brainWidth;
 
-	private BrainViewReduction2() {
+	private BrainViewReduction1() {
 		this.contentPanel = new JPanel();
 		this.contentPanel.setSize(FRAME_HEIGHT, FRAME_WIDTH-LABEL_HEIGHT);
 		this.contentLabel = new JLabel();
@@ -50,11 +50,9 @@ public class BrainViewReduction2 extends JFrame implements Observer {
 			this.brainWidth = this.testBrain.getWidth();
 			/** Building the Brain : lobes at first and last line
 			 * and 'conception' lobe between the two previous... */
-			// Neuron receptorType = Neuron.getReceptorNeuron();
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
 			receptorActi.setActivity(1000);
 			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 5, false, 2);
-			// Neuron emittersType = Neuron.getEmitterNeuron();
 			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 4, false, 0);
 
 			this.testBrain.setLobe(1, 1, 3, 8, receptorActi, false);
@@ -65,19 +63,15 @@ public class BrainViewReduction2 extends JFrame implements Observer {
 			// this.testBrain.setLobe(1, 1, 4, 10, receptorActi, false);
 			this.testBrain.setLobe(1, 1, 3, 11, receptorActi, false);
 			// this.testBrain.setLobe(1, 1, 4, 11, receptorActi, false);
-			this.testBrain.setLobe(1, 1, 3, 12, receptorActi, false);
 			
 			
-			this.testBrain.setLobe(10,  5, 5,  1, conception, true);
-			this.testBrain.setLobe(10,  5, 5,  7, conception, true);
-			this.testBrain.setLobe(10,  5, 5, 13, conception, true);
+			this.testBrain.setLobe(this.brainHeight/2, this.brainWidth/2, 5, 5, conception, true);
 
 			
 			this.testBrain.setLobe(1, 1, this.brainHeight-3, 8, emittersTest, false);
 			this.testBrain.setLobe(1, 1, this.brainHeight-3, 9, emittersTest, false);
 			this.testBrain.setLobe(1, 1, this.brainHeight-3, 10, emittersTest, false);
 			this.testBrain.setLobe(1, 1, this.brainHeight-3, 11, emittersTest, false);
-			this.testBrain.setLobe(1, 1, this.brainHeight-3, 12, emittersTest, false);
 		} 
 		catch (BrainLengthException e) { e.printStackTrace(); } 
 		catch (BrainLobeReplaceException e) { e.printStackTrace(); }
@@ -115,14 +109,14 @@ public class BrainViewReduction2 extends JFrame implements Observer {
 	
 	public Brain getBrain() { return this.testBrain; }
 	
-	public static BrainViewReduction2 getBrainGraphicalView() {
-		if (BrainViewReduction2.instance == null) 
-			{ BrainViewReduction2.instance = new BrainViewReduction2(); }
-		return BrainViewReduction2.instance;
+	public static BrainViewReduction1 getBrainGraphicalView() {
+		if (BrainViewReduction1.instance == null) 
+			{ BrainViewReduction1.instance = new BrainViewReduction1(); }
+		return BrainViewReduction1.instance;
 	}
 	
 	public static void main(String[] args) {
-		BrainViewReduction2 bgv = BrainViewReduction2.getBrainGraphicalView();
+		BrainViewReduction1 bgv = BrainViewReduction1.getBrainGraphicalView();
 		try { Thread.sleep(2000); } 
 		catch (InterruptedException e) { e.printStackTrace(); }
 		Brain test = bgv.getBrain();

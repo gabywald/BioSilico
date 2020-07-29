@@ -6,6 +6,10 @@ import java.util.Map;
 
 import gabywald.biosilico.genetics.builders.Pair;
 
+/**
+ * Builder for Neuron Model class. 
+ * @author Gabriel Chandesris (2020)
+ */
 public class NeuronBuilder {
 	
 	protected Map<NeuronBuilderEnum, Pair<NeuronAttemptedType, String> > map = new HashMap<NeuronBuilderEnum, Pair<NeuronAttemptedType, String> >();
@@ -15,7 +19,7 @@ public class NeuronBuilder {
 	}
 	
 	public enum NeuronBuilderEnum {
-		REST, THRESHOLD, DESC, ACTIVATION, DENDRITICMIN, DENDRITICMAX, 
+		REST, THRESHOLD, DESC, ACTIVITY, DENDRITICMIN, DENDRITICMAX, 
 		INDEX, PROX, REPR, REPY, WTA, POSX, POSY;
 	}
 	
@@ -27,7 +31,7 @@ public class NeuronBuilder {
 		this.map.put(NeuronBuilderEnum.REST, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
 		this.map.put(NeuronBuilderEnum.THRESHOLD, 		Pair.of(NeuronAttemptedType.INTEGER, "0"));
 		this.map.put(NeuronBuilderEnum.DESC, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.ACTIVATION, 		Pair.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.ACTIVITY, 		Pair.of(NeuronAttemptedType.INTEGER, "0"));
 		this.map.put(NeuronBuilderEnum.DENDRITICMIN, 	Pair.of(NeuronAttemptedType.INTEGER, "0"));
 		
 		this.map.put(NeuronBuilderEnum.DENDRITICMAX, 	Pair.of(NeuronAttemptedType.INTEGER, "0"));
@@ -70,8 +74,8 @@ public class NeuronBuilder {
 		return this.setInteger(NeuronBuilderEnum.DESC, desc);
 	}
 	
-	public int setActivation(int activation) {
-		return this.setInteger(NeuronBuilderEnum.ACTIVATION, activation);
+	public int setActivity(int activity) {
+		return this.setInteger(NeuronBuilderEnum.ACTIVITY, activity);
 	}
 	
 	public int setDmin(int dmin) {
@@ -126,7 +130,7 @@ public class NeuronBuilder {
 	}
 	
 	public NeuronBuilder activation(int activation) {
-		this.setActivation(activation);
+		this.setActivity(activation);
 		return this;
 	}
 	
@@ -179,7 +183,7 @@ public class NeuronBuilder {
 		return new Neuron(	
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.REST).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.THRESHOLD).second), 
-				Integer.parseInt(this.map.get(NeuronBuilderEnum.ACTIVATION).second), 
+				Integer.parseInt(this.map.get(NeuronBuilderEnum.ACTIVITY).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DESC).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DENDRITICMIN).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DENDRITICMAX).second), 

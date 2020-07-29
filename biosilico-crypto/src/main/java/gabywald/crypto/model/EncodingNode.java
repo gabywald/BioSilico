@@ -30,7 +30,7 @@ public class EncodingNode {
 	 * @param c (char[]) characters of base. 
 	 * @param val (String[]) Table of values. 
 	 */
-	public EncodingNode(int maxLvls, char c[], String val[])  {
+	EncodingNode(int maxLvls, char c[], String val[])  {
 		this.init(0, 0, null, c, val);
 		this.character	= '\u0000';
 		for (int i = 0 ; i < c.length ; i++) {

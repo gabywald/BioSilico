@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * This class to determine file extension. 
- * @author St&eacute;fan Engelen (2006)
  * @author Gabriel Chandesris (2008-2010, 2020)
  */
 public class FilterUtils extends Filter {
@@ -17,6 +16,8 @@ public class FilterUtils extends Filter {
 	public final static String aln	= "aln";
 	/** fasta sequence / alignment */
 	public final static String fasta	= "fasta";
+	/** fastq sequence / alignment */
+	public final static String fastq	= "fastq";
 	/** sequence */
 	public final static String seq	= "seq";
 	/** alignment */
@@ -47,14 +48,14 @@ public class FilterUtils extends Filter {
 	
 	/** Default Constructor (empty set).  */
 	public FilterUtils () 
-		{ this.init(-1, FilterUtils.DEFAULT_DESCRIPTION); }
+		{ this.init(FilterType.NONE, FilterUtils.DEFAULT_DESCRIPTION); }
 	
 	/**
 	 * A constructor with a switching type. 
 	 * @param type (int)
 	 * @see FilterUtils#init(int, String)
 	 */
-	public FilterUtils (int type) 
+	public FilterUtils (FilterType type) 
 		{ this.init(type, FilterUtils.DEFAULT_DESCRIPTION); }
 	
 	/**
@@ -62,57 +63,57 @@ public class FilterUtils extends Filter {
 	 * @param description (String)
 	 */
 	public FilterUtils (String description) 
-		{ this.init(-1, description); }
+		{ this.init(FilterType.NONE, description); }
 	
 	/**
 	 * Constructor with type and description. 
 	 * @param type (int)
 	 * @param description (String)
 	 */
-	public FilterUtils (int type,String description) 
+	public FilterUtils (FilterType type, String description) 
 		{ this.init(type, description); }
+	
+	public enum FilterType {
+		/** Images (gif, jpg, png, tiff). */
+		IMAGES(FilterUtils.gif, FilterUtils.jpg, FilterUtils.png, FilterUtils.tiff), 
+		/** Biological sequences (fasta, seq).  */
+		SEQUENCES(FilterUtils.fasta, FilterUtils.fastq, FilterUtils.seq), 
+		/** Alignments (ali, aln).*/
+		ALIGNMENTS(FilterUtils.ali, FilterUtils.aln),
+		/** Specific texts formats (TXT, XML) */
+		TEXT(FilterUtils.xml, FilterUtils.txt), 
+		/** Some others (b, ct, res)... */
+		OTHER(FilterUtils.b, FilterUtils.ct, FilterUtils.res), 
+		/** All types described above... */
+		ALL(FilterUtils.ali, FilterUtils.aln, FilterUtils.b, FilterUtils.ct, FilterUtils.fasta, FilterUtils.fastq, 
+			FilterUtils.gif, FilterUtils.jpg, FilterUtils.png, FilterUtils.res, FilterUtils.seq, FilterUtils.tiff, 
+			FilterUtils.xml, FilterUtils.txt), 
+		/** No type described above. */
+		NONE;
+		
+		private List<String> exts = new ArrayList<String>();
+		
+		/** Empty constructor (NONE). */
+		private FilterType() { ; }
+		
+		private FilterType(String... extensions) {
+			this.exts.addAll(Arrays.asList(extensions));
+		}
+		
+		public List<String> extensions() { 
+			return this.exts;
+		}
+	}
 	
 	/**
 	 * Initialization for constructors. 
-	 * <p></p>
-	 * <ul>
-	 * 		<li><b>0 : </b>Images (gif, jpg, png, tiff). </li>
-	 * 		<li><b>1 : </b>Alignments (ali, aln). </li>
-	 * 		<li><b>2 : </b>Biological sequences (fasta, seq). </li>
-	 * 		<li><b>3 : </b>Specific texts formats (TXT, XML)</li>
-	 * 		<li><b>4 : </b>Some others (b, ct, res)...</li>
-	 * 		<li><b>9 : </b>All types described above...</li>
-	 *  	<li><b>(default) : </b>Empty set.</li>
-	 * </ul>
 	 * @param type (int)
 	 * @param description (String)
 	 */
-	private void init(int type, String description) {
-		this.description = description;
-		this.liste = new ArrayList<String>();
-		switch (type) {
-		case(0): /** images */
-			this.liste.addAll(Arrays.asList(FilterUtils.gif, FilterUtils.jpg, FilterUtils.png, FilterUtils.tiff) );
-			break;
-		case(1):	/** alignments */
-			this.liste.addAll(Arrays.asList(FilterUtils.ali, FilterUtils.aln) );
-			break;
-		case(2):	/** sequences formats */
-			this.liste.addAll(Arrays.asList(FilterUtils.fasta, FilterUtils.seq) );
-			break;
-		case(3):	/** files formats */
-			this.liste.addAll(Arrays.asList(FilterUtils.xml, FilterUtils.txt) );
-			break;
-		case(4):	/** others formats */
-			this.liste.addAll(Arrays.asList(FilterUtils.b, FilterUtils.ct, FilterUtils.res) );
-			break;
-		case(9):
-			this.liste.addAll(Arrays.asList(FilterUtils.ali, FilterUtils.aln, FilterUtils.b, FilterUtils.ct, FilterUtils.fasta, 
-											FilterUtils.gif, FilterUtils.jpg, FilterUtils.png, FilterUtils.res, FilterUtils.seq, 
-											FilterUtils.tiff, FilterUtils.xml, FilterUtils.txt) );
-			break;
-		default:break;
-		}
+	private void init(FilterType type, String description) {
+		this.description	= description;
+		this.liste			= new ArrayList<String>();
+		this.liste.addAll(type.extensions());
 	}
 	
 	public boolean accept(File fich) {
@@ -169,27 +170,20 @@ public class FilterUtils extends Filter {
 	 * @return (FilterUtils)
 	 */
 	public static FilterUtils getImagesFilter() 
-		{ return new FilterUtils(0); }
+		{ return new FilterUtils(FilterType.IMAGES); }
 	
 	/**
 	 * To get a FilterUtils for alignments. 
 	 * @return (FilterUtils)
 	 */
 	public static FilterUtils getAlignmentsFilter()
-		{ return new FilterUtils(1); }
+		{ return new FilterUtils(FilterType.ALIGNMENTS); }
 	
 	/**
 	 * To get a FilterUtils for sequences. 
 	 * @return (Filterutils)
 	 */
 	public static FilterUtils getSequencesFilter()
-		{ return new FilterUtils(2); }
+		{ return new FilterUtils(FilterType.SEQUENCES); }
 	
-	/**
-	 * To get a FilterUtils for BioSilico Files. 
-	 * @return (Filterutils)
-	 */
-	public static FilterUtils getBioSilicoFilter()
-		{ return new FilterUtils(4); }
-
 }

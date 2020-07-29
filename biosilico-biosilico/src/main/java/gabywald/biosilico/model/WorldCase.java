@@ -17,34 +17,32 @@ public class WorldCase implements VariableContent,AgentContent {
 	private List<Agent> liste;
 	/** Environment where this current element is included in.  */
 	private World world;
-	/** Height position of this element. */
-	private int posx;
-	/** width position of this element. */
-	private int posy;
+	/** Position of this element (x -> height, yb -> width). */
+	private Position pos;
 	
 	/** Default constructor of element of environment. */
 	public WorldCase() {
-		this.variables	= new Chemicals();
-		this.liste		= new ArrayList<Agent>();
-		this.world		= null;
-		this.posx		= -1;
-		this.posy		= -1;
+		this (null, -1, -1);
 	}
 	
 	/**
 	 * Constructor of an element of environment with given global. 
 	 * @param world (World) Global environment. 
 	 */
-	public WorldCase(World world) {
+	public WorldCase(World world, int posx, int posy) {
 		this.variables	= new Chemicals();
 		this.liste		= new ArrayList<Agent>();
 		this.world		= world;
-		this.posx		= World.MAX_HEIGHT/2;
-		this.posy		= World.MAX_WIDTH/2;
+		this.pos		= new Position(posx, posy);
 	}
 	
-	public void setPosX(int posx) { this.posx = posx; }
-	public void setPosY(int posy) { this.posy = posy; }
+	public void setPosX(int posx) { this.pos.setPosX( posx ); }
+	public void setPosY(int posy) { this.pos.setPosY( posy ); }
+	
+	public int getPosX() { return this.pos.getPosX(); }
+	public int getPosY() { return this.pos.getPosY(); }
+	
+	public World getWorld() { return this.world; }
 	
 	/**
 	 * To get a WorldCase in a given direction of environment. 
@@ -52,7 +50,7 @@ public class WorldCase implements VariableContent,AgentContent {
 	 * @return (Worldcase) Can be null. 
 	 */
 	public WorldCase getDirection(int dir) { 
-		return (this.world == null) ? null : this.world.getDirection(dir, this.posx, this.posy); 
+		return (this.world == null) ? null : this.world.getDirection(dir, this.pos.getPosX(), this.pos.getPosY()); 
 	}
 	
 	public Chemicals getVariables()		{ return this.variables; }

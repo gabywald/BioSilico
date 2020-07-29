@@ -1,5 +1,7 @@
 package gabywald.biosilico.model;
 
+import java.util.stream.IntStream;
+
 import gabywald.biosilico.interfaces.VariableContent;
 
 /**
@@ -20,13 +22,12 @@ public class World implements VariableContent {
 	public World() {
 		this.halfLives = new Chemicals();
 		this.map = new WorldCase[World.MAX_HEIGHT][World.MAX_WIDTH];
-		for (int i = 0 ; i < this.map.length ; i++) {
-			for (int j = 0 ; j < this.map[i].length ; j++) { 
-				this.map[i][j] = new WorldCase(this); 
-				this.map[i][j].setPosX(i);
-				this.map[i][j].setPosY(j);
-			}
-		}
+		
+		IntStream.range(0, this.map.length).forEach( i -> {
+			IntStream.range(0, this.map[i].length).forEach( j -> {
+				this.map[i][j] = new WorldCase(this, i, j); 
+			});
+		});
 	}
 	
 	/**
@@ -35,7 +36,7 @@ public class World implements VariableContent {
 	 * @param posy (int) y position to test
 	 * @return (boolean) true if exist, false is over limits.
 	 */
-	private boolean getNextCase(int posx,int posy) {
+	private boolean getNextCase(int posx, int posy) {
 		return ( ( (posx < 0) || (posx >= this.map.length) )
 				&& ( (posy < 0) || (posy >= this.map[0].length) ) );
 	}
@@ -50,7 +51,7 @@ public class World implements VariableContent {
 	 */
 	public WorldCase getDirection(int dir, int posx, int posy) {
 		/** default values / Case 800 */
-		int nextposx = posx;int nextposy = posy;
+		int nextposx = posx, nextposy = posy;
 		switch(dir) {
 		case(801):nextposx = posx-1;nextposy = posy-1;break; /** NW */
 		case(802):nextposx = posx-1;nextposy = posy;  break; /** NN */
@@ -68,23 +69,22 @@ public class World implements VariableContent {
 	/** To run the world in synchronicity. */
 	public void execution() {
 		// ***** Execution of agents. 
-		for (int i = 0 ; i < this.map.length ; i++) {
-			for (int j = 0 ; j < this.map[i].length ; j++) {
-				for (int k = 0 ; 
-						k < this.map[i][j].getAgentListLength() ; 
-						k++)
-				{ this.map[i][j].getAgent(k).execution(this.map[i][j]); }
-			}
-		}
+		IntStream.range(0, this.map.length).forEach( i -> {
+			IntStream.range(0, this.map[i].length).forEach( j -> {
+				IntStream.range(0, this.map[i][j].getAgentListLength()).forEach( k -> {
+					this.map[i][j].getAgent(k).execution(this.map[i][j]); 
+				});
+			});
+		});
 		// ***** Ending action synchronicity. 
-		for (int i = 0 ; i < this.map.length ; i++) {
-			for (int j = 0 ; j < this.map[i].length ; j++) { 
+		IntStream.range(0, this.map.length).forEach( i -> {
+			IntStream.range(0, this.map[i].length).forEach( j -> {
 				// ***** Half-lives application 
 				this.applyHalfLives(this.map[i][j].getVariables());
 				// ***** Movement of agents 
-				this.map[i][j].getAgentListe().stream().forEach( a -> a.deplace() );
-			}
-		}
+				this.map[i][j].getAgentListe().stream().forEach( a -> a.deplace() ); 
+			});
+		});
 	}
 	
 	private void applyHalfLives(Chemicals vars) {

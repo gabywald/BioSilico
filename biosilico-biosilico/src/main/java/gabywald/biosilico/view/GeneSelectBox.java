@@ -23,11 +23,11 @@ public class GeneSelectBox extends SelectBox {
 	}
 	
 	public void initSelection() {
-		this.geneStock = new GeneMoreListe();
+		this.geneStock		= new GeneMoreListe();
 		this.geneStock.readFile();
-		this.stringStock = new ArrayList<String>();
+		this.stringStock	= new ArrayList<String>();
 		this.stringStock.add("Select a defined Gene");
-		// TODO stream on GeneStock List !!
+		// TODO java 8 stream on GeneStock List !!
 		for (int i = 0 ; i < this.geneStock.length() ; i++) 
 			{ this.stringStock.add(this.geneStock.getGeneName(i)); }
 		
