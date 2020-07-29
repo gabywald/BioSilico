@@ -11,7 +11,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
 /**
  * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene.  <br /> 
  * Specificity occurs here for some Neuron's (tests are good to understand how it works). <br />
- * NOTE : It is a 2D implemntation of a Brain (could be extended to be 2D / 3D). 
+ * NOTE : It is a 2D implementation of a Brain (could be extended to be 2D / 3D). 
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class BrainLobeGene extends GeneGattaca {
