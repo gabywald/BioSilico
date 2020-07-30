@@ -35,10 +35,10 @@ public class EmitterReceptor extends GeneGattaca {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param age_max (int) Maximal age of activation. <b>In general is 999. </b>
+	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 999. </b>
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Rate of mutation of this Gene. 
+	 * @param mutRate (int) Rate of mutation of this Gene. 
 	 * @param var (int) Chemical variable input / output ; [000-999].
 	 * @param thr (int) Threshold of activation for transmission ; [000-999].
 	 * @param put (int) Input or Output signal (in neuron if receptor or in chemical if emitter).
@@ -48,10 +48,10 @@ public class EmitterReceptor extends GeneGattaca {
 	 */
 	public EmitterReceptor(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate,
+			int ageMin, int ageMax, int sex, int mutRate,
 			int var, int thr, int put, int posx, int posy, 
 			boolean receptor, boolean internal) {
-		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
+		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
 		this.variable	= Gene.obtainValue(0, 999, var);
 		this.threshold	= Gene.obtainValue(0, 999, thr);
 		this.ioput		= Gene.obtainValue(0, 999, put);

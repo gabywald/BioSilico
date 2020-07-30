@@ -35,14 +35,14 @@ public class Instinct extends GeneGattaca {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param age_max (int) Maximal age of activation. <b>In general is 999. </b>
+	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 999. </b>
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Rate of mutation of this Gene. 
-	 * @param in_posx (int) Height position of input Neuron in Brain.
-	 * @param in_posy (int) Width position of input Neuron in Brain.
-	 * @param out_posx (int) Height position of output Neuron in Brain.
-	 * @param out_posy (int) Width position of output Neuron in Brain.
+	 * @param mutRate (int) Rate of mutation of this Gene. 
+	 * @param inPosX (int) Height position of input Neuron in Brain.
+	 * @param inPosY (int) Width position of input Neuron in Brain.
+	 * @param outPosX (int) Height position of output Neuron in Brain.
+	 * @param outPosY (int) Width position of output Neuron in Brain.
 	 * @param weight (int) Weight of dendritic connection.
 	 * @param var (int) Chemical to test to apply Instinct.
 	 * @param thr (int) Minimal Threshold of chemical to apply Instinct.
@@ -50,14 +50,14 @@ public class Instinct extends GeneGattaca {
 	 */
 	public Instinct(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate,
-			int in_posx, int in_posy, int out_posx, int out_posy, int weight, 
+			int ageMin, int ageMax, int sex, int mutRate,
+			int inPosX, int inPosY, int outPosX, int outPosY, int weight, 
 			int var, int thr, boolean check) {
-		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
-		this.inputPosX	= Gene.obtainValue(0, 99, in_posx);
-		this.inputPosY	= Gene.obtainValue(0, 99, in_posy);
-		this.outputPosX	= Gene.obtainValue(0, 99, out_posx);
-		this.outputPosY	= Gene.obtainValue(0, 99, out_posy);
+		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
+		this.inputPosX	= Gene.obtainValue(0, 99, inPosX);
+		this.inputPosY	= Gene.obtainValue(0, 99, inPosY);
+		this.outputPosX	= Gene.obtainValue(0, 99, outPosX);
+		this.outputPosY	= Gene.obtainValue(0, 99, outPosY);
 		
 		this.weight		= Gene.obtainValue(0, 999, weight);
 		this.variable	= Gene.obtainValue(0, 999, var);

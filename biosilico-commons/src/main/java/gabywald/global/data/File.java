@@ -195,7 +195,7 @@ public class File extends Directory {
 	 * @throws IOException 
 	 */
 	public static File loadFile(String filename) throws IOException {
-		File instance		= new File(filename);
+		File instance		= new File( filename );
 		BufferedReader br 	= null;
 		try {
 			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( filename ) ));
@@ -238,33 +238,33 @@ public class File extends Directory {
 	 * @throws DataException 
 	 */
 	public String printFile() throws DataException {
-		String s					= "";
+		StringBuilder sb	= new StringBuilder();
 		PrintWriter sortie	= null;
 		try {
 			if (!this.fileExists()) { super.createDirs(); }
-			s += this.datatype + " recording " + this.fileName + " ... ";
+			sb.append(this.datatype).append(" recording ").append(this.fileName).append(" ... ");
 			sortie = new PrintWriter(new FileWriter( this.getDirName() + this.fileName ));
 			
 			for (String field : this.champs) {
 				sortie.println(field);
 			}
 			
-			s += "OK\n";
+			sb.append("OK\n");
 		}
 		catch (IOException e) {
-			s += "\nWriting is not permitted (1). \n";
-			s += e.getLocalizedMessage() + "\n";
-			s += e.getMessage() + "\n";
+			sb.append("\nWriting is not permitted (1). \n");
+			sb.append(e.getLocalizedMessage()).append("\n");
+			sb.append(e.getMessage()).append("\n");
 		}
 		catch (ArrayIndexOutOfBoundsException e) { 
-			s += "\nWriting is not permitted (2). \n";
-			s += e.getLocalizedMessage() + "\n";
-			s += e.getMessage() + "\n";
+			sb.append("\nWriting is not permitted (2). \n");
+			sb.append(e.getLocalizedMessage()).append("\n");
+			sb.append(e.getMessage()).append("\n");
 		}
 		finally { 
 			if (sortie != null) { sortie.close(); } 
 		}
-		return s;
+		return sb.toString();
 	}
 
 	/**

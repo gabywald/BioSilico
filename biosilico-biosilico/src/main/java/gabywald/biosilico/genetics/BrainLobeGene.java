@@ -51,10 +51,10 @@ public class BrainLobeGene extends GeneGattaca {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param age_max (int) Maximal age of activation. <b>In general is 0. </b>
+	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 0. </b>
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Rate of mutation of this Gene. 
+	 * @param mutRate (int) Rate of mutation of this Gene. 
 	 * @param rest (int) Rest state of neurons.
 	 * @param thre (int) Threshold activation of neurons.
 	 * @param desc (int) Descent from activity to rest of neurons.
@@ -76,11 +76,11 @@ public class BrainLobeGene extends GeneGattaca {
 	 */
 	public BrainLobeGene(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate,
+			int ageMin, int ageMax, int sex, int mutRate,
 			int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 			int prox, boolean repr, int repy, boolean wta,
 			int height, int width, int posx, int posy, boolean replace) {
-		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
+		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
 		this.rest = rest;this.thre = thre;this.desc = desc;
 		this.dendriticmin	= Gene.obtainValue(0, 999, dendriticmin);
 		this.dendriticmax	= Gene.obtainValue(0, 999, dendriticmax);

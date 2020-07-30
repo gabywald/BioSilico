@@ -6,7 +6,7 @@ import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
  * This type of Gene has to initiate variables of an organism on a starting life.<br>
- * <b>sex</b>, <b>age_max</b> and <b>age_min</b> should be 0 (all and at start).
+ * <b>sex</b>, <b>ageMax</b> and <b>ageMin</b> should be 0 (all and at start).
  * <br><i>Creatures inspired. </i>
  * @author Gabriel Chandesris (2009, 2020)
  */
@@ -23,10 +23,10 @@ public class InitialConcentration extends GeneGattaca {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param age_max (int) Maximal age of activation. <b>In general is 0. </b>
+	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 0. </b>
 	 * @param sex (int) Sex of activation. 
-	 * @param mut_rate (int) Rate of mutation of this Gene. 
+	 * @param mutRate (int) Rate of mutation of this Gene. 
 	 * @param var (int) Number of the chemical. 
 	 * @param val (int) Amount to be set
 	 * @see GeneGattaca#GeneGattaca(boolean, boolean, boolean, boolean, int, int, int, int)
@@ -34,9 +34,9 @@ public class InitialConcentration extends GeneGattaca {
 	 */
 	public InitialConcentration(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
-			int age_min, int age_max, int sex, int mut_rate,
+			int ageMin, int ageMax, int sex, int mutRate,
 			int var, int val) {
-		super(mutate, duplicate, delete, activ, age_min, age_max, sex, mut_rate);
+		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
 		this.varia = Gene.obtainValue(0,  999, var);
 		this.value = Gene.obtainValue(0,  999, val);
 	}

@@ -1,5 +1,8 @@
 package gabywald.biosilico.structures.tests;
 
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -38,15 +41,23 @@ class GeneMoreListTests {
 		Assertions.assertNotNull( gml );
 		Assertions.assertEquals(0, gml.length());
 		
-		// gml.readFile();
+		gml.readFile();
 		// gml.printFile();
+		
+		Assertions.assertEquals(162, gml.getGenesNames().stream().count());
+		gml.getGenesNames().stream().forEach(System.out::println);
+		LongStream.range(0, gml.getGenesNames().stream().count()).forEach( l -> {
+			System.out.println( l + " :: " + gml.getGene((int)l).toString() );
+		});
 		
 		GeneMoreListe gmlBIS = new GeneMoreListe("initialGenes.txt", true);
 		Assertions.assertNotNull( gmlBIS );
 		Assertions.assertEquals(0, gmlBIS.length());
 		
-		// gmlBIS.readFile();
+		gmlBIS.readFile();
 		// gmlBIS.printFile();
+		
+		Assertions.assertEquals(gml.getGenesNames().stream().count(), gmlBIS.getGenesNames().stream().count());
 	}
 
 	@Test

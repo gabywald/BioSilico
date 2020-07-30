@@ -19,15 +19,20 @@ public class Directory extends java.io.File {
 	 * Constructor (no checking about name). 
 	 * @param pathName (String)
 	 */
-	public Directory (String pathName) 
-		{ super(pathName);this.pathName = pathName; }
+	public Directory (String pathName) { 
+		super((pathName != null) ? pathName : "." );
+		this.pathName = pathName; 
+	}
 	
 	/**
 	 * Check if the directory exists.
 	 * @return (boolean)
 	 * @see java.io.File#exists()
 	 */
-	public boolean dirExists() { return (new File(this.pathName)).exists(); }
+	public boolean dirExists() { 
+		if (this.pathName == null) { return false; }
+		return (new File(this.pathName)).exists(); 
+	}
 	
 	/**
 	 * Overload.
@@ -43,8 +48,7 @@ public class Directory extends java.io.File {
 	public void createDir() throws DataException {
 		if (!this.dirExists()) {
 			boolean success = (new File(this.pathName)).mkdir();
-		    if (!success) { throw new DataException("Directory '"+
-		    				this.pathName+"' cannot create dir !!"); }
+		    if (!success) { throw new DataException("Directory '"+this.pathName+"' cannot create dir !!"); }
 		}
 	}
 	
@@ -53,20 +57,17 @@ public class Directory extends java.io.File {
 	 * @throws DataException If cannot create all dirs. 
 	 */
 	public void createDirs() throws DataException {
-		if (!this.dirExists()) {
+		if ( (!this.dirExists()) && (this.pathName != null) ) {
 			boolean success = (new File(this.pathName)).mkdirs();
-	    	if (!success) { throw new DataException("Directory '"+
-	    					this.pathName+"' cannot create dirS"); }
+	    	if (!success) { throw new DataException("Directory '"+this.pathName+"' cannot create dirS"); }
 		}
 	}
 	
 	public void deleteDir() throws DataException {
-		if (this.dirExists()) 
-			{ if (!this.delete()) 
-				{ throw new DataException("Directory '"
-					+this.pathName+"' cannot be deleted !!"); } } 
-		else { throw new DataException("Directory '"
-				+this.pathName+"' does not exist !!"); }
+		if (this.dirExists()) { 
+			if (!this.delete()) 
+				{ throw new DataException("Directory '"+this.pathName+"' cannot be deleted !!"); } 
+		} else { throw new DataException("Directory '"+this.pathName+"' does not exist !!"); }
 	}
 	
 	public static boolean deleteDirComplete(java.io.File path) { 
