@@ -2,6 +2,11 @@ package gabywald.biosilico.model;
 
 import gabywald.biosilico.genetics.BrainGene;
 import gabywald.biosilico.interfaces.AgentContent;
+import gabywald.biosilico.model.decisions.IDecision;
+import gabywald.biosilico.model.reproduction.ReproductionAnima;
+import gabywald.biosilico.model.reproduction.ReproductionBacta;
+import gabywald.biosilico.model.reproduction.ReproductionDaemon;
+import gabywald.biosilico.model.reproduction.ReproductionViridita;
 import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.biosilico.view.GeneJPanel;
 import gabywald.global.data.StringUtils;
@@ -33,8 +38,14 @@ public class Organism extends Agent implements AgentContent {
 	/** Default Constructor with empty Genome. */
 	public Organism() {
 		super(true, true, true);
-		this.genome	= new ArrayList<Chromosome>();
-		this.init();
+		this.genome				= new ArrayList<Chromosome>();
+		// ***** XXX default organism's are Daemons (ch942 set to 935)
+		this.variables.setVariable(942, 935);
+		this.geneticCodes		= new ArrayList<StringCouple>();
+		this.geneticCodes.add(new StringCouple("0000000010", "Gattaca01"));
+		this.currentBrain		= null;
+		this.liste				= new ArrayList<Agent>();
+		this.extendedlineage	= new ArrayList<ExtendedLineageItem>();
 	}
 
 	/**
@@ -64,19 +75,6 @@ public class Organism extends Agent implements AgentContent {
 		this.genome.add(genome);
 	}
 
-	/**
-	 * Constructors' helper (initialisation). 
-	 * XXX default organism's are Daemons (ch942 set to 935)
-	 */
-	private void init() {
-		this.variables.setVariable(942, 935);
-		this.geneticCodes	= new ArrayList<StringCouple>();
-		this.currentBrain	= null;
-		this.liste			= new ArrayList<Agent>();
-		this.geneticCodes.add(new StringCouple("0000000010", "Gattaca01"));
-		this.extendedlineage = new ArrayList<ExtendedLineageItem>();
-	}
-
 	public Brain getBrain() 				{ return this.currentBrain; }
 	public List<Chromosome> getGenome() 	{ return this.genome; }
 
@@ -88,6 +86,9 @@ public class Organism extends Agent implements AgentContent {
 
 	public void setExtendedLineage(List<ExtendedLineageItem> lineage) 
 		{ this.extendedlineage = lineage; }
+	
+	public List<ExtendedLineageItem> getExtendedLineage() 
+		{ return this.extendedlineage; }
 
 	/**
 	 * Create an instance of ExtendedLineageItem and add it to the end of the list. 
@@ -119,15 +120,37 @@ public class Organism extends Agent implements AgentContent {
 	public void setBrain(Brain cb) { 
 		this.currentBrain = cb; 
 	}
-
-	public void setOrganismType(int type) {
-		switch(type) {
-		case(1):this.variables.setVariable(942, 935);break; /** SilicoDaemon */
-		case(2):this.variables.setVariable(942, 936);break; /** SilicoBacter */
-		case(3):this.variables.setVariable(942, 937);break; /** SilicoViridita */
-		case(4):this.variables.setVariable(942, 938);break; /** SilicoAnima */
-		case(5):this.variables.setVariable(942, 939);break; /** SilicoViria */
+	
+	public enum OrganismType {
+		BIOSILICO_DAEMON(935), 
+		BIOSILICO_BACTER(936), 
+		BIOSILICO_VIRIDITA(937), 
+		BIOSILICO_ANIMA(935), 
+		BIOSILICO_VIRIA(935);
+		
+		private int type;
+		
+		private OrganismType(int type) {
+			this.type = type;
 		}
+		
+		public int getType() { return this.type; }
+	}
+
+	public void setOrganismType(OrganismType type) {
+		this.variables.setVariable(942, type.getType());
+	}
+	
+	public int getOrganismType() {
+		return this.variables.getVariable(942);
+	}
+	
+	public OrganismType getOrganismTypeAsType() {
+		int type = this.variables.getVariable(942);
+		for (OrganismType otype : OrganismType.values()) {
+			if (type == otype.getType()) { return otype; }
+		}
+		return null;
 	}
 
 	public void deplace() {
@@ -154,10 +177,17 @@ public class Organism extends Agent implements AgentContent {
 	 * @param variable (int)
 	 * @param value (int)
 	 */
-	public void activity(int which, int object, int threshold, 
-			int attribute, int variable, int value) {
+	public void activity(	int which, int object, int threshold, 
+							int attribute, int variable, int value) {
+		IDecision what2do = null;
 		switch(which) {
-		case(851): this.decisionToStay();break;
+		case(851): what2do = new IDecision() {
+			@Override
+			public void action(Organism orga, int... variables) {
+				orga.nextStep = orga.current;
+			}
+		};
+		what2do.action(this);break;
 		case(852): this.decisionToPush(object);break;
 		case(853): this.decisionToPull(object);break;
 		case(854): this.decisionToStop(object);break;
@@ -178,8 +208,11 @@ public class Organism extends Agent implements AgentContent {
 		case(869): this.decisionToMakeGamet();break;
 		case(870): this.decisionToLayEgg();break;
 		case(871): this.decisionToMate();break;
-		case(872): break; /** 872 to 880 are free. */
-		case(873): break;
+		case(872): 
+			// ***** to create eggs, virions, fruits... then have to been "laid" !!
+			// this.decisiontoCreateEgg();
+		break; 
+		case(873): break; /** 873 to 880 are free. */
 		case(874): break;
 		case(875): break;
 		case(876): break;
@@ -189,8 +222,6 @@ public class Organism extends Agent implements AgentContent {
 		case(880): break;
 		}
 	}
-
-	private void decisionToStay() { this.nextStep = this.current; }
 
 	/**
 	 * Decision to push (act1) an agent. 
@@ -233,8 +264,8 @@ public class Organism extends Agent implements AgentContent {
 	 * @param location (int) 800 to 808 (2D). 
 	 */
 	private void decisionToMove(int location) { 
-		this.direction = location;
-		this.nextStep = this.current.getDirection(location); 
+		this.direction	= location;
+		this.nextStep	= this.current.getDirection(location); 
 	}
 
 	/** 
@@ -244,7 +275,7 @@ public class Organism extends Agent implements AgentContent {
 	private void decisionToMoveAway() {
 		Random rand = new Random();
 		if (this.direction == 800) 
-		{ this.direction = rand.nextInt(8)+800; }
+			{ this.direction = rand.nextInt(8)+800; }
 		else {
 			int test = rand.nextInt(34)+1;
 			switch(test) {
@@ -287,15 +318,19 @@ public class Organism extends Agent implements AgentContent {
 	 * Getting an object / agent. 
 	 * @param object (int) type of agent. 
 	 */
-	private void decisionToGet(int object) 
-		{ this.liste.add(this.current.getAgentType(object)); }
+	private void decisionToGet(int objectType) { 
+		Agent o	= this.current.getAgentType(objectType);
+		this.current.remAgent( o );
+		this.liste.add( o );
+	}
 
 	/**
 	 * Getting an object / agent. 
 	 * @param object (int) type of agent. 
 	 */
-	private void decisionToDrop(int object) 
-		{ this.current.addAgent(this.getAgentType(object)); }
+	private void decisionToDrop(int object) {
+		this.current.addAgent(this.getAgentType(object));
+	}
 
 	/**
 	 * Change state.
@@ -304,17 +339,17 @@ public class Organism extends Agent implements AgentContent {
 	private void decisionToThink(int object) 
 		{ this.addState("think about [" + object + "]\t"); }
 
-	private void decisionToRest() { ; }
+	private void decisionToRest()	{ ; }
 	
 	/** XXX which variable for sleeping ? */
-	private void decisionToSleep() { ; }
+	private void decisionToSleep()	{ ; }
 
 	/**
 	 * Eating decision (on eatable object: 904). 
 	 * @param object (int) default should be 904 (ch Food). 
 	 * @param threshold (int) default should be 0.
 	 */
-	private void decisionToEat(int object,int threshold) { 
+	private void decisionToEat(int object, int threshold) { 
 		if (this.hasAgentType(object) > threshold) {
 			Agent fruit = this.getAgentType(object);
 			this.variables.incorporate(fruit.getVariables());
@@ -326,18 +361,18 @@ public class Organism extends Agent implements AgentContent {
 	 * @param variable (int) default should be 941 (ch Aging). 
 	 * @param value (int) default should be 999.
 	 */
-	private void decisionToDeath(int variable,int value) { 
+	private void decisionToDeath(int variable, int value) { 
 		this.alive = false;
 		this.variables.setVariable(variable, value);
 	}
 
 	/**
 	 * Emission action (pheromone). 
-	 * @param object (int) location for emission : 800 to 829. 
+	 * @param object (int) location for emission : ch800 to ch829. 
 	 * @param variable (int) One chemical to change in environment. 
 	 * @param value (int) New value for chemical. 
 	 */
-	private void decisionEmit(int object,int variable,int value) { 
+	private void decisionEmit(int object, int variable, int value) { 
 		WorldCase tmp = this.current.getDirection(object);
 		if (tmp != null) { 
 			tmp.getVariables().setVarPlus(variable, value);
@@ -347,13 +382,12 @@ public class Organism extends Agent implements AgentContent {
 
 	/**
 	 * Reception action (pheromone). 
-	 * @param object (int) location of reception : 800 to 829
+	 * @param object (int) location of reception : ch800 to ch829
 	 * @param threshold (int) level of reaction. 
 	 * @param variable (int) internal chemical to change. 
 	 * @param value (int) new value. 
 	 */
-	private void decisionReceive(int object,int threshold,
-			int variable,int value) {
+	private void decisionReceive(int object, int threshold, int variable, int value) {
 		WorldCase tmp = this.current.getDirection(object);
 		if ( (tmp != null) && (tmp.getVariables().getVariable(variable) > threshold) ) { 
 			this.variables.setVarPlus(variable, value);
@@ -369,11 +403,11 @@ public class Organism extends Agent implements AgentContent {
 	 * @param variable (int) internal chemical to change. 
 	 * @param value (int) new value. 
 	 */
-	private void decisionHas(int object,int threshold,int attribute,
-			int variable,int value) {
+	private void decisionHas(int object, int threshold, int attribute,
+							 int variable, int value) {
 		if ( (this.hasAgentType(object) >= threshold)
 				&& (this.hasAgentType(attribute) >= threshold) )
-		{ this.variables.setVarPlus(variable, value); }
+			{ this.variables.setVarPlus(variable, value); }
 	}
 
 	/**
@@ -381,37 +415,74 @@ public class Organism extends Agent implements AgentContent {
 	 * @param variable (int) internal chemical to change. 
 	 * @param value (int) new value.
 	 */
-	private void decisionIs(int variable,int value) 
+	private void decisionIs(int variable, int value) 
 		{ this.variables.setVariable(variable, value); }
 
 	private void decisionToMakeGamet() { /** XXX */
 		if (this.isFertile()) {
-
+			 // ***** Increase Gamet TODO to change it / values !!
+			this.variables.setVarPlus(920, 50);
 		}
 	}
 
 	private void decisionToLayEgg() { /** XXX */
 		// ***** Change status about egg contenant (pregnancy). 
-		this.variables.setVariable(946, this.hasAgentType(921));
+		this.variables.setVariable(933, this.hasAgentType(921));
 
 		if ( (this.isFertile()) && (!this.isPregnant()) ) { ; }
 
 		if (this.isPregnant()) {
 			Agent egg = this.getAgentType(921);
 			this.current.addAgent(egg);
+			this.remAgent(egg);
 			// ***** Basic pregnancy signal : number of eggs. 
-			this.variables.setVariable(946, this.hasAgentType(921));
+			this.variables.setVariable(933, this.hasAgentType(921));
 		}
 	}
 
 	private void decisionToMate() { /** XXX */
 		// ***** Gamets presence increases fertility signal. 
-		this.variables.setVarPlus(945, this.hasAgentType(920));
+		this.variables.setVarPlus(932, this.hasAgentType(920));
 		// ***** Eggs presence decreases fertility signal. 
-		this.variables.setVarLess(945, this.hasAgentType(921));
+		this.variables.setVarLess(932, this.hasAgentType(921));
 		// ***** Basic pregnancy signal : number of eggs. 
-		this.variables.setVariable(946, this.hasAgentType(921));
+		this.variables.setVariable(933, this.hasAgentType(921));
 		if (this.isFertile()) {
+			
+			OrganismType otype = this.getOrganismTypeAsType();
+			if (otype == null) { return; }
+			switch(otype) {
+			case BIOSILICO_DAEMON:
+				// ***** nothing definately defined yet (cloning ?!)
+				ReproductionDaemon.getInstance().action(this);
+				break;
+			case BIOSILICO_BACTER:
+				// ***** create a duplicate ! (modulo duplication, deletion, mutations of genes... )
+				ReproductionBacta.getInstance().action(this);
+				break;
+			case BIOSILICO_VIRIDITA:
+				// ***** find mate (could be itself ? depending of sex ?)
+				// ***** find another agent to mate ! (could be itself ?)
+			case BIOSILICO_ANIMA:
+				// ***** find mate (could be itself ? depending of sex ?)
+				// ***** find another agent to mate ! (could be itself ?)
+				List<Organism> maters = new ArrayList<Organism>();
+				maters.add( this );
+				// IntStream.range(0, this.variables.getVariable( 932 ) / 2)
+				Agent futuremate = this.current.getAgentType( this.getOrganismType() );
+				if (futuremate instanceof Organism) {
+					maters.add( (Organism) futuremate );
+				}
+				if (otype.equals(OrganismType.BIOSILICO_VIRIDITA)) {
+					ReproductionViridita.getInstance().action( maters.toArray(new Organism[0]) );
+				} else { // OrganismType.BIOSILICO_ANIMA
+					ReproductionAnima.getInstance().action( maters.toArray(new Organism[0]) );
+				}
+				break;
+			case BIOSILICO_VIRIA:
+				// ***** no reproduction, only inside organism and create virions ?!
+				break;
+			}
 
 		}
 	}
@@ -424,6 +495,7 @@ public class Organism extends Agent implements AgentContent {
 	public int getAgentListLength()		{ return this.liste.size(); }
 	public List<Agent> getAgentListe()	{ return this.liste; }
 	public Agent remAgent(int i)		{ return this.liste.remove(i); }
+	public boolean remAgent(Agent o)	{ return this.liste.remove(o); }
 	public Agent getAgent(int i)		{ return this.liste.get(i); }	
 
 	public int hasAgentType(int type) {
@@ -437,14 +509,12 @@ public class Organism extends Agent implements AgentContent {
 	}
 
 	public Agent getAgentType(int type) {
-		
 		// TODO optimize with Java 8 stream ?!
-//		this.liste.stream()	.filter( p -> p.getChemicals().getVariable(942) == type )
-//							.forEach( p -> this.liste.remove(p) );
-		
-		for (int i = 0 ; i < this.liste.size() ; i++) {
-			if (this.liste.get(i).getChemicals().getVariable(942) == type) { 
-				return this.liste.remove(i);
+		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(942) == type )) {
+			for (int i = 0 ; i < this.liste.size() ; i++) {
+				if (this.liste.get(i).getChemicals().getVariable(942) == type) { 
+					return this.liste.get(i);
+				}
 			}
 		}
 		return null;
@@ -492,7 +562,7 @@ public class Organism extends Agent implements AgentContent {
 			result.append("BRAIN WIDTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getWidth() )).append( "\n" );
 			result.append("BRAIN DEPTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getDepth() )).append( "\n" );
 			result.append("NEURONS LIST DESCRIPTION\n\tNO DATA\n");
-			// ***** TODO enregistrer réseaux de neurones / lobes... 
+			// ***** TODO record neural networks / lobes ! 
 		} else { result.append("NO DATA ABOUT BRAIN, LOBES AND NEURONS\n"); }
 
 		return result.toString();
