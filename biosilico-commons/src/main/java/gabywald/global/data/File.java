@@ -24,8 +24,9 @@ import java.util.regex.Pattern;
  */
 @SuppressWarnings("serial")
 public class File extends Directory {
-	/** File directory. */
-	// private Directory directory;
+	
+	public static final String NOTYPE = "notype";
+	
 	/** Name / path to the directory (overload). */
 	private String pathName;
 	/** File type. */
@@ -44,7 +45,7 @@ public class File extends Directory {
 	 * @param fileName (String)
 	 */
 	public File(String fileName) {
-		this("notype", fileName, null);
+		this(File.NOTYPE, fileName, null);
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class File extends Directory {
 	 * @param champs
 	 */
 	public File(String fileName, String[] champs) {
-		this("notype", fileName, champs);
+		this(File.NOTYPE, fileName, champs);
 	}
 
 	/**
@@ -127,7 +128,6 @@ public class File extends Directory {
 			{ return fileName; }
 	}
 
-	public long length()			{ return super.length(); }
 	public int lengthFile()			{ return this.champs.size(); }
 	public String getType()			{ return this.datatype; }
 	public String getFileName()		{ return this.fileName; }
@@ -149,12 +149,12 @@ public class File extends Directory {
 	public void removeChamps(int i) 
 		{ this.champs.remove(i); }
 
-	// public String getDir() 						{ return this.getDirName(); }
+	// public String getDir() 					{ return this.getDirName(); }
 	// public void setDir(String dir)			{ this.directory = new Directory(dir); }
 	// protected void setDir(Directory dir)		{ this.directory = dir; }
-	protected void setValid(boolean valid)			{ this.formatValide = valid; }
-	protected void setType(String datatype)			{ this.datatype = datatype; }
-	protected void setFileName(String fileName)		{ this.fileName = fileName; }
+	protected void setValid(boolean valid)		{ this.formatValide = valid; }
+	protected void setType(String datatype)		{ this.datatype = datatype; }
+	protected void setFileName(String fileName)	{ this.fileName = fileName; }
 	protected void setPathName(String pathName)	{ this.pathName = pathName; }
 
 	public String getChampsToString() {

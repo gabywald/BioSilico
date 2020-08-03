@@ -40,10 +40,7 @@ public abstract class Agent extends ObservableObject
 	
 	/** Default Constructor (not eatable, but movable).  */
 	public Agent() {
-		this.init();
-		this.alive		= false;
-		this.variables.setVariable(931, 0); /** Not eatable */
-		this.variables.setVariable(930, 100); /** Movable */
+		this(false, false, true);
 	}
 	
 	/**
@@ -77,6 +74,7 @@ public abstract class Agent extends ObservableObject
 	
 	public Chemicals getChemicals()	{ return this.variables; }
 	public Chemicals getVariables()	{ return this.variables; }
+	
 	public boolean isAlive()		{ return this.alive; }
 	public boolean isMovable() 
 		{ return (this.variables.getVariable(943) > 0); }
@@ -86,8 +84,14 @@ public abstract class Agent extends ObservableObject
 		{ return (this.variables.getVariable(945) > 0); }
 	public boolean isPregnant() 
 		{ return (this.variables.getVariable(946) > 0); }
-
 	
+	protected void setAlive(boolean isAlive)		
+		{ this.alive = isAlive; }
+	protected void setMovable(boolean isMovable) 
+		{ this.variables.setVariable(943, isMovable?100:0); }
+	protected void setEatable(boolean isEatable) 
+		{ this.variables.setVariable(944, isEatable?100:0); }
+
 	public int getCycle()			{ return this.variables.getVariable(941); }
 	public void cyclePlusPlus()		{ this.variables.setVarPlusPlus(941); }
 	
@@ -115,7 +119,7 @@ public abstract class Agent extends ObservableObject
 	/** Agent is slapped. */
 	public abstract void slap();
 	
-	
+	@Override
 	public void run() {
 		while(this.alive) {
 			this.setState("cycle "+this.getCycle()+" = = = = = \n");

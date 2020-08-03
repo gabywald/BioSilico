@@ -1,0 +1,665 @@
+LOCUS       DVS_3971646124         56 bp     DNA    linear   HTC 14-NOV-2055
+DEFINITION  Salmo salar (LOC662698378), DNA.
+ACCESSION   DVS_3971646124
+VERSION     DVS_3971646124.0
+KEYWORDS    .
+SOURCE      Salmo salar
+  ORGANISM  Salmo salar
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Actinopterygii; Neopterygii; Teleostei; Euteleostei;
+            Protacanthopterygii; Salmoniformes; Salmonidae; Salmoninae; Salmo; Salmo.
+REFERENCE   1  (bases 1 to 57)
+  AUTHORS   Harvey,Tim, Bolton,Daniel, Boyes,Alfred, Tapper,Hubert,
+            Underwood,Matthew, Winer,Stew, Timms,Axel, Hurdley,Arthur,
+            Woollven,Madison, Fletcher,Rich, Harvey,Patrick and Luther,Di
+  TITLE     title of the reference 1
+  JOURNAL   Virtual Technology Journal. 4060, 1095-1096 (2017)
+REFERENCE   2  (bases 1 to 57)
+  AUTHORS   Williams,Shawn, Green,Garret, Stonelake,Matt, Barnard,Warren,
+            Elison,Rudy, Matile,Howell, Olberechts,Floyd and Roach,Elv
+  TITLE     title of the reference 2
+  JOURNAL   Epson Communications Fanzine. 1065, 616-628 (2050)
+REFERENCE   3  (bases 1 to 57)
+  AUTHORS   Pennock,Bernie, Coombs,Reeves, Jones,Willis, Barry,Donald,
+            Boyes,Ian, Corner,Allen, Ansley,Bradley, Pearce,Warren,
+            Cliefe,Joey, Cliefe,Scott, Kates,Michael, Newell,Sebastian,
+            Turner,Baxter, Eaton,Harrison, Shelley,Lobo and Balthazor,Ph
+  TITLE     title of the reference 3
+  JOURNAL   Center Systems Publications. 901, 6658-6665 (2050)
+REFERENCE   4  (bases 1 to 57)
+  AUTHORS   Howell,Brad, Forrest,Homer, Pratt,Joe, Frost,Ward, Eades,Dan,
+            Gaskin,Marlo, Lock,Marlo and Waymark,Cyr
+  TITLE     title of the reference 4
+  JOURNAL   Optical Tech. Gazette. 747 (10), 9771-9771 (2055)
+REFERENCE   5  (bases 1 to 57)
+  AUTHORS   Paton,Steven, Nightingale,Thomas, Donelly,Rayyan, Hurdley,Jarvis,
+            Totham,Otto, Williams,David, Gullidge,Pete, Gullidge,Sean,
+            Ward,Jason, Lawrence,Barney and McEvoy,Hube
+  TITLE     title of the reference 5
+  JOURNAL   Costco Foundation Fanzine. 203 (40), 2499-2506 (2043)
+REFERENCE   6  (bases 1 to 57)
+  AUTHORS   Marples,Cecil, Griffin,Cody, Roach,Wayne, Almond,Paul, Wyatt,Glenn,
+            Ingham,Abe, Holt,William, Jones,Dan, Cantlow,Alberto, Morgan,Glenn,
+            Davies,Samuel, Paton,Hamlet, Harris,Corey, Hackett,Tyson and Sexton,Erne
+  TITLE     title of the reference 6
+  JOURNAL   Firaxis Technology Journal. 1876, 6747-6751 (2011)
+REFERENCE   7  (bases 1 to 57)
+  AUTHORS   Winer,Dennis, Howell,Tyson, Balthazor,Murray, Leversedge,Jackie,
+            King,Keith, Woollven,Paul, Edwards,Samuel, Waterhouse,Stanley,
+            Brown,Carter, Comrie,Rod, Bolton,Leo, Kates,Gareth, Daymond,Carter,
+            Rogers,Benjamin, Eaton,Garret, Pennington,Todd, Woollven,Tim and Winer,Dav
+  TITLE     title of the reference 7
+  JOURNAL   Norton Solutions Publications. 9367 (64), 952-964 (2051)
+  REMARK    REVIEW
+REFERENCE   8  (bases 1 to 57)
+  AUTHORS   Hackett,Kamil, Lindsay,Kami, Hey,Todd, Headland,Waldo, Roach,Gaby,
+            Knight,Otto, Harris,Lewis, Edwards,Michael, Smith,Peter,
+            Redman,Tycho, Boyes,Nick, Balthazor,Paul, Page,Hamlet,
+            Roach,Murray, Hancock,Matt, Shopland,Gabe and Paton,Ry
+  TITLE     title of the reference 8
+  JOURNAL   CNet Developments Magazine. 555 (14), 1416-1428 (2033)
+REFERENCE   9  (bases 1 to 57)
+  AUTHORS   Griffin,Iggy, Martin,Val, Slater,Scott, Waymark,Ward,
+            Colley,George, Daymond,Herbert, Stubbs,Benjamin, Sexton,Joey, Matile,Dennis and Jackson,Curt
+  TITLE     title of the reference 9
+  JOURNAL   Toaplan Labs HackZine. 5461 (30), 9019-9026 (2036)
+REFERENCE   10 (bases 1 to 57)
+  AUTHORS   Jones,Sean, Trish,Bernie, Burgess,Hanna, Welch,Duncan,
+            Gilmour,Kevin, Trish,Fernado, Nowell,Jackie, Roach,Edward,
+            Harris,Gerald, Luther,Dennis, Simpson,Filbert, Bailey,George,
+            Roach,William, Winer,Lewis, Lindsay,Abe, Kates,Pete, Mitchell,Dale and Daymond,Ferna
+  TITLE     title of the reference 10
+  JOURNAL   MAF Inc Journal. 591, 752-757 (2025)
+  REMARK    REVIEW
+FEATURES             Location/Qualifiers
+     CDS             1..57
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC662698378"
+                     /translation="PYCHCICVHKHPIENHNPNTTHVACKCPHKRW"
+     source          1..57
+                     /organism="Salmo salar"
+                     /mol_type="DNA"
+     gene            1..57
+                     /note="***** part [1] *****"
+                     /gene="LOC662698378"
+BASE COUNT       18 t      8 a     18 c     12 g      0 other
+ORIGIN      
+        1 tttactatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttg
+//
+***** ***** ***** ***** ***** 
+LOCUS       DVS_3971646124         56 bp     DNA    linear   HTC 14-NOV-2055
+DEFINITION  Salmo salar (LOC662698378), DNA.
+ACCESSION   DVS_3971646124
+VERSION     DVS_3971646124.0
+KEYWORDS    .
+SOURCE      Salmo salar
+  ORGANISM  Salmo salar
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Actinopterygii; Neopterygii; Teleostei; Euteleostei;
+            Protacanthopterygii; Salmoniformes; Salmonidae; Salmoninae; Salmo; Salmo.
+REFERENCE   1  (bases 1 to 57)
+  AUTHORS   Harvey,Tim, Bolton,Daniel, Boyes,Alfred, Tapper,Hubert,
+            Underwood,Matthew, Winer,Stew, Timms,Axel, Hurdley,Arthur,
+            Woollven,Madison, Fletcher,Rich, Harvey,Patrick and Luther,Di
+  TITLE     title of the reference 1
+  JOURNAL   Virtual Technology Journal. 4060, 1095-1096 (2017)
+REFERENCE   2  (bases 1 to 57)
+  AUTHORS   Williams,Shawn, Green,Garret, Stonelake,Matt, Barnard,Warren,
+            Elison,Rudy, Matile,Howell, Olberechts,Floyd and Roach,Elv
+  TITLE     title of the reference 2
+  JOURNAL   Epson Communications Fanzine. 1065, 616-628 (2050)
+REFERENCE   3  (bases 1 to 57)
+  AUTHORS   Pennock,Bernie, Coombs,Reeves, Jones,Willis, Barry,Donald,
+            Boyes,Ian, Corner,Allen, Ansley,Bradley, Pearce,Warren,
+            Cliefe,Joey, Cliefe,Scott, Kates,Michael, Newell,Sebastian,
+            Turner,Baxter, Eaton,Harrison, Shelley,Lobo and Balthazor,Ph
+  TITLE     title of the reference 3
+  JOURNAL   Center Systems Publications. 901, 6658-6665 (2050)
+REFERENCE   4  (bases 1 to 57)
+  AUTHORS   Howell,Brad, Forrest,Homer, Pratt,Joe, Frost,Ward, Eades,Dan,
+            Gaskin,Marlo, Lock,Marlo and Waymark,Cyr
+  TITLE     title of the reference 4
+  JOURNAL   Optical Tech. Gazette. 747 (10), 9771-9771 (2055)
+REFERENCE   5  (bases 1 to 57)
+  AUTHORS   Paton,Steven, Nightingale,Thomas, Donelly,Rayyan, Hurdley,Jarvis,
+            Totham,Otto, Williams,David, Gullidge,Pete, Gullidge,Sean,
+            Ward,Jason, Lawrence,Barney and McEvoy,Hube
+  TITLE     title of the reference 5
+  JOURNAL   Costco Foundation Fanzine. 203 (40), 2499-2506 (2043)
+REFERENCE   6  (bases 1 to 57)
+  AUTHORS   Marples,Cecil, Griffin,Cody, Roach,Wayne, Almond,Paul, Wyatt,Glenn,
+            Ingham,Abe, Holt,William, Jones,Dan, Cantlow,Alberto, Morgan,Glenn,
+            Davies,Samuel, Paton,Hamlet, Harris,Corey, Hackett,Tyson and Sexton,Erne
+  TITLE     title of the reference 6
+  JOURNAL   Firaxis Technology Journal. 1876, 6747-6751 (2011)
+REFERENCE   7  (bases 1 to 57)
+  AUTHORS   Winer,Dennis, Howell,Tyson, Balthazor,Murray, Leversedge,Jackie,
+            King,Keith, Woollven,Paul, Edwards,Samuel, Waterhouse,Stanley,
+            Brown,Carter, Comrie,Rod, Bolton,Leo, Kates,Gareth, Daymond,Carter,
+            Rogers,Benjamin, Eaton,Garret, Pennington,Todd, Woollven,Tim and Winer,Dav
+  TITLE     title of the reference 7
+  JOURNAL   Norton Solutions Publications. 9367 (64), 952-964 (2051)
+  REMARK    REVIEW
+REFERENCE   8  (bases 1 to 57)
+  AUTHORS   Hackett,Kamil, Lindsay,Kami, Hey,Todd, Headland,Waldo, Roach,Gaby,
+            Knight,Otto, Harris,Lewis, Edwards,Michael, Smith,Peter,
+            Redman,Tycho, Boyes,Nick, Balthazor,Paul, Page,Hamlet,
+            Roach,Murray, Hancock,Matt, Shopland,Gabe and Paton,Ry
+  TITLE     title of the reference 8
+  JOURNAL   CNet Developments Magazine. 555 (14), 1416-1428 (2033)
+REFERENCE   9  (bases 1 to 57)
+  AUTHORS   Griffin,Iggy, Martin,Val, Slater,Scott, Waymark,Ward,
+            Colley,George, Daymond,Herbert, Stubbs,Benjamin, Sexton,Joey, Matile,Dennis and Jackson,Curt
+  TITLE     title of the reference 9
+  JOURNAL   Toaplan Labs HackZine. 5461 (30), 9019-9026 (2036)
+REFERENCE   10 (bases 1 to 57)
+  AUTHORS   Jones,Sean, Trish,Bernie, Burgess,Hanna, Welch,Duncan,
+            Gilmour,Kevin, Trish,Fernado, Nowell,Jackie, Roach,Edward,
+            Harris,Gerald, Luther,Dennis, Simpson,Filbert, Bailey,George,
+            Roach,William, Winer,Lewis, Lindsay,Abe, Kates,Pete, Mitchell,Dale and Daymond,Ferna
+  TITLE     title of the reference 10
+  JOURNAL   MAF Inc Journal. 591, 752-757 (2025)
+  REMARK    REVIEW
+FEATURES             Location/Qualifiers
+     CDS             1..57
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC662698378"
+                     /translation="PYCHCICVHKHPIENHNPNTTHVACKCPHKRW"
+     source          1..57
+                     /organism="Salmo salar"
+                     /mol_type="DNA"
+     gene            1..57
+                     /note="***** part [1] *****"
+                     /gene="LOC662698378"
+BASE COUNT       18 t      8 a     18 c     12 g      0 other
+ORIGIN      
+        1 tttactatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttg
+//
+***** ***** ***** ***** ***** 
+LOCUS       MSBS_01431199        1660 bp     DNA    linear   HTG 27-MAY-2073
+DEFINITION  Drosophila ambigua (LOC577166318), DNA.
+ACCESSION   MSBS_01431199
+VERSION     MSBS_01431199.3
+KEYWORDS    .
+SOURCE      Drosophila ambigua
+  ORGANISM  Drosophila ambigua
+            Eukaryota; Metazoa; Arthropoda; Hexapoda; Insecta; Pterygota;
+            Neoptera; Endopterygota; Diptera; Brachycera; Muscomorpha;
+            Ephydroidea; Drosophilidae; Drosophila; Sophophora; Sophophora.
+REFERENCE   1  (bases 1 to 1661)
+  AUTHORS   Chislett-Trim,Chris, Carter,Toby, Wallace,Eddie, Macauley,Warren,
+            Comrie,Joey, Busby,Michael, Carter,Greg and Pettit,Jim
+  TITLE     title of the reference 1
+  JOURNAL   Nextell Hacker Space HackZine. 1062, 1055-1061 (2029)
+REFERENCE   2  (bases 1 to 1661)
+  AUTHORS   Hail,Keith, Pritchard,Steven, Hoar,Donald, Dennington,Paul,
+            Dennington,Max, Carter,Ken, Wilders,Hugo, Pratt,Matt, Winer,Heuy and Marples,Richa
+  TITLE     title of the reference 2
+  JOURNAL   Ronco Industries Publications. 2471 (36), 6864-6882 (2062)
+REFERENCE   3  (bases 1 to 1661)
+  AUTHORS   Waterhouse,Sam, Trise,Jason, Wagstaff,Ronald, Kenway,Paul,
+            Kenway,Dale, Pettit,Galen, Hoar,Peter, Whiteman,Lane, Luther,Dave,
+            Totham,Margo, Levers,Flynn, Gall,Paulo, Platten,Ryan,
+            Donelly,William, Gulliford,Lewis and Venning,Du
+  TITLE     title of the reference 3
+  JOURNAL   Intraware Labs Publications. 740, 1886-1888 (2055)
+  REMARK    REVIEW
+REFERENCE   4  (bases 1 to 1661)
+  AUTHORS   Ashby,Nellie, Ranger,Joey, Hurford,Richard, Timms,Benjamin and Buckwell,St
+  TITLE     title of the reference 4
+  JOURNAL   Centura Networks Publications. 2572 (1), 4945-4947 (2065)
+FEATURES             Location/Qualifiers
+     CDS             1..1661
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC577166318"
+                     /translation="VYCHCICVHKHPIENHNPNTTHVACKCPHKLY"
+     source          1..1661
+                     /organism="Drosophila ambigua"
+                     /mol_type="DNA"
+     gene            1..1661
+                     /note="***** part [1] *****"
+                     /gene="LOC577166318"
+BASE COUNT      318 t    315 g    718 c    309 a      0 other
+ORIGIN      
+        1 ttggctatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct caaaggcgac
+       61 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      121 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      181 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      241 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      301 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      361 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      421 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      481 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      541 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      601 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      661 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      721 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      781 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      841 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      901 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      961 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1021 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1081 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+     1141 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+     1201 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1261 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1321 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+     1381 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+     1441 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1501 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1561 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+//
+***** ***** ***** ***** ***** 
+LOCUS       BAXF63618232           36 bp    mRNA    linear   UNA 27-JAN-1932
+DEFINITION  Pavo cristatus (LOC810757159), mRNA.
+ACCESSION   BAXF63618232
+VERSION     BAXF63618232.2
+KEYWORDS    .
+SOURCE      Pavo cristatus
+  ORGANISM  Pavo cristatus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Archosauria; Dinosauria; Saurischia; Theropoda; Coelurosauria;
+            Aves; Neognathae; Galliformes; Phasianidae; Phasianinae; Pavo; Pavo.
+REFERENCE   1  (bases 1 to 37)
+  AUTHORS   Batty,Ernie, Robinson,Taffy, Matile,Jackie, Brindley,Keene, Cocks,Halen and Mackenzie,Pa
+  TITLE     title of the reference 1
+  JOURNAL   Bungie Laboratories Publications. 4216 (26), 4316-4324 (1914)
+REFERENCE   2  (bases 1 to 37)
+  AUTHORS   Pidgeon,Rudy, Sandy,Joey, Richardson,Tim, Lindsay,Emanuel,
+            Cliefe,Bran, Winer,Zed, Tothill,Samuel, Cantopher,Walter, Cliefe,Adam and Timms,Co
+  TITLE     title of the reference 2
+  JOURNAL   Excel Computers Publications. 6584 (1), 7396-7396 (1930)
+  REMARK    REVIEW
+REFERENCE   3  (bases 1 to 37)
+  AUTHORS   Slater,Ralph, Merwood,Garret, Stacey,Joe, Willson,Zack,
+            Gulliford,Kiley, Quayle,Willis, Pettit,Harrison, Lee,Garret,
+            Blake,Lucas, Gibbs,Flynn, Gilmour,Donald, Creaser,Madison and Langdon,Dav
+  TITLE     title of the reference 3
+  JOURNAL   PDR-Net Microsystems Publications. 6390, 1374-1389 (1915)
+  REMARK    REVIEW
+REFERENCE   4  (bases 1 to 37)
+  AUTHORS   Woollven,Henry, Eades,Luigi, Boyer,Phil, Parkin,Benjamin,
+            Featherstone,Daniel, Shore,Bernie, Gullidge,Tommy, Moss,Yogi,
+            Godwin,Sean, Pennington,Corey, Burgess,Jasper, Howell,Rich, Palmer,Jerrick and Boughton,Ru
+  TITLE     title of the reference 4
+  JOURNAL   Mirage Software Publications. 5981 (9), 6176-6178 (1917)
+REFERENCE   5  (bases 1 to 37)
+  AUTHORS   Gilmour,Osgood, Newell,Scott, Waterhouse,Stanley, Langdon,Tyrone,
+            Harris,Halen, Dayner,David, Morgan,Carter, Bailey,Murray,
+            Creaser,Ward, Gibbs,Craig, Hoar,Val, Howell,Edwin, Evans,Jackson, Grant,Taffy and Trise,Cyr
+  TITLE     title of the reference 5
+  JOURNAL   Virtulink Associates Publications. 1198 (56), 3622-3624 (1922)
+REFERENCE   6  (bases 1 to 37)
+  AUTHORS   Dennington,Zack, Langdon,Mark, Underwood,Garret, Hurdley,Bart,
+            Baker,Edwin, Hurford,Chuck, Harvey,Stew, Pettit,Ion, Stubbs,Homer,
+            Hurford,Jasper, Bennet,Murray, Richardson,Jarvis, Wood,Lee, Frost,Alvin and Busby,Barn
+  TITLE     title of the reference 6
+  JOURNAL   Dynamix Associates Publications. 771, 8030-8031 (1882)
+REFERENCE   7  (bases 1 to 37)
+  AUTHORS   Baker,Phil, Trise,Frank, Pearce,Steven, Pennington,Galen,
+            Sexton,Graham, Page,Simon, Doney,Robert, Dillon,Samuel,
+            Boughton,Lobo, Almond,Gabe, Macauley,Hart, Chislett-Trim,Bran, Chappell,Peter and Turner,Ga
+  TITLE     title of the reference 7
+  JOURNAL   Nerv Software Publications. 175, 705-705 (1889)
+REFERENCE   8  (bases 1 to 37)
+  AUTHORS   Simpson,Homer and Lutheran,Alfred
+  TITLE     title of the reference 8
+  JOURNAL   Creative Technology Magazine. 2304, 3965-3977 (1909)
+REFERENCE   9  (bases 1 to 37)
+  AUTHORS   Corner,Paul, Lock,Tyrone, Curtis,Jeffrey, Rennie,Wilfred,
+            Beswick,Andrew, Hey,Samuel, Boyes,Luigi, Hughes,Oscar and Macauley,Dani
+  TITLE     title of the reference 9
+  JOURNAL   Crystal Industries Gazette. 2341, 1572-1580 (1808)
+REFERENCE   10 (bases 1 to 37)
+  AUTHORS   Crouch,Mark, Nightingale,Edward, Creaser,Vick, Shopland,Keene, Cocks,Todd and Boughton,L
+  TITLE     title of the reference 10
+  JOURNAL   Epson Inc Gazette. 304, 344-350 (1826)
+FEATURES             Location/Qualifiers
+     CDS             1..37
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC810757159"
+                     /translation="VWCHCICVHKHPIENHNPNTTHVACKCPHKLW"
+     source          1..37
+                     /organism="Pavo cristatus"
+                     /mol_type="mRNA"
+     gene            1..37
+                     /note="***** part [1] *****"
+                     /gene="LOC810757159"
+BASE COUNT       10 t      6 g      5 a     15 c      0 other
+ORIGIN      
+        1 ttgactatcg ttcgtccgcc cccaccgacc catttg
+//
+***** ***** ***** ***** ***** 
+LOCUS       MJZQ_3480444715         0 bp     DNA  circular   GSS 1-SEP-2118
+DEFINITION  Oxytricha fallax (LOC789399176), DNA.
+ACCESSION   MJZQ_3480444715
+VERSION     MJZQ_3480444715.3
+KEYWORDS    .
+SOURCE      Oxytricha fallax
+  ORGANISM  Oxytricha fallax
+            Eukaryota; Alveolata; Ciliophora; Intramacronucleata; Spirotrichea;
+            Stichotrichia; Sporadotrichida; Oxytrichidae; Oxytrichinae;
+            Oxytricha; Oxytricha.
+ORIGIN      
+//
+***** ***** ***** ***** ***** 
+LOCUS       JBV_3387179872         56 bp    mRNA    linear   GSS 13-DEC-2002
+DEFINITION  Litoria chloris (LOC887927938), mRNA.
+ACCESSION   JBV_3387179872
+VERSION     JBV_3387179872.0
+KEYWORDS    .
+SOURCE      Litoria chloris
+  ORGANISM  Litoria chloris
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Amphibia; Batrachia; Anura; Neobatrachia; Hyloidea; Hylidae;
+            Pelodryadinae; Litoria; Litoria.
+REFERENCE   1  (bases 1 to 57)
+  AUTHORS   Hughes,Hubert, Dummer,Graham, Balthazor,Eddie, Chappell,Leroy,
+            Ranger,Nick, Jones,Henry, Kates,George and Macauley,St
+  TITLE     title of the reference 1
+  JOURNAL   CNet High School Publications. 4683, 7262-7268 (1998)
+REFERENCE   2  (bases 1 to 57)
+  AUTHORS   Alexander,Vick, Cadwallader,Lane, Balthazor,Heuy, Colley,Alvin,
+            Cowell,Hugo, Ansley,Timothy, Clark,Jericho, Stubbs,Homer and Hill,A
+  TITLE     title of the reference 2
+  JOURNAL   Focus Systems Magazine. 3718, 7837-7847 (1979)
+REFERENCE   3  (bases 1 to 57)
+  AUTHORS   Mitchell,Reeves, Nash,Gates, France,Alberto, King,Simon,
+            Ingham,Marlo, Pennington,Jeffrey, Busby,Joe, Hoar,Madison,
+            Redman,Stew, Roach,Tory and Broomfield,Du
+  TITLE     title of the reference 3
+  JOURNAL   Netgear Solutions HackZine. 2145 (11), 2677-2691 (1870)
+REFERENCE   4  (bases 1 to 57)
+  AUTHORS   Jackson,Stephen, Bird,Jericho, Thomas,Joe, Welch,Kaylee,
+            Balthazor,Sebastian, Chislohm,Zack, Ellison,Flynn, Griffin,Rocky,
+            Quayle,Herbert, Jackson,Rayyan, Barnard,Elvin, Bird,Ronald,
+            Wuyts,Cody, Boughton,Duncan, Speed,Paul and Baker,Robe
+  TITLE     title of the reference 4
+  JOURNAL   Voxel Laboratories Publications. 1565, 9447-9447 (1992)
+REFERENCE   5  (bases 1 to 57)
+  AUTHORS   Hawkins,Harold, Palmer,Tim, Cadwell,Kaylee, Nowbati,Jason,
+            Howell,Patrick, Doyle,Derek, Smith,Chris, Langdon,Donald,
+            Burgess,Simon, Burgess,Gregory, Pidgeon,Jeffrey, Western,William, Willson,George and France,Pa
+  TITLE     title of the reference 5
+  JOURNAL   MediaNet Laboratories Fanzine. 558 (58), 699-701 (1893)
+REFERENCE   6  (bases 1 to 57)
+  AUTHORS   Newell,Peter, Rogers,Earl, Harvey,Dennis, Howell,Thomas,
+            Corner,Floyd, Headland,Lobo, Howell,Pablo, Ashby,Chris,
+            Buckwell,Otto, Chislett-Trim,Gabe, Evans,Murray and Gaskin,Pab
+  TITLE     title of the reference 6
+  JOURNAL   CityLink University Magazine. 5064, 679-690 (1997)
+REFERENCE   7  (bases 1 to 57)
+  AUTHORS   Austin,Bernie, Luther,Leroy, Gilmour,Ryan, Almond,Duke,
+            Slater,Patrick, Shopland,Gregory, Headland,Ed and Slater,Galv
+  TITLE     title of the reference 7
+  JOURNAL   Online Computers Magazine. 7875, 7256-7259 (1997)
+REFERENCE   8  (bases 1 to 57)
+  AUTHORS   Osborne,Jacob, Keevil,Galvin, Brown,Thomas, Moon,Lucas,
+            Jerrom,Gerry, Dennington,Zed, Nightingale,Joey,
+            Beck-Slatter,Alfred, Moon,Curtis and Cocks,Will
+  TITLE     title of the reference 8
+  JOURNAL   Organic Associates Journal. 819, 5505-5517 (1967)
+REFERENCE   9  (bases 1 to 57)
+  AUTHORS   Pidgeon,Clark, Keevil,Bran, Taylor,Keith, Almond,Glenn,
+            Hurford,Frank, Bolton,Tory, Stonelake,Hank, Lee,Axel,
+            White,Calvine, Wood,Iggy, Morgan,Kaylee and Mundy,Lui
+  TITLE     title of the reference 9
+  JOURNAL   Liberty Industries Publications. 7087 (0), 1498-1503 (1981)
+FEATURES             Location/Qualifiers
+     source          1..57
+                     /organism="Litoria chloris"
+                     /mol_type="mRNA"
+     gene            1..57
+                     /note="***** part [1] *****"
+                     /gene="LOC887927938"
+BASE COUNT       18 t     13 g     18 c      7 a      0 other
+ORIGIN      
+        1 ttggctatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttt
+//
+***** ***** ***** ***** ***** 
+LOCUS       MSBS_01431199        1660 bp     DNA    linear   HTG 27-MAY-2073
+DEFINITION  Drosophila ambigua (LOC577166318), DNA.
+ACCESSION   MSBS_01431199
+VERSION     MSBS_01431199.3
+KEYWORDS    .
+SOURCE      Drosophila ambigua
+  ORGANISM  Drosophila ambigua
+            Eukaryota; Metazoa; Arthropoda; Hexapoda; Insecta; Pterygota;
+            Neoptera; Endopterygota; Diptera; Brachycera; Muscomorpha;
+            Ephydroidea; Drosophilidae; Drosophila; Sophophora; Sophophora.
+REFERENCE   1  (bases 1 to 1661)
+  AUTHORS   Chislett-Trim,Chris, Carter,Toby, Wallace,Eddie, Macauley,Warren,
+            Comrie,Joey, Busby,Michael, Carter,Greg and Pettit,Jim
+  TITLE     title of the reference 1
+  JOURNAL   Nextell Hacker Space HackZine. 1062, 1055-1061 (2029)
+REFERENCE   2  (bases 1 to 1661)
+  AUTHORS   Hail,Keith, Pritchard,Steven, Hoar,Donald, Dennington,Paul,
+            Dennington,Max, Carter,Ken, Wilders,Hugo, Pratt,Matt, Winer,Heuy and Marples,Richa
+  TITLE     title of the reference 2
+  JOURNAL   Ronco Industries Publications. 2471 (36), 6864-6882 (2062)
+REFERENCE   3  (bases 1 to 1661)
+  AUTHORS   Waterhouse,Sam, Trise,Jason, Wagstaff,Ronald, Kenway,Paul,
+            Kenway,Dale, Pettit,Galen, Hoar,Peter, Whiteman,Lane, Luther,Dave,
+            Totham,Margo, Levers,Flynn, Gall,Paulo, Platten,Ryan,
+            Donelly,William, Gulliford,Lewis and Venning,Du
+  TITLE     title of the reference 3
+  JOURNAL   Intraware Labs Publications. 740, 1886-1888 (2055)
+  REMARK    REVIEW
+REFERENCE   4  (bases 1 to 1661)
+  AUTHORS   Ashby,Nellie, Ranger,Joey, Hurford,Richard, Timms,Benjamin and Buckwell,St
+  TITLE     title of the reference 4
+  JOURNAL   Centura Networks Publications. 2572 (1), 4945-4947 (2065)
+FEATURES             Location/Qualifiers
+     CDS             1..1661
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC577166318"
+                     /translation="VYCHCICVHKHPIENHNPNTTHVACKCPHKLY"
+     source          1..1661
+                     /organism="Drosophila ambigua"
+                     /mol_type="DNA"
+     gene            1..1661
+                     /note="***** part [1] *****"
+                     /gene="LOC577166318"
+BASE COUNT      318 t    315 g    718 c    309 a      0 other
+ORIGIN      
+        1 ttggctatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct caaaggcgac
+       61 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      121 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      181 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      241 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      301 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      361 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      421 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      481 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      541 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      601 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      661 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      721 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+      781 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+      841 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+      901 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+      961 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1021 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1081 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+     1141 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+     1201 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1261 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1321 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+     1381 ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat
+     1441 cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac
+     1501 cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca
+     1561 cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct
+//
+***** ***** ***** ***** ***** 
+LOCUS       BAXF63618232           36 bp    mRNA    linear   UNA 27-JAN-1932
+DEFINITION  Pavo cristatus (LOC810757159), mRNA.
+ACCESSION   BAXF63618232
+VERSION     BAXF63618232.2
+KEYWORDS    .
+SOURCE      Pavo cristatus
+  ORGANISM  Pavo cristatus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Archosauria; Dinosauria; Saurischia; Theropoda; Coelurosauria;
+            Aves; Neognathae; Galliformes; Phasianidae; Phasianinae; Pavo; Pavo.
+REFERENCE   1  (bases 1 to 37)
+  AUTHORS   Batty,Ernie, Robinson,Taffy, Matile,Jackie, Brindley,Keene, Cocks,Halen and Mackenzie,Pa
+  TITLE     title of the reference 1
+  JOURNAL   Bungie Laboratories Publications. 4216 (26), 4316-4324 (1914)
+REFERENCE   2  (bases 1 to 37)
+  AUTHORS   Pidgeon,Rudy, Sandy,Joey, Richardson,Tim, Lindsay,Emanuel,
+            Cliefe,Bran, Winer,Zed, Tothill,Samuel, Cantopher,Walter, Cliefe,Adam and Timms,Co
+  TITLE     title of the reference 2
+  JOURNAL   Excel Computers Publications. 6584 (1), 7396-7396 (1930)
+  REMARK    REVIEW
+REFERENCE   3  (bases 1 to 37)
+  AUTHORS   Slater,Ralph, Merwood,Garret, Stacey,Joe, Willson,Zack,
+            Gulliford,Kiley, Quayle,Willis, Pettit,Harrison, Lee,Garret,
+            Blake,Lucas, Gibbs,Flynn, Gilmour,Donald, Creaser,Madison and Langdon,Dav
+  TITLE     title of the reference 3
+  JOURNAL   PDR-Net Microsystems Publications. 6390, 1374-1389 (1915)
+  REMARK    REVIEW
+REFERENCE   4  (bases 1 to 37)
+  AUTHORS   Woollven,Henry, Eades,Luigi, Boyer,Phil, Parkin,Benjamin,
+            Featherstone,Daniel, Shore,Bernie, Gullidge,Tommy, Moss,Yogi,
+            Godwin,Sean, Pennington,Corey, Burgess,Jasper, Howell,Rich, Palmer,Jerrick and Boughton,Ru
+  TITLE     title of the reference 4
+  JOURNAL   Mirage Software Publications. 5981 (9), 6176-6178 (1917)
+REFERENCE   5  (bases 1 to 37)
+  AUTHORS   Gilmour,Osgood, Newell,Scott, Waterhouse,Stanley, Langdon,Tyrone,
+            Harris,Halen, Dayner,David, Morgan,Carter, Bailey,Murray,
+            Creaser,Ward, Gibbs,Craig, Hoar,Val, Howell,Edwin, Evans,Jackson, Grant,Taffy and Trise,Cyr
+  TITLE     title of the reference 5
+  JOURNAL   Virtulink Associates Publications. 1198 (56), 3622-3624 (1922)
+REFERENCE   6  (bases 1 to 37)
+  AUTHORS   Dennington,Zack, Langdon,Mark, Underwood,Garret, Hurdley,Bart,
+            Baker,Edwin, Hurford,Chuck, Harvey,Stew, Pettit,Ion, Stubbs,Homer,
+            Hurford,Jasper, Bennet,Murray, Richardson,Jarvis, Wood,Lee, Frost,Alvin and Busby,Barn
+  TITLE     title of the reference 6
+  JOURNAL   Dynamix Associates Publications. 771, 8030-8031 (1882)
+REFERENCE   7  (bases 1 to 37)
+  AUTHORS   Baker,Phil, Trise,Frank, Pearce,Steven, Pennington,Galen,
+            Sexton,Graham, Page,Simon, Doney,Robert, Dillon,Samuel,
+            Boughton,Lobo, Almond,Gabe, Macauley,Hart, Chislett-Trim,Bran, Chappell,Peter and Turner,Ga
+  TITLE     title of the reference 7
+  JOURNAL   Nerv Software Publications. 175, 705-705 (1889)
+REFERENCE   8  (bases 1 to 37)
+  AUTHORS   Simpson,Homer and Lutheran,Alfred
+  TITLE     title of the reference 8
+  JOURNAL   Creative Technology Magazine. 2304, 3965-3977 (1909)
+REFERENCE   9  (bases 1 to 37)
+  AUTHORS   Corner,Paul, Lock,Tyrone, Curtis,Jeffrey, Rennie,Wilfred,
+            Beswick,Andrew, Hey,Samuel, Boyes,Luigi, Hughes,Oscar and Macauley,Dani
+  TITLE     title of the reference 9
+  JOURNAL   Crystal Industries Gazette. 2341, 1572-1580 (1808)
+REFERENCE   10 (bases 1 to 37)
+  AUTHORS   Crouch,Mark, Nightingale,Edward, Creaser,Vick, Shopland,Keene, Cocks,Todd and Boughton,L
+  TITLE     title of the reference 10
+  JOURNAL   Epson Inc Gazette. 304, 344-350 (1826)
+FEATURES             Location/Qualifiers
+     CDS             1..37
+                     /codon_start="1"
+                     /product="*****"
+                     /gene="LOC810757159"
+                     /translation="VWCHCICVHKHPIENHNPNTTHVACKCPHKLW"
+     source          1..37
+                     /organism="Pavo cristatus"
+                     /mol_type="mRNA"
+     gene            1..37
+                     /note="***** part [1] *****"
+                     /gene="LOC810757159"
+BASE COUNT       10 t      6 g      5 a     15 c      0 other
+ORIGIN      
+        1 ttgactatcg ttcgtccgcc cccaccgacc catttg
+//
+***** ***** ***** ***** ***** 
+LOCUS       MJZQ_3480444715         0 bp     DNA  circular   GSS 1-SEP-2118
+DEFINITION  Oxytricha fallax (LOC789399176), DNA.
+ACCESSION   MJZQ_3480444715
+VERSION     MJZQ_3480444715.3
+KEYWORDS    .
+SOURCE      Oxytricha fallax
+  ORGANISM  Oxytricha fallax
+            Eukaryota; Alveolata; Ciliophora; Intramacronucleata; Spirotrichea;
+            Stichotrichia; Sporadotrichida; Oxytrichidae; Oxytrichinae;
+            Oxytricha; Oxytricha.
+ORIGIN      
+//
+***** ***** ***** ***** ***** 
+LOCUS       JBV_3387179872         56 bp    mRNA    linear   GSS 13-DEC-2002
+DEFINITION  Litoria chloris (LOC887927938), mRNA.
+ACCESSION   JBV_3387179872
+VERSION     JBV_3387179872.0
+KEYWORDS    .
+SOURCE      Litoria chloris
+  ORGANISM  Litoria chloris
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Amphibia; Batrachia; Anura; Neobatrachia; Hyloidea; Hylidae;
+            Pelodryadinae; Litoria; Litoria.
+REFERENCE   1  (bases 1 to 57)
+  AUTHORS   Hughes,Hubert, Dummer,Graham, Balthazor,Eddie, Chappell,Leroy,
+            Ranger,Nick, Jones,Henry, Kates,George and Macauley,St
+  TITLE     title of the reference 1
+  JOURNAL   CNet High School Publications. 4683, 7262-7268 (1998)
+REFERENCE   2  (bases 1 to 57)
+  AUTHORS   Alexander,Vick, Cadwallader,Lane, Balthazor,Heuy, Colley,Alvin,
+            Cowell,Hugo, Ansley,Timothy, Clark,Jericho, Stubbs,Homer and Hill,A
+  TITLE     title of the reference 2
+  JOURNAL   Focus Systems Magazine. 3718, 7837-7847 (1979)
+REFERENCE   3  (bases 1 to 57)
+  AUTHORS   Mitchell,Reeves, Nash,Gates, France,Alberto, King,Simon,
+            Ingham,Marlo, Pennington,Jeffrey, Busby,Joe, Hoar,Madison,
+            Redman,Stew, Roach,Tory and Broomfield,Du
+  TITLE     title of the reference 3
+  JOURNAL   Netgear Solutions HackZine. 2145 (11), 2677-2691 (1870)
+REFERENCE   4  (bases 1 to 57)
+  AUTHORS   Jackson,Stephen, Bird,Jericho, Thomas,Joe, Welch,Kaylee,
+            Balthazor,Sebastian, Chislohm,Zack, Ellison,Flynn, Griffin,Rocky,
+            Quayle,Herbert, Jackson,Rayyan, Barnard,Elvin, Bird,Ronald,
+            Wuyts,Cody, Boughton,Duncan, Speed,Paul and Baker,Robe
+  TITLE     title of the reference 4
+  JOURNAL   Voxel Laboratories Publications. 1565, 9447-9447 (1992)
+REFERENCE   5  (bases 1 to 57)
+  AUTHORS   Hawkins,Harold, Palmer,Tim, Cadwell,Kaylee, Nowbati,Jason,
+            Howell,Patrick, Doyle,Derek, Smith,Chris, Langdon,Donald,
+            Burgess,Simon, Burgess,Gregory, Pidgeon,Jeffrey, Western,William, Willson,George and France,Pa
+  TITLE     title of the reference 5
+  JOURNAL   MediaNet Laboratories Fanzine. 558 (58), 699-701 (1893)
+REFERENCE   6  (bases 1 to 57)
+  AUTHORS   Newell,Peter, Rogers,Earl, Harvey,Dennis, Howell,Thomas,
+            Corner,Floyd, Headland,Lobo, Howell,Pablo, Ashby,Chris,
+            Buckwell,Otto, Chislett-Trim,Gabe, Evans,Murray and Gaskin,Pab
+  TITLE     title of the reference 6
+  JOURNAL   CityLink University Magazine. 5064, 679-690 (1997)
+REFERENCE   7  (bases 1 to 57)
+  AUTHORS   Austin,Bernie, Luther,Leroy, Gilmour,Ryan, Almond,Duke,
+            Slater,Patrick, Shopland,Gregory, Headland,Ed and Slater,Galv
+  TITLE     title of the reference 7
+  JOURNAL   Online Computers Magazine. 7875, 7256-7259 (1997)
+REFERENCE   8  (bases 1 to 57)
+  AUTHORS   Osborne,Jacob, Keevil,Galvin, Brown,Thomas, Moon,Lucas,
+            Jerrom,Gerry, Dennington,Zed, Nightingale,Joey,
+            Beck-Slatter,Alfred, Moon,Curtis and Cocks,Will
+  TITLE     title of the reference 8
+  JOURNAL   Organic Associates Journal. 819, 5505-5517 (1967)
+REFERENCE   9  (bases 1 to 57)
+  AUTHORS   Pidgeon,Clark, Keevil,Bran, Taylor,Keith, Almond,Glenn,
+            Hurford,Frank, Bolton,Tory, Stonelake,Hank, Lee,Axel,
+            White,Calvine, Wood,Iggy, Morgan,Kaylee and Mundy,Lui
+  TITLE     title of the reference 9
+  JOURNAL   Liberty Industries Publications. 7087 (0), 1498-1503 (1981)
+FEATURES             Location/Qualifiers
+     source          1..57
+                     /organism="Litoria chloris"
+                     /mol_type="mRNA"
+     gene            1..57
+                     /note="***** part [1] *****"
+                     /gene="LOC887927938"
+BASE COUNT       18 t     13 g     18 c      7 a      0 other
+ORIGIN      
+        1 ttggctatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttt
+//

@@ -6,6 +6,7 @@ import gabywald.biosilico.data.FilterBioSilico;
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.Organism.OrganismType;
 import gabywald.biosilico.structures.GeneMoreListe;
 import gabywald.biosilico.structures.Pathway;
 import gabywald.biosilico.structures.PathwayListe;
@@ -129,7 +130,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 				// ******* If select Panel : FileOrganism instance already exists ! 
 				this.toSave = this.orgSelectPanel.getLoadOrganism();
 				this.toSave.setGenome(currentGenome);
-				this.toSave.getOrganism().setOrganismType(this.orgSelectPanel.getTypeOrganism());
+				this.toSave.getOrganism().setOrganismType(OrganismType.values()[this.orgSelectPanel.getTypeOrganism() - 1]);
 			} else // ***** This case should not happen often. 
 				{ this.toSave = new FileOrganism(pathAndFileName,
 											new Organism(currentGenome)); }

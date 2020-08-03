@@ -2,6 +2,7 @@ package gabywald.biosilico.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import gabywald.biosilico.interfaces.AgentContent;
 import gabywald.biosilico.interfaces.VariableContent;
@@ -58,6 +59,7 @@ public class WorldCase implements VariableContent,AgentContent {
 	public int getAgentListLength()		{ return this.liste.size(); }
 	public List<Agent> getAgentListe()	{ return this.liste; }
 	public Agent remAgent(int i)		{ return this.liste.remove(i); }
+	public boolean remAgent(Agent o)	{ return this.liste.remove(o); }
 	public Agent getAgent(int i)		{ return this.liste.get(i); }	
 	
 	public int hasAgentType(int type) {
@@ -66,9 +68,11 @@ public class WorldCase implements VariableContent,AgentContent {
 	
 	public Agent getAgentType(int type) {
 		// TODO optimize with Java 8 stream ?!
-		for (int i = 0 ; i < this.liste.size() ; i++) {
-			if (this.liste.get(i).getChemicals().getVariable(942) == type) { 
-				return this.liste.remove(i);
+		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(942) == type )) {
+			
+			Optional<Agent> optAgent = this.liste.stream().filter( ( p -> p.getChemicals().getVariable(942) == type ) ).findAny();
+			if (optAgent.isPresent()) {
+				return optAgent.get();
 			}
 		}
 		return null;
