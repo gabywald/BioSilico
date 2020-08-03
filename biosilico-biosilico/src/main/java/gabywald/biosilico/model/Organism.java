@@ -345,14 +345,14 @@ public class Organism extends Agent implements AgentContent {
 	private void decisionToSleep()	{ ; }
 
 	/**
-	 * Eating decision (on eatable object: 904). 
+	 * Eating decision (on eatable object). 
 	 * @param object (int) default should be 904 (ch Food). 
 	 * @param threshold (int) default should be 0.
 	 */
 	private void decisionToEat(int object, int threshold) { 
 		if (this.hasAgentType(object) > threshold) {
-			Agent fruit = this.getAgentType(object);
-			this.variables.incorporate(fruit.getVariables());
+			Agent eatableAgent = this.getAgentType(object);
+			this.variables.incorporate(eatableAgent.getVariables());
 		}
 	}
 

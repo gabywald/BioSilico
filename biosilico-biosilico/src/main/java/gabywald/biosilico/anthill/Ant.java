@@ -14,17 +14,6 @@ public class Ant extends Organism {
 		SOLDIER, 	// (8), 
 		QUEEN; 		// (9);
 	}
-	/**
-	 * Status of ant. 
-	 * <p></p>
-	 * <ul>
-	 * <li><b>0-1</b> : Egg / Larva</li>
-	 * <li><b>2-7</b> : Worker</li>
-	 * <li><b>8</b> : Soldier</li>
-	 * <li><b>9</b> : Queen</li>
-	 * </ul>
-	 */
-	private int status;
 
 	/** Default constructor of an Ant agent (alive). */
 	public Ant() { 
@@ -36,7 +25,23 @@ public class Ant extends Organism {
 		this.setNameCommon("Ant");
 		this.setOrganismType(OrganismType.BIOSILICO_ANIMA);
 		
-		this.status		= 0; /** start with an egg. */
 	}
+	
+	/**
+	 * Status of ant. 
+	 * <p></p>
+	 * <ul>
+	 * <li><b>0-1</b> : Egg / Larva</li>
+	 * <li><b>2-7</b> : Worker</li>
+	 * <li><b>8</b> : Soldier</li>
+	 * <li><b>9</b> : Queen</li>
+	 * </ul>
+	 */
+	public AntStatus getAntStatus() {
+		int antStatus = this.variables.getVariable(930);
+		// TODO determine Ant status based on variable 930 !!
+		// // // based on age, fertility, sex and some other data 
+		return null;
+	};
 	
 }

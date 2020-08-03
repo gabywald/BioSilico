@@ -927,10 +927,10 @@ Adult	adult
 Senior	senior
 Dead	dead
 (free)	(free)
-Movable	movable
-Eatable	eatable
-Fertile	fertile
-Pregnant	pregnant
+(free)	(free)
+(free)	(free)
+(free)	(free)
+(free)	(free)
 (free)	(free)
 Daemon	daemon
 Bacta	bacta
