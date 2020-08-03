@@ -270,14 +270,14 @@ AG29	- / Acide nonacosanoique
 AG30	Acide Melissique / triacontanoique
 AG31	- / Acide hentriacontanoique
 AG32	Acide Laceroique / dotriacontanoique 
-AG33	Autre Acide gras (33)
-AG34	Autre Acide gras (34)
-AG35	Autre Acide gras (35)
-AG36	Autre Acide gras (36)
-AG37	Autre Acide gras (37)
-AG38	Autre Acide gras (38)
-AG39	Autre Acide gras (39)
-AG40	Autre Acide gras (40)
+AG33	Other Fat Acid (33)
+AG34	Other Fat Acid (34)
+AG35	Other Fat Acid (35)
+AG36	Other Fat Acid (36)
+AG37	Other Fat Acid (37)
+AG38	Other Fat Acid (38)
+AG39	Other Fat Acid (39)
+AG40	Other Fat Acid (40)
 AG01CoA	AG01CoA
 AG02CoA	AG02CoA
 AG03CoA	AG03CoA

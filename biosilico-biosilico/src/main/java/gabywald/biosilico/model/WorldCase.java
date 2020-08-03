@@ -11,7 +11,7 @@ import gabywald.biosilico.interfaces.VariableContent;
  * This classe defines elements of the simulation environment where Agent's evolve. 
  * @author Gabriel Chandesris (2009, 2020)
  */
-public class WorldCase implements VariableContent,AgentContent {
+public class WorldCase implements VariableContent, AgentContent {
 	/** Chemical list of current element. */
 	private Chemicals variables;
 	/** Set of Agents and items in current element. */ 

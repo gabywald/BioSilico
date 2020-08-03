@@ -159,7 +159,7 @@ public class File extends Directory {
 
 	public String getChampsToString() {
 		StringBuilder sbResult = new StringBuilder();
-		this.champs.stream().forEach( f -> sbResult.append("//").append( f ).append( "//" ).append( "\n" ) );
+		this.champs.stream().forEach( f -> sbResult.append( f ).append( "\n" ) );
 		return sbResult.toString();
 	}
 

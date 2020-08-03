@@ -181,6 +181,7 @@ public class Organism extends Agent implements AgentContent {
 							int attribute, int variable, int value) {
 		IDecision what2do = null;
 		switch(which) {
+		// XXX attention ! start from 850 or 851 according to chemical list ?!
 		case(851): what2do = new IDecision() {
 			@Override
 			public void action(Organism orga, int... variables) {
@@ -543,8 +544,6 @@ public class Organism extends Agent implements AgentContent {
 			this.extendedlineage.stream().forEach( el -> result.append( "\t" ).append( el.getScientificName() ).append(" (").append( el.getUniqueID() ).append(")\n") );
 		}
 		
-		result.append(this.extendedlineage.toString());
-
 		result.append("GENOME\n");
 		for (int i = 0 ; i < this.genome.size() ; i++) {
 			Chromosome chr = this.genome.get(i);

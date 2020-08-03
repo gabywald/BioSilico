@@ -9,7 +9,7 @@ import gabywald.global.data.File;
 
 /**
  * This class for Genomes in gattaca format (genes line by line written with A,C,G,T). 
- * @author Gabriel Chandesris (2009-2010)
+ * @author Gabriel Chandesris (2009-2010, 2020)
  */
 @SuppressWarnings("serial")
 public class FileGattaca extends FileBiological {
@@ -17,41 +17,12 @@ public class FileGattaca extends FileBiological {
 	private List<Sequence> liste;
 
 	/**
-	 * Constructor with given content. 
-	 * @param content (String)
-	 * @see Fichier#Fichier(String, String)
-	 */
-	/**
-	public FichierGattaca(String content) {
-		super("gattaca","no_name");
-		if (FichierGattaca.isGattaca(content)) {
-			this.setValid(true);
-			String tabContent[] = content.split("\n");
-			content = "";
-			for (int i = 0 ; i < tabContent.length ; i++) 
-				{ content += tabContent[i].toUpperCase()+"\n"; } 
-		} else { this.setValid(false); }
-		
-		if (this.isValid()) {
-			this.liste = new SequenceListe();
-			String[] tempo = content.split("\n");
-			String nom = "",sequence = "";
-			for (int i = 0 ; i < tempo.length ; i++) {
-				super.addToChamps(tempo[i]);	
-				nom = "Gene "+i;
-				sequence = tempo[i]; 
-				this.liste.addSequence(new Sequence(nom,sequence));
-			}
-		}
-	}*/
-	
-	/**
 	 * Constructor with given name and content. 
 	 * @param name (String)
 	 * @param content (String)
 	 * @see File#File(String, String)
 	 */
-	public FileGattaca(String name,String content) {
+	public FileGattaca(String name, String content) {
 		super("gattaca",name+".gat");
 		if (FileGattaca.isGattaca(content)) {
 			this.setValid(true);
@@ -99,8 +70,8 @@ public class FileGattaca extends FileBiological {
 			{ Terminal.ecrireStringln("----------------"); }
 		*/
 		if (BaseGattaca.isBaseOrGap(gene.charAt(gene.length()-1))) 
-			{ length = gene.length()-1; } /** from direct sequence */
-		else { length = gene.length()-2; } /** from a split table */
+			{ length = gene.length()-1; }	/** from direct sequence */
+		else { length = gene.length()-2; }	/** from a split table */
 		for (int i = 0 ; i < length ; i++) {
 			if (!BaseGattaca.isBaseOrGap(gene.charAt(i)) )
 				{ return false; }

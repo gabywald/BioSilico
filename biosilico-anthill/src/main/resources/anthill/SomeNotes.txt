@@ -1,0 +1,10 @@
+20200803 : NRJ ideas / notes
+	energy variables on chemicals for World / WorldCase (on some ?!) : 
+		- 'relative' heat (warm, cold...)
+		- 'solar' or equivalent
+		- ... 
+
+	energy equivalent in Agent / Organism
+		- 'dissipation' or 'accumulation' (same index as in environment)
+		- molecular (ATP, ADP...) : made by "photosynthesis" or use of molecules
+		- ... 

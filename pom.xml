@@ -24,6 +24,7 @@
 		<module>biosilico-biojava</module>
 		<module>biosilico-cellmodel</module>
 		<module>biosilico-biosilico</module>
+		<module>biosilico-anthill</module>
 	</modules>
 
 	<properties>

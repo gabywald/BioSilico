@@ -5,7 +5,7 @@ import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
- * This type of Gene provoque some inputs or available behaviour of an organism. 
+ * This type of Gene make some inputs or available behavior of an organism. 
  * <br>This can although be used to import / export directly chemicals. 
  * <br><i>Creatures inspired. </i>
  * @author Gabriel Chandesris (2009, 2020)
@@ -101,7 +101,7 @@ public class StimulusDecision extends GeneGattaca {
 		} else { /** this is an output / decision */
 			/** Activity on variable or objet make sense in action. */
 			if (this.object) {
-				/** Acts to an object */
+				// ***** Acts to an object 
 				if (orga.getChemicals() /** Action has to be done. */
 						.getVariable(this.indicator) > this.threshold) {
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
@@ -112,7 +112,7 @@ public class StimulusDecision extends GeneGattaca {
 					orga.getChemicals().setVarLessLess(this.indicator);
 				}
 			} else { 
-				/** Acts to a variable : emit, receive... */
+				// ***** Acts to a variable : emit, receive... 
 				if (orga.getChemicals() /** Action has to be done. */
 						.getVariable(this.varia) > this.threshold) {
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
