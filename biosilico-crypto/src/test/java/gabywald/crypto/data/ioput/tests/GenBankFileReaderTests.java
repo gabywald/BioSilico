@@ -29,8 +29,8 @@ class GenBankFileReaderTests {
 		try {
 			content01 = File.readFile( testDataFile );
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Assertions.fail(e.getMessage());
 		}
 		Assertions.assertNotNull( content01 );
 		String[] content2read = content01.split("\\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \n");

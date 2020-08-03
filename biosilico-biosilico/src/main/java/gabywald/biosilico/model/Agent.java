@@ -38,7 +38,7 @@ public abstract class Agent extends ObservableObject
 	/** Rank and Division of the Agent / Organism. */
 	private StringCouple rankDivision;
 	
-	/** Default Constructor (not eatable, but movable).  */
+	/** Default Constructor (not alive, not eatable, but movable).  */
 	public Agent() {
 		this(false, false, true);
 	}
@@ -52,8 +52,8 @@ public abstract class Agent extends ObservableObject
 	public Agent(boolean alive, boolean movable, boolean eatable) {
 		this.init();
 		this.alive		= alive;
-		this.variables.setVariable(931, (eatable)?100:0); /** Eatable */
-		this.variables.setVariable(930, (movable)?100:0); /** Movable */
+		this.variables.setVariable(944, (eatable)?100:0); /** Eatable */
+		this.variables.setVariable(943, (movable)?100:0); /** Movable */
 	}
 	
 	/** Initialization helper for constructors. */
@@ -189,13 +189,6 @@ public abstract class Agent extends ObservableObject
 		result	.append("DIVISION\t").append(this.rankDivision.getValueB()).append( "\n" );
 		result	.append("CHEMICAL VARIABLES\n");
 		result	.append(this.variables.toString()).append( "\n" );
-//		for (int i = 0 ; i < this.variables.length() ; i++) { 
-//			String chemIndex = this.chemicalVariables
-//										.getStringCouple(i).getValueA();
-//			String chemValue = this.chemicalVariables
-//										.getStringCouple(i).getValueB();
-//			result	.append("\t"+chemIndex+"\t"+chemValue+"\n";
-//		}
 		return result.toString();
 	}
 }
