@@ -25,7 +25,7 @@ public class PlantBuilder {
 		// // // need some biochemical reaction
 		// // // receptor for some variables from environment
 		// // // emitter for some variables from environment
-		// // // Decision to make fruits !
+		// // // decision to make fruits !
 		
 		return toReturn;
 	}

@@ -20,6 +20,7 @@ public class Plant extends Organism {
 		this.setOrganismType(OrganismType.BIOSILICO_VIRIDITA);
 		
 		// ***** Here creation of 'egg' => create fruits !
+		// ***** Take 'Solar Energy' to build some molecules !
 		
 	}
 	

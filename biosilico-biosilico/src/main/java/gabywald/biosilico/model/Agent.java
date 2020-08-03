@@ -88,9 +88,9 @@ public abstract class Agent extends ObservableObject
 	protected void setAlive(boolean isAlive)		
 		{ this.alive = isAlive; }
 	protected void setMovable(boolean isMovable) 
-		{ this.variables.setVariable(943, isMovable?100:0); }
+		{ this.variables.setVariable(943, isMovable ? 100 : 0); }
 	protected void setEatable(boolean isEatable) 
-		{ this.variables.setVariable(944, isEatable?100:0); }
+		{ this.variables.setVariable(944, isEatable ? 100 : 0); }
 
 	public int getCycle()			{ return this.variables.getVariable(941); }
 	public void cyclePlusPlus()		{ this.variables.setVarPlusPlus(941); }

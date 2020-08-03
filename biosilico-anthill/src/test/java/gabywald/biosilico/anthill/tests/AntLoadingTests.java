@@ -1,6 +1,5 @@
 package gabywald.biosilico.anthill.tests;
 
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +15,10 @@ import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.global.data.File;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class AntLoadingTests {
 
 	@Test
@@ -45,33 +48,49 @@ class AntLoadingTests {
 				String datas[] = line.split( "\t" );
 				switch(datas.length) {
 				case (11) : 
-					// ***** InitConc
+					// ***** InitialConcentration
 					System.out.println("\t" + datas[0] + " :: " + datas[1]);
-					currentGene = icb.varia(Integer.parseInt(datas[ 9])).value(Integer.parseInt(datas[10]))
+					currentGene = icb	.varia(Integer.parseInt(datas[ 9])).value(Integer.parseInt(datas[10]))
 											.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
 											.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
 											.build();
-					currentGene.setName(datas[ 0]);
-					
 					Assertions.assertNotNull( currentGene );
-					
-					System.out.println( "\t" + currentGene );
-					
-					chr.addGene(currentGene);
-					
 					break;
 				case (18) : 
-					// ***** BioRea
-					// TODO reading BioRea
+					// ***** BiochemicalReaction
+					System.out.println("\t" + datas[0] + " :: " + datas[1]);
+					currentGene = brb	.achem(Integer.parseInt(datas[ 9])).acoef(Integer.parseInt(datas[10]))
+										.bchem(Integer.parseInt(datas[11])).bcoef(Integer.parseInt(datas[12]))
+										.cchem(Integer.parseInt(datas[13])).ccoef(Integer.parseInt(datas[14]))
+										.dchem(Integer.parseInt(datas[15])).dcoef(Integer.parseInt(datas[16]))
+										 .kmvm(Integer.parseInt(datas[17]))
+											.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
+											.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
+											.build();
+					Assertions.assertNotNull( currentGene );
 					break;
 				case (17) : 
-					// ***** StiDec
-					// TODO reading StiDec
+					// ***** StimulusDecision
+					System.out.println("\t" + datas[0] + " :: " + datas[1]);
+					currentGene = sdb	.perception(Boolean.parseBoolean(datas[ 9])).object(Boolean.parseBoolean(datas[10]))
+										.indicator(Integer.parseInt(datas[11])).threshold(Integer.parseInt(datas[12]))
+										.attribute(Integer.parseInt(datas[13])).varia(Integer.parseInt(datas[14]))
+										.value(Integer.parseInt(datas[15])).script(Integer.parseInt(datas[16]))
+											.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
+											.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
+											.build();
+					Assertions.assertNotNull( currentGene );
 					break;
 				default:
 					System.out.println( "Unknown length (" + datas.length + ")" );
-				}
+				} // END "switch(datas.length)"
 				
+				if (currentGene != null) {
+					currentGene.setName(datas[ 0]);
+					System.out.println( "\t" + currentGene );
+					chr.addGene(currentGene);
+					currentGene = null;
+				}
 			}
 		}
 		

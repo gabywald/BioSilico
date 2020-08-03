@@ -1,4 +1,4 @@
-package gabywald.biosilico.genetics.tests;
+package gabywald.biosilico.model.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -93,7 +93,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc004() {
+	void testInitConcWithBiochemicalReaction01() {
 		
 		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 		
@@ -184,7 +184,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc005() {
+	void testInitConcWithBiochemicalReaction02() {
 		
 		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 		
@@ -256,7 +256,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc006() {
+	void testInitConcWithBiochemicalReaction03() {
 		
 		Logger.setLogLevel(LoggerLevel.LL_NONE);
 		
@@ -307,7 +307,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc007() {
+	void testBrainGene01() {
 		
 		Chromosome basic_genome = new Chromosome();
 		basic_genome.addGene(
@@ -327,7 +327,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc008() {
+	void testBrainGene02() {
 		
 		Chromosome basic_genome = new Chromosome();
 		basic_genome.addGene(
@@ -349,7 +349,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc009() {
+	void testBrainGene03() {
 		
 		Chromosome basic_genome = new Chromosome();
 		basic_genome.addGene(
@@ -372,7 +372,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc010() {
+	void testBrainGene04() {
 		
 		Chromosome basic_genome = new Chromosome();
 		basic_genome.addGene(
@@ -395,7 +395,7 @@ class OrganismBuildExampleTests {
 	}
 	
 	@Test
-	void testInitConc011() {
+	void testBrainGene05() {
 		
 		Chromosome basic_genome = new Chromosome();
 		

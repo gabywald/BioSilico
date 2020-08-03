@@ -18,6 +18,7 @@ public class Chemicals {
 	private static final String CHEMICAL_LIST_FILE	= "biosilico/data/ChemicalList.txt";
 	/** Number of chemicals. */
 	public static final int CHEMICAL_LENGTH			= 1000;
+	
 	/** The table of variables. */
 	private List<Integer> vars;
 	
@@ -25,9 +26,6 @@ public class Chemicals {
 	public Chemicals() { 
 		this.vars = IntStream.iterate(0, i -> i++).limit( Chemicals.CHEMICAL_LENGTH )
 						.map( i -> 0 ).boxed().collect(Collectors.toList());
-//		this.vars = new ArrayList<Integer>( Chemicals.CHEMICAL_LENGTH );
-//		for (int i = 0 ; i < Chemicals.CHEMICAL_LENGTH ; i++) 
-//			{ this.vars.add(new Integer(0)); }
 	}
 	
 	public int length()				{ return this.vars.size(); }
@@ -97,12 +95,21 @@ public class Chemicals {
 			});
 	}
 	
+	public String toString() {
+		String result = new String();
+		for (int i = 0 ; i < this.vars.size() ; i++) {
+			if (this.vars.get(i).intValue() != 0) 
+				{ result += "\t"+i+"\t"+this.vars.get(i).intValue()+"\n"; }
+		}
+		return result;
+	}
+	
 	/** List of abbreviations of chemicals. */
-	private static List<String> CHEMICAL_ABREV = null;
+	private static List<String> CHEMICAL_ABREV			= null;
 	/** List of names of chemicals. */
-	private static List<String> CHEMICAL_NAMES = null;
+	private static List<String> CHEMICAL_NAMES			= null;
 	/** List of couples (abbrev,name) of chemicals. */
-	private static List<StringCouple> CHEMICAL_LISTE = null;
+	private static List<StringCouple> CHEMICAL_LISTE	= null;
 	
 	/**
 	 * List of names of chemicals. 
@@ -165,15 +172,6 @@ public class Chemicals {
 			}
 		/** TODO traitement de IOException */
 		} catch (IOException e) { e.printStackTrace(); }
-	}
-	
-	public String toString() {
-		String result = new String();
-		for (int i = 0 ; i < this.vars.size() ; i++) {
-			if (this.vars.get(i).intValue() != 0) 
-				{ result += "\t"+i+"\t"+this.vars.get(i).intValue()+"\n"; }
-		}
-		return result;
 	}
 	
 }

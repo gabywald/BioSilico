@@ -56,9 +56,9 @@ SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	865
 SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	866	
 SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	865	
 SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	866	
-// // // Decision to take fruits !
-// // // Decision to drop fruits ! (in the AntHill)
-// // // Decision to eat fruits !
-// // // Decision to display pheromones !
+// // // decision to take fruits !
+// // // decision to drop fruits ! (in the AntHill)
+// // // decision to eat fruits !
+// // // decision to display pheromones !
 // // // detection of pheromones !
 // // // choice of destination :: movement !!

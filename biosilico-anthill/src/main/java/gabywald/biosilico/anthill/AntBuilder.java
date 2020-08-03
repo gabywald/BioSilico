@@ -23,10 +23,10 @@ public class AntBuilder {
 		// // // need some biochemical reaction
 		// // // receptor for some variables from environment
 		// // // emitter for some variables from environment
-		// // // Decision to take fruits !
-		// // // Decision to drop fruits ! (in the AntHill)
-		// // // Decision to eat fruits !
-		// // // Decision to display pheromones !
+		// // // decision to take fruits !
+		// // // decision to drop fruits ! (in the AntHill)
+		// // // decision to eat fruits !
+		// // // decision to display pheromones !
 		
 		// // // detection of pheromones !
 		// // // choice of destination :: movement !!

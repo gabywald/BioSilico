@@ -4,7 +4,12 @@
 		- 'solar' or equivalent
 		- ... 
 
-	energy equivalent in Agent / Organism
+	energy equivalent in Agent / Organism : 
 		- 'dissipation' or 'accumulation' (same index as in environment)
 		- molecular (ATP, ADP...) : made by "photosynthesis" or use of molecules
+		- ... 
+
+	'energy source' : 
+		- specific type of Agent which gives energy in a local WorldCase instance
+		- not alive, not eatable, not movable (see later for other purposes)
 		- ... 

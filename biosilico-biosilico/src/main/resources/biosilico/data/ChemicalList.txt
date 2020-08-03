@@ -498,8 +498,8 @@ AG40CoA	AG40CoA
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
+Solar Energy	solar energy
+Heat Energy	heat energy
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
