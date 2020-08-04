@@ -7,10 +7,10 @@ package gabywald.biosilico.model;
  */
 public class EnergySource extends Agent {
 	
-	public static final int INDEX_SOLAR	= 501;
-	public static final int INDEX_HEAT	= 502;
+	public static final int INDEX_SOLAR			= 500; // SomeChemicals.ENERGY_SOLAR.getIndex();
+	public static final int INDEX_HEAT			= 501; // SomeChemicals.ENEGRY_HEAT.getIndex();
 	
-	public static final int BASIC_ENERGY_LEVEL = 25;
+	public static final int BASIC_ENERGY_LEVEL	= 25;
 	
 	/**
 	 * Default Constructor (not alive, not movable, not eatable). 
@@ -44,7 +44,7 @@ public class EnergySource extends Agent {
 	@Override
 	public void execution(WorldCase local) {
 		EnergySource.addEnergyTo(local, EnergySource.INDEX_SOLAR, this.variables.getVariable(EnergySource.INDEX_SOLAR));
-		EnergySource.addEnergyTo(local, EnergySource.INDEX_HEAT, this.variables.getVariable(EnergySource.INDEX_HEAT));
+		EnergySource.addEnergyTo(local, EnergySource.INDEX_HEAT,  this.variables.getVariable(EnergySource.INDEX_HEAT));
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package gabywald.biosilico.anthill;
 
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.AgentType;
 
 /**
  * 
@@ -23,7 +24,7 @@ public class Ant extends Organism {
 		this.setMovable( false );
 		
 		this.setNameCommon("Ant");
-		this.setOrganismType(OrganismType.BIOSILICO_ANIMA);
+		this.setOrganismType(AgentType.BIOSILICO_ANIMA);
 		
 	}
 	

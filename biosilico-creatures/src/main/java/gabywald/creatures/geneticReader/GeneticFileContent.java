@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2020)
  */
 public class GeneticFileContent {
 	private String fileName;
@@ -23,16 +23,14 @@ public class GeneticFileContent {
 	
 	public GeneticFileContent(String file) {
 		this.fileName	= file;
+		
 		Logger.printlnLog(LoggerLevel.LL_INFO, this.fileName);
-		// try {
-			InputStream ips			= PropertiesLoader.openResource(this.fileName); 
-			// new FileInputStream(this.fileName);
-			InputStreamReader ipsr	= new InputStreamReader(ips);
-			this.buffer				= new BufferedReader(ipsr);
-			this.isReadable = true;
-		// } 
-		// catch (FileNotFoundException e) 
-		// 	{ this.isReadable = false;Logger.printlnLog(LoggerLevel.LL_ERROR, "File Not Found !"); } 
+		
+		InputStream ips			= PropertiesLoader.openResource(this.fileName); 
+		// new FileInputStream(this.fileName);
+		InputStreamReader ipsr	= new InputStreamReader(ips);
+		this.buffer				= new BufferedReader(ipsr);
+		this.isReadable = true;
 	}
 
 	public char nextChar() {

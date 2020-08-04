@@ -647,6 +647,7 @@ Hormone 09	hormone09
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
 Pheromone00	pheromonone 00
 Pheromone01	pheromonone 01
 Pheromone02	pheromonone 02
@@ -657,7 +658,6 @@ Pheromone06	pheromonone 06
 Pheromone07	pheromonone 07
 Pheromone08	pheromonone 08
 Pheromone09	pheromonone 09
-<NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
@@ -869,7 +869,7 @@ Is	is
 MakeGamet	makegamet
 LayEgg	layegg
 Mate	mate
-(free)	(free)
+Create Egg	createegg
 (free)	(free)
 (free)	(free)
 (free)	(free)
@@ -898,9 +898,9 @@ Mate	mate
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 Current	current
-Small Elt	small elt
-Midd Elt	midd elt
-Big Elt	big elt
+Small Elt	smallelt
+Midd Elt	middelt
+Big Elt	bigelt
 Food	food
 Drink	drink
 Vehicle	vehicle
@@ -922,7 +922,7 @@ Egg	egg
 Embryo	embryo
 Larva	larva
 Child	child
-"Teen"	"teen"
+Teen	teen
 Adult	adult
 Senior	senior
 Dead	dead
@@ -940,11 +940,11 @@ Virus	virus
 Gender	gender
 Aging	aging
 TypeOf	typeof
+STATUS		(946, "Status", 	"status")
 Movable	movable
 Eatable	eatable
 Fertile	fertile
 Pregnant	pregnant
-(free)	(free)
 (free)	(free)
 (free)	(free)
 (free)	(free)

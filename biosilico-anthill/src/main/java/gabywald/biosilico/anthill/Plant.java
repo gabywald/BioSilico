@@ -1,6 +1,7 @@
 package gabywald.biosilico.anthill;
 
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.AgentType;
 
 /**
  * This class describes plants which produce fruits. 
@@ -17,7 +18,7 @@ public class Plant extends Organism {
 		this.setMovable( false );
 		
 		this.setNameCommon("Plant");
-		this.setOrganismType(OrganismType.BIOSILICO_VIRIDITA);
+		this.setOrganismType(AgentType.BIOSILICO_VIRIDITA);
 		
 		// ***** Here creation of 'egg' => create fruits !
 		// ***** Take 'Solar Energy' to build some molecules !

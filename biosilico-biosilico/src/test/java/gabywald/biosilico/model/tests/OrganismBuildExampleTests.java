@@ -15,24 +15,29 @@ import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.StateType;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class OrganismBuildExampleTests {
 
 	@Test
 	void testInitConc001() {
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, false, 
-						0, 0, 0, 0,
-						1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, false, 0, 0, 0, 0,
+								1, 100));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
 
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -45,15 +50,15 @@ class OrganismBuildExampleTests {
 	void testInitConc002() {
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								1, 100));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
 
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -66,26 +71,16 @@ class OrganismBuildExampleTests {
 	void testInitConc003() {
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						1, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						2, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						3, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						4, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
-						5, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								2, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								3, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								4, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+								5, 100));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
@@ -94,7 +89,9 @@ class OrganismBuildExampleTests {
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 5 ) );
 
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(5, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -113,40 +110,32 @@ class OrganismBuildExampleTests {
 		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						1, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						2, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						3, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						4, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						5, 100));
-		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
-				0, 10, 0, 0,
-				1, 10, 
-				2, 10, 
-				6, 5, 
-				7, 5, 
-				1));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						1));
 
 		Organism test		= new Organism(basicGenome);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -164,6 +153,8 @@ class OrganismBuildExampleTests {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 1");
 		test.execution(null);
 		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -181,6 +172,8 @@ class OrganismBuildExampleTests {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 2");
 		test.execution(null);
 		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(3, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -204,40 +197,34 @@ class OrganismBuildExampleTests {
 		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						1, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						2, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						3, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						4, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						5, 100));
 		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
-				0, 10, 0, 0,
-				1, 10, 
-				2, 10, 
-				6, 5, 
-				7, 5, 
-				2));
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						2));
 
 		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -254,6 +241,9 @@ class OrganismBuildExampleTests {
 		// second execution / cycle 1
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 1");
 		test.execution(null);
+		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -276,35 +266,27 @@ class OrganismBuildExampleTests {
 		Logger.setLogLevel(LoggerLevel.LL_NONE);
 
 		Chromosome basicGenome = new Chromosome();
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						1, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						2, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						3, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						4, 100));
-		basicGenome.addGene(
-				new InitialConcentration(false, false, false, true, 
-						0, 0, 0, 0,
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 						5, 100));
 		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 
-				0, 10, 0, 0,
-				1, 10, 
-				2, 10, 
-				6, 5, 
-				7, 5, 
-				1));
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						1));
 
 		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -319,6 +301,8 @@ class OrganismBuildExampleTests {
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 7 ) );
 
 		test.execution(null);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -342,9 +326,9 @@ class OrganismBuildExampleTests {
 						0, 0, 0, 0,
 						100, 200, 0, 0));
 		Organism test		= new Organism(basicGenome);
-
+		
 		test.execution(null);
-
+		
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(1, test.getGenome().get(0).length());
@@ -364,9 +348,9 @@ class OrganismBuildExampleTests {
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertNull(test.getBrain());
-
+		
 		test.execution(null);
-
+		
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(1, test.getGenome().get(0).length());
@@ -592,7 +576,7 @@ class OrganismBuildExampleTests {
 				.agemin(0).agemax(0).mutation(25).activ(true).build();
 
 		basicGenome.addGene( brainLobeGene03 );
-		
+
 		BrainLobeGene brainLobeGene03b	= blgb.heigth(3).width(5)
 				.rest(0).threshold(10).desc( 9).dmin(1).dmax(5)
 				.prox(3).repr(true).repy(10).wta(true)
@@ -647,7 +631,7 @@ class OrganismBuildExampleTests {
 			Assertions.assertEquals( true, currentNeuron.isWTA());
 
 		});
-		
+
 		IntStream.range(1,  6).forEach( j -> {
 			Neuron currentNeuron = testBrain.getNeuronAt(5, j);
 			Assertions.assertNotNull( currentNeuron );
@@ -663,7 +647,7 @@ class OrganismBuildExampleTests {
 			Assertions.assertEquals( true, currentNeuron.isWTA());
 
 		});
-		
+
 		IntStream.range(12, 17).forEach( j -> {
 			Neuron currentNeuron = testBrain.getNeuronAt(5, j);
 			Assertions.assertNotNull( currentNeuron );
