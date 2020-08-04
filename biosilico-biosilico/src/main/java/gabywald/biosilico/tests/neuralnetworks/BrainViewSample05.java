@@ -10,6 +10,7 @@ import gabywald.biosilico.model.Neuron;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.IntStream;
@@ -23,9 +24,9 @@ import javax.swing.JPanel;
  * 
  * @author Gabriel Chandesris (2010)
  */
-public class BrainViewSample03 extends JFrame implements Observer {
+public class BrainViewSample05 extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
-	private static BrainViewSample03 instance = null;
+	private static BrainViewSample05 instance = null;
 	private static int FRAME_HEIGHT	= 800;
 	private static int FRAME_WIDTH	= 600;
 	private static int LABEL_HEIGHT	= 20;
@@ -37,7 +38,7 @@ public class BrainViewSample03 extends JFrame implements Observer {
 	private int brainHeight;
 	private int brainWidth;
 
-	private BrainViewSample03() {
+	private BrainViewSample05() {
 		this.contentPanel = new JPanel();
 		this.contentPanel.setSize(FRAME_HEIGHT, FRAME_WIDTH-LABEL_HEIGHT);
 		this.contentLabel = new JLabel();
@@ -53,32 +54,40 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			 * and 'conception' lobe between the two previous... */
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
 			// receptorActi.setActivity(1000);
-			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 3, false, 2);
-			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 5, false, 0, true);
+			Neuron conception	= new Neuron(0, 10,  9, 1, 3, 3, false, 0);
+			
+			Neuron regulator	= new Neuron(0, 10, 10, 2, 5, 10, false, 0, false);
+			
+			Neuron emittersTest = new Neuron(0, 10,  8, 4, 4, 3, false, 0, true);
 
 			int interval = 5;
 			IntStream.iterate(0, i -> i+interval).limit( this.brainWidth / interval)
 			.forEach( i -> {
 				try {
 					receptorActi.setActivity(interval * 100);
-					this.testBrain.setLobe(1, 1, 1, i, receptorActi, false);
+					this.testBrain.setLobe(1, 1, 1, 1 + i, receptorActi, false);
 				} catch (BrainLengthException | BrainLobeReplaceException e) {
 					e.printStackTrace();
 				}
 			});
 			
-			this.testBrain.setLobe(12, 20, 3, 0, conception, false);
+			this.testBrain.setLobe(10, 20, 3, 0, conception, false);
 			
-//			IntStream.iterate(2, i -> i+interval).limit( this.brainWidth / interval)
-//			.forEach( i -> {
-//				try {
-//					this.testBrain.setLobe(15, interval, 3, i, conception, true);
-//				} catch (BrainLengthException | BrainLobeReplaceException e) {
-//					e.printStackTrace();
-//				}
-//			});
+			this.testBrain.setLobe(1, 5, this.brainHeight-5,  1, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-5,  7, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-5, 14, regulator, true);
 			
-			this.testBrain.setLobe(1, this.brainWidth, this.brainHeight-1, 0, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-4,  1, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-4,  7, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-4, 14, regulator, true);
+			
+			this.testBrain.setLobe(1, 5, this.brainHeight-3,  1, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-3,  7, regulator, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-3, 14, regulator, true);
+			
+			this.testBrain.setLobe(1, 5, this.brainHeight-1,  1, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-1,  7, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-1, 14, emittersTest, true);
 		} 
 		catch (BrainLengthException e)		{ e.printStackTrace(); } 
 		catch (BrainLobeReplaceException e)	{ e.printStackTrace(); }
@@ -116,20 +125,33 @@ public class BrainViewSample03 extends JFrame implements Observer {
 	
 	public Brain getBrain() { return this.testBrain; }
 	
-	public static BrainViewSample03 getBrainGraphicalView() {
-		if (BrainViewSample03.instance == null) 
-			{ BrainViewSample03.instance = new BrainViewSample03(); }
-		return BrainViewSample03.instance;
+	public static BrainViewSample05 getBrainGraphicalView() {
+		if (BrainViewSample05.instance == null) 
+			{ BrainViewSample05.instance = new BrainViewSample05(); }
+		return BrainViewSample05.instance;
 	}
 	
 	public static void main(String[] args) {
-		BrainViewSample03 bgv = BrainViewSample03.getBrainGraphicalView();
+		BrainViewSample05 bgv = BrainViewSample05.getBrainGraphicalView();
 		try { Thread.sleep(2000); } 
 		catch (InterruptedException e) { e.printStackTrace(); }
 		Brain test = bgv.getBrain();
 		test.addObserver(bgv);
 		Thread brainThread = new Thread(test);
 		brainThread.start();
+		
+		for (int i = 0 ; i < 10 ; i++)  {
+			for (Integer yIndex : Arrays.asList(1, 6, 11, 16)) {
+				try { Thread.sleep( 5000 ); } 
+				catch (InterruptedException e) { e.printStackTrace(); }
+				
+				test.getNeuronAt(1, yIndex).addActivity(1000);
+			}
+			
+			try { Thread.sleep( 10000 ); } 
+			catch (InterruptedException e) { e.printStackTrace(); }
+		}
+		
 	}
 	
 	public void update(Observable arg0, Object arg1) {

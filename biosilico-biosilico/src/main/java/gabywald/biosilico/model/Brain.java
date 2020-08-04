@@ -282,7 +282,7 @@ public class Brain extends ObservableObject {
 						Neuron sample, boolean replace) 
 					throws BrainLengthException, BrainLobeReplaceException
 	{
-		/** Throwing exceptions if necessary. */
+		// ***** Throwing exceptions if necessary. 
 		boolean lengthExcept = false;
 		if ( (height == 0) || (width == 0) ) 	
 			{ lengthExcept = true; }

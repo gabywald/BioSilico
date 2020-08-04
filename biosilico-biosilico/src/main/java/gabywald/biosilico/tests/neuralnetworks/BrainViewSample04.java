@@ -23,9 +23,9 @@ import javax.swing.JPanel;
  * 
  * @author Gabriel Chandesris (2010)
  */
-public class BrainViewSample03 extends JFrame implements Observer {
+public class BrainViewSample04 extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
-	private static BrainViewSample03 instance = null;
+	private static BrainViewSample04 instance = null;
 	private static int FRAME_HEIGHT	= 800;
 	private static int FRAME_WIDTH	= 600;
 	private static int LABEL_HEIGHT	= 20;
@@ -37,7 +37,7 @@ public class BrainViewSample03 extends JFrame implements Observer {
 	private int brainHeight;
 	private int brainWidth;
 
-	private BrainViewSample03() {
+	private BrainViewSample04() {
 		this.contentPanel = new JPanel();
 		this.contentPanel.setSize(FRAME_HEIGHT, FRAME_WIDTH-LABEL_HEIGHT);
 		this.contentLabel = new JLabel();
@@ -53,7 +53,7 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			 * and 'conception' lobe between the two previous... */
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
 			// receptorActi.setActivity(1000);
-			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 3, false, 2);
+			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 3, false, 0);
 			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 5, false, 0, true);
 
 			int interval = 5;
@@ -61,7 +61,7 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			.forEach( i -> {
 				try {
 					receptorActi.setActivity(interval * 100);
-					this.testBrain.setLobe(1, 1, 1, i, receptorActi, false);
+					this.testBrain.setLobe(1, 1, 1, 1 + i, receptorActi, false);
 				} catch (BrainLengthException | BrainLobeReplaceException e) {
 					e.printStackTrace();
 				}
@@ -69,16 +69,9 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			
 			this.testBrain.setLobe(12, 20, 3, 0, conception, false);
 			
-//			IntStream.iterate(2, i -> i+interval).limit( this.brainWidth / interval)
-//			.forEach( i -> {
-//				try {
-//					this.testBrain.setLobe(15, interval, 3, i, conception, true);
-//				} catch (BrainLengthException | BrainLobeReplaceException e) {
-//					e.printStackTrace();
-//				}
-//			});
-			
-			this.testBrain.setLobe(1, this.brainWidth, this.brainHeight-1, 0, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-1, 1, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-1, 7, emittersTest, true);
+			this.testBrain.setLobe(1, 5, this.brainHeight-1, 14, emittersTest, true);
 		} 
 		catch (BrainLengthException e)		{ e.printStackTrace(); } 
 		catch (BrainLobeReplaceException e)	{ e.printStackTrace(); }
@@ -116,14 +109,14 @@ public class BrainViewSample03 extends JFrame implements Observer {
 	
 	public Brain getBrain() { return this.testBrain; }
 	
-	public static BrainViewSample03 getBrainGraphicalView() {
-		if (BrainViewSample03.instance == null) 
-			{ BrainViewSample03.instance = new BrainViewSample03(); }
-		return BrainViewSample03.instance;
+	public static BrainViewSample04 getBrainGraphicalView() {
+		if (BrainViewSample04.instance == null) 
+			{ BrainViewSample04.instance = new BrainViewSample04(); }
+		return BrainViewSample04.instance;
 	}
 	
 	public static void main(String[] args) {
-		BrainViewSample03 bgv = BrainViewSample03.getBrainGraphicalView();
+		BrainViewSample04 bgv = BrainViewSample04.getBrainGraphicalView();
 		try { Thread.sleep(2000); } 
 		catch (InterruptedException e) { e.printStackTrace(); }
 		Brain test = bgv.getBrain();
