@@ -246,6 +246,7 @@ public class Organism extends Agent implements AgentContent {
 		if (object != null) { this.liste.add(object); } 
 	}
 
+	@Override
 	public String toString() {
 		// TODO use of Java 8 streams
 		StringBuilder result = new StringBuilder();

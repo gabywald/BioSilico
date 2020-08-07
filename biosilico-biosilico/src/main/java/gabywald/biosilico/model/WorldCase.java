@@ -115,5 +115,20 @@ public class WorldCase implements VariableContent, AgentContent {
 		if (object != null) { this.liste.add(object); } 
 		// ***** setting current WC already done in Agent !
 	}
+	
+	@Override
+	public String toString() {
+		// TODO use of Java 8 streams
+		StringBuilder result = new StringBuilder();
+		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
+		result.append("AGENT\n");
+		if (this.liste.size() == 0)
+			{ result.append("\tNO DATA\n"); }
+		else {
+			this.liste.stream().forEach( ag -> result.append( "\t" ).append( ag.getScientificName() ).append(" (").append( ag.getUniqueID() ).append(")\n") );
+		}
+		result	.append("CHEMICAL VARIABLES\n").append(this.variables.toString()).append( "\n" );
+		return result.toString();
+	}
 
 }

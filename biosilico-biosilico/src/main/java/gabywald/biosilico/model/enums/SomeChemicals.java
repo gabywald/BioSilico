@@ -16,15 +16,15 @@ public enum SomeChemicals implements IChemicalsType {
 	EGG				(920, 	"Egg", 			"egg"), 
 	
 	PHEROMONE_00	(650, "Pheromone00", "pheromonone 00"), 
-	PHEROMONE_01	(650, "Pheromone01", "pheromonone 01"),
-	PHEROMONE_02	(650, "Pheromone02", "pheromonone 02"),
-	PHEROMONE_03	(650, "Pheromone03", "pheromonone 03"),
-	PHEROMONE_04	(650, "Pheromone04", "pheromonone 04"),
-	PHEROMONE_05	(650, "Pheromone05", "pheromonone 05"),
-	PHEROMONE_06	(650, "Pheromone06", "pheromonone 06"),
-	PHEROMONE_07	(650, "Pheromone07", "pheromonone 07"),
-	PHEROMONE_08	(650, "Pheromone08", "pheromonone 08"),
-	PHEROMONE_09	(650, "Pheromone09", "pheromonone 09"),
+	PHEROMONE_01	(651, "Pheromone01", "pheromonone 01"),
+	PHEROMONE_02	(652, "Pheromone02", "pheromonone 02"),
+	PHEROMONE_03	(653, "Pheromone03", "pheromonone 03"),
+	PHEROMONE_04	(654, "Pheromone04", "pheromonone 04"),
+	PHEROMONE_05	(655, "Pheromone05", "pheromonone 05"),
+	PHEROMONE_06	(656, "Pheromone06", "pheromonone 06"),
+	PHEROMONE_07	(657, "Pheromone07", "pheromonone 07"),
+	PHEROMONE_08	(658, "Pheromone08", "pheromonone 08"),
+	PHEROMONE_09	(659, "Pheromone09", "pheromonone 09"),
 	;
 	
 	private int index;

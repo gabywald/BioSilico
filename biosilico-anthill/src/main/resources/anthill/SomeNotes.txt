@@ -16,7 +16,12 @@
 		
 20200805+ 
 	Export and build of Decision / IDecision / DecisionBuilder
-	Reproduction accoridng to 'main type' of organism (Daemon, Viridita, Anima, Bacta, Viria)
+	Reproduction according to 'main type' of organism (Daemon, Viridita, Anima, Bacta, Viria)
 		TypeOf to decide which kind of reproduction
 		decision to 'mate' + 'lay egg' separately ! (create an egg)
 		create gamets to be used as agents / organism ? (not alive, eatable ?, movable ?)
+	Pheromone detection : 
+		StimulusDecision (localition => variable)
+		EmitterReceptor (variable => input neuron)
+		Instinct (connexion between input neuron and output neuron)
+	Brain & BrainLobeS !!

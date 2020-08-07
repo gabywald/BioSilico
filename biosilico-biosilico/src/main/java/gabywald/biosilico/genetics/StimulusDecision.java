@@ -2,6 +2,7 @@ package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -94,7 +95,8 @@ public class StimulusDecision extends GeneGattaca {
 					{ orga.getChemicals().setVariable(this.varia, this.value); }
 			} else { 
 				// ***** Acts from a variable located with attribute. 
-				if (orga.getCurrentWorldCase().getDirection(this.attribute).getVariables().getVariable(this.indicator) >= this.threshold) 
+				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
+				if ( (detectWC != null) && (detectWC.getVariables().getVariable(this.indicator) >= this.threshold) ) 
 					{ orga.getChemicals().setVariable(this.varia, this.value); }
 			}
 		} else { 

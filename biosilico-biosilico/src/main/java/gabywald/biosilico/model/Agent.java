@@ -106,7 +106,7 @@ public abstract class Agent extends ObservableObject
 	public WorldCase getCurrentWorldCase()				{ return this.current; }
 	public void setCurrentWorldCase(WorldCase current)	{ 
 		this.current	= current;
-		if (this.current != null) { this.current.addAgent( this ); }
+		if (this.current != null)	{ this.current.addAgent( this ); }
 	}
 	
 	public void setNextWorldCase(WorldCase nextWC)		{ this.nextStep = nextWC; }
@@ -194,8 +194,7 @@ public abstract class Agent extends ObservableObject
 		}
 		result	.append("RANK\t").append(this.rankDivision.getValueA()).append( "\n" );
 		result	.append("DIVISION\t").append(this.rankDivision.getValueB()).append( "\n" );
-		result	.append("CHEMICAL VARIABLES\n");
-		result	.append(this.variables.toString()).append( "\n" );
+		result	.append("CHEMICAL VARIABLES\n").append(this.variables.toString()).append( "\n" );
 		return result.toString();
 	}
 }

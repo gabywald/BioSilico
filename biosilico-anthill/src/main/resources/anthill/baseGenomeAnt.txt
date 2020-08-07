@@ -4,13 +4,14 @@
 // 	- 
 // // // need some initial concentration !!
 // InitConc	
-IC-H2O	true	true	false	true	0	0	0	25	182	100
-IC-O2	true	true	false	true	0	0	0	25	180	100
-IC-CO2	true	true	false	true	0	0	0	25	181	50
-IC-Glu	true	true	false	true	0	0	0	25	169	25
-IC-Fru	true	true	false	true	0	0	0	25	170	25
-IC-ATP	true	true	false	true	0	0	0	25	150	10
-IC-ADP	true	true	false	true	0	0	0	25	170	20
+IC:H2O	true	true	false	true	0	0	0	25	182	100
+IC:O2 	true	true	false	true	0	0	0	25	180	100
+IC:CO2	true	true	false	true	0	0	0	25	181	50
+IC:Glu	true	true	false	true	0	0	0	25	169	25
+IC:Fru	true	true	false	true	0	0	0	25	170	25
+IC:ATP	true	true	false	true	0	0	0	25	150	10
+IC:ADP	true	true	false	true	0	0	0	25	151	20
+IC:Pho	true	true	false	true	0	0	0	25	15	20
 // // // need some biochemical reaction
 // BioReact
 BRGlyc01:Glucose=>G6P	true	true	false	true	0	0	0	25	1	169	1	150	1	151	1	171	1	
@@ -51,14 +52,45 @@ BRCH002:FADH+O2=>FAD+2HO-	true	true	false	true	0	0	0	25	1	168	1	180	1	167	2	183	
 BRCH003:HO-+P=>HO-+H20	true	true	false	true	0	0	0	25	1	183	1	15	1	183	1	182	1	
 BRCH004:ADP+HO-=>ATP+H2O	true	true	false	true	0	0	0	25	1	151	1	183	1	150	1	182	1	
 // // // receptor for some variables from environment
+SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	865
+SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	865	
 // // // emitter for some variables from environment
-SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	865	
-SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	866	
-SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	865	
-SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	866	
+SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	864	
+SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	864	
 // // // decision to take fruits !
 // // // decision to drop fruits ! (in the AntHill)
 // // // decision to eat fruits !
 // // // decision to display pheromones !
-// // // detection of pheromones !
+// // // detection of pheromones ! (gene combination to get input in brain !)
+// // // // // Brain
+BR001:50501	true	true	true	true	0	999	0	25	50	50	1	1
+// // // // // BrainLobes : input and output here !
+BL001:NEU0R31	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	31	false
+BL002:NEU0R32	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	32	false
+BL003:NEU0R33	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	33	false
+BL004:NEU0R34	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	34	false
+BL005:NEU0R35	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	35	false
+BL006:NEU0R36	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	36	false
+BL007:NEU0R37	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	37	false
+BL008:NEU0R38	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	38	false
+BL009:MOVETO	true	true	true	true	0	999	0	25	0	0	0	1	3	0	false	0	true	1	8	48	31	false
+// // // // // StimulusDecision : detect from a given location 80x for ch650 (pheromone00) and internally add 5 to ch70x
+SD005:pher00NW	true	true	true	true	0	999	0	25	true	false	801	650	0	701	5	0
+SD006:pher00NN	true	true	true	true	0	999	0	25	true	false	802	650	0	702	5	0
+SD007:pher00NE	true	true	true	true	0	999	0	25	true	false	803	650	0	703	5	0
+SD008:pher00EE	true	true	true	true	0	999	0	25	true	false	804	650	0	704	5	0
+SD009:pher00SE	true	true	true	true	0	999	0	25	true	false	805	650	0	705	5	0
+SD010:pher00SS	true	true	true	true	0	999	0	25	true	false	806	650	0	706	5	0
+SD011:pher00SW	true	true	true	true	0	999	0	25	true	false	807	650	0	707	5	0
+SD012:pher00WW	true	true	true	true	0	999	0	25	true	false	808	650	0	708	5	0
+// // // // // EmitterReceptor : detect values for ch70x and give activity to Neuron at pos(0, 3x)
+ER001:pher00NW	true	true	true	true	0	999	0	25	701	0	100	0	31	true	false
+ER002:pher00NN	true	true	true	true	0	999	0	25	702	0	100	0	32	true	false
+ER003:pher00NE	true	true	true	true	0	999	0	25	703	0	100	0	33	true	false
+ER004:pher00EE	true	true	true	true	0	999	0	25	704	0	100	0	34	true	false
+ER005:pher00SE	true	true	true	true	0	999	0	25	705	0	100	0	35	true	false
+ER006:pher00SS	true	true	true	true	0	999	0	25	706	0	100	0	36	true	false
+ER007:pher00SW	true	true	true	true	0	999	0	25	707	0	100	0	37	true	false
+ER008:pher00WW	true	true	true	true	0	999	0	25	708	0	100	0	38	true	false
+// // // // // Instinct : connexion between input and output neurons (choice about movement)
 // // // choice of destination :: movement !!
