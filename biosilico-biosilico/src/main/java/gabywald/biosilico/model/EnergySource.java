@@ -48,14 +48,14 @@ public class EnergySource extends Agent {
 	}
 
 	@Override
-	public void deplace()	{ ; }
+	public boolean deplace()	{ return true; }
 	@Override
-	public void push()		{ ; }
+	public boolean push()		{ return true; }
 	@Override
-	public void pull()		{ ; }
+	public boolean pull()		{ return true; }
 	@Override
-	public void stop()		{ ; }
+	public boolean stop()		{ return true; }
 	@Override
-	public void slap()		{ ; }
+	public boolean slap()		{ return true; }
 
 }

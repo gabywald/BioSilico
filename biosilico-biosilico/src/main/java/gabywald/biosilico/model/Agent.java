@@ -2,7 +2,9 @@ package gabywald.biosilico.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import gabywald.biosilico.interfaces.IAgentActions;
 import gabywald.biosilico.interfaces.VariableContent;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.StateType;
@@ -15,7 +17,7 @@ import gabywald.global.structures.StringCouple;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class Agent extends ObservableObject 
-							implements VariableContent {
+							implements VariableContent, IAgentActions {
 	/** Chemical concentrations. */
 	protected Chemicals variables;
 	/** Flag to know if it is alive or not. */
@@ -26,8 +28,8 @@ public abstract class Agent extends ObservableObject
 	protected WorldCase current;
 	/** Next location of the agent (if move). */
 	protected WorldCase nextStep;
-	/** TODO calcul taxon ID */
-	private Integer taxonID;
+	/** TODO compute taxon ID */
+	private UUID taxonID;
 	/** 
 	 * Names of the agent / organism (reserved spaces, each could be empty). 
 	 * <br>First is Scientific name. 
@@ -61,7 +63,7 @@ public abstract class Agent extends ObservableObject
 	/** Initialization helper for constructors. */
 	private void init() {
 		this.variables	= new Chemicals();
-		this.taxonID	= null;
+		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
 		this.nextStep	= null;
 		this.variables.setVariable(StateType.TYPEOF.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
@@ -118,16 +120,12 @@ public abstract class Agent extends ObservableObject
 	 */
 	public abstract void execution(WorldCase local);
 	
-	/** Define the movement of the Agent (if it is moving). */
-	public abstract void deplace();
-	/** Agent is pushed. */
-	public abstract void push();
-	/** Agent is pulled. */
-	public abstract void pull();
-	/** Agent is stopped. */
-	public abstract void stop();
-	/** Agent is slapped. */
-	public abstract void slap();
+	@Override
+	public boolean deplace() {
+		if (this.nextStep != null) { this.current = this.nextStep; }
+		this.nextStep = null;
+		return true;
+	}
 	
 	@Override
 	public void run() {
@@ -146,7 +144,6 @@ public abstract class Agent extends ObservableObject
 			this.change();
 		}
 	}
-	
 	
 	public void setRank(String rank) 
 		{ this.rankDivision.setValueA(rank); }

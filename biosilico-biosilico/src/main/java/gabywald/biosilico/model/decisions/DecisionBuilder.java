@@ -79,32 +79,13 @@ public class DecisionBuilder {
 		case STAY : 	what2do = new DecisionToMove(this.orga, DirectionWorld.CURRENT.getIndex());break;
 		
 		// ***** Decision to push (act1) an agent. 
-		case PUSH: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
-			@Override
-			public void action() {
-				Agent tmpAgent = this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
-				if (tmpAgent != null) { tmpAgent.push(); }
-			}
-		};break;
+		case PUSH: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::push);break;
 		
 		// ***** Decision to pull (act2) an agent.
-		case PULL: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
-			@Override
-			public void action() {
-				Agent tmpAgent = this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
-				if (tmpAgent != null) { tmpAgent.pull(); }
-			}
-		};break;
+		case PULL: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::pull);break;
 		
 		// ***** Decision to stop an agent. 
-		case STOP: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
-			@Override
-			public void action() {
-				Agent tmpAgent = this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
-				if (tmpAgent != null) { tmpAgent.stop(); }
-			}
-
-		};break;
+		case STOP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::stop);break;
 		
 		// ***** Indicate a location where to go. 
 		case MOVE_TO:	what2do = new DecisionToMove(this.orga, this.attribute);break;
@@ -120,9 +101,11 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				Agent o	= this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
-				this.getOrga().getCurrentWorldCase().remAgent( o );
-				this.getOrga().addAgent( o );
-				o.setCurrentWorldCase( null );
+				if ( (o != null) && (o.isMovable()) ) {
+					this.getOrga().getCurrentWorldCase().remAgent( o );
+					this.getOrga().addAgent( o );
+					o.setCurrentWorldCase( null );
+				} // END "if ( (o != null) && (o.isMovable()) )"
 			}
 		};break;
 		
@@ -137,9 +120,10 @@ public class DecisionBuilder {
 				Agent o2 = (st != null) ? this.getOrga().getAgentStatus( st ) : null;
 				// if type is present and not status : drop by type ! Else priority to status (if not null). 
 				Agent o = ((o1 != null) && (o2 == null))? o1 : (o2 != null)? o2 : (o1 != null) ? o1 : null;
-				if (o == null) { return; }
-				this.getOrga().remAgent( o );
-				o.setCurrentWorldCase(this.getOrga().getCurrentWorldCase());
+				if ( (o != null) && (o.isMovable()) ) {
+					this.getOrga().remAgent( o );
+					o.setCurrentWorldCase(this.getOrga().getCurrentWorldCase());
+				} // END "if ( (o != null) && (o.isMovable()) )"
 			}
 		};break;
 		
@@ -152,14 +136,7 @@ public class DecisionBuilder {
 		};break;
 		
 		// ***** Decision to slap an agent. 
-		case SLAP: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.attribute) {
-			// NOTE : Here attribute is 'attribute'
-			@Override
-			public void action() {
-				Agent tmpAgent = this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
-				if (tmpAgent != null) { tmpAgent.slap(); }
-			}
-		};break;
+		case SLAP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::slap);break;
 		
 		case REST: 		break; // ***** Nothing
 		
@@ -287,8 +264,6 @@ public class DecisionBuilder {
 						ReproductionBacta.getInstance().action(this.getOrga());
 						break;
 					case BIOSILICO_VIRIDITA:
-						// ***** find mate (could be itself ? depending of sex ?)
-						// ***** find another agent to mate ! (could be itself ?)
 					case BIOSILICO_ANIMA:
 						// ***** find mate (could be itself ? depending of sex ?)
 						// ***** find another agent to mate ! (could be itself ?)
@@ -296,7 +271,8 @@ public class DecisionBuilder {
 						maters.add( this.getOrga() );
 						// IntStream.range(0, this.variables.getVariable( 932 ) / 2)
 						Agent futuremate = this.getOrga().getCurrentWorldCase().getAgentType( this.getOrga().getOrganismTypeAsType() );
-						if (futuremate instanceof Organism) {
+						if ( (futuremate != null) && (futuremate instanceof Organism) ) {
+							// Compatibility of reproduction is checked further. 
 							maters.add( (Organism) futuremate );
 						}
 						if (otype.equals(AgentType.BIOSILICO_VIRIDITA)) {
@@ -307,6 +283,7 @@ public class DecisionBuilder {
 						break;
 					case BIOSILICO_VIRIA:
 						// ***** no reproduction, only inside organism and create virions ?!
+						// NOTE : create directly EGGs / GAMETs ?!
 						break;
 					}
 				}

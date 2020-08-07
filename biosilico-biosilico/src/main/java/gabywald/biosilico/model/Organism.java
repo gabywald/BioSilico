@@ -188,19 +188,13 @@ public class Organism extends Agent implements AgentContent {
 	}
 
 	@Override
-	public void deplace() {
-		if (this.nextStep != null) { this.current = this.nextStep; }
-		this.nextStep = null;
-	}
-	
+	public boolean push()		{ return true; }
 	@Override
-	public void pull() { ; }
+	public boolean pull()		{ return true; }
 	@Override
-	public void push() { ; }
+	public boolean stop()		{ return true; }
 	@Override
-	public void slap() { ; }
-	@Override
-	public void stop() { ; }
+	public boolean slap()		{ return true; }
 	
 	@Override
 	public int getAgentListLength()		{ return this.liste.size(); }
