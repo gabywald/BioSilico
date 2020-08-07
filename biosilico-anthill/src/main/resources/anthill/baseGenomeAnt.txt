@@ -1,0 +1,96 @@
+// 20200803, conception of basic ant genome !
+// Some Chemicals of interest : 
+// 	- 182 : water (line 183)
+// 	- 
+// // // need some initial concentration !!
+// InitConc	
+IC:H2O	true	true	false	true	0	0	0	25	182	100
+IC:O2 	true	true	false	true	0	0	0	25	180	100
+IC:CO2	true	true	false	true	0	0	0	25	181	50
+IC:Glu	true	true	false	true	0	0	0	25	169	25
+IC:Fru	true	true	false	true	0	0	0	25	170	25
+IC:ATP	true	true	false	true	0	0	0	25	150	10
+IC:ADP	true	true	false	true	0	0	0	25	151	20
+IC:Pho	true	true	false	true	0	0	0	25	15	20
+// // // need some biochemical reaction
+// BioReact
+BRGlyc01:Glucose=>G6P	true	true	false	true	0	0	0	25	1	169	1	150	1	151	1	171	1	
+BRGlyc02:Fructose=>F6P	true	true	false	true	0	0	0	25	1	170	1	150	1	151	1	172	1	
+BRGlyc03:G6P=>F6P	true	true	false	true	0	0	0	25	1	171	0	0	1	172	0	0	1	
+BRGlyc04:G6P=>F6P	true	true	false	true	0	0	0	25	1	172	0	0	1	171	0	0	1	
+BRGlyc05:F6P=>FPP	true	true	false	true	0	0	0	25	1	172	1	150	1	173	1	151	1	
+BRGlyc06:FPP=>DHAP+PGAL	true	true	false	true	0	0	0	25	1	173	0	0	1	174	1	175	1	
+BRGlyc07:DHAP+PGAL=>FPP	true	true	false	true	0	0	0	25	1	174	1	175	1	173	0	0	1	
+BRGlyc08:DHAP=>PGAL	true	true	false	true	0	0	0	25	1	174	0	0	1	175	0	0	1	
+BRGlyc09:PGAL=>DHAP	true	true	false	true	0	0	0	25	1	175	0	0	1	174	0	0	1	
+BRGlyc10:PGAL=>13PPGLY	true	true	false	true	0	0	0	25	1	175	1	165	1	176	1	166	2	
+BRGlyc11:13PPGLY=>PGAL	true	true	false	true	0	0	0	25	1	176	1	166	1	175	1	165	1	
+BRGlyc12:13PPGLY=>3PGLY	true	true	false	true	0	0	0	25	1	176	1	151	1	177	1	150	2	
+BRGlyc13:3PGLY=>13PPGLY	true	true	false	true	0	0	0	25	1	177	1	150	1	176	1	151	1	
+BRGlyc14:3PGLY=>2PGLY	true	true	false	true	0	0	0	25	1	177	0	0	1	178	0	0	2	
+BRGlyc15:2PGLY=>3PGLY	true	true	false	true	0	0	0	25	1	178	0	0	1	177	0	0	1	
+BRGlyc16:2PGLY=>PePyr+H20	true	true	false	true	0	0	0	25	1	178	0	0	1	179	1	182	2	
+BRGlyc17:PePyr+H20=>2PGLY	true	true	false	true	0	0	0	25	1	179	1	182	1	178	0	0	1	
+BRGlyc18:PePyr+ADP=>Pyr+ATP	true	true	false	true	0	0	0	25	1	179	1	151	1	198	1	150	2	
+BRGlyc19:Pyr+CoA=>CO2+ACoA	true	true	false	true	0	0	0	25	1	198	1	187	1	181	1	184	2	
+BRGlyc20:CO2+NAD=>CO2+NADH2	true	true	false	true	0	0	0	25	1	181	1	165	1	181	1	166	2	
+BRKR001:ACoA+Oxalo=>Citrate+CoA	true	true	false	true	0	0	0	25	1	184	1	185	1	186	1	187	1	
+BRKR002:Citrate=>Aconitate	true	true	false	true	0	0	0	25	1	186	0	0	1	188	0	0	2	
+BRKR003:Aconitate=>Citrate	true	true	false	true	0	0	0	25	1	188	0	0	1	186	0	0	1	
+BRKR004:Aconitate=>isoCitrate	true	true	false	true	0	0	0	25	1	188	1	182	1	189	0	0	2	
+BRKR005:isoCitrate=>Aconitate	true	true	false	true	0	0	0	25	1	189	0	0	1	188	1	182	1	
+BRKR006:isoCitrate=>OxSuccinate	true	true	false	true	0	0	0	25	1	189	1	165	1	190	1	166	2	
+BRKR007:OxSuccinate=>isoCitrate	true	true	false	true	0	0	0	25	1	190	1	166	1	189	1	165	1	
+BRKR008:OxSuccinate=>CetoGlutarate	true	true	false	true	0	0	0	25	1	190	0	0	1	191	2	181	1	
+BRKR009:CetoGlutarate=>SuccinylCoA	true	true	false	true	0	0	0	25	1	191	1	165	1	192	1	166	1	
+BRKR010:SuccinylCoA+GDP=>Succinate+GTP	true	true	false	true	0	0	0	25	1	192	1	157	1	193	1	156	1	
+BRKR011:Succinate+FAD=>Fumarate+FADH2	true	true	false	true	0	0	0	25	1	193	1	167	1	194	1	168	1	
+BRKR012:Fumarate+2H2O=>Malate	true	true	false	true	0	0	0	25	1	194	2	182	1	195	0	0	1	
+BRKR013:Malate+NAD=>Oxalo+NADH2	true	true	false	true	0	0	0	25	1	195	1	165	1	185	1	166	1	
+BRCH001:NADH+O2=>NAD+2HO-	true	true	false	true	0	0	0	25	1	166	1	180	1	165	2	183	1	
+BRCH002:FADH+O2=>FAD+2HO-	true	true	false	true	0	0	0	25	1	168	1	180	1	167	2	183	1	
+BRCH003:HO-+P=>HO-+H20	true	true	false	true	0	0	0	25	1	183	1	15	1	183	1	182	1	
+BRCH004:ADP+HO-=>ATP+H2O	true	true	false	true	0	0	0	25	1	151	1	183	1	150	1	182	1	
+// // // receptor for some variables from environment
+SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	865
+SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	865	
+// // // emitter for some variables from environment
+SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	864	
+SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	864	
+// // // decision to take fruits !
+// // // decision to drop fruits ! (in the AntHill)
+// // // decision to eat fruits !
+// // // decision to display pheromones !
+// // // detection of pheromones ! (gene combination to get input in brain !)
+// // // // // Brain
+BR001:50501	true	true	true	true	0	999	0	25	50	50	1	1
+// // // // // BrainLobes : input and output here !
+BL001:NEU0R31	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	31	false
+BL002:NEU0R32	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	32	false
+BL003:NEU0R33	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	33	false
+BL004:NEU0R34	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	34	false
+BL005:NEU0R35	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	35	false
+BL006:NEU0R36	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	36	false
+BL007:NEU0R37	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	37	false
+BL008:NEU0R38	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	38	false
+BL009:MOVETO	true	true	true	true	0	999	0	25	0	0	0	1	3	0	false	0	true	1	8	48	31	false
+// // // // // StimulusDecision : detect from a given location 80x for ch650 (pheromone00) and internally add 5 to ch70x
+SD005:pher00NW	true	true	true	true	0	999	0	25	true	false	801	650	0	701	5	0
+SD006:pher00NN	true	true	true	true	0	999	0	25	true	false	802	650	0	702	5	0
+SD007:pher00NE	true	true	true	true	0	999	0	25	true	false	803	650	0	703	5	0
+SD008:pher00EE	true	true	true	true	0	999	0	25	true	false	804	650	0	704	5	0
+SD009:pher00SE	true	true	true	true	0	999	0	25	true	false	805	650	0	705	5	0
+SD010:pher00SS	true	true	true	true	0	999	0	25	true	false	806	650	0	706	5	0
+SD011:pher00SW	true	true	true	true	0	999	0	25	true	false	807	650	0	707	5	0
+SD012:pher00WW	true	true	true	true	0	999	0	25	true	false	808	650	0	708	5	0
+// // // // // EmitterReceptor : detect values for ch70x and give activity to Neuron at pos(0, 3x)
+ER001:pher00NW	true	true	true	true	0	999	0	25	701	0	100	0	31	true	false
+ER002:pher00NN	true	true	true	true	0	999	0	25	702	0	100	0	32	true	false
+ER003:pher00NE	true	true	true	true	0	999	0	25	703	0	100	0	33	true	false
+ER004:pher00EE	true	true	true	true	0	999	0	25	704	0	100	0	34	true	false
+ER005:pher00SE	true	true	true	true	0	999	0	25	705	0	100	0	35	true	false
+ER006:pher00SS	true	true	true	true	0	999	0	25	706	0	100	0	36	true	false
+ER007:pher00SW	true	true	true	true	0	999	0	25	707	0	100	0	37	true	false
+ER008:pher00WW	true	true	true	true	0	999	0	25	708	0	100	0	38	true	false
+// // // // // Instinct : connexion between input and output neurons (choice about movement)
+// // // choice of destination :: movement !!

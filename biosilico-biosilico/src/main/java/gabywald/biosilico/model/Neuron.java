@@ -186,11 +186,12 @@ public class Neuron {
 					if (this.weights.get(i).intValue() < 999)
 						{ this.weights.set(i, this.weights.get(i) + 1); }
 				} else {
-					if (this.weights.get(i).intValue() > 0)
+					if (this.weights.get(i).intValue() > 10)
 						{ this.weights.set(i, this.weights.get(i) - 1); }
 				}
 				// ***** If weight is 0 or less : remove. 
-				if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
+				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
+				if ( (this.weights.get(i).intValue() <= 0) && (this.index > this.dmin) ){
 						this.connections.remove(i);
 						this.weights.remove(i);
 						this.index--;

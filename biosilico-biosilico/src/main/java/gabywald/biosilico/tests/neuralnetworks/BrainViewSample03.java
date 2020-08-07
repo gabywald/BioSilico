@@ -51,9 +51,8 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			this.brainWidth		= this.testBrain.getWidth();
 			/** Building the Brain : lobes at first and last line
 			 * and 'conception' lobe between the two previous... */
-			// Neuron receptorType = Neuron.getReceptorNeuron();
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
-			receptorActi.setActivity(1000);
+			// receptorActi.setActivity(1000);
 			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 3, false, 2);
 			Neuron emittersTest = new Neuron(0, 10, 8, 4, 4, 5, false, 0, true);
 
@@ -61,6 +60,7 @@ public class BrainViewSample03 extends JFrame implements Observer {
 			IntStream.iterate(0, i -> i+interval).limit( this.brainWidth / interval)
 			.forEach( i -> {
 				try {
+					receptorActi.setActivity(interval * 100);
 					this.testBrain.setLobe(1, 1, 1, i, receptorActi, false);
 				} catch (BrainLengthException | BrainLobeReplaceException e) {
 					e.printStackTrace();

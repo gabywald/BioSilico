@@ -1,6 +1,10 @@
 package gabywald.biosilico.model.reproduction;
 
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.SomeChemicals;
+import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * 
@@ -35,10 +39,19 @@ public class ReproductionDaemon implements IReproduction {
 		nextOrga.setNameScientific(currentOrga.getScientificName());
 		nextOrga.setNameCommon(currentOrga.getScientificName());
 		// nextOrga.setNameIncluded(includedName);
+		nextOrga.setSex(currentOrga.getSex());
+		nextOrga.setOrganismType(AgentType.BIOSILICO_DAEMON);
+		nextOrga.setOrganismStatus(StatusType.EGG);
 		
+		// ***** Put / drop it in current WorldCase When Laying Egg !
+		// nextOrga.setCurrentWorldCase(currentOrga.getCurrentWorldCase());
 		currentOrga.addAgent( nextOrga );
+		
 		// ***** Decrease gamets signal => divide by 2 !!
-		currentOrga.getVariables().setVarLess(920, currentOrga.getVariables().getVariable(920) / 2);
+		currentOrga.getVariables().setVarLess(SomeChemicals.GAMET.getIndex(), currentOrga.getVariables().getVariable(SomeChemicals.GAMET.getIndex()) / 2);
+		// ***** Indicates that it is pregnant !
+		currentOrga.getVariables().setVarPlusPlus(SomeChemicals.EGG.getIndex());
+		currentOrga.getVariables().setVarPlusPlus(StateType.PREGNANT.getIndex());
 	}
 
 }

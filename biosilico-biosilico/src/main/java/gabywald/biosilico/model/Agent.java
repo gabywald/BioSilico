@@ -2,8 +2,12 @@ package gabywald.biosilico.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import gabywald.biosilico.interfaces.IAgentActions;
 import gabywald.biosilico.interfaces.VariableContent;
+import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.structures.ObservableObject;
 import gabywald.global.structures.StringCouple;
 
@@ -13,7 +17,7 @@ import gabywald.global.structures.StringCouple;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class Agent extends ObservableObject 
-							implements VariableContent {
+							implements VariableContent, IAgentActions {
 	/** Chemical concentrations. */
 	protected Chemicals variables;
 	/** Flag to know if it is alive or not. */
@@ -24,8 +28,8 @@ public abstract class Agent extends ObservableObject
 	protected WorldCase current;
 	/** Next location of the agent (if move). */
 	protected WorldCase nextStep;
-	/** TODO calcul taxon ID */
-	private Integer taxonID;
+	/** TODO compute taxon ID */
+	private UUID taxonID;
 	/** 
 	 * Names of the agent / organism (reserved spaces, each could be empty). 
 	 * <br>First is Scientific name. 
@@ -52,54 +56,63 @@ public abstract class Agent extends ObservableObject
 	public Agent(boolean alive, boolean movable, boolean eatable) {
 		this.init();
 		this.alive		= alive;
-		this.variables.setVariable(944, (eatable)?100:0); /** Eatable */
-		this.variables.setVariable(943, (movable)?100:0); /** Movable */
+		this.variables.setVariable(StateType.EATABLE.getIndex(), (eatable) ? 100 : 0); /** Eatable */
+		this.variables.setVariable(StateType.MOVABLE.getIndex(), (movable) ? 100 : 0); /** Movable */
 	}
 	
 	/** Initialization helper for constructors. */
 	private void init() {
 		this.variables	= new Chemicals();
-		this.taxonID	= null;
+		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
 		this.nextStep	= null;
-		this.variables.setVariable(942, 901); /** Default agent type.  */
+		this.variables.setVariable(StateType.TYPEOF.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
 		this.allOtherNames	= new ArrayList<String>();
 		this.allOtherNames.add(""); /** Scientific name */
 		this.allOtherNames.add(""); /** BioSilico name */
 		this.allOtherNames.add(""); /** Common name */
 		this.allOtherNames.add(""); /** Included name */
 		this.rankDivision	= new StringCouple();
-		
 	}
 	
 	public Chemicals getChemicals()	{ return this.variables; }
+	@Override
 	public Chemicals getVariables()	{ return this.variables; }
 	
 	public boolean isAlive()		{ return this.alive; }
 	public boolean isMovable() 
-		{ return (this.variables.getVariable(943) > 0); }
+		{ return (this.variables.getVariable(StateType.MOVABLE.getIndex()) > 0); }
 	public boolean isEatable() 
-		{ return (this.variables.getVariable(944) > 0); }
+		{ return (this.variables.getVariable(StateType.EATABLE.getIndex()) > 0); }
 	public boolean isFertile() 
-		{ return (this.variables.getVariable(945) > 0); }
+		{ return (this.variables.getVariable(StateType.FERTILE.getIndex()) > 0); }
 	public boolean isPregnant() 
-		{ return (this.variables.getVariable(946) > 0); }
+		{ return (this.variables.getVariable(StateType.PREGNANT.getIndex()) > 0); }
 	
-	protected void setAlive(boolean isAlive)		
+	public void setAlive(boolean isAlive)		
 		{ this.alive = isAlive; }
+	
 	protected void setMovable(boolean isMovable) 
-		{ this.variables.setVariable(943, isMovable?100:0); }
+		{ this.variables.setVariable(StateType.MOVABLE.getIndex(), isMovable ? 100 : 0); }
 	protected void setEatable(boolean isEatable) 
-		{ this.variables.setVariable(944, isEatable?100:0); }
+		{ this.variables.setVariable(StateType.EATABLE.getIndex(), isEatable ? 100 : 0); }
 
-	public int getCycle()			{ return this.variables.getVariable(941); }
-	public void cyclePlusPlus()		{ this.variables.setVarPlusPlus(941); }
+	public int getCycle()			{ return this.variables.getVariable(StateType.AGING.getIndex()); }
+	public void cyclePlusPlus()		{ this.variables.setVarPlusPlus(StateType.AGING.getIndex()); }
 	
-	public int getSex()				{ return this.variables.getVariable(940); }
-	public void setSex(int tosex)	{ this.variables.setVariable(940, tosex); }
+	public int getSex()				{ return this.variables.getVariable(StateType.GENDER.getIndex()); }
+	public void setSex(int tosex)	{ this.variables.setVariable(StateType.GENDER.getIndex(), tosex); }
 	
-	public WorldCase getLocation()				{ return this.current; }
-	public void setLocation(WorldCase current)	{ this.current = current; }
+	public WorldCase getCurrentWorldCase()				{ return this.current; }
+	public void setCurrentWorldCase(WorldCase current)	{ 
+		this.current	= current;
+		if (this.current != null)	{ this.current.addAgent( this ); }
+	}
+	
+	public void setNextWorldCase(WorldCase nextWC)		{ this.nextStep = nextWC; }
+	
+	public int getDirection()							{ return this.direction; }
+	public void setDirection(int direction)				{ this.direction = direction; }
 	
 	/** 
 	 * Define what Agent does (if it does something). 
@@ -107,17 +120,12 @@ public abstract class Agent extends ObservableObject
 	 */
 	public abstract void execution(WorldCase local);
 	
-	/** Define the movement of the Agent (if it is moving). */
-	public abstract void deplace();
-	
-	/** Agent is pushed. */
-	public abstract void push();
-	/** Agent is pulled. */
-	public abstract void pull();
-	/** Agent is stopped. */
-	public abstract void stop();
-	/** Agent is slapped. */
-	public abstract void slap();
+	@Override
+	public boolean deplace() {
+		if (this.nextStep != null) { this.current = this.nextStep; }
+		this.nextStep = null;
+		return true;
+	}
 	
 	@Override
 	public void run() {
@@ -136,7 +144,6 @@ public abstract class Agent extends ObservableObject
 			this.change();
 		}
 	}
-	
 	
 	public void setRank(String rank) 
 		{ this.rankDivision.setValueA(rank); }
@@ -187,8 +194,7 @@ public abstract class Agent extends ObservableObject
 		}
 		result	.append("RANK\t").append(this.rankDivision.getValueA()).append( "\n" );
 		result	.append("DIVISION\t").append(this.rankDivision.getValueB()).append( "\n" );
-		result	.append("CHEMICAL VARIABLES\n");
-		result	.append(this.variables.toString()).append( "\n" );
+		result	.append("CHEMICAL VARIABLES\n").append(this.variables.toString()).append( "\n" );
 		return result.toString();
 	}
 }

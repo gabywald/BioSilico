@@ -47,8 +47,8 @@ public class FileOrganism extends FileBiological {
 		this.init();
 		this.setType("Organism");
 		this.orga	= new Organism();
-		List<Chromosome> currentGenome = new ArrayList<Chromosome>();
-		Chromosome currentChromosome = new Chromosome();
+		List<Chromosome> currentGenome	= new ArrayList<Chromosome>();
+		Chromosome currentChromosome	= new Chromosome();
 
 		try { this.load(); } 
 		catch (IOException e) { e.printStackTrace(); }
@@ -237,7 +237,7 @@ public class FileOrganism extends FileBiological {
 								StringUtils.repeat("-", 50)));
 		}
 
-		/** Instanciate local organism. */
+		// ***** Instanciate local organism. 
 		this.orga = new Organism(genome);
 
 		Chemicals chemicals = orgaExt.getChemicals();

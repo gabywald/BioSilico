@@ -7,6 +7,6 @@ import gabywald.biosilico.model.Chemicals;
  * @author Gabriel Chandesris (2009-2010, 2020)
  */
 public interface VariableContent {
-	/** To get the injstance of Variable's used. */
+	/** To get the instance of Variable's used. */
 	public Chemicals getVariables();
 }

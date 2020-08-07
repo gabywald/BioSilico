@@ -2,10 +2,12 @@ package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
- * This type of Gene provoque some inputs or available behaviour of an organism. 
+ * This type of Gene make some inputs or available behavior of an organism. 
  * <br>This can although be used to import / export directly chemicals. 
  * <br><i>Creatures inspired. </i>
  * @author Gabriel Chandesris (2009, 2020)
@@ -82,41 +84,41 @@ public class StimulusDecision extends GeneGattaca {
 	}
 
 	protected void exec(Organism orga) throws GeneException {
-		if (this.perception) { /** This is an input / stimulus */
-			if (this.object) { /** Acts from an object */
+		if (this.perception) { 
+			// ***** This is an input / stimulus
+			if (this.object) { 
+				// ***** Acts from an object 
 				/** Works for object AND one attribute. */
-				if (orga.getLocation().hasAgentType(this.indicator)
-						>= this.threshold) 
-					{ orga.getChemicals()
-						.setVariable(this.varia, this.value); }
-				if (orga.getLocation().hasAgentType(this.attribute)
-						>= this.threshold) { orga.getChemicals()
-							.setVariable(this.varia, this.value); }
-			} else { /** Acts from a variable located with attribute. */
-				if (orga.getLocation().getDirection(this.attribute)
-						.getVariables().getVariable(this.indicator) 
-						>= this.threshold) { orga.getChemicals()
-							.setVariable(this.varia, this.value); }
+				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.indicator) ) >= this.threshold) 
+					{ orga.getChemicals().setVariable(this.varia, this.value); }
+				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.attribute) ) >= this.threshold) 
+					{ orga.getChemicals().setVariable(this.varia, this.value); }
+			} else { 
+				// ***** Acts from a variable located with attribute. 
+				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
+				if ( (detectWC != null) && (detectWC.getVariables().getVariable(this.indicator) >= this.threshold) ) 
+					{ orga.getChemicals().setVariable(this.varia, this.value); }
 			}
-		} else { /** this is an output / decision */
+		} else { 
+			// ***** this is an output / decision 
 			/** Activity on variable or objet make sense in action. */
 			if (this.object) {
-				/** Acts to an object */
-				if (orga.getChemicals() /** Action has to be done. */
-						.getVariable(this.indicator) > this.threshold) {
+				// ***** Acts to an object 
+				if (orga.getChemicals().getVariable(this.indicator) > this.threshold) {
+					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
-								 this.attribute, this.varia, this.value);
+								  this.attribute, this.varia, this.value);
 					/** Variable change here is :  
 					 * 		(standard) indicator set / tend to 0. 
 					 * => here (--) because can be increased by action. */
 					orga.getChemicals().setVarLessLess(this.indicator);
 				}
 			} else { 
-				/** Acts to a variable : emit, receive... */
-				if (orga.getChemicals() /** Action has to be done. */
-						.getVariable(this.varia) > this.threshold) {
+				// ***** Acts to a variable : emit, receive... 
+				if (orga.getChemicals().getVariable(this.varia) > this.threshold) {
+					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
-								 this.attribute, this.varia, this.value);
+								  this.attribute, this.varia, this.value);
 				}
 			}
 		}
@@ -125,12 +127,12 @@ public class StimulusDecision extends GeneGattaca {
 	public boolean getPerception()	{ return this.perception; }
 	public boolean getObject()		{ return this.object; }
 	
-	public int getIndicator()	{ return this.indicator; }
-	public int getThreshold()	{ return this.threshold; }
-	public int getAttribute()	{ return this.attribute; }
-	public int getVariable()	{ return this.varia; }
-	public int getValue()		{ return this.value; }
-	public int getScript()		{ return this.scrip; }
+	public int getIndicator()		{ return this.indicator; }
+	public int getThreshold()		{ return this.threshold; }
+	public int getAttribute()		{ return this.attribute; }
+	public int getVariable()		{ return this.varia; }
+	public int getValue()			{ return this.value; }
+	public int getScript()			{ return this.scrip; }
 
 	
 	public String toString() {

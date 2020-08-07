@@ -1,0 +1,5 @@
+// // // need some initial concentration !!
+// // // need some biochemical reaction
+// // // receptor for some variables from environment
+// // // emitter for some variables from environment
+// // // decision to make fruits !

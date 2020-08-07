@@ -77,6 +77,4 @@ class ChromosomeTests {
 		
 	}
 	
-	// TODO more tests for Chromosome !!
-	
 }

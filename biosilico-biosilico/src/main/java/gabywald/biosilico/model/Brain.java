@@ -130,6 +130,7 @@ public class Brain extends ObservableObject {
 		
 		// ***** then in width proximity
 		IntStream.range(diffHeight, x).forEach( i -> {
+			// TODO width proximity : changing diffWidth from distance (increasing fibonacci distance ?!)
 			IntStream.range(diffWidth1, diffWidth2 + 1).forEach( j -> {
 				// ***** Only existent and activated neurons.
 				Neuron current = this.map[i][j];
@@ -282,7 +283,7 @@ public class Brain extends ObservableObject {
 						Neuron sample, boolean replace) 
 					throws BrainLengthException, BrainLobeReplaceException
 	{
-		/** Throwing exceptions if necessary. */
+		// ***** Throwing exceptions if necessary. 
 		boolean lengthExcept = false;
 		if ( (height == 0) || (width == 0) ) 	
 			{ lengthExcept = true; }

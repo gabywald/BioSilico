@@ -3,6 +3,7 @@ package gabywald.biosilico.model;
 import java.util.stream.IntStream;
 
 import gabywald.biosilico.interfaces.VariableContent;
+import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
  * This class defines global environment for simulation and containing WorldCases. 
@@ -20,8 +21,12 @@ public class World implements VariableContent {
 	
 	/** Default constructor of global environment. */
 	public World() {
-		this.halfLives = new Chemicals();
-		this.map = new WorldCase[World.MAX_HEIGHT][World.MAX_WIDTH];
+		this(World.MAX_HEIGHT, World.MAX_WIDTH);
+	}
+	
+	public World(int height, int width) {
+		this.halfLives	= new Chemicals();
+		this.map		= new WorldCase[height][width];
 		
 		IntStream.range(0, this.map.length).forEach( i -> {
 			IntStream.range(0, this.map[i].length).forEach( j -> {
@@ -30,29 +35,38 @@ public class World implements VariableContent {
 		});
 	}
 	
+	public WorldCase getWorldCase(Position pos) {
+		return this.getWorldCase(pos.getPosX(), pos.getPosY());
+	}
+	
+	public WorldCase getWorldCase(int posx, int posy) {
+		return (this.isExistingCase(posx, posy)) ? this.map[posx][posy] : null;
+	}
+	
 	/**
 	 * This method to check if next case exist. 
 	 * @param posx (int) x position to test
 	 * @param posy (int) y position to test
 	 * @return (boolean) true if exist, false is over limits.
 	 */
-	private boolean getNextCase(int posx, int posy) {
-		return ( ( (posx < 0) || (posx >= this.map.length) )
-				&& ( (posy < 0) || (posy >= this.map[0].length) ) );
+	private boolean isExistingCase(int posx, int posy) {
+		return ( ( (posx >= 0) && (posx < this.map.length) )
+				&& ( (posy >= 0) && (posy < this.map[0].length) ) );
 	}
 	
 	/**
-	 * This function permits to get a WorldCase with a given direction 
-	 * and positions of current WorldCase. Null if over limits. 
+	 * This function permits to get a WorldCase with a given direction and positions of current WorldCase. 
+	 * <br/>Null if over limits or direction unavailable. . 
 	 * @param dir (int) direction (from 800 to 829)
 	 * @param posx (int) height position. 
 	 * @param posy (int) width position. 
 	 * @return (WorldCase) Can be null.
 	 */
 	public WorldCase getDirection(int dir, int posx, int posy) {
-		/** default values / Case 800 */
+		// ***** default values / Case 800 !!
 		int nextposx = posx, nextposy = posy;
 		switch(dir) {
+		case(800):nextposx = posx;	nextposy = posy;break; /** NW */
 		case(801):nextposx = posx-1;nextposy = posy-1;break; /** NW */
 		case(802):nextposx = posx-1;nextposy = posy;  break; /** NN */
 		case(803):nextposx = posx-1;nextposy = posy+1;break; /** NE */
@@ -61,9 +75,22 @@ public class World implements VariableContent {
 		case(806):nextposx = posx+1;nextposy = posy;  break; /** SS */
 		case(807):nextposx = posx+1;nextposy = posy-1;break; /** SW */
 		case(808):nextposx = posx;  nextposy = posy-1;break; /** WW */
+		default:
+			nextposx = -1;nextposy = -1;
 		}
-		return (this.getNextCase(nextposx, nextposy))?null:
-						this.map[nextposx][nextposy];
+		return (this.isExistingCase(nextposx, nextposy)) ? this.map[nextposx][nextposy] : null;
+	}
+	
+	/**
+	 * This function permits to get a WorldCase with a given direction and positions of current WorldCase. 
+	 * <br/>Null if over limits or direction unavailable. . 
+	 * @param dir (DirectionWorld) direction. 
+	 * @param posx (int) height position. 
+	 * @param posy (int) width position. 
+	 * @return (WorldCase) Can be null.
+	 */
+	public WorldCase getDirection(DirectionWorld dir, int posx, int posy) {
+		return this.getDirection(dir.getIndex(), posx, posy);
 	}
 	
 	/** To run the world in synchronicity. */

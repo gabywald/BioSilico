@@ -51,7 +51,6 @@ public class BrainViewSample01 extends JFrame implements Observer {
 			this.brainWidth		= this.testBrain.getWidth();
 			/** Building the Brain : lobes at first and last line
 			 * and 'conception' lobe between the two previous... */
-			// Neuron receptorType = Neuron.getReceptorNeuron();
 			Neuron receptorActi = new Neuron(0, 100, 50, 0, 0, 0, false, 0);
 			receptorActi.setActivity(1000);
 			Neuron conception	= new Neuron(0, 10, 5, 1, 3, 4, false, 2);

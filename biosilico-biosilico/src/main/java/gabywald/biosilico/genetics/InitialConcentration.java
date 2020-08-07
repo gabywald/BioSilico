@@ -33,7 +33,7 @@ public class InitialConcentration extends GeneGattaca {
 	 * @see Gene#Gene(boolean, boolean, boolean, boolean, int, int, int, int)
 	 */
 	public InitialConcentration(
-			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
+			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
 			int ageMin, int ageMax, int sex, int mutRate,
 			int var, int val) {
 		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);

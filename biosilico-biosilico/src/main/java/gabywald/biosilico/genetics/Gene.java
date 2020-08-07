@@ -26,13 +26,13 @@ public abstract class Gene {
 	/** If this gene is activated. */
 	private boolean activ;
 	/** Minimal activation age of the gene (state from 000 to 999). */
-	private int age_min;
+	private int ageMin;
 	/** Maximal activation age of the gene (state from 000 to 999). */
-	private int age_max;
+	private int ageMax;
 	/** Activation sex of the gene (if sex for organism, from 000 to 999, 0 for "asexual"). */
 	private int sex;
 	/** Rate of mutation, duplication and deletion (if can occur). */
-	private int mutation_rate;
+	private int matationRate;
 
 	/**
 	 * Main constructor of a Gene, with all elements in header.
@@ -40,21 +40,21 @@ public abstract class Gene {
 	 * @param duplicate (boolean) if Gene can, be duplicated. 
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
-	 * @param age_min (int) Minimal age of activation. 
-	 * @param age_max (int) Maximal age of activation. 
+	 * @param ageMin (int) Minimal age of activation. 
+	 * @param ageMax (int) Maximal age of activation. 
 	 * @param sex (int) Sex of activation. 
 	 * @param mutRate (int) Mutation rate. 
 	 */
 	public Gene(boolean mutate, boolean duplicate, boolean delete, boolean activ, 
-				int age_min, int age_max, int sex, int mutRate) {
+				int ageMin, int ageMax, int sex, int mutRate) {
 		this.mutate		= mutate;
 		this.duplicate	= duplicate;
 		this.delete		= delete;
 		this.activ		= activ;
-		this.age_min	= Gene.obtainValue(0, 999, age_min);
-		this.age_max	= Gene.obtainValue(0, 999, age_max);
+		this.ageMin		= Gene.obtainValue(0, 999, ageMin);
+		this.ageMax		= Gene.obtainValue(0, 999, ageMax);
 		this.sex		= Gene.obtainValue(0, 999, sex);
-		this.mutation_rate = Gene.obtainValue(0, 99, mutRate);
+		this.matationRate = Gene.obtainValue(0, 99, mutRate);
 	}
 	
 	/**
@@ -64,8 +64,8 @@ public abstract class Gene {
 	public void execution(Organism orga) {
 		// ***** If gene is active and age is good. 
 		if ( (this.activ) && 
-				( (orga.getCycle() >= this.age_min) 
-						&& (orga.getCycle() <= this.age_max) ) ) {
+				( (orga.getCycle() >= this.ageMin) 
+						&& (orga.getCycle() <= this.ageMax) ) ) {
 			// If sex is strictly null or defined. 
 			if ( (this.sex <= 0) || (this.sex == orga.getSex()) ) {
 				// Execute current gene, can be excepted (nothing happened). 
@@ -80,10 +80,10 @@ public abstract class Gene {
 	public boolean canDelete()		{ return this.delete; }
 	
 	public boolean isActiv()		{ return this.activ; }
-	public int getAgeMin()			{ return this.age_min; }
-	public int getAgeMax()			{ return this.age_max; }
+	public int getAgeMin()			{ return this.ageMin; }
+	public int getAgeMax()			{ return this.ageMax; }
 	public int getSexAct()			{ return this.sex; }
-	public int getMutationRate()	{ return this.mutation_rate; }
+	public int getMutationRate()	{ return this.matationRate; }
 	
 	public void setName(String name) { this.name = name; }
 	
@@ -96,8 +96,8 @@ public abstract class Gene {
 	public String toString() {
 		String stringenize = 
 			this.mutate+"\t"+this.duplicate+"\t"+this.delete+"\t"+
-			this.activ+"\t"+this.age_min+"\t"+this.age_max+"\t"+
-			this.sex+"\t"+this.mutation_rate+"\t";
+			this.activ+"\t"+this.ageMin+"\t"+this.ageMax+"\t"+
+			this.sex+"\t"+this.matationRate+"\t";
 		return stringenize;
 	}
 	

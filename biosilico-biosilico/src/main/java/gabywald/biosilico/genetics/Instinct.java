@@ -87,17 +87,17 @@ public class Instinct extends GeneGattaca {
 	protected void exec(Organism orga) throws GeneException {
 		Brain brain = orga.getBrain();
 		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
-		/** Re-load Instincts on each execution. Nothing if error. */
+		// ***** Re-load Instincts on each execution. Nothing if error. 
 		if (orga.getChemicals().getVariable(this.variable) >= this.threshold) {
-			Neuron input = brain.getNeuronAt(this.inputPosX, this.inputPosY);
-			Neuron output = brain.getNeuronAt(this.outputPosX, this.outputPosY);
-			int control = -1; /** to check if input already connected to output. */
+			Neuron input	= brain.getNeuronAt(this.inputPosX, this.inputPosY);
+			Neuron output	= brain.getNeuronAt(this.outputPosX, this.outputPosY);
+			int control		= -1; /** to check if input already connected to output. */
 			if (this.check) { control = output.getConnectPosition(input); }
 			if ( ( (input != null) && (output != null) ) && (control == -1) ) 
 				{ output.addConnection(input, this.weight); }
-			/** if already connected and checked : set weight */
+			// ***** if already connected and checked : set weight */
 			if (control != -1) { output.getWeights().set(this.weight, control); }
-		}
+		} // END "if (orga.getChemicals().getVariable(this.variable) >= this.threshold)"
 	}
 	
 	public int getPosXOrg()		{ return this.inputPosX; }

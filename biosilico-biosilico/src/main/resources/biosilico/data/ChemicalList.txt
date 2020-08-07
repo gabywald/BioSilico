@@ -270,14 +270,14 @@ AG29	- / Acide nonacosanoique
 AG30	Acide Melissique / triacontanoique
 AG31	- / Acide hentriacontanoique
 AG32	Acide Laceroique / dotriacontanoique 
-AG33	Autre Acide gras (33)
-AG34	Autre Acide gras (34)
-AG35	Autre Acide gras (35)
-AG36	Autre Acide gras (36)
-AG37	Autre Acide gras (37)
-AG38	Autre Acide gras (38)
-AG39	Autre Acide gras (39)
-AG40	Autre Acide gras (40)
+AG33	Other Fat Acid (33)
+AG34	Other Fat Acid (34)
+AG35	Other Fat Acid (35)
+AG36	Other Fat Acid (36)
+AG37	Other Fat Acid (37)
+AG38	Other Fat Acid (38)
+AG39	Other Fat Acid (39)
+AG40	Other Fat Acid (40)
 AG01CoA	AG01CoA
 AG02CoA	AG02CoA
 AG03CoA	AG03CoA
@@ -498,8 +498,8 @@ AG40CoA	AG40CoA
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
+Solar Energy	solar energy
+Heat Energy	heat energy
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
@@ -647,6 +647,7 @@ Hormone 09	hormone09
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
+<NONEXX>	<NONEXX>
 Pheromone00	pheromonone 00
 Pheromone01	pheromonone 01
 Pheromone02	pheromonone 02
@@ -657,7 +658,6 @@ Pheromone06	pheromonone 06
 Pheromone07	pheromonone 07
 Pheromone08	pheromonone 08
 Pheromone09	pheromonone 09
-<NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
@@ -869,7 +869,7 @@ Is	is
 MakeGamet	makegamet
 LayEgg	layegg
 Mate	mate
-(free)	(free)
+Create Egg	createegg
 (free)	(free)
 (free)	(free)
 (free)	(free)
@@ -898,9 +898,9 @@ Mate	mate
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 Current	current
-Small Elt	small elt
-Midd Elt	midd elt
-Big Elt	big elt
+Small Elt	smallelt
+Midd Elt	middelt
+Big Elt	bigelt
 Food	food
 Drink	drink
 Vehicle	vehicle
@@ -922,7 +922,7 @@ Egg	egg
 Embryo	embryo
 Larva	larva
 Child	child
-"Teen"	"teen"
+Teen	teen
 Adult	adult
 Senior	senior
 Dead	dead
@@ -940,11 +940,11 @@ Virus	virus
 Gender	gender
 Aging	aging
 TypeOf	typeof
+STATUS		(946, "Status", 	"status")
 Movable	movable
 Eatable	eatable
 Fertile	fertile
 Pregnant	pregnant
-(free)	(free)
 (free)	(free)
 (free)	(free)
 (free)	(free)

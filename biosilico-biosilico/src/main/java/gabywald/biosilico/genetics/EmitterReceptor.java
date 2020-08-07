@@ -45,6 +45,7 @@ public class EmitterReceptor extends GeneGattaca {
 	 * @param posx (int) Height position of the neuron in the brain ; [00-99].
 	 * @param posy (int) Width position of the neuron in the brain ; [00-99].
 	 * @param receptor (boolean) If this Gene is Receptor or Emitter.
+	 * @param internal (boolean) If this Gene is Receptor or Emitter.
 	 */
 	public EmitterReceptor(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
@@ -57,7 +58,8 @@ public class EmitterReceptor extends GeneGattaca {
 		this.ioput		= Gene.obtainValue(0, 999, put);
 		this.posx		= Gene.obtainValue(0, 99, posx);
 		this.posy		= Gene.obtainValue(0, 99, posy);
-		this.receptor	= receptor;this.internal = internal;
+		this.receptor	= receptor;
+		this.internal	= internal;
 	}
 	
 	public String reverseTranslation(boolean end) {
@@ -78,51 +80,37 @@ public class EmitterReceptor extends GeneGattaca {
 	}
 
 	protected void exec(Organism orga) throws GeneException {
+		// Work only if a brain and a neuron are on position
+		if ( (orga.getBrain() != null) 
+				&& (orga.getBrain().getNeuronAt(this.posx, this.posy) != null) ) 
+			{ return; }
 		if (this.internal) {
 			// **** Internal Receptor / Emitter
-			// l*Loopback and detections upon biochemical actions
-			// Work only if a brain and a neuron are on position
-			if ( (orga.getBrain() != null) 
-					&& (orga.getBrain().getNeuronAt(this.posx, this.posy) 
-							!= null) ) {
-				if (this.receptor) {
-					// internal Receptor 
-					int chemicalVal = orga.getChemicals().getVariable(this.variable);
-					if (chemicalVal >= this.threshold) 
-						{ orga.getBrain()
-								.getNeuronAt(this.posx, this.posy)
-									.addActivity(this.ioput); }
-				} else {
-					// internal Emitter 
-					int activityNeu = orga.getBrain()
-									.getNeuronAt(this.posx, this.posy)
-										.getActivity();
-					if (activityNeu > this.threshold) 
-						{ orga.getChemicals().setVarPlus(this.variable, this.ioput); }
-				}
+			// Loopback and detections upon biochemical actions
+			if (this.receptor) {
+				// Internal Receptor 
+				int chemicalVal = orga.getChemicals().getVariable(this.variable);
+				if (chemicalVal >= this.threshold) 
+					{ orga.getBrain().getNeuronAt(this.posx, this.posy).addActivity(this.ioput); }
+			} else {
+				// Internal Emitter 
+				int activityNeu = orga.getBrain().getNeuronAt(this.posx, this.posy).getActivity();
+				if (activityNeu > this.threshold) 
+					{ orga.getChemicals().setVarPlus(this.variable, this.ioput); }
 			}
 		} else { 
 			// ***** External Receptor / Emitter
-			// example : pheromone detection
-			if ( (orga.getBrain() != null) 
-					&& (orga.getBrain().getNeuronAt(this.posx, this.posy) 
-							!= null) ) {
-				if (this.receptor) {
-					// external Receptor
-					int chemicalVal = orga.getLocation().getVariables()
-											.getVariable(this.variable);
-					if (chemicalVal >= this.threshold) 
-						{ orga.getBrain().getNeuronAt(this.posx, this.posy)
-									.addActivity(this.ioput); }
-				} else { 
-					// external Emitter
-					int activityNeu = orga.getBrain()
-										.getNeuronAt(this.posx, this.posy)
-												.getActivity();
+			// Example : pheromone detection / excretion
+			if (this.receptor) {
+				// External Receptor
+				int chemicalVal = orga.getCurrentWorldCase().getVariables().getVariable(this.variable);
+				if (chemicalVal >= this.threshold) 
+					{ orga.getBrain().getNeuronAt(this.posx, this.posy).addActivity(this.ioput); }
+			} else { 
+				// External Emitter
+				int activityNeu = orga.getBrain().getNeuronAt(this.posx, this.posy).getActivity();
 				if (activityNeu > this.threshold) 
-					{ orga.getLocation().getVariables()
-								.setVarPlus(this.variable, this.ioput); }
-				}
+					{ orga.getCurrentWorldCase().getVariables().setVarPlus(this.variable, this.ioput); }
 			}
 		}
 	}
