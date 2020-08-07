@@ -81,8 +81,8 @@ public class EmitterReceptor extends GeneGattaca {
 
 	protected void exec(Organism orga) throws GeneException {
 		// Work only if a brain and a neuron are on position
-		if ( (orga.getBrain() != null) 
-				&& (orga.getBrain().getNeuronAt(this.posx, this.posy) != null) ) 
+		if ( (orga.getBrain() == null) 
+				|| (orga.getBrain().getNeuronAt(this.posx, this.posy) == null) ) 
 			{ return; }
 		if (this.internal) {
 			// **** Internal Receptor / Emitter
