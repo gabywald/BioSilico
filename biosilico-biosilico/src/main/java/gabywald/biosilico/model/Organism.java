@@ -9,7 +9,6 @@ import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.structures.ExtendedLineageItem;
-import gabywald.biosilico.view.GeneJPanel;
 import gabywald.global.data.StringUtils;
 import gabywald.global.structures.StringCouple;
 
@@ -278,13 +277,11 @@ public class Organism extends Agent implements IAgentContent {
 			}
 		} // END "for (int i = 0 ; i < this.genome.size() ; i++)"
 
-		if (this.currentBrain != null) { 
-			result.append("BRAIN HEIGHT\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getHeight())).append( "\n" );
-			result.append("BRAIN WIDTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getWidth() )).append( "\n" );
-			result.append("BRAIN DEPTH\t")	.append(GeneJPanel.convertTwoChars(this.currentBrain.getDepth() )).append( "\n" );
-			result.append("NEURONS LIST DESCRIPTION\n\tNO DATA\n");
-			// ***** TODO record neural networks / lobes ! 
-		} else { result.append("NO DATA ABOUT BRAIN, LOBES AND NEURONS\n"); }
+		result.append("BRAIN\n");
+		if (this.currentBrain != null) 
+			{ result.append( this.currentBrain.toString() ); }
+		else 
+			{ result.append("\tNO DATA ABOUT BRAIN, LOBES AND NEURONS\n"); }
 
 		return result.toString();
 	}

@@ -122,7 +122,6 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 	
 	@Override
 	public String toString() {
-		// TODO use of Java 8 streams
 		StringBuilder result = new StringBuilder();
 		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
 		result.append("AGENT LIST\n");

@@ -4,9 +4,15 @@
 // 	- 
 // // // need some initial concentration !!
 // InitConc	
-IC:H2O	true	true	false	true	0	0	0	25	182	100
 IC:O2 	true	true	false	true	0	0	0	25	180	100
 IC:CO2	true	true	false	true	0	0	0	25	181	50
+IC:H2O	true	true	false	true	0	0	0	25	182	100
+IC:HO-	true	true	false	true	0	0	0	25	183	30
+IC:CoA	true	true	false	true	0	0	0	25	184	15
+IC:NAD	true	true	false	true	0	0	0	25	165	25
+IC:NAE	true	true	false	true	0	0	0	25	166	25
+IC:FAD	true	true	false	true	0	0	0	25	167	25
+IC:FAE	true	true	false	true	0	0	0	25	168	25
 IC:Glu	true	true	false	true	0	0	0	25	169	25
 IC:Fru	true	true	false	true	0	0	0	25	170	25
 IC:ATP	true	true	false	true	0	0	0	25	150	10
@@ -65,15 +71,15 @@ SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	864
 // // // // // Brain
 BR001:50501	true	true	true	true	0	999	0	25	50	50	1	1
 // // // // // BrainLobes : input and output here !
-BL001:NEU0R31	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	31	false
-BL002:NEU0R32	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	32	false
-BL003:NEU0R33	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	33	false
-BL004:NEU0R34	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	34	false
-BL005:NEU0R35	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	35	false
-BL006:NEU0R36	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	36	false
-BL007:NEU0R37	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	37	false
-BL008:NEU0R38	true	true	true	true	0	999	0	25	0	0	0	0	0	0	false	0	false	1	1	0	38	false
-BL009:MOVETO	true	true	true	true	0	999	0	25	0	0	0	1	3	0	false	0	true	1	8	48	31	false
+BL001:NEU0R31	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	31	false
+BL002:NEU0R32	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	32	false
+BL003:NEU0R33	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	33	false
+BL004:NEU0R34	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	34	false
+BL005:NEU0R35	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	35	false
+BL006:NEU0R36	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	36	false
+BL007:NEU0R37	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	37	false
+BL008:NEU0R38	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	38	false
+BL009:MOVETO	true	true	true	true	0	999	0	25	0	10	50	1	3	0	false	0	true	1	8	48	31	false
 // // // // // StimulusDecision : detect from a given location 80x for ch650 (pheromone00) and internally add 5 to ch70x
 SD005:pher00NW	true	true	true	true	0	999	0	25	true	false	801	650	0	701	5	0
 SD006:pher00NN	true	true	true	true	0	999	0	25	true	false	802	650	0	702	5	0
@@ -92,5 +98,13 @@ ER005:pher00SE	true	true	true	true	0	999	0	25	705	0	100	0	35	true	false
 ER006:pher00SS	true	true	true	true	0	999	0	25	706	0	100	0	36	true	false
 ER007:pher00SW	true	true	true	true	0	999	0	25	707	0	100	0	37	true	false
 ER008:pher00WW	true	true	true	true	0	999	0	25	708	0	100	0	38	true	false
-// // // // // Instinct : connexion between input and output neurons (choice about movement)
+// // // // // Instinct : connexion between input and output neurons (choice about movement), activ on 169 (glucose)
+IN001:0R31----	true	true	true	true	1	3	0	25	0	31	48	31	100	169	5	false
+IN001:0R32----	true	true	true	true	1	3	0	25	0	32	48	32	100	169	5	false
+IN001:0R33----	true	true	true	true	1	3	0	25	0	33	48	33	100	169	5	false
+IN001:0R34----	true	true	true	true	1	3	0	25	0	34	48	34	100	169	5	false
+IN001:0R35----	true	true	true	true	1	3	0	25	0	35	48	35	100	169	5	false
+IN001:0R36----	true	true	true	true	1	3	0	25	0	36	48	36	100	169	5	false
+IN001:0R37----	true	true	true	true	1	3	0	25	0	37	48	37	100	169	5	false
+IN001:0R38----	true	true	true	true	1	3	0	25	0	38	48	38	100	169	5	false
 // // // choice of destination :: movement !!

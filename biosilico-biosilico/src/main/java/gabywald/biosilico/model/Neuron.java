@@ -371,6 +371,23 @@ public class Neuron {
 	public void setLobe(List<Neuron> lobe)	{ this.currentLobe = lobe; }
 	public List<Neuron> getLobe()			{ return this.currentLobe; }
 	
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append("\t").append(this.restState);
+		result.append("\t").append(this.threshold);
+		result.append("\t").append(this.activity).append(" (").append(this.ckActivated()).append(")");
+		result.append("\t").append(this.descent);
+		result.append("\t").append(this.position);
+		result.append("\t").append(this.dmin).append(":").append(this.dmax).append(" (").append(this.connections.size()).append(")");
+		result.append("\t").append(this.index);
+		result.append("\t").append(this.reproduction?"true":"false");
+		result.append("\t").append(this.reproductibility);
+		result.append("\t").append(this.winnerTakeAll?"true":"false");
+		result.append("\t").append(this.currentLobe.size());
+		return result.toString();
+	}
+	
 	/**
 	 * Get the highest activity in a set of Neuron's. 
 	 * @param lobe (List&lt;Neuron&gt;)

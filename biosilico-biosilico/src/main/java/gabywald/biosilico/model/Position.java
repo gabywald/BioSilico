@@ -1,5 +1,7 @@
 package gabywald.biosilico.model;
 
+import gabywald.biosilico.genetics.Gene;
+
 /**
  * Position / Location of an item in a map (Neuron in Brain for example). 
  * @author Gabriel Chandesris (2009, 2020)
@@ -55,6 +57,6 @@ public class Position {
 	
 	@Override
 	public String toString() {
-		return "[" + this.posX + ", " + this.posY + "]";
+		return "[" + Gene.convert0to99(this.posX) + ", " + Gene.convert0to99(this.posY) + "]";
 	}
 }

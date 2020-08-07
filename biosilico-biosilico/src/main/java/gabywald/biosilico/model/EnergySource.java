@@ -19,6 +19,10 @@ public class EnergySource extends Agent {
 		super(false, false, false);
 		this.setSolar( true );
 		this.setHeat( true );
+		
+		String name = "Energy Source";
+		this.setNameBiosilico( name );
+		this.setNameCommon( name );
 	}
 	
 	public void setSolar(boolean isSolar) {
@@ -31,9 +35,9 @@ public class EnergySource extends Agent {
 	
 	public boolean isSolar() 
 		{ return (this.variables.getVariable(EnergySource.INDEX_SOLAR) > 0); }
+	
 	public boolean isHeat() 
 		{ return (this.variables.getVariable(EnergySource.INDEX_HEAT) > 0); }
-
 	
 	public static void addEnergyTo(WorldCase local, int index, int value) {
 		if (local != null) {

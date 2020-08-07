@@ -940,7 +940,7 @@ Virus	virus
 Gender	gender
 Aging	aging
 TypeOf	typeof
-STATUS		(946, "Status", 	"status")
+Status	status
 Movable	movable
 Eatable	eatable
 Fertile	fertile

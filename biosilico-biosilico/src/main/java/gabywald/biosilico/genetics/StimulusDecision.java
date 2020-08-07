@@ -56,7 +56,8 @@ public class StimulusDecision extends GeneGattaca {
 			boolean perc, boolean obje, 
 			int indi, int thre, int attr, int vari, int valu, int scri) {
 		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
-		this.perception = perc;this.object = obje;
+		this.perception	= perc;
+		this.object		= obje;
 		this.indicator	= Gene.obtainValue(0, 999, indi);
 		this.threshold	= Gene.obtainValue(0, 999, thre);
 		this.attribute	= Gene.obtainValue(0, 999, attr);

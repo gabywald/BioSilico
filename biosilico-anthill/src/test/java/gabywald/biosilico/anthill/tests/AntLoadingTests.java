@@ -15,8 +15,10 @@ import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
+import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
+import gabywald.biosilico.model.EnergySource;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
@@ -52,6 +54,7 @@ class AntLoadingTests {
 		InitialConcentrationBuilder icb	= new InitialConcentrationBuilder();
 		BiochemicalReactionBuilder brb	= new BiochemicalReactionBuilder();
 		StimulusDecisionBuilder sdb		= new StimulusDecisionBuilder();
+		InstinctBuilder igb				= new InstinctBuilder();
 		EmitterReceptorBuilder erb		= new EmitterReceptorBuilder();
 		BrainGeneBuilder bgb			= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb		= new BrainLobeGeneBuilder();
@@ -85,14 +88,24 @@ class AntLoadingTests {
 					Assertions.assertNotNull( currentGene );
 					break;
 				case (17) : 
-					// ***** StimulusDecision
-					currentGene = sdb	.perception(Boolean.parseBoolean(datas[ 9])).object(Boolean.parseBoolean(datas[10]))
-										.indicator(Integer.parseInt(datas[11])).threshold(Integer.parseInt(datas[12]))
-										.attribute(Integer.parseInt(datas[13])).varia(Integer.parseInt(datas[14]))
-										.value(Integer.parseInt(datas[15])).script(Integer.parseInt(datas[16]))
-											.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
-											.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
-											.build();
+					// ***** StimulusDecision || Instinct 
+					if ( (datas[ 9].equals( "true" ) || (datas[ 9]).equals( "false" )) && (datas[10].equals( "true" ) || (datas[10]).equals( "false" )) ) {
+						currentGene = sdb	.perception(Boolean.parseBoolean(datas[ 9])).object(Boolean.parseBoolean(datas[10]))
+											.indicator(Integer.parseInt(datas[11])).threshold(Integer.parseInt(datas[12]))
+											.attribute(Integer.parseInt(datas[13])).varia(Integer.parseInt(datas[14]))
+											.value(Integer.parseInt(datas[15])).script(Integer.parseInt(datas[16]))
+												.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
+												.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
+												.build();
+					} else {
+						currentGene = igb	.inputPosX(Integer.parseInt(datas[ 9])).inputPosY(Integer.parseInt(datas[10]))
+											.outputPosX(Integer.parseInt(datas[11])).outputPosY(Integer.parseInt(datas[12]))
+											.weight(Integer.parseInt(datas[13])).variable(Integer.parseInt(datas[14]))
+											.threshold(Integer.parseInt(datas[15])).check(Boolean.parseBoolean(datas[16]))
+												.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
+												.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
+												.build();
+					}
 					Assertions.assertNotNull( currentGene );
 					break;
 				case (16) : 
@@ -143,6 +156,9 @@ class AntLoadingTests {
 		return Arrays.asList(chr);
 	}
 
+	/**
+	 * Simply test in a Unique WorldCase !
+	 */
 	@Test
 	void testLoadingAnt01() {
 		
@@ -173,11 +189,19 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -197,11 +221,19 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(100, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -220,11 +252,19 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(100, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals(100, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -233,6 +273,9 @@ class AntLoadingTests {
 
 	}
 	
+	/**
+	 * Simply test in a Unique WorldCase With DiOxygen !
+	 */
 	@Test
 	void testLoadingAnt02() {
 		
@@ -263,11 +306,19 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -290,11 +341,19 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -314,11 +373,19 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals(100, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));		
 		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -328,6 +395,9 @@ class AntLoadingTests {
 
 	}
 	
+	/**
+	 * Simply test in a Unique WorldCase With DiOxygen and Water !
+	 */
 	@Test
 	void testLoadingAnt03() {
 		
@@ -358,11 +428,19 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
@@ -370,10 +448,11 @@ class AntLoadingTests {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
-		// ***** Put DiOxygen in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 100);
+		// ***** Put DiOxygen && H2O in local WorldCase !!
+		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		
-		// ***** one execution in this context
+		// ***** one execution in this context -- 1
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
@@ -385,19 +464,27 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
 		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
 		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
 		
-		// ***** one execution in this context
+		// ***** one execution in this context -- 2
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
@@ -409,18 +496,591 @@ class AntLoadingTests {
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
 		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
 		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(100, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
 		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
 		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
+		
+		// ***** one execution in this context -- 3
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
+		
+		// ***** one execution in this context -- 4
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
+		
+		// ***** one execution in this context -- 5
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
 
 	}
+	
+	/**
+	 * Simply test in a Unique WorldCase With DiOxygen and Water and EnergySource !
+	 */
+	@Test
+	void testLoadingAnt04() {
+		
+		Ant testAnt = new Ant();
+		Assertions.assertNotNull( testAnt );
+		Assertions.assertEquals(0, testAnt.getGenome().size());
+		
+		testAnt.setRank("Rank Test");
+		testAnt.setNameCommon("Test Starting Ant");
+		testAnt.setNameBiosilico("AntHill Ant Example");
+		testAnt.setDivision("TESTS");
+		
+		testAnt.setGenome( AntLoadingTests.loadingAntGenome() );
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testAnt.setCurrentWorldCase( wc );
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("=", 80) );
+		
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
+			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+		});
+		
+		// ***** Put DiOxygen && H2O in local WorldCase !!
+		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		EnergySource es = new EnergySource();
+		wc.addAgent( es );
+		
+		// ***** one execution in this context -- 1
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("*", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 2
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 3
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 4
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 5
+		testAnt.execution( wc );
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( es.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+
+	}
+	
+	/**
+	 * Simply test in a Unique WorldCase With DiOxygen and Water and EnergySource !
+	 * <br/> Running World !!
+	 */
+	@Test
+	void testLoadingAnt05() {
+		
+		Ant testAnt = new Ant();
+		Assertions.assertNotNull( testAnt );
+		Assertions.assertEquals(0, testAnt.getGenome().size());
+		
+		testAnt.setRank("Rank Test");
+		testAnt.setNameCommon("Test Starting Ant");
+		testAnt.setNameBiosilico("AntHill Ant Example");
+		testAnt.setDivision("TESTS");
+		
+		testAnt.setGenome( AntLoadingTests.loadingAntGenome() );
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testAnt.setCurrentWorldCase( wc );
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("=", 80) );
+		
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
+			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+		});
+		
+		// ***** Put DiOxygen && H2O in local WorldCase !!
+		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		EnergySource es = new EnergySource();
+		wc.addAgent( es );
+		
+		// ***** one execution in this context -- 1
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("*", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(500));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 2
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(500));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 3
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(500));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 4
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(100, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(100, wc.getVariables().getVariable(501));
+		
+		// ***** one execution in this context -- 5
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( es.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(125, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(125, wc.getVariables().getVariable(501));
+
+	}
+	
+	// TODO test in a World Context (3, 3) at position (1, 1) !!
 
 }

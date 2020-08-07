@@ -126,28 +126,6 @@ public class World implements IChemicalsContent {
 	@Override
 	public IChemicals getVariables()	{ return this.halfLives; }
 	
-	public void addToVariable(int i, int val)	{ ; }
-	public void setVariable(int i, int val)		{ ; }
-	public int getVariable(int i)				{ return this.halfLives.getVariable(i); }
+	public int getVariable(int i)		{ return this.halfLives.getVariable(i); }
 	
-	/**
-	 * To enumerate some directions in 2D. 
-	 * @author Gabriel Chandesris (2020)
-	 */
-	enum WorldDirection {
-		NW(801), NN(802), NE(803), 
-		EE(804), 
-		SE(805), SS(806), SW(807), 
-		WW(808);
-		
-		private int index;
-		
-		private WorldDirection(int index) {
-			this.index = index;
-		}
-		
-		public int getIndex() {
-			return this.index;
-		}
-	}
 }
