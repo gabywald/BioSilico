@@ -1,8 +1,8 @@
 package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
@@ -103,7 +103,7 @@ public class BiochemicalReaction extends GeneGattaca {
 	}
 	
 	protected void exec(Organism orga) throws GeneException { 
-		Chemicals vars = orga.getChemicals();
+		IChemicals vars = orga.getChemicals();
 		// ***** Avoiding the reaction from nothing. 
 		if ( (this.Achem == 0) && (this.Bchem == 0) )
 			{ throw new GeneException("Chemical A and B are 0. "); }

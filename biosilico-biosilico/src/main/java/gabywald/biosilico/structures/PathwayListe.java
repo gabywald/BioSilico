@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import gabywald.biosilico.data.FileBiological;
-import gabywald.biosilico.interfaces.StructureRecordFile;
+import gabywald.biosilico.interfaces.IStructureRecordFile;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
 import gabywald.global.view.text.Terminal;
@@ -16,7 +16,7 @@ import gabywald.global.view.text.Terminal;
  * @author Gabriel Chandesris (2010, 2020)
  * @see Pathway
  */
-public class PathwayListe implements StructureRecordFile {
+public class PathwayListe implements IStructureRecordFile {
 	/** Location of the default file to record PathwayListe instance. */
 	public static final String PATH_LIST_FILE = FileBiological.DEFAULT_PATH_NAME + "definedPathWays.txt";
 	/** File for Pathway records. */

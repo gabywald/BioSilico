@@ -8,11 +8,11 @@ import java.util.List;
 
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.genetics.GeneGattaca;
+import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.biosilico.utils.Sequence;
 import gabywald.biosilico.view.GeneJPanel;
@@ -240,7 +240,7 @@ public class FileOrganism extends FileBiological {
 		// ***** Instanciate local organism. 
 		this.orga = new Organism(genome);
 
-		Chemicals chemicals = orgaExt.getChemicals();
+		IChemicals chemicals = orgaExt.getChemicals();
 		for (int i = 0 ; i < chemicals.length() ; i++) {
 			if (chemicals.getVariable(i) > 0) {
 				String chemIndex = GeneJPanel.convertThreeChars(i);

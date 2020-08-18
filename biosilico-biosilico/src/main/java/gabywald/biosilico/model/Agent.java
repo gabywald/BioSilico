@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.UUID;
 
 import gabywald.biosilico.interfaces.IAgentActions;
-import gabywald.biosilico.interfaces.VariableContent;
+import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.interfaces.IChemicalsContent;
+import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.structures.ObservableObject;
@@ -17,9 +19,9 @@ import gabywald.global.structures.StringCouple;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class Agent extends ObservableObject 
-							implements VariableContent, IAgentActions {
+							implements IChemicalsContent, IAgentActions {
 	/** Chemical concentrations. */
-	protected Chemicals variables;
+	protected IChemicals variables;
 	/** Flag to know if it is alive or not. */
 	protected boolean alive;
 	/** Direction where Agent is going (if move). */
@@ -62,7 +64,7 @@ public abstract class Agent extends ObservableObject
 	
 	/** Initialization helper for constructors. */
 	private void init() {
-		this.variables	= new Chemicals();
+		this.variables	= ChemicalsBuilder.build();
 		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
 		this.nextStep	= null;
@@ -75,11 +77,12 @@ public abstract class Agent extends ObservableObject
 		this.rankDivision	= new StringCouple();
 	}
 	
-	public Chemicals getChemicals()	{ return this.variables; }
 	@Override
-	public Chemicals getVariables()	{ return this.variables; }
+	public IChemicals getChemicals()	{ return this.variables; }
+	@Override
+	public IChemicals getVariables()	{ return this.variables; }
 	
-	public boolean isAlive()		{ return this.alive; }
+	public boolean isAlive()			{ return this.alive; }
 	public boolean isMovable() 
 		{ return (this.variables.getVariable(StateType.MOVABLE.getIndex()) > 0); }
 	public boolean isEatable() 

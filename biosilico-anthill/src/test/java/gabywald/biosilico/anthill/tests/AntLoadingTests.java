@@ -16,10 +16,10 @@ import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.global.data.File;
 import gabywald.global.data.StringUtils;
@@ -181,7 +181,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -271,7 +271,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -366,7 +366,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		

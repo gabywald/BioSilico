@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.model.Agent;
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.model.EnergySource;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 
@@ -28,7 +28,7 @@ class WorldCaseTests {
 		Assertions.assertEquals(-1, wc.getPosX());
 		Assertions.assertEquals(-1, wc.getPosY());
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 	}
@@ -51,7 +51,7 @@ class WorldCaseTests {
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
-				IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
 				});
 				
@@ -107,7 +107,7 @@ class WorldCaseTests {
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
-				IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
 				});
 				
@@ -129,13 +129,13 @@ class WorldCaseTests {
 		Assertions.assertEquals( 1, middleWC.getAgentListLength() );
 		Assertions.assertEquals( 1, middleWC.getAgentListe().size() );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
 		});
 		
 		w.execution();
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
 			case (EnergySource.INDEX_HEAT) :
 			case (EnergySource.INDEX_SOLAR) :
@@ -148,7 +148,7 @@ class WorldCaseTests {
 		
 		w.execution();
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
 			case (EnergySource.INDEX_HEAT) :
 			case (EnergySource.INDEX_SOLAR) :
@@ -167,7 +167,7 @@ class WorldCaseTests {
 		
 		w.execution();
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
 			case (EnergySource.INDEX_HEAT) :
 			case (EnergySource.INDEX_SOLAR) :
@@ -184,7 +184,7 @@ class WorldCaseTests {
 		
 		w.execution();
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
 			case (EnergySource.INDEX_HEAT) :
 			case (EnergySource.INDEX_SOLAR) :
@@ -201,7 +201,7 @@ class WorldCaseTests {
 		
 		w.execution();
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
 			case (EnergySource.INDEX_HEAT) :
 			case (EnergySource.INDEX_SOLAR) :

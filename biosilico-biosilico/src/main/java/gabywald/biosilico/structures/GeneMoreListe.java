@@ -7,7 +7,7 @@ import java.util.List;
 import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.GeneGattaca;
-import gabywald.biosilico.interfaces.StructureRecordFile;
+import gabywald.biosilico.interfaces.IStructureRecordFile;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
 import gabywald.global.view.text.Terminal;
@@ -19,7 +19,7 @@ import gabywald.global.view.text.Terminal;
  * @see Pathway
  * @see gabywald.biosilico.view.GeneParametersViewer
  */
-public class GeneMoreListe implements StructureRecordFile {
+public class GeneMoreListe implements IStructureRecordFile {
 	/** List of Gene's instances. */
 	private List<Gene> genesStock;
 	/** List of Gene's types. */

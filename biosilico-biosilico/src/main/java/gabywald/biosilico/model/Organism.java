@@ -1,7 +1,7 @@
 package gabywald.biosilico.model;
 
 import gabywald.biosilico.genetics.BrainGene;
-import gabywald.biosilico.interfaces.AgentContent;
+import gabywald.biosilico.interfaces.IAgentContent;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * Organism could contain other Agent's. 
  * @author Gabriel Chandesris (2009-2010, 2020)
  */
-public class Organism extends Agent implements AgentContent {
+public class Organism extends Agent implements IAgentContent {
 	/** Brain of current Organism (could be null). */
 	private Brain currentBrain;
 	/** An organism can contain several Agent's. */
