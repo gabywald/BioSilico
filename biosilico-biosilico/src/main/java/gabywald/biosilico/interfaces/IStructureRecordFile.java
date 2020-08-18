@@ -5,7 +5,7 @@ package gabywald.biosilico.interfaces;
  * <br>NOTE 20100420 : path to the file must be explicitely indicated in a static String. 
  * @author Gabriel Chandesris (2010, 2020)
  */
-public interface StructureRecordFile {
+public interface IStructureRecordFile {
 	/** To load the content of the File into the list (create file if does not exists). */
 	public void readFile();
 	/** To write the content of the File. */

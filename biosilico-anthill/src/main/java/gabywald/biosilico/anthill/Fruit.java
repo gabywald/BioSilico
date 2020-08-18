@@ -1,7 +1,7 @@
 package gabywald.biosilico.anthill;
 
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.chemicals.Chemicals;
 import gabywald.biosilico.model.enums.AgentType;
 
 /**

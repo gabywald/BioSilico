@@ -2,19 +2,21 @@ package gabywald.biosilico.model;
 
 import java.util.stream.IntStream;
 
-import gabywald.biosilico.interfaces.VariableContent;
+import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.interfaces.IChemicalsContent;
+import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
  * This class defines global environment for simulation and containing WorldCases. 
  * @author Gabriel Chandesris (2009, 2020)
  */
-public class World implements VariableContent {
+public class World implements IChemicalsContent {
 	/** The map of WorldCase's contained. */
 	private WorldCase[][] map;
 	/** A special set of variables which defines 
 	 * half lives of chemicals in environment. */
-	private Chemicals halfLives;
+	private IChemicals halfLives;
 	
 	public static final int MAX_HEIGHT	= 20;
 	public static final int MAX_WIDTH	= 20;
@@ -25,7 +27,7 @@ public class World implements VariableContent {
 	}
 	
 	public World(int height, int width) {
-		this.halfLives	= new Chemicals();
+		this.halfLives	= ChemicalsBuilder.build();
 		this.map		= new WorldCase[height][width];
 		
 		IntStream.range(0, this.map.length).forEach( i -> {
@@ -114,12 +116,16 @@ public class World implements VariableContent {
 		});
 	}
 	
-	private void applyHalfLives(Chemicals vars) {
+	private void applyHalfLives(IChemicals vars) {
 		for (int i = 0 ; i < vars.length() ;i++) 
 			{ vars.setVarLess(i, this.halfLives.getVariable(i)); }
 	}
 
-	public Chemicals getVariables()				{ return this.halfLives; }
+	@Override
+	public IChemicals getChemicals()	{ return this.halfLives; }
+	@Override
+	public IChemicals getVariables()	{ return this.halfLives; }
+	
 	public void addToVariable(int i, int val)	{ ; }
 	public void setVariable(int i, int val)		{ ; }
 	public int getVariable(int i)				{ return this.halfLives.getVariable(i); }

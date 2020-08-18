@@ -3,8 +3,10 @@ package gabywald.biosilico.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import gabywald.biosilico.interfaces.AgentContent;
-import gabywald.biosilico.interfaces.VariableContent;
+import gabywald.biosilico.interfaces.IAgentContent;
+import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.interfaces.IChemicalsContent;
+import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.StateType;
@@ -14,9 +16,9 @@ import gabywald.biosilico.model.enums.StatusType;
  * This classe defines elements of the simulation environment where Agent's evolve. 
  * @author Gabriel Chandesris (2009, 2020)
  */
-public class WorldCase implements VariableContent, AgentContent {
+public class WorldCase implements IChemicalsContent, IAgentContent {
 	/** Chemical list of current element. */
-	private Chemicals variables;
+	private IChemicals variables;
 	/** Set of Agents and items in current element. */ 
 	private List<Agent> liste;
 	/** Environment where this current element is included in.  */
@@ -34,7 +36,7 @@ public class WorldCase implements VariableContent, AgentContent {
 	 * @param world (World) Global environment. 
 	 */
 	public WorldCase(World world, int posx, int posy) {
-		this.variables	= new Chemicals();
+		this.variables	= ChemicalsBuilder.build();
 		this.liste		= new ArrayList<Agent>();
 		this.world		= world;
 		this.pos		= new Position(posx, posy);
@@ -64,7 +66,9 @@ public class WorldCase implements VariableContent, AgentContent {
 	}
 	
 	@Override
-	public Chemicals getVariables()		{ return this.variables; }
+	public IChemicals getChemicals()	{ return this.variables; }
+	@Override
+	public IChemicals getVariables()	{ return this.variables; }
 	@Override
 	public int getAgentListLength()		{ return this.liste.size(); }
 	@Override
@@ -121,7 +125,7 @@ public class WorldCase implements VariableContent, AgentContent {
 		// TODO use of Java 8 streams
 		StringBuilder result = new StringBuilder();
 		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
-		result.append("AGENT\n");
+		result.append("AGENT LIST\n");
 		if (this.liste.size() == 0)
 			{ result.append("\tNO DATA\n"); }
 		else {

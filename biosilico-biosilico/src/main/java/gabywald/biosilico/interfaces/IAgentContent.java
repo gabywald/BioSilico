@@ -10,7 +10,7 @@ import gabywald.biosilico.model.enums.StatusType;
  * This interface defines use of a list of Agent's in one instance of Agent. 
  * @author Gabriel Chandesris (2009-2010, 2020)
  */
-public interface AgentContent {
+public interface IAgentContent {
 	/** Length of the list. */
 	public int getAgentListLength();
 	/** To get the list of Agent's. */
@@ -39,7 +39,7 @@ public interface AgentContent {
 	 * In order to get an agent of a certain type. 
 	 * @param type AgentType
 	 * @return (Agent) Can be null.
-	 * @see AgentContent#hasAgentType(AgentType)
+	 * @see IAgentContent#hasAgentType(AgentType)
 	 */
 	public Agent getAgentType(AgentType type);
 	
@@ -54,7 +54,7 @@ public interface AgentContent {
 	 * In order to get an agent of a certain type. 
 	 * @param type StatusType
 	 * @return (Agent) Can be null.
-	 * @see AgentContent#hasAgentStatus(StatusType)
+	 * @see IAgentContent#hasAgentStatus(StatusType)
 	 */
 	public Agent getAgentStatus(StatusType type);
 	

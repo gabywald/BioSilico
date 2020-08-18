@@ -10,11 +10,11 @@ import gabywald.biosilico.genetics.InitialConcentration;
 import gabywald.biosilico.genetics.StimulusDecision;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
-import gabywald.biosilico.model.Chemicals;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
@@ -63,7 +63,7 @@ class OrganismInWorldCaseTests {
 		WorldCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -136,7 +136,7 @@ class OrganismInWorldCaseTests {
 		WorldCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -217,7 +217,7 @@ class OrganismInWorldCaseTests {
 		WorldCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -316,7 +316,7 @@ class OrganismInWorldCaseTests {
 		WorldCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		
@@ -419,7 +419,7 @@ class OrganismInWorldCaseTests {
 		WorldCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
-		IntStream.range(0, Chemicals.CHEMICAL_LENGTH).forEach( k -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
 		});
 		

@@ -1,12 +1,13 @@
 package gabywald.biosilico.model.tests;
 
-
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.biosilico.model.Chemicals;
+import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 
 /**
  * 
@@ -16,9 +17,9 @@ class ChemicalsTests {
 
 	@Test
 	void testChemicals() {
-		Chemicals che = new Chemicals();
+		IChemicals che = ChemicalsBuilder.build();
 		
-		Assertions.assertEquals(Chemicals.CHEMICAL_LENGTH, che.length());
+		Assertions.assertEquals(ChemicalsHelper.CHEMICAL_LENGTH, che.length());
 		
 		IntStream.range(0, che.length() )
 			.forEach(i -> Assertions.assertEquals(0, che.getVariable(i)) );
@@ -43,7 +44,7 @@ class ChemicalsTests {
 			.forEach(i -> che.setVariable(i, 0) );
 		IntStream.range(0, che.length() )
 			.forEach(i -> Assertions.assertEquals(0, che.getVariable(i)) );
-		Chemicals che2incorporate = new Chemicals();
+		IChemicals che2incorporate = ChemicalsBuilder.build();
 		IntStream.range(0, che2incorporate.length() )
 			.forEach(i -> che2incorporate.setVariable(i, 42) );
 		IntStream.range(0, che2incorporate.length() )

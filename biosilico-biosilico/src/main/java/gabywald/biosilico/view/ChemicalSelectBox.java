@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JLabel;
 
-import gabywald.biosilico.model.Chemicals;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.global.structures.StringCouple;
 import gabywald.global.view.graph.SelectBox;
 
@@ -37,7 +37,7 @@ public class ChemicalSelectBox extends SelectBox {
 	
 	public void initSelection() {
 		this.chemicalStockLabel	= new JLabel("List of Chemicals : ");
-		this.chemicalStock		= Chemicals.getChemicalListe();
+		this.chemicalStock		= ChemicalsHelper.getChemicalListe();
 		this.stringStock		= new ArrayList<String>();
 		this.removeAllItems();
 		for (int i = 0 ; i < this.chemicalStock.size() ; i++) {
