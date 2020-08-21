@@ -45,7 +45,7 @@ public class EmitterReceptor extends GeneGattaca {
 	 * @param posx (int) Height position of the neuron in the brain ; [00-99].
 	 * @param posy (int) Width position of the neuron in the brain ; [00-99].
 	 * @param receptor (boolean) If this Gene is Receptor or Emitter.
-	 * @param internal (boolean) If this Gene is Receptor or Emitter.
+	 * @param internal (boolean) If this Gene act in internal or external of current Organism.
 	 */
 	public EmitterReceptor(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 

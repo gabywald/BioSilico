@@ -1,5 +1,6 @@
 package gabywald.biosilico.model.tests;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +11,9 @@ import gabywald.biosilico.genetics.InitialConcentration;
 import gabywald.biosilico.genetics.StimulusDecision;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
+import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.model.Chromosome;
+import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
@@ -18,6 +21,7 @@ import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.global.data.StringUtils;
 
 /**
  * 
@@ -483,6 +487,361 @@ class OrganismInWorldCaseTests {
 
 	}
 	
-	// TODO instinct tests !!
+	/**
+	 * Test WITHOUT Chemical to create instinct (here GLUCOSE (ch169) )
+	 */
+	@Test
+	void testInstincts01() {
+
+		Chromosome basicGenome		= new Chromosome();
+		
+		BrainGeneBuilder bgb		= new BrainGeneBuilder();
+		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
+		InstinctBuilder igb			= new InstinctBuilder();
+
+		// ***** brain
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
+				.agemin(0).agemax(0).mutation(25).build() );
+		// ***** a lobe on first line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta(false)
+				.posx(0).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		// ***** a lobe on last line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta(false)
+				.posx(9).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		
+		basicGenome.addGene(new InitialConcentration(false, false, false, false, 0, 0, 0, 0,
+				SomeChemicals.GLUCOSE.getIndex(), 25));
+		
+		basicGenome.addGene( igb
+				.inputPosX( 0 ).inputPosY( 0 ).outputPosX( 9 ).outputPosY( 0 )
+				.weight( 42 ).variable( SomeChemicals.GLUCOSE.getIndex() )
+				.threshold( 5 ).check( false )
+					.mutate( true ).duplicate( true ).delete( true ).activ( true )
+					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
+					.build() );
+		
+		Organism testOrga		= new Organism(basicGenome);
+
+		Assertions.assertEquals(5, basicGenome.length());
+		Assertions.assertEquals(1, testOrga.getGenome().size());
+		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		
+		System.out.println( testOrga.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		// ***** one execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		Assertions.assertNotNull( testOrga.getBrain() );
+		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
+		Assertions.assertNotNull( testNeuronAt9dot0 );
+		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
+		Assertions.assertNotNull( testNeuronAt0dot0 );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  0, testConnections9dot0.size() );
+		
+		List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  0, testWeights9to0.size() );
+		
+	}
+	
+	/**
+	 * Test WITH Chemical to create instinct (here GLUCOSE (ch169) )
+	 */
+	@Test
+	void testInstincts02() {
+
+		Chromosome basicGenome		= new Chromosome();
+		
+		BrainGeneBuilder bgb		= new BrainGeneBuilder();
+		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
+		InstinctBuilder igb			= new InstinctBuilder();
+
+		// ***** brain
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
+				.agemin(0).agemax(0).mutation(25).build() );
+		// ***** a lobe on first line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta(false)
+				.posx(0).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		// ***** a lobe on last line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta( true )
+				.posx(9).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				SomeChemicals.GLUCOSE.getIndex(), 25));
+		
+		basicGenome.addGene( igb
+				.inputPosX( 0 ).inputPosY( 0 ).outputPosX( 9 ).outputPosY( 0 )
+				.weight( 42 ).variable( SomeChemicals.GLUCOSE.getIndex() )
+				.threshold( 5 ).check( false )
+					.mutate( true ).duplicate( true ).delete( true ).activ( true )
+					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
+					.build() );
+		
+		
+		Organism testOrga		= new Organism(basicGenome);
+
+		Assertions.assertEquals(5, basicGenome.length());
+		Assertions.assertEquals(1, testOrga.getGenome().size());
+		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		
+		System.out.println( testOrga.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		// ***** one execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		Assertions.assertNotNull( testOrga.getBrain() );
+		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
+		Assertions.assertNotNull( testNeuronAt9dot0 );
+		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
+		Assertions.assertNotNull( testNeuronAt0dot0 );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  1, testConnections9dot0.size() );
+		Assertions.assertTrue( testNeuronAt0dot0.equals(testConnections9dot0.get(0)) );
+		
+		List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  1, testWeights9to0.size() );
+		Assertions.assertEquals( 42, testWeights9to0.get(0).intValue() );
+		
+		// ***** one MORE execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		Assertions.assertEquals(  0, testNeuronAt0dot0.getActivity() );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		// List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  1, testConnections9dot0.size() );
+		Assertions.assertTrue( testNeuronAt0dot0.equals(testConnections9dot0.get(0)) );
+		
+		// List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  1, testWeights9to0.size() );
+		Assertions.assertEquals( 42, testWeights9to0.get(0).intValue() );
+		
+	}
+	
+	@Test
+	void testInstincts03() {
+
+		Chromosome basicGenome		= new Chromosome();
+		
+		BrainGeneBuilder bgb		= new BrainGeneBuilder();
+		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
+		InstinctBuilder igb			= new InstinctBuilder();
+
+		// ***** brain
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
+				.agemin(0).agemax(0).mutation(25).build() );
+		// ***** a lobe on first line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta(false)
+				.posx(0).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		// ***** a lobe on last line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta( true )
+				.posx(9).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				SomeChemicals.GLUCOSE.getIndex(), 25));
+		
+		basicGenome.addGene( igb
+				.inputPosX( 0 ).inputPosY( 0 ).outputPosX( 9 ).outputPosY( 0 )
+				.weight( 42 ).variable( SomeChemicals.GLUCOSE.getIndex() )
+				.threshold( 5 ).check( false )
+					.mutate( true ).duplicate( true ).delete( true ).activ( true )
+					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
+					.build() );
+		
+		
+		Organism testOrga		= new Organism(basicGenome);
+
+		Assertions.assertEquals(5, basicGenome.length());
+		Assertions.assertEquals(1, testOrga.getGenome().size());
+		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		
+		System.out.println( testOrga.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		// ***** one execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		Assertions.assertNotNull( testOrga.getBrain() );
+		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
+		Assertions.assertNotNull( testNeuronAt9dot0 );
+		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
+		Assertions.assertNotNull( testNeuronAt0dot0 );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  1, testConnections9dot0.size() );
+		Assertions.assertTrue( testNeuronAt0dot0.equals(testConnections9dot0.get(0)) );
+		
+		List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  1, testWeights9to0.size() );
+		Assertions.assertEquals( 42, testWeights9to0.get(0).intValue() );
+		
+		Assertions.assertEquals(  0, testNeuronAt0dot0.getActivity() );
+		testNeuronAt0dot0.addActivity( 100 );
+		Assertions.assertEquals(100, testNeuronAt0dot0.getActivity() );
+		
+		// ***** one MORE execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(99, testNeuronAt0dot0.getActivity() );
+		Assertions.assertEquals(42, testNeuronAt9dot0.getActivity() );
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		Assertions.assertTrue( testNeuronAt9dot0.hasConnected(testNeuronAt0dot0) );
+		Assertions.assertEquals( 0, testNeuronAt9dot0.getConnectPosition(testNeuronAt0dot0) );
+		Assertions.assertFalse( testNeuronAt0dot0.hasConnected(testNeuronAt9dot0) );
+		Assertions.assertEquals(-1, testNeuronAt0dot0.getConnectPosition(testNeuronAt9dot0) );
+		// List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  1, testConnections9dot0.size() );
+		Assertions.assertTrue( testNeuronAt0dot0.equals(testConnections9dot0.get(0)) );
+		
+		// List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  1, testWeights9to0.size() );
+		Assertions.assertEquals( 42, testWeights9to0.get(0).intValue() );
+		
+		// ***** one MORE MORE execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		System.out.println( testOrga.toString() );
+		System.out.print( testNeuronAt0dot0.toStringWithConnectionsAndWeights() );
+		System.out.print( testNeuronAt9dot0.toStringWithConnectionsAndWeights() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(98, testNeuronAt0dot0.getActivity() );
+		Assertions.assertEquals(83, testNeuronAt9dot0.getActivity() ); // 42 + 42 - 1
+		
+		// ***** Check connection from (9, 0) to (0, 0) and weights
+		Assertions.assertTrue( testNeuronAt9dot0.hasConnected(testNeuronAt0dot0) );
+		Assertions.assertEquals( 0, testNeuronAt9dot0.getConnectPosition(testNeuronAt0dot0) );
+		Assertions.assertFalse( testNeuronAt0dot0.hasConnected(testNeuronAt9dot0) );
+		Assertions.assertEquals(-1, testNeuronAt0dot0.getConnectPosition(testNeuronAt9dot0) );
+		// List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
+		Assertions.assertNotNull( testConnections9dot0 );
+		Assertions.assertEquals(  1, testConnections9dot0.size() );
+		Assertions.assertTrue( testNeuronAt0dot0.equals(testConnections9dot0.get(0)) );
+		
+		
+		// List<Integer> testWeights9to0		= testNeuronAt9dot0.getWeights();
+		Assertions.assertNotNull( testWeights9to0 );
+		Assertions.assertEquals(  1, testWeights9to0.size() );
+		Assertions.assertEquals( 42, testWeights9to0.get(0).intValue() );
+		
+	}
 	
 }

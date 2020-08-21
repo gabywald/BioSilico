@@ -187,7 +187,6 @@ public class NeuronBuilder {
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DESC).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DENDRITICMIN).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.DENDRITICMAX).second), 
-				Integer.parseInt(this.map.get(NeuronBuilderEnum.INDEX).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.PROX).second), 
 				Boolean.parseBoolean(this.map.get(NeuronBuilderEnum.REPR).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.REPY).second), 

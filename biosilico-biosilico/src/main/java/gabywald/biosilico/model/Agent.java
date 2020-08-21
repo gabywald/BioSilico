@@ -30,7 +30,7 @@ public abstract class Agent extends ObservableObject
 	protected WorldCase current;
 	/** Next location of the agent (if move). */
 	protected WorldCase nextStep;
-	/** TODO compute taxon ID */
+	/** Taxon ID / UUID. */
 	private UUID taxonID;
 	/** 
 	 * Names of the agent / organism (reserved spaces, each could be empty). 
@@ -56,14 +56,7 @@ public abstract class Agent extends ObservableObject
 	 * @param eatable (boolean)
 	 */
 	public Agent(boolean alive, boolean movable, boolean eatable) {
-		this.init();
-		this.alive		= alive;
-		this.variables.setVariable(StateType.EATABLE.getIndex(), (eatable) ? 100 : 0); /** Eatable */
-		this.variables.setVariable(StateType.MOVABLE.getIndex(), (movable) ? 100 : 0); /** Movable */
-	}
-	
-	/** Initialization helper for constructors. */
-	private void init() {
+		
 		this.variables	= ChemicalsBuilder.build();
 		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
@@ -75,6 +68,11 @@ public abstract class Agent extends ObservableObject
 		this.allOtherNames.add(""); /** Common name */
 		this.allOtherNames.add(""); /** Included name */
 		this.rankDivision	= new StringCouple();
+		
+		this.setAlive( alive );
+		this.setMovable( movable );
+		this.setEatable( eatable );
+		
 	}
 	
 	@Override
@@ -142,7 +140,7 @@ public abstract class Agent extends ObservableObject
 			for (int i = 0 ; i < 40 ; i++) 
 				{ this.addState(this.variables.getVariable(i)+":"); }
 			// ***** next cycle
-			// ***** XXX if cycle not managed biochemicaly. (aging++)
+			// ***** XXX if cycle not managed biochemichaly. (aging++)
 			this.cyclePlusPlus();
 			this.change();
 		}
@@ -166,7 +164,9 @@ public abstract class Agent extends ObservableObject
 	
 	public List<String> getAllNames()
 		{ return this.allOtherNames; }
-	
+
+	public String getCommonName()	
+		{ return this.allOtherNames.get(2); }
 	public String getBioSilicoName() 
 		{ return this.allOtherNames.get(1); }
 	public String getScientificName()	

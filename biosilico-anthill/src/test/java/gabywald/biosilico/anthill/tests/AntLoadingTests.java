@@ -139,7 +139,7 @@ class AntLoadingTests {
 					Assertions.assertNotNull( currentGene );
 					break;
 				default:
-					String message = "Unknown length (" + datas.length + ")";
+					String message = "Unknown length (" + datas.length + ") {" + line + "}" ;
 					Logger.printlnLog(LoggerLevel.LL_ERROR, message);
 					Assertions.fail(message);
 				} // END "switch(datas.length)"
@@ -182,9 +182,9 @@ class AntLoadingTests {
 		testAnt.setCurrentWorldCase( wc );
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -214,9 +214,9 @@ class AntLoadingTests {
 		testAnt.cyclePlusPlus(); // Aging organism
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -299,9 +299,9 @@ class AntLoadingTests {
 		testAnt.setCurrentWorldCase( wc );
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -334,9 +334,9 @@ class AntLoadingTests {
 		testAnt.cyclePlusPlus(); // Aging organism
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -421,9 +421,9 @@ class AntLoadingTests {
 		testAnt.setCurrentWorldCase( wc );
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -457,9 +457,9 @@ class AntLoadingTests {
 		testAnt.cyclePlusPlus(); // Aging organism
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -640,9 +640,9 @@ class AntLoadingTests {
 		testAnt.setCurrentWorldCase( wc );
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -678,9 +678,9 @@ class AntLoadingTests {
 		testAnt.cyclePlusPlus(); // Aging organism
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -874,9 +874,9 @@ class AntLoadingTests {
 		testAnt.setCurrentWorldCase( wc );
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("=", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -896,6 +896,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -912,9 +913,9 @@ class AntLoadingTests {
 		testAnt.cyclePlusPlus(); // Aging organism
 		
 		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("*", 80) );
+		System.out.println( StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -934,12 +935,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
 		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
 		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
 		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
 		Assertions.assertEquals( 25, wc.getVariables().getVariable(500));
 		Assertions.assertEquals( 25, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
 		
 		// ***** one execution in this context -- 2
 		w.execution();
@@ -968,12 +974,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
 		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
 		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
 		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
 		Assertions.assertEquals( 50, wc.getVariables().getVariable(500));
 		Assertions.assertEquals( 50, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
 		
 		// ***** one execution in this context -- 3
 		w.execution();
@@ -1002,12 +1013,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
 		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
 		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
 		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
 		Assertions.assertEquals( 75, wc.getVariables().getVariable(500));
 		Assertions.assertEquals( 75, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
 		
 		// ***** one execution in this context -- 4
 		w.execution();
@@ -1036,12 +1052,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
 		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
 		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
 		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
 		Assertions.assertEquals(100, wc.getVariables().getVariable(500));
 		Assertions.assertEquals(100, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
 		
 		// ***** one execution in this context -- 5
 		w.execution();
@@ -1072,12 +1093,104 @@ class AntLoadingTests {
 		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
 		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
 		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
 		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
 		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
 		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
 		Assertions.assertEquals(125, wc.getVariables().getVariable(500));
 		Assertions.assertEquals(125, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		
+		// ***** Put some pheromones on local (00 : ch650)
+		wc.getChemicals().setVarPlus(SomeChemicals.PHEROMONE_00.getIndex(), 50);
+		// ***** MORE executionS in this context -- 6
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( es.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(130, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertTrue( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
+		
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 30, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 70, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(150, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(150, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(650));
+		
+		// ***** Loading Chemicals HalfLives in World !!
+		w.loadHalLives();
+		
+		// ***** MORE executionS in this context -- 6
+		w.execution();
+		testAnt.cyclePlusPlus(); // Aging organism
+		
+		System.out.println( testAnt.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( es.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		System.out.println( wc.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
+		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(151));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(165));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(166));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(167));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(168));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(169));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(181));
+		Assertions.assertEquals(135, testAnt.getVariables().getVariable(182));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
+		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(940));
+		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(700));
+		
+		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
+		Assertions.assertTrue( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
+		
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
+		Assertions.assertEquals( 35, wc.getVariables().getVariable(181));
+		Assertions.assertEquals( 65, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(155, wc.getVariables().getVariable(500));
+		Assertions.assertEquals(165, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(650));
 
 	}
 	

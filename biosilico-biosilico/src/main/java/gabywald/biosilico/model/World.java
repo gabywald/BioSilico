@@ -1,10 +1,12 @@
 package gabywald.biosilico.model;
 
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
@@ -120,12 +122,20 @@ public class World implements IChemicalsContent {
 		for (int i = 0 ; i < vars.length() ;i++) 
 			{ vars.setVarLess(i, this.halfLives.getVariable(i)); }
 	}
+	
+	/**
+	 * Load Configuration file for half-lives. 
+	 * @return
+	 */
+	public boolean loadHalLives() {
+		Map<Integer, Integer> halfLives = ChemicalsHelper.loadDefaultChemicalsHalfLives();
+		halfLives.keySet().stream().forEach( key -> this.halfLives.setVariable(key, halfLives.get(key)) );
+		return (halfLives.size() > 0);
+	}
 
 	@Override
 	public IChemicals getChemicals()	{ return this.halfLives; }
 	@Override
 	public IChemicals getVariables()	{ return this.halfLives; }
-	
-	public int getVariable(int i)		{ return this.halfLives.getVariable(i); }
 	
 }

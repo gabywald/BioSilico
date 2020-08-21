@@ -67,20 +67,20 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		List<ObjectType> oTypes = Arrays.asList(	ObjectType.values() );
+		List<ObjectType> oTypes = Arrays.asList( ObjectType.values() );
 		oTypes.stream().forEach( oType -> {
 			// System.out.println( "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
-			int object	= oType.getIndex();
+			int object			= oType.getIndex();
 
-			DecisionType dType = DecisionType.getValue( which );
+			DecisionType dType	= DecisionType.getValue( which );
 			Assertions.assertNotNull( dType );
 
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 
-			World w			= new World(3, 3);
+			World w				= new World(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			WorldCase wc		= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 
 			testOrga.setCurrentWorldCase( wc );

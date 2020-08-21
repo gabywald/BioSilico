@@ -30,7 +30,7 @@ public class Neuron {
 	/** Respective weights attributed to input connections. */
 	private List<Integer> weights;
 	/** Current numbers of connections. */
-	private int index;
+	// private int index;
 	/** Which distance searching connections and reproduction. */
 	private int proximity;
 	/** Current Neuron can reproduce or not. */
@@ -58,7 +58,7 @@ public class Neuron {
 	 */
 	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 					int prox, boolean repr, int repy) {
-		this(rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, false, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
+		this(rest, thre, 0, desc, dendriticmin, dendriticmax, prox, repr, repy, false, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class Neuron {
 	 */
 	public Neuron(	int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 					int prox, boolean repr, int repy, boolean wta) {
-		this(rest, thre, 0, desc, dendriticmin, dendriticmax, 0, prox, repr, repy, wta, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
+		this(rest, thre, 0, desc, dendriticmin, dendriticmax, prox, repr, repy, wta, null, new ArrayList<Neuron>(), new ArrayList<Integer>());
 	}
 	
 	/** 
@@ -88,7 +88,6 @@ public class Neuron {
 	 * @param desc (int) descent.
 	 * @param dmin (int) dendritic minimal connections. 
 	 * @param dmax (int) dendritic maximal connections. 
-	 * @param index (int) index of sets. 
 	 * @param prox (int) proximity. 
 	 * @param repr (boolean) if current Neuron can reproduce. 
 	 * @param repy (int) number of maximum reproductions. 
@@ -97,8 +96,7 @@ public class Neuron {
 	 * @param weights (Integer's Liste) set of weights of intputs. 
 	 * @see Neuron#getCopy()
 	 */
-	Neuron(	int rest, int thre, int acti, int desc, int dmin, int dmax, 
-			int index, int prox, boolean repr, int repy, boolean wta, 
+	Neuron(	int rest, int thre, int acti, int desc, int dmin, int dmax, int prox, boolean repr, int repy, boolean wta, 
 			Position pos, List<Neuron> conn, List<Integer> weights) {
 		this.restState			= rest;
 		this.threshold			= thre;
@@ -108,7 +106,6 @@ public class Neuron {
 		this.dmax				= dmax;
 		this.dmin				= dmin;
 		
-		this.index				= index;
 		this.position			= pos;
 
 		this.proximity			= prox;
@@ -161,7 +158,7 @@ public class Neuron {
 				i++;
 			}
 		}
-		for (int i = 0 ; i < this.index ; i++) {
+		for (int i = 0 ; i < this.connections.size() ; i++) {
 			if (this.connections.get(i).isActivated()) 
 				{ this.activity += this.weights.get(i).intValue(); }
 		}
@@ -179,37 +176,36 @@ public class Neuron {
 		
 		// ***** Not removing / changing if under dmin 
 		if (this.connections.size() > this.dmin) {
-			for (int i = this.index-1 ; i >= this.dmin ; i--) {
+			// ***** starting from the last created connection
+			for (int i = this.connections.size()-1 ; i >= this.dmin ; i--) {
 				// ***** Change weights of Neurons, if activated or not. 
-				// TODO change with a specific chemical ??
-				if (this.connections.get(i).isActivated()) {
-					if (this.weights.get(i).intValue() < 999)
-						{ this.weights.set(i, this.weights.get(i) + 1); }
-				} else {
-					if (this.weights.get(i).intValue() > 10)
-						{ this.weights.set(i, this.weights.get(i) - 1); }
-				}
+				// TODO change with a specific chemical ?? reinforcement or not !!
+//				if (this.connections.get(i).isActivated()) {
+//					if (this.weights.get(i).intValue() < 999)
+//						{ this.weights.set(i, this.weights.get(i) + 1); }
+//				} else {
+//					if (this.weights.get(i).intValue() > 10)
+//						{ this.weights.set(i, this.weights.get(i) - 1); }
+//				}
 				// ***** If weight is 0 or less : remove. 
 				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
-				if ( (this.weights.get(i).intValue() <= 0) && (this.index > this.dmin) ){
-						this.connections.remove(i);
-						this.weights.remove(i);
-						this.index--;
+				if ( (this.weights.get(i).intValue() <= 0) && (this.connections.size() > this.dmin) ){
+					this.connections.remove(i);
+					this.weights.remove(i);
 				}
 			}
 		}
 		// ***** Add new Neuron's if necessary. 
-		if ( (this.index < this.dmin) && (this.position != null) ) {
+		if ( (this.connections.size() < this.dmin) && (this.position != null) ) {
 			// ***** Here a set of activated Neurons 
 			List<Neuron> candidates			= nn.getNeuronsBefore(this.position, this.proximity);
 			Iterator<Neuron> iteOnNeuron	= candidates.iterator();
-			while ( (this.index < this.dmax) && (iteOnNeuron.hasNext()) ) {
+			while ( (this.connections.size() < this.dmax) && (iteOnNeuron.hasNext()) ) {
 				Neuron candidate = iteOnNeuron.next();
 				// ***** Test if same Neuron at same position is present. 
 				if ( ! this.connections.contains(candidate)) { 
 					this.connections.add( candidate );
 					this.weights.add(new Integer(this.proximity));
-					this.index++;
 				}
 			}
 		}
@@ -296,7 +292,6 @@ public class Neuron {
 		return new Neuron(this.restState, this.threshold,
 						  this.activity, this.descent, 
 						  this.dmin, this.dmax, 
-						  this.index, 
 						  this.proximity, 
 						  this.reproduction, 
 						  this.reproductibility, 
@@ -380,11 +375,25 @@ public class Neuron {
 		result.append("\t").append(this.descent);
 		result.append("\t").append(this.position);
 		result.append("\t").append(this.dmin).append(":").append(this.dmax).append(" (").append(this.connections.size()).append(")");
-		result.append("\t").append(this.index);
+		result.append("\t").append(this.connections.size());
 		result.append("\t").append(this.reproduction?"true":"false");
 		result.append("\t").append(this.reproductibility);
 		result.append("\t").append(this.winnerTakeAll?"true":"false");
 		result.append("\t").append(this.currentLobe.size());
+		return result.toString();
+	}
+	
+	public String toStringWithConnectionsAndWeights() {
+		final StringBuilder result = new StringBuilder();
+		result.append(this.toString()).append("\n");
+		if (this.connections.size() == 0) {
+			result.append("\tNo Backward connections. \n");
+		} else {
+			for (int i = 0 ; i < this.connections.size() ; i++) {
+				result.append("\t").append( this.connections.get(i).getPosition().toString() );
+				result.append("***").append( this.weights.get(i).toString() ).append("\n");
+			}
+		}
 		return result.toString();
 	}
 	
