@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 
 
@@ -12,7 +13,7 @@ import gabywald.biosilico.model.Organism;
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  * @see gabywald.biosilico.genetics.InitialConcentration
  */
-public abstract class Gene {
+public abstract class Gene implements Cloneable, IGeneMutation {
 	/** Default name if not attributed. */
 	public static final String DEFAULT_GENE_NAME = "UnNamedGene";
 	/** Gene name / identification. */
@@ -162,4 +163,5 @@ public abstract class Gene {
 		return ((value < 10) ? "0" : "" ) + value;
 	}
 	
+	public abstract Gene clone();
 }

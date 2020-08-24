@@ -15,6 +15,7 @@ import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.model.reproduction.ReproductionAnima;
 import gabywald.biosilico.model.reproduction.ReproductionBacta;
 import gabywald.biosilico.model.reproduction.ReproductionDaemon;
+import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.biosilico.model.reproduction.ReproductionViridita;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -217,9 +218,17 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				if (this.getOrga().isFertile()) {
-					int agentType = SomeChemicals.GAMET.getIndex();
-					 // ***** Increase Gamet TODO to change it / values !!
-					this.getOrga().getVariables().setVarPlusPlus(agentType);
+					// TODO make real gamets !! (if apply)
+					Organism gamet = ReproductionHelper.makeGamet(this.getOrga());
+					if (gamet != null) {
+						this.getOrga().addAgent(gamet);
+					}
+					// ***** Increase Gamet / make exact count !!
+					this.getOrga().getChemicals().setVariable(SomeChemicals.GAMET.getIndex(), 
+							this.getOrga().hasAgentStatus(StatusType.EGG));
+					// TODO to change it / values !!
+					// int agentTypeGamet = SomeChemicals.GAMET.getIndex();
+					// this.getOrga().getVariables().setVarPlusPlus(agentTypeGamet);
 				}
 			}
 		};break;

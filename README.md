@@ -36,6 +36,8 @@ A complete (?) dev framework to build a computer modelization / simulation for '
 
 Mostly inspired from game Creatures and publications around it. 
 
+Implemented as a discrete "World" composed of WorldCase, which can contains Agents. Some Agents are Organisms, which genomes are haploïd (reflexion about diploïd / polyploïd ... ?!). 
+
 ### 'biosilico-cellmodel' : 
 
 ... 

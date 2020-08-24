@@ -24,7 +24,6 @@ public class ReproductionViria implements IReproduction {
 		if (organisms.length == 0) { return; }
 
 		// ***** at least two ?? (virion and infected organism ?!)
-		
 		// TODO reproduction ReproductionViria
 		
 	}

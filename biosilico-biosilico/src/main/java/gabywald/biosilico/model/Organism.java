@@ -27,7 +27,7 @@ public class Organism extends Agent implements IAgentContent {
 	private Brain currentBrain;
 	/** An organism can contain several Agent's. */
 	private List<Agent> liste;
-	/** Genome of the Organism. */
+	/** Genome of the Organism ; haploïd. */
 	private List<Chromosome> genome;
 	/** Extended lineage of the Organism. */
 	private List<ExtendedLineageItem> extendedlineage;
@@ -80,7 +80,7 @@ public class Organism extends Agent implements IAgentContent {
 	public void setGenome(List<Chromosome> genome) 
 		{ this.genome = genome; }
 
-	public int lengthLineage()
+	public int lineageSize()
 		{ return this.extendedlineage.size(); }
 
 	public void setExtendedLineage(List<ExtendedLineageItem> lineage) 
@@ -149,6 +149,8 @@ public class Organism extends Agent implements IAgentContent {
 	public void execution(WorldCase local) {
 		this.current = local;
 		// ***** Genome is "executed". 
+		
+		// NOTE : here mainly works for haploïd genomes !! 
 		this.genome.stream().forEach( c -> c.execution(this) );
 		// TODO genome length to 0 : death ?! 
 		// ***** Running the brain (if not null). 
@@ -224,15 +226,15 @@ public class Organism extends Agent implements IAgentContent {
 	}
 	
 	@Override
-	public int hasAgentStatus(StatusType type) {
-		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex()) ).count();
+	public int hasAgentStatus(StatusType status) {
+		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex()) ).count();
 	}
 	
 	@Override
-	public Agent getAgentStatus(StatusType type) {
-		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex() )) {
+	public Agent getAgentStatus(StatusType status) {
+		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex() )) {
 			for (int i = 0 ; i < this.liste.size() ; i++) {
-				if (this.liste.get(i).getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex()) { 
+				if (this.liste.get(i).getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex()) { 
 					return this.liste.get(i);
 				}
 			}

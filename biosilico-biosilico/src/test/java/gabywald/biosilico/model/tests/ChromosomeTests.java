@@ -28,7 +28,6 @@ class ChromosomeTests {
 	@Test
 	void testChromosome() {
 		Chromosome chr = new Chromosome();
-		Assertions.assertEquals(0, chr.getGeneNumber());
 		Assertions.assertEquals(0, chr.length());
 		
 		BiochemicalReactionBuilder bchrb	= new BiochemicalReactionBuilder();
@@ -40,31 +39,24 @@ class ChromosomeTests {
 		StimulusDecisionBuilder sdb			= new StimulusDecisionBuilder();
 		
 		chr.addGene(bchrb.build());
-		Assertions.assertEquals(1, chr.getGeneNumber());
 		Assertions.assertEquals(1, chr.length());
 		
 		chr.addGene(bgb.build());
-		Assertions.assertEquals(2, chr.getGeneNumber());
 		Assertions.assertEquals(2, chr.length());
 		
 		chr.addGene(blgb.build());
-		Assertions.assertEquals(3, chr.getGeneNumber());
 		Assertions.assertEquals(3, chr.length());
 		
 		chr.addGene(erb.build());
-		Assertions.assertEquals(4, chr.getGeneNumber());
 		Assertions.assertEquals(4, chr.length());
 		
 		chr.addGene(icb.build());
-		Assertions.assertEquals(5, chr.getGeneNumber());
 		Assertions.assertEquals(5, chr.length());
 		
 		chr.addGene(ib.build());
-		Assertions.assertEquals(6, chr.getGeneNumber());
 		Assertions.assertEquals(6, chr.length());
 		
 		chr.addGene(sdb.build());
-		Assertions.assertEquals(7, chr.getGeneNumber());
 		Assertions.assertEquals(7, chr.length());
 		
 		Assertions.assertEquals(BiochemicalReaction.class, 	chr.getGene(0).getClass());

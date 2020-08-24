@@ -255,8 +255,9 @@ public class FileOrganism extends FileBiological {
 
 	public Organism getOrganism()		{ return this.orga; }
 
-	public int lengthLineage()			
-		{ return this.orga.lengthLineage(); }
+	public int lineageSize()			
+		{ return this.orga.lineageSize(); }
+	
 	public String getSimpleLinage(int i) 
 		{ return this.orga.getSimpleLineage(i); }
 

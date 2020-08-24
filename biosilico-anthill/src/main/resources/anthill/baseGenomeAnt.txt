@@ -1,7 +1,3 @@
-// 20200803, conception of basic ant genome !
-// Some Chemicals of interest : 
-// 	- 182 : water (line 183)
-// 	- 
 // // // need some initial concentration !!
 // InitConc	
 IC:O2 	true	true	false	true	0	0	0	25	180	100

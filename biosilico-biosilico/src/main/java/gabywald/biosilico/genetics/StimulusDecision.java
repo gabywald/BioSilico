@@ -1,6 +1,9 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
@@ -135,7 +138,7 @@ public class StimulusDecision extends GeneGattaca {
 	public int getValue()			{ return this.value; }
 	public int getScript()			{ return this.scrip; }
 
-	
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+this.perception+"\t"+
@@ -144,4 +147,30 @@ public class StimulusDecision extends GeneGattaca {
 							this.varia+"\t"+this.value+"\t"+this.scrip+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public Gene clone() {
+		return new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+										this.perception, this.object, this.indicator, this.threshold, 
+										this.attribute, this.varia, this.value, this.scrip);
+	}
+
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(8);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.perception	= moreOrLess; break;
+		case(1):	this.object		= moreOrLess; break;
+		case(2):	this.indicator	= IGeneMutation.mutate(this.indicator, moreOrLess, 999); break;
+		case(3):	this.threshold	= IGeneMutation.mutate(this.threshold, moreOrLess, 999); break;
+		case(4):	this.attribute	= IGeneMutation.mutate(this.attribute, moreOrLess, 999); break;
+		case(5):	this.varia		= IGeneMutation.mutate(this.varia, moreOrLess, 999); break;
+		case(6):	this.value		= IGeneMutation.mutate(this.value, moreOrLess, 999); break;
+		case(7):	this.scrip		= IGeneMutation.mutate(this.scrip, moreOrLess, 999); break;
+		}
+	}
+
 }

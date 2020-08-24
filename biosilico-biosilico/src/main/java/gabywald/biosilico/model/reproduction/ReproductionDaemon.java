@@ -1,10 +1,8 @@
 package gabywald.biosilico.model.reproduction;
 
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
-import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * 
@@ -31,17 +29,8 @@ public class ReproductionDaemon implements IReproduction {
 		Organism currentOrga	= organisms[0];
 		
 		Organism nextOrga		= new Organism(currentOrga.getGenome());
-		nextOrga.setRank(currentOrga.getRank());
-		nextOrga.setDivision(currentOrga.getDivision());
-		nextOrga.setExtendedLineage(currentOrga.getExtendedLineage());
-		nextOrga.setOrganismType(currentOrga.getOrganismTypeAsType());
-		nextOrga.setNameBiosilico(currentOrga.getBioSilicoName());
-		nextOrga.setNameScientific(currentOrga.getScientificName());
-		nextOrga.setNameCommon(currentOrga.getScientificName());
-		// nextOrga.setNameIncluded(includedName);
-		nextOrga.setSex(currentOrga.getSex());
-		nextOrga.setOrganismType(AgentType.BIOSILICO_DAEMON);
-		nextOrga.setOrganismStatus(StatusType.EGG);
+		ReproductionHelper.copySomeData(currentOrga, nextOrga);
+		nextOrga.addExtendedLineageItem(currentOrga.getUniqueID(), currentOrga.getScientificName(), currentOrga.getRank());
 		
 		// ***** Put / drop it in current WorldCase When Laying Egg !
 		// nextOrga.setCurrentWorldCase(currentOrga.getCurrentWorldCase());
