@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * 
  * @author Gabriel Chandesris (2020)

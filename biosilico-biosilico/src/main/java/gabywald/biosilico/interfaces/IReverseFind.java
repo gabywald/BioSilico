@@ -1,6 +1,6 @@
-package gabywald.biosilico.model.enums;
+package gabywald.biosilico.interfaces;
 
-public interface IReverseFind<T> {
+public interface IReverseFind<T extends IChemicalsType> {
 	
 	/**
 	 * Retrieve element from enum from its index. 

@@ -23,6 +23,8 @@ public class ChemicalsHelper {
 	private static final String CHEMICAL_HALFLIVES_LIST_FILE	= "biosilico/data/ChemicalsHalfLivesList.txt";
 	/** Number of chemicals. */
 	public static final int CHEMICAL_LENGTH						= 1000;
+	/** Upper limit of "strictly defined chemical". */
+	public static final int CHEMICAL_STRICT_CHEM				= 750;
 	
 	/** to avoid instanciation. */
 	private ChemicalsHelper() { ; }

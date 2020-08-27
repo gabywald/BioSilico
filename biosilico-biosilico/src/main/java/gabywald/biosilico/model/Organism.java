@@ -6,6 +6,7 @@ import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.structures.ExtendedLineageItem;
@@ -39,7 +40,7 @@ public class Organism extends Agent implements IAgentContent {
 		super(true, true, true);
 		this.genome				= new ArrayList<Chromosome>();
 		// ***** XXX default organism's are Daemons (ch942 set to 935)
-		this.variables.setVariable(StateType.TYPEOF.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex());
+		this.variables.setVariable(StateType.AGENT_TYPE.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex());
 		this.geneticCodes		= new ArrayList<StringCouple>();
 		this.geneticCodes.add(new StringCouple("0000000010", "Gattaca01"));
 		this.currentBrain		= null;
@@ -120,28 +121,11 @@ public class Organism extends Agent implements IAgentContent {
 		this.currentBrain = cb; 
 	}
 	
-	public void setOrganismType(AgentType type) {
-		this.variables.setVariable(StateType.TYPEOF.getIndex(), type.getIndex());
-	}
-	
-	public int getOrganismType() {
-		return this.variables.getVariable(StateType.TYPEOF.getIndex());
-	}
-	
-	public AgentType getOrganismTypeAsType() {
-		int type = this.variables.getVariable(StateType.TYPEOF.getIndex());
-		return AgentType.getFrom( type );
-	}
-	
 	public void setOrganismStatus(StatusType type) {
 		this.variables.setVariable(StateType.STATUS.getIndex(), type.getIndex());
 	}
 	
-	public int getOrganismStatus() {
-		return this.variables.getVariable(StateType.STATUS.getIndex());
-	}
-	
-	public StatusType getOrganismStatusAsType() {
+	public StatusType getOrganismStatus() {
 		int type = this.variables.getVariable(StateType.STATUS.getIndex());
 		return StatusType.getFrom( type );
 	}
@@ -159,25 +143,27 @@ public class Organism extends Agent implements IAgentContent {
 	}
 
 	/**
-	 * Activity of organism (Decision)
+	 * Activity of organism (IDecision), launch action on IDecision (if apply), then return it. 
 	 * @param which (int) code of script / action. 
 	 * @param object (int) code object. 
 	 * @param threshold (int)
-	 * @param attribute (int)
-	 * @param variable (int)
-	 * @param value (int)
+	 * @param attribute (int) 
+	 * @param variable (int) index of chemical. 
+	 * @param value (int) value of chemical. 
+	 * @return (IDecision) could be ull
 	 */
-	public void activity(	int which, int object, int threshold, 
-							int attribute, int variable, int value) {
+	public IDecision activity(	int which, int object, int threshold, 
+								int attribute, int variable, int value) {
 		
 		DecisionType dType = DecisionType.getValue( which );
-		if (dType == null) { return; }
+		if (dType == null) { return null; }
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		IDecision decision	= db.type(dType).organism(this).object(object).threshold(threshold)
 								.attribute(attribute).variable(variable).value(value).build();
 		if (decision != null) { decision.action(); }
 		
+		return decision;
 	}
 	
 	/**
@@ -209,37 +195,33 @@ public class Organism extends Agent implements IAgentContent {
 	public Agent getAgent(int i)		{ return this.liste.get(i); }	
 	
 	@Override
+	public int hasObjectType(ObjectType type) {
+		return IAgentContent.hasType(type, StateType.TYPEOF.getIndex(), this.liste);
+	}
+	
+	@Override
+	public Agent getObjectType(ObjectType type) {
+		return IAgentContent.getType(type, StateType.TYPEOF.getIndex(), this.liste);
+	}
+	
+	@Override
 	public int hasAgentType(AgentType type) {
-		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex()) ).count();
+		return IAgentContent.hasType(type, StateType.AGENT_TYPE.getIndex(), this.liste);
 	}
 	
 	@Override
 	public Agent getAgentType(AgentType type) {
-		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex() )) {
-			for (int i = 0 ; i < this.liste.size() ; i++) {
-				if (this.liste.get(i).getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex()) { 
-					return this.liste.get(i);
-				}
-			}
-		}
-		return null;
+		return IAgentContent.getType(type, StateType.AGENT_TYPE.getIndex(), this.liste);
 	}
 	
 	@Override
 	public int hasAgentStatus(StatusType status) {
-		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex()) ).count();
+		return IAgentContent.hasType(status, StateType.STATUS.getIndex(), this.liste);
 	}
 	
 	@Override
 	public Agent getAgentStatus(StatusType status) {
-		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex() )) {
-			for (int i = 0 ; i < this.liste.size() ; i++) {
-				if (this.liste.get(i).getChemicals().getVariable(StateType.STATUS.getIndex()) == status.getIndex()) { 
-					return this.liste.get(i);
-				}
-			}
-		}
-		return null;
+		return IAgentContent.getType(status, StateType.STATUS.getIndex(), this.liste);
 	}
 	
 	@Override

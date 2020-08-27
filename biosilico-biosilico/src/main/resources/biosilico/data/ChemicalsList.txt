@@ -939,6 +939,7 @@ Anima	anima
 Virus	virus
 Gender	gender
 Aging	aging
+AgentType	agentype
 TypeOf	typeof
 Status	status
 Movable	movable

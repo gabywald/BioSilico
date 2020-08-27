@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * For Direct appliance for corresponding variables indexes. 
  * @author Gabriel Chandesris (2020)
@@ -7,12 +9,13 @@ package gabywald.biosilico.model.enums;
 public enum StateType implements IChemicalsType {
 	GENDER  	(939, "Gender", 	"gender"), 
 	AGING   	(940, "Aging", 		"aging"), 
-	TYPEOF  	(941, "TypeOf", 	"typeof"), 
-	STATUS		(942, "Status", 	"status"), 
-	MOVABLE		(943, "Movable", 	"movable"), 
-	EATABLE 	(944, "Eatable", 	"eatable"), 
-	FERTILE 	(945, "Fertile", 	"fertile"), 
-	PREGNANT	(946, "Pregnant", 	"pregnant"), 
+	AGENT_TYPE 	(941, "AgentType", 	"agenttype"), 
+	TYPEOF  	(942, "TypeOf", 	"typeof"), 
+	STATUS		(943, "Status", 	"status"), 
+	MOVABLE		(944, "Movable", 	"movable"), 
+	EATABLE 	(945, "Eatable", 	"eatable"), 
+	FERTILE 	(946, "Fertile", 	"fertile"), 
+	PREGNANT	(947, "Pregnant", 	"pregnant"), 
 	;
 	
 	private int index;

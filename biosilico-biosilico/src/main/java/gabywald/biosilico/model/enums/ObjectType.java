@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * 
  * @author Gabriel Chandesris (2020)
@@ -17,7 +19,7 @@ public enum ObjectType implements IChemicalsType {
 	LAPTOP		(909, "Laptop", 	"laptop"), 
 	PHONE		(910, "Phone", 		"phone"), 
 	CELLPHONE	(911, "CellPhone", 	"cellphone"), 
-	ANT			(912, "Ant", 		"ant");
+	AGENT		(912, "Agent", 		"agent");
 	
 	private int index;
 	private String name, definition;
@@ -34,4 +36,13 @@ public enum ObjectType implements IChemicalsType {
 	public String getName()			{ return name; }
 	@Override
 	public String getDefinition()	{ return definition; }
+	
+	public static ObjectType getFrom(int index) {
+		for (ObjectType at : ObjectType.values()) {
+			if (index == at.index) 
+				{ return at; }
+		}
+		return null;
+	}
+
 }

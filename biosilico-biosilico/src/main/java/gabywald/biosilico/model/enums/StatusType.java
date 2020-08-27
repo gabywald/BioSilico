@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * For applyance for Variable 'ch942' (STATUS). 
  * @author Gabriel Chandesris (2020)

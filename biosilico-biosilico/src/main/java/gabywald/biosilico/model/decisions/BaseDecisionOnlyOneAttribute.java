@@ -8,7 +8,6 @@ import gabywald.biosilico.model.Organism;
  */
 public abstract class BaseDecisionOnlyOneAttribute 
 		extends BaseDecision 
-		// implements IDecisionSimple<Organism> 
 	{
 	
 	/**
@@ -22,10 +21,4 @@ public abstract class BaseDecisionOnlyOneAttribute
 	
 	// TODO java 8 lambda with Functionnal attribute passed !! => IDecisionSimple
 	
-//	public <T extends Agent> void action(T ofType, Function<T, Void> function) 
-//		{ function.apply(ofType); }
-
-//	public  void action(Organism ofType, Function<Organism, Void> function) 
-//		{ function.apply(ofType); }
-
 }

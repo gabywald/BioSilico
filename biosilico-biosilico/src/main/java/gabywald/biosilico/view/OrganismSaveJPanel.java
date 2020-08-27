@@ -130,7 +130,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 				// ******* If select Panel : FileOrganism instance already exists ! 
 				this.toSave = this.orgSelectPanel.getLoadOrganism();
 				this.toSave.setGenome(currentGenome);
-				this.toSave.getOrganism().setOrganismType(AgentType.values()[this.orgSelectPanel.getTypeOrganism() - 1]);
+				this.toSave.getOrganism().setAgentType(AgentType.values()[this.orgSelectPanel.getTypeOrganism() - 1]);
 			} else // ***** This case should not happen often. 
 				{ this.toSave = new FileOrganism(pathAndFileName,
 											new Organism(currentGenome)); }

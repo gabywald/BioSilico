@@ -1,5 +1,6 @@
 package gabywald.biosilico.model.reproduction;
 
+import gabywald.biosilico.exceptions.ReproductionException;
 import gabywald.biosilico.model.Organism;
 
 /**
@@ -27,6 +28,14 @@ public class ReproductionAnima implements IReproduction {
 		// ***** at least two
 		
 		// TODO reproduction ReproductionAnima
+		
+		try {
+			ReproductionHelper.binaryReproduction(organisms[0], organisms[1]);
+		} catch (ReproductionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 

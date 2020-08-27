@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * 
  * @author Gabriel Chandesris (2020)
@@ -23,10 +25,10 @@ public enum DecisionType implements IChemicalsType {
 	RECEIVE		(865, "Receive", 	"receive"), 
 	HAS			(866, "Has", 		"has"), 
 	IS			(867, "Is", "		is"), 
-	MAKE_GAMET	(868, "MakeGamet", 	"make gamet"), 
+	MAKE_GAMET	(868, "Make Gamet", "make gamet"), 
 	LAY_EGG		(869, "LayEgg", 	"lay egg"), 
 	MATE		(870, "Mate", 		"mate"), 
-	CREATE_EGG	(871, "Create Egg", "createegg"), 
+	CREATE_EGG	(871, "Create Egg", "create egg"), 
 	// ***** XXX NOTE : 872 to 880 are free. 
 	;
 	

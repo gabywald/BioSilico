@@ -37,7 +37,7 @@ public abstract class ReproductionHelper {
 	public static boolean checkCompatibility(Organism orga1, Organism orga2) {
 		
 		// ***** Same Type of Organism. 
-		if (orga1.getOrganismTypeAsType().compareTo(orga2.getOrganismTypeAsType()) != 0) 
+		if (orga1.getAgentType().compareTo(orga2.getAgentType()) != 0) 
 			{ return false; }
 		
 		// ***** Same number of chromosomes. 
@@ -101,10 +101,10 @@ public abstract class ReproductionHelper {
 		gametToReturn.setGenome(genomeOfGamet);
 		
 		// ***** Put some Chemicals get from Organism. UseFul for 'Fruits' !!
-		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( c -> {
+		IntStream.range(0, ChemicalsHelper.CHEMICAL_STRICT_CHEM).forEach( c -> {
 			int initValue = orga.getChemicals().getVariable(c);
 			if (initValue > 0) {
-				int setupValue = initValue / 10; // 10 % XXX to be configured ?!
+				int setupValue = initValue / 20; // 5 % XXX to be configured ?!
 				orga.getChemicals().setVariable(c, initValue - setupValue);
 				gametToReturn.getChemicals().setVariable(c, setupValue);
 			}
@@ -116,13 +116,13 @@ public abstract class ReproductionHelper {
 	public static void copySomeData(Organism currentOrga, Organism nextOrga) {
 		nextOrga.setRank(currentOrga.getRank());
 		nextOrga.setDivision(currentOrga.getDivision());
-		nextOrga.setOrganismType(currentOrga.getOrganismTypeAsType());
 		nextOrga.setNameBiosilico(currentOrga.getBioSilicoName());
 		nextOrga.setNameScientific(currentOrga.getScientificName());
 		nextOrga.setNameCommon(currentOrga.getScientificName());
 		// nextOrga.setNameIncluded(includedName);
 		nextOrga.setSex(currentOrga.getSex());
-		nextOrga.setOrganismType(currentOrga.getOrganismTypeAsType());
+		nextOrga.setObjectType(currentOrga.getObjectType());
+		nextOrga.setAgentType(currentOrga.getAgentType());
 		nextOrga.setOrganismStatus(StatusType.EGG);
 		
 		nextOrga.setExtendedLineage(currentOrga.getExtendedLineage());
@@ -141,9 +141,11 @@ public abstract class ReproductionHelper {
 			Agent gamet1AsAgent = orga1.getAgentStatus(StatusType.GAMET);
 			Agent gamet2AsAgent = orga2.getAgentStatus(StatusType.GAMET);
 			
-			// TODO binary reproduction
+			// TODO binary reproduction : fusion of gamets ! (compare genes ? insertions ?!)
 			
-			// XXX NOTE 20200825 interest of differences for non-haploïd : diploïd / polyploïd ... 
+			// => create EGG !
+			
+			// XXX NOTE 20200825 interest of differences for non-haploïd : diploïd / polyploïd ... to be made for future release !!
 			
 		} else {
 			throw new ReproductionException("Not enough gamets. ");

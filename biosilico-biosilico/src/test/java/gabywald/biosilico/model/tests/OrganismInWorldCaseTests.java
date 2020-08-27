@@ -12,6 +12,7 @@ import gabywald.biosilico.genetics.StimulusDecision;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.genetics.builders.InstinctBuilder;
+import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
@@ -19,6 +20,7 @@ import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.DecisionType;
+import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.data.StringUtils;
@@ -113,8 +115,8 @@ class OrganismInWorldCaseTests {
 		BrainGeneBuilder bgb		= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
 
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		
 		basicGenome.addGene( blgb.heigth(1).width(1)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -194,8 +196,8 @@ class OrganismInWorldCaseTests {
 		BrainGeneBuilder bgb		= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
 
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		
 		basicGenome.addGene( blgb.heigth(1).width(1)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -293,8 +295,8 @@ class OrganismInWorldCaseTests {
 		BrainGeneBuilder bgb		= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
 
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		
 		basicGenome.addGene( blgb.heigth(1).width(1)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -396,8 +398,8 @@ class OrganismInWorldCaseTests {
 		BrainGeneBuilder bgb		= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb	= new BrainLobeGeneBuilder();
 
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		
 		basicGenome.addGene( blgb.heigth(1).width(1)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -500,8 +502,8 @@ class OrganismInWorldCaseTests {
 		InstinctBuilder igb			= new InstinctBuilder();
 
 		// ***** brain
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		// ***** a lobe on first line
 		basicGenome.addGene( blgb.heigth(1).width(10)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -588,8 +590,8 @@ class OrganismInWorldCaseTests {
 		InstinctBuilder igb			= new InstinctBuilder();
 
 		// ***** brain
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		// ***** a lobe on first line
 		basicGenome.addGene( blgb.heigth(1).width(10)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -701,8 +703,8 @@ class OrganismInWorldCaseTests {
 		InstinctBuilder igb			= new InstinctBuilder();
 
 		// ***** brain
-		basicGenome.addGene( bgb.heigth(10).width(10).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(25).build() );
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
 		// ***** a lobe on first line
 		basicGenome.addGene( blgb.heigth(1).width(10)
 				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
@@ -844,4 +846,89 @@ class OrganismInWorldCaseTests {
 		
 	}
 	
+	@Test
+	void testDecision01() {
+
+		Chromosome basicGenome			= new Chromosome();
+		
+		BrainGeneBuilder bgb			= new BrainGeneBuilder();
+		BrainLobeGeneBuilder blgb		= new BrainLobeGeneBuilder();
+		InstinctBuilder igb				= new InstinctBuilder();
+		
+		StimulusDecisionBuilder sdgb	= new StimulusDecisionBuilder();
+
+		// ***** brain
+		basicGenome.addGene( bgb.heigth(10).width(10).depth(1)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		// ***** a lobe on first line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta(false)
+				.posx(0).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		// ***** a lobe on last line
+		basicGenome.addGene( blgb.heigth(1).width(10)
+				.rest(0).threshold(10).desc(1).dmin(0).dmax(0)
+				.prox(0).repr(false).repy(0).wta( true )
+				.posx(9).posy(0).replace(false)
+				.agemin(0).agemax(0).mutation(25).activ(true).build() );
+		
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				SomeChemicals.GLUCOSE.getIndex(), 25));
+		
+		// ***** instinct connection from first line of neurons to last line of neurons !
+		IntStream.range(0, 10).forEach( i -> {
+			basicGenome.addGene( igb
+					.inputPosX( 0 ).inputPosY( 0 ).outputPosX( 9 ).outputPosY( i )
+					.weight( 42 ).variable( SomeChemicals.GLUCOSE.getIndex() )
+					.threshold( 5 ).check( false )
+						.mutate( true ).duplicate( true ).delete( true ).activ( true )
+						.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
+						.build() );
+		});
+		
+		// ***** not perception ; act on object ?! ; choice of decision on 'scrip'
+		sdgb	.perception( false ).object( true )
+				.indicator( SomeChemicals.GLUCOSE.getIndex() ).threshold( 20 )
+				.attribute( DirectionWorld.CURRENT.getIndex() )
+				.varia( SomeChemicals.PHEROMONE_01.getIndex() ).value( 42 )
+				.script( DecisionType.THINK.getIndex() )
+			.mutate( true ).duplicate( true ).delete( true ).activ( true )
+			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 25 )
+			.build();
+		
+		Organism testOrga		= new Organism(basicGenome);
+
+		Assertions.assertEquals(14, basicGenome.length());
+		Assertions.assertEquals( 1, testOrga.getGenome().size());
+		Assertions.assertEquals(14, testOrga.getGenome().get(0).length());
+		
+		// ***** test with a World and WorldCase
+		
+		World w			= new World(1, 1);
+		WorldCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		
+		System.out.println( testOrga.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		// ***** one execution in this context
+		testOrga.execution( wc );
+		testOrga.cyclePlusPlus(); // Aging organism
+		
+		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		
+		System.out.println( testOrga.toString() );
+		System.out.println( StringUtils.repeat("+", 80) );
+		
+		
+		// TODO ... 
+	}
+
 }

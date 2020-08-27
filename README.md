@@ -8,7 +8,7 @@ Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / H
 
 Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review !
 
-## Adding and notes
+## Adding and notes about evolutions
 
 Units Tests ; review ; ...
 
@@ -16,6 +16,14 @@ For dev on BioSilico :
 
 * genetic execution / genes use (ageMin and ageMax) and cycle (to avoid multiple instantiation of Brain / BrainLobe ++ execution of InitialConcentration Gene) : make good usage of ageMin and ageMax (0, 0) for initiation at start / 'birth'. 
 * Design Patterns 'Builder' to make better implements ; IChemicals permits different implementations ; Chemicals Half-lives apply separatly (optional) ; ... 
+* Some ideas "on the way to be done" (20200828) : 
+    * AntHill / Ant example (some genetics and pathway to be precised
+    * Kind of reproduction according to Agent / Organism Types
+    * Abstraction for Chemicals / IChemicals
+    * 
+    * 
+* ... 
+* ... 
 * ... 
 
 ## Maven modules
@@ -66,3 +74,24 @@ Some tests on neural networks.
 ### 'biosilico-tests' : 
 
 ... 
+
+## Ideas, notes, evolutions 
+
+### What if if want to report something ?
+
+Bug, error, idea, evolution, ...
+
+See just below and write to the author ! Thanks !
+
+### Where to begin to participate ?
+
+If you want to participate : first step warn the author (search on the InterWeb, "Gabriel Chandesris" or "Gaby Wald"). Then you will probably be added on project. 
+
+Then copy / clone the repository and source code, study some and indicate on what you want to work (if no further indications). Just work with usual habits (i.e. on GitHub, Use Git uses : create a branch from master, then when you finished (units tests included !), make a pull request to merge !
+
+Have Fun !
+
+### Ideas incoming for some devs and / or documentations
+
+* biosilico-biosilico : gabywald.biosilico.model.reproduction <= to be reviewed and finalized !
+* biosilico-biosilico : gabywald.biosilico.model.decisions <= some review would be great !

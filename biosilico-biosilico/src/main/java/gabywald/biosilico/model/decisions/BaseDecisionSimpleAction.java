@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
 
 public class BaseDecisionSimpleAction<T extends Agent> extends BaseDecisionOnlyOneAttribute {
 
@@ -17,7 +17,7 @@ public class BaseDecisionSimpleAction<T extends Agent> extends BaseDecisionOnlyO
 
 	@Override
 	public void action() {
-		Agent tmpAgent = this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
+		Agent tmpAgent = this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
 		if (tmpAgent != null) { toApply.apply( tmpAgent ); }
 	}
 

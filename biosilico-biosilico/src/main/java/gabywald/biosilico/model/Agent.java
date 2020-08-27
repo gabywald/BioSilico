@@ -9,6 +9,7 @@ import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.structures.ObservableObject;
 import gabywald.global.structures.StringCouple;
@@ -61,7 +62,8 @@ public abstract class Agent extends ObservableObject
 		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
 		this.nextStep	= null;
-		this.variables.setVariable(StateType.TYPEOF.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
+		this.variables.setVariable(StateType.AGENT_TYPE.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
+		this.setObjectType(ObjectType.AGENT);
 		this.allOtherNames	= new ArrayList<String>();
 		this.allOtherNames.add(""); /** Scientific name */
 		this.allOtherNames.add(""); /** BioSilico name */
@@ -103,6 +105,24 @@ public abstract class Agent extends ObservableObject
 	
 	public int getSex()				{ return this.variables.getVariable(StateType.GENDER.getIndex()); }
 	public void setSex(int tosex)	{ this.variables.setVariable(StateType.GENDER.getIndex(), tosex); }
+	
+	public void setObjectType(ObjectType type) {
+		this.variables.setVariable(StateType.TYPEOF.getIndex(), type.getIndex());
+	}
+	
+	public ObjectType getObjectType() {
+		int type = this.variables.getVariable(StateType.TYPEOF.getIndex());
+		return ObjectType.getFrom( type );
+	}
+	
+	public void setAgentType(AgentType type) {
+		this.variables.setVariable(StateType.AGENT_TYPE.getIndex(), type.getIndex());
+	}
+	
+	public AgentType getAgentType() {
+		int type = this.variables.getVariable(StateType.AGENT_TYPE.getIndex());
+		return AgentType.getFrom( type );
+	}
 	
 	public WorldCase getCurrentWorldCase()				{ return this.current; }
 	public void setCurrentWorldCase(WorldCase current)	{ 
