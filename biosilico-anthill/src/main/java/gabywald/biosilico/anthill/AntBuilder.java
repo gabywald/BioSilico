@@ -18,18 +18,7 @@ public class AntBuilder {
 	public List<Gene> generateBasicGenome() {
 		List<Gene> toReturn = new ArrayList<Gene>();
 		
-		// NOTEs :: 
-		// // // need some initial concentration !!
-		// // // need some biochemical reaction
-		// // // receptor for some variables from environment
-		// // // emitter for some variables from environment
-		// // // decision to take fruits !
-		// // // decision to drop fruits ! (in the AntHill)
-		// // // decision to eat fruits !
-		// // // decision to display pheromones !
-		
-		// // // detection of pheromones !
-		// // // choice of destination :: movement !!
+		// TODO see resources in src/main/resources/baseGenomeAnt.txt and src/main/resources/SomeNotes.txt
 		
 		return toReturn;
 	}

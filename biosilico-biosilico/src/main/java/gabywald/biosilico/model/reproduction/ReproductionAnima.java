@@ -2,6 +2,8 @@ package gabywald.biosilico.model.reproduction;
 
 import gabywald.biosilico.exceptions.ReproductionException;
 import gabywald.biosilico.model.Organism;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
@@ -32,8 +34,9 @@ public class ReproductionAnima implements IReproduction {
 		try {
 			ReproductionHelper.binaryReproduction(organisms[0], organisms[1]);
 		} catch (ReproductionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
+			// TODO ReproductionException treatment !! ignore ??
+			Logger.printlnLog(LoggerLevel.LL_WARNING, e.getMessage());
 		}
 		
 		

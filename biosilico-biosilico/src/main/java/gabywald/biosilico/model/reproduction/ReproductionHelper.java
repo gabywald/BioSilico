@@ -62,6 +62,7 @@ public abstract class ReproductionHelper {
 		if ( (orga1.getSex() > 0) && (orga2.getSex() > 0) ) {
 			// ***** If sex applies (different of 0) : sexes have to be different ??
 			// Parthenogenysis ?!
+			// XXX NOTE ...
 		}
 		
 		return true;
@@ -131,7 +132,7 @@ public abstract class ReproductionHelper {
 	public static Organism binaryReproduction(Organism orga1, Organism orga2) 
 			throws ReproductionException {
 		if ( ! ReproductionHelper.checkCompatibility(orga1, orga2)) { 
-			throw new ReproductionException("Incompatible organisms. ");
+			throw new ReproductionException("Incompatible organisms. {" + orga1.getUniqueID() + "}-{" + orga2.getUniqueID() + "}");
 		}
 		
 		if ( (ReproductionHelper.hasGamet(orga1) > 0) && (ReproductionHelper.hasGamet(orga2) > 0)) {
@@ -144,11 +145,13 @@ public abstract class ReproductionHelper {
 			// TODO binary reproduction : fusion of gamets ! (compare genes ? insertions ?!)
 			
 			// => create EGG !
+			// TODO create organism from fusion of the two genomes from the gamets !!
 			
 			// XXX NOTE 20200825 interest of differences for non-haploïd : diploïd / polyploïd ... to be made for future release !!
 			
 		} else {
-			throw new ReproductionException("Not enough gamets. ");
+			throw new ReproductionException("Not enough gamets. {" + orga1.getUniqueID() + "} has (" + ReproductionHelper.hasGamet(orga1) 
+														 + ") ; {" + orga2.getUniqueID() + "} has (" + ReproductionHelper.hasGamet(orga2) + ") . ");
 		}
 		
 		return null;

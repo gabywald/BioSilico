@@ -109,3 +109,22 @@ IN001:0R37----	true	true	true	true	1	1	0	25	0	37	48	37	20	169	5	false
 IN001:0R38----	true	true	true	true	1	1	0	25	0	38	48	38	20	169	5	false
 IN001:0R39----	true	true	true	true	1	1	0	25	0	39	48	39	20	169	5	false
 // // // choice of destination :: movement !!
+// // // decision to take fruits !
+// // // decision to drop fruits ! (in the AntHill)
+// // // decision to eat fruits !
+// // // decision to display pheromones !
+// // // detection of pheromones ! (gene combination to get input in brain !)
+
+// 20200831 NOTES : 
+// // // Some review to be done here to make following : 
+// // - moving to a WorldCase with Fruits and deposit Pheromone_00
+// // - moving to AntHill and depositit Fruit in it and deposit Pheromone_01 on this way
+// // - seeking for Pheromone_00 when NOT carrying fruits
+// // - seeking for Pheromone_01 when carrying fruits
+// // - search for some mate if fertile !
+// // - when fertile and has enough gamets (QUEEN) : do not move and produce Pheromone_01, and EGGs, and LAY_EGG
+// // - soldiers not for now ! 
+// // - evolution / aging from EGG to LARVA to WORKER to QUEEN (if apply)
+// // - Consume some Fruit (define hunger ?)
+// // - ... 
+
