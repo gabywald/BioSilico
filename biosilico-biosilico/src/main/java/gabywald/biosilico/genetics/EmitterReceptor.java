@@ -1,6 +1,9 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -45,7 +48,7 @@ public class EmitterReceptor extends GeneGattaca {
 	 * @param posx (int) Height position of the neuron in the brain ; [00-99].
 	 * @param posy (int) Width position of the neuron in the brain ; [00-99].
 	 * @param receptor (boolean) If this Gene is Receptor or Emitter.
-	 * @param internal (boolean) If this Gene is Receptor or Emitter.
+	 * @param internal (boolean) If this Gene act in internal or external of current Organism.
 	 */
 	public EmitterReceptor(
 			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
@@ -62,6 +65,7 @@ public class EmitterReceptor extends GeneGattaca {
 		this.internal	= internal;
 	}
 	
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -79,6 +83,7 @@ public class EmitterReceptor extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		// Work only if a brain and a neuron are on position
 		if ( (orga.getBrain() == null) 
@@ -123,7 +128,7 @@ public class EmitterReceptor extends GeneGattaca {
 	public boolean getReceptor()	{ return this.receptor; }
 	public boolean getInternal()	{ return this.internal; }
 
-	
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+
@@ -132,4 +137,29 @@ public class EmitterReceptor extends GeneGattaca {
 							this.receptor+"\t"+this.internal+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public Gene clone() {
+		return new EmitterReceptor(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+									this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+									this.variable, this.threshold, this.ioput, this.posx, this.posy, 
+									this.receptor, this.internal);
+	}
+
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(7);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.variable	= IGeneMutation.mutate(this.variable, moreOrLess, 999); break;
+		case(1):	this.threshold	= IGeneMutation.mutate(this.threshold, moreOrLess, 999); break;
+		case(2):	this.ioput		= IGeneMutation.mutate(this.ioput, moreOrLess, 999); break;
+		case(3):	this.posx		= IGeneMutation.mutate(this.posx, moreOrLess, 99); break;
+		case(4):	this.posy		= IGeneMutation.mutate(this.posy, moreOrLess, 99); break;
+		case(5):	this.receptor	= moreOrLess; break;
+		case(6):	this.internal	= moreOrLess; break;
+		}
+	}
+	
 }

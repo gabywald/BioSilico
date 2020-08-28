@@ -1,6 +1,9 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
@@ -66,6 +69,7 @@ public class Instinct extends GeneGattaca {
 		this.check		= check;
 	}
 	
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -84,6 +88,7 @@ public class Instinct extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		Brain brain = orga.getBrain();
 		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
@@ -110,7 +115,7 @@ public class Instinct extends GeneGattaca {
 
 	public boolean getCheck()	{ return this.check;  }
 	
-	
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+
@@ -120,4 +125,30 @@ public class Instinct extends GeneGattaca {
 							this.threshold+"\t"+this.check+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public Gene clone() {
+		return new Instinct(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+								this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+								this.inputPosX, this.inputPosY, this.outputPosX, this.outputPosY, 
+								this.weight, this.variable, this.threshold, this.check);
+	}
+	
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(8);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.inputPosX	= IGeneMutation.mutate(this.inputPosX, moreOrLess, 99); break;
+		case(1):	this.inputPosY	= IGeneMutation.mutate(this.inputPosY, moreOrLess, 99); break;
+		case(2):	this.outputPosX	= IGeneMutation.mutate(this.outputPosX, moreOrLess, 99); break;
+		case(3):	this.outputPosY	= IGeneMutation.mutate(this.outputPosY, moreOrLess, 99); break;
+		case(4):	this.weight		= IGeneMutation.mutate(this.weight, moreOrLess, 999); break;
+		case(5):	this.variable	= IGeneMutation.mutate(this.variable, moreOrLess, 999); break;
+		case(6):	this.threshold	= IGeneMutation.mutate(this.threshold, moreOrLess, 999); break;
+		case(7):	this.check		= moreOrLess; break;
+		}
+	}
+	
 }

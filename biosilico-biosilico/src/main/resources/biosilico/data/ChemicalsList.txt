@@ -926,7 +926,7 @@ Teen	teen
 Adult	adult
 Senior	senior
 Dead	dead
-(free)	(free)
+Not Accurate	notaccurate
 (free)	(free)
 (free)	(free)
 (free)	(free)
@@ -939,8 +939,9 @@ Anima	anima
 Virus	virus
 Gender	gender
 Aging	aging
+AgentType	agentype
 TypeOf	typeof
-STATUS		(946, "Status", 	"status")
+Status	status
 Movable	movable
 Eatable	eatable
 Fertile	fertile

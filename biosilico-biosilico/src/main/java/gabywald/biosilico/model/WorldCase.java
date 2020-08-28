@@ -9,6 +9,7 @@ import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 
@@ -81,37 +82,33 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 	public Agent getAgent(int i)		{ return this.liste.get(i); }	
 	
 	@Override
+	public int hasObjectType(ObjectType type) {
+		return IAgentContent.hasType(type, StateType.TYPEOF.getIndex(), this.liste);
+	}
+	
+	@Override
+	public Agent getObjectType(ObjectType type) {
+		return IAgentContent.getType(type, StateType.TYPEOF.getIndex(), this.liste);
+	}
+	
+	@Override
 	public int hasAgentType(AgentType type) {
-		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex()) ).count();
+		return IAgentContent.hasType(type, StateType.AGENT_TYPE.getIndex(), this.liste);
 	}
 	
 	@Override
 	public Agent getAgentType(AgentType type) {
-		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex() )) {
-			for (int i = 0 ; i < this.liste.size() ; i++) {
-				if (this.liste.get(i).getChemicals().getVariable(StateType.TYPEOF.getIndex()) == type.getIndex()) { 
-					return this.liste.get(i);
-				}
-			}
-		}
-		return null;
+		return IAgentContent.getType(type, StateType.AGENT_TYPE.getIndex(), this.liste);
 	}
 	
 	@Override
-	public int hasAgentStatus(StatusType type) {
-		return (int)this.liste.stream().filter( a -> (a.getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex()) ).count();
+	public int hasAgentStatus(StatusType status) {
+		return IAgentContent.hasType(status, StateType.STATUS.getIndex(), this.liste);
 	}
 	
 	@Override
-	public Agent getAgentStatus(StatusType type) {
-		if (this.liste.stream().anyMatch( p -> p.getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex() )) {
-			for (int i = 0 ; i < this.liste.size() ; i++) {
-				if (this.liste.get(i).getChemicals().getVariable(StateType.STATUS.getIndex()) == type.getIndex()) { 
-					return this.liste.get(i);
-				}
-			}
-		}
-		return null;
+	public Agent getAgentStatus(StatusType status) {
+		return IAgentContent.getType(status, StateType.STATUS.getIndex(), this.liste);
 	}
 	
 	@Override
@@ -122,7 +119,6 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 	
 	@Override
 	public String toString() {
-		// TODO use of Java 8 streams
 		StringBuilder result = new StringBuilder();
 		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
 		result.append("AGENT LIST\n");

@@ -1,7 +1,10 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -83,6 +86,7 @@ public class BiochemicalReaction extends GeneGattaca {
 		this.KminVmax = Gene.obtainValue(0, 999, KminVmax);
 	}
 	
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -102,6 +106,7 @@ public class BiochemicalReaction extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 	
+	@Override
 	protected void exec(Organism orga) throws GeneException { 
 		IChemicals vars = orga.getChemicals();
 		// ***** Avoiding the reaction from nothing. 
@@ -137,7 +142,8 @@ public class BiochemicalReaction extends GeneGattaca {
 	public int getDchem() { return this.Dchem; }
 	public int getDcoef() { return this.Dcoef; }
 	public int getKMVMs() { return this.KminVmax; }
-	
+
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true) + "\t" + super.toString() + 
 							this.Acoef + "\t" + this.Achem + "\t" +
@@ -147,4 +153,29 @@ public class BiochemicalReaction extends GeneGattaca {
 		return stringenize;
 	}
 
+	@Override
+	public Gene clone() {
+		return new BiochemicalReaction(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+										this.Achem, this.Acoef, this.Bchem, this.Bcoef, 
+										this.Cchem, this.Ccoef, this.Dchem, this.Dcoef, this.KminVmax);
+	}
+	
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(9);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.Achem = IGeneMutation.mutate(this.Achem, moreOrLess, 999); break;
+		case(1):	this.Acoef = IGeneMutation.mutate(this.Achem, moreOrLess, 999); break;
+		case(2):	this.Bchem = IGeneMutation.mutate(this.Bchem, moreOrLess, 999); break;
+		case(3):	this.Bcoef = IGeneMutation.mutate(this.Bcoef, moreOrLess, 999); break;
+		case(4):	this.Cchem = IGeneMutation.mutate(this.Cchem, moreOrLess, 999); break;
+		case(5):	this.Ccoef = IGeneMutation.mutate(this.Ccoef, moreOrLess, 999); break;
+		case(6):	this.Dchem = IGeneMutation.mutate(this.Dchem, moreOrLess, 999); break;
+		case(7):	this.Dcoef = IGeneMutation.mutate(this.Dcoef, moreOrLess, 999); break;
+		case(8):	this.KminVmax = IGeneMutation.mutate(this.KminVmax, moreOrLess, 999); break;
+		}
+	}
 }

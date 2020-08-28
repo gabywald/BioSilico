@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 
 
@@ -12,7 +13,7 @@ import gabywald.biosilico.model.Organism;
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  * @see gabywald.biosilico.genetics.InitialConcentration
  */
-public abstract class Gene {
+public abstract class Gene implements Cloneable, IGeneMutation {
 	/** Default name if not attributed. */
 	public static final String DEFAULT_GENE_NAME = "UnNamedGene";
 	/** Gene name / identification. */
@@ -32,7 +33,7 @@ public abstract class Gene {
 	/** Activation sex of the gene (if sex for organism, from 000 to 999, 0 for "asexual"). */
 	private int sex;
 	/** Rate of mutation, duplication and deletion (if can occur). */
-	private int matationRate;
+	private int mutationRate;
 
 	/**
 	 * Main constructor of a Gene, with all elements in header.
@@ -54,7 +55,7 @@ public abstract class Gene {
 		this.ageMin		= Gene.obtainValue(0, 999, ageMin);
 		this.ageMax		= Gene.obtainValue(0, 999, ageMax);
 		this.sex		= Gene.obtainValue(0, 999, sex);
-		this.matationRate = Gene.obtainValue(0, 99, mutRate);
+		this.mutationRate = Gene.obtainValue(0, 99, mutRate);
 	}
 	
 	/**
@@ -83,7 +84,7 @@ public abstract class Gene {
 	public int getAgeMin()			{ return this.ageMin; }
 	public int getAgeMax()			{ return this.ageMax; }
 	public int getSexAct()			{ return this.sex; }
-	public int getMutationRate()	{ return this.matationRate; }
+	public int getMutationRate()	{ return this.mutationRate; }
 	
 	public void setName(String name) { this.name = name; }
 	
@@ -97,7 +98,7 @@ public abstract class Gene {
 		String stringenize = 
 			this.mutate+"\t"+this.duplicate+"\t"+this.delete+"\t"+
 			this.activ+"\t"+this.ageMin+"\t"+this.ageMax+"\t"+
-			this.sex+"\t"+this.matationRate+"\t";
+			this.sex+"\t"+this.mutationRate+"\t";
 		return stringenize;
 	}
 	
@@ -162,4 +163,5 @@ public abstract class Gene {
 		return ((value < 10) ? "0" : "" ) + value;
 	}
 	
+	public abstract Gene clone();
 }

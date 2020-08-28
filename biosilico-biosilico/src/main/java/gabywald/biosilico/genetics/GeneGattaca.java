@@ -83,6 +83,7 @@ public abstract class GeneGattaca extends Gene {
 	 * @param end (boolean) If end has to be set now. 
 	 * @return (String) Mostly header (if 'end' is false). 
 	 */
+	@Override
 	public String reverseTranslation(boolean end) {
 		// Start with 'M' (begin) : "GGC" 
 		String result = GeneticTranslator.reverseGattaca("M");

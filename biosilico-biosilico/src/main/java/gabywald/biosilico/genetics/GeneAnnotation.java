@@ -3,8 +3,6 @@ package gabywald.biosilico.genetics;
 import java.util.ArrayList;
 import java.util.List;
 
-import gabywald.biosilico.exceptions.GeneException;
-import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.utils.Sequence;
 import gabywald.global.structures.StringCouple;
 
@@ -12,7 +10,7 @@ import gabywald.global.structures.StringCouple;
  * 
  * @author Gabriel Chandesris (2010, 2020)
  */
-public class GeneAnnotation extends Gene {
+public class GeneAnnotation {
 	/** 
 	 * String properties annotations of the Gene. 
 	 * <p></p>
@@ -57,11 +55,10 @@ public class GeneAnnotation extends Gene {
 	 * <br>Initialization of Liste's. 
 	 */
 	public GeneAnnotation() {
-		super(false, false, false, false, 0, 0, 0, 0);
 		this.properties = new ArrayList<String>();
 		this.references = new ArrayList<String>();
-		this.features = new ArrayList<GeneAnnotationFeature>();
-		this.sequence = new Sequence();
+		this.features	= new ArrayList<GeneAnnotationFeature>();
+		this.sequence	= new Sequence();
 		for (int i = 0 ; i <= GeneAnnotation.PROPERTIES_NUMBER ; i++) 
 			{ this.properties.add(""); }
 	}
@@ -155,6 +152,7 @@ public class GeneAnnotation extends Gene {
 	public String getComment()		{ return this.properties.get(8); }
 	public String getBaseCount()	{ return this.properties.get(9); }
 	
+	@Override
 	public String toString() {
 		String result = new String("");
 		
@@ -216,8 +214,5 @@ public class GeneAnnotation extends Gene {
 		
 		return result;
 	}
-	
-	protected void exec(Organism orga) throws GeneException { ; }
-	public String reverseTranslation(boolean end) { return new String(""); }
 	
 }

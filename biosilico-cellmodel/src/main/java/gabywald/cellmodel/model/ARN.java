@@ -1,6 +1,6 @@
 package gabywald.cellmodel.model;
 
-import gabywald.biosilico.exceptions.TripletException;
+import gabywald.cellmodel.exceptions.TripletException;
 
 /**
  * 

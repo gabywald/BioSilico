@@ -3,7 +3,9 @@ package gabywald.biosilico.interfaces;
 import java.util.List;
 
 import gabywald.biosilico.model.Agent;
+
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StatusType;
 
 /**
@@ -30,13 +32,28 @@ public interface IAgentContent {
 	
 	/**
 	 * Determine if current instance owns a certain type of object. 
+	 * @param type ObjectType
+	 * @return (int) Number of object's of that type. 
+	 */
+	public int hasObjectType(ObjectType type);
+	
+	/**
+	 * In order to get an agent of a certain type. 
+	 * @param type ObjectType
+	 * @return (Agent) Can be null.
+	 * @see IAgentContent#hasAgentType(AgentType)
+	 */
+	public Agent getObjectType(ObjectType type);
+	
+	/**
+	 * Determine if current instance owns a certain type of organism. 
 	 * @param type AgentType
 	 * @return (int) Number of object's of that type. 
 	 */
 	public int hasAgentType(AgentType type);
 	
 	/**
-	 * In order to get an agent of a certain type. 
+	 * In order to get an organism of a certain type. 
 	 * @param type AgentType
 	 * @return (Agent) Can be null.
 	 * @see IAgentContent#hasAgentType(AgentType)
@@ -63,5 +80,20 @@ public interface IAgentContent {
 	 * @param object (Agent)
 	 */
 	public void addAgent(Agent object);
+	
+	public static <T extends IChemicalsType> int hasType(T typeStatus, int index, List<Agent> agents) {
+		return (int)agents.stream().filter( a -> (a.getChemicals().getVariable(index) == typeStatus.getIndex()) ).count();
+	}
+	
+	public static <T extends IChemicalsType> Agent getType(T typeStatus, int index, List<Agent> agents) {
+		if (agents.stream().anyMatch( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() )) {
+			for (int i = 0 ; i < agents.size() ; i++) {
+				if (agents.get(i).getChemicals().getVariable(index) == typeStatus.getIndex()) { 
+					return agents.get(i);
+				}
+			}
+		}
+		return null;
+	}
 	
 }

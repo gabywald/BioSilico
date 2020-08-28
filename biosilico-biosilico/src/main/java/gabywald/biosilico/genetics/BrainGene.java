@@ -1,7 +1,10 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Organism;
@@ -72,6 +75,7 @@ public class BrainGene extends GeneGattaca {
 		return (val > max) ? max : ((val <= 0) ? max : val);
 	}
 
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -86,6 +90,7 @@ public class BrainGene extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 	
+	@Override
 	protected void exec(Organism orga) throws GeneException { 
 		orga.setBrain(this.currentBrain); 
 	}
@@ -95,13 +100,33 @@ public class BrainGene extends GeneGattaca {
 	public int getBrainDepth()	{ return this.depth; }
 	public int getBrainMore()	{ return this.more; }
 	
-	
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+
 							this.height+"\t"+this.width+"\t"+
 							this.depth+"\t"+this.more+"\t";
 		return stringenize;
+	}
+
+	@Override
+	public Gene clone() {
+		return new BrainGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+								this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+								this.height, this.width, this.depth, this.more);
+	}
+
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(4);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.height	= IGeneMutation.mutate(this.height, moreOrLess, 99); break;
+		case(1):	this.width	= IGeneMutation.mutate(this.width, moreOrLess, 99); break;
+		case(2):	this.depth	= IGeneMutation.mutate(this.depth, moreOrLess, 99); break;
+		case(3):	this.more	= IGeneMutation.mutate(this.more, moreOrLess, 99); break;
+		}
 	}
 	
 }

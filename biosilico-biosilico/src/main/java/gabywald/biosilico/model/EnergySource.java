@@ -1,5 +1,8 @@
 package gabywald.biosilico.model;
 
+import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.enums.StatusType;
+
 /**
  * This class to defines an 'energy source' in some WorldCase's instances. 
  * <br/>NOTE XXX TODO review basic level(s) of energy (and if it can be push / pull / moved ... 
@@ -12,6 +15,8 @@ public class EnergySource extends Agent {
 	
 	public static final int BASIC_ENERGY_LEVEL	= 25;
 	
+	public static final String COMMON_BIOSILICO_NAME	= "Energy Source";
+	
 	/**
 	 * Default Constructor (not alive, not movable, not eatable). 
 	 */
@@ -19,6 +24,14 @@ public class EnergySource extends Agent {
 		super(false, false, false);
 		this.setSolar( true );
 		this.setHeat( true );
+		
+		// ***** TypeOf is defined on Agent (default is Daemon)
+		// ***** Status is not accurate (no changes)
+		this.variables.setVariable(StateType.STATUS.getIndex(), StatusType.NOT_ACCURATE.getIndex());
+		
+		String name = EnergySource.COMMON_BIOSILICO_NAME;
+		this.setNameBiosilico( name );
+		this.setNameCommon( name );
 	}
 	
 	public void setSolar(boolean isSolar) {
@@ -31,9 +44,9 @@ public class EnergySource extends Agent {
 	
 	public boolean isSolar() 
 		{ return (this.variables.getVariable(EnergySource.INDEX_SOLAR) > 0); }
+	
 	public boolean isHeat() 
 		{ return (this.variables.getVariable(EnergySource.INDEX_HEAT) > 0); }
-
 	
 	public static void addEnergyTo(WorldCase local, int index, int value) {
 		if (local != null) {

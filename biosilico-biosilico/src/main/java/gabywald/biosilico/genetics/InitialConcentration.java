@@ -1,6 +1,9 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -41,6 +44,7 @@ public class InitialConcentration extends GeneGattaca {
 		this.value = Gene.obtainValue(0,  999, val);
 	}
 	
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -53,6 +57,7 @@ public class InitialConcentration extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		orga.getChemicals().setVariable(this.varia, this.value); 
 	}
@@ -60,10 +65,29 @@ public class InitialConcentration extends GeneGattaca {
 	public int getVariable()	{ return this.varia; }
 	public int getValue()		{ return this.value; }
 	
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+varia+"\t"+value+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public Gene clone() {
+		return new InitialConcentration(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+											this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+											this.varia, this.value);
+	}
 
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(2);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case(0):	this.varia	= IGeneMutation.mutate(this.varia, moreOrLess, 999); break;
+		case(1):	this.value	= IGeneMutation.mutate(this.value, moreOrLess, 999); break;
+		}
+	}
+	
 }

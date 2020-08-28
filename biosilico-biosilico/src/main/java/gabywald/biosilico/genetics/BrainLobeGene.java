@@ -1,8 +1,11 @@
 package gabywald.biosilico.genetics;
 
+import java.util.Random;
+
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.exceptions.BrainLobeReplaceException;
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
@@ -93,6 +96,7 @@ public class BrainLobeGene extends GeneGattaca {
 		this.posy			= Gene.obtainValue(0, 99, posy);
 	}
 	
+	@Override
 	public String reverseTranslation(boolean end) {
 		String result		= super.reverseTranslation(false);
 		StringBuilder tmp	= new StringBuilder();
@@ -117,6 +121,7 @@ public class BrainLobeGene extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		Brain brain = orga.getBrain();
 		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
@@ -150,7 +155,7 @@ public class BrainLobeGene extends GeneGattaca {
 	public int getLobePosY()		{ return this.posy; }
 	public boolean getReplace() 	{ return this.replace; }
 	
-
+	@Override
 	public String toString() {
 		String stringenize = this.reverseTranslation(true)+"\t"+
 							super.toString()+
@@ -161,4 +166,37 @@ public class BrainLobeGene extends GeneGattaca {
 							this.posx+"\t"+this.posy+"\t"+this.replace+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public Gene clone() {
+		return new BrainLobeGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+									this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+									this.rest, this.thre, this.desc, this.dendriticmin, this.dendriticmax, 
+									this.prox, this.repr, this.repy, this.wta, this.height, this.width, 
+									this.posx, this.posy, this.replace);
+	}
+
+	@Override
+	public void mutationChanges() {
+		Random rand				= new Random();
+		int selectedAttribute	= rand.nextInt(14);
+		boolean moreOrLess		= rand.nextBoolean();
+		switch( selectedAttribute ) {
+		case( 0):	this.rest			= IGeneMutation.mutate(this.rest, moreOrLess, 999); break;
+		case( 1):	this.thre			= IGeneMutation.mutate(this.thre, moreOrLess, 999); break;
+		case( 2):	this.desc			= IGeneMutation.mutate(this.desc, moreOrLess, 999); break;
+		case( 3):	this.dendriticmin	= IGeneMutation.mutate(this.dendriticmin, moreOrLess, 999); break;
+		case( 4):	this.dendriticmax	= IGeneMutation.mutate(this.dendriticmax, moreOrLess, 999); break;
+		case( 5):	this.prox			= IGeneMutation.mutate(this.prox, moreOrLess, 999); break;
+		case( 6):	this.repr			= moreOrLess; break;
+		case( 7):	this.repy			= IGeneMutation.mutate(this.repy, moreOrLess, 999); break;
+		case( 8):	this.wta			= moreOrLess; break;
+		case( 9):	this.height			= IGeneMutation.mutate(this.height, moreOrLess, 99); break;
+		case(10):	this.width			= IGeneMutation.mutate(this.width, moreOrLess, 99); break;
+		case(11):	this.posx			= IGeneMutation.mutate(this.posx, moreOrLess, 99); break;
+		case(12):	this.posy			= IGeneMutation.mutate(this.posy, moreOrLess, 99); break;
+		case(13):	this.replace		= moreOrLess; break;
+		}
+	}
+
 }

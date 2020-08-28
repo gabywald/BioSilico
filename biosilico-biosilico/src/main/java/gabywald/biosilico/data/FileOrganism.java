@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import gabywald.biosilico.exceptions.BrainLengthException;
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.GeneGattaca;
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.model.Brain;
@@ -15,7 +16,6 @@ import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.ExtendedLineageItem;
 import gabywald.biosilico.utils.Sequence;
-import gabywald.biosilico.view.GeneJPanel;
 import gabywald.global.data.StringUtils;
 import gabywald.global.exceptions.DataException;
 import gabywald.global.structures.StringCouple;
@@ -243,8 +243,8 @@ public class FileOrganism extends FileBiological {
 		IChemicals chemicals = orgaExt.getChemicals();
 		for (int i = 0 ; i < chemicals.length() ; i++) {
 			if (chemicals.getVariable(i) > 0) {
-				String chemIndex = GeneJPanel.convertThreeChars(i);
-				String chemValue = GeneJPanel.convertThreeChars(chemicals.getVariable(i));
+				String chemIndex = Gene.convert0to999( i );
+				String chemValue = Gene.convert0to999( chemicals.getVariable(i) );
 				this.orga.getChemicals().setVariable(	Integer.parseInt( chemIndex ), 
 						Integer.parseInt( chemValue ));
 			}
@@ -255,8 +255,9 @@ public class FileOrganism extends FileBiological {
 
 	public Organism getOrganism()		{ return this.orga; }
 
-	public int lengthLineage()			
-		{ return this.orga.lengthLineage(); }
+	public int lineageSize()			
+		{ return this.orga.lineageSize(); }
+	
 	public String getSimpleLinage(int i) 
 		{ return this.orga.getSimpleLineage(i); }
 

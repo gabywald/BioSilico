@@ -146,7 +146,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 				}
 				/** Lineage's Scroll Treatment */
 				if (this.lineageScroll != null) {
-					for (int i = 0 ; i < this.toLoad.lengthLineage() ; i++) {
+					for (int i = 0 ; i < this.toLoad.lineageSize() ; i++) {
 						this.lineageScroll.addString(this.toLoad.getSimpleLinage(i));
 					}
 					if (this.lineageScroll.length() > 0) 
@@ -202,7 +202,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 				}
 				/** Lineage's Scroll Treatment */
 				if (lineageScroll != null) {
-					for (int i = 0 ; i < toLoad.lengthLineage() ; i++) {
+					for (int i = 0 ; i < toLoad.lineageSize() ; i++) {
 						lineageScroll.addString
 						(toLoad.getSimpleLinage(i));
 					}

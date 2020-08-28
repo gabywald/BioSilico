@@ -161,6 +161,4 @@ public abstract class GeneBuilder<T extends Gene> {
 	
 	public abstract T build();
 	
-	// TODO Gene builder !!
-	
 }

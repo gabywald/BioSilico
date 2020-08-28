@@ -24,6 +24,7 @@ public class ReproductionViridita implements IReproduction {
 		if (organisms.length == 0) { return; }
 
 		// ***** at least one
+		// TODO reproduction ReproductionAnima
 		
 	}
 

@@ -9,6 +9,7 @@ import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.structures.ObservableObject;
 import gabywald.global.structures.StringCouple;
@@ -30,7 +31,7 @@ public abstract class Agent extends ObservableObject
 	protected WorldCase current;
 	/** Next location of the agent (if move). */
 	protected WorldCase nextStep;
-	/** TODO compute taxon ID */
+	/** Taxon ID / UUID. */
 	private UUID taxonID;
 	/** 
 	 * Names of the agent / organism (reserved spaces, each could be empty). 
@@ -56,25 +57,24 @@ public abstract class Agent extends ObservableObject
 	 * @param eatable (boolean)
 	 */
 	public Agent(boolean alive, boolean movable, boolean eatable) {
-		this.init();
-		this.alive		= alive;
-		this.variables.setVariable(StateType.EATABLE.getIndex(), (eatable) ? 100 : 0); /** Eatable */
-		this.variables.setVariable(StateType.MOVABLE.getIndex(), (movable) ? 100 : 0); /** Movable */
-	}
-	
-	/** Initialization helper for constructors. */
-	private void init() {
+		
 		this.variables	= ChemicalsBuilder.build();
 		this.taxonID	= UUID.randomUUID();
 		this.current	= null;
 		this.nextStep	= null;
-		this.variables.setVariable(StateType.TYPEOF.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
+		this.variables.setVariable(StateType.AGENT_TYPE.getIndex(), AgentType.BIOSILICO_DAEMON.getIndex()); /** Default agent type.  */
+		this.setObjectType(ObjectType.AGENT);
 		this.allOtherNames	= new ArrayList<String>();
 		this.allOtherNames.add(""); /** Scientific name */
 		this.allOtherNames.add(""); /** BioSilico name */
 		this.allOtherNames.add(""); /** Common name */
 		this.allOtherNames.add(""); /** Included name */
 		this.rankDivision	= new StringCouple();
+		
+		this.setAlive( alive );
+		this.setMovable( movable );
+		this.setEatable( eatable );
+		
 	}
 	
 	@Override
@@ -105,6 +105,24 @@ public abstract class Agent extends ObservableObject
 	
 	public int getSex()				{ return this.variables.getVariable(StateType.GENDER.getIndex()); }
 	public void setSex(int tosex)	{ this.variables.setVariable(StateType.GENDER.getIndex(), tosex); }
+	
+	public void setObjectType(ObjectType type) {
+		this.variables.setVariable(StateType.TYPEOF.getIndex(), type.getIndex());
+	}
+	
+	public ObjectType getObjectType() {
+		int type = this.variables.getVariable(StateType.TYPEOF.getIndex());
+		return ObjectType.getFrom( type );
+	}
+	
+	public void setAgentType(AgentType type) {
+		this.variables.setVariable(StateType.AGENT_TYPE.getIndex(), type.getIndex());
+	}
+	
+	public AgentType getAgentType() {
+		int type = this.variables.getVariable(StateType.AGENT_TYPE.getIndex());
+		return AgentType.getFrom( type );
+	}
 	
 	public WorldCase getCurrentWorldCase()				{ return this.current; }
 	public void setCurrentWorldCase(WorldCase current)	{ 
@@ -142,7 +160,7 @@ public abstract class Agent extends ObservableObject
 			for (int i = 0 ; i < 40 ; i++) 
 				{ this.addState(this.variables.getVariable(i)+":"); }
 			// ***** next cycle
-			// ***** XXX if cycle not managed biochemicaly. (aging++)
+			// ***** XXX if cycle not managed biochemichaly. (aging++)
 			this.cyclePlusPlus();
 			this.change();
 		}
@@ -166,7 +184,9 @@ public abstract class Agent extends ObservableObject
 	
 	public List<String> getAllNames()
 		{ return this.allOtherNames; }
-	
+
+	public String getCommonName()	
+		{ return this.allOtherNames.get(2); }
 	public String getBioSilicoName() 
 		{ return this.allOtherNames.get(1); }
 	public String getScientificName()	

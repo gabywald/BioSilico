@@ -81,6 +81,7 @@ public class GenePhaseTwo extends Gene {
 	public String getSampleTranscription()	{ return this.internalCode; }
 
 	/** TODO dynamic code execution (auto-compilation ?). */
+	@Override
 	protected void exec(Organism orga) throws GeneException { ; }
 	
 	/**
@@ -106,6 +107,7 @@ public class GenePhaseTwo extends Gene {
 	 * @param end (boolean) If end has to be set now. 
 	 * @return (String) Mostly header (if 'end' is false). 
 	 */
+	@Override
 	public String reverseTranslation(boolean end) {
 		/** Start with 'M' (begin) : "GGC" */
 		String result = GeneticTranslator.reversePhaseTwo("M");
@@ -148,9 +150,20 @@ public class GenePhaseTwo extends Gene {
 		
 		/** ================================================================ */
 
-		/** End with '*' (end) if ended here, only header). */
-		end = true; /** Always in phase II code.  */
+		// ***** End with '*' (end) if ended here, only header). 
+		end = true; /** Always in phase II code. */
 		return (end)?result+GeneticTranslator.reversePhaseTwo("*"):result; 
 	}
 
+	@Override
+	public Gene clone() {
+		return new GenePhaseTwo(this.canMutate(), this.canDuplicate(), this.canDelete(), 
+								this.isActiv(), this.getAgeMin(), this.getAgeMax(), this.getSexAct(), 
+								this.getMutationRate(), this.translated);
+	}
+	
+	@Override
+	public void mutationChanges() {
+		// TODO GenePhaseTwo.mutationChanges()
+	}
 }

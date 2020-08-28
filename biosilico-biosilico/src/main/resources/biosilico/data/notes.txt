@@ -1,0 +1,14 @@
+Notes files for "biosilico/data/"
+
+* ChemicalsList.txt : 
+	- defines a list of 1000 (one thousand) 'chemicals' as simpliest as possible (name + description). 
+* ChemicalsHalfLivesList.txt : 
+	- defines some half-lives (others not defined have default values to 0). 
+	- could be fusionned with "ChemicalsList.txt" but is not for some reasons : 
+		- easiest way to test some decay due to half-lives configuration
+		- easier configuration and maybe readability
+
+* definedGenes.txt
+* definedPathways.txt 
+
+notes.txt : this file !

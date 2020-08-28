@@ -20,12 +20,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>gabywald</groupId>
-			<artifactId>biosilico-biosilico</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
 	</dependencies>
 
 </project>

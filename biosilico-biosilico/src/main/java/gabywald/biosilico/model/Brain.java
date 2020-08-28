@@ -346,9 +346,28 @@ public class Brain extends ObservableObject {
 		}
 	}
 
+	@Override
 	public void run() {
 		for (int i = 0 ; i < Brain.ITERATIONS_ON_EACH_RUN ; i++)
 			{ this.networking();this.change(); }
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		
+		result.append("\tBRAIN HEIGHT\t")	.append(Gene.convert0to99(this.getHeight())).append( "\n" );
+		result.append("\tBRAIN WIDTH\t")	.append(Gene.convert0to99(this.getWidth() )).append( "\n" );
+		result.append("\tBRAIN DEPTH\t")	.append(Gene.convert0to99(this.getDepth() )).append( "\n" );
+		// ***** result.append("NEURONS LIST DESCRIPTION\n\tNO DATA\n");
+		for (int i = 0 ; i < this.map.length ; i++) {
+			for (int j = 0 ; j < this.map[i].length ; j++) {
+				if (this.map[i][j] != null) { 
+					result.append(this.map[i][j].toString()).append("\n"); 
+				}
+			}
+		}
+		return result.toString();
 	}
 
 }

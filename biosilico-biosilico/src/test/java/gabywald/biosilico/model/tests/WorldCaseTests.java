@@ -12,6 +12,7 @@ import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
+import gabywald.biosilico.model.enums.StatusType;
 
 class WorldCaseTests {
 
@@ -117,8 +118,22 @@ class WorldCaseTests {
 		WorldCase middleWC = w.getWorldCase(1, 1);
 		
 		Assertions.assertFalse( middleWC.hasAgentType( AgentType.BIOSILICO_DAEMON ) > 0);
+		Assertions.assertNull( middleWC.getAgentType( AgentType.BIOSILICO_DAEMON ) );
+		Assertions.assertFalse( middleWC.hasAgentStatus( StatusType.NOT_ACCURATE ) > 0);
+		Assertions.assertNull( middleWC.getAgentStatus( StatusType.NOT_ACCURATE ) );
 		middleWC.addAgent(new EnergySource());
 		Assertions.assertTrue( middleWC.hasAgentType( AgentType.BIOSILICO_DAEMON ) > 0);
+		Assertions.assertNotNull( middleWC.getAgentType( AgentType.BIOSILICO_DAEMON ) );
+		Assertions.assertTrue( middleWC.hasAgentStatus( StatusType.NOT_ACCURATE ) > 0);
+		Assertions.assertNotNull( middleWC.getAgentStatus( StatusType.NOT_ACCURATE ) );
+		
+		Agent daemonAgent = middleWC.getAgentType( AgentType.BIOSILICO_DAEMON );
+		Assertions.assertEquals(EnergySource.COMMON_BIOSILICO_NAME, daemonAgent.getBioSilicoName() );
+		Assertions.assertEquals(EnergySource.COMMON_BIOSILICO_NAME, daemonAgent.getCommonName() );
+		
+		Agent notAccurateAgent = middleWC.getAgentStatus( StatusType.NOT_ACCURATE );
+		Assertions.assertEquals(EnergySource.COMMON_BIOSILICO_NAME, notAccurateAgent.getBioSilicoName() );
+		Assertions.assertEquals(EnergySource.COMMON_BIOSILICO_NAME, notAccurateAgent.getCommonName() );
 		
 		Assertions.assertNotNull( middleWC );
 		Assertions.assertNotNull( middleWC.getWorld() );
@@ -159,7 +174,7 @@ class WorldCaseTests {
 			}
 		});
 		
-		// XXX NOTE [20200804] : no half-klives applies yet 
+		// XXX NOTE [20200804] : no half-lives applies yet 
 		
 		Agent removedEnergySource = middleWC.remAgent( 0 );
 		Assertions.assertEquals( 0, middleWC.getAgentListLength() );
@@ -214,21 +229,4 @@ class WorldCaseTests {
 		
 	}
 	
-	// TODO complete these tests !! WorldCaseTests
-
-//	@Test
-//	void testGetDirection() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetAgent() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetAgentType() {
-//		fail("Not yet implemented");
-//	}
-
 }

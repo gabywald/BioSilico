@@ -1,4 +1,4 @@
-package gabywald.biosilico.exceptions;
+package gabywald.cellmodel.exceptions;
 
 import gabywald.global.exceptions.GenericException;
 

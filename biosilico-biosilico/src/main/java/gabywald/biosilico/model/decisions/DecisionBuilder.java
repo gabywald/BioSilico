@@ -9,12 +9,14 @@ import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.model.reproduction.ReproductionAnima;
 import gabywald.biosilico.model.reproduction.ReproductionBacta;
 import gabywald.biosilico.model.reproduction.ReproductionDaemon;
+import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.biosilico.model.reproduction.ReproductionViridita;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -87,6 +89,9 @@ public class DecisionBuilder {
 		// ***** Decision to stop an agent. 
 		case STOP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::stop);break;
 		
+		// ***** Decision to slap an agent. 
+		case SLAP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::slap);break;
+		
 		// ***** Indicate a location where to go. 
 		case MOVE_TO:	what2do = new DecisionToMove(this.orga, this.attribute);break;
 		
@@ -100,7 +105,7 @@ public class DecisionBuilder {
 		case GET: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
 			@Override
 			public void action() {
-				Agent o	= this.getOrga().getCurrentWorldCase().getAgentType( AgentType.getFrom(this.getVariable(0)) );
+				Agent o	= this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
 				if ( (o != null) && (o.isMovable()) ) {
 					this.getOrga().getCurrentWorldCase().remAgent( o );
 					this.getOrga().addAgent( o );
@@ -110,13 +115,14 @@ public class DecisionBuilder {
 		};break;
 		
 		// ***** Dropping an object / agent. 
-		case DROP:		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
+		case DROP:		what2do = new BaseDecision(this.orga, this.object, this.attribute) {
 			@Override
 			public void action() {
-				AgentType at	= (this.getVariablesLength() >= 1) ? AgentType.getFrom(this.getVariable(0)) : null;
+				// TODO check its works with (object) and (object + attribute)
+				ObjectType ot	= (this.getVariablesLength() >= 1) ? ObjectType.getFrom(this.getVariable(0)) : null;
 				StatusType st	= (this.getVariablesLength() >= 2) ? StatusType.getFrom(this.getVariable(1)) : null;
-				if (at == null) { return; }
-				Agent o1 = this.getOrga().getAgentType( at );
+				if (ot == null) { return; }
+				Agent o1 = this.getOrga().getObjectType( ot );
 				Agent o2 = (st != null) ? this.getOrga().getAgentStatus( st ) : null;
 				// if type is present and not status : drop by type ! Else priority to status (if not null). 
 				Agent o = ((o1 != null) && (o2 == null))? o1 : (o2 != null)? o2 : (o1 != null) ? o1 : null;
@@ -135,9 +141,6 @@ public class DecisionBuilder {
 			}
 		};break;
 		
-		// ***** Decision to slap an agent. 
-		case SLAP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::slap);break;
-		
 		case REST: 		break; // ***** Nothing
 		
 		case SLEEP: 	break; // ***** XXX Not defined yet !
@@ -146,9 +149,10 @@ public class DecisionBuilder {
 		case EAT: 		what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				AgentType objectType = AgentType.getFrom( object );
-				if (this.getOrga().hasAgentType( objectType ) > threshold) {
-					Agent eatableAgent = this.getOrga().getAgentType( objectType );
+				ObjectType type = ObjectType.getFrom( object );
+				if (this.getOrga().hasObjectType( type ) > threshold) {
+					Agent eatableAgent = this.getOrga().getObjectType( type );
+					if ( ! eatableAgent.isEatable()) { ; }
 					this.getOrga().remAgent(eatableAgent);
 					this.getOrga().getVariables().incorporate(eatableAgent.getVariables());
 				}
@@ -217,27 +221,34 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				if (this.getOrga().isFertile()) {
-					int agentType = SomeChemicals.GAMET.getIndex();
-					 // ***** Increase Gamet TODO to change it / values !!
-					this.getOrga().getVariables().setVarPlusPlus(agentType);
+					Organism gamet = ReproductionHelper.makeGamet(this.getOrga());
+					if (gamet != null) {
+						this.getOrga().addAgent(gamet);
+					}
+					// ***** Increase Gamet / make exact count !!
+					this.getOrga().getChemicals().setVariable(	SomeChemicals.GAMET.getIndex(), 
+																this.getOrga().hasAgentStatus(StatusType.GAMET));
 				}
 			}
 		};break;
 		
-		// ***** Lay Egg. 
+		// ***** Lay Egg. I.E. 'DROP EGG' !
 		case LAY_EGG: 	what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
 				// ***** Change status about egg contenant (pregnancy). 
 				this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
+				// ***** If Apply => lay effectively egg !!
 				if (this.getOrga().isPregnant()) {
 					// Drop :: Egg
 					DecisionBuilder db	= new DecisionBuilder();
+					// XXX NOTE beware here for Object type / Agent Type : semantic meaning (idea of fusion of AgentType / ObjectType ?!) ... 
 					IDecision decision	= db.type(DecisionType.DROP).organism(this.getOrga())
-											.object( this.getOrga().getOrganismType() )
+											.object( this.getOrga().getObjectType().getIndex() )
 											.attribute( StatusType.EGG.getIndex() ).build();
 					if (decision != null) { decision.action(); }
-					this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
+					this.getOrga().getVariables().setVariable(	StateType.PREGNANT.getIndex(), 
+																this.getOrga().hasAgentStatus( StatusType.EGG ));
 				}
 			}
 		};break;
@@ -252,7 +263,7 @@ public class DecisionBuilder {
 				this.getOrga().getVariables().setVarLess(StateType.FERTILE.getIndex(), 		this.getOrga().hasAgentStatus( StatusType.EGG ));
 				if (this.getOrga().isFertile()) {
 					
-					AgentType otype = this.getOrga().getOrganismTypeAsType();
+					AgentType otype = this.getOrga().getAgentType();
 					if (otype == null) { return; }
 					switch(otype) {
 					case BIOSILICO_DAEMON:
@@ -270,7 +281,7 @@ public class DecisionBuilder {
 						List<Organism> maters = new ArrayList<Organism>();
 						maters.add( this.getOrga() );
 						// IntStream.range(0, this.variables.getVariable( 932 ) / 2)
-						Agent futuremate = this.getOrga().getCurrentWorldCase().getAgentType( this.getOrga().getOrganismTypeAsType() );
+						Agent futuremate = this.getOrga().getCurrentWorldCase().getAgentType( this.getOrga().getAgentType() );
 						if ( (futuremate != null) && (futuremate instanceof Organism) ) {
 							// Compatibility of reproduction is checked further. 
 							maters.add( (Organism) futuremate );

@@ -1,5 +1,7 @@
 package gabywald.biosilico.model.enums;
 
+import gabywald.biosilico.interfaces.IChemicalsType;
+
 /**
  * 
  * @author Gabriel Chandesris (2020)
@@ -8,6 +10,9 @@ public enum SomeChemicals implements IChemicalsType {
 	DIOXYGEN		(180, "O2", 	"O2"), 
 	CARBON_DIOXYDE	(181, "CO2", 	"CO2"), 
 	WATER			(182, "H2O", 	"DiHydrogen Monoxid (Water / Eau)"), 
+	
+	GLUCOSE			(169, "G6", 	"Glucose"), 
+	FRUCTOSE		(170, "F5", 	"Fructose"), 
 	
 	ENERGY_SOLAR	(500, 	"Solar Energy", "solar energy"), 
 	ENERGY_HEAT		(501, 	"Heat Energy", 	"heat energy"), 

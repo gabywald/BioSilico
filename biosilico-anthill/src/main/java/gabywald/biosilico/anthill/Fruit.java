@@ -3,6 +3,8 @@ package gabywald.biosilico.anthill;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.chemicals.Chemicals;
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
+import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * This class defines a specific element which is not alive but can be move and eat by agents in the system. 
@@ -21,7 +23,10 @@ public class Fruit extends Organism {
 		this.setMovable( true );
 		
 		this.setNameCommon("Fruit");
-		this.setOrganismType(AgentType.BIOSILICO_VIRIDITA);
+		this.setObjectType(ObjectType.FOOD);
+		this.getAgentType(AgentType.BIOSILICO_VIRIDITA);
+		this.setOrganismStatus(StatusType.EGG);
+		
 	}
 	
 	/**

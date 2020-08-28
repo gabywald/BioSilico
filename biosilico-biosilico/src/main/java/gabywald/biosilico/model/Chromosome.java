@@ -3,6 +3,7 @@ package gabywald.biosilico.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import gabywald.biosilico.genetics.Gene;
 
@@ -46,9 +47,13 @@ public class Chromosome {
 	
 	public int length() 		{ return this.genes.size(); }
 	
-	public int getGeneNumber()	{ return this.genes.size(); }
+	// public int getGeneNumber()	{ return this.genes.size(); }
 	
 	public Gene getGene(int i) 
 		{ return (i < this.genes.size()) ? ((i < 0) ? null : this.genes.get(i)) : null; }
+	
+	public Stream<Gene> streamGene() {
+		return this.genes.stream();
+	}
 	
 }
