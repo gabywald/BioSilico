@@ -29,7 +29,8 @@ public enum DecisionType implements IChemicalsType {
 	LAY_EGG		(869, "LayEgg", 	"lay egg"), 
 	MATE		(870, "Mate", 		"mate"), 
 	CREATE_EGG	(871, "Create Egg", "create egg"), 
-	// ***** XXX NOTE : 872 to 880 are free. 
+	// ***** XXX NOTE : 872 to 878 are free. 
+	RECORDSTATE	(879, "Record State", "recordstate")
 	;
 	
 	private int index;
@@ -53,7 +54,7 @@ public enum DecisionType implements IChemicalsType {
 	 * @param index (int)
 	 * @return Corresponding DecisionType, could be null. 
 	 */
-	public static DecisionType getValue(int index) {
+	public static DecisionType getFrom(int index) {
 		for (DecisionType dt : DecisionType.values()) {
 			if (dt.index == index) {
 				return dt;

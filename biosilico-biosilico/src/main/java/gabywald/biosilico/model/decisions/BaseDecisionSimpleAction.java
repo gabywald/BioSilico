@@ -17,7 +17,9 @@ public class BaseDecisionSimpleAction<T extends Agent> extends BaseDecisionOnlyO
 
 	@Override
 	public void action() {
-		Agent tmpAgent = this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
+		ObjectType oType = ObjectType.getFrom(this.getVariable(0));
+		Agent tmpAgent = (oType == ObjectType.CURRENT)? this.getOrga() : this.getOrga().getCurrentWorldCase()
+												.getObjectType( ObjectType.getFrom(this.getVariable(0)) );
 		if (tmpAgent != null) { toApply.apply( tmpAgent ); }
 	}
 

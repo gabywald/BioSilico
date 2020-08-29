@@ -3,6 +3,7 @@ package gabywald.biosilico.model.reproduction;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * 
@@ -30,6 +31,7 @@ public class ReproductionDaemon implements IReproduction {
 		
 		Organism nextOrga		= new Organism(currentOrga.getGenome());
 		ReproductionHelper.copySomeData(currentOrga, nextOrga);
+		nextOrga.setOrganismStatus(StatusType.EGG);
 		nextOrga.addExtendedLineageItem(currentOrga.getUniqueID(), currentOrga.getScientificName(), currentOrga.getRank());
 		
 		// ***** Put / drop it in current WorldCase When Laying Egg !
@@ -38,9 +40,8 @@ public class ReproductionDaemon implements IReproduction {
 		
 		// ***** Decrease gamets signal => divide by 2 !!
 		currentOrga.getVariables().setVarLess(SomeChemicals.GAMET.getIndex(), currentOrga.getVariables().getVariable(SomeChemicals.GAMET.getIndex()) / 2);
-		// ***** Indicates that it is pregnant !
-		currentOrga.getVariables().setVarPlusPlus(SomeChemicals.EGG.getIndex());
-		currentOrga.getVariables().setVarPlusPlus(StateType.PREGNANT.getIndex());
+		// ***** Indicates that it is pregnant ! (has EGGs)
+		currentOrga.getVariables().setVariable(StateType.PREGNANT.getIndex(), currentOrga.hasAgentStatus(StatusType.EGG));
 	}
 
 }

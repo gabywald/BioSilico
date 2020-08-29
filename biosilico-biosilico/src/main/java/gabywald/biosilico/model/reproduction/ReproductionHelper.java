@@ -124,7 +124,8 @@ public abstract class ReproductionHelper {
 		nextOrga.setSex(currentOrga.getSex());
 		nextOrga.setObjectType(currentOrga.getObjectType());
 		nextOrga.setAgentType(currentOrga.getAgentType());
-		nextOrga.setOrganismStatus(StatusType.EGG);
+		// nextOrga.setOrganismStatus(StatusType.EGG);
+		nextOrga.setOrganismStatus(currentOrga.getOrganismStatus());
 		
 		nextOrga.setExtendedLineage(currentOrga.getExtendedLineage());
 	}

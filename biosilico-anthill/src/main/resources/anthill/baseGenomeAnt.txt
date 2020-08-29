@@ -1,5 +1,5 @@
 // // // need some initial concentration !!
-// InitConc	
+## InitConc
 IC:O2 	true	true	false	true	0	0	0	25	180	100
 IC:CO2	true	true	false	true	0	0	0	25	181	50
 IC:H2O	true	true	false	true	0	0	0	25	182	100
@@ -15,7 +15,7 @@ IC:ATP	true	true	false	true	0	0	0	25	150	10
 IC:ADP	true	true	false	true	0	0	0	25	151	20
 IC:Pho	true	true	false	true	0	0	0	25	15	20
 // // // need some biochemical reaction
-// BioReact
+## BioReact
 BRGlyc01:Glucose=>G6P	true	true	false	true	0	0	0	25	1	169	1	150	1	151	1	171	1	
 BRGlyc02:Fructose=>F6P	true	true	false	true	0	0	0	25	1	170	1	150	1	151	1	172	1	
 BRGlyc03:G6P=>F6P	true	true	false	true	0	0	0	25	1	171	0	0	1	172	0	0	1	
@@ -53,17 +53,14 @@ BRCH001:NADH+O2=>NAD+2HO-	true	true	false	true	0	0	0	25	1	166	1	180	1	165	2	183	
 BRCH002:FADH+O2=>FAD+2HO-	true	true	false	true	0	0	0	25	1	168	1	180	1	167	2	183	1	
 BRCH003:HO-+P=>HO-+H20	true	true	false	true	0	0	0	25	1	183	1	15	1	183	1	182	1	
 BRCH004:ADP+HO-=>ATP+H2O	true	true	false	true	0	0	0	25	1	151	1	183	1	150	1	182	1	
+## StimDecision Part 1
 // // // receptor for some variables from environment
 SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	865
 SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	865	
 // // // emitter for some variables from environment
 SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	864	
 SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	864	
-// // // decision to take fruits !
-// // // decision to drop fruits ! (in the AntHill)
-// // // decision to eat fruits !
-// // // decision to display pheromones !
-// // // detection of pheromones ! (gene combination to get input in brain !)
+## Brain-Related
 // // // // // Brain
 BR001:50501	true	true	true	true	0	999	0	25	50	50	1	1
 // // // // // BrainLobes : input and output here !
@@ -77,6 +74,8 @@ BL007:NEU0R37	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	3
 BL008:NEU0R38	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	38	false
 BL008:NEU0R39	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	39	false
 BL009:MOVETO	true	true	true	true	0	999	0	25	0	10	50	1	3	0	false	0	true	1	9	48	31	false
+## StimDecision Part 2
+// // // choice of destination :: movement !!
 // // // // // StimulusDecision : Local detection
 SDLOC:pher0LOC	true	true	true	true	0	999	0	25	true	false	650	10	800	700	5	0
 // // // // // StimulusDecision : detect from a given location 80x for ch650 (pheromone00) and internally add 5 to ch70x
@@ -88,6 +87,7 @@ SD009:pher00SE	true	true	true	true	0	999	0	25	true	false	650	10	805	705	5	0
 SD010:pher00SS	true	true	true	true	0	999	0	25	true	false	650	10	806	706	5	0
 SD011:pher00SW	true	true	true	true	0	999	0	25	true	false	650	10	807	707	5	0
 SD012:pher00WW	true	true	true	true	0	999	0	25	true	false	650	10	807	708	5	0
+## EmitterReceptor
 // // // // // EmitterReceptor : detect values for internal ch70x and give activity to Neuron at pos(0, 3x)
 ER001:pher00NW	true	true	true	true	0	999	0	25	701	5	100	0	31	true	true
 ER002:pher00NN	true	true	true	true	0	999	0	25	702	5	100	0	32	true	true
@@ -98,6 +98,7 @@ ER006:pher00SS	true	true	true	true	0	999	0	25	706	5	100	0	36	true	true
 ER007:pher00SW	true	true	true	true	0	999	0	25	707	5	100	0	37	true	true
 ER008:pher00WW	true	true	true	true	0	999	0	25	708	5	100	0	38	true	true
 ER009:pher0LOC	true	true	true	true	0	999	0	25	700	5	100	0	39	true	true
+## Instincts
 // // // // // Instinct : connexion between input and output neurons (choice about movement), activ on ch169 (glucose)
 IN001:0R31----	true	true	true	true	1	1	0	25	0	31	48	31	20	169	5	false
 IN001:0R32----	true	true	true	true	1	1	0	25	0	32	48	32	20	169	5	false

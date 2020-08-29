@@ -14,9 +14,11 @@ import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.DecisionToMove;
 import gabywald.biosilico.model.decisions.IDecision;
+import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
+import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 
@@ -35,7 +37,7 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
@@ -73,7 +75,7 @@ class DecisionsTests {
 			// System.out.println( "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
 			int object			= oType.getIndex();
 
-			DecisionType dType	= DecisionType.getValue( which );
+			DecisionType dType	= DecisionType.getFrom( which );
 			Assertions.assertNotNull( dType );
 
 			Organism testOrga	= new Organism();
@@ -94,7 +96,7 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals("think about [" + oType.getIndex() + "]\t", testOrga.getState());
+			Assertions.assertEquals(testOrga.getUniqueID() + "::" + "think about [" + oType.getIndex() + "]\t", testOrga.getState());
 		});
 	}
 	
@@ -119,7 +121,7 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
@@ -162,7 +164,7 @@ class DecisionsTests {
 			// System.out.println( "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
 			int attribute	= dir.getIndex();
 			
-			DecisionType dType = DecisionType.getValue( which );
+			DecisionType dType = DecisionType.getFrom( which );
 			Assertions.assertNotNull( dType );
 			
 			Organism testOrga	= new Organism();
@@ -202,7 +204,7 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
@@ -249,7 +251,7 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
@@ -288,7 +290,7 @@ class DecisionsTests {
 	}
 	
 	@Test
-	void testDecisionPULLoPUSHoSTOP() {
+	void testDecisionPULLoPUSHoSTOPorSLAP() {
 		// int which		= DecisionType.PULL.getIndex();
 		int object		= ObjectType.FOOD.getIndex();
 		int threshold	= -1;
@@ -296,12 +298,13 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		List<DecisionType> oTypes = Arrays.asList( 	DecisionType.PUSH, DecisionType.PULL, 
+		List<DecisionType> dTypes = Arrays.asList( 	DecisionType.PUSH, DecisionType.PULL, 
 													DecisionType.STOP, DecisionType.SLAP );
 		
 		// ***** test with inexistent object type in current WC !
-		oTypes.stream().forEach( oType -> {
-			DecisionType dType = DecisionType.getValue( oType.getIndex() );
+		dTypes.stream().forEach( sdType -> {
+			
+			DecisionType dType = DecisionType.getFrom( sdType.getIndex() );
 			Assertions.assertNotNull( dType );
 			
 			Organism testOrga	= new Organism();
@@ -323,11 +326,14 @@ class DecisionsTests {
 			if (decision != null) { decision.action(); }
 			
 			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
+			Assertions.assertEquals(attemptedDType, null);
 		});
 		
 		// ***** test with existent object type in current WC !
-		oTypes.stream().forEach( oType -> {
-			DecisionType dType = DecisionType.getValue( oType.getIndex() );
+		dTypes.stream().forEach( oType -> {
+			DecisionType dType = DecisionType.getFrom( oType.getIndex() );
 			Assertions.assertNotNull( dType );
 			
 			Organism testOrga	= new Organism();
@@ -338,7 +344,8 @@ class DecisionsTests {
 			WorldCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
-			wc.addAgent(new TestObject());
+			TestObjectFoodEgg tofg = new TestObjectFoodEgg();
+			wc.addAgent( tofg );
 			
 			testOrga.setCurrentWorldCase( wc );
 			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
@@ -351,6 +358,86 @@ class DecisionsTests {
 			if (decision != null) { decision.action(); }
 			
 			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
+			Assertions.assertEquals(attemptedDType, null);
+			
+			DecisionType attemptedDTypeTOFG = DecisionType.getFrom(tofg.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
+			Assertions.assertEquals(attemptedDTypeTOFG, dType);
+			
+		});
+	}
+	
+	@Test
+	void testDecisionSLEEPorREST() {
+		// int which		= DecisionType.REST.getIndex();
+		int object		= ObjectType.CURRENT.getIndex();
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= -1;
+		int value		= -1;
+		
+		List<DecisionType> dTypes = Arrays.asList( DecisionType.REST, DecisionType.SLEEP );
+		
+		// ***** test with inexistent object type in current WC !
+		dTypes.stream().forEach( sdType -> {
+			
+			DecisionType dType = DecisionType.getFrom( sdType.getIndex() );
+			Assertions.assertNotNull( dType );
+			
+			Organism testOrga	= new Organism();
+			Assertions.assertNotNull( testOrga );
+			
+			World w			= new World(3, 3);
+			Assertions.assertNotNull( w );
+			WorldCase wc	= w.getWorldCase(1,  1);
+			Assertions.assertNotNull( wc );
+			
+			testOrga.setCurrentWorldCase( wc );
+			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionBuilder db	= new DecisionBuilder();
+			Assertions.assertNotNull( db );
+			IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+									.attribute(attribute).variable(variable).value(value).build();
+			Assertions.assertNotNull( decision );
+			if (decision != null) { decision.action(); }
+			
+			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
+			Assertions.assertEquals(attemptedDType, dType);
+		});
+		
+		// ***** test with existent object type in current WC !
+		dTypes.stream().forEach( oType -> {
+			DecisionType dType = DecisionType.getFrom( oType.getIndex() );
+			Assertions.assertNotNull( dType );
+			
+			Organism testOrga	= new Organism();
+			Assertions.assertNotNull( testOrga );
+			
+			World w			= new World(3, 3);
+			Assertions.assertNotNull( w );
+			WorldCase wc	= w.getWorldCase(1,  1);
+			Assertions.assertNotNull( wc );
+			
+			wc.addAgent(new TestObjectFoodEgg());
+			
+			testOrga.setCurrentWorldCase( wc );
+			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionBuilder db	= new DecisionBuilder();
+			Assertions.assertNotNull( db );
+			IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+									.attribute(attribute).variable(variable).value(value).build();
+			Assertions.assertNotNull( decision );
+			if (decision != null) { decision.action(); }
+			
+			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			
+			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
+			Assertions.assertEquals(attemptedDType, dType);
 		});
 	}
 	
@@ -363,19 +450,12 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
-		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
-		Assertions.assertNotNull( wc );
-		
-		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
 		Assertions.assertEquals( 0, testOrga.getAgentListe().size());
 		
 		DecisionBuilder db	= new DecisionBuilder();
@@ -386,17 +466,15 @@ class DecisionsTests {
 		if (decision != null) { decision.action(); }
 		Assertions.assertEquals( 0, testOrga.getAgentListe().size());
 		
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
-		
 		Assertions.assertEquals( 0, testOrga.getAgentListe().size());
-		testOrga.addAgent(new TestObject());
+		testOrga.addAgent(new TestObjectFoodEgg());
 		Assertions.assertEquals( 1, testOrga.getAgentListe().size());
 		
 		if (decision != null) { decision.action(); }
 		Assertions.assertEquals( 1, testOrga.getAgentListe().size());
 		
 		IntStream.range(0, 10).forEach( i-> {
-			testOrga.addAgent(new TestObject());
+			testOrga.addAgent(new TestObjectFoodEgg());
 		});
 
 		Assertions.assertEquals(11, testOrga.getAgentListe().size());
@@ -438,7 +516,66 @@ class DecisionsTests {
 		int variable	= -1;
 		int value		= -1;
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
+		Assertions.assertNotNull( testOrga );
+		
+		World w			= new World(3, 3);
+		Assertions.assertNotNull( w );
+		WorldCase wc	= w.getWorldCase(1,  1);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		
+		// ***** When not fertile
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+		Assertions.assertNotNull(ObjectType.AGENT);
+		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
+		
+		// ***** When fertile !!
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 42);
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(1, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+		Assertions.assertNotNull(ObjectType.AGENT);
+		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
+		
+		decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+				.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(2, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(3, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+	}
+	
+	@Test
+	void testDecisionLAYEGG() {
+		int which		= DecisionType.LAY_EGG.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= -1;
+		int value		= -1;
+		
+		DecisionType dType = DecisionType.getFrom( which );
 		Assertions.assertNotNull( dType );
 		
 		Organism testOrga	= new Organism();
@@ -459,54 +596,272 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		
 		// ***** When not fertile
+		Assertions.assertEquals(1, wc.getAgentListLength());
 		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
 		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(1, wc.getAgentListLength());
 		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
 		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(1, wc.getAgentListLength());
 		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
 		
-		Assertions.assertNotNull(ObjectType.AGENT);
-		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
-		
-		// ***** When fertile !!
-		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 42);
-		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
-		if (decision != null) { decision.action(); }
+		// ***** When pregnant !!
+		testOrga.addAgent(new TestObjectFoodEgg());
+		Assertions.assertEquals(1, wc.getAgentListLength());
 		Assertions.assertEquals(1, testOrga.hasAgentStatus(StatusType.EGG));
-		
-		Assertions.assertNotNull(ObjectType.AGENT);
-		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
-		
-		decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
-				.attribute(attribute).variable(variable).value(value).build();
-		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
-		Assertions.assertEquals(2, testOrga.hasAgentStatus(StatusType.EGG));
-		if (decision != null) { decision.action(); }
-		Assertions.assertEquals(3, testOrga.hasAgentStatus(StatusType.EGG));
+		Assertions.assertEquals(2, wc.getAgentListLength());
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
 		
 	}
 	
-	// TODO Decision DEATH
+	@Test
+	void testDecisionDEATH() {
+		int which		= DecisionType.DEATH.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= StateType.AGING.getIndex();
+		int value		= 999;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		Assertions.assertTrue( testOrga.isAlive() );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(StateType.AGING.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertFalse( testOrga.isAlive() );
+		Assertions.assertEquals(999, testOrga.getChemicals().getVariable(StateType.AGING.getIndex()));
+	}
 	
-	// TODO Decision REST
+	@Test
+	void testDecisionEMIT() {
+		int which		= DecisionType.EMIT.getIndex();
+		int object		= DirectionWorld.CURRENT.getIndex();
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= SomeChemicals.WATER.getIndex();
+		int value		= 50;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		World w			= new World(3, 3);
+		Assertions.assertNotNull( w );
+		WorldCase wc	= w.getWorldCase(1,  1);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		testOrga.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 100);
+		
+		Assertions.assertEquals(100, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+	}
 	
-	// TODO Decision SLEEP
+	@Test
+	void testDecisionRECEIVE() {
+		int which		= DecisionType.RECEIVE.getIndex();
+		int object		= DirectionWorld.CURRENT.getIndex();
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= SomeChemicals.WATER.getIndex();
+		int value		= 50;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		World w			= new World(3, 3);
+		Assertions.assertNotNull( w );
+		WorldCase wc	= w.getWorldCase(1,  1);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		testOrga.getChemicals().setVariable(SomeChemicals.WATER.getIndex(),   0);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 100);
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(100, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(100, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+	}
 	
-	// TODO Decision EMIT
+	@Test
+	void testDecisionHAS() {
+		int which		= DecisionType.HAS.getIndex();
+		int object		= ObjectType.FOOD.getIndex();
+		int threshold	= 0;
+		int attribute	= AgentType.BIOSILICO_VIRIDITA.getIndex();
+		int variable	= SomeChemicals.PHEROMONE_09.getIndex();
+		int value		= 25;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));
+		
+		testOrga.addAgent(new TestObjectFoodEgg());
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));
+	}
 	
-	// TODO Decision RECEIVE
+	@Test
+	void testDecisionIS_AgentType() {
+		int which		= DecisionType.IS.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= StateType.AGENT_TYPE.getIndex();
+		int value		= AgentType.BIOSILICO_ANIMA.getIndex();
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		Assertions.assertNotEquals(AgentType.BIOSILICO_ANIMA.getIndex(), testOrga.getChemicals().getVariable(StateType.AGENT_TYPE.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(AgentType.BIOSILICO_ANIMA.getIndex(), testOrga.getChemicals().getVariable(StateType.AGENT_TYPE.getIndex()));
+		
+	}
 	
-	// TODO Decision HAS
+	@Test
+	void testDecisionIS_ObjectType() {
+		int which		= DecisionType.IS.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= StateType.TYPEOF.getIndex();
+		int value		= ObjectType.PHONE.getIndex();
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		Assertions.assertNotEquals(ObjectType.PHONE.getIndex(), testOrga.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(ObjectType.PHONE.getIndex(), testOrga.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		
+	}
 	
-	// TODO Decision IS
-	
-	// TODO Decision LAY_EGG
-	
+	@Test
+	void testDecisionIS_StatusType() {
+		int which		= DecisionType.IS.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= StateType.STATUS.getIndex();
+		int value		= StatusType.ADULT.getIndex();
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		Assertions.assertNotEquals(StatusType.ADULT.getIndex(), testOrga.getChemicals().getVariable(StateType.STATUS.getIndex()));
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(StatusType.ADULT.getIndex(), testOrga.getChemicals().getVariable(StateType.STATUS.getIndex()));
+		
+	}
 	
 	// TODO Decision MATE
 	
-	
-	// TODO continuing DecisionsTests !!
-
 }

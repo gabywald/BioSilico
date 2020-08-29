@@ -10,8 +10,9 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.structures.ExtendedLineageItem;
-import gabywald.global.data.StringUtils;
 import gabywald.global.structures.StringCouple;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -155,7 +156,7 @@ public class Organism extends Agent implements IAgentContent {
 	public IDecision activity(	int which, int object, int threshold, 
 								int attribute, int variable, int value) {
 		
-		DecisionType dType = DecisionType.getValue( which );
+		DecisionType dType = DecisionType.getFrom( which );
 		if (dType == null) { return null; }
 		
 		DecisionBuilder db	= new DecisionBuilder();
@@ -171,17 +172,58 @@ public class Organism extends Agent implements IAgentContent {
 	 * @param txt
 	 */
 	public void think(String txt) {
-		this.addState(txt);
+		this.addState(this.getUniqueID() + "::" + txt);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.THINK);
 	}
 
 	@Override
-	public boolean push()		{ return true; }
+	public boolean push()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} PUSHed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.PUSH);
+		return true; 
+	}
 	@Override
-	public boolean pull()		{ return true; }
+	public boolean pull()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} PULLed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.PULL);
+		return true; 
+	}
 	@Override
-	public boolean stop()		{ return true; }
+	public boolean stop()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} STOPed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.STOP);
+		return true; 
+	}
 	@Override
-	public boolean slap()		{ return true; }
+	public boolean slap()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} SLAPed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.SLAP);
+		return true; 
+	}
+	@Override
+	public boolean rest()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} RESTed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.REST);
+		return true; 
+	}
+	@Override
+	public boolean sleep()		{ 
+		String msg = "Organism {" + this.getUniqueID() + "} SLEEPed !";
+		Logger.printlnLog(LoggerLevel.LL_INFO, msg);
+		this.addState(this.getUniqueID() + "::" + msg);
+		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.SLEEP);
+		return true; 
+	}
 	
 	@Override
 	public int getAgentListLength()		{ return this.liste.size(); }
@@ -231,17 +273,16 @@ public class Organism extends Agent implements IAgentContent {
 
 	@Override
 	public String toString() {
-		// TODO use of Java 8 streams
 		StringBuilder result = new StringBuilder();
 		// ***** Get String definition of SuperClass. 
 		result.append(super.toString());
 		// ***** Current instance. 
 		result.append("GENETIC CODE\n\tID\t").append(this.geneticCodes.get(0).getValueA()).append( "\n" );
 		result.append("\tNAME\t").append(this.geneticCodes.get(0).getValueB()).append( "\n" );
-		for (int i = 1 ; i < this.geneticCodes.size() ; i++) {
-			result.append("SUB GENETIC CODE\n\tID\t").append(this.geneticCodes.get(i).getValueA()).append( "\n" );
-			result.append("\tNAME\t").append(this.geneticCodes.get(i).getValueB()).append( "\n" );
-		}
+		this.geneticCodes.stream().forEach( gc -> {
+			result.append("SUB GENETIC CODE\n\tID\t").append(gc.getValueA()).append( "\n" );
+			result.append("\tNAME\t").append(gc.getValueB()).append( "\n" );
+		});
 		result.append("LINEAGE\n");
 		if (this.extendedlineage.size() == 0)
 			{ result.append("\tNO DATA\n"); }
@@ -252,13 +293,10 @@ public class Organism extends Agent implements IAgentContent {
 		result.append("GENOME\n");
 		for (int i = 0 ; i < this.genome.size() ; i++) {
 			Chromosome chr = this.genome.get(i);
-			for (int j = 0 ; j < chr.length() ; j++) { 
-				result.append( "\t" ).append(chr.getGene(j).getName()).append( "\t" ).append(chr.getGene(j).reverseTranslation(true)).append( "\n" );
-			}
-			if (i < this.genome.size()-1) { 
-				String delim = StringUtils.repeat("-", 50);
-				result.append( "\t" ).append(delim).append( "\t" ).append(delim).append( "\n" );
-			}
+			result.append("\tchr").append( i ).append("\t").append(chr.getName()).append("\n");
+			chr.streamGene().forEach( g -> {
+				result.append( "\t\t" ).append(g.getName()).append( "\t" ).append(g.reverseTranslation(true)).append( "\n" );
+			});
 		} // END "for (int i = 0 ; i < this.genome.size() ; i++)"
 
 		result.append("BRAIN\n");

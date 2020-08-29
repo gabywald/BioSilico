@@ -10,6 +10,7 @@ import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * 
@@ -20,14 +21,15 @@ class ReproductionTests {
 	@Test
 	void testReproductionDaemon() {
 
-		DecisionType dTypeMATE 		= DecisionType.getValue( DecisionType.MATE.getIndex() );
+		DecisionType dTypeMATE 		= DecisionType.getFrom( DecisionType.MATE.getIndex() );
 		Assertions.assertNotNull( dTypeMATE );
 		
-		DecisionType dTypeLAYEGG	= DecisionType.getValue( DecisionType.LAY_EGG.getIndex() );
+		DecisionType dTypeLAYEGG	= DecisionType.getFrom( DecisionType.LAY_EGG.getIndex() );
 		Assertions.assertNotNull( dTypeLAYEGG );
 
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
+		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 
 		World w			= new World(3, 3);
 		Assertions.assertNotNull( w );
@@ -83,6 +85,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
 	}
 
+	
 	// TODO continuing ReproductionTests !!
 	
 

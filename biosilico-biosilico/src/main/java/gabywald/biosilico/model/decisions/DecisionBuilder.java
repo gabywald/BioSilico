@@ -92,6 +92,12 @@ public class DecisionBuilder {
 		// ***** Decision to slap an agent. 
 		case SLAP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::slap);break;
 		
+		// ***** Decision to make and agent rest (self). 
+		case REST: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::rest);break;
+		
+		// ***** Decision to make and agent sleep (self). 
+		case SLEEP: 	what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::sleep);break;
+		
 		// ***** Indicate a location where to go. 
 		case MOVE_TO:	what2do = new DecisionToMove(this.orga, this.attribute);break;
 		
@@ -141,10 +147,6 @@ public class DecisionBuilder {
 			}
 		};break;
 		
-		case REST: 		break; // ***** Nothing
-		
-		case SLEEP: 	break; // ***** XXX Not defined yet !
-		
 		// ***** Eating decision (on eatable object). 
 		case EAT: 		what2do = new BaseDecision(this.orga) {
 			@Override
@@ -175,7 +177,7 @@ public class DecisionBuilder {
 				if (this.getOrga().getCurrentWorldCase() == null) { return; }
 				
 				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
-				if (wcwc != null) { 
+				if ( (wcwc != null) && (this.getOrga().getVariables().getVariable(variable) >= value) ) { 
 					wcwc.getVariables().setVarPlus(variable, value);
 					this.getOrga().getVariables().setVarLess(variable, value);
 				}
@@ -189,7 +191,7 @@ public class DecisionBuilder {
 				if (this.getOrga().getCurrentWorldCase() == null) { return; }
 				
 				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
-				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) > threshold) ) { 
+				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) >= value) ) { 
 					this.getOrga().getVariables().setVarPlus(variable, value);
 					wcwc.getVariables().setVarLess(variable, value);
 				}
@@ -200,10 +202,10 @@ public class DecisionBuilder {
 		case HAS: 		what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				AgentType objectType1 = AgentType.getFrom( object );
-				AgentType objectType2 = AgentType.getFrom( attribute );
-				if ( (this.getOrga().hasAgentType( objectType1 ) >= threshold)
-						&& (this.getOrga().hasAgentType( objectType2 ) >= threshold) )
+				AgentType agentType		= AgentType.getFrom( attribute );
+				ObjectType objectType	= ObjectType.getFrom( object );
+				if ( (this.getOrga().hasAgentType( agentType ) > threshold)
+						&& (this.getOrga().hasObjectType( objectType ) > threshold) )
 					{ this.getOrga().getVariables().setVarPlus(variable, value); }
 			}
 		};break;
@@ -222,6 +224,7 @@ public class DecisionBuilder {
 			public void action() {
 				if (this.getOrga().isFertile()) {
 					Organism gamet = ReproductionHelper.makeGamet(this.getOrga());
+					gamet.setOrganismStatus(StatusType.GAMET);
 					if (gamet != null) {
 						this.getOrga().addAgent(gamet);
 					}
@@ -305,6 +308,7 @@ public class DecisionBuilder {
 		case CREATE_EGG: 
 			// ***** to create eggs, virions, fruits... which have to be "laid" !!
 			// this.decisiontoCreateEgg();
+			// TODO see MATE dcision !
 		break;
 		default:
 			Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown / Unused Decision ! [" + this.type.getIndex() + "] {" + this.type.getName() + "}");

@@ -159,11 +159,14 @@ public abstract class GeneGattaca extends Gene {
 	 * Analyse first the header (all genes) then study rest of sequence. 
 	 * @param sequence (String)
 	 * @return (GattacaGene) Could be 'null'. 
-	 * @see GeneGattaca#getIC(boolean, boolean, boolean, boolean, int, int, int, int, IntegerListe)
-	 * @see GeneGattaca#getBR(boolean, boolean, boolean, boolean, int, int, int, int, IntegerListe)
-	 * @see GeneGattaca#getBG(boolean, boolean, boolean, boolean, int, int, int, int, IntegerListe)
-	 * @see GeneGattaca#getBLG(boolean, boolean, boolean, boolean, int, int, int, int, IntegerListe)
-	 * @see GeneGattaca#getER(boolean, boolean, boolean, boolean, int, int, int, int, IntegerListe)
+	 * @see GeneGattaca#getIC(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getBR(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getBG(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getBLG(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getER(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getSD(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * @see GeneGattaca#getIN(boolean, boolean, boolean, boolean, int, int, int, int, List)
+	 * TODO [review]design pattern to do this better !!
 	 */
 	public static GeneGattaca getInstance(String sequence) {
 		/** no GeneGattaca under 10 triplet length : start+7 elts of header+1 elt+stop */
