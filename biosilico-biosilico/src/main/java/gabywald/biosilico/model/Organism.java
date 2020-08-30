@@ -98,9 +98,12 @@ public class Organism extends Agent implements IAgentContent {
 	 * @param rank (String)
 	 */
 	public void addExtendedLineageItem(	String uniqueID,
-										String scientificName,
-										String rank) 
+			String scientificName,
+			String rank) 
 		{ this.extendedlineage.add(new ExtendedLineageItem(uniqueID, scientificName, rank)); }
+	
+	public void addExtendedLineageItem(	ExtendedLineageItem eli ) 
+		{ this.extendedlineage.add( eli ); }
 
 	public List<String> getSimpleLinage() {
 		return this.extendedlineage.stream().map(el -> el.getScientificName()).collect(Collectors.toList());

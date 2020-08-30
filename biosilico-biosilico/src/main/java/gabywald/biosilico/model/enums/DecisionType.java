@@ -28,8 +28,7 @@ public enum DecisionType implements IChemicalsType {
 	MAKE_GAMET	(868, "Make Gamet", "make gamet"), 
 	LAY_EGG		(869, "LayEgg", 	"lay egg"), 
 	MATE		(870, "Mate", 		"mate"), 
-	CREATE_EGG	(871, "Create Egg", "create egg"), 
-	// ***** XXX NOTE : 872 to 878 are free. 
+	// ***** XXX NOTE : 871 to 878 are free. 
 	RECORDSTATE	(879, "Record State", "recordstate")
 	;
 	

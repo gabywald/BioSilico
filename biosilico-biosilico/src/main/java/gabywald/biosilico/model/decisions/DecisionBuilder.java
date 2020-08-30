@@ -3,6 +3,7 @@ package gabywald.biosilico.model.decisions;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.biosilico.interfaces.IAgentContent;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
@@ -273,7 +274,7 @@ public class DecisionBuilder {
 						// ***** nothing definately defined yet (cloning ?!)
 						ReproductionDaemon.getInstance().action(this.getOrga());
 						break;
-					case BIOSILICO_BACTER:
+					case BIOSILICO_BACTA:
 						// ***** create a duplicate ! (modulo duplication, deletion, mutations of genes... )
 						ReproductionBacta.getInstance().action(this.getOrga());
 						break;
@@ -283,12 +284,27 @@ public class DecisionBuilder {
 						// ***** find another agent to mate ! (could be itself ?)
 						List<Organism> maters = new ArrayList<Organism>();
 						maters.add( this.getOrga() );
-						// IntStream.range(0, this.variables.getVariable( 932 ) / 2)
-						Agent futuremate = this.getOrga().getCurrentWorldCase().getAgentType( this.getOrga().getAgentType() );
+
+						Logger.printlnLog(LoggerLevel.LL_DEBUG, "AgentType {" + this.getOrga().getAgentType() + "} available: (" + this.getOrga().getCurrentWorldCase().hasAgentType( this.getOrga().getAgentType() ) + ")");
+						
+						// ***** If more than one available : do not select the same ! 
+						List<Agent> availables = IAgentContent.getListOfType(otype, StateType.AGENT_TYPE.getIndex(), this.getOrga().getCurrentWorldCase().getAgentListe());
+						int index = 0;
+						Agent futuremate = availables.get(0); 
+						while ( (availables.size() > 1) 
+									&& (this.getOrga().getUniqueID().equals(futuremate.getUniqueID())) ) 
+							{ futuremate = availables.get(++index); }
+						
+						if ( this.getOrga().getUniqueID().equals(futuremate.getUniqueID()) )
+							{ futuremate = null; }
+
+						// ***** Compatibility of reproduction is checked later.
 						if ( (futuremate != null) && (futuremate instanceof Organism) ) {
-							// Compatibility of reproduction is checked further. 
 							maters.add( (Organism) futuremate );
 						}
+						
+						Logger.printlnLog(LoggerLevel.LL_DEBUG, "DB.build {" + this.getOrga().getUniqueID() + "}-{" + maters.get(0).getUniqueID() + "}");
+						
 						if (otype.equals(AgentType.BIOSILICO_VIRIDITA)) {
 							ReproductionViridita.getInstance().action( maters.toArray(new Organism[0]) );
 						} else { // OrganismType.BIOSILICO_ANIMA
@@ -305,11 +321,8 @@ public class DecisionBuilder {
 				this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
 			}
 		};break;
-		case CREATE_EGG: 
-			// ***** to create eggs, virions, fruits... which have to be "laid" !!
-			// this.decisiontoCreateEgg();
-			// TODO see MATE dcision !
-		break;
+		// ***** to create eggs, virions, fruits... which have to be "laid" !!
+		// XXX NOTE see MATE decision !
 		default:
 			Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown / Unused Decision ! [" + this.type.getIndex() + "] {" + this.type.getName() + "}");
 			// ***** XXX NOTE : 872 to 880 are free. 

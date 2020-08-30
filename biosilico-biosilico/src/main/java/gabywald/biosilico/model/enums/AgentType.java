@@ -9,7 +9,7 @@ import gabywald.biosilico.interfaces.IChemicalsType;
  */
 public enum AgentType implements IChemicalsType {
 	BIOSILICO_DAEMON	(935, "Daemon", "daemon"), 
-	BIOSILICO_BACTER	(936, "Bacta", "bacta"), 
+	BIOSILICO_BACTA		(936, "Bacta", "bacta"), 
 	BIOSILICO_VIRIDITA	(937, "Plant", "plant"), 
 	BIOSILICO_ANIMA		(938, "Anima", "anima"), 
 	BIOSILICO_VIRIA		(939, "Virus", "virus"), 

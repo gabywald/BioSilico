@@ -862,6 +862,6 @@ class DecisionsTests {
 		
 	}
 	
-	// TODO Decision MATE
+	// XXX NOTE Decision MATE : see ReproductionTests !
 	
 }

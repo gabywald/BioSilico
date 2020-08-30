@@ -43,6 +43,10 @@ public class Chromosome {
 		this.genes.add(more);
 	}
 	
+	public void addAllGene(Chromosome chr) {
+		this.genes.addAll(chr.genes);
+	}
+	
 	/**
 	 * This method execute gene by gene.
 	 * @param orga (Organism) Current organism.  

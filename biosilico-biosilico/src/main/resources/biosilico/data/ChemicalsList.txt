@@ -869,7 +869,7 @@ Is	is
 MakeGamet	makegamet
 LayEgg	layegg
 Mate	mate
-Create Egg	createegg
+(free)	(free)
 (free)	(free)
 (free)	(free)
 (free)	(free)

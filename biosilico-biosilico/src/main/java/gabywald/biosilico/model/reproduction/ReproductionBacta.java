@@ -1,6 +1,9 @@
 package gabywald.biosilico.model.reproduction;
 
+import gabywald.biosilico.exceptions.ReproductionException;
 import gabywald.biosilico.model.Organism;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
@@ -23,10 +26,15 @@ public class ReproductionBacta implements IReproduction {
 	public void action(Organism... organisms) {
 		if (organisms.length == 0) { return; }
 
-		// ***** at least one
-		
-		// TODO reproduction ReproductionBacta
-		
+		// ***** at least one : using gamets from the first one given
+		try {
+			organisms[0].addAgent( ReproductionHelper.unaryReproduction( organisms[0] ) );
+			ReproductionHelper.actualizeReproduction( organisms[0] );
+		} catch (ReproductionException e) {
+			// e.printStackTrace();
+			// TODO ReproductionException treatment !! ignore ??
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getMessage());
+		}
 	}
 
 }

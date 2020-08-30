@@ -27,19 +27,17 @@ public class ReproductionAnima implements IReproduction {
 		if (organisms.length == 0)	{ return; }
 		if (organisms.length < 2)	{ return; }
 		
-		// ***** at least two
-		
-		// TODO reproduction ReproductionAnima
+		// ***** at least two : using gamets from both !
 		
 		try {
-			ReproductionHelper.binaryReproduction(organisms[0], organisms[1]);
+			organisms[0].addAgent( ReproductionHelper.binaryReproduction(organisms[0], organisms[1]) );
+			ReproductionHelper.actualizeReproduction( organisms[0] );
+			ReproductionHelper.actualizeReproduction( organisms[1] );
 		} catch (ReproductionException e) {
 			// e.printStackTrace();
 			// TODO ReproductionException treatment !! ignore ??
-			Logger.printlnLog(LoggerLevel.LL_WARNING, e.getMessage());
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getMessage());
 		}
-		
-		
 	}
 
 }
