@@ -126,6 +126,7 @@ public abstract class Agent extends ObservableObject
 	
 	public WorldCase getCurrentWorldCase()				{ return this.current; }
 	public void setCurrentWorldCase(WorldCase current)	{ 
+		// *** if (this.current != null)	{ this.current.remAgent( this ); }
 		this.current	= current;
 		if (this.current != null)	{ this.current.addAgent( this ); }
 	}

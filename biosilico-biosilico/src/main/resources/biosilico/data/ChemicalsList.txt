@@ -869,7 +869,6 @@ Is	is
 MakeGamet	makegamet
 LayEgg	layegg
 Mate	mate
-Create Egg	createegg
 (free)	(free)
 (free)	(free)
 (free)	(free)
@@ -878,6 +877,7 @@ Create Egg	createegg
 (free)	(free)
 (free)	(free)
 (free)	(free)
+Record State	recordstate
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>

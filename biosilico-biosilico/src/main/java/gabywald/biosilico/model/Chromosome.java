@@ -13,11 +13,17 @@ import gabywald.biosilico.genetics.Gene;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class Chromosome {
+	/** Default name if not attributed. */
+	public static final String DEFAULT_CHROMOSOME_NAME = "UnNamedChromosome";
+	
+	/** If apply. */
+	private String name;
 	/** The list of genes. */
 	private List<Gene> genes;
 
 	/** Default constructor. */
-	public Chromosome() { 
+	public Chromosome() {
+		this.name = Chromosome.DEFAULT_CHROMOSOME_NAME;
 		this.genes = new ArrayList<Gene>();
 	}
 	
@@ -37,6 +43,10 @@ public class Chromosome {
 		this.genes.add(more);
 	}
 	
+	public void addAllGene(Chromosome chr) {
+		this.genes.addAll(chr.genes);
+	}
+	
 	/**
 	 * This method execute gene by gene.
 	 * @param orga (Organism) Current organism.  
@@ -52,8 +62,16 @@ public class Chromosome {
 	public Gene getGene(int i) 
 		{ return (i < this.genes.size()) ? ((i < 0) ? null : this.genes.get(i)) : null; }
 	
+	/** 
+	 * Make a Stream from Collection of Genes. 
+	 * @return Stream of Gene. 
+	 */
 	public Stream<Gene> streamGene() {
 		return this.genes.stream();
 	}
+
+	public String getName()				{ return this.name; }
+
+	public void setName(String name)	{ this.name = name; }
 	
 }

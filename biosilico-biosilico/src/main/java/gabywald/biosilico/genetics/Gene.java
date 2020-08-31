@@ -129,7 +129,8 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 		if (sequence.matches("[ACTG]+")) 
 			{ return GeneGattaca.getInstance(sequence); }
 		/** 'Phase II' Genetic code application. */
-		if (sequence.matches("[UBVP]+")) { ; }
+		if (sequence.matches("[UBVP]+")) 
+			{ ; } // TODO Gene.loadGene for PhaseII !!
 		/** Not recognized. */
 		return null;
 	}

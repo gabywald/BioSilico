@@ -1,6 +1,8 @@
 package gabywald.biosilico.interfaces;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import gabywald.biosilico.model.Agent;
 
@@ -81,19 +83,44 @@ public interface IAgentContent {
 	 */
 	public void addAgent(Agent object);
 	
+	/**
+	 * To know number of Agent's types present. 
+	 * @param <T>
+	 * @param typeStatus
+	 * @param index
+	 * @param agents
+	 * @return
+	 */
 	public static <T extends IChemicalsType> int hasType(T typeStatus, int index, List<Agent> agents) {
 		return (int)agents.stream().filter( a -> (a.getChemicals().getVariable(index) == typeStatus.getIndex()) ).count();
 	}
 	
+	/**
+	 * Get the first Agent's instance according to a given type / status. 
+	 * @param <T>
+	 * @param typeStatus
+	 * @param index
+	 * @param agents
+	 * @return
+	 */
 	public static <T extends IChemicalsType> Agent getType(T typeStatus, int index, List<Agent> agents) {
 		if (agents.stream().anyMatch( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() )) {
-			for (int i = 0 ; i < agents.size() ; i++) {
-				if (agents.get(i).getChemicals().getVariable(index) == typeStatus.getIndex()) { 
-					return agents.get(i);
-				}
-			}
+			Optional<Agent> optAgent = agents.stream().filter( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() ).findFirst();
+			if (optAgent.isPresent()) { return optAgent.get(); }
 		}
 		return null;
+	}
+	
+	/**
+	 * To get a List of Agent's instances according to a certain type / status given. 
+	 * @param <T>
+	 * @param typeStatus
+	 * @param index
+	 * @param agents
+	 * @return
+	 */
+	public static <T extends IChemicalsType> List<Agent> getListOfType(T typeStatus, int index, List<Agent> agents) {
+		return agents.stream().filter( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() ).collect(Collectors.toList());
 	}
 	
 }

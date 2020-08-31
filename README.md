@@ -16,12 +16,12 @@ For dev on BioSilico :
 
 * genetic execution / genes use (ageMin and ageMax) and cycle (to avoid multiple instantiation of Brain / BrainLobe ++ execution of InitialConcentration Gene) : make good usage of ageMin and ageMax (0, 0) for initiation at start / 'birth'. 
 * Design Patterns 'Builder' to make better implements ; IChemicals permits different implementations ; Chemicals Half-lives apply separatly (optional) ; ... 
-* Some ideas "on the way to be done" (20200828) : 
-    * AntHill / Ant example (some genetics and pathway to be precised
-    * Kind of reproduction according to Agent / Organism Types
+* Some ideas "on the way to be done" (20200828+) : 
+    * AntHill / Ant example (some genetics and pathway to be precised)
+    * Kind of reproduction according to Agent / Organism Types (DONE, to previse for virions...)
     * Abstraction for Chemicals / IChemicals
-    * 
-    * 
+    * Decisions and Instincts to be precisely tested (with some examples)
+    * Ideas about "Automatic Pathway construction" (GUI / Human Interface, Graphical or not)
 * ... 
 * ... 
 * ... 
@@ -36,7 +36,7 @@ Based on 'biosilico-biosilico' module !
 
 ### 'biosilico-biojava' : 
 
-... 
+Aim of these Part is to put some example of BioJava FrameWork use !
 
 ### 'biosilico-biosilico' : 
 
@@ -48,7 +48,7 @@ Implemented as a discrete "World" composed of WorldCase, which can contains Agen
 
 ### 'biosilico-cellmodel' : 
 
-... 
+A project made in 2009, in the same idea than the rest : modelisation of a cell in Java. Aim is to visualize tranfert of some elements between part of the cell (RNA, Protein...) and could be used as a basic to teach the CDB (Central Dogma of Biology). Transcription, traduction, treatment, transportation excretion of proteins / RNA / DNA...
 
 ### 'biosilico-creatures' : Creatures (Game Series) ressources
 
@@ -56,8 +56,11 @@ Some (original) ideas comes from here, some articles, documentations, ressources
 
 Some exploration of Creatures Game series
 
-* documentations, articles...
-* 
+* documentations, articles, pictures...
+* some reverse engineering to 'decypher' their "digital DNA" and reconstitue some internal concepts
+* some notes... 
+
+...
 
 ### 'biosilico-commons' : Common resources
 
@@ -93,5 +96,5 @@ Have Fun !
 
 ### Ideas incoming for some devs and / or documentations
 
-* biosilico-biosilico : gabywald.biosilico.model.reproduction <= to be reviewed and finalized !
-* biosilico-biosilico : gabywald.biosilico.model.decisions <= some review would be great !
+* biosilico-biosilico : gabywald.biosilico.model.reproduction <= to be reviewed !
+* biosilico-biosilico : gabywald.biosilico.model.decisions <= some review would be great too !

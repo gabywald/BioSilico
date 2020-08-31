@@ -70,5 +70,9 @@ public class EnergySource extends Agent {
 	public boolean stop()		{ return true; }
 	@Override
 	public boolean slap()		{ return true; }
+	@Override
+	public boolean rest()		{ return true; }
+	@Override
+	public boolean sleep()		{ return true; }
 
 }

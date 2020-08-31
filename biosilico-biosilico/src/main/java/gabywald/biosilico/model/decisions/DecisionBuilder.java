@@ -3,6 +3,7 @@ package gabywald.biosilico.model.decisions;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.biosilico.interfaces.IAgentContent;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
@@ -92,6 +93,12 @@ public class DecisionBuilder {
 		// ***** Decision to slap an agent. 
 		case SLAP: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::slap);break;
 		
+		// ***** Decision to make and agent rest (self). 
+		case REST: 		what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::rest);break;
+		
+		// ***** Decision to make and agent sleep (self). 
+		case SLEEP: 	what2do = new BaseDecisionSimpleAction<Agent>(this.orga, this.object, Agent::sleep);break;
+		
 		// ***** Indicate a location where to go. 
 		case MOVE_TO:	what2do = new DecisionToMove(this.orga, this.attribute);break;
 		
@@ -141,10 +148,6 @@ public class DecisionBuilder {
 			}
 		};break;
 		
-		case REST: 		break; // ***** Nothing
-		
-		case SLEEP: 	break; // ***** XXX Not defined yet !
-		
 		// ***** Eating decision (on eatable object). 
 		case EAT: 		what2do = new BaseDecision(this.orga) {
 			@Override
@@ -175,7 +178,7 @@ public class DecisionBuilder {
 				if (this.getOrga().getCurrentWorldCase() == null) { return; }
 				
 				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
-				if (wcwc != null) { 
+				if ( (wcwc != null) && (this.getOrga().getVariables().getVariable(variable) >= value) ) { 
 					wcwc.getVariables().setVarPlus(variable, value);
 					this.getOrga().getVariables().setVarLess(variable, value);
 				}
@@ -189,7 +192,7 @@ public class DecisionBuilder {
 				if (this.getOrga().getCurrentWorldCase() == null) { return; }
 				
 				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
-				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) > threshold) ) { 
+				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) >= value) ) { 
 					this.getOrga().getVariables().setVarPlus(variable, value);
 					wcwc.getVariables().setVarLess(variable, value);
 				}
@@ -200,10 +203,10 @@ public class DecisionBuilder {
 		case HAS: 		what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				AgentType objectType1 = AgentType.getFrom( object );
-				AgentType objectType2 = AgentType.getFrom( attribute );
-				if ( (this.getOrga().hasAgentType( objectType1 ) >= threshold)
-						&& (this.getOrga().hasAgentType( objectType2 ) >= threshold) )
+				AgentType agentType		= AgentType.getFrom( attribute );
+				ObjectType objectType	= ObjectType.getFrom( object );
+				if ( (this.getOrga().hasAgentType( agentType ) > threshold)
+						&& (this.getOrga().hasObjectType( objectType ) > threshold) )
 					{ this.getOrga().getVariables().setVarPlus(variable, value); }
 			}
 		};break;
@@ -222,6 +225,7 @@ public class DecisionBuilder {
 			public void action() {
 				if (this.getOrga().isFertile()) {
 					Organism gamet = ReproductionHelper.makeGamet(this.getOrga());
+					gamet.setOrganismStatus(StatusType.GAMET);
 					if (gamet != null) {
 						this.getOrga().addAgent(gamet);
 					}
@@ -270,7 +274,7 @@ public class DecisionBuilder {
 						// ***** nothing definately defined yet (cloning ?!)
 						ReproductionDaemon.getInstance().action(this.getOrga());
 						break;
-					case BIOSILICO_BACTER:
+					case BIOSILICO_BACTA:
 						// ***** create a duplicate ! (modulo duplication, deletion, mutations of genes... )
 						ReproductionBacta.getInstance().action(this.getOrga());
 						break;
@@ -280,12 +284,27 @@ public class DecisionBuilder {
 						// ***** find another agent to mate ! (could be itself ?)
 						List<Organism> maters = new ArrayList<Organism>();
 						maters.add( this.getOrga() );
-						// IntStream.range(0, this.variables.getVariable( 932 ) / 2)
-						Agent futuremate = this.getOrga().getCurrentWorldCase().getAgentType( this.getOrga().getAgentType() );
+
+						Logger.printlnLog(LoggerLevel.LL_DEBUG, "AgentType {" + this.getOrga().getAgentType() + "} available: (" + this.getOrga().getCurrentWorldCase().hasAgentType( this.getOrga().getAgentType() ) + ")");
+						
+						// ***** If more than one available : do not select the same ! 
+						List<Agent> availables = IAgentContent.getListOfType(otype, StateType.AGENT_TYPE.getIndex(), this.getOrga().getCurrentWorldCase().getAgentListe());
+						int index = 0;
+						Agent futuremate = availables.get(0); 
+						while ( (availables.size() > 1) 
+									&& (this.getOrga().getUniqueID().equals(futuremate.getUniqueID())) ) 
+							{ futuremate = availables.get(++index); }
+						
+						if ( this.getOrga().getUniqueID().equals(futuremate.getUniqueID()) )
+							{ futuremate = null; }
+
+						// ***** Compatibility of reproduction is checked later.
 						if ( (futuremate != null) && (futuremate instanceof Organism) ) {
-							// Compatibility of reproduction is checked further. 
 							maters.add( (Organism) futuremate );
 						}
+						
+						Logger.printlnLog(LoggerLevel.LL_DEBUG, "DB.build {" + this.getOrga().getUniqueID() + "}-{" + maters.get(0).getUniqueID() + "}");
+						
 						if (otype.equals(AgentType.BIOSILICO_VIRIDITA)) {
 							ReproductionViridita.getInstance().action( maters.toArray(new Organism[0]) );
 						} else { // OrganismType.BIOSILICO_ANIMA
@@ -302,10 +321,8 @@ public class DecisionBuilder {
 				this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
 			}
 		};break;
-		case CREATE_EGG: 
-			// ***** to create eggs, virions, fruits... which have to be "laid" !!
-			// this.decisiontoCreateEgg();
-		break;
+		// ***** to create eggs, virions, fruits... which have to be "laid" !!
+		// XXX NOTE see MATE decision !
 		default:
 			Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown / Unused Decision ! [" + this.type.getIndex() + "] {" + this.type.getName() + "}");
 			// ***** XXX NOTE : 872 to 880 are free. 

@@ -47,7 +47,9 @@ public class Ant extends Organism {
 		 * @return
 		 */
 		public static AntStatus compute(StatusType status, int[] states) {
+			
 			// TODO computation to "translate" from Agent's status
+			
 			return null;
 		}
 

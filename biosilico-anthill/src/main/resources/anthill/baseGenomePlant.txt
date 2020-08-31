@@ -2,4 +2,12 @@
 // // // need some biochemical reaction
 // // // receptor for some variables from environment
 // // // emitter for some variables from environment
-// // // decision to make fruits !
+// // // decision to make fruits ! EGGs !!
+
+// 20200831 NOTES : 
+// // // Some review to be done here to make following : 
+// // - Some pathway of conversion from H20 and CO2 to O2 and some others (Fatty Acids ?!)
+// // - Produces Fruits ! (EGGs)
+// // - ... 
+// // - ... 
+// // - ... 

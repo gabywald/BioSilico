@@ -25,3 +25,11 @@
 		EmitterReceptor (variable => input neuron)
 		Instinct (connexion between input neuron and output neuron)
 	Brain & BrainLobeS !!
+	
+20200831
+	Review and do some basic pathways (with O2, CO2, H20, Glucose, Fructose...)
+	Review and do some basic Neural NetWork ("HardCoded" with Instinct, evolution and adding will come !)
+	Make a Basic Example of an Ant
+	Make a Basic Example of a Plant
+	... 
+	
