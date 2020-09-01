@@ -1,6 +1,5 @@
 package gabywald.creatures.GRtests;
 
-// import gabywald.creatures.geneticReader.GeneticFileContent;
 import gabywald.creatures.geneticReader.GeneticFileContentOld;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -11,6 +10,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2010, 2020)
+ * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ */
 public class PosesReading {
 	
 	@Test
