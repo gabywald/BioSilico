@@ -39,7 +39,7 @@ public class Instinct extends GeneGattaca {
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
 	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param ageMax (int) Maximal age of activation. <b>In general is 999. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 999 (or 0 if only at initial connections). </b>
 	 * @param sex (int) Sex of activation. 
 	 * @param mutRate (int) Rate of mutation of this Gene. 
 	 * @param inPosX (int) Height position of input Neuron in Brain.

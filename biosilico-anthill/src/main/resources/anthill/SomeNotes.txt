@@ -32,4 +32,20 @@
 	Make a Basic Example of an Ant
 	Make a Basic Example of a Plant
 	... 
-	
+
+20200901 : 
+	 * StimulusDecision, Some explanations :
+	 * ***** perception : apply detection on WorldCase and chemicals of current organism
+	 * (perception) && (object) => if (number of AgentType (indicator||attribute) >= threshold) => set value at variable
+	 * (perception) && ( ! object) => if (indicator at direction attribute >= threshold) => set value at variable
+	 * ***** not perception : chemicals of current organism then (if apply) decision 
+	 * ( ! perception) && (object) => if (indicator > threshold) => Decision !
+	 * ( ! perception) && ( ! object) => if (variable > threshold) => Decision !
+	 
+ 	 * EmitterReceptor, Some explanations (works only if Brain present and position of Neuronis not null) :
+	 * (internal) && (receptor) => if (internal variable >= threshold) => activity at (x, y) increase by put
+	 * (internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => internal variable increase by put
+	 * ( ! internal) && (receptor) => if (WorldCase variable >= threshold) => activity at (x, y) increase by put
+	 * ( ! internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => external variable increase by put
+	 
+...

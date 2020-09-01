@@ -113,6 +113,7 @@ public abstract class ReproductionHelper {
 		gametToReturn.setGenome(genomeOfGamet);
 		
 		// ***** Put some Chemicals get from Organism. UseFul for 'Fruits' !!
+		// Here limited to 'Strictly chemicals to avoid changes of "positioning and concepts" used otherwise !!
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_STRICT_CHEM).forEach( c -> {
 			int initValue = orga.getChemicals().getVariable(c);
 			if (initValue > 0) {

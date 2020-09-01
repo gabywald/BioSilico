@@ -87,15 +87,24 @@ public class StimulusDecision extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	/**
+	 * StimulusDecision, Some explanations :
+	 * ***** perception : apply detection on WorldCase and chemicals of current organism
+	 * (perception) && (object) => if (indicator||attribute >= threshold) => set value at variable
+	 * (perception) && ( ! object) => if (indicator at direction attribute >= threshold) => set value at variable
+	 * ***** not perception : chemicals of current organism then (if apply) decision 
+	 * ( ! perception) && (object) => if (indicator > threshold) => Decision !
+	 * ( ! perception) && ( ! object) => if (variable > threshold) => Decision !
+	 */
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		if (this.perception) { 
 			// ***** This is an input / stimulus
 			if (this.object) { 
 				// ***** Acts from an object 
 				/** Works for object AND one attribute. */
-				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.indicator) ) >= this.threshold) 
-					{ orga.getChemicals().setVariable(this.varia, this.value); }
-				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.attribute) ) >= this.threshold) 
+				if( (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.indicator) ) >= this.threshold)
+						|| (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.attribute) ) >= this.threshold) )
 					{ orga.getChemicals().setVariable(this.varia, this.value); }
 			} else { 
 				// ***** Acts from a variable located with attribute. 
@@ -112,8 +121,7 @@ public class StimulusDecision extends GeneGattaca {
 					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
 								  this.attribute, this.varia, this.value);
-					/** Variable change here is :  
-					 * 		(standard) indicator set / tend to 0. 
+					/** Variable change here is :  (standard) indicator set / tend to 0. 
 					 * => here (--) because can be increased by action. */
 					orga.getChemicals().setVarLessLess(this.indicator);
 				}
