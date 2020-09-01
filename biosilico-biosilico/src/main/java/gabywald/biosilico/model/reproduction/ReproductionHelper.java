@@ -13,7 +13,6 @@ import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
-import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.utilities.logger.Logger;
@@ -278,7 +277,7 @@ public abstract class ReproductionHelper {
 	 */
 	static void actualizeReproduction(Organism orga) {
 		// ***** Decrease gamets signal
-		orga.getVariables().setVariable(SomeChemicals.GAMET.getIndex(), orga.hasAgentStatus(StatusType.GAMET));
+		orga.getVariables().setVariable(StatusType.GAMET.getIndex(), orga.hasAgentStatus(StatusType.GAMET));
 		// ***** Indicates that it is pregnant (or not) ! (has EGGs)
 		orga.getVariables().setVariable(StateType.PREGNANT.getIndex(), orga.hasAgentStatus(StatusType.EGG));
 	}

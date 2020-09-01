@@ -6,6 +6,7 @@ import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
@@ -23,6 +24,9 @@ import gabywald.biosilico.structures.GeneticTranslator;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class BiochemicalReaction extends GeneGattaca {
+	
+	public static final int NEUTRAL_INDEX = SomeChemicals.NEUTRAL.getIndex();
+	
 	/** Chemical A (variables indice). */
 	private int Achem;
 	/** Coefficient applied to A. */
@@ -113,24 +117,28 @@ public class BiochemicalReaction extends GeneGattaca {
 		if ( (this.Achem == 0) && (this.Bchem == 0) )
 			{ throw new GeneException("Chemical A and B are 0. "); }
 		// ***** Need to get enough A and B. One can be 'default var'. 
-		boolean reaction = ( 	
-				( (this.Achem == 0) ||
-					 (vars.getVariable(this.Achem) > this.Acoef) )
-			 && ( (this.Bchem == 0) ||
-					 (vars.getVariable(this.Bchem) > this.Bcoef) )
-			 );
+		boolean reaction = this.testABchemicals(vars);
 		int local_cycle = 0;
 		while (reaction && (this.KminVmax > local_cycle) ) {
-			vars.setVarLess(this.Achem, this.Acoef);
-			vars.setVarLess(this.Bchem, this.Bcoef);
-			vars.setVarPlus(this.Cchem, this.Ccoef);
-			vars.setVarPlus(this.Dchem, this.Dcoef);
+			if (this.Achem != NEUTRAL_INDEX) 
+				{ vars.setVarLess(this.Achem, this.Acoef); }
+			if (this.Bchem != NEUTRAL_INDEX) 
+				{ vars.setVarLess(this.Bchem, this.Bcoef); }
+			if (this.Cchem != NEUTRAL_INDEX) 
+				{ vars.setVarPlus(this.Cchem, this.Ccoef); }
+			if (this.Dchem != NEUTRAL_INDEX) 
+				{ vars.setVarPlus(this.Dchem, this.Dcoef);}
 			local_cycle++;
-			reaction = 
-				( (vars.getVariable(this.Achem) > this.Acoef)
-				 && (vars.getVariable(this.Bchem) > this.Bcoef) );
+			reaction = this.testABchemicals(vars);
 		}
 		
+	}
+	
+	private boolean testABchemicals(IChemicals vars) {
+		return ( ( (this.Achem == NEUTRAL_INDEX) ||
+						 (vars.getVariable(this.Achem) > this.Acoef) )
+				 && ( (this.Bchem == NEUTRAL_INDEX) ||
+						 (vars.getVariable(this.Bchem) > this.Bcoef) ) );
 	}
 
 	public int getAchem() { return this.Achem; }

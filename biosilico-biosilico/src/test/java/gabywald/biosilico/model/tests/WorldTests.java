@@ -15,6 +15,8 @@ import gabywald.biosilico.model.chemicals.ChemicalsHelper;
  * @author Gabriel Chandesris (2020)
  */
 class WorldTests {
+	public static final int INDEX_SOLAR	= 390; // SomeChemicals.ENERGY_SOLAR.getIndex();
+	public static final int INDEX_HEAT	= 391; // SomeChemicals.ENERGY_HEAT.getIndex();
 
 	@Test
 	void testWorld01() {
@@ -107,10 +109,10 @@ class WorldTests {
 				if ( (i == 2) && (j == 3) ) {
 					IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 						switch(k) {
-						case (EnergySource.INDEX_HEAT) :
+						case (WorldTests.INDEX_HEAT) :
 							Assertions.assertEquals( 15, currentWC.getVariables().getVariable(k) );
 						break;
-						case (EnergySource.INDEX_SOLAR) :
+						case (WorldTests.INDEX_SOLAR) :
 							Assertions.assertEquals(  5, currentWC.getVariables().getVariable(k) );
 						break;
 						default:
@@ -134,10 +136,10 @@ class WorldTests {
 				if ( (i == 2) && (j == 3) ) {
 					IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 						switch(k) {
-						case (EnergySource.INDEX_HEAT) :
+						case (WorldTests.INDEX_HEAT) :
 							Assertions.assertEquals( 30, currentWC.getVariables().getVariable(k) );
 						break;
-						case (EnergySource.INDEX_SOLAR) :
+						case (WorldTests.INDEX_SOLAR) :
 							Assertions.assertEquals( 10, currentWC.getVariables().getVariable(k) );
 						break;
 						default:
@@ -203,8 +205,8 @@ class WorldTests {
 				if ( (i == 2) && (j == 3) ) {
 					IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 						switch(k) {
-						case (EnergySource.INDEX_HEAT) :
-						case (EnergySource.INDEX_SOLAR) :
+						case (WorldTests.INDEX_HEAT) :
+						case (WorldTests.INDEX_SOLAR) :
 							Assertions.assertEquals( 25, currentWC.getVariables().getVariable(k) );
 						break;
 						default:
@@ -228,8 +230,8 @@ class WorldTests {
 				if ( (i == 2) && (j == 3) ) {
 					IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 						switch(k) {
-						case (EnergySource.INDEX_HEAT) :
-						case (EnergySource.INDEX_SOLAR) :
+						case (WorldTests.INDEX_HEAT) :
+						case (WorldTests.INDEX_SOLAR) :
 							Assertions.assertEquals( 50, currentWC.getVariables().getVariable(k) );
 						break;
 						default:

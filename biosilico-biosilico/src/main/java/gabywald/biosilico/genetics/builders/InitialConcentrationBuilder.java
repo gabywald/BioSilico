@@ -34,7 +34,7 @@ public class InitialConcentrationBuilder extends GeneBuilder<InitialConcentratio
 	
 	@Override
 	public InitialConcentration build() {
-		return new InitialConcentration(	
+		InitialConcentration toReturn = new InitialConcentration(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -46,6 +46,9 @@ public class InitialConcentrationBuilder extends GeneBuilder<InitialConcentratio
 				
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VARIABLE).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VALUE).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

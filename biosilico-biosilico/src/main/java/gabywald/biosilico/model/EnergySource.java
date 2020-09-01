@@ -1,5 +1,7 @@
 package gabywald.biosilico.model;
 
+import gabywald.biosilico.model.enums.ObjectType;
+import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 
@@ -10,10 +12,7 @@ import gabywald.biosilico.model.enums.StatusType;
  */
 public class EnergySource extends Agent {
 	
-	public static final int INDEX_SOLAR			= 500; // SomeChemicals.ENERGY_SOLAR.getIndex();
-	public static final int INDEX_HEAT			= 501; // SomeChemicals.ENEGRY_HEAT.getIndex();
-	
-	public static final int BASIC_ENERGY_LEVEL	= 25;
+	public static final int BASIC_ENERGY_LEVEL			= 25;
 	
 	public static final String COMMON_BIOSILICO_NAME	= "Energy Source";
 	
@@ -28,6 +27,7 @@ public class EnergySource extends Agent {
 		// ***** TypeOf is defined on Agent (default is Daemon)
 		// ***** Status is not accurate (no changes)
 		this.variables.setVariable(StateType.STATUS.getIndex(), StatusType.NOT_ACCURATE.getIndex());
+		this.variables.setVariable(StateType.TYPEOF.getIndex(), ObjectType.BIG_ELT.getIndex());
 		
 		String name = EnergySource.COMMON_BIOSILICO_NAME;
 		this.setNameBiosilico( name );
@@ -35,18 +35,18 @@ public class EnergySource extends Agent {
 	}
 	
 	public void setSolar(boolean isSolar) {
-		this.variables.setVariable(EnergySource.INDEX_SOLAR, isSolar ? EnergySource.BASIC_ENERGY_LEVEL : 0);
+		this.variables.setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(), isSolar ? EnergySource.BASIC_ENERGY_LEVEL : 0);
 	}
 	
 	public void setHeat(boolean isHeat) {
-		this.variables.setVariable(EnergySource.INDEX_HEAT, isHeat ? EnergySource.BASIC_ENERGY_LEVEL : 0);
+		this.variables.setVariable(SomeChemicals.ENERGY_HEAT.getIndex(), isHeat ? EnergySource.BASIC_ENERGY_LEVEL : 0);
 	}
 	
 	public boolean isSolar() 
-		{ return (this.variables.getVariable(EnergySource.INDEX_SOLAR) > 0); }
+		{ return (this.variables.getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()) > 0); }
 	
 	public boolean isHeat() 
-		{ return (this.variables.getVariable(EnergySource.INDEX_HEAT) > 0); }
+		{ return (this.variables.getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) > 0); }
 	
 	public static void addEnergyTo(WorldCase local, int index, int value) {
 		if (local != null) {
@@ -56,8 +56,10 @@ public class EnergySource extends Agent {
 	
 	@Override
 	public void execution(WorldCase local) {
-		EnergySource.addEnergyTo(local, EnergySource.INDEX_SOLAR, this.variables.getVariable(EnergySource.INDEX_SOLAR));
-		EnergySource.addEnergyTo(local, EnergySource.INDEX_HEAT,  this.variables.getVariable(EnergySource.INDEX_HEAT));
+		EnergySource.addEnergyTo(local, SomeChemicals.ENERGY_SOLAR.getIndex(), 
+				this.variables.getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		EnergySource.addEnergyTo(local, SomeChemicals.ENERGY_HEAT.getIndex(),  
+				this.variables.getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 	}
 
 	@Override

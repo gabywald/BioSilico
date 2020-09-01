@@ -43,10 +43,12 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 		this.pos		= new Position(posx, posy);
 	}
 	
-	public int getPosX()	{ return this.pos.getPosX(); }
-	public int getPosY()	{ return this.pos.getPosY(); }
+	public int getPosX()		{ return this.pos.getPosX(); }
+	public int getPosY()		{ return this.pos.getPosY(); }
 	
-	public World getWorld()	{ return this.world; }
+	public Position getPos()	{ return this.pos; }
+	
+	public World getWorld()		{ return this.world; }
 	
 	/**
 	 * To get a WorldCase in a given direction of environment. 
@@ -83,11 +85,13 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 	
 	@Override
 	public int hasObjectType(ObjectType type) {
+		if (type == null) { return -1; }
 		return IAgentContent.hasType(type, StateType.TYPEOF.getIndex(), this.liste);
 	}
 	
 	@Override
 	public Agent getObjectType(ObjectType type) {
+		if (type == null) { return null; }
 		return IAgentContent.getType(type, StateType.TYPEOF.getIndex(), this.liste);
 	}
 	
@@ -122,9 +126,7 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 		StringBuilder result = new StringBuilder();
 		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
 		result.append("AGENT LIST\n");
-		if (this.liste.size() == 0)
-			{ result.append("\tNO DATA\n"); }
-		else {
+		if (this.liste.size() != 0) {
 			this.liste.stream().forEach( ag -> result.append( "\t" ).append( ag.getScientificName() ).append(" (").append( ag.getUniqueID() ).append(")\n") );
 		}
 		result	.append("CHEMICAL VARIABLES\n").append(this.variables.toString()).append( "\n" );

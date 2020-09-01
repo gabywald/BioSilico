@@ -95,7 +95,7 @@ public class StimulusDecisionBuilder extends GeneBuilder<StimulusDecision> {
 	
 	@Override
 	public StimulusDecision build() {
-		return new StimulusDecision(	
+		StimulusDecision toReturn = new StimulusDecision(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -113,6 +113,9 @@ public class StimulusDecisionBuilder extends GeneBuilder<StimulusDecision> {
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VARIABLE).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VALUE).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.SCRIPT).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

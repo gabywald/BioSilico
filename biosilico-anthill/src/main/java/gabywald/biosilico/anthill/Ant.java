@@ -1,6 +1,10 @@
 package gabywald.biosilico.anthill;
 
+import java.util.Arrays;
+import java.util.List;
+
 import gabywald.biosilico.interfaces.IChemicalsType;
+import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.ObjectType;
@@ -85,6 +89,16 @@ public class Ant extends Organism {
 		
 	}
 	
+	public Ant(Chromosome basicGenome) {
+		this();
+		this.setGenome( Arrays.asList( basicGenome ) );
+	}
+	
+	public Ant(List<Chromosome> genome) {
+		this();
+		this.setGenome( genome );
+	}
+
 	public void setAntStatus(AntStatus type) {
 		this.variables.setVariable(Ant.ANT_STATUS_INDEX, type.getIndex());
 	}

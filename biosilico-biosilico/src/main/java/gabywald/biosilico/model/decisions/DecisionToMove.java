@@ -3,6 +3,7 @@ package gabywald.biosilico.model.decisions;
 import java.util.Random;
 
 import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
  * Indicate a location where to go. 
@@ -16,50 +17,34 @@ public class DecisionToMove extends BaseDecisionOnlyOneAttribute {
 
 	@Override
 	public void action() {
-		this.getOrga().setDirection( this.getVariable(0) );
+		this.getOrga().setDirection( DirectionWorld.get2DFrom( this.getVariable(0) ) );
 		this.getOrga().setNextWorldCase(this.getOrga().getCurrentWorldCase().getDirection( this.getVariable(0) )); 
 	}
 	
-	public static int getRandomDirection(int initValue) {
+	public static DirectionWorld getRandomDirection2D(DirectionWorld initValue) {
+		return DecisionToMove.getRandomDirection(initValue, true);
+	}
+	
+	public static DirectionWorld getRandomDirection3D(DirectionWorld initValue) {
+		return DecisionToMove.getRandomDirection(initValue, false);
+	}
+	
+	/**
+	 * Choose randomly a direction
+	 * @param initValue Starting direction value. 
+	 * @param not3D If 2D or 3D. 
+	 * @return A direction. 
+	 */
+	public static DirectionWorld getRandomDirection(DirectionWorld initValue, boolean not3D) {
 		Random rand		= new Random();
-		int direction	= initValue;
-		if (direction == 800) 
-			{ direction = rand.nextInt(8)+800; }
-		else {
-			int test = rand.nextInt(34)+1;
-			switch(test) {
-			case(1):direction -= 3;break;
-			case(2):
-			case(3):direction -= 2;break;
-			case(4):
-			case(5):
-			case(6):
-			case(7):
-			case(8):
-			case(9):direction--;break;
-			case(26):
-			case(27):
-			case(28):
-			case(29):
-			case(30):
-			case(31):direction++;break;
-			case(32):
-			case(33):direction += 2;break;
-			case(34):direction += 3;break;
-			default:direction += 0; /** same direction */
-			}
-			switch(direction) {
-			case(798):direction = 806;break;
-			case(799):direction = 807;break;
-			case(800):direction = 808;break;
-			case(809):direction = 801;break;
-			case(810):direction = 802;break;
-			case(811):direction = 803;break;
-			default:direction = 
-					( (direction < 800) || (direction > 808) ) ? 800 : direction;
-			}
+		int value		= ( rand.nextInt( not3D ? 9 : 27) );
+		
+		// TODO DW base indexLessRemove
+		if ( not3D ) {
+			return DirectionWorld.get2DFrom(800 + value);
+		} else {
+			return DirectionWorld.get3DFrom(800 + value);
 		}
-		return direction;
 	}
 
 }

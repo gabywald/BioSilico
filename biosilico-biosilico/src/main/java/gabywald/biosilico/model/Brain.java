@@ -363,7 +363,7 @@ public class Brain extends ObservableObject {
 		for (int i = 0 ; i < this.map.length ; i++) {
 			for (int j = 0 ; j < this.map[i].length ; j++) {
 				if (this.map[i][j] != null) { 
-					result.append(this.map[i][j].toString()).append("\n"); 
+					result.append(this.map[i][j].toString()); 
 				}
 			}
 		}

@@ -3,7 +3,6 @@ package gabywald.biosilico.model.decisions.tests;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.DecisionToMove;
 import gabywald.biosilico.model.decisions.IDecision;
@@ -21,6 +21,7 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.global.structures.StringCouple;
 
 /**
  * 
@@ -97,18 +98,37 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals(testOrga.getUniqueID() + "::" + "think about [" + oType.getIndex() + "]\t", testOrga.getState());
+			// Assertions.assertEquals(testOrga.getUniqueID() + "::" + "think about [" + oType.getIndex() + "]\t", testOrga.getState());
+			try {
+				StringCouple scObject = ChemicalsHelper.getChemicalListe().get( object );
+				Assertions.assertEquals(testOrga.getUniqueID() + "::" + "think about [" + scObject.getValueA() + "]\t", testOrga.getState());
+			} catch (IndexOutOfBoundsException iobe) {
+				Assertions.fail( iobe.getMessage() );
+			}
+			
 		});
 	}
 	
 	@Test
-	void testDecisionRandomDirection() {
-		Stream.of(DirectionWorld.values()).forEach( dw -> {
-			// System.out.println( "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
+	void testDecisionRandomDirection2D() {
+		DirectionWorld.values2DasList().stream().forEach( dw -> {
+			System.out.println( "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
 			IntStream.range(0, 10).forEach( i -> {
-				int direction = DecisionToMove.getRandomDirection( dw.getIndex() );
-				// System.out.println( "\t direction: " + direction );
-				Assertions.assertTrue( ( (direction >= 800) && (direction <= 808) ) );
+				DirectionWorld direction = DecisionToMove.getRandomDirection2D( dw );
+				System.out.println( "\t direction: " + direction );
+				Assertions.assertTrue( ( (direction.getIndex() >= 800) && (direction.getIndex() <= 808) ) );
+			});
+		});
+	}
+	
+	@Test
+	void testDecisionRandomDirection3D() {
+		DirectionWorld.valuesAsList().stream().forEach( dw -> {
+			System.out.println( "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
+			IntStream.range(0, 10).forEach( i -> {
+				DirectionWorld direction = DecisionToMove.getRandomDirection3D( dw );
+				System.out.println( "\t direction: " + direction );
+				Assertions.assertTrue( ( (direction.getIndex() >= 800) && (direction.getIndex() <= 826) ) );
 			});
 		});
 	}
@@ -143,8 +163,13 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
 		
-		// XXX move away, really ??
 		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
+		
+		// ***** Really moving here !!
+		testOrga.deplace();
+		Assertions.assertEquals(wc.getDirection(testOrga.getDirection()), testOrga.getCurrentWorldCase());
+		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
 	}
 	
 	@Test
@@ -768,6 +793,43 @@ class DecisionsTests {
 		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
 								.attribute(attribute).variable(variable).value(value).build();
 		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));
+		
+		testOrga.addAgent(new TestObjectFoodEgg());
+		
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));
+	}
+	
+	@Test
+	void testDecisionHASmore() {
+		int which		= DecisionType.HAS.getIndex();
+		int object		= ObjectType.FOOD.getIndex();
+		int threshold	= 1;
+		int attribute	= AgentType.BIOSILICO_VIRIDITA.getIndex();
+		int variable	= SomeChemicals.PHEROMONE_09.getIndex();
+		int value		= 25;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));
+		
+		testOrga.addAgent(new TestObjectFoodEgg());
+		
 		if (decision != null) { decision.action(); }
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(SomeChemicals.PHEROMONE_09.getIndex()));

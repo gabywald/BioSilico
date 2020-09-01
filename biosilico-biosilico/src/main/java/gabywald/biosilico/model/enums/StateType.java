@@ -7,15 +7,15 @@ import gabywald.biosilico.interfaces.IChemicalsType;
  * @author Gabriel Chandesris (2020)
  */
 public enum StateType implements IChemicalsType {
-	GENDER  	(939, "Gender", 	"gender"), 
-	AGING   	(940, "Aging", 		"aging"), 
-	AGENT_TYPE 	(941, "AgentType", 	"agenttype"), 
-	TYPEOF  	(942, "TypeOf", 	"typeof"), 
-	STATUS		(943, "Status", 	"status"), 
-	MOVABLE		(944, "Movable", 	"movable"), 
-	EATABLE 	(945, "Eatable", 	"eatable"), 
-	FERTILE 	(946, "Fertile", 	"fertile"), 
-	PREGNANT	(947, "Pregnant", 	"pregnant"), 
+	GENDER  	(950, "Gender", 	"gender"), 
+	AGING   	(951, "Aging", 		"aging"), 
+	AGENT_TYPE 	(952, "AgentType", 	"agenttype"), 
+	TYPEOF  	(953, "TypeOf", 	"typeof"), 
+	STATUS		(954, "Status", 	"status"), 
+	MOVABLE		(955, "Movable", 	"movable"), 
+	EATABLE 	(956, "Eatable", 	"eatable"), 
+	FERTILE 	(957, "Fertile", 	"fertile"), 
+	PREGNANT	(958, "Pregnant", 	"pregnant"), 
 	;
 	
 	private int index;

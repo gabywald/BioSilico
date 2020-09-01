@@ -1,5 +1,6 @@
 package gabywald.biosilico.model.tests;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
@@ -12,9 +13,16 @@ import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StatusType;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class WorldCaseTests {
+	public static final int INDEX_SOLAR	= 390; // SomeChemicals.ENERGY_SOLAR.getIndex();
+	public static final int INDEX_HEAT	= 391; // SomeChemicals.ENERGY_HEAT.getIndex();
 
 	@Test
 	void testWorldCase() {
@@ -31,6 +39,18 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+		});
+		
+		Arrays.asList(AgentType.values()).forEach( k -> {
+			Assertions.assertEquals( 0, wc.hasAgentType( k ) );
+		});
+		
+		Arrays.asList(StatusType.values()).forEach( k -> {
+			Assertions.assertEquals( 0, wc.hasAgentStatus( k ) );
+		});
+		
+		Arrays.asList(ObjectType.values()).forEach( k -> {
+			Assertions.assertEquals( 0, wc.hasObjectType( k ) );
 		});
 	}
 	
@@ -148,12 +168,42 @@ class WorldCaseTests {
 			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
 		});
 		
+		Arrays.asList(AgentType.values()).forEach( k -> {
+			switch(k) {
+			case BIOSILICO_DAEMON :
+				Assertions.assertEquals( 1, middleWC.hasAgentType( k ) );
+			break;
+			default:
+				Assertions.assertEquals( 0, middleWC.hasAgentType( k ) );
+			}
+		});
+		
+		Arrays.asList(StatusType.values()).forEach( k -> {
+			switch(k) {
+			case NOT_ACCURATE :
+				Assertions.assertEquals( 1, middleWC.hasAgentStatus( k ) );
+			break;
+			default:
+				Assertions.assertEquals( 0, middleWC.hasAgentStatus( k ) );
+			}
+		});
+		
+		Arrays.asList(ObjectType.values()).forEach( k -> {
+			switch(k) {
+			case BIG_ELT :
+				Assertions.assertEquals( 1, middleWC.hasObjectType( k ) );
+			break;
+			default:
+				Assertions.assertEquals( 0, middleWC.hasObjectType( k ) );
+			}
+		});
+		
 		w.execution();
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (EnergySource.INDEX_HEAT) :
-			case (EnergySource.INDEX_SOLAR) :
+			case (WorldCaseTests.INDEX_HEAT) :
+			case (WorldCaseTests.INDEX_SOLAR) :
 				Assertions.assertEquals( 25, middleWC.getVariables().getVariable(k) );
 			break;
 			default:
@@ -165,8 +215,8 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (EnergySource.INDEX_HEAT) :
-			case (EnergySource.INDEX_SOLAR) :
+			case (WorldCaseTests.INDEX_HEAT) :
+			case (WorldCaseTests.INDEX_SOLAR) :
 				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
 			break;
 			default:
@@ -184,8 +234,8 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (EnergySource.INDEX_HEAT) :
-			case (EnergySource.INDEX_SOLAR) :
+			case (WorldCaseTests.INDEX_HEAT) :
+			case (WorldCaseTests.INDEX_SOLAR) :
 				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
 			break;
 			default:
@@ -201,8 +251,8 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (EnergySource.INDEX_HEAT) :
-			case (EnergySource.INDEX_SOLAR) :
+			case (WorldCaseTests.INDEX_HEAT) :
+			case (WorldCaseTests.INDEX_SOLAR) :
 				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
 			break;
 			default:
@@ -218,8 +268,8 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (EnergySource.INDEX_HEAT) :
-			case (EnergySource.INDEX_SOLAR) :
+			case (WorldCaseTests.INDEX_HEAT) :
+			case (WorldCaseTests.INDEX_SOLAR) :
 				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
 			break;
 			default:

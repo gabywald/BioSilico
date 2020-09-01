@@ -54,7 +54,7 @@ public class BrainGeneBuilder extends GeneBuilder<BrainGene> {
 
 	@Override
 	public BrainGene build() {
-		return new BrainGene(	
+		BrainGene toReturn = new BrainGene(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -68,6 +68,9 @@ public class BrainGeneBuilder extends GeneBuilder<BrainGene> {
 				Integer.parseInt(this.map.get(GeneBuilderEnum.WIDTH).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.DEPTH).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.MORE).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

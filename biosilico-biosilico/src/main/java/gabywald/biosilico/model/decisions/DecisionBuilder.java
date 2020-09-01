@@ -7,11 +7,11 @@ import gabywald.biosilico.interfaces.IAgentContent;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
-import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.model.reproduction.ReproductionAnima;
@@ -19,6 +19,7 @@ import gabywald.biosilico.model.reproduction.ReproductionBacta;
 import gabywald.biosilico.model.reproduction.ReproductionDaemon;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.biosilico.model.reproduction.ReproductionViridita;
+import gabywald.global.structures.StringCouple;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -103,20 +104,24 @@ public class DecisionBuilder {
 		case MOVE_TO:	what2do = new DecisionToMove(this.orga, this.attribute);break;
 		
 		// ***** Choose randomly a location to go. 
-		case MOVE_AWAY:	// ***** Choose randomly a location to go. 
-			int direction	= DecisionToMove.getRandomDirection(this.orga.getDirection());
+		case MOVE_AWAY:	
+			DirectionWorld direction	= DecisionToMove.getRandomDirection2D(this.orga.getDirection());
+			while (direction == DirectionWorld.CURRENT) {
+				direction = DecisionToMove.getRandomDirection2D(this.orga.getDirection());
+			}
 			this.orga.setDirection( direction );
-			what2do			= new DecisionToMove(this.orga, direction);break;
+			what2do			= new DecisionToMove(this.orga, direction.getIndex());break;
 		
 		// ***** Getting an object / agent. 
 		case GET: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
 			@Override
 			public void action() {
-				Agent o	= this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
-				if ( (o != null) && (o.isMovable()) ) {
-					this.getOrga().getCurrentWorldCase().remAgent( o );
-					this.getOrga().addAgent( o );
-					o.setCurrentWorldCase( null );
+				Agent obj	= this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
+				if (obj == null) { return; }
+				if ( (obj != null) && (obj.isMovable()) ) {
+					this.getOrga().getCurrentWorldCase().remAgent( obj );
+					this.getOrga().addAgent( obj );
+					obj.setCurrentWorldCase( null );
 				} // END "if ( (o != null) && (o.isMovable()) )"
 			}
 		};break;
@@ -144,7 +149,13 @@ public class DecisionBuilder {
 		case THINK: 	what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
 			@Override
 			public void action() {
-				this.getOrga().think("think about [" + object + "]\t");
+				try {
+					StringCouple scObject = ChemicalsHelper.getChemicalListe().get( object );
+					this.getOrga().think("think about [" + scObject.getValueA() + "]\t");
+				} catch (IndexOutOfBoundsException iobe) {
+					Logger.printlnLog(LoggerLevel.LL_ERROR, "DECISION THINK called with object [" + object + "]");
+					this.getOrga().think("think about [" + object + "]\t");
+				}
 			}
 		};break;
 		
@@ -205,6 +216,8 @@ public class DecisionBuilder {
 			public void action() {
 				AgentType agentType		= AgentType.getFrom( attribute );
 				ObjectType objectType	= ObjectType.getFrom( object );
+				if (agentType == null)	{ return; }
+				if (objectType == null)	{ return; }
 				if ( (this.getOrga().hasAgentType( agentType ) > threshold)
 						&& (this.getOrga().hasObjectType( objectType ) > threshold) )
 					{ this.getOrga().getVariables().setVarPlus(variable, value); }
@@ -230,7 +243,7 @@ public class DecisionBuilder {
 						this.getOrga().addAgent(gamet);
 					}
 					// ***** Increase Gamet / make exact count !!
-					this.getOrga().getChemicals().setVariable(	SomeChemicals.GAMET.getIndex(), 
+					this.getOrga().getChemicals().setVariable(	StatusType.GAMET.getIndex(), 
 																this.getOrga().hasAgentStatus(StatusType.GAMET));
 				}
 			}
@@ -262,7 +275,7 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				// ***** Gamets presence increases fertility signal. 
-				this.getOrga().getVariables().setVarPlus(StateType.FERTILE.getIndex(), 		this.getOrga().getVariables().getVariable(SomeChemicals.EGG.getIndex()));
+				this.getOrga().getVariables().setVarPlus(StateType.FERTILE.getIndex(), 		this.getOrga().getVariables().getVariable(StatusType.EGG.getIndex()));
 				// ***** Eggs presence decreases fertility signal. 
 				this.getOrga().getVariables().setVarLess(StateType.FERTILE.getIndex(), 		this.getOrga().hasAgentStatus( StatusType.EGG ));
 				if (this.getOrga().isFertile()) {

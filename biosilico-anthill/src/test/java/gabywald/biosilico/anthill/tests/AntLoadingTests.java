@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
+import gabywald.biosilico.anthill.AntReceptionChemicals;
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
@@ -23,7 +24,9 @@ import gabywald.biosilico.model.EnergySource;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
+import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.data.File;
 import gabywald.global.data.StringUtils;
 import gabywald.utilities.logger.Logger;
@@ -32,7 +35,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 /**
  * 
  * @author Gabriel Chandesris (2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * TODO review and replace "Logger.printlnLog(LoggerLevel.LL_INFO, " with "Logger.printlnLog(LoggerLevel.LL_INFO, "
  */
 class AntLoadingTests {
 	
@@ -80,7 +83,7 @@ class AntLoadingTests {
 			
 			String datas[] = line.split( "\t" );
 			
-			// System.out.println("\t" + datas[0] + " :: " + datas[1]);
+			// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + datas[0] + " :: " + datas[1]);
 			
 			switch(datas.length) {
 			case (11) : 
@@ -195,10 +198,10 @@ class AntLoadingTests {
 		
 		testAnt.setCurrentWorldCase( wc );
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -211,13 +214,13 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -227,10 +230,10 @@ class AntLoadingTests {
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -243,25 +246,25 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(100, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(100, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -274,16 +277,16 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(100, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals( 90, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(100, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 90, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -312,10 +315,10 @@ class AntLoadingTests {
 		
 		testAnt.setCurrentWorldCase( wc );
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -328,13 +331,13 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -347,10 +350,10 @@ class AntLoadingTests {
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -363,26 +366,26 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -395,17 +398,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals( 90, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));		
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 90, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));		
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -434,10 +437,10 @@ class AntLoadingTests {
 		
 		testAnt.setCurrentWorldCase( wc );
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -450,13 +453,13 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -470,10 +473,10 @@ class AntLoadingTests {
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -486,26 +489,26 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -518,26 +521,26 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -550,26 +553,26 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -582,26 +585,26 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -614,17 +617,17 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -653,10 +656,10 @@ class AntLoadingTests {
 		
 		testAnt.setCurrentWorldCase( wc );
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -669,13 +672,13 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -691,10 +694,10 @@ class AntLoadingTests {
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -707,28 +710,28 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -741,28 +744,28 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -775,28 +778,28 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -809,30 +812,30 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( es.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -845,19 +848,19 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(501));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 
 	}
 	
@@ -887,10 +890,10 @@ class AntLoadingTests {
 		
 		testAnt.setCurrentWorldCase( wc );
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(150));
@@ -903,14 +906,14 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
@@ -926,10 +929,10 @@ class AntLoadingTests {
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -942,33 +945,33 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(180));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 95, wc.getVariables().getVariable(182));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(500));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(501));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 95, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -981,33 +984,33 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(140, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(110, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(140, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 40, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(182));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(500));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(501));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -1020,33 +1023,33 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(160, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(160, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(182));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(500));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(501));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -1059,35 +1062,35 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(180, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(120, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(180, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(100, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(100, wc.getVariables().getVariable(501));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(100, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( es.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -1100,24 +1103,24 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(501));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(650));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Put some pheromones on local (00 : ch650)
 		wc.getChemicals().setVarPlus(SomeChemicals.PHEROMONE_00.getIndex(), 50);
@@ -1125,12 +1128,12 @@ class AntLoadingTests {
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( es.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -1143,24 +1146,24 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(130, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(130, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(150, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(150, wc.getVariables().getVariable(501));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(650));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(150, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(150, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Loading Chemicals HalfLives in World !!
 		w.loadHalLives();
@@ -1169,12 +1172,12 @@ class AntLoadingTests {
 		w.execution();
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		System.out.println( testAnt.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( es.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(15));
 		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(150));
@@ -1187,24 +1190,24 @@ class AntLoadingTests {
 		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(170));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(171));
 		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(172));
-		Assertions.assertEquals(200, testAnt.getVariables().getVariable(180));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(181));
-		Assertions.assertEquals(135, testAnt.getVariables().getVariable(182));
-		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(183));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(184));
-		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(940));
-		Assertions.assertEquals(938, testAnt.getVariables().getVariable(941));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(700));
+		Assertions.assertEquals(200, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(135, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 30, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0, 39).ckActivated() );
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt(48, 39).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(180));
-		Assertions.assertEquals( 35, wc.getVariables().getVariable(181));
-		Assertions.assertEquals( 65, wc.getVariables().getVariable(182));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(500));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(501));
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(650));
+		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 35, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 65, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 
 	}
 	

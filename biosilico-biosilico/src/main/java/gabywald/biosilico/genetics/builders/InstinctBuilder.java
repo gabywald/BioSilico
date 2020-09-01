@@ -94,7 +94,7 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 	
 	@Override
 	public Instinct build() {
-		return new Instinct(	
+		Instinct toReturn = new Instinct(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -112,6 +112,9 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VARIABLE).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.THRESHOLD).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.CHECK).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

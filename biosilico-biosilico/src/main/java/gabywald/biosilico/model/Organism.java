@@ -136,8 +136,10 @@ public class Organism extends Agent implements IAgentContent {
 
 	public void execution(WorldCase local) {
 		this.current = local;
-		// ***** Genome is "executed". 
 		
+		this.setState( "" );
+		
+		// ***** Genome is "executed". 
 		// NOTE : here mainly works for haploïd genomes !! 
 		this.genome.stream().forEach( c -> c.execution(this) );
 		// TODO genome length to 0 : death ?! 
@@ -175,7 +177,9 @@ public class Organism extends Agent implements IAgentContent {
 	 * @param txt
 	 */
 	public void think(String txt) {
-		this.addState(this.getUniqueID() + "::" + txt);
+		String stateMSG = this.getUniqueID() + "::" + txt;
+		this.addState( stateMSG );
+		Logger.printlnLog(LoggerLevel.LL_INFO, stateMSG);
 		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.THINK);
 	}
 
