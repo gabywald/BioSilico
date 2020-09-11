@@ -36,7 +36,7 @@ public abstract class GeneBuilder<T extends Gene> {
 		RECEPTOR, INTERNAL, 
 		// ***** Instinct
 		INPUTPOSX, INPUTPOSY, OUTPUTPOSX, OUTPUTPOSY, 
-		WEIGHT, CHECK, // VARIABLE, THRESHOLD, 
+		WEIGHT, CHECK, POSITIVE, // VARIABLE, THRESHOLD, 
 		// ***** StimulusDecision
 		PERCEPTION, OBJECT, INDICATOR, // THRESHOLD, 
 		ATTRIBUTE, // VARIABLE, VALUE, 

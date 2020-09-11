@@ -187,9 +187,10 @@ public class Neuron {
 //					if (this.weights.get(i).intValue() > 10)
 //						{ this.weights.set(i, this.weights.get(i) - 1); }
 //				}
-				// ***** If weight is 0 or less : remove. 
-				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
-				if ( (this.weights.get(i).intValue() <= 0) && (this.connections.size() > this.dmin) ){
+				// ***** If weight is 0 : remove. 
+				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() == 0) ) { 
+				if ( (this.weights.get(i).intValue() == 0) 
+						&& (this.connections.size() > this.dmin) ) {
 					this.connections.remove(i);
 					this.weights.remove(i);
 				}
@@ -203,7 +204,7 @@ public class Neuron {
 			while ( (this.connections.size() < this.dmax) && (iteOnNeuron.hasNext()) ) {
 				Neuron candidate = iteOnNeuron.next();
 				// ***** Test if same Neuron at same position is present. 
-				if ( ! this.connections.contains(candidate)) { 
+				if ( ! this.connections.contains( candidate )) { 
 					this.connections.add( candidate );
 					this.weights.add(new Integer(this.proximity));
 				}
