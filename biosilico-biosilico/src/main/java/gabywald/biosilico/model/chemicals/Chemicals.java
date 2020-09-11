@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import gabywald.biosilico.interfaces.IChemicals;
+import gabywald.biosilico.model.enums.StateType;
 
 /**
  * To give a specific table of variables and tools to use it. 
@@ -72,14 +73,18 @@ public class Chemicals implements IChemicals {
 	}
 	
 	public String toString() {
-		String result = new String();
+		StringBuilder sbResult = new StringBuilder();
 		for (int i = 0 ; i < this.vars.size() ; i++) {
-			if (this.vars.get(i).intValue() != 0) 
-				{ result += "\t"+i+"\t"+this.vars.get(i).intValue()+"\n"; }
+			if (this.vars.get(i).intValue() != 0) {
+				sbResult.append("\t").append(i).append("\t").append(this.vars.get( i ).intValue()).append("\t").append(ChemicalsHelper.getChemicalNames().get(i));
+				if ( (this.vars.get(i).intValue() > ChemicalsHelper.CHEMICAL_STRICT_CHEM) 
+						&& ( ! StateType.numericList().contains(this.vars.get(i).intValue()) ) ) {
+					sbResult.append(" => ").append(ChemicalsHelper.getChemicalNames().get( this.vars.get(i).intValue() ));
+				}
+				sbResult.append("\n");
+			}
 		}
-		return result;
+		return sbResult.toString();
 	}
-	
-
 	
 }

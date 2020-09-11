@@ -145,7 +145,11 @@ public abstract class Agent extends ObservableObject
 	
 	@Override
 	public boolean deplace() {
-		if (this.nextStep != null) { this.current = this.nextStep; }
+		if (this.nextStep != null) { 
+			this.current.remAgent( this );
+			this.current = this.nextStep; 
+			this.current.addAgent( this );
+		}
 		this.nextStep = null;
 		return true;
 	}

@@ -31,7 +31,7 @@ public class Instinct extends GeneGattaca {
 	private int threshold;
 	/** If input Neuron already present set weight or simply add dendrit. */
 	private boolean check;
-	
+	/** Link is positive (or negative. */
 	private boolean isPositive;
 
 	/**

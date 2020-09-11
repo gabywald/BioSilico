@@ -122,14 +122,14 @@ public class StimulusDecision extends GeneGattaca {
 			/** Activity on variable or object make sense in action. */
 			if (this.object) {
 				// ***** Acts to an object 
-				// if (orga.getChemicals().getVariable(this.indicator) > this.threshold) {
+				if (orga.getChemicals().getVariable(this.scrip) > this.threshold) {
 					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
 								  this.attribute, this.varia, this.value);
 					/** Variable change here is :  (standard) indicator set / tend to 0. 
 					 * => here (--) because can be increased by action. */
-					orga.getChemicals().setVarLessLess(this.indicator);
-				// } // END "if (orga.getChemicals().getVariable(this.indicator) > this.threshold)"
+					orga.getChemicals().setVarLessLess(this.scrip);
+				} // END "if (orga.getChemicals().getVariable(this.indicator) > this.threshold)"
 			} else { 
 				// ***** Acts to a variable : emit, receive... 
 				// if (orga.getChemicals().getVariable(this.varia) > this.threshold) {

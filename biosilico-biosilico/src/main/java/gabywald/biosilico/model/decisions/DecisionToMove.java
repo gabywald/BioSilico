@@ -4,6 +4,8 @@ import java.util.Random;
 
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.DirectionWorld;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * Indicate a location where to go. 
@@ -18,7 +20,9 @@ public class DecisionToMove extends BaseDecisionOnlyOneAttribute {
 	@Override
 	public void action() {
 		this.getOrga().setDirection( DirectionWorld.get2DFrom( this.getVariable(0) ) );
-		this.getOrga().setNextWorldCase(this.getOrga().getCurrentWorldCase().getDirection( this.getVariable(0) )); 
+		this.getOrga().setNextWorldCase(this.getOrga().getCurrentWorldCase().getDirection( this.getVariable(0) ));
+		
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "{" + this.getOrga().getUniqueID() + "} MOVE TO {" + DirectionWorld.get2DFrom( this.getVariable(0) ) + "}");
 	}
 	
 	public static DirectionWorld getRandomDirection2D(DirectionWorld initValue) {

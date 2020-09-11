@@ -24,7 +24,12 @@ For dev on BioSilico :
     * Abstraction for Chemicals / IChemicals
     * Decisions and Instincts to be precisely tested (with some examples)
     * Ideas about "Automatic Pathway construction" (GUI / Human Interface, Graphical or not)
-* ... 
+* Review for some genetics model / Type of genes : 
+    * BiochemicalReaction
+    * Instinct
+    * EmitterReceptor
+    * StimulusDecision
+    * ... 
 * ... 
 * ... 
 
@@ -35,6 +40,14 @@ For dev on BioSilico :
 First Aim was to do / retake an example with Ants, and some plants and fruits. Not totally from scratch / from nothing : it gives some ideas about how the engine could works. 
 
 Based on 'biosilico-biosilico' module !
+
+Work on July, August and September 2020 to get an example of Ant working basically (nervous system / Brain / Brain Lobes, Instincts, EmitterReceptor, StimulusDecisions to GET/DROP FOOD, MOVE_AWAY, MOVE... Seems to be a good example to build a genome and tools to build genomes. 
+
+Idea of a Tool to build "meta-genes" / Pathways : 
+* StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
+* At Least 6 Genes !
+
+Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
 
 ### 'biosilico-biojava' : 
 

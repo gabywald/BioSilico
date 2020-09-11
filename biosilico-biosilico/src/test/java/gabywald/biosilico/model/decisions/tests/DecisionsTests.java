@@ -163,11 +163,13 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
 		
+		Assertions.assertEquals( 1, wc.getAgentListe().size());
 		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
 		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
 		
 		// ***** Really moving here !!
 		testOrga.deplace();
+		Assertions.assertEquals( 0, wc.getAgentListe().size());
 		Assertions.assertEquals(wc.getDirection(testOrga.getDirection()), testOrga.getCurrentWorldCase());
 		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
 	}

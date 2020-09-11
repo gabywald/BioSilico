@@ -1,5 +1,8 @@
 package gabywald.biosilico.model.enums;
 
+import java.util.Arrays;
+import java.util.List;
+
 import gabywald.biosilico.interfaces.IChemicalsType;
 
 /**
@@ -33,4 +36,13 @@ public enum StateType implements IChemicalsType {
 	public String getName()			{ return name; }
 	@Override
 	public String getDefinition()	{ return definition; }
+	
+	/**
+	 * To get indexes of elements of enum which are numeric !
+	 * @return Indexes of {AGING, EATABLE, FERTILE, MOVABLE, GENDER, MOVABLE, PREGNANT}. 
+	 */
+	public static List<Integer> numericList() {
+		return Arrays.asList(	StateType.AGING.index, StateType.EATABLE.index, StateType.FERTILE.index, 
+								StateType.GENDER.index, StateType.MOVABLE.index, StateType.PREGNANT.index);
+	}
 }
