@@ -111,9 +111,11 @@ public class BrainGene extends GeneGattaca {
 
 	@Override
 	public Gene clone() {
-		return new BrainGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-								this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-								this.height, this.width, this.depth, this.more);
+		Gene toReturn = new BrainGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+										this.height, this.width, this.depth, this.more);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

@@ -96,9 +96,9 @@ public abstract class Agent extends ObservableObject
 	public void setAlive(boolean isAlive)		
 		{ this.alive = isAlive; }
 	
-	protected void setMovable(boolean isMovable) 
+	public void setMovable(boolean isMovable) 
 		{ this.variables.setVariable(StateType.MOVABLE.getIndex(), isMovable ? 100 : 0); }
-	protected void setEatable(boolean isEatable) 
+	public void setEatable(boolean isEatable) 
 		{ this.variables.setVariable(StateType.EATABLE.getIndex(), isEatable ? 100 : 0); }
 
 	public int getCycle()			{ return this.variables.getVariable(StateType.AGING.getIndex()); }
@@ -145,13 +145,15 @@ public abstract class Agent extends ObservableObject
 	
 	@Override
 	public boolean deplace() {
+		boolean isMoving = false;
 		if (this.nextStep != null) { 
 			this.current.remAgent( this );
 			this.current = this.nextStep; 
 			this.current.addAgent( this );
+			isMoving = true;
 		}
 		this.nextStep = null;
-		return true;
+		return isMoving;
 	}
 	
 	@Override

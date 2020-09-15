@@ -150,7 +150,7 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				try {
-					StringCouple scObject = ChemicalsHelper.getChemicalListe().get( object );
+					StringCouple scObject = ChemicalsHelper.getChemicalListe().get( object );  // indication
 					this.getOrga().think("think about [" + scObject.getValueA() + "]\t");
 				} catch (IndexOutOfBoundsException iobe) {
 					Logger.printlnLog(LoggerLevel.LL_ERROR, "DECISION THINK called with object [" + object + "]");
@@ -177,8 +177,11 @@ public class DecisionBuilder {
 		case DEATH: 	what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				this.getOrga().setAlive( false ); 
-				this.getOrga().getVariables().setVariable(variable, value);
+				if (this.getOrga().getChemicals().getVariable(attribute) > threshold) {
+					this.getOrga().setAlive( false ); 
+					this.getOrga().setOrganismStatus(StatusType.DEAD);
+					this.getOrga().getVariables().setVariable(variable, value);
+				}
 			}
 		};break;
 		
@@ -202,7 +205,7 @@ public class DecisionBuilder {
 			public void action() {
 				if (this.getOrga().getCurrentWorldCase() == null) { return; }
 				
-				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
+				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object); // indication
 				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) >= value) ) { 
 					this.getOrga().getVariables().setVarPlus(variable, value);
 					wcwc.getVariables().setVarLess(variable, value);
@@ -215,7 +218,7 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				AgentType agentType		= AgentType.getFrom( attribute );
-				ObjectType objectType	= ObjectType.getFrom( object );
+				ObjectType objectType	= ObjectType.getFrom( object ); // indication
 				if (agentType == null)	{ return; }
 				if (objectType == null)	{ return; }
 				if ( (this.getOrga().hasAgentType( agentType ) > threshold)
@@ -239,6 +242,8 @@ public class DecisionBuilder {
 				if (this.getOrga().isFertile()) {
 					Organism gamet = ReproductionHelper.makeGamet(this.getOrga());
 					gamet.setOrganismStatus(StatusType.GAMET);
+					ObjectType ot = ObjectType.getFrom( attribute );
+					if (ot != null) { gamet.setObjectType( ot ); } 
 					if (gamet != null) {
 						this.getOrga().addAgent(gamet);
 					}
@@ -246,7 +251,10 @@ public class DecisionBuilder {
 					this.getOrga().getChemicals().setVariable(	StatusType.GAMET.getIndex(), 
 																this.getOrga().hasAgentStatus(StatusType.GAMET));
 				}
+				
+				// Logger.printlnLog(LoggerLevel.LL_FORUSER, "MAKE_GAMET" ); 
 			}
+			
 		};break;
 		
 		// ***** Lay Egg. I.E. 'DROP EGG' !
@@ -275,11 +283,11 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				// ***** Gamets presence increases fertility signal. 
-				this.getOrga().getVariables().setVarPlus(StateType.FERTILE.getIndex(), 		this.getOrga().getVariables().getVariable(StatusType.EGG.getIndex()));
-				// ***** Eggs presence decreases fertility signal. 
-				this.getOrga().getVariables().setVarLess(StateType.FERTILE.getIndex(), 		this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getVariables().setVarPlus(StateType.FERTILE.getIndex(), 	this.getOrga().getVariables().getVariable(StatusType.GAMET.getIndex()));
+				// ***** Eggs presence decreases fertility signal (impact pregnancy). 
+				this.getOrga().getVariables().setVarLess(StateType.FERTILE.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getVariables().setVarPlus(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
 				if (this.getOrga().isFertile()) {
-					
 					AgentType otype = this.getOrga().getAgentType();
 					if (otype == null) { return; }
 					switch(otype) {

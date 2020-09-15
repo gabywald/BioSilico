@@ -758,6 +758,7 @@ class ReproductionTests {
 		
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
+		Assertions.assertEquals(0, testOrga.lineageSize());
 		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
 		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.EGG));
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
@@ -928,6 +929,7 @@ class ReproductionTests {
 		Assertions.assertEquals(1, testOrgaOther.hasAgentStatus(StatusType.GAMET));
 		Assertions.assertEquals(0, testOrgaOther.hasAgentStatus(StatusType.EGG));
 		Assertions.assertEquals(1, testOrgaOther.getAgentListe().size());
+		Assertions.assertEquals(0, testOrga.lineageSize());
 	}
 
 	@Test
@@ -1096,6 +1098,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrgaOther.hasAgentStatus(StatusType.GAMET));
 		Assertions.assertEquals(0, testOrgaOther.hasAgentStatus(StatusType.EGG));
 		Assertions.assertEquals(0, testOrgaOther.getAgentListe().size());
+		Assertions.assertEquals(0, testOrga.lineageSize());
 	}
 	
 	// TODO testReproductionViria !!

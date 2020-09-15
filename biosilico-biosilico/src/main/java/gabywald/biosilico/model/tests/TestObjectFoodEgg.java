@@ -1,4 +1,4 @@
-package gabywald.biosilico.model.decisions.tests;
+package gabywald.biosilico.model.tests;
 
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
@@ -6,6 +6,7 @@ import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.ObjectType;
+import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -20,6 +21,9 @@ public class TestObjectFoodEgg extends Organism {
 		this.setAgentType(AgentType.BIOSILICO_VIRIDITA);
 		this.setObjectType(ObjectType.FOOD);
 		this.setOrganismStatus(StatusType.EGG);
+		this.getChemicals().setVariable(SomeChemicals.STARCH.getIndex(), 25);
+		this.getChemicals().setVariable(SomeChemicals.GLUCOSE.getIndex(), 25);
+		this.getChemicals().setVariable(SomeChemicals.FRUCTOSE.getIndex(), 25);
 	}
 
 	@Override

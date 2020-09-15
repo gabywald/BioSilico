@@ -5,10 +5,10 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.biosilico.model.EnergySource;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
+import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
  * 

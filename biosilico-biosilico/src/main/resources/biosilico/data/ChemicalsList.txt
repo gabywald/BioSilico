@@ -328,12 +328,12 @@ AG40CoA	AG40CoA
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
-<NONEXX>	<NONEXX>
+Starch	Starch (Amidon)
+Hexokinase	Hexokinase
+Glycogen	Glycogen
+Combinator1	6 H2O + 6 CO2
+Combinator2	5 H2O + 5 CO2
+Combinator3	P + NRJ
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>

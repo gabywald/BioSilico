@@ -673,7 +673,7 @@ class OrganismBuildExampleTests {
 
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "*****");
 	}
-
+	
 	@Test
 	void testInitConcWithBiochemicalReaction03() {
 
@@ -729,6 +729,104 @@ class OrganismBuildExampleTests {
 		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 6 ) );
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 7 ) );
+	}
+	
+	@Test
+	void testInitConcWithBiochemicalReaction04() {
+
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						1, 10));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						2, 10));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						3, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						4, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						5, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						2));
+
+		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		// first execution / cycle 0
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
+		test.execution(null);
+		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(6, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(6, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 6 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 7 ) );
+
+	}
+	
+	@Test
+	void testInitConcWithBiochemicalReaction05() {
+
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						1, 20));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						2, 20));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						3, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						4, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						5, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						2));
+
+		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		// first execution / cycle 0
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
+		test.execution(null);
+		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(6, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(6, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals( 10, test.getVariables().getVariable( 6 ) );
+		Assertions.assertEquals( 10, test.getVariables().getVariable( 7 ) );
+
 	}
 
 	@Test

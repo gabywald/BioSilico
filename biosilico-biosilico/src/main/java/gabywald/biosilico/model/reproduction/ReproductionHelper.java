@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import gabywald.biosilico.exceptions.ReproductionException;
@@ -85,27 +86,27 @@ public abstract class ReproductionHelper {
 	public static Organism makeGamet(Organism orga) {
 		Organism gametToReturn = new Organism();
 		ReproductionHelper.copySomeData(orga, gametToReturn);
-		gametToReturn.addExtendedLineageItem(orga.getUniqueID(), orga.getScientificName(), orga.getRank());		
+		// gametToReturn.addExtendedLineageItem(orga.getUniqueID(), orga.getScientificName(), orga.getRank());
+		gametToReturn.addExtendedLineageItem(orga.getUniqueID(), orga.getBioSilicoName(), orga.getRank());
 		
 		// ***** Create genome of GAMET. 
-		Random selection = new Random();
 		List<Chromosome> genomeOfGamet = new ArrayList<Chromosome>();
-		orga.getGenome().stream().forEach( c -> {
+		orga.getGenome().stream().forEach( chr -> {
 			Chromosome currentCHR = new Chromosome();
-			c.streamGene().forEach( g -> {
-				// XXX NOTE : here select randomly one gene about of two !! 
+			currentCHR.setName( chr.getName() );
+			chr.streamGene().forEach( g -> {
 				// NOTE more or less, depending of number of sexes ?!
 				// NOTE depending of each sex gives to descendant ?!
-				if (selection.nextInt() % 2 == 0) {
-					// ***** Copy gene and mutate / duplicate / delete ?
-					Gene clonedGene = g.clone();
-					if ( (clonedGene.canMutate()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
-						{ clonedGene.mutationChanges(); }
-					if ( (clonedGene.canDuplicate()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
-						{ currentCHR.addGene( g.clone() ); }
-					if ( (clonedGene.canDelete()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
-						{ ; } else { currentCHR.addGene( clonedGene ); }
-				}
+				
+				// XXX Haploïd Gamet !
+				// ***** Copy gene and mutate / duplicate / delete ?
+				Gene clonedGene = g.clone();
+				if ( (clonedGene.canMutate()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
+					{ clonedGene.mutationChanges(); }
+				if ( (clonedGene.canDuplicate()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
+					{ currentCHR.addGene( g.clone() ); }
+				if ( (clonedGene.canDelete()) && (IGeneMutation.mutate(clonedGene.getMutationRate())) ) 
+					{ ; } else { currentCHR.addGene( clonedGene ); }
 			});
 			genomeOfGamet.add(currentCHR);
 		});
@@ -116,7 +117,7 @@ public abstract class ReproductionHelper {
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_STRICT_CHEM).forEach( c -> {
 			int initValue = orga.getChemicals().getVariable(c);
 			if (initValue > 0) {
-				int setupValue = initValue / 20; // 5 % XXX to be configured ?!
+				int setupValue = initValue / 5; // 5 % XXX to be configured ?!
 				orga.getChemicals().setVariable(c, initValue - setupValue);
 				gametToReturn.getChemicals().setVariable(c, setupValue);
 			}
@@ -125,37 +126,66 @@ public abstract class ReproductionHelper {
 		return gametToReturn;
 	}
 	
-	public static List<Chromosome> gametGenomeFusion(Organism... gamets) {
-		List<Chromosome> genome2return = new ArrayList<Chromosome>();
+	public static int sizeOfGenome(Organism orga) {
+		return orga.getGenome().stream().map( chr -> chr.length()).reduce(0, Integer::sum);
+	}
+	
+	public static List<Chromosome> gametGenomeFusion(Organism... gamets) throws ReproductionException {
 		
-		if ( ! Arrays.asList( gamets ).stream().allMatch( g -> (g.getOrganismStatus() == StatusType.GAMET) )) {
-			return genome2return; // ?? not gamets !!
-		}
+		if (gamets.length == 0) 
+			{ throw new ReproductionException("No gamets !"); }
 		
+		// *** Check all are gamets !
+		if ( ! Arrays.asList( gamets ).stream().allMatch( g -> (g.getOrganismStatus() == StatusType.GAMET) )) 
+			{ throw new ReproductionException("Not all are gamets !"); }
+		
+		// *** XXX Haploïd : check same size (or similarity) ?? 
+		int refSize 		= ReproductionHelper.sizeOfGenome( gamets[0] );
+		
+		if (refSize == 0) { return new ArrayList<Chromosome>(); }
+		
+		Organism longest	= gamets[0];
 		for (Organism gamet : gamets) {
-			List<Chromosome> gametGenome = gamet.getGenome();
-			if (gametGenome.size() > genome2return.size()) {
-				for (int i = genome2return.size() ; i < gametGenome.size() ; i++) {
-					Chromosome newCHR = new Chromosome();
-					newCHR.setName( gametGenome.get(i).getName());
-					genome2return.add( newCHR );
-				}
-			} // END "if (gametGenome.size() > genome2return.size())"
-			
-			for (int i = 0 ; i < genome2return.size() ; i++) {
-				genome2return.get( i ).addAllGene( gametGenome.get( i ) );
-			}
+			int otherSize = ReproductionHelper.sizeOfGenome( gamet );
+			if ( ( Math.abs(otherSize / refSize) ) > 10 ) // more than 10% difference
+				{ throw new ReproductionException("Gamet size : more than 10% difference !"); }
+			if (ReproductionHelper.sizeOfGenome( gamet ) > ReproductionHelper.sizeOfGenome( gamets[0] )) 
+				{ longest = gamet; }
 		}
+		final Organism longestGenomeOrg = longest;
+		
+		List<Chromosome> genome2return = new ArrayList<Chromosome>();
+		IntStream.range(0, longest.getGenome().size()).forEach( i -> {
+			Chromosome chr		= longestGenomeOrg.getGenome().get( i );
+			Chromosome newCHR	= new Chromosome();
+			newCHR.setName( chr.getName() );
+			
+			// NOTE for each chr (index i ) => for each gene (index j) => peek a gene between the gamets !
+			Random rand = new Random();
+			IntStream.range(0, chr.length()).forEach( j -> {
+				List<Gene> genes = Arrays.asList( gamets ).stream().map( g -> g.getGenome().get( i ).getGene( j )).filter( g -> (g != null) ).collect(Collectors.toList());
+				// NOTE : filter above because a gene could be deleted !
+				newCHR.addGene( genes.get( rand.nextInt( genes.size() ) ).clone() );
+			});
+			
+			// NOTE complete with the longest gamet (longest genome)
+			// NOTE genes could be also duplicated... 
+			for (int j = newCHR.length() ; j < chr.length() ; j++) 
+				{ newCHR.addGene( chr.getGene( j ) ); }
+			
+			genome2return.add( newCHR );
+			
+		});
 		
 		return genome2return;
 	}
 	
 	public static void copySomeData(Organism currentOrga, Organism nextOrga) {
-		nextOrga.setRank(currentOrga.getRank());
-		nextOrga.setDivision(currentOrga.getDivision());
-		nextOrga.setNameBiosilico(currentOrga.getBioSilicoName());
-		nextOrga.setNameScientific(currentOrga.getScientificName());
-		nextOrga.setNameCommon(currentOrga.getScientificName());
+		nextOrga.setRank(currentOrga.getRank() + " copy" );
+		nextOrga.setDivision(currentOrga.getDivision() + " copy" );
+		nextOrga.setNameBiosilico(currentOrga.getBioSilicoName() + " copy" );
+		nextOrga.setNameScientific(currentOrga.getScientificName() + " copy" );
+		nextOrga.setNameCommon(currentOrga.getScientificName() + " copy" );
 		// nextOrga.setNameIncluded(includedName);
 		nextOrga.setSex(currentOrga.getSex());
 		nextOrga.setObjectType(currentOrga.getObjectType());
@@ -163,7 +193,8 @@ public abstract class ReproductionHelper {
 		// nextOrga.setOrganismStatus(StatusType.EGG);
 		nextOrga.setOrganismStatus(currentOrga.getOrganismStatus());
 		
-		nextOrga.setExtendedLineage(currentOrga.getExtendedLineage());
+		// Copy List (and not copy reference). 
+		nextOrga.setExtendedLineage(currentOrga.getExtendedLineage().stream().collect(Collectors.toList()));
 	}
 	
 	// ===== ===== ===== ===== ===== REPRODUCTION TYPES ===== ===== ===== ===== ===== 

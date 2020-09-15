@@ -134,10 +134,12 @@ public class Instinct extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new Instinct(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-								this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-								this.inputPosX, this.inputPosY, this.outputPosX, this.outputPosY, 
-								this.weight, this.variable, this.threshold, this.check, this.isPositive);
+		Gene toReturn = new Instinct(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+										this.inputPosX, this.inputPosY, this.outputPosX, this.outputPosY, 
+										this.weight, this.variable, this.threshold, this.check, this.isPositive);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 	
 	@Override

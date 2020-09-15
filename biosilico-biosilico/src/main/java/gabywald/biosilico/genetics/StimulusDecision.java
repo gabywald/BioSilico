@@ -131,8 +131,8 @@ public class StimulusDecision extends GeneGattaca {
 					orga.getChemicals().setVarLessLess(this.scrip);
 				} // END "if (orga.getChemicals().getVariable(this.indicator) > this.threshold)"
 			} else { 
-				// ***** Acts to a variable : emit, receive... 
-				// if (orga.getChemicals().getVariable(this.varia) > this.threshold) {
+				// ***** Acts to a variable : emit, receive... death...
+				// if (orga.getChemicals().getVariable(this.value) > this.threshold) {
 					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
 								  this.attribute, this.varia, this.value);
@@ -163,10 +163,12 @@ public class StimulusDecision extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-										this.perception, this.object, this.indicator, this.threshold, 
-										this.attribute, this.varia, this.value, this.scrip);
+		Gene toReturn = new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+												this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+												this.perception, this.object, this.indicator, this.threshold, 
+												this.attribute, this.varia, this.value, this.scrip);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

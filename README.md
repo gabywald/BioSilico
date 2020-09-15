@@ -49,6 +49,8 @@ Idea of a Tool to build "meta-genes" / Pathways :
 
 Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
 
+
+
 ### 'biosilico-biojava' : 
 
 Aim of these Part is to put some example of BioJava FrameWork use !

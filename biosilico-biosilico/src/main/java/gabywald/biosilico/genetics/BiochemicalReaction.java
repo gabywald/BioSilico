@@ -130,15 +130,15 @@ public class BiochemicalReaction extends GeneGattaca {
 				{ vars.setVarPlus(this.Dchem, this.Dcoef);}
 			local_cycle++;
 			reaction = this.testABchemicals(vars);
-		}
+		} // end "while (reaction && (this.KminVmax > local_cycle) )"
 		
 	}
 	
 	private boolean testABchemicals(IChemicals vars) {
 		return ( ( (this.Achem == NEUTRAL_INDEX) ||
-						 (vars.getVariable(this.Achem) > this.Acoef) )
+						 (vars.getVariable(this.Achem) >= this.Acoef) )
 				 && ( (this.Bchem == NEUTRAL_INDEX) ||
-						 (vars.getVariable(this.Bchem) > this.Bcoef) ) );
+						 (vars.getVariable(this.Bchem) >= this.Bcoef) ) );
 	}
 
 	public int getAchem() { return this.Achem; }
@@ -163,10 +163,12 @@ public class BiochemicalReaction extends GeneGattaca {
 
 	@Override
 	public Gene clone() {
-		return new BiochemicalReaction(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-										this.Achem, this.Acoef, this.Bchem, this.Bcoef, 
-										this.Cchem, this.Ccoef, this.Dchem, this.Dcoef, this.KminVmax);
+		Gene toReturn = new BiochemicalReaction(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+													this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+													this.Achem, this.Acoef, this.Bchem, this.Bcoef, 
+													this.Cchem, this.Ccoef, this.Dchem, this.Dcoef, this.KminVmax);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 	
 	@Override

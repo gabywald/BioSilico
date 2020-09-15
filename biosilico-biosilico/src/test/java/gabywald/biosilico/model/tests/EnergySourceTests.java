@@ -3,9 +3,9 @@ package gabywald.biosilico.model.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.biosilico.model.EnergySource;
 import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.SomeChemicals;
+import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
  * 

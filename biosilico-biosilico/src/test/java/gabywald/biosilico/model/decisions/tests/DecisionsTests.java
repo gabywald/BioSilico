@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.World;
 import gabywald.biosilico.model.WorldCase;
@@ -21,6 +22,7 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.tests.TestObjectFoodEgg;
 import gabywald.global.structures.StringCouple;
 
 /**
@@ -584,6 +586,75 @@ class DecisionsTests {
 		Assertions.assertNotNull(ObjectType.AGENT);
 		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
 		
+		Agent age = testOrga.getAgentStatus(StatusType.GAMET);
+		Assertions.assertEquals(ObjectType.AGENT, age.getObjectType());
+		Assertions.assertEquals(AgentType.BIOSILICO_DAEMON, age.getAgentType());
+		// Assertions.assertEquals(ObjectType.AGENT, age.getObjectType());
+		
+		decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+				.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(2, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(3, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+	}
+	
+	@Test
+	void testDecisionMAKEGAMET_ASFOOD() {
+		int which		= DecisionType.MAKE_GAMET.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= ObjectType.FOOD.getIndex();
+		int variable	= -1;
+		int value		= -1;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
+		Assertions.assertNotNull( testOrga );
+		
+		World w			= new World(3, 3);
+		Assertions.assertNotNull( w );
+		WorldCase wc	= w.getWorldCase(1,  1);
+		Assertions.assertNotNull( wc );
+		
+		testOrga.setCurrentWorldCase( wc );
+		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		
+		// ***** When not fertile
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+		Assertions.assertNotNull(ObjectType.AGENT);
+		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
+		
+		// ***** When fertile !!
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 42);
+		Assertions.assertEquals(0, testOrga.hasAgentStatus(StatusType.GAMET));
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals(1, testOrga.hasAgentStatus(StatusType.GAMET));
+		
+		Assertions.assertNotNull(ObjectType.AGENT);
+		Assertions.assertEquals(ObjectType.AGENT, testOrga.getObjectType());
+		
+		Agent age = testOrga.getAgentStatus(StatusType.GAMET);
+		Assertions.assertEquals(ObjectType.FOOD, age.getObjectType());
+		Assertions.assertEquals(AgentType.BIOSILICO_DAEMON, age.getAgentType());
+		// Assertions.assertEquals(ObjectType.AGENT, age.getObjectType());
+		
 		decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
 				.attribute(attribute).variable(variable).value(value).build();
 		Assertions.assertNotNull( decision );
@@ -647,8 +718,8 @@ class DecisionsTests {
 	void testDecisionDEATH() {
 		int which		= DecisionType.DEATH.getIndex();
 		int object		= -1;
-		int threshold	= -1;
-		int attribute	= -1;
+		int threshold	= 900;
+		int attribute	= StateType.AGING.getIndex();
 		int variable	= StateType.AGING.getIndex();
 		int value		= 999;
 		
@@ -657,9 +728,11 @@ class DecisionsTests {
 		
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
+		testOrga.getChemicals().setVariable(StateType.AGING.getIndex(), threshold + 5);
 		
 		Assertions.assertTrue( testOrga.isAlive() );
-		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertNotEquals( StatusType.DEAD, testOrga.getOrganismStatus() );
+		Assertions.assertEquals( threshold + 5, testOrga.getChemicals().getVariable(StateType.AGING.getIndex()));
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -669,6 +742,7 @@ class DecisionsTests {
 		if (decision != null) { decision.action(); }
 		
 		Assertions.assertFalse( testOrga.isAlive() );
+		Assertions.assertEquals( StatusType.DEAD, testOrga.getOrganismStatus() );
 		Assertions.assertEquals(999, testOrga.getChemicals().getVariable(StateType.AGING.getIndex()));
 	}
 	
@@ -928,5 +1002,42 @@ class DecisionsTests {
 	}
 	
 	// XXX NOTE Decision MATE : see ReproductionTests !
+
+	@Test
+	void testDecisionMATE_DAEMON_ITSELF() {
+		int which		= DecisionType.MATE.getIndex();
+		int object		= -1;
+		int threshold	= -1;
+		int attribute	= -1;
+		int variable	= -1;
+		int value		= -1;
+		
+		DecisionType dType = DecisionType.getFrom( which );
+		Assertions.assertNotNull( dType );
+		
+		Organism testOrga	= new Organism();
+		Assertions.assertNotNull( testOrga );
+		
+		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
+		
+		Assertions.assertEquals( 0, testOrga.getAgentListe().size());
+		
+		DecisionBuilder db	= new DecisionBuilder();
+		Assertions.assertNotNull( db );
+		IDecision decision	= db.type(dType).organism( testOrga ).object(object).threshold(threshold)
+								.attribute(attribute).variable(variable).value(value).build();
+		Assertions.assertNotNull( decision );
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals( 1, testOrga.getAgentListe().size());
+		Assertions.assertEquals( 1, testOrga.hasAgentStatus(StatusType.EGG));
+		
+		if (decision != null) { decision.action(); }
+		Assertions.assertEquals( 2, testOrga.getAgentListe().size());
+		Assertions.assertEquals( 2, testOrga.hasAgentStatus(StatusType.EGG));
+		
+	}
+	
+
 	
 }

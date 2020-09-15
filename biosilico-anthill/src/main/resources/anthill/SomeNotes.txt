@@ -102,4 +102,30 @@ Some review to be done here to make following :
 	StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
 	At Least 6 Genes !
 
+20200915 NOTES : 
+	Decision action : Chemical variable beyond threshold (and launching process of decision make less of this varaibel value). 
+	Biochemistry : 
+		"classic" biochemistry : Krebs cycle at least !
+		taking "Digestive and Repertory System", biochemistry of Creatures
+			Starch => Glucose
+			Hexokinase + Glucose => H20 + C02
+			Glucose => Glycogen
+			Glycogen => Glucose
+			Hunger process ?
+			Chemoreceptors for DEATH
+			Neuron driven ?
+
+20200917 NOTES : 
+	Using ideas from Creatures about simple BioChemistry (to get better in the future). 
+	Adding Hexokinase when really moving ! (then use it with glucose after that !)
+	How an Agent / Organism Died ? Excess of some chemicals ! (i.e. hexokinase, aging ?!)
+		DEATH comes from overdose from AGING (exceed 998)
+		DEATH comes from overdose from CO2 (exceed ???)
+		DEATH comes from overdose from GLUCOSE (exceed ???)
+	Aging, passing from status to status
+		age of application for some gene 
+			(0:0 for Brain, BrainLobe, Instinct (exceptions !)...)
+			Decision to lay egg
+			Detection for some actions / passing
 ... 
+

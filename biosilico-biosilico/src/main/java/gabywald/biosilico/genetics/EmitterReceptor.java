@@ -147,10 +147,12 @@ public class EmitterReceptor extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new EmitterReceptor(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-									this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-									this.variable, this.threshold, this.ioput, this.posx, this.posy, 
-									this.receptor, this.internal);
+		Gene toReturn = new EmitterReceptor(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+												this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+												this.variable, this.threshold, this.ioput, this.posx, this.posy, 
+												this.receptor, this.internal);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

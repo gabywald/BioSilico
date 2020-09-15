@@ -52,7 +52,10 @@ public class Chromosome {
 	 * @param orga (Organism) Current organism.  
 	 */
 	public void execution(Organism orga) {
-		this.genes.stream().forEach( g -> g.execution(orga) );
+		this.genes.stream().forEach( g -> {
+			// Logger.printlnLog(Logger.LoggerLevel.LL_NONE, g.toString());
+			g.execution(orga);
+		} );
 	}
 	
 	public int length() 		{ return this.genes.size(); }
