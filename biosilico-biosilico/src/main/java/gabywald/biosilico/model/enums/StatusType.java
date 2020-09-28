@@ -8,16 +8,16 @@ import gabywald.biosilico.interfaces.IChemicalsType;
  * @see StateType#STATUS
  */
 public enum StatusType implements IChemicalsType {
-	GAMET			(919, 	"Gamet", 		"gamet"), 
-	EGG				(920, 	"Egg", 			"egg"), 
-	EMBRYO			(921, 	"Embryo", 		"embryo"), 
-	LARVA			(922, 	"Larva", 		"larva"), 
-	CHILD			(923, 	"Child", 		"child"), 
-	TEEN			(924, 	"Teen", 		"teen"), 
-	ADULT			(925, 	"Adult", 		"adult"), 
-	SENIOR			(926, 	"Senior", 		"senior"), 
-	DEAD			(927, 	"Dead", 		"dead"), 
-	NOT_ACCURATE	(928, 	"Not Accurate", "notaccurate"), 
+	GAMET			(920, 	"Gamet", 		"gamet"), 
+	EGG				(921, 	"Egg", 			"egg"), 
+	EMBRYO			(922, 	"Embryo", 		"embryo"), 
+	LARVA			(923, 	"Larva", 		"larva"), 
+	CHILD			(924, 	"Child", 		"child"), 
+	TEEN			(925, 	"Teen", 		"teen"), 
+	ADULT			(926, 	"Adult", 		"adult"), 
+	SENIOR			(927, 	"Senior", 		"senior"), 
+	DEAD			(928, 	"Dead", 		"dead"), 
+	NOT_ACCURATE	(929, 	"Not Accurate", "notaccurate"), 
 	;
 
 	private int index;

@@ -6,7 +6,9 @@ Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2
 
 Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
 
-Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review !
+Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020). 
+
+More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020]
 
 ## Adding and notes about evolutions
 
@@ -22,7 +24,12 @@ For dev on BioSilico :
     * Abstraction for Chemicals / IChemicals
     * Decisions and Instincts to be precisely tested (with some examples)
     * Ideas about "Automatic Pathway construction" (GUI / Human Interface, Graphical or not)
-* ... 
+* Review for some genetics model / Type of genes : 
+    * BiochemicalReaction
+    * Instinct
+    * EmitterReceptor
+    * StimulusDecision
+    * ... 
 * ... 
 * ... 
 
@@ -33,6 +40,16 @@ For dev on BioSilico :
 First Aim was to do / retake an example with Ants, and some plants and fruits. Not totally from scratch / from nothing : it gives some ideas about how the engine could works. 
 
 Based on 'biosilico-biosilico' module !
+
+Work on July, August and September 2020 to get an example of Ant working basically (nervous system / Brain / Brain Lobes, Instincts, EmitterReceptor, StimulusDecisions to GET/DROP FOOD, MOVE_AWAY, MOVE... Seems to be a good example to build a genome and tools to build genomes. 
+
+Idea of a Tool to build "meta-genes" / Pathways : 
+* StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
+* At Least 6 Genes !
+
+Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
+
+
 
 ### 'biosilico-biojava' : 
 

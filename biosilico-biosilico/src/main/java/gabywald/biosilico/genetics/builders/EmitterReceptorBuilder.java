@@ -84,7 +84,7 @@ public class EmitterReceptorBuilder extends GeneBuilder<EmitterReceptor> {
 
 	@Override
 	public EmitterReceptor build() {
-		return new EmitterReceptor(	
+		EmitterReceptor toReturn = new EmitterReceptor(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -101,6 +101,9 @@ public class EmitterReceptorBuilder extends GeneBuilder<EmitterReceptor> {
 				Integer.parseInt(this.map.get(GeneBuilderEnum.POSY).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.RECEPTOR).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.INTERNAL).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

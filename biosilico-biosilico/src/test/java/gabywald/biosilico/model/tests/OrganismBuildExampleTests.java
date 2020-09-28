@@ -24,10 +24,426 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * @author Gabriel Chandesris (2020)
  */
 class OrganismBuildExampleTests {
+	
+	@Test
+	void testBiochemicalReactionStandardReaction001() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, 4, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionStandardReaction002() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, 4, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  1, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  1, test.getVariables().getVariable( 4 ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionStandardReaction003() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, 4, 1, 5));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 4 ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionFusion001() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionFusion002() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  1, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionFusion003() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionBreakdown001() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 0, 0, 0, 0,
+				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionBreakdown002() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionBreakdown003() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalytic001() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, 4, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalytic002() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, 4, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  1, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalytic003() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, 4, 1, 5));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalyticBreakdown001() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, false, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalyticBreakdown002() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
+	
+	@Test
+	void testBiochemicalReactionCatalyticBreakdown003() {
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				1, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+				2, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 0, 0, 0, 0,
+				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		test.execution(null);
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(3, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(3, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+	}
 
 	@Test
 	void testInitConc001() {
-
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, false, 0, 0, 0, 0,
 								1, 100));
@@ -48,7 +464,6 @@ class OrganismBuildExampleTests {
 
 	@Test
 	void testInitConc002() {
-
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 								1, 100));
@@ -69,7 +484,6 @@ class OrganismBuildExampleTests {
 
 	@Test
 	void testInitConc003() {
-
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
 								1, 100));
@@ -107,7 +521,7 @@ class OrganismBuildExampleTests {
 	@Test
 	void testInitConcWithBiochemicalReaction01() {
 
-		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
@@ -194,7 +608,7 @@ class OrganismBuildExampleTests {
 	@Test
 	void testInitConcWithBiochemicalReaction02() {
 
-		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
@@ -259,11 +673,11 @@ class OrganismBuildExampleTests {
 
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "*****");
 	}
-
+	
 	@Test
 	void testInitConcWithBiochemicalReaction03() {
 
-		Logger.setLogLevel(LoggerLevel.LL_NONE);
+		// Logger.setLogLevel(LoggerLevel.LL_NONE);
 
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
@@ -315,6 +729,104 @@ class OrganismBuildExampleTests {
 		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 6 ) );
 		Assertions.assertEquals(  0, test.getVariables().getVariable( 7 ) );
+	}
+	
+	@Test
+	void testInitConcWithBiochemicalReaction04() {
+
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						1, 10));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						2, 10));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						3, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						4, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						5, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						2));
+
+		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		// first execution / cycle 0
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
+		test.execution(null);
+		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(6, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(6, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 6 ) );
+		Assertions.assertEquals(  5, test.getVariables().getVariable( 7 ) );
+
+	}
+	
+	@Test
+	void testInitConcWithBiochemicalReaction05() {
+
+		// Logger.setLogLevel(LoggerLevel.LL_DEBUG);
+
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						1, 20));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						2, 20));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						3, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						4, 100));
+		basicGenome.addGene(new InitialConcentration(false, false, false, true, 0, 0, 0, 0,
+						5, 100));
+		basicGenome.addGene(new BiochemicalReaction(false, false, false, true, 
+						0, 10, 0, 0,
+						1, 10, 
+						2, 10, 
+						6, 5, 
+						7, 5, 
+						2));
+
+		Organism test		= new Organism(basicGenome);
+		
+		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		// first execution / cycle 0
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
+		test.execution(null);
+		test.cyclePlusPlus();
+		
+		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+
+		Assertions.assertEquals(6, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(6, test.getGenome().get(0).length());
+
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals( 10, test.getVariables().getVariable( 6 ) );
+		Assertions.assertEquals( 10, test.getVariables().getVariable( 7 ) );
+
 	}
 
 	@Test

@@ -16,6 +16,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2010, 2020)
+ * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ */
 public class VariableReadingTests {
 	
 	public void testGTC001() {

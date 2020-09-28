@@ -169,11 +169,13 @@ public class BrainLobeGene extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new BrainLobeGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-									this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-									this.rest, this.thre, this.desc, this.dendriticmin, this.dendriticmax, 
-									this.prox, this.repr, this.repy, this.wta, this.height, this.width, 
-									this.posx, this.posy, this.replace);
+		Gene toReturn = new BrainLobeGene(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+											this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+											this.rest, this.thre, this.desc, this.dendriticmin, this.dendriticmax, 
+											this.prox, this.repr, this.repy, this.wta, this.height, this.width, 
+											this.posx, this.posy, this.replace);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

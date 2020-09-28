@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.model.UnsignedByte;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2010, 2020)
+ * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ */
 public class UBTests {
 
 	@Test

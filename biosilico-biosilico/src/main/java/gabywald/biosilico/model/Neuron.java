@@ -187,9 +187,10 @@ public class Neuron {
 //					if (this.weights.get(i).intValue() > 10)
 //						{ this.weights.set(i, this.weights.get(i) - 1); }
 //				}
-				// ***** If weight is 0 or less : remove. 
-				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() <= 0) ) { 
-				if ( (this.weights.get(i).intValue() <= 0) && (this.connections.size() > this.dmin) ){
+				// ***** If weight is 0 : remove. 
+				// if ( (!this.winnerTakeAll) && (this.weights.get(i).intValue() == 0) ) { 
+				if ( (this.weights.get(i).intValue() == 0) 
+						&& (this.connections.size() > this.dmin) ) {
 					this.connections.remove(i);
 					this.weights.remove(i);
 				}
@@ -203,7 +204,7 @@ public class Neuron {
 			while ( (this.connections.size() < this.dmax) && (iteOnNeuron.hasNext()) ) {
 				Neuron candidate = iteOnNeuron.next();
 				// ***** Test if same Neuron at same position is present. 
-				if ( ! this.connections.contains(candidate)) { 
+				if ( ! this.connections.contains( candidate )) { 
 					this.connections.add( candidate );
 					this.weights.add(new Integer(this.proximity));
 				}
@@ -379,18 +380,21 @@ public class Neuron {
 		result.append("\t").append(this.reproduction?"true":"false");
 		result.append("\t").append(this.reproductibility);
 		result.append("\t").append(this.winnerTakeAll?"true":"false");
-		result.append("\t").append(this.currentLobe.size());
+		result.append("\t").append(this.currentLobe.size()).append("\n");
+		
+		result.append( this.toStringWithConnectionsAndWeights());
+		
 		return result.toString();
 	}
 	
-	public String toStringWithConnectionsAndWeights() {
+	private String toStringWithConnectionsAndWeights() {
 		final StringBuilder result = new StringBuilder();
-		result.append(this.toString()).append("\n");
+		// result.append(this.toString()).append("\n");
 		if (this.connections.size() == 0) {
-			result.append("\tNo Backward connections. \n");
+			// result.append("\tNo Backward connections. \n");
 		} else {
 			for (int i = 0 ; i < this.connections.size() ; i++) {
-				result.append("\t").append( this.connections.get(i).getPosition().toString() );
+				result.append("\tBackLink").append( this.connections.get(i).getPosition().toString() );
 				result.append("***").append( this.weights.get(i).toString() ).append("\n");
 			}
 		}

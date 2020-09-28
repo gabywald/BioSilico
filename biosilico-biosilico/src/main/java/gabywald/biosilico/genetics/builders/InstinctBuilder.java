@@ -18,6 +18,7 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 		this.map.put(GeneBuilderEnum.VARIABLE, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
 		this.map.put(GeneBuilderEnum.THRESHOLD, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
 		this.map.put(GeneBuilderEnum.CHECK, 		Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.POSITIVE, 		Pair.of(GeneAttemptedType.BOOLEAN,  "true"));
 	}
 	
 	public int setInputPosX(int inputPosX) {
@@ -50,6 +51,10 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 	
 	public boolean setCheck(boolean check) {
 		return this.setBoolean(GeneBuilderEnum.CHECK, check);
+	}
+	
+	public boolean setPositive(boolean posi) {
+		return this.setBoolean(GeneBuilderEnum.POSITIVE, posi);
 	}
 	
 	public InstinctBuilder inputPosX(int inputPosX) {
@@ -92,9 +97,14 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 		return this;
 	}
 	
+	public InstinctBuilder positiv(boolean posi) {
+		this.setPositive(posi);
+		return this;
+	}
+	
 	@Override
 	public Instinct build() {
-		return new Instinct(	
+		Instinct toReturn = new Instinct(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -111,7 +121,11 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 				Integer.parseInt(this.map.get(GeneBuilderEnum.WEIGHT).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.VARIABLE).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.THRESHOLD).second), 
-				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.CHECK).second));
+				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.CHECK).second), 
+				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.POSITIVE).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

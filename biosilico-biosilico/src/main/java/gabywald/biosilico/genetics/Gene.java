@@ -94,6 +94,7 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 		else { return this.name; }
 	}
 	
+	@Override
 	public String toString() {
 		String stringenize = 
 			this.mutate+"\t"+this.duplicate+"\t"+this.delete+"\t"+

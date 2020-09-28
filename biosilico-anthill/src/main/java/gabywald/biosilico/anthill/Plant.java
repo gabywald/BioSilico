@@ -1,5 +1,9 @@
 package gabywald.biosilico.anthill;
 
+import java.util.Arrays;
+import java.util.List;
+
+import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.ObjectType;
@@ -28,5 +32,16 @@ public class Plant extends Organism {
 		// ***** Take 'Solar Energy' to build some molecules !
 		
 	}
+	
+	public Plant(Chromosome basicGenome) {
+		this();
+		this.setGenome( Arrays.asList( basicGenome ) );
+	}
+	
+	public Plant(List<Chromosome> genome) {
+		this();
+		this.setGenome( genome );
+	}
+
 	
 }

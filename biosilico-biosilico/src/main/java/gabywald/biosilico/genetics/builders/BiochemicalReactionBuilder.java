@@ -104,7 +104,7 @@ public class BiochemicalReactionBuilder extends GeneBuilder<BiochemicalReaction>
 
 	@Override
 	public BiochemicalReaction build() {
-		return new BiochemicalReaction(	
+		BiochemicalReaction toReturn = new BiochemicalReaction(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DELETE).second), 
@@ -123,6 +123,9 @@ public class BiochemicalReactionBuilder extends GeneBuilder<BiochemicalReaction>
 				Integer.parseInt(this.map.get(GeneBuilderEnum.DCHEM).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.DCOEF).second), 
 				Integer.parseInt(this.map.get(GeneBuilderEnum.KMVM).second));
+		if ( ! this.map.get(GeneBuilderEnum.NAME).second.equals(""))
+			{ toReturn.setName( this.map.get(GeneBuilderEnum.NAME).second ); }
+		return toReturn;
 	}
 
 }

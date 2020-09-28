@@ -210,10 +210,11 @@ public class GeneParametersViewer extends CardJPanel {
 			int variaIN		= ((InstincJPanel)this.getCard(geneType)).getVariable();
 			int thresIN		= ((InstincJPanel)this.getCard(geneType)).getThreshold();
 			boolean check	= ((InstincJPanel)this.getCard(geneType)).getCheck();
-			middleOfLine += (new Instinct(mutate,duplic,
-					delete,activi,minimalAge,maximalAge,sex, mutateRate, 
-					posxInput,posyInput,posxOutput,posyOutput,weightIN,variaIN,thresIN,
-					check)).toString();
+			// TODO add a field / checkbox for positivity (default is true)
+			middleOfLine += (new Instinct(
+					mutate, duplic, delete, activi, minimalAge, maximalAge, sex, mutateRate, 
+					posxInput, posyInput, posxOutput, posyOutput, weightIN, variaIN, thresIN, 
+					check, true)).toString();
 			break;
 		}
 		

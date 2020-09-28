@@ -74,9 +74,11 @@ public class InitialConcentration extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new InitialConcentration(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-											this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-											this.varia, this.value);
+		Gene toReturn = new InitialConcentration(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+													this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+													this.varia, this.value);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

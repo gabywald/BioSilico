@@ -9,6 +9,7 @@ import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.global.structures.ObservableObject;
@@ -26,7 +27,7 @@ public abstract class Agent extends ObservableObject
 	/** Flag to know if it is alive or not. */
 	protected boolean alive;
 	/** Direction where Agent is going (if move). */
-	protected int direction;
+	protected DirectionWorld direction;
 	/** Current location of the agent. */
 	protected WorldCase current;
 	/** Next location of the agent (if move). */
@@ -95,9 +96,9 @@ public abstract class Agent extends ObservableObject
 	public void setAlive(boolean isAlive)		
 		{ this.alive = isAlive; }
 	
-	protected void setMovable(boolean isMovable) 
+	public void setMovable(boolean isMovable) 
 		{ this.variables.setVariable(StateType.MOVABLE.getIndex(), isMovable ? 100 : 0); }
-	protected void setEatable(boolean isEatable) 
+	public void setEatable(boolean isEatable) 
 		{ this.variables.setVariable(StateType.EATABLE.getIndex(), isEatable ? 100 : 0); }
 
 	public int getCycle()			{ return this.variables.getVariable(StateType.AGING.getIndex()); }
@@ -133,8 +134,8 @@ public abstract class Agent extends ObservableObject
 	
 	public void setNextWorldCase(WorldCase nextWC)		{ this.nextStep = nextWC; }
 	
-	public int getDirection()							{ return this.direction; }
-	public void setDirection(int direction)				{ this.direction = direction; }
+	public DirectionWorld getDirection()				{ return this.direction; }
+	public void setDirection(DirectionWorld direction)	{ this.direction = direction; }
 	
 	/** 
 	 * Define what Agent does (if it does something). 
@@ -144,9 +145,15 @@ public abstract class Agent extends ObservableObject
 	
 	@Override
 	public boolean deplace() {
-		if (this.nextStep != null) { this.current = this.nextStep; }
+		boolean isMoving = false;
+		if (this.nextStep != null) { 
+			this.current.remAgent( this );
+			this.current = this.nextStep; 
+			this.current.addAgent( this );
+			isMoving = true;
+		}
 		this.nextStep = null;
-		return true;
+		return isMoving;
 	}
 	
 	@Override

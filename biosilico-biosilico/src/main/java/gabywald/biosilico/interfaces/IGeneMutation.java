@@ -50,7 +50,7 @@ public interface IGeneMutation {
 		String reversed	= gene.reverseTranslation(true);
 		Gene toReturn	= null;
 		
-		// TODO make alternate for PaheII (Arrays.asList('U', 'B', 'V', 'P'))
+		// TODO make alternate for PhaseII (Arrays.asList('U', 'B', 'V', 'P'))
 		if (reversed.matches("[ACTG]+")) {
 			do {
 				Random rand	= new Random();

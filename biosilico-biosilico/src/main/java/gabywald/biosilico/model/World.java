@@ -1,5 +1,8 @@
 package gabywald.biosilico.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -19,6 +22,8 @@ public class World implements IChemicalsContent {
 	/** A special set of variables which defines 
 	 * half lives of chemicals in environment. */
 	private IChemicals halfLives;
+	
+	private List<WorldCase> wcs = null;
 	
 	public static final int MAX_HEIGHT	= 20;
 	public static final int MAX_WIDTH	= 20;
@@ -137,5 +142,20 @@ public class World implements IChemicalsContent {
 	public IChemicals getChemicals()	{ return this.halfLives; }
 	@Override
 	public IChemicals getVariables()	{ return this.halfLives; }
+	
+	public List<WorldCase> getWorldCases() {
+		if (this.wcs == null) {
+			List<WorldCase> wcs = new ArrayList<WorldCase>(World.MAX_HEIGHT * World.MAX_HEIGHT);
+			
+			IntStream.range(0, this.map.length).forEach( i -> {
+				IntStream.range(0, this.map[i].length).forEach( j -> {
+					wcs.add( this.map[i][j]);
+				});
+			});
+			
+			this.wcs = Collections.unmodifiableList( wcs );
+		}
+		return this.wcs;
+	}
 	
 }

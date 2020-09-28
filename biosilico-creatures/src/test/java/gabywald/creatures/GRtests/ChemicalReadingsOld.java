@@ -11,6 +11,11 @@ import gabywald.creatures.geneticReader.GeneticFileContentOld;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2010, 2020)
+ * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ */
 public class ChemicalReadingsOld {
 
 	@Test

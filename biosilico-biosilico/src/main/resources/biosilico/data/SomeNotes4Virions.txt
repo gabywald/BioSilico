@@ -1,0 +1,15 @@
+20200905 (some rebase notes about virus in BioSilico) : 
+	* Specific Kind of Gene (one Class / Object) and use of already existing ones (StimulusDecision, EmitterReceptor, Instinct, BioChemicalReaction...) ; 
+	* Virion-specific Gene Type :
+		- Parameters for infection / Insertion in Genome / Transposition (?) : AgentType, Chromosome, positions of inserted genes, 
+		- Activity when infection is done : could change activity of (other) genes !
+		- ... 
+	* Production of virions particles ; 
+	* New Decisions : 
+		- INTERNAL_ORGANISM_EXECUTION (exchange of Chemicals between Organism and internal element, with a temporary WorldCase / IEnvironmentItem) ;
+		- MAKE_VIRION (similar as MAKE_GAMET, but with virion part of genome, a selected chromosome to export (?) ) ;  
+		- TRANSPOSITION (move virion genome inside genome of organism ; could delete part of genome (?) ) ... 
+	* New Status : VIRION (929) as EGG or GAMET
+	* Use AgentType : BIOSILICO_VIRIA (939)
+	* Use ObjectType : SMALL_ELT (901)
+	

@@ -32,4 +32,100 @@
 	Make a Basic Example of an Ant
 	Make a Basic Example of a Plant
 	... 
-	
+
+20200901 : 
+	 * StimulusDecision, Some explanations :
+	 * ***** perception : apply detection on WorldCase and chemicals of current organism
+	 * (perception) && (object) => if (number of AgentType (indicator||attribute) > threshold) => set value at variable (else 0)
+	 * (perception) && ( ! object) => if (indicator at direction attribute > threshold) => set value at variable (else 0)
+	 * ***** not perception : chemicals of current organism then (if apply) decision 
+	 * ( ! perception) && (object) => if (indicator > threshold) => Decision !
+	 * ( ! perception) && ( ! object) => if (variable > threshold) => Decision !
+	 
+ 	 * EmitterReceptor, Some explanations (works only if Brain present and position of Neuron not null) :
+	 * (internal) && (receptor) => if (internal variable >= threshold) => activity at (x, y) increase by put
+	 * (internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => internal variable increase by put
+	 * ( ! internal) && (receptor) => if (WorldCase variable >= threshold) => activity at (x, y) increase by put
+	 * ( ! internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => external variable increase by put
+
+20200831 NOTES : 
+Some review to be done here to make following : 
+- If has no Fruit on carrying : deposit Pheromone_00 ; deposit Pheromone_01 otherwise
+- If has no Fruit on carrying : detect and moving to a WorldCase with Fruits ; otherwise nothing
+- If has no Fruit on carrying : detect and moving to Pheromone_00 ; otherwise Pheromone_01
+- Search for some mate if fertile !
+- When fertile and has enough gamets (QUEEN) : do not move and produce Pheromone_01, and EGGs, and LAY_EGG
+- Soldiers not for now ! 
+- Evolution / Aging from EGG to LARVA to WORKER to QUEEN (if apply)
+- Consume some Fruit if necessary (define hunger ? not enough Glucose / Glycogen ?) ; 
+- Deposit Fruits when in AntHill (high level of Pheromone_01)
+- ... 
+
+20200902 NOTES : 
+- Prioritization of "searching food" versus "back to AntHill with food" (more for this one) : stronger signal !
+- more signal for "has food" => transmission => using WTA => flares taking decision(s) about using Pheromone_01 (and following it)
+- other solution (cost more !) => negative transmission and / or negative detection !
+- "Detection" Input Lobes : 
+- connection with StimulusDecision for Pheromone_00 (all directions)	=> 9 [ch700-ch709]
+- connection with StimulusDecision for Pheromone_01 (all directions)	=> 9 [ch710-ch719]
+- connection with StimulusDecision for FOOD (all directions)			=> 9 [ch720-ch729]
+- connection with StimulusDecision for "has FOOD"						=> 1 [cg730]
+- Differents levels of threshold detection (AntHill VERY High for PHEROMONE_01 because of QUEEN !!)
+- ... 
+- Decision Lobe(s) : 
+- WTA group 1 : EmitterReceptor emit PHERONOMONE_00 __OR__ EmitterReceptor emit PHERONOMONE_01
+- WTA group 2 : [MOVE_TO for each direction] __OR__ GET (food) __OR__ DROP(food) __OR__ MOVE_AWAY
+- to put later : 
+- EAT
+- "hunger detection"
+
+20200905 NOTES : 
+- Brain and BrainLobes : groups of WTA neurones for "incompatible decisions"
+- EmitterReceptor as receptor for Stimulus => "first lines of BrainLobe"
+- EmitterReceptor as emitter for Stimulus => "last lines of BrainLobe"
+- Instinct between the two lines (different weights to apply priorities)
+- StimulusDecision as "not receptor" to take decision
+
+202020907 NOTES :
+- Brain :  
+	- 0	[0-26]	(heigth of 1)	DirW detect Ph_00
+	- 1	[0-26]	(heigth of 1)	DirW detect Ph_01
+	- 2	[0-26]	(heigth of 1)	DirW detect FOOD
+	- 3	[0-15]	(heigth of 1)	Pheromones Inputs (use for some Decisions, "HAS FOOD" for example)
+	- 10	[0-30] (heigth of 10)	"Concept Lobe I"
+	- 10	[0-30] (heigth of 10)	"Concept Lobe II"
+	- 90	[0-26]	Decision MOVE_TO DirW
+	- 90	[50+]	Other decisions
+
+20200910 NOTES : 
+	For treatment in brain via with decision with treatment in Brain, indications for a "Meta Builder" of pathways / group of genes
+	StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
+	At Least 6 Genes !
+
+20200915 NOTES : 
+	Decision action : Chemical variable beyond threshold (and launching process of decision make less of this varaibel value). 
+	Biochemistry : 
+		"classic" biochemistry : Krebs cycle at least !
+		taking "Digestive and Repertory System", biochemistry of Creatures
+			Starch => Glucose
+			Hexokinase + Glucose => H20 + C02
+			Glucose => Glycogen
+			Glycogen => Glucose
+			Hunger process ?
+			Chemoreceptors for DEATH
+			Neuron driven ?
+
+20200917 NOTES : 
+	Using ideas from Creatures about simple BioChemistry (to get better in the future). 
+	Adding Hexokinase when really moving ! (then use it with glucose after that !)
+	How an Agent / Organism Died ? Excess of some chemicals ! (i.e. hexokinase, aging ?!)
+		DEATH comes from overdose from AGING (exceed 998)
+		DEATH comes from overdose from CO2 (exceed ???)
+		DEATH comes from overdose from GLUCOSE (exceed ???)
+	Aging, passing from status to status
+		age of application for some gene 
+			(0:0 for Brain, BrainLobe, Instinct (exceptions !)...)
+			Decision to lay egg
+			Detection for some actions / passing
+... 
+

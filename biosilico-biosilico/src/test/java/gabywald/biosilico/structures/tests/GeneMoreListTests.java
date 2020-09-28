@@ -1,6 +1,5 @@
 package gabywald.biosilico.structures.tests;
 
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 import org.junit.jupiter.api.Assertions;
@@ -25,6 +24,7 @@ import gabywald.biosilico.structures.GeneMoreListe;
 /**
  * 
  * @author Gabriel Chandesris (2020)
+ * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
  */
 class GeneMoreListTests {
 

@@ -108,7 +108,7 @@ class GeneGattacaTests {
 			Assertions.assertEquals(StimulusDecision.class, sdExpected.getClass());
 		}
 		
-		for (String sequence : Arrays.asList(	"M024600099900025:001099105550200201*", "M024600099900025:001099105550200200*" )) {
+		for (String sequence : Arrays.asList(	"M024600099900025:0010991055502002012*", "M024600099900025:0010991055502002000*" )) {
 			GeneGattaca inExpected	= GeneGattaca.getInstance( GeneticTranslator.reverseSequenceGattaca( sequence ) );
 			Assertions.assertNotNull( inExpected );
 			Assertions.assertEquals(Instinct.class, inExpected.getClass());

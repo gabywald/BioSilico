@@ -83,6 +83,13 @@ public class EmitterReceptor extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	/**
+	 * EmitterReceptor, Some explanations (works only if Brain present and position of Neuronis not null) :
+	 * (internal) && (receptor) => if (internal variable >= threshold) => activity at (x, y) increase by put
+	 * (internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => internal variable increase by put
+	 * ( ! internal) && (receptor) => if (WorldCase variable >= threshold) => activity at (x, y) increase by put
+	 * ( ! internal) && ( ! receptor) => if (activity at (x, y) >= threshold) => external variable increase by put
+	 */
 	@Override
 	protected void exec(Organism orga) throws GeneException {
 		// Work only if a brain and a neuron are on position
@@ -140,10 +147,12 @@ public class EmitterReceptor extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new EmitterReceptor(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-									this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-									this.variable, this.threshold, this.ioput, this.posx, this.posy, 
-									this.receptor, this.internal);
+		Gene toReturn = new EmitterReceptor(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+												this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+												this.variable, this.threshold, this.ioput, this.posx, this.posy, 
+												this.receptor, this.internal);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override

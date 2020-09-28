@@ -549,7 +549,7 @@ class BrainTests {
 			Assertions.assertEquals((i == mIndex) ? mValue : aValue, local.getActivity());
 			Assertions.assertEquals( isWTA, local.isWTA() );
 			
-			Logger.printlnLog(LoggerLevel.LL_INFO, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
 			
 			if (isWTA) {
 				Assertions.assertEquals((i == mIndex), local.isActivated());
@@ -557,7 +557,7 @@ class BrainTests {
 				Assertions.assertEquals(true, local.isActivated());
 			}
 			
-			Logger.printlnLog(LoggerLevel.LL_INFO, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "xIndex: " + xIndex + "*aValue: " + aValue + "*mValue: " + mValue + "*mIndex: " + mIndex + "*isWTA: " + isWTA + "*" + local.getActivity() + "::" + i);
 			
 			Assertions.assertEquals((i == mIndex) ? mValue : ((isWTA) ? 0 : aValue), local.getActivity());
 		} );

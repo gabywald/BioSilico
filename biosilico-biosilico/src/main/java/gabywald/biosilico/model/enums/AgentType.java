@@ -8,11 +8,11 @@ import gabywald.biosilico.interfaces.IChemicalsType;
  * @see StateType#TYPEOF
  */
 public enum AgentType implements IChemicalsType {
-	BIOSILICO_DAEMON	(935, "Daemon", "daemon"), 
-	BIOSILICO_BACTA		(936, "Bacta", "bacta"), 
-	BIOSILICO_VIRIDITA	(937, "Plant", "plant"), 
-	BIOSILICO_ANIMA		(938, "Anima", "anima"), 
-	BIOSILICO_VIRIA		(939, "Virus", "virus"), 
+	BIOSILICO_DAEMON	(940, "Daemon", "daemon"), 
+	BIOSILICO_BACTA		(941, "Bacta", "bacta"), 
+	BIOSILICO_VIRIDITA	(942, "Plant", "plant"), 
+	BIOSILICO_ANIMA		(943, "Anima", "anima"), 
+	BIOSILICO_VIRIA		(944, "Virus", "virus"), 
 	;
 	
 	private int index;

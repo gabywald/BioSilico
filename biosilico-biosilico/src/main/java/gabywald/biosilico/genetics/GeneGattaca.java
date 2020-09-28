@@ -268,10 +268,10 @@ public abstract class GeneGattaca extends Gene {
 					return GeneGattaca.getSD(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
-				/** Instinct		 			length is 18 */
+				/** Instinct		 			length is 19 */
 				/** ex : M024600099900025:001099105550200201*
 				 		 M024600099900025:001099105550200200*	*/
-				if (memory.size() == ((4*2)+(3*3)+1) ) {
+				if (memory.size() == ((4*2)+(3*3)+1+1) ) {
 					return GeneGattaca.getIN(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, memory);
 				}
 				
@@ -460,8 +460,9 @@ public abstract class GeneGattaca extends Gene {
 		int var		= GeneGattaca.detectIntValue(memory.get(11), memory.get(12), memory.get(13));
 		int thr		= GeneGattaca.detectIntValue(memory.get(14), memory.get(15), memory.get(16));
 		boolean check = (memory.get(17).intValue()%2 == 0);
+		boolean posi = (memory.get(18).intValue()%2 == 0);
 		return new Instinct(	mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutationRate, 
-								inPosX, inPosY, outPosX, outPosY, weight, var, thr, check);
+								inPosX, inPosY, outPosX, outPosY, weight, var, thr, check, posi);
 	}
 	
 }

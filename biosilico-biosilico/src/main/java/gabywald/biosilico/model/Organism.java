@@ -7,6 +7,7 @@ import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.ObjectType;
+import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.structures.ExtendedLineageItem;
@@ -100,7 +101,7 @@ public class Organism extends Agent implements IAgentContent {
 	public void addExtendedLineageItem(	String uniqueID,
 			String scientificName,
 			String rank) 
-		{ this.extendedlineage.add(new ExtendedLineageItem(uniqueID, scientificName, rank)); }
+		{ this.addExtendedLineageItem(new ExtendedLineageItem(uniqueID, scientificName, rank)); }
 	
 	public void addExtendedLineageItem(	ExtendedLineageItem eli ) 
 		{ this.extendedlineage.add( eli ); }
@@ -135,12 +136,19 @@ public class Organism extends Agent implements IAgentContent {
 	}
 
 	public void execution(WorldCase local) {
-		this.current = local;
-		// ***** Genome is "executed". 
 		
+		if ( ! this.alive) { return; }
+		
+		this.current = local;
+		
+		this.setState( "" );
+		
+		// ***** Genome is "executed". 
 		// NOTE : here mainly works for haploïd genomes !! 
 		this.genome.stream().forEach( c -> c.execution(this) );
+		
 		// TODO genome length to 0 : death ?! 
+		
 		// ***** Running the brain (if not null). 
 		if (this.currentBrain != null) 
 			{ this.currentBrain.networking(); }
@@ -170,12 +178,22 @@ public class Organism extends Agent implements IAgentContent {
 		return decision;
 	}
 	
+	@Override
+	public boolean deplace() {
+		boolean isMoving = super.deplace();
+		if (isMoving) 
+			{ this.getChemicals().setVarPlusPlus(SomeChemicals.HEXOKINASE.getIndex()); }
+		return isMoving;
+	}
+	
 	/**
 	 * Add a state as agent. 
 	 * @param txt
 	 */
 	public void think(String txt) {
-		this.addState(this.getUniqueID() + "::" + txt);
+		String stateMSG = this.getUniqueID() + "::" + txt;
+		this.addState( stateMSG );
+		Logger.printlnLog(LoggerLevel.LL_INFO, stateMSG);
 		IDecision.recordInChemical(this, DecisionType.RECORDSTATE, DecisionType.THINK);
 	}
 

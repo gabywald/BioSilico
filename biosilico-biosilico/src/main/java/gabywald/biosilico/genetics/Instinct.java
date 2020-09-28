@@ -31,6 +31,8 @@ public class Instinct extends GeneGattaca {
 	private int threshold;
 	/** If input Neuron already present set weight or simply add dendrit. */
 	private boolean check;
+	/** Link is positive (or negative. */
+	private boolean isPositive;
 
 	/**
 	 * 
@@ -39,7 +41,7 @@ public class Instinct extends GeneGattaca {
 	 * @param delete (boolean) If Gene can be deleted. 
 	 * @param activ (boolean) If Gene is globally activated. 
 	 * @param ageMin (int) Minimal age of activation. <b>In general is 0. </b>
-	 * @param ageMax (int) Maximal age of activation. <b>In general is 999. </b>
+	 * @param ageMax (int) Maximal age of activation. <b>In general is 999 (or 0 if only at initial connections). </b>
 	 * @param sex (int) Sex of activation. 
 	 * @param mutRate (int) Rate of mutation of this Gene. 
 	 * @param inPosX (int) Height position of input Neuron in Brain.
@@ -50,12 +52,13 @@ public class Instinct extends GeneGattaca {
 	 * @param var (int) Chemical to test to apply Instinct.
 	 * @param thr (int) Minimal Threshold of chemical to apply Instinct.
 	 * @param check (boolean) If input Neuron already present set weight or simply add Neuron.
+	 * @param check (boolean) If connection is positive or negative. 
 	 */
 	public Instinct(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
 			int ageMin, int ageMax, int sex, int mutRate,
 			int inPosX, int inPosY, int outPosX, int outPosY, int weight, 
-			int var, int thr, boolean check) {
+			int var, int thr, boolean check, boolean posi) {
 		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
 		this.inputPosX	= Gene.obtainValue(0, 99, inPosX);
 		this.inputPosY	= Gene.obtainValue(0, 99, inPosY);
@@ -67,6 +70,7 @@ public class Instinct extends GeneGattaca {
 		this.threshold	= Gene.obtainValue(0, 999, thr);
 		
 		this.check		= check;
+		this.isPositive	= posi;
 	}
 	
 	@Override
@@ -80,7 +84,8 @@ public class Instinct extends GeneGattaca {
 		tmp.append(Gene.convert0to999(this.weight));
 		tmp.append(Gene.convert0to999(this.variable));
 		tmp.append(Gene.convert0to999(this.threshold));
-		tmp.append((this.check)?"0":"1"); 
+		tmp.append((this.check)?"0":"1");
+		tmp.append((this.isPositive)?"2":"3");
 		
 		result += GeneticTranslator.reverseSequenceGattaca( tmp.toString() );
 		
@@ -99,9 +104,9 @@ public class Instinct extends GeneGattaca {
 			int control		= -1; /** to check if input already connected to output. */
 			if (this.check) { control = output.getConnectPosition(input); }
 			if ( ( (input != null) && (output != null) ) && (control == -1) ) 
-				{ output.addConnection(input, this.weight); }
+				{ output.addConnection(input, this.weight * (this.isPositive ? +1 : -1 ) ); }
 			// ***** if already connected and checked : set weight */
-			if (control != -1) { output.getWeights().set(this.weight, control); }
+			if (control != -1) { output.getWeights().set(control, this.weight * (this.isPositive ? +1 : -1 ) ); }
 		} // END "if (orga.getChemicals().getVariable(this.variable) >= this.threshold)"
 	}
 	
@@ -114,6 +119,7 @@ public class Instinct extends GeneGattaca {
 	public int getThreshold()	{ return this.threshold; }
 
 	public boolean getCheck()	{ return this.check;  }
+	public boolean isPositive()	{ return this.isPositive;  }
 	
 	@Override
 	public String toString() {
@@ -122,16 +128,18 @@ public class Instinct extends GeneGattaca {
 							this.inputPosX+"\t"+this.inputPosY+"\t"+
 							this.outputPosX+"\t"+this.outputPosY+"\t"+
 							this.weight+"\t"+this.variable+"\t"+
-							this.threshold+"\t"+this.check+"\t";
+							this.threshold+"\t"+this.check+"\t"+this.isPositive+"\t";
 		return stringenize;
 	}
 	
 	@Override
 	public Gene clone() {
-		return new Instinct(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-								this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-								this.inputPosX, this.inputPosY, this.outputPosX, this.outputPosY, 
-								this.weight, this.variable, this.threshold, this.check);
+		Gene toReturn = new Instinct(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+										this.inputPosX, this.inputPosY, this.outputPosX, this.outputPosY, 
+										this.weight, this.variable, this.threshold, this.check, this.isPositive);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 	
 	@Override
@@ -148,6 +156,7 @@ public class Instinct extends GeneGattaca {
 		case(5):	this.variable	= IGeneMutation.mutate(this.variable, moreOrLess, 999); break;
 		case(6):	this.threshold	= IGeneMutation.mutate(this.threshold, moreOrLess, 999); break;
 		case(7):	this.check		= moreOrLess; break;
+		case(8):	this.isPositive	= moreOrLess; break;
 		}
 	}
 	

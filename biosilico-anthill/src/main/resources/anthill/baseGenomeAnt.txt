@@ -1,131 +1,195 @@
-// // // need some initial concentration !!
-## InitConc
-IC:O2 	true	true	false	true	0	0	0	25	180	100
-IC:CO2	true	true	false	true	0	0	0	25	181	50
-IC:H2O	true	true	false	true	0	0	0	25	182	100
-IC:HO-	true	true	false	true	0	0	0	25	183	30
-IC:CoA	true	true	false	true	0	0	0	25	184	15
-IC:NAD	true	true	false	true	0	0	0	25	165	25
-IC:NAE	true	true	false	true	0	0	0	25	166	25
-IC:FAD	true	true	false	true	0	0	0	25	167	25
-IC:FAE	true	true	false	true	0	0	0	25	168	25
-IC:Glu	true	true	false	true	0	0	0	25	169	25
-IC:Fru	true	true	false	true	0	0	0	25	170	25
-IC:ATP	true	true	false	true	0	0	0	25	150	10
-IC:ADP	true	true	false	true	0	0	0	25	151	20
-IC:Pho	true	true	false	true	0	0	0	25	15	20
-// // // need some biochemical reaction
-## BioReact
-BRGlyc01:Glucose=>G6P	true	true	false	true	0	0	0	25	1	169	1	150	1	151	1	171	1	
-BRGlyc02:Fructose=>F6P	true	true	false	true	0	0	0	25	1	170	1	150	1	151	1	172	1	
-BRGlyc03:G6P=>F6P	true	true	false	true	0	0	0	25	1	171	0	0	1	172	0	0	1	
-BRGlyc04:G6P=>F6P	true	true	false	true	0	0	0	25	1	172	0	0	1	171	0	0	1	
-BRGlyc05:F6P=>FPP	true	true	false	true	0	0	0	25	1	172	1	150	1	173	1	151	1	
-BRGlyc06:FPP=>DHAP+PGAL	true	true	false	true	0	0	0	25	1	173	0	0	1	174	1	175	1	
-BRGlyc07:DHAP+PGAL=>FPP	true	true	false	true	0	0	0	25	1	174	1	175	1	173	0	0	1	
-BRGlyc08:DHAP=>PGAL	true	true	false	true	0	0	0	25	1	174	0	0	1	175	0	0	1	
-BRGlyc09:PGAL=>DHAP	true	true	false	true	0	0	0	25	1	175	0	0	1	174	0	0	1	
-BRGlyc10:PGAL=>13PPGLY	true	true	false	true	0	0	0	25	1	175	1	165	1	176	1	166	2	
-BRGlyc11:13PPGLY=>PGAL	true	true	false	true	0	0	0	25	1	176	1	166	1	175	1	165	1	
-BRGlyc12:13PPGLY=>3PGLY	true	true	false	true	0	0	0	25	1	176	1	151	1	177	1	150	2	
-BRGlyc13:3PGLY=>13PPGLY	true	true	false	true	0	0	0	25	1	177	1	150	1	176	1	151	1	
-BRGlyc14:3PGLY=>2PGLY	true	true	false	true	0	0	0	25	1	177	0	0	1	178	0	0	2	
-BRGlyc15:2PGLY=>3PGLY	true	true	false	true	0	0	0	25	1	178	0	0	1	177	0	0	1	
-BRGlyc16:2PGLY=>PePyr+H20	true	true	false	true	0	0	0	25	1	178	0	0	1	179	1	182	2	
-BRGlyc17:PePyr+H20=>2PGLY	true	true	false	true	0	0	0	25	1	179	1	182	1	178	0	0	1	
-BRGlyc18:PePyr+ADP=>Pyr+ATP	true	true	false	true	0	0	0	25	1	179	1	151	1	198	1	150	2	
-BRGlyc19:Pyr+CoA=>CO2+ACoA	true	true	false	true	0	0	0	25	1	198	1	187	1	181	1	184	2	
-BRGlyc20:CO2+NAD=>CO2+NADH2	true	true	false	true	0	0	0	25	1	181	1	165	1	181	1	166	2	
-BRKR001:ACoA+Oxalo=>Citrate+CoA	true	true	false	true	0	0	0	25	1	184	1	185	1	186	1	187	1	
-BRKR002:Citrate=>Aconitate	true	true	false	true	0	0	0	25	1	186	0	0	1	188	0	0	2	
-BRKR003:Aconitate=>Citrate	true	true	false	true	0	0	0	25	1	188	0	0	1	186	0	0	1	
-BRKR004:Aconitate=>isoCitrate	true	true	false	true	0	0	0	25	1	188	1	182	1	189	0	0	2	
-BRKR005:isoCitrate=>Aconitate	true	true	false	true	0	0	0	25	1	189	0	0	1	188	1	182	1	
-BRKR006:isoCitrate=>OxSuccinate	true	true	false	true	0	0	0	25	1	189	1	165	1	190	1	166	2	
-BRKR007:OxSuccinate=>isoCitrate	true	true	false	true	0	0	0	25	1	190	1	166	1	189	1	165	1	
-BRKR008:OxSuccinate=>CetoGlutarate	true	true	false	true	0	0	0	25	1	190	0	0	1	191	2	181	1	
-BRKR009:CetoGlutarate=>SuccinylCoA	true	true	false	true	0	0	0	25	1	191	1	165	1	192	1	166	1	
-BRKR010:SuccinylCoA+GDP=>Succinate+GTP	true	true	false	true	0	0	0	25	1	192	1	157	1	193	1	156	1	
-BRKR011:Succinate+FAD=>Fumarate+FADH2	true	true	false	true	0	0	0	25	1	193	1	167	1	194	1	168	1	
-BRKR012:Fumarate+2H2O=>Malate	true	true	false	true	0	0	0	25	1	194	2	182	1	195	0	0	1	
-BRKR013:Malate+NAD=>Oxalo+NADH2	true	true	false	true	0	0	0	25	1	195	1	165	1	185	1	166	1	
-BRCH001:NADH+O2=>NAD+2HO-	true	true	false	true	0	0	0	25	1	166	1	180	1	165	2	183	1	
-BRCH002:FADH+O2=>FAD+2HO-	true	true	false	true	0	0	0	25	1	168	1	180	1	167	2	183	1	
-BRCH003:HO-+P=>HO-+H20	true	true	false	true	0	0	0	25	1	183	1	15	1	183	1	182	1	
-BRCH004:ADP+HO-=>ATP+H2O	true	true	false	true	0	0	0	25	1	151	1	183	1	150	1	182	1	
-## StimDecision Part 1
-// // // receptor for some variables from environment
-SD002:O2import	true	true	true	true	0	999	0	25	false	false	800	0	180	180	20	865
-SD004:H2Oimport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	10	865	
-// // // emitter for some variables from environment
-SD001:CO2export	true	true	true	true	0	999	0	25	false	false	800	0	181	181	5	864	
-SD003:H2Oexport	true	true	true	true	0	999	0	25	false	false	800	0	182	182	5	864	
-## Brain-Related
-// // // // // Brain
-BR001:50501	true	true	true	true	0	999	0	25	50	50	1	1
-// // // // // BrainLobes : input and output here !
-BL001:NEU0R31	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	31	false
-BL002:NEU0R32	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	32	false
-BL003:NEU0R33	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	33	false
-BL004:NEU0R34	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	34	false
-BL005:NEU0R35	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	35	false
-BL006:NEU0R36	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	36	false
-BL007:NEU0R37	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	37	false
-BL008:NEU0R38	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	38	false
-BL008:NEU0R39	true	true	true	true	0	999	0	25	0	10	50	0	0	0	false	0	false	1	1	0	39	false
-BL009:MOVETO	true	true	true	true	0	999	0	25	0	10	50	1	3	0	false	0	true	1	9	48	31	false
-## StimDecision Part 2
-// // // choice of destination :: movement !!
-// // // // // StimulusDecision : Local detection
-SDLOC:pher0LOC	true	true	true	true	0	999	0	25	true	false	650	10	800	700	5	0
-// // // // // StimulusDecision : detect from a given location 80x for ch650 (pheromone00) and internally add 5 to ch70x
-SD005:pher00NW	true	true	true	true	0	999	0	25	true	false	650	10	801	701	5	0
-SD006:pher00NN	true	true	true	true	0	999	0	25	true	false	650	10	802	702	5	0
-SD007:pher00NE	true	true	true	true	0	999	0	25	true	false	650	10	803	703	5	0
-SD008:pher00EE	true	true	true	true	0	999	0	25	true	false	650	10	804	704	5	0
-SD009:pher00SE	true	true	true	true	0	999	0	25	true	false	650	10	805	705	5	0
-SD010:pher00SS	true	true	true	true	0	999	0	25	true	false	650	10	806	706	5	0
-SD011:pher00SW	true	true	true	true	0	999	0	25	true	false	650	10	807	707	5	0
-SD012:pher00WW	true	true	true	true	0	999	0	25	true	false	650	10	807	708	5	0
-## EmitterReceptor
-// // // // // EmitterReceptor : detect values for internal ch70x and give activity to Neuron at pos(0, 3x)
-ER001:pher00NW	true	true	true	true	0	999	0	25	701	5	100	0	31	true	true
-ER002:pher00NN	true	true	true	true	0	999	0	25	702	5	100	0	32	true	true
-ER003:pher00NE	true	true	true	true	0	999	0	25	703	5	100	0	33	true	true
-ER004:pher00EE	true	true	true	true	0	999	0	25	704	5	100	0	34	true	true
-ER005:pher00SE	true	true	true	true	0	999	0	25	705	5	100	0	35	true	true
-ER006:pher00SS	true	true	true	true	0	999	0	25	706	5	100	0	36	true	true
-ER007:pher00SW	true	true	true	true	0	999	0	25	707	5	100	0	37	true	true
-ER008:pher00WW	true	true	true	true	0	999	0	25	708	5	100	0	38	true	true
-ER009:pher0LOC	true	true	true	true	0	999	0	25	700	5	100	0	39	true	true
-## Instincts
-// // // // // Instinct : connexion between input and output neurons (choice about movement), activ on ch169 (glucose)
-IN001:0R31----	true	true	true	true	1	1	0	25	0	31	48	31	20	169	5	false
-IN001:0R32----	true	true	true	true	1	1	0	25	0	32	48	32	20	169	5	false
-IN001:0R33----	true	true	true	true	1	1	0	25	0	33	48	33	20	169	5	false
-IN001:0R34----	true	true	true	true	1	1	0	25	0	34	48	34	20	169	5	false
-IN001:0R35----	true	true	true	true	1	1	0	25	0	35	48	35	20	169	5	false
-IN001:0R36----	true	true	true	true	1	1	0	25	0	36	48	36	20	169	5	false
-IN001:0R37----	true	true	true	true	1	1	0	25	0	37	48	37	20	169	5	false
-IN001:0R38----	true	true	true	true	1	1	0	25	0	38	48	38	20	169	5	false
-IN001:0R39----	true	true	true	true	1	1	0	25	0	39	48	39	20	169	5	false
-// // // choice of destination :: movement !!
-// // // decision to take fruits !
-// // // decision to drop fruits ! (in the AntHill)
-// // // decision to eat fruits !
-// // // decision to display pheromones !
-// // // detection of pheromones ! (gene combination to get input in brain !)
-
-// 20200831 NOTES : 
-// // // Some review to be done here to make following : 
-// // - moving to a WorldCase with Fruits and deposit Pheromone_00
-// // - moving to AntHill and depositit Fruit in it and deposit Pheromone_01 on this way
-// // - seeking for Pheromone_00 when NOT carrying fruits
-// // - seeking for Pheromone_01 when carrying fruits
-// // - search for some mate if fertile !
-// // - when fertile and has enough gamets (QUEEN) : do not move and produce Pheromone_01, and EGGs, and LAY_EGG
-// // - soldiers not for now ! 
-// // - evolution / aging from EGG to LARVA to WORKER to QUEEN (if apply)
-// // - Consume some Fruit (define hunger ?)
-// // - ... 
-
+## Brain and Connections
+Brain Gene 100*100*1*0	true	true	true	true	0	0	0	5	100	100	1	0	
+Brain Lobe Gene Data Input DW Ph_00	true	true	true	true	0	0	0	5	0	10	5	0	0	0	false	0	false	1	27	0	0	false	
+Brain Lobe Gene Data Input DW Ph_01	true	true	true	true	0	0	0	5	0	10	5	0	0	0	false	0	false	1	27	1	0	false	
+Brain Lobe Gene Data Input DW FOOD 	true	true	true	true	0	0	0	5	0	10	5	0	0	0	false	0	false	1	27	2	0	false	
+Brain Lobe Gene Data Input Pheromones	true	true	true	true	0	0	0	5	0	10	2	0	0	0	false	0	false	1	16	3	0	false	
+Brain Lobe Gene 'Concept Lobe I' (for associations of Inputs)	true	true	true	true	0	0	0	5	0	10	5	3	9	2	false	0	false	10	30	10	0	false	
+Brain Lobe Gene 'Concept Lobe II' (for associations of Inputs)	true	true	true	true	0	0	0	5	0	10	5	3	9	2	false	0	false	10	30	30	0	false	
+Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD) + EAT(FOOD) + DEATH	true	true	true	true	0	0	0	5	0	20	10	5	9	2	false	0	true	1	12	90	0	false	
+Brain Lobe Gene Data Output 2 : other decisions / Decision Lobe	true	true	true	true	0	0	0	5	0	50	10	5	9	2	false	0	true	1	10	90	50	false	
+## EmitterReceptor's input / output
+ER receptor input 00atLLL	true	true	true	true	0	999	0	5	700	5	20	0	0	true	true	
+ER receptor input 00atLWW	true	true	true	true	0	999	0	5	708	5	20	0	8	true	true	
+ER receptor input 00atLEE	true	true	true	true	0	999	0	5	704	5	20	0	4	true	true	
+ER receptor input 00atLNW	true	true	true	true	0	999	0	5	701	5	20	0	1	true	true	
+ER receptor input 00atLNN	true	true	true	true	0	999	0	5	702	5	20	0	2	true	true	
+ER receptor input 00atLNE	true	true	true	true	0	999	0	5	703	5	20	0	3	true	true	
+ER receptor input 00atLSE	true	true	true	true	0	999	0	5	705	5	20	0	5	true	true	
+ER receptor input 00atLSS	true	true	true	true	0	999	0	5	706	5	20	0	6	true	true	
+ER receptor input 00atLSW	true	true	true	true	0	999	0	5	707	5	20	0	7	true	true	
+ER receptor input 01atLLL	true	true	true	true	0	999	0	5	730	5	20	1	0	true	true	
+ER receptor input 01atLWW	true	true	true	true	0	999	0	5	738	5	20	1	8	true	true	
+ER receptor input 01atLEE	true	true	true	true	0	999	0	5	734	5	20	1	4	true	true	
+ER receptor input 01atLNW	true	true	true	true	0	999	0	5	731	5	20	1	1	true	true	
+ER receptor input 01atLNN	true	true	true	true	0	999	0	5	732	5	20	1	2	true	true	
+ER receptor input 01atLNE	true	true	true	true	0	999	0	5	733	5	20	1	3	true	true	
+ER receptor input 01atLSE	true	true	true	true	0	999	0	5	735	5	20	1	5	true	true	
+ER receptor input 01atLSS	true	true	true	true	0	999	0	5	736	5	20	1	6	true	true	
+ER receptor input 01atLSW	true	true	true	true	0	999	0	5	737	5	20	1	7	true	true	
+ER receptor input FOODatLLL	true	true	true	true	0	999	0	5	760	5	20	2	0	true	true	
+ER receptor input FOODatLWW	true	true	true	true	0	999	0	5	768	5	20	2	8	true	true	
+ER receptor input FOODatLEE	true	true	true	true	0	999	0	5	764	5	20	2	4	true	true	
+ER receptor input FOODatLNW	true	true	true	true	0	999	0	5	761	5	20	2	1	true	true	
+ER receptor input FOODatLNN	true	true	true	true	0	999	0	5	762	5	20	2	2	true	true	
+ER receptor input FOODatLNE	true	true	true	true	0	999	0	5	763	5	20	2	3	true	true	
+ER receptor input FOODatLSE	true	true	true	true	0	999	0	5	765	5	20	2	5	true	true	
+ER receptor input FOODatLSS	true	true	true	true	0	999	0	5	766	5	20	2	6	true	true	
+ER receptor input FOODatLSW	true	true	true	true	0	999	0	5	767	5	20	2	7	true	true	
+ER receptor input 01atLLL FORCE	true	true	true	true	0	999	0	5	730	99	100	1	1	true	true	
+ER receptor input Pheromone00	true	true	true	true	0	999	0	5	350	5	15	3	0	true	true	
+ER receptor input Pheromone01	true	true	true	true	0	999	0	5	351	5	15	3	1	true	true	
+ER receptor input Pheromone02	true	true	true	true	0	999	0	5	352	5	15	3	2	true	true	
+ER receptor input Pheromone03	true	true	true	true	0	999	0	5	353	5	15	3	3	true	true	
+ER receptor input Pheromone04	true	true	true	true	0	999	0	5	354	5	15	3	4	true	true	
+ER receptor input Pheromone05	true	true	true	true	0	999	0	5	355	5	15	3	5	true	true	
+ER receptor input Pheromone06	true	true	true	true	0	999	0	5	356	5	15	3	6	true	true	
+ER receptor input Pheromone07	true	true	true	true	0	999	0	5	357	5	15	3	7	true	true	
+ER receptor input Pheromone08	true	true	true	true	0	999	0	5	358	5	15	3	8	true	true	
+ER receptor input Pheromone09	true	true	true	true	0	999	0	5	359	5	15	3	9	true	true	
+ER receptor input GLUCOSE input 	true	true	true	true	0	999	0	5	169	5	15	3	10	true	true	
+ER receptor input FRUCTOSE input 	true	true	true	true	0	999	0	5	170	5	15	3	11	true	true	
+ER emitter output LLL	true	true	true	true	0	999	0	5	800	5	20	90	0	false	true	
+ER emitter output LWW	true	true	true	true	0	999	0	5	808	5	20	90	8	false	true	
+ER emitter output LEE	true	true	true	true	0	999	0	5	804	5	20	90	4	false	true	
+ER emitter output LNW	true	true	true	true	0	999	0	5	801	5	20	90	1	false	true	
+ER emitter output LNN	true	true	true	true	0	999	0	5	802	5	20	90	2	false	true	
+ER emitter output LNE	true	true	true	true	0	999	0	5	803	5	20	90	3	false	true	
+ER emitter output LSE	true	true	true	true	0	999	0	5	805	5	20	90	5	false	true	
+ER emitter output LSS	true	true	true	true	0	999	0	5	806	5	20	90	6	false	true	
+ER emitter output LSW	true	true	true	true	0	999	0	5	807	5	20	90	7	false	true	
+ER emitter output Move Away	true	true	true	true	0	999	0	5	855	10	10	90	9	false	true	
+ER emitter output Get FOOD	true	true	true	true	0	999	0	5	856	10	10	90	10	false	true	
+ER emitter output Drop FOOD	true	true	true	true	0	999	0	5	857	10	10	90	11	false	true	
+ER emitter output Eat FOOD	true	true	true	true	0	999	0	5	862	10	10	90	12	false	true	
+## Instinct : genetically-defined connections within Brain
+InitConc GLUCOSE 25	true	true	true	true	0	0	0	5	169	25	
+Instinct (0, 0) to (90, 0) LLL [G6]	true	true	true	true	0	0	0	5	0	0	90	0	10	169	5	false	true	
+Instinct (0, 8) to (90, 8) LWW [G6]	true	true	true	true	0	0	0	5	0	8	90	8	10	169	5	false	true	
+Instinct (0, 4) to (90, 4) LEE [G6]	true	true	true	true	0	0	0	5	0	4	90	4	10	169	5	false	true	
+Instinct (0, 1) to (90, 1) LNW [G6]	true	true	true	true	0	0	0	5	0	1	90	1	10	169	5	false	true	
+Instinct (0, 2) to (90, 2) LNN [G6]	true	true	true	true	0	0	0	5	0	2	90	2	10	169	5	false	true	
+Instinct (0, 3) to (90, 3) LNE [G6]	true	true	true	true	0	0	0	5	0	3	90	3	10	169	5	false	true	
+Instinct (0, 5) to (90, 5) LSE [G6]	true	true	true	true	0	0	0	5	0	5	90	5	10	169	5	false	true	
+Instinct (0, 6) to (90, 6) LSS [G6]	true	true	true	true	0	0	0	5	0	6	90	6	10	169	5	false	true	
+Instinct (0, 7) to (90, 7) LSW [G6]	true	true	true	true	0	0	0	5	0	7	90	7	10	169	5	false	true	
+Instinct (1, 0) to (90, 0) LLL [G6]	true	true	true	true	0	0	0	5	1	0	90	0	10	169	5	false	true	
+Instinct (1, 8) to (90, 8) LWW [G6]	true	true	true	true	0	0	0	5	1	8	90	8	10	169	5	false	true	
+Instinct (1, 4) to (90, 4) LEE [G6]	true	true	true	true	0	0	0	5	1	4	90	4	10	169	5	false	true	
+Instinct (1, 1) to (90, 1) LNW [G6]	true	true	true	true	0	0	0	5	1	1	90	1	10	169	5	false	true	
+Instinct (1, 2) to (90, 2) LNN [G6]	true	true	true	true	0	0	0	5	1	2	90	2	10	169	5	false	true	
+Instinct (1, 3) to (90, 3) LNE [G6]	true	true	true	true	0	0	0	5	1	3	90	3	10	169	5	false	true	
+Instinct (1, 5) to (90, 5) LSE [G6]	true	true	true	true	0	0	0	5	1	5	90	5	10	169	5	false	true	
+Instinct (1, 6) to (90, 6) LSS [G6]	true	true	true	true	0	0	0	5	1	6	90	6	10	169	5	false	true	
+Instinct (1, 7) to (90, 7) LSW [G6]	true	true	true	true	0	0	0	5	1	7	90	7	10	169	5	false	true	
+Instinct (2, 0) to (90, 0) LLL [G6]	true	true	true	true	0	0	0	5	2	0	90	0	10	169	5	false	true	
+Instinct (2, 8) to (90, 8) LWW [G6]	true	true	true	true	0	0	0	5	2	8	90	8	10	169	5	false	true	
+Instinct (2, 4) to (90, 4) LEE [G6]	true	true	true	true	0	0	0	5	2	4	90	4	10	169	5	false	true	
+Instinct (2, 1) to (90, 1) LNW [G6]	true	true	true	true	0	0	0	5	2	1	90	1	10	169	5	false	true	
+Instinct (2, 2) to (90, 2) LNN [G6]	true	true	true	true	0	0	0	5	2	2	90	2	10	169	5	false	true	
+Instinct (2, 3) to (90, 3) LNE [G6]	true	true	true	true	0	0	0	5	2	3	90	3	10	169	5	false	true	
+Instinct (2, 5) to (90, 5) LSE [G6]	true	true	true	true	0	0	0	5	2	5	90	5	10	169	5	false	true	
+Instinct (2, 6) to (90, 6) LSS [G6]	true	true	true	true	0	0	0	5	2	6	90	6	10	169	5	false	true	
+Instinct (2, 7) to (90, 7) LSW [G6]	true	true	true	true	0	0	0	5	2	7	90	7	10	169	5	false	true	
+Instinct (0, 0) to (90, 9) INT PHER01 => MOVE_AWAY [G6]	true	true	true	true	0	0	0	5	3	0	90	9	5	169	5	false	true	
+Instinct (0, 0) to (90, 9) LLL => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	0	90	9	1	169	5	false	false	
+Instinct (0, 8) to (90, 9) LWW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	8	90	9	1	169	5	false	false	
+Instinct (0, 4) to (90, 9) LEE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	4	90	9	1	169	5	false	false	
+Instinct (0, 1) to (90, 9) LNW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	1	90	9	1	169	5	false	false	
+Instinct (0, 2) to (90, 9) LNN => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	2	90	9	1	169	5	false	false	
+Instinct (0, 3) to (90, 9) LNE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	3	90	9	1	169	5	false	false	
+Instinct (0, 5) to (90, 9) LSE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	5	90	9	1	169	5	false	false	
+Instinct (0, 6) to (90, 9) LSS => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	6	90	9	1	169	5	false	false	
+Instinct (0, 7) to (90, 9) LSW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	0	7	90	9	1	169	5	false	false	
+Instinct (1, 0) to (90, 9) LLL => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	0	90	9	1	169	5	false	false	
+Instinct (1, 8) to (90, 9) LWW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	8	90	9	1	169	5	false	false	
+Instinct (1, 4) to (90, 9) LEE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	4	90	9	1	169	5	false	false	
+Instinct (1, 1) to (90, 9) LNW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	1	90	9	1	169	5	false	false	
+Instinct (1, 2) to (90, 9) LNN => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	2	90	9	1	169	5	false	false	
+Instinct (1, 3) to (90, 9) LNE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	3	90	9	1	169	5	false	false	
+Instinct (1, 5) to (90, 9) LSE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	5	90	9	1	169	5	false	false	
+Instinct (1, 6) to (90, 9) LSS => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	6	90	9	1	169	5	false	false	
+Instinct (1, 7) to (90, 9) LSW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	1	7	90	9	1	169	5	false	false	
+Instinct (2, 0) to (90, 9) LLL => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	0	90	9	1	169	5	false	false	
+Instinct (2, 8) to (90, 9) LWW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	8	90	9	1	169	5	false	false	
+Instinct (2, 4) to (90, 9) LEE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	4	90	9	1	169	5	false	false	
+Instinct (2, 1) to (90, 9) LNW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	1	90	9	1	169	5	false	false	
+Instinct (2, 2) to (90, 9) LNN => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	2	90	9	1	169	5	false	false	
+Instinct (2, 3) to (90, 9) LNE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	3	90	9	1	169	5	false	false	
+Instinct (2, 5) to (90, 9) LSE => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	5	90	9	1	169	5	false	false	
+Instinct (2, 6) to (90, 9) LSS => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	6	90	9	1	169	5	false	false	
+Instinct (2, 7) to (90, 9) LSW => MOVE_AWAY [G6] (negative)	true	true	true	true	0	0	0	5	2	7	90	9	1	169	5	false	false	
+Instinct (0, 0) to (90, 10) GET(FOOD) [G6]	true	true	true	true	0	0	0	5	0	0	90	10	10	169	5	false	true	
+Instinct (1, 1) to (90, 11) LLL PHER01 => DROP(FOOD) [G6]	true	true	true	true	0	0	0	5	1	1	90	11	10	169	5	false	true	
+Instinct (3, 1) to (90, 11) INT PHER01 => HAS(FOOD) [G6]	true	true	true	true	0	0	0	5	3	1	90	11	10	169	5	false	true	
+Instinct (3, 10) to (90, 12) G6 => EAT(FOOD) [G6] (negative)	true	true	true	true	0	0	0	5	3	10	90	12	1	169	5	false	false	
+Instinct (3, 11) to (90, 12) F5 => EAT(FOOD) [G6] (negative)	true	true	true	true	0	0	0	5	3	11	90	12	1	170	5	false	false	
+## StimulusDecision : Taking and Apply Decisions
+StimulusDecisionGene_MOVETO_LLL	true	true	true	true	0	999	0	5	false	true	800	10	800	0	0	854	
+StimulusDecisionGene_MOVETO_LWW	true	true	true	true	0	999	0	5	false	true	808	10	808	0	0	854	
+StimulusDecisionGene_MOVETO_LEE	true	true	true	true	0	999	0	5	false	true	804	10	804	0	0	854	
+StimulusDecisionGene_MOVETO_LNW	true	true	true	true	0	999	0	5	false	true	801	10	801	0	0	854	
+StimulusDecisionGene_MOVETO_LNN	true	true	true	true	0	999	0	5	false	true	802	10	802	0	0	854	
+StimulusDecisionGene_MOVETO_LNE	true	true	true	true	0	999	0	5	false	true	803	10	803	0	0	854	
+StimulusDecisionGene_MOVETO_LSE	true	true	true	true	0	999	0	5	false	true	805	10	805	0	0	854	
+StimulusDecisionGene_MOVETO_LSS	true	true	true	true	0	999	0	5	false	true	806	10	806	0	0	854	
+StimulusDecisionGene_MOVETO_LSW	true	true	true	true	0	999	0	5	false	true	807	10	807	0	0	854	
+StimulusDecisionGene_MOVEAWAY	true	true	true	true	0	999	0	5	false	true	855	0	0	0	0	855	
+StimulusDecisionGene_GET_FOOD	true	true	true	true	0	999	0	5	false	true	904	0	942	0	0	856	
+StimulusDecisionGene_DROP_FOOD	true	true	true	true	0	999	0	5	false	true	904	0	942	0	0	857	
+StimulusDecisionGene_EAT_FOOD	true	true	true	true	0	999	0	5	false	true	904	0	942	0	0	862	
+DEATH of GLUCOSE over 500	true	true	true	true	0	999	0	5	false	false	169	500	169	951	999	863	
+DEATH of CARBON_DIOXYDE over 500	true	true	true	true	0	999	0	5	false	false	181	500	181	951	999	863	
+DEATH of DIOXYGEN over 500	true	true	true	true	0	999	0	5	false	false	180	500	180	951	999	863	
+DEATH of WATER over 500	true	true	true	true	0	999	0	5	false	false	182	500	182	951	999	863	
+DEATH of AGING over 950	true	true	true	true	0	999	0	5	false	false	951	950	951	951	999	863	
+## StimulusDecision : Pheromones and FOOD detection !
+StimulusDecisionGeneLLL_00atLLL	true	true	true	true	0	999	0	5	true	false	350	10	800	700	5	0	
+StimulusDecisionGeneLLL_01atLLL	true	true	true	true	0	999	0	5	true	false	351	10	800	730	5	0	
+StimulusDecisionGeneFOODatLLL	true	true	true	true	0	999	0	5	true	true	904	0	800	760	5	0	
+StimulusDecisionGeneLWW_00atLWW	true	true	true	true	0	999	0	5	true	false	350	10	808	708	5	0	
+StimulusDecisionGeneLWW_01atLWW	true	true	true	true	0	999	0	5	true	false	351	10	808	738	5	0	
+StimulusDecisionGeneFOODatLWW	true	true	true	true	0	999	0	5	true	true	904	0	808	768	5	0	
+StimulusDecisionGeneLEE_00atLEE	true	true	true	true	0	999	0	5	true	false	350	10	804	704	5	0	
+StimulusDecisionGeneLEE_01atLEE	true	true	true	true	0	999	0	5	true	false	351	10	804	734	5	0	
+StimulusDecisionGeneFOODatLEE	true	true	true	true	0	999	0	5	true	true	904	0	804	764	5	0	
+StimulusDecisionGeneLNW_00atLNW	true	true	true	true	0	999	0	5	true	false	350	10	801	701	5	0	
+StimulusDecisionGeneLNW_01atLNW	true	true	true	true	0	999	0	5	true	false	351	10	801	731	5	0	
+StimulusDecisionGeneFOODatLNW	true	true	true	true	0	999	0	5	true	true	904	0	801	761	5	0	
+StimulusDecisionGeneLNN_00atLNN	true	true	true	true	0	999	0	5	true	false	350	10	802	702	5	0	
+StimulusDecisionGeneLNN_01atLNN	true	true	true	true	0	999	0	5	true	false	351	10	802	732	5	0	
+StimulusDecisionGeneFOODatLNN	true	true	true	true	0	999	0	5	true	true	904	0	802	762	5	0	
+StimulusDecisionGeneLNE_00atLNE	true	true	true	true	0	999	0	5	true	false	350	10	803	703	5	0	
+StimulusDecisionGeneLNE_01atLNE	true	true	true	true	0	999	0	5	true	false	351	10	803	733	5	0	
+StimulusDecisionGeneFOODatLNE	true	true	true	true	0	999	0	5	true	true	904	0	803	763	5	0	
+StimulusDecisionGeneLSE_00atLSE	true	true	true	true	0	999	0	5	true	false	350	10	805	705	5	0	
+StimulusDecisionGeneLSE_01atLSE	true	true	true	true	0	999	0	5	true	false	351	10	805	735	5	0	
+StimulusDecisionGeneFOODatLSE	true	true	true	true	0	999	0	5	true	true	904	0	805	765	5	0	
+StimulusDecisionGeneLSS_00atLSS	true	true	true	true	0	999	0	5	true	false	350	10	806	706	5	0	
+StimulusDecisionGeneLSS_01atLSS	true	true	true	true	0	999	0	5	true	false	351	10	806	736	5	0	
+StimulusDecisionGeneFOODatLSS	true	true	true	true	0	999	0	5	true	true	904	0	806	766	5	0	
+StimulusDecisionGeneLSW_00atLSW	true	true	true	true	0	999	0	5	true	false	350	10	807	707	5	0	
+StimulusDecisionGeneLSW_01atLSW	true	true	true	true	0	999	0	5	true	false	351	10	807	737	5	0	
+StimulusDecisionGeneFOODatLSW	true	true	true	true	0	999	0	5	true	true	904	0	807	767	5	0	
+StimulusDecision : HAS FOOD	true	true	true	true	0	999	0	5	false	false	904	0	942	351	100	866	
+BiochemicalReaction : Pheromone_01 breakdown !	true	true	true	true	0	999	0	5	5	351	0	600	0	600	0	600	1	
+## Initial Concentration's
+InitConc GLUCOSE 25	true	true	true	true	0	0	0	5	169	25	
+InitConc STARCH 25	true	true	true	true	0	0	0	5	330	25	
+InitConc ENERGY_HEAT 25	true	true	true	true	0	0	0	5	391	25	
+InitConc GLYCOGEN 25	true	true	true	true	0	0	0	5	332	25	
+InitConc CARBON_DIOXYDE 25	true	true	true	true	0	0	0	5	181	25	
+InitConc DIOXYGEN 25	true	true	true	true	0	0	0	5	180	25	
+InitConc WATER 25	true	true	true	true	0	0	0	5	182	25	
+StimulusDecision RECEIVE ENERGY_HEAT	true	true	true	true	0	999	0	5	false	false	800	0	391	391	5	865	
+StimulusDecision RECEIVE DIOXYGEN	true	true	true	true	0	999	0	5	false	false	800	0	180	180	10	865	
+StimulusDecision EMIT DIOXYGEN	true	true	true	true	0	999	0	5	false	false	800	0	181	181	5	864	
+StimulusDecision EMIT WATER	true	true	true	true	0	999	0	5	false	false	800	0	182	182	5	864	
+## Biochemical Reaction's
+BiochemicalReaction : 1 STARCH to 6 GLUCOSE !	true	true	true	true	0	999	0	5	1	330	0	600	6	169	0	600	1	
+BiochemicalReaction : HEXOKINASE + GLUCOSE => CO2 + H20 !	true	true	true	true	0	999	0	5	1	331	1	169	6	181	6	182	10	
+BiochemicalReaction : HEXOKINASE + FRUCTOSE => CO2 + H20 !	true	true	true	true	0	999	0	5	1	331	1	170	5	181	5	182	10	
+BiochemicalReaction : 10 GLUCOSE to 1 GLYCOGEN !	true	true	true	true	0	999	0	5	10	169	5	180	1	332	0	600	10	
+BiochemicalReaction : 15 FRUCTOSE to 1 GLYCOGEN !	true	true	true	true	0	999	0	5	15	170	5	180	1	332	0	600	10	
+BiochemicalReaction : 1 GLYCOGEN to 10 GLUCOSE !	true	true	true	true	0	999	0	5	1	332	0	600	10	169	0	600	1	
+BiochemicalReaction : 1 GLYCOGEN to 8 GLUCOSE ! (hexokinase catalysis)	true	true	true	true	0	999	0	5	1	332	1	331	8	169	0	600	3	

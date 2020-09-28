@@ -6,7 +6,7 @@ import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.WorldCase;
-import gabywald.biosilico.model.enums.AgentType;
+import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
@@ -87,43 +87,56 @@ public class StimulusDecision extends GeneGattaca {
 		return result+GeneticTranslator.reverseGattaca("*");
 	}
 
+	/**
+	 * StimulusDecision, Some explanations :
+	 * ***** perception : apply detection on WorldCase and chemicals of current organism
+	 * (perception) && (object) => if (indicator||attribute >= threshold) => set value at variable (else 0)
+	 * (perception) && ( ! object) => if (indicator at direction attribute >= threshold) => set value at variable (else 0)
+	 * ***** not perception : chemicals of current organism then (if apply) decision 
+	 * ( ! perception) && (object) => if (indicator > threshold) => Decision !
+	 * ( ! perception) && ( ! object) => if (variable > threshold) => Decision !
+	 */
+	@Override
 	protected void exec(Organism orga) throws GeneException {
 		if (this.perception) { 
 			// ***** This is an input / stimulus
 			if (this.object) { 
 				// ***** Acts from an object 
 				/** Works for object AND one attribute. */
-				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.indicator) ) >= this.threshold) 
-					{ orga.getChemicals().setVariable(this.varia, this.value); }
-				if (orga.getCurrentWorldCase().hasAgentType( AgentType.getFrom(this.attribute) ) >= this.threshold) 
-					{ orga.getChemicals().setVariable(this.varia, this.value); }
+				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
+				if ( (detectWC != null) && (detectWC.hasObjectType( ObjectType.getFrom(this.indicator) ) > this.threshold ) ) 
+					{  orga.getChemicals().setVariable(this.varia, this.value); } 
+				else { orga.getChemicals().setVariable(this.varia, 0); }
+
+				// Logger.printlnLog(LoggerLevel.LL_DEBUG, this.attribute + "::" + ((detectWC != null)?detectWC.getPos().toString() + detectWC.hasObjectType( ObjectType.getFrom(this.indicator) ):"null") + " (" + orga.getCurrentWorldCase().hasObjectType( ObjectType.getFrom(this.indicator) ) + ")" +  "::" + this.varia + "::" + orga.getChemicals().getVariable(this.varia) );
+
 			} else { 
 				// ***** Acts from a variable located with attribute. 
 				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
-				if ( (detectWC != null) && (detectWC.getVariables().getVariable(this.indicator) >= this.threshold) ) 
+				if ( (detectWC != null) && (detectWC.getVariables().getVariable(this.indicator) > this.threshold) ) 
 					{ orga.getChemicals().setVariable(this.varia, this.value); }
+				else { orga.getChemicals().setVariable(this.varia, 0); }
 			}
 		} else { 
 			// ***** this is an output / decision 
-			/** Activity on variable or objet make sense in action. */
+			/** Activity on variable or object make sense in action. */
 			if (this.object) {
 				// ***** Acts to an object 
-				if (orga.getChemicals().getVariable(this.indicator) > this.threshold) {
+				if (orga.getChemicals().getVariable(this.scrip) > this.threshold) {
 					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
 								  this.attribute, this.varia, this.value);
-					/** Variable change here is :  
-					 * 		(standard) indicator set / tend to 0. 
+					/** Variable change here is :  (standard) indicator set / tend to 0. 
 					 * => here (--) because can be increased by action. */
-					orga.getChemicals().setVarLessLess(this.indicator);
-				}
+					orga.getChemicals().setVarLessLess(this.scrip);
+				} // END "if (orga.getChemicals().getVariable(this.indicator) > this.threshold)"
 			} else { 
-				// ***** Acts to a variable : emit, receive... 
-				if (orga.getChemicals().getVariable(this.varia) > this.threshold) {
+				// ***** Acts to a variable : emit, receive... death...
+				// if (orga.getChemicals().getVariable(this.value) > this.threshold) {
 					// ***** Action has to be done. 
 					orga.activity(this.scrip,  this.indicator, this.threshold, 
 								  this.attribute, this.varia, this.value);
-				}
+				// } // END "if (orga.getChemicals().getVariable(this.varia) > this.threshold)"
 			}
 		}
 	}
@@ -150,10 +163,12 @@ public class StimulusDecision extends GeneGattaca {
 	
 	@Override
 	public Gene clone() {
-		return new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
-										this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
-										this.perception, this.object, this.indicator, this.threshold, 
-										this.attribute, this.varia, this.value, this.scrip);
+		Gene toReturn = new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
+												this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 
+												this.perception, this.object, this.indicator, this.threshold, 
+												this.attribute, this.varia, this.value, this.scrip);
+		toReturn.setName( this.getName() );
+		return toReturn;
 	}
 
 	@Override
