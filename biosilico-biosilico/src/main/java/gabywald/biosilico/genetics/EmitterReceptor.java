@@ -115,14 +115,14 @@ public class EmitterReceptor extends GeneGattaca {
 			// Example : pheromone detection / excretion
 			if (this.receptor) {
 				// External Receptor
-				int chemicalVal = orga.getCurrentWorldCase().getVariables().getVariable(this.variable);
+				int chemicalVal = orga.getCurrentEnvironmentItem().getChemicals().getVariable(this.variable);
 				if (chemicalVal >= this.threshold) 
 					{ orga.getBrain().getNeuronAt(this.posx, this.posy).addActivity(this.ioput); }
 			} else { 
 				// External Emitter
 				int activityNeu = orga.getBrain().getNeuronAt(this.posx, this.posy).getActivity();
 				if (activityNeu > this.threshold) 
-					{ orga.getCurrentWorldCase().getVariables().setVarPlus(this.variable, this.ioput); }
+					{ orga.getCurrentEnvironmentItem().getChemicals().setVarPlus(this.variable, this.ioput); }
 			}
 		}
 	}

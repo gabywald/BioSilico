@@ -1,11 +1,14 @@
-package gabywald.biosilico.model;
+package gabywald.biosilico.model.environment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.interfaces.IAgentContent;
 import gabywald.biosilico.interfaces.IChemicals;
-import gabywald.biosilico.interfaces.IChemicalsContent;
+import gabywald.biosilico.interfaces.IEnvironment;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
+import gabywald.biosilico.interfaces.IPosition;
+import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
@@ -17,61 +20,51 @@ import gabywald.biosilico.model.enums.StatusType;
  * This classe defines elements of the simulation environment where Agent's evolve. 
  * @author Gabriel Chandesris (2009, 2020)
  */
-public class WorldCase implements IChemicalsContent, IAgentContent {
+public class World2DCase implements IEnvironmentItem {
 	/** Chemical list of current element. */
 	private IChemicals variables;
 	/** Set of Agents and items in current element. */ 
 	private List<Agent> liste;
 	/** Environment where this current element is included in.  */
-	private World world;
+	private World2D world;
 	/** Position of this element (x -> height, y -> width). */
-	private Position pos;
+	private IPosition pos;
 	
 	/** Default constructor of element of environment. */
-	public WorldCase() {
-		this (null, -1, -1);
+	public World2DCase() {
+		this(null, PositionBuilder.buildPosition(-1, -1) );
 	}
 	
 	/**
 	 * Constructor of an element of environment with given global. 
 	 * @param world (World) Global environment. 
+	 * @param position (IPosition) position in environment. 
 	 */
-	public WorldCase(World world, int posx, int posy) {
+	public World2DCase(World2D world, IPosition position) {
 		this.variables	= ChemicalsBuilder.build();
 		this.liste		= new ArrayList<Agent>();
 		this.world		= world;
-		this.pos		= new Position(posx, posy);
+		this.pos		= position;
 	}
 	
-	public int getPosX()		{ return this.pos.getPosX(); }
-	public int getPosY()		{ return this.pos.getPosY(); }
+	@Override
+	public IPosition getPosition()			{ return this.pos; }
 	
-	public Position getPos()	{ return this.pos; }
-	
-	public World getWorld()		{ return this.world; }
-	
-	/**
-	 * To get a WorldCase in a given direction of environment. 
-	 * @param dir (int) direction (from 800 to 829)
-	 * @return (Worldcase) Can be null. 
-	 */
-	public WorldCase getDirection(int dir) { 
-		return (this.world == null) ? null : this.world.getDirection(dir, this.pos.getPosX(), this.pos.getPosY()); 
-	}
+	@Override
+	public IEnvironment getEnvironment()	{ return this.world; }
 	
 	/**
 	 * To get a WorldCase in a given direction of environment. 
 	 * @param dir (DirectionWorld) direction. 
 	 * @return (Worldcase) Can be null. 
 	 */
-	public WorldCase getDirection(DirectionWorld dir) { 
-		return (this.world == null) ? null : this.world.getDirection(dir, this.pos.getPosX(), this.pos.getPosY()); 
+	@Override
+	public IEnvironmentItem getDirection(DirectionWorld dir) { 
+		return (this.world == null) ? null : this.world.getDirection(dir, this.pos); 
 	}
 	
 	@Override
 	public IChemicals getChemicals()	{ return this.variables; }
-	@Override
-	public IChemicals getVariables()	{ return this.variables; }
 	@Override
 	public int getAgentListLength()		{ return this.liste.size(); }
 	@Override
@@ -124,7 +117,8 @@ public class WorldCase implements IChemicalsContent, IAgentContent {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append("POSITION\t").append(this.getPosX()).append("\t").append(this.getPosY()).append("\n");
+		result.append("POSITION\t").append(this.getPosition().getPosX()).append("\t")
+									.append(this.getPosition().getPosY()).append("\n");
 		result.append("AGENT LIST\n");
 		if (this.liste.size() != 0) {
 			this.liste.stream().forEach( ag -> result.append( "\t" ).append( ag.getScientificName() ).append(" (").append( ag.getUniqueID() ).append(")\n") );

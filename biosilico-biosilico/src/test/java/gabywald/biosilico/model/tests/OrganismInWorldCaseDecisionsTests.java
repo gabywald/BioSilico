@@ -12,8 +12,6 @@ import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
@@ -21,6 +19,8 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.global.data.StringUtils;
 
 /**
@@ -100,8 +100,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -109,23 +109,23 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.THINK.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.THINK.getIndex() ) );
 		
 		// ***** Indicates THINK
-		testOrga.getVariables().setVariable(DecisionType.THINK.getIndex(), 5);
+		testOrga.getChemicals().setVariable(DecisionType.THINK.getIndex(), 5);
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		Assertions.assertEquals( testOrga.getUniqueID() + "::think about [Glucose]\t", testOrga.getState() );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( DecisionType.THINK.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.THINK.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -136,11 +136,11 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		Assertions.assertEquals(  testOrga.getUniqueID() + "::think about [Glucose]\t", testOrga.getState() );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( DecisionType.THINK.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( DecisionType.THINK.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -221,8 +221,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -230,16 +230,16 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -251,9 +251,9 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -267,9 +267,9 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals( 42, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 42, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -351,8 +351,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -360,8 +360,8 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -369,11 +369,11 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  0, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.HAS.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.HAS.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -387,11 +387,11 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  0, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.HAS.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.HAS.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -408,11 +408,11 @@ class OrganismInWorldCaseDecisionsTests {
 
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.HAS.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.HAS.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -423,7 +423,7 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.addAgent( new TestObjectFoodEgg() );
 		
 		// ***** Indicates HAS
-		testOrga.getVariables().setVariable(DecisionType.HAS.getIndex(), 5);
+		testOrga.getChemicals().setVariable(DecisionType.HAS.getIndex(), 5);
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -431,11 +431,11 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  1, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( DecisionType.HAS.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals( 42, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.HAS.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals( 42, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -517,8 +517,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -526,19 +526,19 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.GET.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.GET.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -551,11 +551,11 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.GET.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.GET.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -567,7 +567,7 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		
 		// ***** Indicates GET
-		testOrga.getVariables().setVariable(DecisionType.GET.getIndex(), 5);
+		testOrga.getChemicals().setVariable(DecisionType.GET.getIndex(), 5);
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -575,11 +575,11 @@ class OrganismInWorldCaseDecisionsTests {
 
 		Assertions.assertEquals(  0, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  1, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( DecisionType.GET.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.GET.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -595,11 +595,11 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  0, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  2, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( DecisionType.GET.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( DecisionType.GET.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -613,11 +613,11 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  0, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  2, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( DecisionType.GET.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  5, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( DecisionType.GET.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  5, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -699,8 +699,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -708,8 +708,8 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		
 		
@@ -718,11 +718,11 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -735,11 +735,11 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -751,7 +751,7 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		
 		// ***** Indicates DROP
-		testOrga.getVariables().setVariable(DecisionType.DROP.getIndex(), 5);
+		testOrga.getChemicals().setVariable(DecisionType.DROP.getIndex(), 5);
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -759,13 +759,13 @@ class OrganismInWorldCaseDecisionsTests {
 
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -781,13 +781,13 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  2, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -801,13 +801,13 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  2, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  5, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  5, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -889,8 +889,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -898,21 +898,21 @@ class OrganismInWorldCaseDecisionsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -925,13 +925,13 @@ class OrganismInWorldCaseDecisionsTests {
 		testOrga.cyclePlusPlus(); // Aging organism
 		
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( DecisionType.DROP.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( DecisionType.DROP.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -943,7 +943,7 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		
 		// ***** Indicates EAT
-		testOrga.getVariables().setVariable(DecisionType.EAT.getIndex(), 5);
+		testOrga.getChemicals().setVariable(DecisionType.EAT.getIndex(), 5);
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -951,13 +951,13 @@ class OrganismInWorldCaseDecisionsTests {
 
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( DecisionType.EAT.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.EAT.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -973,13 +973,13 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( DecisionType.EAT.getIndex() ) );
-		Assertions.assertEquals( 50, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  4, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( DecisionType.EAT.getIndex() ) );
+		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -993,13 +993,13 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
 		Assertions.assertEquals(  0, testOrga.hasObjectType(ObjectType.FOOD) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( DecisionType.EAT.getIndex() ) );
-		Assertions.assertEquals( 50, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.STARCH.getIndex() ) );
-		Assertions.assertEquals(  5, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( DecisionType.EAT.getIndex() ) );
+		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.STARCH.getIndex() ) );
+		Assertions.assertEquals(  5, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
 		System.out.println( testOrga.toString() );
@@ -1082,8 +1082,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -1093,8 +1093,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertTrue( testOrga.isAlive() );
 		Assertions.assertNotEquals( StatusType.DEAD, testOrga.getOrganismStatus() );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -1102,8 +1102,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertTrue( testOrga.isAlive() );
 		Assertions.assertNotEquals( StatusType.DEAD, testOrga.getOrganismStatus() );
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		testOrga.getChemicals().setVariable(SomeChemicals.GLUCOSE.getIndex(), thresholdGlucose2kill + 100);
 		
@@ -1113,8 +1113,8 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertFalse( testOrga.isAlive() );
 		Assertions.assertEquals( StatusType.DEAD, testOrga.getOrganismStatus() );
-		Assertions.assertEquals(600, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(999, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(600, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(999, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 	}
 
 }

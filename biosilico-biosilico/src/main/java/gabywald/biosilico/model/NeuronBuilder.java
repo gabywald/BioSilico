@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.biosilico.model.environment.PositionBuilder;
 
 /**
  * Builder for Neuron Model class. 
@@ -191,7 +192,9 @@ public class NeuronBuilder {
 				Boolean.parseBoolean(this.map.get(NeuronBuilderEnum.REPR).second), 
 				Integer.parseInt(this.map.get(NeuronBuilderEnum.REPY).second), 
 				Boolean.parseBoolean(this.map.get(NeuronBuilderEnum.WTA).second), 
-				new Position(Integer.parseInt(this.map.get(NeuronBuilderEnum.POSX).second), Integer.parseInt(this.map.get(NeuronBuilderEnum.POSY).second) ), 
+				PositionBuilder.buildPosition(
+						Integer.parseInt(this.map.get(NeuronBuilderEnum.POSX).second), 
+						Integer.parseInt(this.map.get(NeuronBuilderEnum.POSY).second) ), 
 				new ArrayList<Neuron>(), new ArrayList<Integer>() );
 	}
 	

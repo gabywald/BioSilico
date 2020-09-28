@@ -3,8 +3,8 @@ package gabywald.biosilico.model.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.SomeChemicals;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
@@ -45,11 +45,11 @@ class EnergySourceTests {
 		Assertions.assertTrue( es.isHeat() );
 		
 		// ***** Test of changes !
-		WorldCase wc = new WorldCase();
+		World2DCase wc = new World2DCase();
 		
 		Assertions.assertNotNull( wc );
-		Assertions.assertEquals(0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
 		es.execution( wc );
 		
@@ -57,28 +57,28 @@ class EnergySourceTests {
 		Assertions.assertTrue( es.isSolar() );
 		Assertions.assertTrue( es.isHeat() );
 		
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
 		es.setHeat( false );
 		es.execution( wc );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
 		es.setSolar( false );
 		es.execution( wc );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
 		es.setHeat( true );
 		es.execution( wc );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 2, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
 		es.setSolar( true );
 		es.execution( wc );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 3, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 3, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 3, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(EnergySource.BASIC_ENERGY_LEVEL * 3, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 
 	}
 

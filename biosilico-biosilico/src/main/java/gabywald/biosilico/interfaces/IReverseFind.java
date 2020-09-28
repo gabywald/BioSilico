@@ -1,5 +1,10 @@
 package gabywald.biosilico.interfaces;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ * @param <T>
+ */
 public interface IReverseFind<T extends IChemicalsType> {
 	
 	/**

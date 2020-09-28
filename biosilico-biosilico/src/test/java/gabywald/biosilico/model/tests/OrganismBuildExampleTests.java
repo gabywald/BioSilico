@@ -36,20 +36,20 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, 4, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
 	}
 	
 	@Test
@@ -63,20 +63,20 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, 4, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( 4 ) );
 	}
 	
 	@Test
@@ -90,20 +90,20 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, 4, 1, 5));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 4 ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 4 ) );
 	}
 	
 	@Test
@@ -117,21 +117,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -145,21 +145,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -173,21 +173,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 3, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -201,21 +201,21 @@ class OrganismBuildExampleTests {
 				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -229,21 +229,21 @@ class OrganismBuildExampleTests {
 				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -257,21 +257,21 @@ class OrganismBuildExampleTests {
 				1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -285,21 +285,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, 4, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -313,21 +313,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, 4, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -341,21 +341,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, 4, 1, 5));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -369,21 +369,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -397,21 +397,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 1));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 99, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 99, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 	
 	@Test
@@ -425,21 +425,21 @@ class OrganismBuildExampleTests {
 				1, 1, 2, 1, 1, 1, BiochemicalReaction.NEUTRAL_INDEX, 1, 5));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 95, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 95, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( BiochemicalReaction.NEUTRAL_INDEX ) );
 	}
 
 	@Test
@@ -449,17 +449,17 @@ class OrganismBuildExampleTests {
 								1, 100));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(1, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( 1 ) );
 	}
 
 	@Test
@@ -469,17 +469,17 @@ class OrganismBuildExampleTests {
 								1, 100));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(1, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(1, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
 	}
 
 	@Test
@@ -497,25 +497,25 @@ class OrganismBuildExampleTests {
 								5, 100));
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 5 ) );
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		test.execution(null);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(5, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(5, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
 	}
 
 	@Test
@@ -542,64 +542,64 @@ class OrganismBuildExampleTests {
 						1));
 
 		Organism test		= new Organism(basicGenome);
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 90, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 90, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals( 90, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 90, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 7 ) );
 
 		// second execution / cycle 1
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 1");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 80, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 80, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals( 80, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 80, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 7 ) );
 
 		// third execution / cycle 2
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 2");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(3, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(3, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 70, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 70, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals( 15, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals( 15, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals( 70, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 70, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals( 15, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals( 15, test.getChemicals().getVariable( 7 ) );
 
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "*****");
 
@@ -631,45 +631,45 @@ class OrganismBuildExampleTests {
 
 		Organism test		= new Organism(basicGenome);
 		
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 80, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 80, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals( 80, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 80, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 7 ) );
 
 		// second execution / cycle 1
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 1");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals( 60, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals( 60, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals( 20, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals( 20, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals( 60, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals( 60, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals( 20, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals( 20, test.getChemicals().getVariable( 7 ) );
 
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "*****");
 	}
@@ -700,35 +700,35 @@ class OrganismBuildExampleTests {
 
 		Organism test		= new Organism(basicGenome);
 		
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 7 ) );
 
 		test.execution(null);
 		
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(100, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 7 ) );
 	}
 	
 	@Test
@@ -757,26 +757,26 @@ class OrganismBuildExampleTests {
 
 		Organism test		= new Organism(basicGenome);
 		
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals(  5, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals(  5, test.getChemicals().getVariable( 7 ) );
 
 	}
 	
@@ -806,26 +806,26 @@ class OrganismBuildExampleTests {
 
 		Organism test		= new Organism(basicGenome);
 		
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		// first execution / cycle 0
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "cycle 0");
 		test.execution(null);
 		test.cyclePlusPlus();
 		
-		Assertions.assertEquals(1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 
 		Assertions.assertEquals(6, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(6, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 2 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 3 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 4 ) );
-		Assertions.assertEquals(100, test.getVariables().getVariable( 5 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 6 ) );
-		Assertions.assertEquals( 10, test.getVariables().getVariable( 7 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 2 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 3 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 4 ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( 5 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 6 ) );
+		Assertions.assertEquals( 10, test.getChemicals().getVariable( 7 ) );
 
 	}
 

@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.ConverterPlantEgg2Fruit;
 import gabywald.biosilico.model.utils.agents.EnergySource;
@@ -23,7 +23,7 @@ import gabywald.biosilico.model.utils.agents.EnergySource;
  * 
  * @author Gabriel Chandesris (2020)
  */
-class WorldCaseTests {
+class World2DCaseTests {
 	public static final int INDEX_SOLAR	= 390; // SomeChemicals.ENERGY_SOLAR.getIndex();
 	public static final int INDEX_HEAT	= 391; // SomeChemicals.ENERGY_HEAT.getIndex();
 	
@@ -32,19 +32,19 @@ class WorldCaseTests {
 
 	@Test
 	void testWorldCase() {
-		WorldCase wc = new WorldCase();
+		World2DCase wc = new World2DCase();
 		
 		Assertions.assertNotNull( wc );
-		Assertions.assertNotNull( wc.getVariables() );
+		Assertions.assertNotNull( wc.getChemicals() );
 		Assertions.assertNotNull( wc.getAgentListe() );
 		Assertions.assertEquals( 0, wc.getAgentListLength() );
 		Assertions.assertEquals( 0, wc.getAgentListe().size() );
-		Assertions.assertNull( wc.getWorld() );
-		Assertions.assertEquals(-1, wc.getPosX());
-		Assertions.assertEquals(-1, wc.getPosY());
+		Assertions.assertNull( wc.getEnvironment() );
+		Assertions.assertEquals(-1, wc.getPosition().getPosX());
+		Assertions.assertEquals(-1, wc.getPosition().getPosY());
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		Arrays.asList(AgentType.values()).forEach( k -> {
@@ -62,86 +62,86 @@ class WorldCaseTests {
 	
 	@Test
 	void testWorldCaseInWorld() {
-		World w = new World(3, 3);
+		World2D w = new World2D(3, 3);
 		
 		Assertions.assertNotNull( w );
 		
 		IntStream.range(0, 3).forEach( i -> {
 			IntStream.range(0, 3).forEach( j -> {
-				WorldCase currentWC = w.getWorldCase(i, j);
+				World2DCase currentWC = w.getWorldCase(i, j);
 				Assertions.assertNotNull( currentWC );
-				Assertions.assertNotNull( currentWC.getWorld() );
-				Assertions.assertEquals(i, currentWC.getPosX());
-				Assertions.assertEquals(j, currentWC.getPosY());
-				Assertions.assertNotNull( currentWC.getVariables() );
+				Assertions.assertNotNull( currentWC.getEnvironment() );
+				Assertions.assertEquals(i, currentWC.getPosition().getPosX());
+				Assertions.assertEquals(j, currentWC.getPosition().getPosY());
+				Assertions.assertNotNull( currentWC.getChemicals() );
 				Assertions.assertNotNull( currentWC.getAgentListe() );
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
 				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
+					Assertions.assertEquals( 0, currentWC.getChemicals().getVariable(k) );
 				});
 				
 			});
 		});
 		
-		WorldCase middleWC = w.getWorldCase(1, 1);
+		World2DCase middleWC = w.getWorldCase(1, 1);
 		
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.CURRENT).getPosX());
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.CURRENT).getPosY());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.CURRENT).getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.CURRENT).getPosition().getPosY());
 		
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthWest).getPosX());
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthWest).getPosY());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthWest).getPosition().getPosX());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthWest).getPosition().getPosY());
 		
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.North).getPosX());
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.North).getPosY());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.North).getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.North).getPosition().getPosY());
 		
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthEast).getPosX());
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.NorthEast).getPosY());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.NorthEast).getPosition().getPosX());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.NorthEast).getPosition().getPosY());
 		
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.East).getPosX());
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.East).getPosY());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.East).getPosition().getPosX());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.East).getPosition().getPosY());
 		
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthEast).getPosX());
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthEast).getPosY());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthEast).getPosition().getPosX());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthEast).getPosition().getPosY());
 		
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.South).getPosX());
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.South).getPosY());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.South).getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.South).getPosition().getPosY());
 		
-		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthWest).getPosX());
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.SouthWest).getPosY());
+		Assertions.assertEquals(2, middleWC.getDirection(DirectionWorld.SouthWest).getPosition().getPosX());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.SouthWest).getPosition().getPosY());
 		
-		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.West).getPosX());
-		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.West).getPosY());
+		Assertions.assertEquals(1, middleWC.getDirection(DirectionWorld.West).getPosition().getPosX());
+		Assertions.assertEquals(0, middleWC.getDirection(DirectionWorld.West).getPosition().getPosY());
 		
 	}
 	
 	@Test
 	void testWorldCaseInWorldWithEnergyAgent() {
-		World w = new World(3, 3);
+		World2D w = new World2D(3, 3);
 		
 		Assertions.assertNotNull( w );
 		
 		IntStream.range(0, 3).forEach( i -> {
 			IntStream.range(0, 3).forEach( j -> {
-				WorldCase currentWC = w.getWorldCase(i, j);
+				World2DCase currentWC = w.getWorldCase(i, j);
 				Assertions.assertNotNull( currentWC );
-				Assertions.assertNotNull( currentWC.getWorld() );
-				Assertions.assertEquals(i, currentWC.getPosX());
-				Assertions.assertEquals(j, currentWC.getPosY());
-				Assertions.assertNotNull( currentWC.getVariables() );
+				Assertions.assertNotNull( currentWC.getEnvironment() );
+				Assertions.assertEquals(i, currentWC.getPosition().getPosX());
+				Assertions.assertEquals(j, currentWC.getPosition().getPosY());
+				Assertions.assertNotNull( currentWC.getChemicals() );
 				Assertions.assertNotNull( currentWC.getAgentListe() );
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
 				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
+					Assertions.assertEquals( 0, currentWC.getChemicals().getVariable(k) );
 				});
 				
 			});
 		});
 		
-		WorldCase middleWC = w.getWorldCase(1, 1);
+		World2DCase middleWC = w.getWorldCase(1, 1);
 		
 		Assertions.assertFalse( middleWC.hasAgentType( AgentType.BIOSILICO_DAEMON ) > 0);
 		Assertions.assertNull( middleWC.getAgentType( AgentType.BIOSILICO_DAEMON ) );
@@ -172,16 +172,16 @@ class WorldCaseTests {
 		Assertions.assertEquals(EnergySource.COMMON_BIOSILICO_NAME, notAccurateAgent.getCommonName() );
 		
 		Assertions.assertNotNull( middleWC );
-		Assertions.assertNotNull( middleWC.getWorld() );
-		Assertions.assertEquals(1, middleWC.getPosX());
-		Assertions.assertEquals(1, middleWC.getPosY());
-		Assertions.assertNotNull( middleWC.getVariables() );
+		Assertions.assertNotNull( middleWC.getEnvironment() );
+		Assertions.assertEquals(1, middleWC.getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getPosition().getPosY());
+		Assertions.assertNotNull( middleWC.getChemicals() );
 		Assertions.assertNotNull( middleWC.getAgentListe() );
 		Assertions.assertEquals( 1, middleWC.getAgentListLength() );
 		Assertions.assertEquals( 1, middleWC.getAgentListe().size() );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 		});
 		
 		Arrays.asList(AgentType.values()).forEach( k -> {
@@ -218,12 +218,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_HEAT) :
-			case (WorldCaseTests.INDEX_SOLAR) :
-				Assertions.assertEquals( 25, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_HEAT) :
+			case (World2DCaseTests.INDEX_SOLAR) :
+				Assertions.assertEquals( 25, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -231,12 +231,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_HEAT) :
-			case (WorldCaseTests.INDEX_SOLAR) :
-				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_HEAT) :
+			case (World2DCaseTests.INDEX_SOLAR) :
+				Assertions.assertEquals( 50, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -250,12 +250,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_HEAT) :
-			case (WorldCaseTests.INDEX_SOLAR) :
-				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_HEAT) :
+			case (World2DCaseTests.INDEX_SOLAR) :
+				Assertions.assertEquals( 50, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -267,12 +267,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_HEAT) :
-			case (WorldCaseTests.INDEX_SOLAR) :
-				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_HEAT) :
+			case (World2DCaseTests.INDEX_SOLAR) :
+				Assertions.assertEquals( 75, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -284,12 +284,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_HEAT) :
-			case (WorldCaseTests.INDEX_SOLAR) :
-				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_HEAT) :
+			case (World2DCaseTests.INDEX_SOLAR) :
+				Assertions.assertEquals( 75, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -297,30 +297,30 @@ class WorldCaseTests {
 	
 	@Test
 	void testWorldCaseInWorldWithCondensator() {
-		World w = new World(3, 3);
+		World2D w = new World2D(3, 3);
 		
 		Assertions.assertNotNull( w );
 		
 		IntStream.range(0, 3).forEach( i -> {
 			IntStream.range(0, 3).forEach( j -> {
-				WorldCase currentWC = w.getWorldCase(i, j);
+				World2DCase currentWC = w.getWorldCase(i, j);
 				Assertions.assertNotNull( currentWC );
-				Assertions.assertNotNull( currentWC.getWorld() );
-				Assertions.assertEquals(i, currentWC.getPosX());
-				Assertions.assertEquals(j, currentWC.getPosY());
-				Assertions.assertNotNull( currentWC.getVariables() );
+				Assertions.assertNotNull( currentWC.getEnvironment() );
+				Assertions.assertEquals(i, currentWC.getPosition().getPosX());
+				Assertions.assertEquals(j, currentWC.getPosition().getPosY());
+				Assertions.assertNotNull( currentWC.getChemicals() );
 				Assertions.assertNotNull( currentWC.getAgentListe() );
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
 				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
+					Assertions.assertEquals( 0, currentWC.getChemicals().getVariable(k) );
 				});
 				
 			});
 		});
 		
-		WorldCase middleWC = w.getWorldCase(1, 1);
+		World2DCase middleWC = w.getWorldCase(1, 1);
 		
 		Assertions.assertFalse( middleWC.hasAgentType( AgentType.BIOSILICO_DAEMON ) > 0);
 		Assertions.assertNull( middleWC.getAgentType( AgentType.BIOSILICO_DAEMON ) );
@@ -351,16 +351,16 @@ class WorldCaseTests {
 		Assertions.assertEquals(Condensator.COMMON_BIOSILICO_NAME, notAccurateAgent.getCommonName() );
 		
 		Assertions.assertNotNull( middleWC );
-		Assertions.assertNotNull( middleWC.getWorld() );
-		Assertions.assertEquals(1, middleWC.getPosX());
-		Assertions.assertEquals(1, middleWC.getPosY());
-		Assertions.assertNotNull( middleWC.getVariables() );
+		Assertions.assertNotNull( middleWC.getEnvironment() );
+		Assertions.assertEquals(1, middleWC.getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getPosition().getPosY());
+		Assertions.assertNotNull( middleWC.getChemicals() );
 		Assertions.assertNotNull( middleWC.getAgentListe() );
 		Assertions.assertEquals( 1, middleWC.getAgentListLength() );
 		Assertions.assertEquals( 1, middleWC.getAgentListe().size() );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 		});
 		
 		Arrays.asList(AgentType.values()).forEach( k -> {
@@ -397,12 +397,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_CARBONDIOXID) :
-			case (WorldCaseTests.INDEX_WATER) :
-				Assertions.assertEquals( 25, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_CARBONDIOXID) :
+			case (World2DCaseTests.INDEX_WATER) :
+				Assertions.assertEquals( 25, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -410,12 +410,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_CARBONDIOXID) :
-			case (WorldCaseTests.INDEX_WATER) :
-				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_CARBONDIOXID) :
+			case (World2DCaseTests.INDEX_WATER) :
+				Assertions.assertEquals( 50, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -429,12 +429,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_CARBONDIOXID) :
-			case (WorldCaseTests.INDEX_WATER) :
-				Assertions.assertEquals( 50, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_CARBONDIOXID) :
+			case (World2DCaseTests.INDEX_WATER) :
+				Assertions.assertEquals( 50, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -446,12 +446,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_CARBONDIOXID) :
-			case (WorldCaseTests.INDEX_WATER) :
-				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_CARBONDIOXID) :
+			case (World2DCaseTests.INDEX_WATER) :
+				Assertions.assertEquals( 75, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -463,12 +463,12 @@ class WorldCaseTests {
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			switch(k) {
-			case (WorldCaseTests.INDEX_CARBONDIOXID) :
-			case (WorldCaseTests.INDEX_WATER) :
-				Assertions.assertEquals( 75, middleWC.getVariables().getVariable(k) );
+			case (World2DCaseTests.INDEX_CARBONDIOXID) :
+			case (World2DCaseTests.INDEX_WATER) :
+				Assertions.assertEquals( 75, middleWC.getChemicals().getVariable(k) );
 			break;
 			default:
-				Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+				Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 			}
 		});
 		
@@ -476,30 +476,30 @@ class WorldCaseTests {
 	
 	@Test
 	void testWorldCaseInWorldWithPlantEggConverter2Fruit() {
-		World w = new World(3, 3);
+		World2D w = new World2D(3, 3);
 		
 		Assertions.assertNotNull( w );
 		
 		IntStream.range(0, 3).forEach( i -> {
 			IntStream.range(0, 3).forEach( j -> {
-				WorldCase currentWC = w.getWorldCase(i, j);
+				World2DCase currentWC = w.getWorldCase(i, j);
 				Assertions.assertNotNull( currentWC );
-				Assertions.assertNotNull( currentWC.getWorld() );
-				Assertions.assertEquals(i, currentWC.getPosX());
-				Assertions.assertEquals(j, currentWC.getPosY());
-				Assertions.assertNotNull( currentWC.getVariables() );
+				Assertions.assertNotNull( currentWC.getEnvironment() );
+				Assertions.assertEquals(i, currentWC.getPosition().getPosX());
+				Assertions.assertEquals(j, currentWC.getPosition().getPosY());
+				Assertions.assertNotNull( currentWC.getChemicals() );
 				Assertions.assertNotNull( currentWC.getAgentListe() );
 				Assertions.assertEquals( 0, currentWC.getAgentListLength() );
 				Assertions.assertEquals( 0, currentWC.getAgentListe().size() );
 				
 				IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-					Assertions.assertEquals( 0, currentWC.getVariables().getVariable(k) );
+					Assertions.assertEquals( 0, currentWC.getChemicals().getVariable(k) );
 				});
 				
 			});
 		});
 		
-		WorldCase middleWC = w.getWorldCase(1, 1);
+		World2DCase middleWC = w.getWorldCase(1, 1);
 		
 		Assertions.assertFalse( middleWC.hasAgentType( AgentType.BIOSILICO_DAEMON ) > 0);
 		Assertions.assertNull( middleWC.getAgentType( AgentType.BIOSILICO_DAEMON ) );
@@ -522,16 +522,16 @@ class WorldCaseTests {
 		Assertions.assertTrue( (new EnergySource()).stop() );
 		
 		Assertions.assertNotNull( middleWC );
-		Assertions.assertNotNull( middleWC.getWorld() );
-		Assertions.assertEquals(1, middleWC.getPosX());
-		Assertions.assertEquals(1, middleWC.getPosY());
-		Assertions.assertNotNull( middleWC.getVariables() );
+		Assertions.assertNotNull( middleWC.getEnvironment() );
+		Assertions.assertEquals(1, middleWC.getPosition().getPosX());
+		Assertions.assertEquals(1, middleWC.getPosition().getPosY());
+		Assertions.assertNotNull( middleWC.getChemicals() );
 		Assertions.assertNotNull( middleWC.getAgentListe() );
 		Assertions.assertEquals( 1, middleWC.getAgentListLength() );
 		Assertions.assertEquals( 1, middleWC.getAgentListe().size() );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 		});
 		
 		Arrays.asList(AgentType.values()).forEach( k -> {
@@ -570,7 +570,7 @@ class WorldCaseTests {
 		Assertions.assertEquals( 1, middleWC.getAgentListe().size() );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 		});
 		
 		PlantEgg pe = new PlantEgg();
@@ -592,7 +592,7 @@ class WorldCaseTests {
 		Assertions.assertEquals( 2, middleWC.getAgentListe().size() );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, middleWC.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, middleWC.getChemicals().getVariable(k) );
 		});
 		
 		Assertions.assertEquals( false, pe.isAlive() );

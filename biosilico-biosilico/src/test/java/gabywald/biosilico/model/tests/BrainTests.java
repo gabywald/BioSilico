@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.exceptions.BrainLobeReplaceException;
+import gabywald.biosilico.interfaces.IPosition;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.BrainBuilder;
 import gabywald.biosilico.model.Neuron;
-import gabywald.biosilico.model.Position;
+import gabywald.biosilico.model.environment.PositionBuilder;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -152,31 +153,31 @@ class BrainTests {
 			testBrain.setLobe(1, 1, 2, 10, receptor, false);
 			testBrain.setLobe(1, 1, 2, 11, receptor, false);
 			
-			List<Neuron> testList01 = testBrain.getNeuronsBefore(new Position(4, 7), 1);
+			List<Neuron> testList01 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(3, testList01.size());
 			
-			List<Neuron> testList02 = testBrain.getNeuronsBefore(new Position(4, 7), 2);
+			List<Neuron> testList02 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(4, testList02.size());
 			
-			List<Neuron> testList03 = testBrain.getNeuronsBefore(new Position(4, 7), 3);
+			List<Neuron> testList03 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(5, testList03.size());
 			
-			List<Neuron> testList04 = testBrain.getNeuronsBefore(new Position(4, 9), 1);
+			List<Neuron> testList04 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(4, testList04.size());
 			
-			List<Neuron> testList05 = testBrain.getNeuronsBefore(new Position(4, 9), 2);
+			List<Neuron> testList05 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(6, testList05.size());
 			
-			List<Neuron> testList06 = testBrain.getNeuronsBefore(new Position(4, 9), 3);
+			List<Neuron> testList06 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(6, testList06.size());
 			
-			List<Neuron> testList07 = testBrain.getNeuronsBefore(new Position(4, 5), 1);
+			List<Neuron> testList07 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 5), 1);
 			Assertions.assertEquals(0, testList07.size());
 			
-			List<Neuron> testList08 = testBrain.getNeuronsBefore(new Position(4, 5), 2);
+			List<Neuron> testList08 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 5), 2);
 			Assertions.assertEquals(1, testList08.size());
 			
-			List<Neuron> testList09 = testBrain.getNeuronsBefore(new Position(4, 5), 3);
+			List<Neuron> testList09 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 5), 3);
 			Assertions.assertEquals(2, testList09.size());
 			
 		} catch (BrainLengthException e) {
@@ -215,22 +216,22 @@ class BrainTests {
 				}
 			} );
 			
-			List<Neuron> testList01 = testBrain.getNeuronsBefore(new Position(4, 7), 1);
+			List<Neuron> testList01 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(4, testList01.size());
 			
-			List<Neuron> testList02 = testBrain.getNeuronsBefore(new Position(4, 7), 2);
+			List<Neuron> testList02 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(6, testList02.size());
 			
-			List<Neuron> testList03 = testBrain.getNeuronsBefore(new Position(4, 7), 3);
+			List<Neuron> testList03 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(8, testList03.size());
 			
-			List<Neuron> testList04 = testBrain.getNeuronsBefore(new Position(4, 9), 1);
+			List<Neuron> testList04 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(4, testList04.size());
 			
-			List<Neuron> testList05 = testBrain.getNeuronsBefore(new Position(4, 9), 2);
+			List<Neuron> testList05 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(6, testList05.size());
 			
-			List<Neuron> testList06 = testBrain.getNeuronsBefore(new Position(4, 9), 3);
+			List<Neuron> testList06 = testBrain.getNeuronsBefore(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(8, testList06.size());
 			
 		} catch (BrainLengthException e) {
@@ -260,31 +261,31 @@ class BrainTests {
 			testBrain.setLobe(1, 1, 2, 10, receptor, false);
 			testBrain.setLobe(1, 1, 2, 11, receptor, false);
 			
-			int test01 = testBrain.getActivityBefore(new Position(4, 7), 1);
+			int test01 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(1, test01);
 			
-			int test02 = testBrain.getActivityBefore(new Position(4, 7), 2);
+			int test02 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(2, test02);
 			
-			int test03 = testBrain.getActivityBefore(new Position(4, 7), 3);
+			int test03 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(3, test03);
 			
-			int test04 = testBrain.getActivityBefore(new Position(4, 9), 1);
+			int test04 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(2, test04);
 			
-			int test05 = testBrain.getActivityBefore(new Position(4, 9), 2);
+			int test05 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(4, test05);
 			
-			int test06 = testBrain.getActivityBefore(new Position(4, 9), 3);
+			int test06 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(4, test06);
 			
-			int test07 = testBrain.getActivityBefore(new Position(4, 5), 1);
+			int test07 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 1);
 			Assertions.assertEquals(0, test07);
 			
-			int test08 = testBrain.getActivityBefore(new Position(4, 5), 2);
+			int test08 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 2);
 			Assertions.assertEquals(1, test08);
 			
-			int test09 = testBrain.getActivityBefore(new Position(4, 5), 3);
+			int test09 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 3);
 			Assertions.assertEquals(2, test09);
 			
 		} catch (BrainLengthException e) {
@@ -323,31 +324,31 @@ class BrainTests {
 			testBrain.setLobe(1, 1, 2, 10, receptor, false);
 			testBrain.setLobe(1, 1, 2, 11, receptor, false);
 			
-			int test01 = testBrain.getActivityBefore(new Position(4, 7), 1);
+			int test01 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(1, test01);
 			
-			int test02 = testBrain.getActivityBefore(new Position(4, 7), 2);
+			int test02 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(2, test02);
 			
-			int test03 = testBrain.getActivityBefore(new Position(4, 7), 3);
+			int test03 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(3, test03);
 			
-			int test04 = testBrain.getActivityBefore(new Position(4, 9), 1);
+			int test04 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(2, test04);
 			
-			int test05 = testBrain.getActivityBefore(new Position(4, 9), 2);
+			int test05 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(4, test05);
 			
-			int test06 = testBrain.getActivityBefore(new Position(4, 9), 3);
+			int test06 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(4, test06);
 			
-			int test07 = testBrain.getActivityBefore(new Position(4, 5), 1);
+			int test07 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 1);
 			Assertions.assertEquals(0, test07);
 			
-			int test08 = testBrain.getActivityBefore(new Position(4, 5), 2);
+			int test08 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 2);
 			Assertions.assertEquals(1, test08);
 			
-			int test09 = testBrain.getActivityBefore(new Position(4, 5), 3);
+			int test09 = testBrain.getActivityBefore(PositionBuilder.buildPosition(4, 5), 3);
 			Assertions.assertEquals(2, test09);
 			
 		} catch (BrainLengthException e) {
@@ -380,31 +381,31 @@ class BrainTests {
 			testBrain.setLobe(1, 1, 2, 10, receptor, false);
 			testBrain.setLobe(1, 1, 2, 11, receptor, false);
 			
-			int test01 = testBrain.getActivityNear(new Position(4, 7), 1);
+			int test01 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(1, test01);
 			
-			int test02 = testBrain.getActivityNear(new Position(4, 7), 2);
+			int test02 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(2, test02);
 			
-			int test03 = testBrain.getActivityNear(new Position(4, 7), 3);
+			int test03 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(3, test03);
 			
-			int test04 = testBrain.getActivityNear(new Position(4, 9), 1);
+			int test04 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(2, test04);
 			
-			int test05 = testBrain.getActivityNear(new Position(4, 9), 2);
+			int test05 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(4, test05);
 			
-			int test06 = testBrain.getActivityNear(new Position(4, 9), 3);
+			int test06 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(4, test06);
 			
-			int test07 = testBrain.getActivityNear(new Position(4, 5), 1);
+			int test07 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 1);
 			Assertions.assertEquals(0, test07);
 			
-			int test08 = testBrain.getActivityNear(new Position(4, 5), 2);
+			int test08 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 2);
 			Assertions.assertEquals(1, test08);
 			
-			int test09 = testBrain.getActivityNear(new Position(4, 5), 3);
+			int test09 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 3);
 			Assertions.assertEquals(2, test09);
 			
 		} catch (BrainLengthException e) {
@@ -443,31 +444,31 @@ class BrainTests {
 			testBrain.setLobe(1, 1, 2, 10, receptor, false);
 			testBrain.setLobe(1, 1, 2, 11, receptor, false);
 			
-			int test01 = testBrain.getActivityNear(new Position(4, 7), 1);
+			int test01 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 1);
 			Assertions.assertEquals(2, test01);
 			
-			int test02 = testBrain.getActivityNear(new Position(4, 7), 2);
+			int test02 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 2);
 			Assertions.assertEquals(4, test02);
 			
-			int test03 = testBrain.getActivityNear(new Position(4, 7), 3);
+			int test03 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 7), 3);
 			Assertions.assertEquals(6, test03);
 			
-			int test04 = testBrain.getActivityNear(new Position(4, 9), 1);
+			int test04 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 1);
 			Assertions.assertEquals(4, test04);
 			
-			int test05 = testBrain.getActivityNear(new Position(4, 9), 2);
+			int test05 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 2);
 			Assertions.assertEquals(8, test05);
 			
-			int test06 = testBrain.getActivityNear(new Position(4, 9), 3);
+			int test06 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 9), 3);
 			Assertions.assertEquals(8, test06);
 			
-			int test07 = testBrain.getActivityNear(new Position(4, 5), 1);
+			int test07 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 1);
 			Assertions.assertEquals(0, test07);
 			
-			int test08 = testBrain.getActivityNear(new Position(4, 5), 2);
+			int test08 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 2);
 			Assertions.assertEquals(2, test08);
 			
-			int test09 = testBrain.getActivityNear(new Position(4, 5), 3);
+			int test09 = testBrain.getActivityNear(PositionBuilder.buildPosition(4, 5), 3);
 			Assertions.assertEquals(4, test09);
 			
 		} catch (BrainLengthException e) {
@@ -573,18 +574,18 @@ class BrainTests {
 			
 			testBrain.setLobe(1, 1, 1, 1, receptor, false);
 			
-			Position test01 = testBrain.getBestPositionNear(new Position(1, 1), 1);
-			Assertions.assertEquals(new Position(0, 0), test01);
+			IPosition test01 = testBrain.getBestPositionNear(PositionBuilder.buildPosition(1, 1), 1);
+			Assertions.assertEquals(PositionBuilder.buildPosition(0, 0), test01);
 			
 			testBrain.setLobe(1, 1, 0, 0, receptor, false);
 			
-			Position test02 = testBrain.getBestPositionNear(new Position(1, 1), 1);
-			Assertions.assertEquals(new Position(0, 1), test02);
+			IPosition test02 = testBrain.getBestPositionNear(PositionBuilder.buildPosition(1, 1), 1);
+			Assertions.assertEquals(PositionBuilder.buildPosition(0, 1), test02);
 			
 			testBrain.setLobe(1, 1, 0, 1, receptor, false);
 			
-			Position test03 = testBrain.getBestPositionNear(new Position(1, 1), 1);
-			Assertions.assertEquals(new Position(1, 0), test03);
+			IPosition test03 = testBrain.getBestPositionNear(PositionBuilder.buildPosition(1, 1), 1);
+			Assertions.assertEquals(PositionBuilder.buildPosition(1, 0), test03);
 			
 		} catch (BrainLengthException e) {
 			e.printStackTrace();

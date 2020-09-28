@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import gabywald.biosilico.interfaces.IPosition;
+import gabywald.biosilico.model.environment.PositionBuilder;
+
 /**
  * This class describes a neurone and its properties
  * (activation, threshold, rest state, and inputing connections). 
@@ -20,7 +23,7 @@ public class Neuron {
 	private int descent;
 	
 	/** Position in the neural network. */
-	private Position position;
+	private IPosition position;
 	/** Minimal number of dendritic connections (inputs) [0 to 8]. */
 	private int dmin;
 	/** Maximal number of dendritic connections (inputs) [0 to 8]. */
@@ -91,13 +94,13 @@ public class Neuron {
 	 * @param prox (int) proximity. 
 	 * @param repr (boolean) if current Neuron can reproduce. 
 	 * @param repy (int) number of maximum reproductions. 
-	 * @param pos (Position)
+	 * @param pos (IPosition)
 	 * @param conn (Neuron's Liste) set of input dendrites. 
 	 * @param weights (Integer's Liste) set of weights of intputs. 
 	 * @see Neuron#getCopy()
 	 */
 	Neuron(	int rest, int thre, int acti, int desc, int dmin, int dmax, int prox, boolean repr, int repy, boolean wta, 
-			Position pos, List<Neuron> conn, List<Integer> weights) {
+			IPosition pos, List<Neuron> conn, List<Integer> weights) {
 		this.restState			= rest;
 		this.threshold			= thre;
 		this.activity			= acti;
@@ -225,7 +228,7 @@ public class Neuron {
 		if ( (this.reproduction) && (this.isActivated()) ) {
 			if ( (this.reproductibility > 0) && (this.position != null) ) { 
 				if (nn.getActivityBefore(this.position, proximity) <= this.dmin) { 
-					Position nextpos = nn.getBestPositionNear(this.position, proximity);
+					IPosition nextpos = nn.getBestPositionNear(this.position, proximity);
 					if (nextpos != null) {
 						// ***** change reproductibility before cloning, avoid 'eternal reproduction' from clones. 
 						this.reproductibility--; 
@@ -262,7 +265,7 @@ public class Neuron {
 	 * @return (boolean)
 	 * @see gabywald.biosilico.structures.NeuronListe#getHighestActivity()
 	 * @see gabywald.biosilico.structures.NeuronListe#getFirestNeuron()
-	 * @see Brain#getActivityNear(Position, int)
+	 * @see Brain#getActivityNear(Position2D, int)
 	 */
 	public boolean ckActivated() {
 		int relative = (this.threshold - this.restState);
@@ -288,7 +291,7 @@ public class Neuron {
 			tmpweig.add(this.weights.get(i));
 		}
 		// ***** Avoiding a nullException... 
-		if (this.position == null) { this.position = new Position(-1,-1); }
+		if (this.position == null) { this.position = PositionBuilder.buildPosition(-1,-1); }
 		// ***** Returning instanciation of copy / clone... 
 		return new Neuron(this.restState, this.threshold,
 						  this.activity, this.descent, 
@@ -297,23 +300,23 @@ public class Neuron {
 						  this.reproduction, 
 						  this.reproductibility, 
 						  this.winnerTakeAll, 
-						  this.position.getCopy(), 
+						  this.position.clone(), 
 						  tmpconn, tmpweig);
 	}
 	
 	/**
 	 * To set the position of a Neuron. 
-	 * @param posx (int) height position. 
-	 * @param posy (int) width position. 
+	 * @param position (IPosition) position. 
 	 */
-	public void setPosition(int posx,int posy)
-		{ this.position = new Position(posx, posy); }
+	public void setPosition(IPosition position)
+		{ this.position = position; }
 	
 	/**
 	 * To get Position of current Neuron. 
-	 * @return (Position)
+	 * @return (IPosition)
 	 */
-	public Position getPosition() { return this.position; }
+	public IPosition getPosition() 
+		{ return this.position; }
 	
 	/**
 	 * This method compare two instances of Neuron, only on their 'basics' 

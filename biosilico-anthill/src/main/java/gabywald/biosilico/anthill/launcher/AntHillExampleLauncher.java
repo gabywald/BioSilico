@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
 import gabywald.biosilico.model.Chromosome;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.ConverterPlantEgg2Fruit;
 import gabywald.biosilico.model.utils.agents.EnergySource;
@@ -24,7 +24,7 @@ public class AntHillExampleLauncher {
 		List<Chromosome> antGenome		= AntHillExampleHelper.loadingAntGenome();
 		List<Chromosome> plantGenome	= AntHillExampleHelper.loadingPlantGenome();
 		
-		World w				= new World(1, 1);
+		World2D w				= new World2D(1, 1);
 		w.loadHalLives();
 
 		Ant initialAnt		= new Ant( antGenome );
@@ -50,7 +50,7 @@ public class AntHillExampleLauncher {
 		initialPlant.cyclePlusPlus();
 
 		
-		List<WorldCase> wcs = w.getWorldCases();
+		List<World2DCase> wcs = w.getWorldCases();
 		BuildingGenomeHelper.showAll( initialAnt, initialPlant, wcs );
 		
 		// TODO Organism evolution (status changes for Ant and Plant)

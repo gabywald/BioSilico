@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 import gabywald.biosilico.exceptions.BrainLengthException;
 import gabywald.biosilico.exceptions.BrainLobeReplaceException;
 import gabywald.biosilico.genetics.Gene;
+import gabywald.biosilico.interfaces.IPosition;
+import gabywald.biosilico.model.environment.PositionBuilder;
 import gabywald.global.structures.ObservableObject;
 
 /**
@@ -39,13 +41,13 @@ public class Brain extends ObservableObject {
 	 * @param width (int) Width of the Brain map. 
 	 * @throws BrainLengthException If height or width under or equal 0. 
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
-	 * @see Brain#setNeuronAt(Position, Neuron)
+	 * @see Brain#setNeuronAt(IPosition, Neuron)
 	 */
 	Brain(int height, int width, int depth) {
 		this.maxHeight	= height;
 		this.maxWidth	= width;
 		this.maxDepth	= depth;
-		this.map = new Neuron[this.maxHeight][this.maxWidth];
+		this.map		= new Neuron[this.maxHeight][this.maxWidth];
 	}
 
 	/**
@@ -54,7 +56,7 @@ public class Brain extends ObservableObject {
 	 * @param width (int) Width of the Brain map. 
 	 * @throws BrainLengthException If height or width under or equal 0. 
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
-	 * @see Brain#setNeuronAt(Position, Neuron)
+	 * @see Brain#setNeuronAt(IPosition, Neuron)
 	 */
 	Brain(int height, int width) {
 		this(height, width, 0);
@@ -65,7 +67,7 @@ public class Brain extends ObservableObject {
 	 * @throws BrainLengthException 
 	 * @see Brain#getBrain()
 	 * @see Brain#setLobe(int, int, int, int, Neuron, boolean)
-	 * @see Brain#setNeuronAt(Position, Neuron)
+	 * @see Brain#setNeuronAt(IPosition, Neuron)
 	 * @see Brain#MAX_HEIGHT
 	 * @see Brain#MAX_WIDTH
 	 */
@@ -98,18 +100,18 @@ public class Brain extends ObservableObject {
 	 * @return (Neuron) can be null !
 	 * @see Brain#getNeuronAt(int, int)
 	 */
-	public Neuron getNeuronAt(Position pos) 
+	public Neuron getNeuronAt(IPosition pos) 
 		{ return this.getNeuronAt(pos.getPosX(), pos.getPosY()); }
 
 	/**
 	 * Aim of this method is to answer a set of Neuron's before a
 	 * specific given position and a given proximity. <br>
 	 * First search done by height, then little width (activated Neuron's). 
-	 * @param pos (Position) to be search in the map before this.
+	 * @param pos (IPosition) to be search in the map before this.
 	 * @param prox (int) proximity (how deeply back)
 	 * @return (NeuronList)
 	 */
-	public List<Neuron> getNeuronsBefore(Position pos, int prox) {
+	public List<Neuron> getNeuronsBefore(IPosition pos, int prox) {
 		List<Neuron> toReturn = new ArrayList<Neuron>();
 		int x = pos.getPosX();
 		int y = pos.getPosY();
@@ -152,11 +154,11 @@ public class Brain extends ObservableObject {
 
 	/**
 	 * To get activity before a position of a given neuron. 
-	 * @param pos (Position) position of current neuron. 
+	 * @param pos (IPosition) position of current neuron. 
 	 * @param prox (int) proximity (best is 1). 
 	 * @return Number of <b>unactive</b> neurons
 	 */
-	public int getActivityBefore(Position pos, int prox) {
+	public int getActivityBefore(IPosition pos, int prox) {
 		ActivityNeighboors an = new ActivityNeighboors();
 		int x = pos.getPosX();
 		int y = pos.getPosY();
@@ -183,11 +185,11 @@ public class Brain extends ObservableObject {
 
 	/**
 	 * To get activity near a position of a given neuron. 
-	 * @param pos (Position) position of current neuron. 
+	 * @param pos (IPosition) position of current neuron. 
 	 * @param prox (int) proximity (best is 1). 
 	 * @return Number of <b>unactive</b> neurons
 	 */
-	public int getActivityNear(Position pos, int prox) {
+	public int getActivityNear(IPosition pos, int prox) {
 		ActivityNeighboors an = new ActivityNeighboors();
 		int x = pos.getPosX();
 		int y = pos.getPosY();
@@ -217,12 +219,12 @@ public class Brain extends ObservableObject {
 	 * After getting activity near a position, getting a free position (null neuron position in map) or an inactive place. <br />
 	 * <i>Used for reproduction of Neurons instances to reinforce network. </i><br />
 	 * XXX NOTE : best if in limit of lobe ??
-	 * @param pos (Position) position of current neuron. 
+	 * @param pos (IPosition) position of current neuron. 
 	 * @param prox (int) proximity (best is 1). 
-	 * @return (Position)
+	 * @return (IPosition)
 	 * @see Neuron#reproduce(Brain)
 	 */
-	public Position getBestPositionNear(Position pos, int prox) {
+	public IPosition getBestPositionNear(IPosition pos, int prox) {
 		int x = pos.getPosX();
 		int y = pos.getPosY();
 
@@ -242,7 +244,7 @@ public class Brain extends ObservableObject {
 //							{ return new Position(i, j); }
 //					}
 				} else { 
-					return new Position(i, j);
+					return PositionBuilder.buildPosition(i, j);
 				}
 			}
 		}
@@ -251,16 +253,16 @@ public class Brain extends ObservableObject {
 	}
 
 	// TODO change exposure of this method !!
-	public void setNeuronAt(Position pos, Neuron neu) {
+	public void setNeuronAt(IPosition pos, Neuron neu) {
 		int x = pos.getPosX();
 		int y = pos.getPosY();
 		if  ( ( (x >= 0) && (x < this.maxHeight) )
 				&& ( (y >= 0) && (y < this.maxWidth) ) ) 
-			{ this.map[x][y] = neu;neu.setPosition(x,y); }
+			{ this.map[x][y] = neu;neu.setPosition( PositionBuilder.buildPosition(x, y) ); }
 	}
 
 	// TODO change exposure of this method !!
-	public void remNeuronAt(Position pos) {
+	public void remNeuronAt(IPosition pos) {
 		int x = pos.getPosX();
 		int y = pos.getPosY();
 		if  ( ( (x >= 0) && (x < this.maxHeight) )
@@ -309,7 +311,7 @@ public class Brain extends ObservableObject {
 			for (int i = x ; i < (x+height) ; i++) {
 				for (int j = y ; j < (y+width) ; j++) { 
 					this.map[i][j] = sample.getCopy();
-					this.map[i][j].setPosition(i, j);
+					this.map[i][j].setPosition( PositionBuilder.buildPosition(i, j) );
 					currentLobe.add(this.map[i][j]);
 					this.map[i][j].setLobe(currentLobe);
 				}
@@ -320,7 +322,7 @@ public class Brain extends ObservableObject {
 				for (int j = y ; j < (y+width) ; j++) { 
 					/** XXX removing Neuron from lobes when replace ? */
 					this.map[i][j] = sample.getCopy(); 
-					this.map[i][j].setPosition(i, j);
+					this.map[i][j].setPosition( PositionBuilder.buildPosition(i, j) );
 					currentLobe.add(this.map[i][j]);
 					this.map[i][j].setLobe(currentLobe);
 				}

@@ -12,13 +12,13 @@ import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 
 /**
  * 
@@ -55,57 +55,57 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 				
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 		
 		Assertions.assertEquals(4, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
 		Assertions.assertEquals(4, test.getGenome().get(0).length());
 
-		Assertions.assertEquals(0, test.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals(0, test.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
-		Assertions.assertEquals(0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** set some O2 and CO2 in current WorldCase's instance
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 100);
-		wc.getVariables().setVariable(SomeChemicals.CARBON_DIOXYDE.getIndex(), 100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 100);
+		wc.getChemicals().setVariable(SomeChemicals.CARBON_DIOXYDE.getIndex(), 100);
 		
-		Assertions.assertEquals(100, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals(100, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals(100, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals(100, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
 		
 		// ***** one execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(105, test.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals( 90, test.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(105, test.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals( 90, test.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// changes in WorldCase instance
-		Assertions.assertEquals( 95, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals(110, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals( 95, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals(110, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
 		
 		// ***** one MORE execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(110, test.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals( 80, test.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
-		Assertions.assertEquals(  2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(110, test.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals( 80, test.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals(  2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		// changes in WorldCase instance
-		Assertions.assertEquals( 90, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
-		Assertions.assertEquals(120, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex() ) );
+		Assertions.assertEquals(120, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex() ) );
 
 	}
 	
@@ -132,7 +132,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 				
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 		
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -140,29 +140,29 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** set some 'solar energy' in current WorldCase's instance
-		wc.getVariables().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
+		wc.getChemicals().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
 		
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(1, 1) );
@@ -170,15 +170,15 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 99, test.getBrain().getNeuronAt(1, 1).getActivity() );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
 
 		// ***** one MORE execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
-		Assertions.assertEquals(  2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals(  2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(1, 1) );
@@ -186,7 +186,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(198, test.getBrain().getNeuronAt(1, 1).getActivity() );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex() ) );
 
 	}
 	
@@ -213,7 +213,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 				
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 		
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -221,29 +221,29 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** set some 'solar energy' in current WorldCase's instance
-		wc.getVariables().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
+		wc.getChemicals().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 		
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -251,7 +251,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 0, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// Changes in WorldCase instance
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 		test.getBrain().getNeuronAt(9, 5).addActivity( 100 );
 		
@@ -260,8 +260,8 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -269,15 +269,15 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 99, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// Changes in WorldCase instance
-		Assertions.assertEquals( 25, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 		// ***** one MORE MORE execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  3, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  3, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -285,7 +285,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 98, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// Changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 	}
 	
@@ -312,7 +312,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 				
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 		
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -320,57 +320,57 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** set some 'solar energy' in current WorldCase's instance
-		wc.getVariables().setVariable(SomeChemicals.ENERGY_HEAT.getIndex(),  50);
+		wc.getChemicals().setVariable(SomeChemicals.ENERGY_HEAT.getIndex(),  50);
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 		
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(1, 1) );
 		Assertions.assertFalse( test.getBrain().getNeuronAt(1, 1).isActivated() );
 		Assertions.assertEquals(  0, test.getBrain().getNeuronAt(1, 1).getActivity() );
-		Assertions.assertEquals(  0, test.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 
-		test.getVariables().setVariable(SomeChemicals.ENERGY_HEAT.getIndex(), 100);
+		test.getChemicals().setVariable(SomeChemicals.ENERGY_HEAT.getIndex(), 100);
 		
 		// ***** one MORE execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(100, test.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
-		Assertions.assertEquals(  2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(  2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(1, 1) );
 		Assertions.assertTrue( test.getBrain().getNeuronAt(1, 1).isActivated() );
 		Assertions.assertEquals( 99, test.getBrain().getNeuronAt(1, 1).getActivity() );
-		Assertions.assertEquals(100, test.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 
 		
 		// ***** one MORE MORE execution in this context
@@ -378,17 +378,17 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(100, test.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
-		Assertions.assertEquals(  3, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals(  3, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(1, 1) );
 		Assertions.assertTrue( test.getBrain().getNeuronAt(1, 1).isActivated() );
 		Assertions.assertEquals(198, test.getBrain().getNeuronAt(1, 1).getActivity() );
-		Assertions.assertEquals(100, test.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(100, test.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()) );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex() ) );
 
 	}
 	
@@ -415,7 +415,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 				
 		Organism test		= new Organism(basicGenome);
 
-		Assertions.assertEquals(  0, test.getVariables().getVariable( 1 ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( 1 ) );
 		
 		Assertions.assertEquals(3, basicGenome.length());
 		Assertions.assertEquals(1, test.getGenome().size());
@@ -423,29 +423,29 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** set some 'solar energy' in current WorldCase's instance
-		wc.getVariables().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
+		wc.getChemicals().setVariable(SomeChemicals.ENERGY_SOLAR.getIndex(),  50);
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 		
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  0, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals(  0, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  1, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  1, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -453,7 +453,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 0, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// Changes in WorldCase instance
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 		test.getBrain().getNeuronAt(9, 5).addActivity( 100 );
 		
@@ -462,8 +462,8 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals( 25, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  2, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  2, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -471,15 +471,15 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 99, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 		// ***** one MORE MORE execution in this context
 		test.execution( wc );
 		test.cyclePlusPlus(); // Aging organism
 		
 		// Changes in Organism instance
-		Assertions.assertEquals( 50, test.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
-		Assertions.assertEquals(  3, test.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 50, test.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  3, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( test.getBrain() );
 		Assertions.assertNotNull( test.getBrain().getNeuronAt(9, 5) );
@@ -487,7 +487,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals( 98, test.getBrain().getNeuronAt(9, 5).getActivity() );
 		
 		// No changes in WorldCase instance
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.PHEROMONE_00.getIndex() ) );
 
 	}
 	

@@ -7,10 +7,9 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.DecisionToMove;
@@ -22,6 +21,8 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.tests.TestObjectFoodEgg;
 import gabywald.global.structures.StringCouple;
 
@@ -47,13 +48,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -62,7 +63,7 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
 		
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 	}
 	
 	@Test
@@ -85,13 +86,13 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 
-			World w				= new World(3, 3);
+			World2D w				= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc		= w.getWorldCase(1,  1);
+			World2DCase wc		= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -150,13 +151,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -166,13 +167,13 @@ class DecisionsTests {
 		if (decision != null) { decision.action(); }
 		
 		Assertions.assertEquals( 1, wc.getAgentListe().size());
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
 		
 		// ***** Really moving here !!
 		testOrga.deplace();
 		Assertions.assertEquals( 0, wc.getAgentListe().size());
-		Assertions.assertEquals(wc.getDirection(testOrga.getDirection()), testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc.getDirection(testOrga.getDirection()), testOrga.getCurrentEnvironmentItem());
 		Assertions.assertNotEquals(DirectionWorld.CURRENT, testOrga.getDirection());
 	}
 	
@@ -200,13 +201,13 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 			
-			World w			= new World(3, 3);
+			World2D w			= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			World2DCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -218,9 +219,9 @@ class DecisionsTests {
 			// ***** apply movement here !! (after decision is made !)
 			testOrga.deplace();
 			
-			WorldCase nextWC = wc.getDirection(dir);
+			IEnvironmentItem nextWC = wc.getDirection(dir);
 			// System.out.println( "\t next: (" + nextWC.getPosX() + ", " + nextWC.getPosY() + ")" );
-			Assertions.assertEquals(nextWC, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(nextWC, testOrga.getCurrentEnvironmentItem());
 		});
 
 	}
@@ -240,13 +241,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -287,13 +288,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -340,13 +341,13 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 			
-			World w			= new World(3, 3);
+			World2D w			= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			World2DCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -355,7 +356,7 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
 			Assertions.assertEquals(attemptedDType, null);
@@ -369,16 +370,16 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 			
-			World w			= new World(3, 3);
+			World2D w			= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			World2DCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
 			TestObjectFoodEgg tofg = new TestObjectFoodEgg();
 			wc.addAgent( tofg );
 			
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -387,7 +388,7 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
 			Assertions.assertEquals(attemptedDType, null);
@@ -418,13 +419,13 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 			
-			World w			= new World(3, 3);
+			World2D w			= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			World2DCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -433,7 +434,7 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
 			Assertions.assertEquals(attemptedDType, dType);
@@ -447,15 +448,15 @@ class DecisionsTests {
 			Organism testOrga	= new Organism();
 			Assertions.assertNotNull( testOrga );
 			
-			World w			= new World(3, 3);
+			World2D w			= new World2D(3, 3);
 			Assertions.assertNotNull( w );
-			WorldCase wc	= w.getWorldCase(1,  1);
+			World2DCase wc	= w.getWorldCase(1,  1);
 			Assertions.assertNotNull( wc );
 			
 			wc.addAgent(new TestObjectFoodEgg());
 			
 			testOrga.setCurrentWorldCase( wc );
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionBuilder db	= new DecisionBuilder();
 			Assertions.assertNotNull( db );
@@ -464,7 +465,7 @@ class DecisionsTests {
 			Assertions.assertNotNull( decision );
 			if (decision != null) { decision.action(); }
 			
-			Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+			Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 			
 			DecisionType attemptedDType = DecisionType.getFrom(testOrga.getChemicals().getVariable(DecisionType.RECORDSTATE.getIndex()));
 			Assertions.assertEquals(attemptedDType, dType);
@@ -553,13 +554,13 @@ class DecisionsTests {
 		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -617,13 +618,13 @@ class DecisionsTests {
 		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -680,13 +681,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		DecisionBuilder db	= new DecisionBuilder();
 		Assertions.assertNotNull( db );
@@ -761,13 +762,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrga.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 100);
 		
@@ -781,7 +782,7 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
 		
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
@@ -812,13 +813,13 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrga.getChemicals().setVariable(SomeChemicals.WATER.getIndex(),   0);
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 100);
@@ -833,7 +834,7 @@ class DecisionsTests {
 		Assertions.assertNotNull( decision );
 		if (decision != null) { decision.action(); }
 		
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		Assertions.assertEquals( 50, testOrga.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
@@ -1018,7 +1019,7 @@ class DecisionsTests {
 		Organism testOrga	= new Organism();
 		Assertions.assertNotNull( testOrga );
 		
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 		
 		Assertions.assertEquals( 0, testOrga.getAgentListe().size());

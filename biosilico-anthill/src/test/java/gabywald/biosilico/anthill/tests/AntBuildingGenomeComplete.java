@@ -19,8 +19,6 @@ import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
@@ -28,6 +26,8 @@ import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -770,14 +770,14 @@ class AntBuildingGenomeComplete {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** one execution in this context
@@ -790,7 +790,7 @@ class AntBuildingGenomeComplete {
 		BuildingGenomeHelper.exportGenome("GenomeAntCompleteGenome.txt", testAnt);
 		
 		BuildingGenomeHelper.copyMoveGenome("GenomeAntCompleteGenome.txt", "baseGenomeAnt.txt");
-		
+		BuildingGenomeHelper.removeACGTsequence( "baseGenomeAnt.txt" );
 	}
 
 }
