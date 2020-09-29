@@ -21,14 +21,14 @@ import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.biosilico.model.tests.TestObjectFoodEgg;
 import gabywald.utilities.logger.Logger;
@@ -507,14 +507,14 @@ class AntBuildingGenomeWire {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** one execution in this context
@@ -598,10 +598,10 @@ class AntBuildingGenomeWire {
 		for (SomeChemicals pheromone : allPheromones) {
 			switch(pheromone) {
 			case PHEROMONE_01:
-			Assertions.assertEquals(  0, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+			Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			break;
 			default:
-				Assertions.assertEquals(  0, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+				Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			}
 		} // END "for (SomeChemicals pheromone : allPheromones)"
 		
@@ -615,10 +615,10 @@ class AntBuildingGenomeWire {
 		for (SomeChemicals pheromone : allPheromones) {
 			switch(pheromone) {
 			case PHEROMONE_01:
-			Assertions.assertEquals( 95, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+			Assertions.assertEquals( 95, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			break;
 			default:
-				Assertions.assertEquals(  0, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+				Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			}
 		} // END "for (SomeChemicals pheromone : allPheromones)"
 		
@@ -632,10 +632,10 @@ class AntBuildingGenomeWire {
 		for (SomeChemicals pheromone : allPheromones) {
 			switch(pheromone) {
 			case PHEROMONE_01:
-			Assertions.assertEquals(190, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+			Assertions.assertEquals(190, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			break;
 			default:
-				Assertions.assertEquals(  0, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+				Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			}
 		} // END "for (SomeChemicals pheromone : allPheromones)"
 
@@ -652,17 +652,17 @@ class AntBuildingGenomeWire {
 		for (SomeChemicals pheromone : allPheromones) {
 			switch(pheromone) {
 			case PHEROMONE_01:
-			Assertions.assertEquals(180, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+			Assertions.assertEquals(180, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			break;
 			default:
-				Assertions.assertEquals(  0, testAnt.getVariables().getVariable( pheromone.getIndex() ) );
+				Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( pheromone.getIndex() ) );
 			}
 		} // END "for (SomeChemicals pheromone : allPheromones)"
 		
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 3, 1).ckActivated() );
 		
 		// ***** Cleaning before the following
-		testAnt.getVariables().setVariable(SomeChemicals.PHEROMONE_01.getIndex(), 0);
+		testAnt.getChemicals().setVariable(SomeChemicals.PHEROMONE_01.getIndex(), 0);
 		while ( (testAnt.getBrain().getNeuronAt(  3,  1).ckActivated()) )
 			{ testAnt.execution( wc ); }
 		
@@ -688,7 +688,7 @@ class AntBuildingGenomeWire {
 		Assertions.assertEquals( 9, testAnt.getChemicals().getVariable(DecisionType.MOVE_AWAY.getIndex()) );
 
 		Assertions.assertEquals( 0, wc.getAgentListLength() );
-		Assertions.assertEquals(wc.getDirection(testAnt.getDirection()), testAnt.getCurrentWorldCase());
+		Assertions.assertEquals(wc.getDirection(testAnt.getDirection()), testAnt.getCurrentEnvironmentItem());
 		Assertions.assertNotEquals(DirectionWorld.CURRENT, testAnt.getDirection());
 		
 		neuronMOVEAWAY_90o.setActivity( 0 );
@@ -721,7 +721,7 @@ class AntBuildingGenomeWire {
 		neuronGETFOOD_90o.setActivity( 0 );
 		testAnt.getChemicals().setVariable(DecisionType.GET.getIndex(), 0);
 		// ***** Cleaning before the following
-		testAnt.getVariables().setVariable(SomeChemicals.PHEROMONE_01.getIndex(), 0);
+		testAnt.getChemicals().setVariable(SomeChemicals.PHEROMONE_01.getIndex(), 0);
 		while ( (testAnt.getBrain().getNeuronAt(  3,  1).ckActivated()) )
 			{ testAnt.execution( wc ); }
 		

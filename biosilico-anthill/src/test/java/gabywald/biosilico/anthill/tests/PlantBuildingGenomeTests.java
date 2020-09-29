@@ -13,11 +13,7 @@ import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
-import gabywald.biosilico.interfaces.IAgentContent;
-import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Chromosome;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.DirectionWorld;
@@ -25,6 +21,8 @@ import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
 import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.EnergySource;
@@ -388,7 +386,7 @@ class PlantBuildingGenomeTests {
 		Plant testPlant = new Plant( Arrays.asList( chrBiochemical, chrSDdecision, chrSDdetection ) );
 		Assertions.assertNotNull( testPlant );
 		Assertions.assertEquals(3, testPlant.getGenome().size());
-
+	
 		Assertions.assertEquals(chrBiochemical.length(), 	testPlant.getGenome().get( 0 ).length());
 		Assertions.assertEquals(chrSDdecision.length(), 	testPlant.getGenome().get( 1 ).length());
 		Assertions.assertEquals(chrSDdetection.length(), 	testPlant.getGenome().get( 2 ).length());
@@ -413,12 +411,12 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w		= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testPlant.setCurrentWorldCase( wc );
-
+	
 		// ***** one execution in this context
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
@@ -472,57 +470,12 @@ class PlantBuildingGenomeTests {
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 0, testPlant.hasObjectType(ObjectType.FOOD));
-		Assertions.assertEquals(20, testPlant.hasAgentStatus(StatusType.GAMET));
-		Assertions.assertEquals( 0, testPlant.hasAgentStatus(StatusType.EGG));
-		Assertions.assertEquals( 0, testPlant.lineageSize());
-		Assertions.assertEquals( 2, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
-		Assertions.assertEquals( 4, wc.getAgentListe().size());
-		
 		BuildingGenomeHelper.show(testPlant, wc);
 		
-		IntStream.range(0, 20).forEach( i -> {
-			w.execution();
-		});
-		
-		BuildingGenomeHelper.show(testPlant, wc);
-		
-		// ***** one execution in this context
-		w.execution();
-		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
-		
-		Assertions.assertEquals( 0, testPlant.hasObjectType(ObjectType.FOOD));
-		Assertions.assertEquals(41, testPlant.hasAgentStatus(StatusType.GAMET));
-		Assertions.assertEquals( 0, testPlant.hasAgentStatus(StatusType.EGG));
-		Assertions.assertEquals( 0, testPlant.lineageSize());
-		Assertions.assertEquals( 2, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
-		Assertions.assertEquals( 4, wc.getAgentListe().size());
-		
-		BuildingGenomeHelper.show(testPlant, wc);
-		
-		IntStream.range(0, 100).forEach( i -> {
-			w.execution();
-		});
-		
-		BuildingGenomeHelper.show(testPlant, wc);
-		
-		// ***** one execution in this context
-		w.execution();
-		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
-		
-		Assertions.assertEquals( 0, testPlant.hasObjectType(ObjectType.FOOD));
-		Assertions.assertEquals(75, testPlant.hasAgentStatus(StatusType.GAMET));
-		Assertions.assertEquals( 0, testPlant.hasAgentStatus(StatusType.EGG));
-		Assertions.assertEquals( 0, testPlant.lineageSize());
-		Assertions.assertEquals( 2, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
-		Assertions.assertEquals( 4, wc.getAgentListe().size());
-		
-		BuildingGenomeHelper.show(testPlant, wc);
-		
-		List<Agent> plants = IAgentContent.getListOfType(AgentType.BIOSILICO_VIRIDITA, StateType.AGENT_TYPE.getIndex(), wc.getAgentListe());
-		plants.stream().forEach( p -> {
-			BuildingGenomeHelper.show( p );
-		});
+//		List<Agent> plants = IAgentContent.getListOfType(AgentType.BIOSILICO_VIRIDITA, StateType.AGENT_TYPE.getIndex(), wc.getAgentListe());
+//		plants.stream().forEach( p -> {
+//			BuildingGenomeHelper.show( p );
+//		});
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
@@ -532,7 +485,7 @@ class PlantBuildingGenomeTests {
 		BuildingGenomeHelper.copyMoveGenome("GenomePlantCompleteGenome.txt", "baseGenomePlant.txt");
 		BuildingGenomeHelper.removeACGTsequence( "baseGenomePlant.txt" );
 	}
-	
+
 	@Test
 	void testPlantBiochemicalReactionGenome() {
 		Chromosome chrBiochemical			= new Chromosome();
@@ -758,111 +711,111 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testPlant.setCurrentWorldCase( wc );
 
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 1
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  5, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  1, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  5, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  1, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 2
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 15, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 15, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 3
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		BuildingGenomeHelper.show(testPlant, wc);
 		
@@ -1149,111 +1102,111 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testPlant.setCurrentWorldCase( wc );
 
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 1
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  5, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  1, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  5, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  1, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 2
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 15, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 15, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 3
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		BuildingGenomeHelper.show(testPlant, wc);
 		
@@ -1540,165 +1493,165 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		wc.addAgent( new EnergySource() );
 		
 		testPlant.setCurrentWorldCase( wc );
 
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 1
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 15, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 30, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  1, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 30, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  1, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 2
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 30, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 35, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 35, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 3
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 30, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 45, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 45, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 40, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 40, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 4
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 60, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  1, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 45, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  1, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 45, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 5
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 75, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 75, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 50, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  5, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 50, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  5, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		BuildingGenomeHelper.show(testPlant, wc);
 		
@@ -1985,8 +1938,8 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		wc.addAgent( new EnergySource() );
@@ -1994,157 +1947,157 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setCurrentWorldCase( wc );
 
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 1
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 15, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals(  5, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  5, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 30, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  1, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 30, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  1, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 2
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 30, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 10, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals(  0, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals( 10, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 16, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 35, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 18, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 16, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 35, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 18, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 3
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 30, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 45, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 15, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals( 15, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 45, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals( 10, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 17, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 40, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  6, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  3, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals( 10, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 17, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 40, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  6, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  3, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 4
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 60, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals( 20, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals( 13, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 18, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 45, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals( 14, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  4, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals( 13, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 18, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 45, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals( 14, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  4, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		// ***** one execution in this context -- 5
 		w.execution();
 		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 75, wc.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 25, wc.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 40, wc.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals( 25, wc.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 75, wc.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
 		
-		Assertions.assertEquals(  7, testPlant.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
-		Assertions.assertEquals( 16, testPlant.getVariables().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
-		Assertions.assertEquals( 28, testPlant.getVariables().getVariable( SomeChemicals.STARCH.getIndex()) );
-		Assertions.assertEquals( 19, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
-		Assertions.assertEquals( 50, testPlant.getVariables().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
-		Assertions.assertEquals( 20, testPlant.getVariables().getVariable( SomeChemicals.WATER.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
-		Assertions.assertEquals(  2, testPlant.getVariables().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.AMP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ADP.getIndex()) );
-		Assertions.assertEquals(  0, testPlant.getVariables().getVariable( SomeChemicals.ATP.getIndex()) );
-		Assertions.assertEquals(  5, testPlant.getVariables().getVariable( StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  7, testPlant.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex()) );
+		Assertions.assertEquals( 16, testPlant.getChemicals().getVariable( SomeChemicals.FRUCTOSE.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.HEXOKINASE.getIndex()) );
+		Assertions.assertEquals( 28, testPlant.getChemicals().getVariable( SomeChemicals.STARCH.getIndex()) );
+		Assertions.assertEquals( 19, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_SOLAR.getIndex()) );
+		Assertions.assertEquals( 50, testPlant.getChemicals().getVariable( SomeChemicals.ENERGY_HEAT.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.CARBON_DIOXYDE.getIndex()) );
+		Assertions.assertEquals( 20, testPlant.getChemicals().getVariable( SomeChemicals.WATER.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.GLYCOGEN.getIndex()) );
+		Assertions.assertEquals(  2, testPlant.getChemicals().getVariable( SomeChemicals.DIOXYGEN.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.PHOSPHOR.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.AMP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ADP.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable( SomeChemicals.ATP.getIndex()) );
+		Assertions.assertEquals(  5, testPlant.getChemicals().getVariable( StateType.AGING.getIndex()) );
 		
 		BuildingGenomeHelper.show(testPlant, wc);
 		

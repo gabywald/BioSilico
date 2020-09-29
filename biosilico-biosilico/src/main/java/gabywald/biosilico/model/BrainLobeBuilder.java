@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.biosilico.model.environment.PositionBuilder;
 
 /**
  * Builder for BrainLobe Model class. 
@@ -186,7 +187,9 @@ public class BrainLobeBuilder {
 				Boolean.parseBoolean(this.map.get(BrainLobeBuilderEnum.REPR).second), 
 				Integer.parseInt(this.map.get(BrainLobeBuilderEnum.REPY).second), 
 				Boolean.parseBoolean(this.map.get(BrainLobeBuilderEnum.WTA).second), 
-				new Position(Integer.parseInt(this.map.get(BrainLobeBuilderEnum.POSX).second), Integer.parseInt(this.map.get(BrainLobeBuilderEnum.POSY).second) ) );
+				PositionBuilder.buildPosition(
+						Integer.parseInt(this.map.get(BrainLobeBuilderEnum.POSX).second), 
+						Integer.parseInt(this.map.get(BrainLobeBuilderEnum.POSY).second) ) );
 	}
 	
 }

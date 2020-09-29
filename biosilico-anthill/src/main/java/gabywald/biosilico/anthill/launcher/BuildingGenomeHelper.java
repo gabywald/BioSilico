@@ -9,7 +9,7 @@ import java.util.List;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 import gabywald.global.data.File;
 import gabywald.global.data.StringUtils;
@@ -104,11 +104,11 @@ public abstract class BuildingGenomeHelper {
 		BuildingGenomeHelper.show((Organism) testAgent, null, null);
 	}
 	
-	public static void show(Organism testOrg, WorldCase wc) {
+	public static void show(Organism testOrg, World2DCase wc) {
 		BuildingGenomeHelper.show(testOrg, null, wc);
 	}
 	
-	public static void show(Organism testOrg, EnergySource es, WorldCase wc) {
+	public static void show(Organism testOrg, EnergySource es, World2DCase wc) {
 		if (testOrg != null) { 
 			Logger.printlnLog(LoggerLevel.LL_FORUSER, testOrg.toString() ); 
 			Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("+", 80) );
@@ -123,7 +123,7 @@ public abstract class BuildingGenomeHelper {
 		}
 	}
 	
-	public static void showAll(Organism ant, Organism plant, List<WorldCase> wcs) {
+	public static void showAll(Organism ant, Organism plant, List<World2DCase> wcs) {
 		BuildingGenomeHelper.show( ant );
 		BuildingGenomeHelper.show( plant );
 		wcs.stream().forEach( wc -> {

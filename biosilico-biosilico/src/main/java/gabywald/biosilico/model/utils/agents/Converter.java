@@ -3,9 +3,9 @@ package gabywald.biosilico.model.utils.agents;
 import java.util.List;
 
 import gabywald.biosilico.interfaces.IAgentContent;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
@@ -39,7 +39,7 @@ public class Converter extends UtilAgent {
 	}
 	
 	@Override
-	public void execution(WorldCase local) {
+	public void execution(IEnvironmentItem local) {
 		if ( (local.hasAgentType(this.at) > 0) && (local.hasAgentStatus(this.st) > 0) ) {
 			List<Agent> viriditas = IAgentContent.getListOfType(this.at, StateType.AGENT_TYPE.getIndex(), local.getAgentListe());
 			viriditas.stream().forEach( v -> {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import gabywald.biosilico.interfaces.IPosition;
+
 /**
  * Brain is a defined class of a two-dimensionnal part of neural network / brain. 
  * XXX Test to see if it is better with this class. ?? 
@@ -32,7 +34,7 @@ public class BrainLobe {
 	/** Width of the lobe. */
 	private int width;
 	/** Position in the neural network. */
-	private Position position;
+	private IPosition position;
 	/** If current Neuron is on a WTA Lobe (one neuron activated). */
 	private boolean winnerTakeAll;
 	
@@ -49,11 +51,11 @@ public class BrainLobe {
 	 * @param prox (int) proximity. 
 	 * @param repr (boolean) if current Neuron can reproduce. 
 	 * @param repy (int) number of maximum reproductions. 
-	 * @param pos (Position)
+	 * @param pos (IPosition)
 	 * @see Neuron#getCopy()
 	 */
 	BrainLobe(	int rest, int thre, int desc, int dmin, int dmax, 
-				int prox, boolean repr, int repy, boolean wta, Position pos) {
+				int prox, boolean repr, int repy, boolean wta, IPosition pos) {
 		this.restState			= rest;
 		this.threshold			= thre;
 		this.descent			= desc;
@@ -68,7 +70,7 @@ public class BrainLobe {
 		this.reproductibility	= repy;
 		this.winnerTakeAll		= wta;
 		
-		this.neurons		= new ArrayList<Neuron>();
+		this.neurons			= new ArrayList<Neuron>();
 	}
 
 	public int getRestState() {
@@ -111,7 +113,7 @@ public class BrainLobe {
 		return this.width;
 	}
 
-	public Position getPosition() {
+	public IPosition getPosition() {
 		return this.position;
 	}
 

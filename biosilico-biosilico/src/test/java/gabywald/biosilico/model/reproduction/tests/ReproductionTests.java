@@ -7,14 +7,14 @@ import gabywald.biosilico.genetics.BiochemicalReaction;
 import gabywald.biosilico.genetics.InitialConcentration;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 
 /**
  * 
@@ -36,13 +36,13 @@ class ReproductionTests {
 		testOrga.setAgentType(AgentType.BIOSILICO_DAEMON); // default AgentType
 		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(1, wc.getAgentListe().size());
 		Assertions.assertEquals(1, wc.hasAgentType(AgentType.BIOSILICO_DAEMON));
@@ -64,7 +64,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => WORKS !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		IDecision decision02	= db.type(dTypeMATE).organism( testOrga )
@@ -112,13 +112,13 @@ class ReproductionTests {
 		testOrga.setAgentType(AgentType.BIOSILICO_BACTA); // Specific Agent type : here BACTA !!
 		testOrga.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(1, wc.getAgentListe().size());
 		Assertions.assertEquals(1, wc.hasAgentType(AgentType.BIOSILICO_BACTA));
@@ -140,7 +140,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		IDecision decision02	= db.type(dTypeMATE).organism( testOrga )
@@ -229,13 +229,13 @@ class ReproductionTests {
 						1, 10, 2, 10, 6, 5, 7, 5, 1));
 		testOrga.getGenome().add(basicGenome);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(1, wc.getAgentListe().size());
 		Assertions.assertEquals(1, wc.hasAgentType(AgentType.BIOSILICO_ANIMA));
@@ -256,7 +256,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		IDecision decision02	= db.type(dTypeMATE).organism( testOrga )
@@ -350,16 +350,16 @@ class ReproductionTests {
 		testOrgaOther.setAgentType(AgentType.BIOSILICO_ANIMA); // Specific Agent type : here ANIMA !!
 		testOrgaOther.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrgaOther.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrgaOther.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrgaOther.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(2, wc.getAgentListe().size());
 		Assertions.assertEquals(2, wc.hasAgentType(AgentType.BIOSILICO_ANIMA));
@@ -383,11 +383,11 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrgaOther.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		
-		testOrgaOther.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrgaOther.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrgaOther.isFertile());
 		Assertions.assertFalse(testOrgaOther.isPregnant());
 		
@@ -517,16 +517,16 @@ class ReproductionTests {
 		testOrgaOther.setAgentType(AgentType.BIOSILICO_ANIMA); // Specific Agent type : here ANIMA !!
 		testOrgaOther.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrgaOther.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrgaOther.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrgaOther.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(2, wc.getAgentListe().size());
 		Assertions.assertEquals(2, wc.hasAgentType(AgentType.BIOSILICO_ANIMA));
@@ -550,12 +550,12 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrgaOther.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		
 		// => making simple not fertile (or no gamets... same things !)
-		testOrgaOther.getVariables().setVariable(StateType.FERTILE.getIndex(),   0);
+		testOrgaOther.getChemicals().setVariable(StateType.FERTILE.getIndex(),   0);
 		Assertions.assertFalse(testOrgaOther.isFertile());
 		Assertions.assertFalse(testOrgaOther.isPregnant());
 		
@@ -680,13 +680,13 @@ class ReproductionTests {
 						1, 10, 2, 10, 6, 5, 7, 5, 1));
 		testOrga.getGenome().add(basicGenome);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(1, wc.getAgentListe().size());
 		Assertions.assertEquals(1, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
@@ -707,7 +707,7 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrga.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		IDecision decision02	= db.type(dTypeMATE).organism( testOrga )
@@ -802,16 +802,16 @@ class ReproductionTests {
 		testOrgaOther.setAgentType(AgentType.BIOSILICO_VIRIDITA); // Specific Agent type : here BIOSILICO_VIRIDITA !!
 		testOrgaOther.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrgaOther.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrgaOther.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrgaOther.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(2, wc.getAgentListe().size());
 		Assertions.assertEquals(2, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
@@ -835,11 +835,11 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrgaOther.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		
-		testOrgaOther.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrgaOther.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrgaOther.isFertile());
 		Assertions.assertFalse(testOrgaOther.isPregnant());
 		
@@ -970,16 +970,16 @@ class ReproductionTests {
 		testOrgaOther.setAgentType(AgentType.BIOSILICO_VIRIDITA); // Specific Agent type : here BIOSILICO_VIRIDITA !!
 		testOrgaOther.setOrganismStatus(StatusType.NOT_ACCURATE);
 
-		World w			= new World(3, 3);
+		World2D w			= new World2D(3, 3);
 		Assertions.assertNotNull( w );
-		WorldCase wc	= w.getWorldCase(1,  1);
+		World2DCase wc	= w.getWorldCase(1,  1);
 		Assertions.assertNotNull( wc );
 
 		testOrga.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrga.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrga.getCurrentEnvironmentItem());
 		
 		testOrgaOther.setCurrentWorldCase( wc );
-		Assertions.assertEquals(wc, testOrgaOther.getCurrentWorldCase());
+		Assertions.assertEquals(wc, testOrgaOther.getCurrentEnvironmentItem());
 
 		Assertions.assertEquals(2, wc.getAgentListe().size());
 		Assertions.assertEquals(2, wc.hasAgentType(AgentType.BIOSILICO_VIRIDITA));
@@ -1003,12 +1003,12 @@ class ReproductionTests {
 		Assertions.assertEquals(0, testOrgaOther.getAgentListe().size());
 
 		// ***** ensure this is fertile !! => not working (need gamets !) !!
-		testOrga.getVariables().setVariable(StateType.FERTILE.getIndex(), 100);
+		testOrga.getChemicals().setVariable(StateType.FERTILE.getIndex(), 100);
 		Assertions.assertTrue(testOrga.isFertile());
 		Assertions.assertFalse(testOrga.isPregnant());
 		
 		// => making simple not fertile (or no gamets... same things !)
-		testOrgaOther.getVariables().setVariable(StateType.FERTILE.getIndex(),   0);
+		testOrgaOther.getChemicals().setVariable(StateType.FERTILE.getIndex(),   0);
 		Assertions.assertFalse(testOrgaOther.isFertile());
 		Assertions.assertFalse(testOrgaOther.isPregnant());
 		

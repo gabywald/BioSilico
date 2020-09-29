@@ -9,12 +9,12 @@ import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.AntReceptionChemicals;
 import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
 import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.tests.TestObjectFoodEgg;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 import gabywald.global.data.StringUtils;
@@ -67,32 +67,32 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** one execution in this context
@@ -101,24 +101,24 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context
 		testAnt.execution( wc );
@@ -126,24 +126,24 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -166,36 +166,36 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 100);
 		
 		// ***** one execution in this context
 		testAnt.execution( wc );
@@ -203,25 +203,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context
 		testAnt.execution( wc );
@@ -229,25 +229,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));		
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));		
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -270,37 +270,37 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen && H2O in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		
 		// ***** one execution in this context -- 1
 		testAnt.execution( wc );
@@ -308,25 +308,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		testAnt.execution( wc );
@@ -334,25 +334,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(110, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		testAnt.execution( wc );
@@ -360,25 +360,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 55, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 55, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(115, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		testAnt.execution( wc );
@@ -386,25 +386,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 65, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 65, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(120, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		testAnt.execution( wc );
@@ -412,25 +412,25 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
 
 	}
 	
@@ -453,37 +453,37 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen && H2O in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
@@ -493,27 +493,27 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		testAnt.execution( wc );
@@ -521,27 +521,27 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(110, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		testAnt.execution( wc );
@@ -549,27 +549,27 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 55, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 55, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(115, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		testAnt.execution( wc );
@@ -577,27 +577,27 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 65, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 65, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(120, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		testAnt.execution( wc );
@@ -610,27 +610,27 @@ class AntLoadingTests {
 		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
 		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 
 	}
 	
@@ -654,39 +654,39 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen && H2O in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
@@ -696,23 +696,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -720,12 +720,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		w.execution();
@@ -733,23 +733,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -757,12 +757,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(110, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 45, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 45, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		w.execution();
@@ -770,23 +770,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 55, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 55, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -794,12 +794,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(115, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 65, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 75, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 65, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		w.execution();
@@ -807,23 +807,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 65, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 65, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -831,12 +831,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(120, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(100, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 85, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		w.execution();
@@ -844,23 +844,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -868,12 +868,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Put some pheromones on local (00 : ch650)
 		wc.getChemicals().setVarPlus(SomeChemicals.PHEROMONE_00.getIndex(), 50);
@@ -883,23 +883,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 85, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 85, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -908,12 +908,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(150, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(150, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Loading Chemicals HalfLives in World !!
 		w.loadHalLives();
@@ -924,23 +924,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 95, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -949,12 +949,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(135, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(135, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 7
 		testAnt.getChemicals().setVarPlus(SomeChemicals.HEXOKINASE.getIndex(), 15);
@@ -964,23 +964,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  8, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(105, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -989,12 +989,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(160, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(145, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(160, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(145, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 8
 		w.execution();
@@ -1002,23 +1002,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  9, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(115, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1027,12 +1027,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 9
 		w.execution();
@@ -1040,23 +1040,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(125, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1065,12 +1065,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(170, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(170, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 
 	}
 	
@@ -1094,39 +1094,39 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen && H2O in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
@@ -1136,23 +1136,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1160,12 +1160,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		w.execution();
@@ -1173,23 +1173,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1197,12 +1197,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(110, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 45, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 45, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		w.execution();
@@ -1210,23 +1210,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 55, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 55, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1234,12 +1234,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(115, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 65, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 75, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 65, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		w.execution();
@@ -1247,23 +1247,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 65, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 65, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1271,12 +1271,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(120, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(100, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 85, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		w.execution();
@@ -1284,23 +1284,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1308,12 +1308,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Put some pheromones on local (00 : ch650)
 		wc.getChemicals().setVarPlus(SomeChemicals.PHEROMONE_00.getIndex(), 50);
@@ -1323,23 +1323,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 85, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 85, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1348,12 +1348,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(150, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(150, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Loading Chemicals HalfLives in World !!
 		w.loadHalLives();
@@ -1364,23 +1364,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 95, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1389,12 +1389,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(135, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(135, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 7
 		testAnt.getChemicals().setVarPlus(SomeChemicals.HEXOKINASE.getIndex(), 15);
@@ -1404,23 +1404,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  8, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(105, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1429,12 +1429,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(160, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(145, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(160, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(145, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 8
 		w.execution();
@@ -1442,23 +1442,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  9, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(115, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1467,12 +1467,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 9
 		w.execution();
@@ -1480,23 +1480,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(125, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1505,12 +1505,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(170, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(170, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 
 	}
 
@@ -1534,8 +1534,8 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(3, 3);
-		WorldCase wc	= w.getWorldCase(1, 1);
+		World2D w			= new World2D(3, 3);
+		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
 		testAnt.setCurrentWorldCase( wc );
@@ -1544,31 +1544,31 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
-			Assertions.assertEquals( 0, wc.getVariables().getVariable(k) );
+			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
 		});
 		
 		// ***** Put DiOxygen && H2O in local WorldCase !!
-		wc.getVariables().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getVariables().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
@@ -1578,23 +1578,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 35, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 20, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  1, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 35, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 20, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1602,12 +1602,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 90, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 2
 		w.execution();
@@ -1615,23 +1615,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 45, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  2, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 45, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1639,12 +1639,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 80, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(110, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 45, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(110, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 45, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 3
 		w.execution();
@@ -1652,23 +1652,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 55, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  3, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 55, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1676,12 +1676,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 70, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 15, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(115, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals( 75, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 65, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(115, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals( 75, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 65, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 4
 		w.execution();
@@ -1689,23 +1689,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 65, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  4, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 65, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1713,12 +1713,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 60, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(120, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(100, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals( 85, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(120, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 85, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** one execution in this context -- 5
 		w.execution();
@@ -1726,23 +1726,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1750,12 +1750,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(105, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(105, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Put some pheromones on local (00 : ch650)
 		wc.getChemicals().setVarPlus(SomeChemicals.PHEROMONE_00.getIndex(), 50);
@@ -1765,23 +1765,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 85, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  6, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 85, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1790,12 +1790,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(150, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 50, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(150, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** Loading Chemicals HalfLives in World !!
 		w.loadHalLives();
@@ -1806,23 +1806,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 25, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals( 95, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  7, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 25, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals( 95, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1831,12 +1831,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(135, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 40, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(135, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 7
 		testAnt.getChemicals().setVarPlus(SomeChemicals.HEXOKINASE.getIndex(), 15);
@@ -1846,23 +1846,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(105, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  8, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(105, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1871,12 +1871,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(160, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(145, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 30, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(160, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(145, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 8
 		w.execution();
@@ -1884,23 +1884,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(115, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals(  9, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(115, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1909,12 +1909,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(155, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 20, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(155, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 		
 		// ***** MORE executionS in this context -- 9
 		w.execution();
@@ -1922,23 +1922,23 @@ class AntLoadingTests {
 		
 		BuildingGenomeHelper.show(testAnt, es, wc);
 		
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ATP.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ADP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ADP.getIndex()));
 
-		Assertions.assertEquals( 15, testAnt.getVariables().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
-		Assertions.assertEquals( 75, testAnt.getVariables().getVariable(SomeChemicals.GLUCOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.G6P.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.F6P.getIndex()));
-		Assertions.assertEquals(125, testAnt.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.HYDROXYD.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getVariables().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
-		Assertions.assertEquals( 10, testAnt.getVariables().getVariable(StateType.AGING.getIndex()));
-		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getVariables().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getVariables().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals( 15, testAnt.getChemicals().getVariable(SomeChemicals.HEXOKINASE.getIndex()));
+		Assertions.assertEquals( 75, testAnt.getChemicals().getVariable(SomeChemicals.GLUCOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.FRUCTOSE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.G6P.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.F6P.getIndex()));
+		Assertions.assertEquals(125, testAnt.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.HYDROXYD.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
+		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
+		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1947,12 +1947,12 @@ class AntLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
 		
-		Assertions.assertEquals(  0, wc.getVariables().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
-		Assertions.assertEquals( 25, wc.getVariables().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
-		Assertions.assertEquals(125, wc.getVariables().getVariable(SomeChemicals.WATER.getIndex()));
-		Assertions.assertEquals(170, wc.getVariables().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
-		Assertions.assertEquals(165, wc.getVariables().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
-		Assertions.assertEquals( 10, wc.getVariables().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
+		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(125, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(170, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(165, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.PHEROMONE_00.getIndex()));
 
 	}
 

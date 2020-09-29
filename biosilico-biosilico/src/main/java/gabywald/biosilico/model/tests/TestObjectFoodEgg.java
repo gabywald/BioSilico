@@ -1,7 +1,7 @@
 package gabywald.biosilico.model.tests;
 
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
@@ -76,7 +76,7 @@ public class TestObjectFoodEgg extends Organism {
 	}
 
 	@Override
-	public void execution(WorldCase local) {
+	public void execution(IEnvironmentItem local) {
 		// NO EXECUTION HERE !
 	}
 

@@ -49,7 +49,7 @@ Idea of a Tool to build "meta-genes" / Pathways :
 
 Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
 
-
+TODO better testing "for real"
 
 ### 'biosilico-biojava' : 
 
@@ -62,6 +62,8 @@ A complete (?) dev framework to build a computer modelization / simulation for '
 Mostly inspired from game Creatures and publications around it. 
 
 Implemented as a discrete "World" composed of WorldCase, which can contains Agents. Some Agents are Organisms, which genomes are haploïd (reflexion about diploïd / polyploïd ... ?!). 
+
+Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) to permit other implementations and different global uses !
 
 ### 'biosilico-cellmodel' : 
 

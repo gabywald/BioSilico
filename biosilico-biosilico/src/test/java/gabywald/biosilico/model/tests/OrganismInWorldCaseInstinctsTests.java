@@ -12,10 +12,10 @@ import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.World;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.global.data.StringUtils;
 
 /**
@@ -80,8 +80,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -89,15 +89,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -175,8 +175,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -184,15 +184,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -218,8 +218,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertEquals(  0, testNeuronAt0dot0.getActivity() );
 		
@@ -292,8 +292,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -301,15 +301,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -339,8 +339,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -367,8 +367,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -455,8 +455,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -464,15 +464,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -502,8 +502,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -530,8 +530,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -618,8 +618,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -627,15 +627,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -669,8 +669,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -698,8 +698,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -787,8 +787,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World w			= new World(1, 1);
-		WorldCase wc	= w.getWorldCase(0,  0);
+		World2D w			= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
@@ -796,15 +796,15 @@ class OrganismInWorldCaseInstinctsTests {
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
 		
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  0, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  1, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		Assertions.assertNotNull( testOrga.getBrain() );
 		Neuron testNeuronAt9dot0 = testOrga.getBrain().getNeuronAt(9, 0);
@@ -841,8 +841,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  2, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );
@@ -873,8 +873,8 @@ class OrganismInWorldCaseInstinctsTests {
 		testOrga.execution( wc );
 		testOrga.cyclePlusPlus(); // Aging organism
 		
-		Assertions.assertEquals( 25, testOrga.getVariables().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
-		Assertions.assertEquals(  3, testOrga.getVariables().getVariable( StateType.AGING.getIndex() ) );
+		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
+		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		System.out.println( testOrga.toString() );
 		System.out.println( StringUtils.repeat("+", 80) );

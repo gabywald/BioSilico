@@ -19,8 +19,9 @@ public class DecisionToMove extends BaseDecisionOnlyOneAttribute {
 
 	@Override
 	public void action() {
-		this.getOrga().setDirection( DirectionWorld.get2DFrom( this.getVariable(0) ) );
-		this.getOrga().setNextWorldCase(this.getOrga().getCurrentWorldCase().getDirection( this.getVariable(0) ));
+		DirectionWorld direction = DirectionWorld.get2DFrom( this.getVariable( 0 ) );
+		this.getOrga().setDirection( direction );
+		this.getOrga().setNextWorldCase(this.getOrga().getCurrentEnvironmentItem().getDirection( direction ));
 		
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "{" + this.getOrga().getUniqueID() + "} MOVE TO {" + DirectionWorld.get2DFrom( this.getVariable(0) ) + "}");
 	}

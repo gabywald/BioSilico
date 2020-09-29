@@ -2,6 +2,7 @@ package gabywald.biosilico.model;
 
 import gabywald.biosilico.genetics.BrainGene;
 import gabywald.biosilico.interfaces.IAgentContent;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.decisions.DecisionBuilder;
 import gabywald.biosilico.model.decisions.IDecision;
 import gabywald.biosilico.model.enums.AgentType;
@@ -135,7 +136,7 @@ public class Organism extends Agent implements IAgentContent {
 		return StatusType.getFrom( type );
 	}
 
-	public void execution(WorldCase local) {
+	public void execution(IEnvironmentItem local) {
 		
 		if ( ! this.alive) { return; }
 		

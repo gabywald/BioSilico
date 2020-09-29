@@ -3,9 +3,10 @@ package gabywald.biosilico.genetics;
 import java.util.Random;
 
 import gabywald.biosilico.exceptions.GeneException;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.WorldCase;
+import gabywald.biosilico.model.enums.DirectionWorld;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.structures.GeneticTranslator;
 
@@ -100,10 +101,13 @@ public class StimulusDecision extends GeneGattaca {
 	protected void exec(Organism orga) throws GeneException {
 		if (this.perception) { 
 			// ***** This is an input / stimulus
+			DirectionWorld direction	= DirectionWorld.get2DFrom( this.attribute );
+			if (direction == null)		{ return; }
+			IEnvironmentItem detectWC		= orga.getCurrentEnvironmentItem().getDirection( direction );
+			
 			if (this.object) { 
 				// ***** Acts from an object 
 				/** Works for object AND one attribute. */
-				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
 				if ( (detectWC != null) && (detectWC.hasObjectType( ObjectType.getFrom(this.indicator) ) > this.threshold ) ) 
 					{  orga.getChemicals().setVariable(this.varia, this.value); } 
 				else { orga.getChemicals().setVariable(this.varia, 0); }
@@ -112,8 +116,7 @@ public class StimulusDecision extends GeneGattaca {
 
 			} else { 
 				// ***** Acts from a variable located with attribute. 
-				WorldCase detectWC = orga.getCurrentWorldCase().getDirection(this.attribute);
-				if ( (detectWC != null) && (detectWC.getVariables().getVariable(this.indicator) > this.threshold) ) 
+				if ( (detectWC != null) && (detectWC.getChemicals().getVariable(this.indicator) > this.threshold) ) 
 					{ orga.getChemicals().setVariable(this.varia, this.value); }
 				else { orga.getChemicals().setVariable(this.varia, 0); }
 			}

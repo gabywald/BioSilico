@@ -7,6 +7,7 @@ import java.util.UUID;
 import gabywald.biosilico.interfaces.IAgentActions;
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
@@ -29,9 +30,9 @@ public abstract class Agent extends ObservableObject
 	/** Direction where Agent is going (if move). */
 	protected DirectionWorld direction;
 	/** Current location of the agent. */
-	protected WorldCase current;
+	protected IEnvironmentItem current;
 	/** Next location of the agent (if move). */
-	protected WorldCase nextStep;
+	protected IEnvironmentItem nextStep;
 	/** Taxon ID / UUID. */
 	private UUID taxonID;
 	/** 
@@ -80,8 +81,6 @@ public abstract class Agent extends ObservableObject
 	
 	@Override
 	public IChemicals getChemicals()	{ return this.variables; }
-	@Override
-	public IChemicals getVariables()	{ return this.variables; }
 	
 	public boolean isAlive()			{ return this.alive; }
 	public boolean isMovable() 
@@ -125,23 +124,23 @@ public abstract class Agent extends ObservableObject
 		return AgentType.getFrom( type );
 	}
 	
-	public WorldCase getCurrentWorldCase()				{ return this.current; }
-	public void setCurrentWorldCase(WorldCase current)	{ 
+	public IEnvironmentItem getCurrentEnvironmentItem()			{ return this.current; }
+	public void setCurrentWorldCase(IEnvironmentItem current)	{ 
 		// *** if (this.current != null)	{ this.current.remAgent( this ); }
 		this.current	= current;
 		if (this.current != null)	{ this.current.addAgent( this ); }
 	}
 	
-	public void setNextWorldCase(WorldCase nextWC)		{ this.nextStep = nextWC; }
+	public void setNextWorldCase(IEnvironmentItem nextWC)		{ this.nextStep = nextWC; }
 	
 	public DirectionWorld getDirection()				{ return this.direction; }
 	public void setDirection(DirectionWorld direction)	{ this.direction = direction; }
 	
 	/** 
 	 * Define what Agent does (if it does something). 
-	 * @param local (WorldCase) Where Agent is located. 
+	 * @param local (IEnvironmentItem) Where Agent is located. 
 	 */
-	public abstract void execution(WorldCase local);
+	public abstract void execution(IEnvironmentItem local);
 	
 	@Override
 	public boolean deplace() {

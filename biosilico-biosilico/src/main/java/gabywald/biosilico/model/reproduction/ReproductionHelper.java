@@ -308,9 +308,9 @@ public abstract class ReproductionHelper {
 	 */
 	static void actualizeReproduction(Organism orga) {
 		// ***** Decrease gamets signal
-		orga.getVariables().setVariable(StatusType.GAMET.getIndex(), orga.hasAgentStatus(StatusType.GAMET));
+		orga.getChemicals().setVariable(StatusType.GAMET.getIndex(), orga.hasAgentStatus(StatusType.GAMET));
 		// ***** Indicates that it is pregnant (or not) ! (has EGGs)
-		orga.getVariables().setVariable(StateType.PREGNANT.getIndex(), orga.hasAgentStatus(StatusType.EGG));
+		orga.getChemicals().setVariable(StateType.PREGNANT.getIndex(), orga.hasAgentStatus(StatusType.EGG));
 	}
 	
 }

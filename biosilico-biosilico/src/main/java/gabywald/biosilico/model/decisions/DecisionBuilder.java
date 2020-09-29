@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.interfaces.IAgentContent;
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DecisionType;
@@ -116,10 +116,10 @@ public class DecisionBuilder {
 		case GET: 		what2do = new BaseDecisionOnlyOneAttribute(this.orga, this.object) {
 			@Override
 			public void action() {
-				Agent obj	= this.getOrga().getCurrentWorldCase().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
+				Agent obj	= this.getOrga().getCurrentEnvironmentItem().getObjectType( ObjectType.getFrom(this.getVariable(0)) );
 				if (obj == null) { return; }
 				if ( (obj != null) && (obj.isMovable()) ) {
-					this.getOrga().getCurrentWorldCase().remAgent( obj );
+					this.getOrga().getCurrentEnvironmentItem().remAgent( obj );
 					this.getOrga().addAgent( obj );
 					obj.setCurrentWorldCase( null );
 				} // END "if ( (o != null) && (o.isMovable()) )"
@@ -130,7 +130,6 @@ public class DecisionBuilder {
 		case DROP:		what2do = new BaseDecision(this.orga, this.object, this.attribute) {
 			@Override
 			public void action() {
-				// TODO check its works with (object) and (object + attribute)
 				ObjectType ot	= (this.getVariablesLength() >= 1) ? ObjectType.getFrom(this.getVariable(0)) : null;
 				StatusType st	= (this.getVariablesLength() >= 2) ? StatusType.getFrom(this.getVariable(1)) : null;
 				if (ot == null) { return; }
@@ -140,7 +139,7 @@ public class DecisionBuilder {
 				Agent o = ((o1 != null) && (o2 == null))? o1 : (o2 != null)? o2 : (o1 != null) ? o1 : null;
 				if ( (o != null) && (o.isMovable()) ) {
 					this.getOrga().remAgent( o );
-					o.setCurrentWorldCase(this.getOrga().getCurrentWorldCase());
+					o.setCurrentWorldCase(this.getOrga().getCurrentEnvironmentItem());
 				} // END "if ( (o != null) && (o.isMovable()) )"
 			}
 		};break;
@@ -168,7 +167,7 @@ public class DecisionBuilder {
 					Agent eatableAgent = this.getOrga().getObjectType( type );
 					if ( ! eatableAgent.isEatable()) { ; }
 					this.getOrga().remAgent(eatableAgent);
-					this.getOrga().getVariables().incorporate(eatableAgent.getVariables());
+					this.getOrga().getChemicals().incorporate(eatableAgent.getChemicals());
 				}
 			}
 		};break;
@@ -180,7 +179,7 @@ public class DecisionBuilder {
 				if (this.getOrga().getChemicals().getVariable(attribute) > threshold) {
 					this.getOrga().setAlive( false ); 
 					this.getOrga().setOrganismStatus(StatusType.DEAD);
-					this.getOrga().getVariables().setVariable(variable, value);
+					this.getOrga().getChemicals().setVariable(variable, value);
 				}
 			}
 		};break;
@@ -189,12 +188,15 @@ public class DecisionBuilder {
 		case EMIT: 	what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				if (this.getOrga().getCurrentWorldCase() == null) { return; }
+				if (this.getOrga().getCurrentEnvironmentItem() == null) { return; }
 				
-				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object);
-				if ( (wcwc != null) && (this.getOrga().getVariables().getVariable(variable) >= value) ) { 
-					wcwc.getVariables().setVarPlus(variable, value);
-					this.getOrga().getVariables().setVarLess(variable, value);
+				DirectionWorld direction = DirectionWorld.get2DFrom( object );
+				if (direction == null)		{ return; }
+				
+				IEnvironmentItem wcwc = this.getOrga().getCurrentEnvironmentItem().getDirection( direction );
+				if ( (wcwc != null) && (this.getOrga().getChemicals().getVariable(variable) >= value) ) { 
+					wcwc.getChemicals().setVarPlus(variable, value);
+					this.getOrga().getChemicals().setVarLess(variable, value);
 				}
 			}
 		};break;
@@ -203,12 +205,15 @@ public class DecisionBuilder {
 		case RECEIVE: 		what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				if (this.getOrga().getCurrentWorldCase() == null) { return; }
+				if (this.getOrga().getCurrentEnvironmentItem() == null) { return; }
 				
-				WorldCase wcwc = this.getOrga().getCurrentWorldCase().getDirection(object); // indication
-				if ( (wcwc != null) && (wcwc.getVariables().getVariable(variable) >= value) ) { 
-					this.getOrga().getVariables().setVarPlus(variable, value);
-					wcwc.getVariables().setVarLess(variable, value);
+				DirectionWorld direction = DirectionWorld.get2DFrom( object );
+				if (direction == null)		{ return; }
+				
+				IEnvironmentItem wcwc = this.getOrga().getCurrentEnvironmentItem().getDirection( direction ); // indication
+				if ( (wcwc != null) && (wcwc.getChemicals().getVariable(variable) >= value) ) { 
+					this.getOrga().getChemicals().setVarPlus(variable, value);
+					wcwc.getChemicals().setVarLess(variable, value);
 				}
 			}
 		};break;
@@ -223,7 +228,7 @@ public class DecisionBuilder {
 				if (objectType == null)	{ return; }
 				if ( (this.getOrga().hasAgentType( agentType ) > threshold)
 						&& (this.getOrga().hasObjectType( objectType ) > threshold) )
-					{ this.getOrga().getVariables().setVarPlus(variable, value); }
+					{ this.getOrga().getChemicals().setVarPlus(variable, value); }
 			}
 		};break;
 		
@@ -231,7 +236,7 @@ public class DecisionBuilder {
 		case IS: 		what2do = new BaseDecision(this.orga) {
 			@Override
 			public void action() {
-				this.getOrga().getVariables().setVariable(variable, value);
+				this.getOrga().getChemicals().setVariable(variable, value);
 			}
 		};break;
 		
@@ -262,7 +267,7 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				// ***** Change status about egg contenant (pregnancy). 
-				this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getChemicals().setVariable(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
 				// ***** If Apply => lay effectively egg !!
 				if (this.getOrga().isPregnant()) {
 					// Drop :: Egg
@@ -272,7 +277,7 @@ public class DecisionBuilder {
 											.object( this.getOrga().getObjectType().getIndex() )
 											.attribute( StatusType.EGG.getIndex() ).build();
 					if (decision != null) { decision.action(); }
-					this.getOrga().getVariables().setVariable(	StateType.PREGNANT.getIndex(), 
+					this.getOrga().getChemicals().setVariable(	StateType.PREGNANT.getIndex(), 
 																this.getOrga().hasAgentStatus( StatusType.EGG ));
 				}
 			}
@@ -283,10 +288,10 @@ public class DecisionBuilder {
 			@Override
 			public void action() {
 				// ***** Gamets presence increases fertility signal. 
-				this.getOrga().getVariables().setVarPlus(StateType.FERTILE.getIndex(), 	this.getOrga().getVariables().getVariable(StatusType.GAMET.getIndex()));
+				this.getOrga().getChemicals().setVarPlus(StateType.FERTILE.getIndex(), 	this.getOrga().getChemicals().getVariable(StatusType.GAMET.getIndex()));
 				// ***** Eggs presence decreases fertility signal (impact pregnancy). 
-				this.getOrga().getVariables().setVarLess(StateType.FERTILE.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
-				this.getOrga().getVariables().setVarPlus(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getChemicals().setVarLess(StateType.FERTILE.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getChemicals().setVarPlus(StateType.PREGNANT.getIndex(), this.getOrga().hasAgentStatus( StatusType.EGG ));
 				if (this.getOrga().isFertile()) {
 					AgentType otype = this.getOrga().getAgentType();
 					if (otype == null) { return; }
@@ -306,10 +311,10 @@ public class DecisionBuilder {
 						List<Organism> maters = new ArrayList<Organism>();
 						maters.add( this.getOrga() );
 
-						Logger.printlnLog(LoggerLevel.LL_DEBUG, "AgentType {" + this.getOrga().getAgentType() + "} available: (" + this.getOrga().getCurrentWorldCase().hasAgentType( this.getOrga().getAgentType() ) + ")");
+						Logger.printlnLog(LoggerLevel.LL_DEBUG, "AgentType {" + this.getOrga().getAgentType() + "} available: (" + this.getOrga().getCurrentEnvironmentItem().hasAgentType( this.getOrga().getAgentType() ) + ")");
 						
 						// ***** If more than one available : do not select the same ! 
-						List<Agent> availables = IAgentContent.getListOfType(otype, StateType.AGENT_TYPE.getIndex(), this.getOrga().getCurrentWorldCase().getAgentListe());
+						List<Agent> availables = IAgentContent.getListOfType(otype, StateType.AGENT_TYPE.getIndex(), this.getOrga().getCurrentEnvironmentItem().getAgentListe());
 						int index = 0;
 						Agent futuremate = availables.get(0); 
 						while ( (availables.size() > 1) 
@@ -339,7 +344,7 @@ public class DecisionBuilder {
 					}
 				}
 				// ***** Basic pregnancy signal : number of eggs. 
-				this.getOrga().getVariables().setVariable(StateType.PREGNANT.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
+				this.getOrga().getChemicals().setVariable(StateType.PREGNANT.getIndex(), 	this.getOrga().hasAgentStatus( StatusType.EGG ));
 			}
 		};break;
 		// ***** to create eggs, virions, fruits... which have to be "laid" !!

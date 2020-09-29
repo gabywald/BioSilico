@@ -2,8 +2,8 @@ package gabywald.biosilico.model.utils.agents;
 
 import java.util.stream.IntStream;
 
+import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Agent;
-import gabywald.biosilico.model.WorldCase;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.ObjectType;
 import gabywald.biosilico.model.enums.StateType;
@@ -31,18 +31,18 @@ public class UtilAgent extends Agent {
 	
 	/**
 	 * To add WC variables for given chemical and value. 
-	 * @param local (WorldCase)
+	 * @param local (IEnvironmentItem)
 	 * @param index (int) index of Chemical. 
 	 * @param value (int) value / amount of chemical. 
 	 */
-	public static void addChemicalTo(WorldCase local, int index, int value) {
+	public static void addChemicalTo(IEnvironmentItem local, int index, int value) {
 		if (local != null) {
-			local.getVariables().setVarPlus(index, value);
+			local.getChemicals().setVarPlus(index, value);
 		}
 	}
 	
 	@Override
-	public void execution(WorldCase local) {
+	public void execution(IEnvironmentItem local) {
 		if (local == null) { return; }
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_STRICT_CHEM).forEach( chIndex -> {
 			UtilAgent.addChemicalTo(local, chIndex, this.getChemicals().getVariable(chIndex));
