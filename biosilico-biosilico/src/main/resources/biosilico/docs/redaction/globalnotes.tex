@@ -73,7 +73,7 @@
 	\begin{center}
 		\begin{tabular}[c]{c|c}
 			\textsc{\textbf{Projet Personnel et de Formation}}~\\[\baselineskip]~\\[\baselineskip]
-			\emph{\textbf{2000 -- 2010}}~\\[\baselineskip]~\\[\baselineskip]
+			\emph{\textbf{2000 -- 2010 et 2020+}}~\\[\baselineskip]~\\[\baselineskip]
 			\emph{\textbf{Mod{\'e}lisation et simulation biologique}}~\\[\baselineskip]~\\[\baselineskip]
 			\textsc{Gabriel Chandesris}~\\[\baselineskip]~\\[\baselineskip]
 			& 
@@ -2533,11 +2533,11 @@ Par convention, le premier {\'e}l{\'e}ment de cette liste normalis{\'e}e (tablea
 	\pagebreak[3]
 	\multicolumn{8}{|>{\columncolor{lightgray}}c|}{Hormones (600 et plus) et Ph{\'e}romones (650 et plus)} \\ \hline
 	% \rowcolor{white}
-	\textbf{600} & Hormone00	& 605 & Hormone05		& \textbf{650} & Pheromone00 	& 655 & Pheromone05 \\ \hline
-	601 & Progesterone			& 606 & Hormone06		& 651 & Pheromone01 			& 656 & Pheromone06 \\ \hline
-	602 & Oestrogene			& 607 & Hormone07		& 652 & Pheromone02 			& 657 & Pheromone07 \\ \hline
-	603 & Testosterone			& 608 & Hormone08		& 653 & Pheromone03 			& 658 & Pheromone08 \\ \hline
-	604 & Hormone04				& 609 & Hormone09		& 654 & Pheromone04 			& 659 & Pheromone09 \\ \hline
+	\textbf{370} & Hormone00	& 375 & Hormone05		& \textbf{350} & Pheromone00 	& 355 & Pheromone05 \\ \hline
+	371 & Progesterone			& 376 & Hormone06		& 351 & Pheromone01 			& 356 & Pheromone06 \\ \hline
+	372 & Oestrogene			& 377 & Hormone07		& 352 & Pheromone02 			& 357 & Pheromone07 \\ \hline
+	373 & Testosterone			& 378 & Hormone08		& 353 & Pheromone03 			& 358 & Pheromone08 \\ \hline
+	374 & Hormone04				& 379 & Hormone09		& 354 & Pheromone04 			& 359 & Pheromone09 \\ \hline
 	\hline
 	\pagebreak[3]
 	\multicolumn{8}{|>{\columncolor{lightgray}}c|}{Mol{\'e}cules biochimiques complexes ({\`a} partir de 151)} \\ \hline
@@ -2604,41 +2604,41 @@ Par convention, le premier {\'e}l{\'e}ment de cette liste normalis{\'e}e (tablea
 			808 & West	(LWW)		&	818 & (UWW)			&	828 & (DWW)  		\\ \hline
 	% 		809 & (free)			&	819 & (free)		&	829 & (free)  		\\ \hline
 	\hline
-	\multicolumn{6}{|>{\columncolor{lightgray}}c|}{Encodage des stimuli et d{\'e}cisions (851 -- 880)} \\ \hline
+	\multicolumn{6}{|>{\columncolor{lightgray}}c|}{Encodage des stimuli et d{\'e}cisions (850 -- 880)} \\ \hline
 	% \rowcolor{white}
-			851 & Stay 			&	861 & Rest			&	871 & Mate		\\ \hline
-			852 & Push(x)		&	862 & Sleep			&	872 & (free)	\\ \hline
-			853 & Pull(x)		&	863 & Eat			&	873 & (free)	\\ \hline
-			854 & Stop 			&	864 & Death			&	874 & (free)	\\ \hline
-			855 & Move to(x)	&	865 & Emit(x)		&	875 & (free)	\\ \hline
-			856 & Move away		&	866 & Receive(x)	&	876 & (free)	\\ \hline
-			857 & Get(x)		&	867 & Has(x)		&	877 & (free)	\\ \hline
-			858 & Drop(x)		&	868 & Is(x)			&	878 & (free)	\\ \hline
-			859 & Think(x)		&	869 & MakeGamet		&	879 & (free)	\\ \hline
-			860 & Slap(x)		&	870 & LayEgg		&	880 & (free)	\\ \hline
+			850 & Stay 			&	860 & Rest			&	870 & Mate			\\ \hline
+			851 & Push(x)		&	861 & Sleep			&	871 & (free)		\\ \hline
+			852 & Pull(x)		&	862 & Eat			&	872 & (free)		\\ \hline
+			853 & Stop 			&	863 & Death			&	873 & (free)		\\ \hline
+			854 & Move to(x)	&	864 & Emit(x)		&	874 & (free)		\\ \hline
+			855 & Move away		&	865 & Receive(x)	&	875 & (free)		\\ \hline
+			856 & Get(x)		&	866 & Has(x)		&	876 & (free)		\\ \hline
+			857 & Drop(x)		&	867 & Is(x)			&	877 & (free)		\\ \hline
+			858 & Think(x)		&	868 & MakeGamet		&	878 & (free)		\\ \hline
+			859 & Slap(x)		&	869 & LayEgg		&	879 & RecordState	\\ \hline
 	\hline
 	\multicolumn{6}{|>{\columncolor{lightgray}}c|}{Encodage des objets et des {\'e}tats} \\ \hline
 	% \rowcolor{white}
-			900 & Current		&	920 & Gamet		&	940 & Gender (sex)	\\ \hline
-			901 & Small elt		&	921 & Egg		&	941 & Aging			\\ \hline
-			902 & Midd elt		&	922 & Embryo	&	942 & TypeOf		\\ \hline
-			903 & Big elt		&	923 & Larva		&	943 & Movable		\\ \hline
-			904 & Food 			&	924 & Child		&	944 & Eatable		\\ \hline
-			905 & Drink			&	925 & ``Teen''	&	945 & Fertile		\\ \hline
-			906 & Vehicle		&	926 & Adult		&	946 & Pregnant		\\ \hline
+			900 & Current		&	920 & Gamet		&	940 & Daemon		\\ \hline
+			901 & Small elt		&	921 & Egg		&	941 & Bacta			\\ \hline
+			902 & Midd elt		&	922 & Embryo	&	942 & Plant			\\ \hline
+			903 & Big elt		&	923 & Larva		&	943 & Anima			\\ \hline
+			904 & Food 			&	924 & Child		&	944 & Virus			\\ \hline
+			905 & Drink			&	925 & ``Teen''	&	945 & (free)		\\ \hline
+			906 & Vehicle		&	926 & Adult		&	946 & (free)		\\ \hline
 			907 & Automaton		&	927 & Senior	&	947 & (free)		\\ \hline
 			908 & Computer		&	928 & Dead		&	948 & (free)		\\ \hline
-			909 & Laptop		&	929 & (free)	&	949 & (free)		\\ \hline
-			910 & Phone			&	930 & (free)	&	950 & (free)		\\ \hline
-			911 & Cell Phone	&	931 & (free)	&	951 & (free)		\\ \hline
-			912 & Ant			&	932 & (free)	&	952 & (free)		\\ \hline
-			913 & (free)		&	933 & (free)	&	953 & (free)		\\ \hline
-			914 & (free)		&	934 & (free)	&	954 & (free)		\\ \hline
-			915 & (free)		&	935 & Daemon	&	955 & (free)		\\ \hline
-			916 & (free)		&	936 & Bacta		&	956 & (free)		\\ \hline
-			917 & (free)		&	937 & Plant		&	957 & (free)		\\ \hline
-			918 & (free)		&	938 & Anima		&	958 & (free)		\\ \hline
-			919 & (free)		&	939 & Virus		&	959 & (free)		\\ \hline
+			909 & Laptop		&	929 & Not Acc.	&	949 & (free)		\\ \hline
+			910 & Phone			&	930 & (free)	&	950 & Gender (sex)	\\ \hline
+			911 & Cell Phone	&	931 & (free)	&	951 & Aging			\\ \hline
+			912 & Agent			&	932 & (free)	&	952 & AgentType		\\ \hline
+			913 & (free)		&	933 & (free)	&	953 & TypeOf		\\ \hline
+			914 & (free)		&	934 & (free)	&	954 & Status		\\ \hline
+			915 & (free)		&	935 & (free)	&	955 & Movable		\\ \hline
+			916 & (free)		&	936 & (free)	&	956 & Eatable		\\ \hline
+			917 & (free)		&	937 & (free)	&	957 & Fertile		\\ \hline
+			918 & (free)		&	938 & (free)	&	958 & Pregnant		\\ \hline
+			919 & (free)		&	939 & (free)	&	959 & (free)		\\ \hline
 			\hline
 		\end{tabular}
 	\caption[Nomenclature pour les Stimuli et D{\'e}cisions]
@@ -2727,9 +2727,9 @@ Les types de g{\`e}nes cr{\'e}{\'e}s avec ce code (\emph{GeneGattaca}) sont d{\'
 
 D'autres types de g{\`e}nes peuvent {\^e}tre d{\'e}velopp{\'e}s au-del{\`a} de cette base de g{\`e}nes param{\'e}triques, comme les g{\`e}nes de transposition ou les g{\`e}nes viraux. L'id{\'e}e initiale de ces g{\`e}nes est de provoquer des comportements particuliers au niveau des g{\'e}nomes et de la biochimie des organismes mod{\'e}lis{\'e}s. Dans le cas des transposons, il suffit de d{\'e}placer des g{\`e}nes au sein du g{\'e}nome d'un organisme : l'ordre d'execution des g{\`e}nes dans le mod{\`e}le peut avoir un avantage {\'e}volutif. Concernant les g{\`e}nes viraux, l'objectif est le d{\'e}tournement du m{\'e}tabolisme h{\^o}te pour produire de nouvelles particules virales. \emph{\textbf{Dans ces deux cas, g{\`e}nes viraux et transposons, en plus des g{\`e}nes d{\'e}j{\`a} {\'e}tablis, un seul type de g{\`e}ne param{\'e}trique est {\`a} ajouter : des g{\`e}nes de modification du g{\'e}nome au niveau des g{\`e}nes (insertion, d{\'e}l{\'e}tion, r{\'e}arrangement).}}~\\
 
-\clearpage
+%% \clearpage
 
-\begin{table}[h]
+\begin{table}[ht]
 	\begin{center} \begin{scriptsize}
 	\begin{tabular}{|p{0.25\textwidth}|c|p{0.25\textwidth}|p{0.25\textwidth}|}
 \hline
@@ -2754,7 +2754,7 @@ D'autres types de g{\`e}nes peuvent {\^e}tre d{\'e}velopp{\'e}s au-del{\`a} de c
 	\cline{3-4} % \hline
 								&				&	Dcoef		& [000-999] \\
 	\cline{3-4} % \hline
-								&				&	KM			& [000-999] \\
+								&				&	KMVM		& [000-999] \\
 	\hline \hline
 	BrainGene					&	8 (4*2)		&	height		& [00-99] \\
 	\cline{3-4} % \hline
@@ -2824,23 +2824,28 @@ D'autres types de g{\`e}nes peuvent {\^e}tre d{\'e}velopp{\'e}s au-del{\`a} de c
 	\hline \hline
 	Instinct					&	17 (3*3+4*2)&	variable	& [000-999] \\
 	\cline{3-4} % \hline
-								&				&	quantity	& [000-999] \\
+								&				&	threshold	& [000-999] \\
 	\cline{3-4} % \hline
-								&				&	unposx		& [00-99] \\
+								&				&	inputPosX	& [00-99] \\
 	\cline{3-4} % \hline
-								&				&	unposy		& [00-99] \\
+								&				&	inputPosY	& [00-99] \\
 	\cline{3-4} % \hline
-								&				&	deposx		& [00-99] \\
+								&				&	outputPosX	& [00-99] \\
 	\cline{3-4} % \hline
-								&				&	deposy		& [00-99] \\
+								&				&	outputPosY	& [00-99] \\
 	\cline{3-4} % \hline
 								&				&	weight		& [000-999] \\
+	\cline{3-4} % \hline
+								&				&	check		& boolean \\
+	\cline{3-4} % \hline
+								&				&	isPositive	& boolean \\
 	\hline \hline
+	
 % \hline
 	\end{tabular}
 	\end{scriptsize} \end{center}
 	\caption[Description br{\`e}ve des types de g{\`e}nes param{\'e}triques]
-		{Description br{\`e}ve des types de g{\`e}nes param{\'e}triques~\\
+		{ \scriptsize Description br{\`e}ve des types de g{\`e}nes param{\'e}triques~\\
 		\emph{Les valeurs possibles des attributs sont soit des bool{\'e}ens, soit des entiers entre 0 et 99 (li{\'e} au r{\'e}seau de neurones) ou entre 0 et 999 (li{\'e} aux variables). }}
 	\label{tab:briefDescriptionGeneTypes}
 \end{table}
@@ -3087,16 +3092,16 @@ Le but global est que la fourmili{\`e}re soit approvisionn{\'e}e le plus rapidem
 	Genes List		& \multicolumn{3}{|c|}{~}							 	     \\
 				\cline{2-4}
 	<List of Gene's>	& Scientific Name		& <>				 & <Lineage List>	     \\
-				& BioSilico Name		& <>				 & 			     \\
-				& Common Name			& <>				 & 			     \\
-				& Include			& <>				 & 			     \\
+				& BioSilico Name				& <>				 & 			     \\
+				& Common Name					& <>				 & 			     \\
+				& Include						& <>				 & 			     \\
 				\cline{2-3}
-				& Others Names			& <other Names List>		 & 			     \\
-				& <>				& <other Names List>		 & 			     \\
+				& Others Names				& <other Names List>		 & 			     \\
+				& <>						& <other Names List>		 & 			     \\
 				& \emph{Add other name}		& <other Names List>		 & 			     \\
 	\hline
-	\emph{Up Gene} -- \emph{Down Gene} & \multicolumn{2}{|c|}{~}		& \emph{Add Lineage} -- \emph{Remove Lineage} \\
-	\emph{Add Chromosome}		& \multicolumn{2}{|c|}{~}		& \emph{Up Lineage}  -- \emph{Down Lineage}   \\
+	\emph{Up Gene} -- \emph{Down Gene}	& \multicolumn{2}{|c|}{~}		& \emph{Add Lineage} -- \emph{Remove Lineage} \\
+	\emph{Add Chromosome}				& \multicolumn{2}{|c|}{~}		& \emph{Up Lineage}  -- \emph{Down Lineage}   \\
 	\hline
 				& \multicolumn{2}{|c|}{Save}					& 		      \\
 	\hline
@@ -3174,6 +3179,31 @@ Diff{\'e}rents outils (\emph{Kits}) peuvent {\^e}tre construits sur un mod{\`e}l
 %
 %In pretium blandit scelerisque. Suspendisse consectetur pharetra nisi, at laoreet mi condimentum at. Aliquam erat volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc sit amet scelerisque mi. Etiam mollis sollicitudin elit, eu tempor lacus scelerisque quis. Fusce laoreet quam et lectus gravida in imperdiet justo sagittis. In hac habitasse platea dictumst. Aenean sed quam sed tortor elementum dapibus. Curabitur fringilla pulvinar sem, nec rhoncus lorem bibendum ut. Proin aliquam lorem eu tellus tempus ut faucibus tortor semper. Etiam scelerisque auctor dolor sit amet sodales. Mauris posuere libero nec dolor gravida accumsan. Nunc ante dui, rutrum at ullamcorper a, sodales ac neque. Morbi eget suscipit augue. Cras eu felis eu enim lobortis commodo nec sit amet risus. Curabitur vitae sollicitudin lacus. Curabitur eget lacus sem, non ultricies magna. Morbi ut diam vel ante bibendum egestas a id lacus. Aliquam bibendum, ligula id tempus porttitor, mauris nulla tempus augue, quis vulputate lacus dui id augue. ~\\
 %\end{minipage} \\
+
+\clearpage
+
+\section{Reprise du projet en 2020}
+
+Ce projet a {\'e}t{\'e} mis en veille pendant un certain temps (une petite dizaine d'ann{\'e}e ; diverses circonstances ont amen{\'e} {\`a} le reprendre, autant par passion inoubliable que l'int{\'e}r{\^e}t d'application autres que la simple simulation et mod{\'e}lisation (utilisation en analyse de donn{\'e}es, jeu vid{\'e}o, utilisation d'agents autonomes <<intelligents>> au sein d'un syst{\`e}me informatique...).~\\
+
+Un r{\'e}sum{\'e} des quelques {\'e}l{\'e}ments repris, modifi{\'e}s, ajout{\'e}s (juillet-septembre 2020) : 
+\begin{itemize}
+	\item reprise du code pour le rendre plus professionnel et industriel : 
+	\begin{itemize}
+		\item tests unitaires syst{\'e}matiques sur le code existant, 
+		\item relecture du code (\emph{review}), 
+		\item g{\'e}n{\'e}ralisation de certaines parties (Interfaces IChemicals, IEnvironment, IEnvironmentItem...) : l'id{\'e}e {\'e}tant de pouvoir r{\'e}utiliser certains {\'e}l{\'e}ments ailleurs, 
+		\item partitionnement via \emph{Maven} entre parties ind{\'e}pendantes rendre ce projet plus lisible, 
+		\item int{\'e}gration de parties jusqu'ici s{\'e}par{\'e}es et / ou faites ind{\'e}pendamment mais en lien avec ce projet (chiffrement, mod{\'e}lisation cellulaire, documentation et reverse-ing{\'e}nierie dur \emph{Creatures}, tests sur des r{\'e}seaux de neurones, volont{\'e} de tester \emph{BioJava}...)
+		\item ...
+	\end{itemize} 
+	\item revue et correction de la liste des <<{\'e}l{\'e}ments chimiques>> (Chemicals) utilis{\'e}s (ajouts et changements utiles) ; 
+	\item des id{\'e}es compl{\'e}mentaires concernant les \emph{Daemons} (agents utilitaires), les g{\`e}nes viraux (transposition mais aussi production de particules virales) ; 
+	\item mod{\'e}lisation {\`a} partir d'un syst{\`e}me de voies m{\'e}taboliques minimales (repris de \emph{Creatures}) afin d'effectuer des premiers tests plus facilement (une fourmi et une plante, une source d'{\'e}nergie, un fournisseur d'{\'e}l{\'e}ments chimiques basiques et un convertisseur de fruits) ;
+	\item une mod{\'e}lisation des cycles existant connus (Krebs, Lynen...) est possible et {\`a} {\'e}tudier / pr{\'e}ciser ; 
+	\item id{\'e}es d'utilisation de ce projet : agents autonomes dans un mod{\`e}le informatique et / ou un environnement logiciel (analyse de logs, analyses de machines, analyses de r{\'e}seau informatique...), et {\'e}galement dans un univers de type MMORPG / Jeu Vid{\'e}o (g{\'e}n{\'e}ration proc{\'e}durale, animaux et plantes avec des comportements coh{\'e}rents...) ; 
+	\item ... 
+\end{itemize}
 
 \clearpage
 ~\\
