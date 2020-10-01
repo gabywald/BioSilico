@@ -10,6 +10,13 @@ Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some revie
 
 More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020]
 
+## NOTE For Dev Configuration
+ - Eclipse 2020
+ - Java 8
+ - Maven 3
+ 
+GNU General Public Licence V3 (GPL3)
+
 ## Adding and notes about evolutions
 
 Units Tests ; review ; ...
