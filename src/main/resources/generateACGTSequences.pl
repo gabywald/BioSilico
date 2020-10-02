@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+## Aim of this script is to generate some random "fasta" files (genetic sequences). 
+
 use strict;
 
 my $alphabet	= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

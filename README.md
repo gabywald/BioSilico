@@ -15,6 +15,12 @@ More review were also done to get an "AntHill Example" (Ants and Plant in a smal
  - Java 8
  - Maven 3
  
+## Indication for internal readings 
+
+See document present in "/biosilico-biosilico/src/main/resources/biosilico/docs/redaction/", there are some notes (mostly in french, some documentation about Creatures in english). 
+
+## Licence : Libre
+
 GNU General Public Licence V3 (GPL3)
 
 ## Adding and notes about evolutions
