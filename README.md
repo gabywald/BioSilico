@@ -14,6 +14,20 @@ More review were also done to get an "AntHill Example" (Ants and Plant in a smal
  - Eclipse 2020
  - Java 8
  - Maven 3
+
+## Things to Explore
+
+For this Project or others : 
+* Python language and usual librairies for data analysis (Pandas, NumPy, Scikit Learn...)
+* BioJava, BioPerl, BioPython... (BioC++ ?)
+* Some Inspirationnal Video Games and associated topics : 
+	
+	- Creatures Game Serie
+	- Memetic AI (use in "NeverWinter" Video Game) : https://sourceforge.net/projects/memeticai/ ; https://github.com/squattingmonk/memeticai ; ... 
+	- World Of WarCraft "Corrupted Blod Incident" : https://en.wikipedia.org/wiki/Corrupted_Blood_incident
+	- Procedural Generation : https://en.wikipedia.org/wiki/Procedural_generation ; https://linuxfr.org/tags/gamedev/public ; https://linuxfr.org/news/je-cree-mon-jeu-video-e10-generation-procedurale-de-carte-partie-1 ; https://linuxfr.org/news/je-cree-mon-jeu-video-e11-generation-procedurale-de-carte-partie-2 ; ...
+	- BioInspiration https://en.wikipedia.org/wiki/Bioinspiration
+	- Deliverable D2.2.3 - Overview on Bio-inspired operation strategies : https://irriis.org/index6bf2.html?lang=en&nav=344 ; https://irriis.org/File6836.pdf?lang=2&oiid=9139&pid=572 ; ...
  
 ## Indication for internal readings 
 
