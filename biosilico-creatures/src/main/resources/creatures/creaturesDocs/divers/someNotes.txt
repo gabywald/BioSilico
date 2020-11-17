@@ -35,3 +35,33 @@ Cycle de calcul :
         3- Mouvement
         4- Compétition
         5- Sélection
+
+Kits de Creatures :
+	• Propriétaire
+		Détails (sexe, age, nom, notes de l'utilisateur)
+		Album
+		Certificat de naissance (ID des parents)
+	• Observation
+		Liste des individus avec quelques informations (santé, sexe, age, enceinte, médical...)
+		Options d'avertissement de l'utilisateur
+	• Médical
+		Fitness (état du métabolisme)
+		Impulsions (douleur, faim, épuisement, torpeur, ennui)
+		Activité cérébrale (lobes activés)
+		Page du docteur (plantes)
+	• Scientifique
+		Biochimie (graphes)
+		Génétique (sexe, espèce, "nom", empreinte
+		Analyse génétique (type, nombre, nucléotides, total)
+		Anatomie du cerveau (numération neurones, lobes et dendrites)
+		Scanner du cerveau
+		Décision (passif, tire, pousse, désactive, s'approcher, courir, prendre, lacher, exprimer, reposer, gauche, droite)
+		Injections
+	• Évaluation
+		Oeufs de l'incubateur
+		Oeufs naturels
+		Norns morts
+		Norns en vie
+		Score et temps écoulé
+	• Reproduction
+		Fertilité (pulsion, santé, fertilité, hormones...)
