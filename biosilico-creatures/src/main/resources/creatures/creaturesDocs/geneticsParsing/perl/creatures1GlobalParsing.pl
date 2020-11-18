@@ -6,6 +6,10 @@ use Switch;
 use Data::Dumper;
 use Cwd;
 
+## To read *.ep Creatures 1 files
+## ## ## "./creatures1GlobalParsing.pl ../../genetics/C1unregs/unreg6.exp"
+## ## ## "./creatures1GlobalParsing.pl ../../genetics/C1grendels/grendel02.exp"
+
 my $fileInput = $ARGV[0];
 
 if (!$fileInput) { die "Pas d'argument fichier en entrée !"; }
@@ -675,8 +679,8 @@ sub _BIOconvertDefaultReaction {
 
 our %chemicals = ();
 sub _BIOinitChemicalList {
-	open (CHEMICALS,"<"."geNorNics/chemicalsC1.csv")
-		or die "Cannot open '"."geNorNics/chemicalsC1.csv"."'\n";
+	open (CHEMICALS,"<"."../../geNorNics/chemicalsC1.csv")
+		or die "Cannot open '"."../../geNorNics/chemicalsC1.csv"."'\n";
 	my $group = undef;
 	while (my $line = <CHEMICALS>) {
 		## ## print "\t".$line."\n";

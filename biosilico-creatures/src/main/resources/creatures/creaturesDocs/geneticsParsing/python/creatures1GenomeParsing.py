@@ -16,22 +16,10 @@ else :
 ## use struct package : https://docs.python.org/3/library/struct.html
 ## see also : https://www.tutorialspoint.com/struct-module-in-python
 
-def each_chunk(stream, separator, CHUNK_SIZE = 4096):
-  """Read in file part by part"""
-  buffer = ''
-  while True : # until EOF
-    chunk = stream.read(CHUNK_SIZE)
-    if not chunk : # EOF?
-      yield buffer
-      break
-    buffer += chunk
-    while True : # until no separator is found
-      try:
-        part, buffer = buffer.split(separator, 1)
-      except ValueError:
-        break
-      else:
-        yield part
+## NOTEs of DEV of this script : 
+## ## ## '.gen' files appears somehow corrupted and script here (with module) take account of these ; 
+## ## ## 1/ gene longer than expected : just cut off !
+## ## ## 2/ gene shorter than expected : completion ?!
 
 def readBinaryGenes(stream) : 
   data = b''
@@ -50,8 +38,8 @@ with open(file2parse, 'rb') as bfile :
   while True : 
     data = readBinaryGenes( bfile )
     ## print( data )
-    print( switcher.define4creatures1( data[:-4] ) )
-    ## print( struct.unpack('7c 4s 4s', data) )
+    nextgene = switcher.define4creatures1( data[:-4] )
+    print( nextgene )
     if (data.endswith( b'gend') ) : 
       print( "END OF GENOME" )
       break
