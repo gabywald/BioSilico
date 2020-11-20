@@ -55,3 +55,7 @@ for gene in listOfGenes :
 
 for tsg in GeneEnumGroups.getEnumsTSG() : 
   print( tsg )
+
+for gbf in GeneEnumGroups.getEnumsGeneBitFlags() : 
+  print( gbf )
+

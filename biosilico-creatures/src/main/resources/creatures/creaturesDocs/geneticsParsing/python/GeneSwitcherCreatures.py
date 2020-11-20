@@ -148,12 +148,13 @@ class GeneTypeSubtype(object) :
 
 class GeneEnumGroups(object) : 
   _containerTSG = None
+  _containerGBF = None
   
   @classmethod
   def getEnumsTSG(self) : 
     if (self._containerTSG != None) : 
       return self._containerTSG
-    data = ModuleHelper.loadConfig( "geneC1C2definitions" )
+    data = ModuleHelper.loadFileConfig( "geneC1C2definitions" )
     self._containerTSG = []
     for line in data : 
       lineDetection = re.match( "^(.*?)\t(.*?)\t(.*?)?$", line)
@@ -162,6 +163,14 @@ class GeneEnumGroups(object) :
                                                     lineDetection.groups()[1], \
                                                     lineDetection.groups()[2] ) )
     return self._containerTSG
+  
+  @classmethod
+  def getEnumsGeneBitFlags(self) : 
+    if (self._containerGBF != None) : 
+      return self._containerGBF
+    data = ModuleHelper.loadDataConfig( "genebitflags" )
+    self._containerGBF = data
+    return self._containerGBF
 
   
 
