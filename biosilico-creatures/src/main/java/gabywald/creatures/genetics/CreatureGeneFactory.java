@@ -59,8 +59,6 @@ public class CreatureGeneFactory {
 	public static CreatureGene readGene(String content, UnsignedByte creatureVersion) {
 		if (!content.startsWith("gene")) { return null; }
 		
-		
-
 		int index	= 4;
 		int type	= content.charAt(index++); // 4
 		int subt	= content.charAt(index++); // 5

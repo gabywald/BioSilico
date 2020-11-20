@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import struct
+import re
+
+import ModuleHelper
 
 class GeneSwitcherCreatures1(object):
-  
+  """GeneSwitcherCreatures1 permit to switch between good methods to call for Gene Treatment"""
   def define4creatures1(self, arg):
     """Dispatch method"""
     if ( len(arg) < 7 ) : 
@@ -130,4 +133,37 @@ class GeneCreatures1(object):
     if (self.haserror != None) : 
       str += "\thas errors (%s)" %(self.haserror)
     print( str )
+
+class GeneTypeSubtype(object) : 
+  """ Gene TypeSubtype Creatures 1 """
+  def __init__(self, type = 0, subtype = 0, name = "" ):
+    """GeneTypeSubtype Constructor. """
+    self.type = type
+    self.subtype = subtype
+    self.name = name
+  
+  def __str__(self) : 
+    """GeneTypeSubtype to str. """
+    return "GeneTypeSubtype ( % s , % s, '% s' ) "  % (self.type, self.subtype, self.name)
+
+class GeneEnumGroups(object) : 
+  _containerTSG = None
+  
+  @classmethod
+  def getEnumsTSG(self) : 
+    if (self._containerTSG != None) : 
+      return self._containerTSG
+    data = ModuleHelper.loadConfig( "geneC1C2definitions" )
+    self._containerTSG = []
+    for line in data : 
+      lineDetection = re.match( "^(.*?)\t(.*?)\t(.*?)?$", line)
+      if (lineDetection != None) : 
+        self._containerTSG.append( GeneTypeSubtype( lineDetection.groups()[0], \
+                                                    lineDetection.groups()[1], \
+                                                    lineDetection.groups()[2] ) )
+    return self._containerTSG
+
+  
+
+
 

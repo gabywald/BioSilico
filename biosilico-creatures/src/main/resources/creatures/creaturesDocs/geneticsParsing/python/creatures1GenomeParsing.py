@@ -6,6 +6,7 @@ import struct
 
 import GeneSwitcherCreatures
 from GeneSwitcherCreatures import GeneSwitcherCreatures1
+from GeneSwitcherCreatures import GeneEnumGroups
 
 file2parse = None
 if (len(sys.argv) < 2) : 
@@ -52,4 +53,5 @@ with open(file2parse, 'rb') as bfile :
 for gene in listOfGenes : 
   gene.printInLine()
 
-
+for tsg in GeneEnumGroups.getEnumsTSG() : 
+  print( tsg )
