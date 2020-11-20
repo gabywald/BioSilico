@@ -4,6 +4,7 @@
 import sys
 import struct
 
+import GeneSwitcherCreatures
 from GeneSwitcherCreatures import GeneSwitcherCreatures1
 
 file2parse = None
@@ -34,17 +35,21 @@ def readBinaryGenes(stream) :
   return data
     
 switcher = GeneSwitcherCreatures1()
+listOfGenes = []
 with open(file2parse, 'rb') as bfile :
   while True : 
     data = readBinaryGenes( bfile )
     ## print( data )
     nextgene = switcher.define4creatures1( data[:-4] )
-    print( nextgene )
+    ## print( nextgene )
+    ## print( type( nextgene ) )
+    if ( type(nextgene) is GeneSwitcherCreatures.GeneCreatures1) : 
+      listOfGenes.append( nextgene )
     if (data.endswith( b'gend') ) : 
       print( "END OF GENOME" )
       break
 
-
-
+for gene in listOfGenes : 
+  gene.printInLine()
 
 

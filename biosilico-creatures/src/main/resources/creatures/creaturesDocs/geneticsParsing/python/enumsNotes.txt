@@ -1,0 +1,61 @@
+## ## ## ENUMS !!
+from enum import Enum, unique
+
+class GeneTypeSubtype(object) : 
+  """ Gene TypeSubtype Creatures 1 """
+  def __init__(self, type = 0, subtype = 0, name = "" ):
+    """GeneTypeSubtype Constructor. """
+    self.type = type
+    self.subtype = subtype
+    self.name = name
+
+class NoValue(Enum):
+  def __repr__(self):
+    return '<%s.%s>' % (self.__class__.__name__, self.name)
+
+class AutoNumber(NoValue):
+  def __new__(cls, *args):      # this is the only change from above
+    value = len(cls.__members__) + 1
+    obj = object.__new__(cls)
+    obj._value_ = value
+    return obj
+  
+def loadEnumsTSG() : 
+  tupleOfSTG = [ ( 0 , 0 , "Brain lobe" ), ( 0 , 1 , "Brain organ" ), ( 1 , 0 , "Receptor" ) ]
+  AutoNumber( tupleOfSTG )
+
+  EMITTER( 1 , 1 , "Emitter" )
+  CHEMICAL_REACTION( 1 , 2 , "Chemical reaction" )
+  HALF_LIVE( 1 , 3 , "Half lives" )
+  INITIAL_CONCENTRATION( 1 , 4 , "Initial concentration" )
+  STIMULUS( 2 , 0 , "Stimulus" )
+  GENUS( 2 , 1 , "Genus" )
+  APPEARANCE( 2 , 2 , "Appearance" )
+  POSE( 2 , 3 , "Pose" )
+  GAIT( 2 , 4 , "Gait" )
+  INSTINCT( 2 , 5 , "Instinct" )
+  PIGMENT( 2 , 6 , "Pigment" )
+  PIGMENT_BLEED( 2 , 7 , "Pigment bleed" )
+  ORGAN( 3 , 0 , "Organ" )
+
+## @unique
+## class GeneTypeSubtype(Enum):
+##   BRAIN_LOBE( 0 , 0 , "Brain lobe" )
+##   BRAIN_ORGAN( 0 , 1 , "Brain organ" )
+##   RECEPTOR( 1 , 0 , "Receptor" )
+##   EMITTER( 1 , 1 , "Emitter" )
+##   CHEMICAL_REACTION( 1 , 2 , "Chemical reaction" )
+##   HALF_LIVE( 1 , 3 , "Half lives" )
+##   INITIAL_CONCENTRATION( 1 , 4 , "Initial concentration" )
+##   STIMULUS( 2 , 0 , "Stimulus" )
+##   GENUS( 2 , 1 , "Genus" )
+##   APPEARANCE( 2 , 2 , "Appearance" )
+##   POSE( 2 , 3 , "Pose" )
+##   GAIT( 2 , 4 , "Gait" )
+##   INSTINCT( 2 , 5 , "Instinct" )
+##   PIGMENT( 2 , 6 , "Pigment" )
+##   PIGMENT_BLEED( 2 , 7 , "Pigment bleed" )
+##   ORGAN( 3 , 0 , "Organ" )
+
+
+
