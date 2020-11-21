@@ -53,9 +53,6 @@ class GeneSwitcherCreatures1(object):
     toreturn.haserror = haserror
     return toreturn
   
-  def geneC1_0(self, arg):
-    return "No Gene"
-    
   def geneC1_type0_subt0(self, arg) :
     ## Brain lobe
     ## print( "Bl (%d) {%s}" %(len(arg), arg) )
@@ -98,16 +95,47 @@ class GeneSwitcherCreatures1(object):
     toreturn.appendContent( values[7].decode('ascii') )
     toreturn.appendContent( values[8].decode('ascii') )
     return toreturn
-
-##   2  0  Stimulus
-##   2  2  Appearance
-##   2  3  Pose
-##   2  4  Gait
-##   2  5  Instinct
-##   2  6  Pigment
-##   2  7  Pigment bleed
-##   3  0  Organ
-
+  
+  def geneC1_type2_subt0(self, arg) :
+    ## Stimulus
+    ## print( "ST (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Stimulus", 13)
+  
+  def geneC1_type2_subt2(self, arg) :
+    ## Appearance
+    ## print( "AP (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Appearance", 2)
+  
+  def geneC1_type2_subt3(self, arg) :
+    ## Pose
+    ## print( "PO (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Pose", 16)
+  
+  def geneC1_type2_subt4(self, arg) :
+    ## Gait
+    ## print( "GA (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Gait", 9)
+  
+  def geneC1_type2_subt5(self, arg) :
+    ## Instinct
+    ## print( "IN (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Instinct", 9)
+  
+  def geneC1_type2_subt6(self, arg) :
+    ## Pigment
+    ## print( "Pi (%d) {%s}" %(len(arg), arg) )
+    return self.parseDataAndCreateObjectC1(arg, "Pigment", 2)
+  
+  def geneC1_type2_subt7(self, arg) :
+    ## Pigment bleed
+    print( "PB (%d) {%s}" %(len(arg), arg) )
+    pass
+  
+  def geneC1_type3_subt0(self, arg) :
+    ## Organ
+    print( "OR (%d) {%s}" %(len(arg), arg) )
+    pass
+    
 class GeneCreatures1(object):
   """ Gene Creatures 1 """
   def __init__(self, type = None, header = [] ):
