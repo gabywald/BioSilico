@@ -47,13 +47,14 @@ with open(file2parse, 'rb') as bfile :
     if ( type(nextgene) is GeneSwitcherCreatures.GeneCreatures1) : 
       listOfGenes.append( nextgene )
     if (data.endswith( b'gend') ) : 
-      print( "END OF GENOME" )
+      ## print( "END OF GENOME" )
       break
 
 for gene in listOfGenes : 
   gene.printInLine()
 
-
+locationOfExtension = file2parse.find(".gen")
+print( "Number of genes (%s) {%s}" %(len(listOfGenes), file2parse[locationOfExtension-4:locationOfExtension]) )
 
 
 
