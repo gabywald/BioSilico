@@ -147,11 +147,18 @@ class GeneTypeSubtype(object) :
     return "GeneTypeSubtype ( % s , % s, '% s' ) "  % (self.type, self.subtype, self.name)
 
 class GeneEnumGroups(object) : 
+  """ GeneEnumGroups : Miltu-Singleton for some enumerations of data (fixed sets) """
   _containerTSG = None
+  _containerSVR = None
   _containerGBF = None
+  _containerBoP = None
+  _containerSOS = None
+  _containerSpe = None
+  _containerPiC = None
   
   @classmethod
   def getEnumsTSG(self) : 
+    """ Type and Subtype Gene definitions """
     if (self._containerTSG != None) : 
       return self._containerTSG
     data = ModuleHelper.loadFileConfig( "geneC1C2definitions" )
@@ -163,16 +170,59 @@ class GeneEnumGroups(object) :
                                                     lineDetection.groups()[1], \
                                                     lineDetection.groups()[2] ) )
     return self._containerTSG
+    
+  @classmethod
+  def getEnumsSVRules(self) : 
+    """ SVRules """
+    if (self._containerSVR != None) : 
+      return self._containerSVR
+    data = ModuleHelper.loadDataConfig( "svrules" )
+    self._containerSVR = data
+    return self._containerSVR
   
   @classmethod
   def getEnumsGeneBitFlags(self) : 
+    """ Gene Bit Flags """
     if (self._containerGBF != None) : 
       return self._containerGBF
     data = ModuleHelper.loadDataConfig( "genebitflags" )
     self._containerGBF = data
     return self._containerGBF
-
   
-
+  @classmethod
+  def getEnumsBodyParts(self) : 
+    """ Body Parts """
+    if (self._containerBoP != None) : 
+      return self._containerBoP
+    data = ModuleHelper.loadDataConfig( "bodyparts" )
+    self._containerBoP = data
+    return self._containerBoP
+  
+  @classmethod
+  def getEnumsSwitchOnStage(self) : 
+    """ Switch On Stage """
+    if (self._containerSOS != None) : 
+      return self._containerSOS
+    data = ModuleHelper.loadDataConfig( "switchonstage" )
+    self._containerSOS = data
+    return self._containerSOS
+  
+  @classmethod
+  def getEnumsSpecies(self) : 
+    """ Species """
+    if (self._containerSpe != None) : 
+      return self._containerSpe
+    data = ModuleHelper.loadDataConfig( "species" )
+    self._containerSpe = data
+    return self._containerSpe
+  
+  @classmethod
+  def getEnumsPigmentColor(self) : 
+    """ Pigment Color """
+    if (self._containerPiC != None) : 
+      return self._containerPiC
+    data = ModuleHelper.loadDataConfig( "pigmentcolor" )
+    self._containerPiC = data
+    return self._containerPiC
 
 

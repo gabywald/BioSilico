@@ -1,0 +1,27 @@
+print ( GeneEnumGroups.getEnumsTSG() )
+for elt in GeneEnumGroups.getEnumsTSG() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsSVRules() )
+for elt in GeneEnumGroups.getEnumsSVRules() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsGeneBitFlags() )
+for elt in GeneEnumGroups.getEnumsGeneBitFlags() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsBodyParts() )
+for elt in GeneEnumGroups.getEnumsBodyParts() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsSwitchOnStage() )
+for elt in GeneEnumGroups.getEnumsSwitchOnStage() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsSpecies() )
+for elt in GeneEnumGroups.getEnumsSpecies() : 
+  print( elt )
+
+print ( GeneEnumGroups.getEnumsPigmentColor() )
+for elt in GeneEnumGroups.getEnumsPigmentColor() : 
+  print( elt )
