@@ -32,7 +32,7 @@ def readBinaryGenes(stream) :
     data += bytes
     ## NOTE : optimize this below !!
     if (data.endswith( b'gene' )) or (data.endswith( b'gend' )):
-      break;
+      break
   return data
     
 switcher = GeneSwitcherCreatures1()
