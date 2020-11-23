@@ -175,7 +175,7 @@ class GeneTypeSubtype(object) :
     return "GeneTypeSubtype ( % s , % s, '% s' ) "  % (self.type, self.subtype, self.name)
 
 class GeneEnumGroups(object) : 
-  """ GeneEnumGroups : Miltu-Singleton for some enumerations of data (fixed sets) """
+  """ GeneEnumGroups : Multi-Singleton for some enumerations of data (fixed sets) """
   _containerTSG = None
   _containerSVR = None
   _containerGBF = None

@@ -14,9 +14,9 @@ def readFileToList( filePath ) :
 
 def loadFileConfig( nameOfRSC ) : 
   """ To read file resources ! """
-  ## Use a configuration file ! 'data/sources.ini' !
+  ## Use a configuration file ! '../data/sources.ini' !
   parser = configparser.ConfigParser()
-  parser.read( "data/sources.ini" )
+  parser.read( "../data/sources.ini" )
   if parser.has_option('paths', nameOfRSC):
     return readFileToList( parser[ "paths" ].get( nameOfRSC ) )
   else:
@@ -24,7 +24,7 @@ def loadFileConfig( nameOfRSC ) :
     
 def loadDataConfig( nameOfRSC ) : 
   """ To read data resources ! """
-  ## Use a configuration file ! 'data/sources.ini' !
+  ## Use a configuration file ! '../data/sources.ini' !
   parser = configparser.ConfigParser()
   parser.read( "data/sources.ini" )
   if parser.has_option('data', nameOfRSC):
