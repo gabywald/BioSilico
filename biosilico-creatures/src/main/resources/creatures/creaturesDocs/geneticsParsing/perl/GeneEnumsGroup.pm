@@ -2,7 +2,7 @@ package GeneEnumsGroup;
 
 use strict;
 
-my $_containerTSG = undef;
+my $_containerTSG = ();
 
 sub new {
 	my $class	= shift;
@@ -11,7 +11,7 @@ sub new {
 	my $self	= {};
 
     $self->{name}		= shift;
-    $self->{contents}	= \();
+    $self->{contents}	= ();
 
 	bless($self, $class);
 	return $self;
@@ -23,27 +23,30 @@ sub getName() {
 }
 
 sub addContents {
-	my $self			= shift;
-	while(@_) { push (@{$self->{contents}},shift); }
+	my $self = shift;
+	while(@_) { push (@{$self->{contents}}, shift); }
+	## print "\t".\@{$self->{contents}};
+	## foreach my $elt (@{$self->{contents}}) { print "\t".$elt."\n"; }
 }
 
 sub getContents {
 	my $self = shift;
-	return ($self->{contents})?$self->{contents}:\();
+	return ($self->{contents})?@{$self->{contents}}:();
 }
 
 sub getEnumsTSG() {
-	my $class = shift;
+	my $self = shift;
 	
-	if ( defined $_containerTSG) {
-		return $_containerTSG;
-	}
+	if ( defined $_containerTSG ) 
+		{ return $_containerTSG; }
 	
 	$_containerTSG = GeneEnumsGroup->new( "geneC1C2definitions" );
 	
-	## TODO putting data in !
-	
-	return $_containerTSG
+	$_containerTSG->addContents( &DataLoader::loadFileConfig( $_containerTSG->getName() ) );
+	## foreach my $data ( &DataLoader::loadFileConfig( $_containerTSG->getName() ) ) 
+	## 	{ $_containerTSG->addContents( $data ); }
+		
+	return $_containerTSG;
 }
 
 1;

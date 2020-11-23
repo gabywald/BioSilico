@@ -4,6 +4,7 @@ use strict;
 
 use lib '.';
 use GeneEnumsGroup;
+use DataLoader;
 
 my $fileInputPath = $ARGV[0];
 if (!$fileInputPath) { die "No FilePath in argument !"; }
@@ -57,9 +58,11 @@ while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
 close $fileReadingInput;
 
 my $tsg = GeneEnumsGroup->getEnumsTSG();
-print $tsg."\n";
-print $tsg->getName()."\n";
-my @TSGcontents = @$tsg->getContents();
-print @TSGcontents."\n";
-print qq(@TSGcontents)."\n";
+print $tsg."\t".$tsg->getName()."\t".$tsg->getContents()."\n";
+foreach my $elt ($tsg->getContents()) { print "\t".$elt."\n"; }
+
+## my @colors = &DataLoader::loadDataConfig( "pigmentcolor" );
+## foreach my $color (@colors) { print "\t".$color."\n"; }
+
+
 
