@@ -6,7 +6,7 @@ use Switch;
 use Data::Dumper;
 use Cwd;
 
-## To read *.ep Creatures 1 files
+## To read *.exp Creatures 1 files
 ## ## ## "./creatures1GlobalParsing.pl ../../genetics/C1unregs/unreg6.exp"
 ## ## ## "./creatures1GlobalParsing.pl ../../genetics/C1grendels/grendel02.exp"
 
