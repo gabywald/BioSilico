@@ -2,13 +2,21 @@
 
 use strict;
 
-my $fileInputPath = $ARGV[0];
+use lib '.';
+use GeneEnumsGroup;
 
+my $fileInputPath = $ARGV[0];
 if (!$fileInputPath) { die "No FilePath in argument !"; }
+
+## To read *.gen Creatures 1 files
+## ## ## "./creatures1GlobalParsing.pl ../../genetics/0WKW.gen"
+## ## ## "./creatures1GlobalParsing.pl ../../genetics/8ARU.gen"
 
 ## https://www.perl.com/article/how-to-parse-binary-data-with-perl/
 ## https://www.tutorialspoint.com/perl/perl_unpack.htm
 ## https://www.tutorialspoint.com/perl/perl_pack.htm
+## for beginners in OOP in Perl : https://www.tutorialspoint.com/perl/perl_oo_perl.htm
+## see also : https://www.perltutorial.org/perl-oop/
 
 sub readBinaryGenes {
 	my $fileReadingInput = shift;
@@ -47,4 +55,11 @@ while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
 }
 
 close $fileReadingInput;
+
+my $tsg = GeneEnumsGroup->getEnumsTSG();
+print $tsg."\n";
+print $tsg->getName()."\n";
+my @TSGcontents = @$tsg->getContents();
+print @TSGcontents."\n";
+print qq(@TSGcontents)."\n";
 
