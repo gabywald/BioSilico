@@ -57,7 +57,3 @@ locationOfExtension = file2parse.find(".gen")
 print( "Number of genes (%s) {%s}" %(len(listOfGenes), file2parse[locationOfExtension-4:locationOfExtension]) )
 
 
-
-
-
-

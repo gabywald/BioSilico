@@ -12,11 +12,16 @@ def readFileToList( filePath ) :
     listToReturn = data.split( "\n" )
   return listToReturn
 
-def loadFileConfig( nameOfRSC ) : 
-  """ To read file resources ! """
+def readConfigFile( config = "../data/sources.ini" ) : 
+  """ To read config file ! """
   ## Use a configuration file ! '../data/sources.ini' !
   parser = configparser.ConfigParser()
-  parser.read( "../data/sources.ini" )
+  parser.read( config )
+  return parser
+
+def loadFileConfig( nameOfRSC ) : 
+  """ To read file resources ! """
+  parser = readConfigFile()
   if parser.has_option('paths', nameOfRSC):
     return readFileToList( parser[ "paths" ].get( nameOfRSC ) )
   else:
@@ -24,9 +29,7 @@ def loadFileConfig( nameOfRSC ) :
     
 def loadDataConfig( nameOfRSC ) : 
   """ To read data resources ! """
-  ## Use a configuration file ! '../data/sources.ini' !
-  parser = configparser.ConfigParser()
-  parser.read( "data/sources.ini" )
+  parser = readConfigFile()
   if parser.has_option('data', nameOfRSC):
     return parser[ "data" ].get( nameOfRSC )[2:-2].split( ", " )
   else:

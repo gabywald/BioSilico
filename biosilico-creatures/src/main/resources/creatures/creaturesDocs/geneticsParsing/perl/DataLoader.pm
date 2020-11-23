@@ -37,7 +37,6 @@ sub loadConfigIni() {
 sub loadFileConfig() {
 	my $nameOfRSC = shift;
 	my %configHash = loadConfigIni();
-	
 	my $value = $configHash{"paths"}->{ $nameOfRSC };
 	my @toReturn = ();
 	print $value."\n";
@@ -55,7 +54,6 @@ sub loadFileConfig() {
 sub loadDataConfig() {
 	my $nameOfRSC = shift;
 	my %configHash = loadConfigIni();
-	
 	my $value = $configHash{"data"}->{ $nameOfRSC };
 	$value =~ s/\[ (.*) \]/$1/;
 	return split(", ", $value);

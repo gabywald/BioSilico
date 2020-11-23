@@ -198,14 +198,17 @@ class GeneEnumGroups(object) :
                                                     lineDetection.groups()[1], \
                                                     lineDetection.groups()[2] ) )
     return self._containerTSG
-    
+  
+  @classmethod
+  def getEnumsDatas(self, name) : 
+    return ModuleHelper.loadDataConfig( name )
+  
   @classmethod
   def getEnumsSVRules(self) : 
     """ SVRules """
     if (self._containerSVR != None) : 
       return self._containerSVR
-    data = ModuleHelper.loadDataConfig( "svrules" )
-    self._containerSVR = data
+    self._containerSVR = GeneEnumGroups.getEnumsDatas( "svrules" )
     return self._containerSVR
   
   @classmethod
@@ -213,8 +216,7 @@ class GeneEnumGroups(object) :
     """ Gene Bit Flags """
     if (self._containerGBF != None) : 
       return self._containerGBF
-    data = ModuleHelper.loadDataConfig( "genebitflags" )
-    self._containerGBF = data
+    self._containerGBF = GeneEnumGroups.getEnumsDatas( "genebitflags" )
     return self._containerGBF
   
   @classmethod
@@ -222,8 +224,7 @@ class GeneEnumGroups(object) :
     """ Body Parts """
     if (self._containerBoP != None) : 
       return self._containerBoP
-    data = ModuleHelper.loadDataConfig( "bodyparts" )
-    self._containerBoP = data
+    self._containerBoP = GeneEnumGroups.getEnumsDatas( "bodyparts" )
     return self._containerBoP
   
   @classmethod
@@ -231,8 +232,7 @@ class GeneEnumGroups(object) :
     """ Switch On Stage """
     if (self._containerSOS != None) : 
       return self._containerSOS
-    data = ModuleHelper.loadDataConfig( "switchonstage" )
-    self._containerSOS = data
+    self._containerSOS = GeneEnumGroups.getEnumsDatas( "switchonstage" )
     return self._containerSOS
   
   @classmethod
@@ -240,8 +240,7 @@ class GeneEnumGroups(object) :
     """ Species """
     if (self._containerSpe != None) : 
       return self._containerSpe
-    data = ModuleHelper.loadDataConfig( "species" )
-    self._containerSpe = data
+    self._containerSpe = GeneEnumGroups.getEnumsDatas( "species" )
     return self._containerSpe
   
   @classmethod
@@ -249,8 +248,7 @@ class GeneEnumGroups(object) :
     """ Pigment Color """
     if (self._containerPiC != None) : 
       return self._containerPiC
-    data = ModuleHelper.loadDataConfig( "pigmentcolor" )
-    self._containerPiC = data
+    self._containerPiC = GeneEnumGroups.getEnumsDatas( "pigmentcolor" )
     return self._containerPiC
 
 

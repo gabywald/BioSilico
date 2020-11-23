@@ -61,6 +61,10 @@ my $tsg = GeneEnumsGroup->getEnumsTSG();
 print $tsg."\t".$tsg->getName()."\t".$tsg->getContents()."\n";
 foreach my $elt ($tsg->getContents()) { print "\t".$elt."\n"; }
 
+my $pic = GeneEnumsGroup->getEnumsPigmentColor();
+print $pic."\t".$pic->getName()."\t".$pic->getContents()."\n";
+foreach my $elt ($pic->getContents()) { print "\t".$elt."\n"; }
+
 ## my @colors = &DataLoader::loadDataConfig( "pigmentcolor" );
 ## foreach my $color (@colors) { print "\t".$color."\n"; }
 

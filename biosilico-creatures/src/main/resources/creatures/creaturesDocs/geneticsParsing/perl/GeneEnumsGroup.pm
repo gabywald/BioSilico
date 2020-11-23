@@ -3,6 +3,12 @@ package GeneEnumsGroup;
 use strict;
 
 my $_containerTSG = ();
+my $_containerSVR = ();
+my $_containerGBF = ();
+my $_containerBoP = ();
+my $_containerSOS = ();
+my $_containerSpe = ();
+my $_containerPiC = ();
 
 sub new {
 	my $class	= shift;
@@ -47,6 +53,76 @@ sub getEnumsTSG() {
 	## 	{ $_containerTSG->addContents( $data ); }
 		
 	return $_containerTSG;
+}
+
+sub getEnumsDatas() {
+	my $self = shift;
+	my $datakey = shift;
+	
+	my $return = GeneEnumsGroup->new( $datakey );
+	$return->addContents( &DataLoader::loadDataConfig( $return->getName() ) );
+		
+	return $return;
+}
+
+sub getEnumsSVRules() {
+	my $self = shift;
+	
+	if ( defined $_containerSVR ) 
+		{ return $_containerSVR; }
+	
+	$_containerSVR = GeneEnumsGroup->getEnumsDatas( "svrules" );
+	return $_containerSVR;
+}
+
+sub getEnumsBodyParts() {
+	my $self = shift;
+	
+	if ( defined $_containerGBF ) 
+		{ return $_containerGBF; }
+	
+	$_containerGBF = GeneEnumsGroup->getEnumsDatas( "genebitflags" );
+	return $_containerGBF;
+}
+
+sub getEnumsSwitchOnStage() {
+	my $self = shift;
+	
+	if ( defined $_containerBoP ) 
+		{ return $_containerBoP; }
+	
+	$_containerBoP = GeneEnumsGroup->getEnumsDatas( "bodyparts" );
+	return $_containerBoP;
+}
+
+sub getEnumsSwitchOnStage() {
+	my $self = shift;
+	
+	if ( defined $_containerSOS ) 
+		{ return $_containerSOS; }
+	
+	$_containerSOS = GeneEnumsGroup->getEnumsDatas( "switchonstage" );
+	return $_containerSOS;
+}
+
+sub getEnumsSpecies() {
+	my $self = shift;
+	
+	if ( defined $_containerSpe ) 
+		{ return $_containerSpe; }
+	
+	$_containerSpe = GeneEnumsGroup->getEnumsDatas( "species" );
+	return $_containerSpe;
+}
+
+sub getEnumsPigmentColor() {
+	my $self = shift;
+	
+	if ( defined $_containerPiC ) 
+		{ return $_containerPiC; }
+	
+	$_containerPiC = GeneEnumsGroup->getEnumsDatas( "pigmentcolor" );
+	return $_containerPiC;
 }
 
 1;
