@@ -6,6 +6,8 @@ use lib '.';
 use GeneEnumsGroup;
 use DataLoader;
 
+use CreaturesGene;
+
 my $fileInputPath = $ARGV[0];
 if (!$fileInputPath) { die "No FilePath in argument !"; }
 
@@ -38,6 +40,8 @@ sub readBinaryGenes {
 	return $data;
 }
 
+my @listOfGenes = ();
+
 open my $fileReadingInput, "<", $fileInputPath or die "File does not exist !";
 binmode $fileReadingInput ;
 
@@ -45,28 +49,20 @@ while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
 	if ($gene eq "gene") { next; }
 	if ($gene eq "") { next; }
 	$gene =~ s/gen[ed]$//;
-	print $gene."\n";
-	my @toTreat = unpack("(C*) a4", $gene);
+	## print $gene."\n";
+	my @toTreat = unpack("(C*)", $gene);
 	
-	## TODO treat Gene DATA !!
+	push( @listOfGenes, &CreaturesGene::treatGeneData( @toTreat ) );
 	
-	foreach my $elt (@toTreat) {
-		print "\t".$elt."\n";
-	}
 }
 
 close $fileReadingInput;
 
-my $tsg = GeneEnumsGroup->getEnumsTSG();
-print $tsg."\t".$tsg->getName()."\t".$tsg->getContents()."\n";
-foreach my $elt ($tsg->getContents()) { print "\t".$elt."\n"; }
+foreach my $gene (@listOfGenes) {
+	print( $gene->toString() );
+}
 
-my $pic = GeneEnumsGroup->getEnumsPigmentColor();
-print $pic."\t".$pic->getName()."\t".$pic->getContents()."\n";
-foreach my $elt ($pic->getContents()) { print "\t".$elt."\n"; }
-
-## my @colors = &DataLoader::loadDataConfig( "pigmentcolor" );
-## foreach my $color (@colors) { print "\t".$color."\n"; }
-
-
+my $genomeName = $fileInputPath;
+$genomeName =~ s/.*?\/([0-9A-Z]{4})\.gen$/$1/;
+print( "Number of genes (".@listOfGenes.") {". $genomeName."}\n" );
 

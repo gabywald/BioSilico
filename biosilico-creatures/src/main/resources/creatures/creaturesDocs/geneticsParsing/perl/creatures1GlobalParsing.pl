@@ -84,7 +84,7 @@ sub createStructure {
 			## if not the 'FF FF 01' separator [main] !! (beware 'FF FF FF 01' exists !!)
 			my $indicator = $i-3;
 			
-			## ## only on,e case in this switch !!
+			## ## only one case in this switch !!
 			switch($state) {
 				case 2 { 
 					my $limit	= $i+4;
@@ -1043,8 +1043,6 @@ sub _GENanalysis {
 	print "\t\t".$counterOfGenes." gènes comptés\n";
 	return $result."\n"._GENshowAllGroups(\%geneHash);
 }
-
-
 
 sub _GENaddGene2hash {
 	my $gene		= shift;

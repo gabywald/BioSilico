@@ -23,7 +23,7 @@ sub new {
 	return $self;
 }
 
-sub getName() {
+sub getName {
 	my $self = shift;
 	return $self->{name};
 }
@@ -40,7 +40,7 @@ sub getContents {
 	return ($self->{contents})?@{$self->{contents}}:();
 }
 
-sub getEnumsTSG() {
+sub getEnumsTSG {
 	my $self = shift;
 	
 	if ( defined $_containerTSG ) 
@@ -55,7 +55,7 @@ sub getEnumsTSG() {
 	return $_containerTSG;
 }
 
-sub getEnumsDatas() {
+sub getEnumsDatas {
 	my $self = shift;
 	my $datakey = shift;
 	
@@ -65,7 +65,7 @@ sub getEnumsDatas() {
 	return $return;
 }
 
-sub getEnumsSVRules() {
+sub getEnumsSVRules {
 	my $self = shift;
 	
 	if ( defined $_containerSVR ) 
@@ -75,7 +75,7 @@ sub getEnumsSVRules() {
 	return $_containerSVR;
 }
 
-sub getEnumsBodyParts() {
+sub getEnumsGeneBitFlags {
 	my $self = shift;
 	
 	if ( defined $_containerGBF ) 
@@ -85,7 +85,7 @@ sub getEnumsBodyParts() {
 	return $_containerGBF;
 }
 
-sub getEnumsSwitchOnStage() {
+sub getEnumsBodyParts {
 	my $self = shift;
 	
 	if ( defined $_containerBoP ) 
@@ -95,7 +95,7 @@ sub getEnumsSwitchOnStage() {
 	return $_containerBoP;
 }
 
-sub getEnumsSwitchOnStage() {
+sub getEnumsSwitchOnStage {
 	my $self = shift;
 	
 	if ( defined $_containerSOS ) 
@@ -105,7 +105,7 @@ sub getEnumsSwitchOnStage() {
 	return $_containerSOS;
 }
 
-sub getEnumsSpecies() {
+sub getEnumsSpecies {
 	my $self = shift;
 	
 	if ( defined $_containerSpe ) 
@@ -115,7 +115,7 @@ sub getEnumsSpecies() {
 	return $_containerSpe;
 }
 
-sub getEnumsPigmentColor() {
+sub getEnumsPigmentColor {
 	my $self = shift;
 	
 	if ( defined $_containerPiC ) 
@@ -126,3 +126,5 @@ sub getEnumsPigmentColor() {
 }
 
 1;
+
+
