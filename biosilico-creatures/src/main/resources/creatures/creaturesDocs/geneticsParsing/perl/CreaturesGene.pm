@@ -12,6 +12,7 @@ sub new {
 
     $self->{type}		= shift;
     $self->{header}		= shift;
+    $self->{attempted}	= shift; ## attempted length
     $self->{contents}	= ();
     $self->{haserror}	= undef;
     
@@ -48,6 +49,11 @@ sub toString {
 	return $toReturn."\n";
 }
 
+sub autocheck {
+	my $self = shift;
+	## TODO checking !!
+}
+
 sub treatGeneData {
 	my @toTreat = @_;
 	
@@ -55,15 +61,6 @@ sub treatGeneData {
 	for (my $i = 0 ; $i < 6 ; $i++) {
 		push(@header, shift(@toTreat) );
 	}
-	print $header[0]."-".$header[1]."::";
-	print "(".@toTreat.")\t";
-	foreach my $elt (@toTreat) {
-		if ( ($header[0] == '2') && ($header[1] == '1') ) 
-			## 	&& ( ($elt >= 65) && ($elt <= 90) )  )
-			{ print "\t".chr($elt).""; } ## ord(  )...
-		else { print "\t[".$elt."]"; }
-	}
-	print "\n";
 	
 	## my @header = @toTreat[0, 1, 2, 3, 4, 5];
 	my $key = $header[0]."-".$header[1];
@@ -82,8 +79,10 @@ sub treatGeneData {
 		case "1-4" { $newGene->addContents( @toTreat ); }
 		case "2-0" { $newGene->addContents( @toTreat ); }
 		case "2-1" {
-			$newGene->addContents( converterBinaryToChar( @toTreat[0, 1, 2, 3] ) );
-			$newGene->addContents( converterBinaryToChar( @toTreat[4, 5, 6, 7] ) );
+			my @dataOne = @toTreat[1..4]; ## @toTreat[0, 1, 2, 3];
+			my @dataTwo = @toTreat[5..8]; ## @toTreat[4, 5, 6, 7];
+			$newGene->addContents( converterBinaryToChar( \@dataOne ) );
+			$newGene->addContents( converterBinaryToChar( \@dataTwo ) );
 		}
 		case "2-2" { $newGene->addContents( @toTreat ); }
 		case "2-3" { $newGene->addContents( @toTreat ); }
@@ -94,14 +93,15 @@ sub treatGeneData {
 		case "3-0" { $newGene->addContents( @toTreat ); }
 	}
 	
-	## TODO m/ autocheck for genes (contents : number of values expected and values obtained => nb of errors !)
+	## TODO autocheck for genes (contents : number of values expected and values obtained => nb of errors !)
 	
 	return $newGene;
 }
 
 sub _GENgetGeneTitle {
 	my $key = shift;
-	my $title = ""; 
+	my $title = "";
+	## TODO load from configuration file !
 	switch ($key) {
 		case "0-0" { $title = "Brain Gene -- Brain lobe"; }
 		case "0-1" { $title = "Brain Gene -- Brain organ"; }
@@ -124,10 +124,10 @@ sub _GENgetGeneTitle {
 }
 
 sub converterBinaryToChar {
+	my $data = shift;
 	my $toReturn = "";
-	while(@_) { $toReturn .= chr(shift); }
-	return $toReturn;
+	for(@{$data}) { $toReturn .= chr($_); }
+	return "'".$toReturn."'";
 }
 
 1;
-

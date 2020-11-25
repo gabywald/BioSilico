@@ -1,16 +1,18 @@
-0	0	Brain lobe
-0	1	Brain organ
-1	0	Receptor
-1	1	Emitter
-1	2	Chemical reaction
-1	3	Half lives
-1	4	Initial concentration
-2	0	Stimulus
-2	1	Genus
-2	2	Appearance
-2	3	Pose
-2	4	Gait
-2	5	Instinct
-2	6	Pigment
-2	7	Pigment bleed
-3	0	Orga
+## type index ; subtype index ; attempted length ; complete name (<group -- name>)
+## C1 header has size of 6 elts (7 for C2, 8 for C3)
+0	0	112	Brain Gene -- Brain lobe
+0	1	?	Brain Gene -- Brain organ
+1	0	8	Biochemistry Gene -- Receptor
+1	1	8	Biochemistry Gene -- Emitter
+1	2	9	Biochemistry Gene -- Chemical reaction
+1	3	255	Biochemistry Gene -- Half lives
+1	4	2	Biochemistry Gene -- Initial concentration
+2	0	13	Biochemistry Gene -- Stimulus
+2	1	2	Creature Gene -- Genus
+2	2	2	Creature Gene -- Appearance
+2	3	16	Creature Gene -- Pose
+2	4	9	Creature Gene -- Gait
+2	5	9	Creature Gene -- Instinct
+2	6	2	Creature Gene -- Pigment
+2	7	?	Creature Gene -- Pigment bleed
+3	0	?	Creature Gene -- Organ

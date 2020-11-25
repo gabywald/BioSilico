@@ -2,6 +2,8 @@ package GeneEnumsGroup;
 
 use strict;
 
+use GeneTypeSubtype;
+
 my $_containerTSG = ();
 my $_containerSVR = ();
 my $_containerGBF = ();
@@ -48,12 +50,25 @@ sub getEnumsTSG {
 	
 	$_containerTSG = GeneEnumsGroup->new( "geneC1C2definitions" );
 	
-	$_containerTSG->addContents( &DataLoader::loadFileConfig( $_containerTSG->getName() ) );
+	## $_containerTSG->addContents( &DataLoader::loadFileConfig( $_containerTSG->getName() ) );
 	## foreach my $data ( &DataLoader::loadFileConfig( $_containerTSG->getName() ) ) 
 	## 	{ $_containerTSG->addContents( $data ); }
+	
+	foreach my $geneline (&DataLoader::loadFileConfig( $_containerTSG->getName() )) {
+		if ($geneline =~ /^([0-9])\t([0-9])\t([0-9])\t(.*?)$/) {
+			my $geneDefST = GeneTypeSubtype->new($1, $2, $3, $4);
+			## print $geneDefST->toString()."\n";
+			$_containerTSG->addContents( $geneDefST );
+		}
+		## $_containerTSG->addContents( GeneTypeSubtype->new() );
+	}
 		
 	return $_containerTSG;
 }
+
+## my $tsg = GeneEnumsGroup->getEnumsTSG();
+## print $tsg."\t".$tsg->getName()."\t".$tsg->getContents()."\n";
+## foreach my $elt ($tsg->getContents()) { print "\t".$elt->toString(); }
 
 sub getEnumsDatas {
 	my $self = shift;

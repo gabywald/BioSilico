@@ -6,7 +6,9 @@ import struct
 
 import GeneSwitcherCreatures
 from GeneSwitcherCreatures import GeneSwitcherCreatures1
-from GeneSwitcherCreatures import GeneEnumGroups
+import GenesCreatures
+from GenesCreatures import GeneCreatures1
+import GeneEnumGroups
 
 file2parse = None
 if (len(sys.argv) < 2) : 
@@ -44,7 +46,7 @@ with open(file2parse, 'rb') as bfile :
     nextgene = switcher.define4creatures1( data[:-4] )
     ## print( nextgene )
     ## print( type( nextgene ) )
-    if ( type(nextgene) is GeneSwitcherCreatures.GeneCreatures1) : 
+    if ( type(nextgene) is GenesCreatures.GeneCreatures1) : 
       listOfGenes.append( nextgene )
     if (data.endswith( b'gend') ) : 
       ## print( "END OF GENOME" )
