@@ -2,12 +2,12 @@
 
 for file in ../../genetics/*.gen
 do
-	echo "file = $file TO nextfile = $nextfile"
 	## name = $(sed 's/[(\.\.\/)|genetics/]//g' <<< "../../genetics/7RMN.gen")
 	## see also : https://tldp.org/LDP/abs/html/parameter-substitution.html
 	nextfile=${file%.gen}.export
 	nextfile=exported/${nextfile#../../genetics/}
-	./creatures1GenomeParsing.py $file > $nextfile
+	echo "file = $file TO nextfile = $nextfile"
+	./creatures1GenomeParsing.pl $file > $nextfile
 done
 
 echo "*****"

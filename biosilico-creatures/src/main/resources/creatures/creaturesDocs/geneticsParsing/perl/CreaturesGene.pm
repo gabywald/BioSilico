@@ -4,6 +4,8 @@ use strict;
 
 use Switch;
 
+use Data::Dumper;
+
 sub new {
 	my $class	= shift;
 	$class		= ref($class) || $class;
@@ -30,6 +32,10 @@ sub toString {
 	my $toReturn	= "";
 	
 	## example => "Genus : [2, 1, 1, 0, 0, 0] => ['1ATH', '8DSH']"
+	
+	if ( ! defined $self->{type}) {
+		print Dumper( $self );
+	}
 	
 	$toReturn		.= $self->{type}." : [";
 	my @header		= @{$self->{header}};
@@ -63,9 +69,18 @@ sub treatGeneData {
 	}
 	
 	## my @header = @toTreat[0, 1, 2, 3, 4, 5];
+	
+	if ( ! defined $header[0]) { print "UNDEFINED KEY 0 !!\n";return undef; }
+	if ( ! defined $header[1]) { print "UNDEFINED KEY 1 !!\n";return undef; }
+	
 	my $key = $header[0]."-".$header[1];
-	my $genetitle = &_GENgetGeneTitle( $key );
-	my ($genegroup, $genetype) = split(" -- ", $genetitle);
+	
+	my ($genegroup, $genetype) = split(" -- ", &_GENgetGeneTitle( $key ) );
+	
+	if ( ! defined $genetype) 
+		## { print "UNDEFINED $genegroup :: $genetype !!\n";getc();return undef; }
+		{ return $genetype; }
+	
 	my $newGene = CreaturesGene->new( $genetype, \@header );
 	
 	## switch
@@ -81,6 +96,7 @@ sub treatGeneData {
 		case "2-1" {
 			my @dataOne = @toTreat[1..4]; ## @toTreat[0, 1, 2, 3];
 			my @dataTwo = @toTreat[5..8]; ## @toTreat[4, 5, 6, 7];
+			## TODO check if @dataTwo is empty or full of 0 !!
 			$newGene->addContents( converterBinaryToChar( \@dataOne ) );
 			$newGene->addContents( converterBinaryToChar( \@dataTwo ) );
 		}
@@ -119,6 +135,8 @@ sub _GENgetGeneTitle {
 		case "2-6" { $title = "Creature Gene -- Pigment"; }
 		case "2-7" { $title = "Creature Gene -- Pigment bleed"; }
 		case "3-0" { $title = "Creature Gene -- Organ"; }
+		else { return undef; }
+		## else { $title = "UNKNOWN TYPE/SYBTYPE OF GENE ! -- UNKNOWN"; }
 	}
 	return $title;
 }

@@ -46,13 +46,18 @@ open my $fileReadingInput, "<", $fileInputPath or die "File does not exist !";
 binmode $fileReadingInput ;
 
 while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
-	if ($gene eq "gene") { next; }
-	if ($gene eq "") { next; }
+	if ($gene eq "gene")	{ next; }
+	if ($gene eq "")		{ next; }
+	if ($gene =~ /gend/)	{ last; }
 	$gene =~ s/gen[ed]$//;
 	## print $gene."\n";
 	my @toTreat = unpack("(C*)", $gene);
 	
-	push( @listOfGenes, &CreaturesGene::treatGeneData( @toTreat ) );
+	my $nextGene = &CreaturesGene::treatGeneData( @toTreat );
+	
+	## NOTE : issue with 6JHJ ; 7WEW ; 8PEQ (grendel !) and 1QOI ?!
+	
+	if (defined $nextGene) { push( @listOfGenes, $nextGene ); }
 	
 }
 
