@@ -39,7 +39,6 @@ sub loadFileConfig() {
 	my %configHash = loadConfigIni();
 	my $value = $configHash{"paths"}->{ $nameOfRSC };
 	my @toReturn = ();
-	print $value."\n";
 	open (FILE, "<".$value) || die "Can't open $value: $!\n";
 	{
 		while (my $line = <FILE>) {

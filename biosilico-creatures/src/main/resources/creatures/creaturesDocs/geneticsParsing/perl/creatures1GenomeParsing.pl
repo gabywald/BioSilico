@@ -28,7 +28,7 @@ sub readBinaryGenes {
 	while ( $loopindex ) {
 		my $bytes = undef;
 		my $success = read $fileReadingInput, $bytes, 1;
-		## print $bytes . " // " . unpack("a*", $data)." // ".pack("a4", "gene")."\n";
+		## print $bytes . " // " . unpack("a<*", $data)." // ".pack("a4", "gene")."\n";
 		$data .= $bytes;
 		## exit(1);
 		if ( ($data =~ /(.*?)gen[ed]$/ ) || ( ! $success) ) {
@@ -51,7 +51,7 @@ while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
 	if ($gene =~ /gend/)	{ last; }
 	$gene =~ s/gen[ed]$//;
 	## print $gene."\n";
-	my @toTreat = unpack("(C*)", $gene);
+	my @toTreat = unpack("(C*)<", $gene);
 	
 	my $nextGene = &CreaturesGene::treatGeneData( @toTreat );
 	

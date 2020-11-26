@@ -18,6 +18,26 @@ sub new {
 	return $self;
 }
 
+sub getName {
+	my $self = shift;
+	return $self->{name};
+}
+
+sub getType {
+	my $self = shift;
+	return $self->{type};
+}
+
+sub getSubtype {
+	my $self = shift;
+	return $self->{subtype};
+}
+
+sub getAttempted {
+	my $self = shift;
+	return $self->{attempted};
+}
+
 sub toString {
 	my $self		= shift;
 	my $toReturn	= "";

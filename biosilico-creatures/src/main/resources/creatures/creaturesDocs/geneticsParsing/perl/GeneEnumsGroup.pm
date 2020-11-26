@@ -55,12 +55,10 @@ sub getEnumsTSG {
 	## 	{ $_containerTSG->addContents( $data ); }
 	
 	foreach my $geneline (&DataLoader::loadFileConfig( $_containerTSG->getName() )) {
-		if ($geneline =~ /^([0-9])\t([0-9])\t([0-9])\t(.*?)$/) {
+		if ($geneline =~ /^([0-9])\t([0-9])\t([0-9]+)\t(.*?)$/) {
 			my $geneDefST = GeneTypeSubtype->new($1, $2, $3, $4);
-			## print $geneDefST->toString()."\n";
 			$_containerTSG->addContents( $geneDefST );
 		}
-		## $_containerTSG->addContents( GeneTypeSubtype->new() );
 	}
 		
 	return $_containerTSG;
