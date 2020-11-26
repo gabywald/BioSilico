@@ -1,5 +1,13 @@
 #!/bin/bash
 
+exportdirectory="exported/";
+
+if [ -d $exportdirectory ]; then
+	rm -rfv $exportdirectory
+fi
+
+mkdir -v $exportdirectory
+
 for file in ../../genetics/*.gen
 do
 	## name = $(sed 's/[(\.\.\/)|genetics/]//g' <<< "../../genetics/7RMN.gen")

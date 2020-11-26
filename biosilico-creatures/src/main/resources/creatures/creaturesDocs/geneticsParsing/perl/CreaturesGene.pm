@@ -57,12 +57,11 @@ sub autocheck {
 sub treatGeneData {
 	my @toTreat = @_;
 	
-	my @header = ();
+	
+	my @header = (); ## my @header = @toTreat[1..6];
 	for (my $i = 0 ; $i < 6 ; $i++) {
 		push(@header, shift(@toTreat) );
 	}
-	
-	## my @header = @toTreat[0, 1, 2, 3, 4, 5];
 	
 	if ( ! defined $header[0]) { print "UNDEFINED KEY 0 !!\n";return undef; }
 	if ( ! defined $header[1]) { print "UNDEFINED KEY 1 !!\n";return undef; }
@@ -88,8 +87,8 @@ sub treatGeneData {
 		case "1-4" { $newGene->addContents( @toTreat ); }
 		case "2-0" { $newGene->addContents( @toTreat ); }
 		case "2-1" {
-			my @dataOne = @toTreat[1..4]; ## @toTreat[0, 1, 2, 3];
-			my @dataTwo = @toTreat[5..8]; ## @toTreat[4, 5, 6, 7];
+			my @dataOne = @toTreat[1..4];
+			my @dataTwo = @toTreat[5..8];
 			
 			## print join("-\t-", @dataOne), "*****\n";
 			## print join("-\t-", @dataTwo), "*****\n";
