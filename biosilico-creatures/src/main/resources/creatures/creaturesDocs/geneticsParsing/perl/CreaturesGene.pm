@@ -39,15 +39,9 @@ sub toString {
 	
 	$toReturn		.= $self->{type}." : [";
 	my @header		= @{$self->{header}};
-	foreach my $elt (@header) 
-		{ $toReturn	.= "".$elt.", "; }
-	$toReturn =~ s/, $//;
-	$toReturn		.= "] => [";
+	$toReturn		.= join(", ", @header)."] => [";
 	my @content		= @{$self->{contents}};
-	foreach my $elt (@content) 
-		{ $toReturn	.= "".$elt.", "; }
-	$toReturn =~ s/, $//;
-	$toReturn		.= "]";
+	$toReturn		.= join(", ", @content)."]";
 	if (defined $self->{haserror}) {
 		$toReturn		.= "\t".$self->{haserror};
 	}
@@ -79,7 +73,7 @@ sub treatGeneData {
 	
 	if ( ! defined $genetype) 
 		## { print "UNDEFINED $genegroup :: $genetype !!\n";getc();return undef; }
-		{ return $genetype; }
+		{ return $genetype; } ## return undef
 	
 	my $newGene = CreaturesGene->new( $genetype, \@header );
 	
@@ -96,6 +90,12 @@ sub treatGeneData {
 		case "2-1" {
 			my @dataOne = @toTreat[1..4]; ## @toTreat[0, 1, 2, 3];
 			my @dataTwo = @toTreat[5..8]; ## @toTreat[4, 5, 6, 7];
+			
+			## print join("-\t-", @dataOne), "*****\n";
+			## print join("-\t-", @dataTwo), "*****\n";
+			if ( grep { $_ eq '0'} @dataOne ) { @dataOne = (); }
+			if ( grep { $_ eq '0'} @dataTwo ) { @dataTwo = (); }
+			
 			## TODO check if @dataTwo is empty or full of 0 !!
 			$newGene->addContents( converterBinaryToChar( \@dataOne ) );
 			$newGene->addContents( converterBinaryToChar( \@dataTwo ) );

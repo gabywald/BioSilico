@@ -56,6 +56,7 @@ while( my $gene = readBinaryGenes( $fileReadingInput ) ) {
 	my $nextGene = &CreaturesGene::treatGeneData( @toTreat );
 	
 	## NOTE : issue with 6JHJ ; 7WEW ; 8PEQ (grendel !) and 1QOI ?!
+	## TODO compare perl / python export !!
 	
 	if (defined $nextGene) { push( @listOfGenes, $nextGene ); }
 	

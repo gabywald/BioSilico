@@ -15,6 +15,7 @@ grep "Number of genes (" exported/*.export
 echo "*****"
 grep "Number of genes (320)" exported/*.export
 echo "*****"
+grep "Number of genes (258)" exported/*.export
 grep "Number of genes (259)" exported/*.export
 echo "*****"
 grep "Number of genes (321)" exported/*.export
