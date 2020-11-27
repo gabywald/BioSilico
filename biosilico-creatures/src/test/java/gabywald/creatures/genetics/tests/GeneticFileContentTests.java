@@ -62,7 +62,6 @@ public class GeneticFileContentTests {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			
 		} // END "while (gfc.isReadable()))" 
 		Assertions.assertEquals(true, !gfc.isReadable());
 	}
@@ -80,7 +79,6 @@ public class GeneticFileContentTests {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			
 		} // END "while (gfc.isReadable()))" 
 		Assertions.assertEquals(true, !gfc.isReadable());
 	}

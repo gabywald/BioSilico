@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +34,35 @@ public class GeneticFileContent {
 		this.ipsr		= new InputStreamReader(ips);
 		this.buffer		= new BufferedReader(ipsr);
 		this.isReadable = true;
+	}
+	
+	public byte[] nextSequenceOfBytes() {
+		List<Byte> lstBytes = new ArrayList<Byte>();
+		
+		while (this.isReadable() ) {
+			lstBytes.add(this.nextByte());
+			if (lstBytes.size() >= 4) {
+				byte[] toTest = GeneticFileContent.convert(lstBytes);
+				String strTest = new String(toTest);
+				if (strTest.endsWith("gene") || strTest.endsWith("gend")) {
+					return GeneticFileContent.convert(lstBytes);
+				}
+			}
+		}
+		return GeneticFileContent.convert(lstBytes);
+		
+	}
+	
+	private static byte[] convert(List<Byte> lstBytes) {
+		// return ArrayUtils.toPrimitive( lstBytes.toArray(new Byte[0]) );
+		// return lstBytes.stream().map( Byte::byteValue ).toArray();
+		// return lstBytes.stream().map( b -> b.byteValue() ).toArray();
+		byte[] bytes = new byte[lstBytes.size()];
+		int i = 0;
+		for (Byte b : lstBytes) {
+		    bytes[i++] = b.byteValue();
+		}
+		return bytes;
 	}
 	
 	public byte nextByte() {

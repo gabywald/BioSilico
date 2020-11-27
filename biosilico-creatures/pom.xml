@@ -13,6 +13,12 @@
 	<artifactId>biosilico-creatures</artifactId>
 
 	<dependencies>
+	
+		<dependency>
+			<groupId>gabywald</groupId>
+			<artifactId>biosilico-commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
