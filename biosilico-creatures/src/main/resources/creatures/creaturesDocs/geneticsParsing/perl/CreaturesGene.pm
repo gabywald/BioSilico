@@ -78,8 +78,6 @@ sub treatGeneData {
 	my @toTreat = @_;
 	
 	my @header = @toTreat[0..5];
-	## my @header = (); ## my @header = @toTreat[1..6];
-	## for (my $i = 0 ; $i < 6 ; $i++) { push(@header, shift(@toTreat) ); }
 	
 	if ( ! defined $header[0]) { print "UNDEFINED KEY 0 !!\n";return undef; }
 	if ( ! defined $header[1]) { print "UNDEFINED KEY 1 !!\n";return undef; }
@@ -98,32 +96,31 @@ sub treatGeneData {
 	
 	## switch
 	switch ($key) {
-		case "0-0" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "0-1" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "1-0" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "1-1" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "1-2" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "1-3" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "1-4" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-0" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
+		case "0-0" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "0-1" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "1-0" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "1-1" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "1-2" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "1-3" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "1-4" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-0" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
 		case "2-1" {
-			my @dataOne = @toTreat[7..10]; ## @toTreat[1..4];
-			my @dataTwo = @toTreat[11..14]; ## @toTreat[5..8];
+			my @dataOne = @toTreat[7..10];
+			my @dataTwo = @toTreat[11..14];
 			
 			if ( grep { $_ eq '0'} @dataOne ) { @dataOne = (); }
 			if ( grep { $_ eq '0'} @dataTwo ) { @dataTwo = (); }
 			
-			## TODO check if @dataTwo is empty or full of 0 !!
 			$newGene->addContents( converterBinaryToChar( \@dataOne ) );
 			$newGene->addContents( converterBinaryToChar( \@dataTwo ) );
 		}
-		case "2-2" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-3" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-4" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-5" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-6" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "2-7" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
-		case "3-0" { $newGene->addContents( @toTreat[5..$#toTreat] ); }
+		case "2-2" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-3" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-4" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-5" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-6" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "2-7" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
+		case "3-0" { $newGene->addContents( @toTreat[6..$#toTreat] ); }
 	}
 	
 	$newGene->autocheck();
