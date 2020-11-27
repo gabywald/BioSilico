@@ -1,4 +1,4 @@
-package gabywald.creatures.GRtests;
+package gabywald.creatures.genetics.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import gabywald.creatures.model.UnsignedByte;
  * @author Gabriel Chandesris (2010, 2020)
  * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
  */
-public class UBTests {
+public class UnsignedByteTests {
 
 	@Test
 	public void testUB001() {

@@ -13,12 +13,12 @@ public abstract class CreatureGene {
 	/**
 	 * Creatures 1 : 
 		00 - Brain Genes	
-				00 - Lobe
+		"	00 - Brain Lobe
 		01 - Biochemistry Genes	
 		"	00 - Receptor
 		"	01 - Emitter
-		"	02 - Reaction
-		"	03 - Half-Lives
+		"	02 - Chemical Reaction
+		"	03 - Half Lives
 		"	04 - Initial Concentration
 		02 - Creature Genes	
 		"	00 - Stimulus
@@ -29,22 +29,24 @@ public abstract class CreatureGene {
 		"	05 - Instinct
 		"	06 - Pigment
 	 * Creatures 2 : 
-		0	0	Brain lobe
-		0	1	Brain organ
-		1	0	Receptor
-		1	1	Emitter
-		1	2	Chemical reaction
-		1	3	Half lives
-		1	4	Initial concentration
-		2	0	Stimulus
-		2	1	Genus
-		2	2	Appearance
-		2	3	Pose
-		2	4	Gait
-		2	5	Instinct
-		2	6	Pigment
-		2	7	Pigment bleed
-		3	0	Organ
+		00 - Brain Genes	
+		"	00 - Brain Lobe
+		"	01 - Brain Organ
+		01 - Biochemistry Genes	
+		"	00 - Receptor
+		"	01 - Emitter
+		"	02 - Chemical Reaction
+		"	03 - Half Lives
+		"	04 - Initial Concentration
+		02 - Creature Genes	
+		"	00 - Stimulus
+		"	01 - Genus
+		"	02 - Appearance
+		"	03 - Pose
+		"	04 - Gait
+		"	05 - Instinct
+		"	06 - Pigment
+		"	07 - Pigment bleed
 	 */
 	private UnsignedByte type, subtype;
 	/** A number from 0 to 255 indicating the order within this gene type/subtype for this particular gene. */
@@ -149,7 +151,8 @@ In summary:
 	 * @throws CreatureGeneException if size of <i>datas</i> is not correct. 
 	 */
 	protected CreatureGene(	int type, int subtype, 
-							List<UnsignedByte> datas, int expectedSize) 
+							List<UnsignedByte> datas, 
+							int expectedSize) 
 			throws CreatureGeneException {
 		if (datas.size() != expectedSize) 
 			{ throw new CreatureGeneException(type, subtype, "Bad number of datas e:" + expectedSize + " [" + datas.size() + "]"); }

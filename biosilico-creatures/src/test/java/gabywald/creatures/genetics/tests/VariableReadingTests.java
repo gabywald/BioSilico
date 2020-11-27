@@ -1,4 +1,4 @@
-package gabywald.creatures.GRtests;
+package gabywald.creatures.genetics.tests;
 
 import gabywald.creatures.model.VariableDefinition;
 import gabywald.global.exceptions.MessageException;
