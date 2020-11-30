@@ -15,7 +15,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  */
 public class GeneTypeSubType {
 	
-	public static Map<String, GeneTypeSubType> geneTypesSubTypes = null;
+	private static Map<String, GeneTypeSubType> geneTypesSubTypes = null;
 	
 	private int type;
 	private int subtype;
