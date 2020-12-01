@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
 import gabywald.global.data.File;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
@@ -44,9 +46,12 @@ class GeneTypeSubTypeTests {
 			String key			= splitter[0] + "-" + splitter[1];
 			int type			= Integer.parseInt(splitter[0]);
 			int subt			= Integer.parseInt(splitter[1]);
-			if (splitter[2].equals("?")) { continue; } // TODO change this for next version of Creatures (C2)
+			 // TODO change this below for next version of Creatures (C2)
+			if (splitter[2].equals("?")) { continue; }
 			int attemptedLength	= Integer.parseInt(splitter[2]);
 			String name			= splitter[3].split(" -- ")[1];
+			
+			Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + key + "\t::\t" + type + "\t" + subt + "\t" + attemptedLength + "\t" + name);
 			
 			Assertions.assertTrue( map.containsKey(key) );
 			GeneTypeSubType gtst = map.get(key);

@@ -11,12 +11,15 @@ import gabywald.creatures.model.UnsignedByte;
  * @author Gabriel Chandesris (2020)
  */
 public class GeneCreatures1 {
+	/** Name of the Type/SubType. */
 	private String type;
+	/** Header (expected of size of 6 for C1). */
 	private UnsignedByte[] header;
+	/** Expected size for a given Gene Type / SubType. */
 	private int attemptedLength;
 	private List<UnsignedByte> contents	= new ArrayList<UnsignedByte>();
 	private List<String> contentsSTR	= new ArrayList<String>();
-	private int haserror		= 0;
+	private int haserror				= 0;
 	
 	public GeneCreatures1(String type, UnsignedByte[] header, int attemptedLength) {
 		this.type = type;

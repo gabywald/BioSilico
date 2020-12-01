@@ -20,7 +20,7 @@ public class GeneCreatures1CommandGenus implements GeneCreatures1Command {
 	public GeneCreatures1 generateFrom(String input) {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
-		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 7) );
+		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
 
 		GeneCreatures1 gc1ToReturn = new GeneCreatures1(gtst.getName(), header, gtst.getAttemptedLength());
 		

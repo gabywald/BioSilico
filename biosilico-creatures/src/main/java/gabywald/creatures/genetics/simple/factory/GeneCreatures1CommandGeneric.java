@@ -20,11 +20,13 @@ public class GeneCreatures1CommandGeneric implements GeneCreatures1Command {
 	public GeneCreatures1 generateFrom(String input) {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
-		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 7) );
+		// Header data : 6 first elements !
+		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
 
 		GeneCreatures1 gc1ToReturn = new GeneCreatures1(gtst.getName(), header, gtst.getAttemptedLength());
 		
-		gc1ToReturn.addContents( UnsignedByte.headerCutterBytes( input.substring(7) ) );
+		// Rest of data : from the 6th element !
+		gc1ToReturn.addContents( UnsignedByte.headerCutterBytes( input.substring(6) ) );
 		
 		return gc1ToReturn;
 	}
