@@ -1,12 +1,21 @@
-package gabywald.creatures.genetics.main.genesfactory;
+package gabywald.creatures.genetics.simple.factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import gabywald.creatures.genetics.main.GeneCreatures1;
-import gabywald.creatures.genetics.main.GeneTypeSubType;
+import gabywald.creatures.genetics.simple.GeneCreatures1;
+import gabywald.creatures.genetics.simple.GeneTypeSubType;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 public class GeneCreatures1Factory {
+	
+	private static GeneCreatures1Factory instance = null;
+	
 	private Map<String, GeneCreatures1Command> map2cmd = null;
 	
 	public GeneCreatures1Factory() {
@@ -35,11 +44,24 @@ public class GeneCreatures1Factory {
 			this.map2cmd.put(key, new GeneCreatures1CommandGeneric( key ));
 			// TODO precise some specific commands
 		}
+		this.map2cmd.put("2-1", new GeneCreatures1CommandGenus(  ));
 	}
 	
-	public GeneCreatures1 generateFrom(String key, String input) {
+	private static GeneCreatures1Factory getInstance() {
+		if (GeneCreatures1Factory.instance == null) 
+			{ GeneCreatures1Factory.instance = new GeneCreatures1Factory(); }
+		return GeneCreatures1Factory.instance;
+	}
+	
+	public static GeneCreatures1 generateFrom(String key, String input) {
+		return GeneCreatures1Factory.getInstance().instanceGenerateFrom(key, input);
+	}
+	
+	private GeneCreatures1 instanceGenerateFrom(String key, String input) {
 		if (this.map2cmd.containsKey(key)) {
-			
+			return this.map2cmd.get(key).generateFrom(input);
+		} else {
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "key: {" + key + "} not found !");
 		}
 		return null;
 	}

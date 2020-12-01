@@ -1,6 +1,7 @@
-package gabywald.creatures.genetics.main;
+package gabywald.creatures.genetics.simple;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
+import gabywald.creatures.genetics.simple.factory.GeneCreatures1Factory;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -53,20 +54,27 @@ public class Creatures1GeneticParsing {
 	
 	public static void readGene(String input, byte creatureVersion) {
 		int index	= 0;
-		int type	= input.charAt(index++); // 4
-		int subt	= input.charAt(index++); // 5
-		int iden	= input.charAt(index++); // 6
-		int numg	= input.charAt(index++); // 7
-		int agee	= input.charAt(index++); // 8
-		int flags	= input.charAt(index++); // 9
-		/** For Creatures 2 and Creatures 3 : mutation rate. */
-		int mutr	= 80; /** C1 by  default. */
-		if (creatureVersion >= 2) 
-			{ mutr  = input.charAt(index++); }  // 10 // mutability
-		/** For Creature 3 / Village. */
-		// ... 
+		int type	= input.charAt(index++); // 0
+		int subt	= input.charAt(index++); // 1
+//		int iden	= input.charAt(index++); // 2
+//		int numg	= input.charAt(index++); // 3
+//		int agee	= input.charAt(index++); // 4
+//		int flags	= input.charAt(index++); // 5
+//		/** For Creatures 2 and Creatures 3 : mutation rate. */
+//		int mutr	= 80; /** C1 by  default. */
+//		if (creatureVersion >= 2) 
+//			{ mutr  = input.charAt(index++); }  // 10 // mutability
+//		/** For Creature 3 / Village. */
+//		// ... 
 		
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, "TYPE: [" + type + "] \t SUBT: [" + subt + "]");
+		// Logger.printlnLog(LoggerLevel.LL_FORUSER, "TYPE: [" + type + "] \t SUBT: [" + subt + "]");
+		
+		GeneCreatures1 gc1 = GeneCreatures1Factory.generateFrom(type + "-" + subt, 
+													input.substring(0, input.length() - 4));
+		
+		if (gc1 != null) {
+			Logger.printlnLog(LoggerLevel.LL_FORUSER, gc1.printInline());
+		}
 	}
 
 }

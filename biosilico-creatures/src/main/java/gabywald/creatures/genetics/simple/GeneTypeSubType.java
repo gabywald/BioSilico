@@ -1,4 +1,4 @@
-package gabywald.creatures.genetics.main;
+package gabywald.creatures.genetics.simple;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,7 +41,8 @@ public class GeneTypeSubType {
 				String key			= splitter[0] + "-" + splitter[1];
 				try {
 					GeneTypeSubType gtst	= new GeneTypeSubType(	Integer.parseInt(splitter[0]), Integer.parseInt(splitter[1]), 
-																	Integer.parseInt(splitter[2]), splitter[3]);
+																	Integer.parseInt(splitter[2]), 
+																	splitter[3].split(" -- ")[1]);
 					toReturn.put(key, gtst);
 				} catch (NumberFormatException nfe) { Logger.printlnLog(LoggerLevel.LL_WARNING, "GeneTypeSubType NOT treated {" + line + "}"); }
 			}

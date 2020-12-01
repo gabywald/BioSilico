@@ -11,6 +11,33 @@ import gabywald.creatures.model.UnsignedByte;
  * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
  */
 public class UnsignedByteTests {
+	
+	@Test
+	public void testUnsignedByte_splitToNChar() {
+		String text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String[] attempted01 = { "ABC", "DEF", "GHI", "JKL", "MNO", "PQR", "STU", "VWX", "YZ" };
+		String[] attempted02 = { "ABCD", "EFGH", "IJKL", "MNOP", "QRST", "UVWX", "YZ" };
+		String[] attempted03 = { "ABCDE", "FGHIJ", "KLMNO", "PQRST", "UVWXY", "Z" };
+		Assertions.assertArrayEquals(attempted01, UnsignedByte.splitToNChar(text, 3) );
+		Assertions.assertArrayEquals(attempted02, UnsignedByte.splitToNChar(text, 4) );
+		Assertions.assertArrayEquals(attempted03, UnsignedByte.splitToNChar(text, 5) );
+	}
+	
+	@Test
+	public void testUnsignedByte_headerCutter() {
+		String[] attempted = {"0", "1", "2", "3", "4", "5", "6"};
+		Assertions.assertArrayEquals(attempted, UnsignedByte.headerCutter( "0123456" ) );
+	}
+	
+	@Test
+	public void testUnsignedByte_headerCutterBytes() {
+		int valueBase = 48; // ***** 0 <=> 48 *****
+		UnsignedByte[] attempted = new UnsignedByte[7];
+		for (int i = 0 ; i < attempted.length ; i++) 
+			{ attempted[i] = new UnsignedByte( i + valueBase ); }
+		UnsignedByte[] result = UnsignedByte.headerCutterBytes( "0123456" );
+		Assertions.assertArrayEquals(attempted, result);
+	}
 
 	@Test
 	public void testUB001() {

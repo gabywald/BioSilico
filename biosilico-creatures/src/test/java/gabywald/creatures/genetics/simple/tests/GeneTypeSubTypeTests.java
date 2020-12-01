@@ -1,8 +1,14 @@
-package gabywald.creatures.genetics.main;
+package gabywald.creatures.genetics.simple.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.creatures.genetics.simple.GeneTypeSubType;
+
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class GeneTypeSubTypeTests {
 	
 	@Test
