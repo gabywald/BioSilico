@@ -24,13 +24,6 @@ public class GeneCreatures1 {
 		this.attemptedLength = attemptedLength;
 	}
 	
-	public static String[] convert(CharSequence header) {
-		String[] tableOfStr = new String[header.length()];
-		for (int i = 0 ; i < header.length() ; i++) 
-			{ tableOfStr[i] = new String( header.charAt( i ) + "" ); }
-		return tableOfStr;
-	}
-	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -43,7 +36,7 @@ public class GeneCreatures1 {
 		else { sb.append( this.contents.toString() ); }
 		sb.append("\n");
 		if (this.haserror > 0) {
-			sb.append("\t has (").append(this.haserror).append(" errors \n");
+			sb.append("\t has (").append(this.haserror).append(") errors \n");
 		}
 		
 		return sb.toString();
@@ -58,7 +51,7 @@ public class GeneCreatures1 {
 			{ sb.append( this.contentsSTR.toString() ); }
 		else { sb.append( this.contents.toString() ); }
 		if (this.haserror > 0) {
-			sb.append("\t has (").append(this.haserror).append(" errors ");
+			sb.append("\t has (").append(this.haserror).append(") errors ");
 		}
 		
 		return sb.toString();
@@ -69,21 +62,12 @@ public class GeneCreatures1 {
 	public String getType() 
 		{ return this.type; }
 
-	public void setType(String type) 
-		{ this.type = type; }
-
 
 	public UnsignedByte[] getHeader() 
 		{ return this.header; }
 	
-	public void setHeader(UnsignedByte[] header) 
-		{ this.header = header; }
-
 	public int getAttemptedLength() 
 		{ return this.attemptedLength; }
-
-	public void setAttemptedLength(int attemptedLength) 
-		{ this.attemptedLength = attemptedLength; }
 
 	public boolean addContentSTR(String content) 
 		{ return this.contentsSTR.add(content); }
@@ -95,12 +79,12 @@ public class GeneCreatures1 {
 		{ return this.contents.addAll(contents); }
 	
 	public boolean addContents(UnsignedByte... contents) 
-		{ return this.contents.addAll(Arrays.asList(contents)); }
+		{ return this.addContents(Arrays.asList(contents)); }
 
 	public int getHaserror() 
 		{ return this.haserror; }
 
-	public void setHaserror(int haserror) 
-		{ this.haserror = haserror; }
+	public void oneMoreError() 
+		{ this.haserror++; }
 	
 }

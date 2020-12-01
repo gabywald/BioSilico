@@ -31,7 +31,7 @@ public class GeneticFileContentTests {
 		while (gfc.isReadable()) {
 			char tmpChar = gfc.nextChar();
 			if ( (tmpChar != -1) /** && (GeneticFileContent.isAlphaNumeric(tmpChar)) */ ) {
-				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
+				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gfc.isReadable()))" */
 		Assertions.assertEquals(true, !gfc.isReadable());
@@ -43,7 +43,7 @@ public class GeneticFileContentTests {
 		while (gfc.isReadable()) {
 			char tmpChar = gfc.nextChar();
 			if ( (tmpChar != -1) /** && (GeneticFileContent.isAlphaNumeric(tmpChar)) */ ) {
-				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
+				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gfc.isReadable()))" */
 		Assertions.assertEquals(true, !gfc.isReadable());
@@ -55,10 +55,9 @@ public class GeneticFileContentTests {
 		while (gfc.isReadable()) {
 			// String tmpChar = gfc.nextChar() + "";
 			byte[] bytesgfc = { gfc.nextByte() };
-			String tmpSTR;
 			try {
-				tmpSTR = new String(bytesgfc, "US-ASCII");
-				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpSTR + "]");
+				new String(bytesgfc, "US-ASCII");
+				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + (new String(bytesgfc, "US-ASCII")) + "]");
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -72,10 +71,9 @@ public class GeneticFileContentTests {
 		while (gfc.isReadable()) {
 			// String tmpChar = gfc.nextChar() + "";
 			byte[] bytesgfc = { gfc.nextByte() };
-			String tmpSTR;
 			try {
-				tmpSTR = new String(bytesgfc, "US-ASCII");
-				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpSTR + "]");
+				new String(bytesgfc, "US-ASCII"); 
+				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + (new String(bytesgfc, "US-ASCII")) + "]");
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -89,7 +87,7 @@ public class GeneticFileContentTests {
 		while (gfc.isReadable()) {
 			char tmpChar = gfc.nextChar();
 			if ( (tmpChar != -1) /** && (GeneticFileContent.isAlphaNumeric(tmpChar)) */ ) {
-				Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
+				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 			} // END "if (tmpChar != -1)" 
 		} // END "while (gfc.isReadable()))" 
 		Assertions.assertEquals(true, !gfc.isReadable());
@@ -98,7 +96,6 @@ public class GeneticFileContentTests {
 	@Test
 	public void testGFC005() {
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/dad1.gen");
-		String previous = new String("");
 		String nextNext = new String("");
 		while ( (gfc.isReadable()) && ( ! nextNext.equals("gend")) ) {
 			char tmpChar = gfc.nextChar();
@@ -106,13 +103,12 @@ public class GeneticFileContentTests {
 				// Logger.printlnLog(LoggerLevel.LL_INFO, "-- [" + tmpChar + "]");
 				nextNext += tmpChar;
 				if ( (nextNext.endsWith("gene")) || (nextNext.endsWith("gend")) ) {
-					previous = new String("");
-					previous = nextNext.substring(0, nextNext.length()-4);
 					nextNext = nextNext.substring(nextNext.length()-4, nextNext.length());
-					if ( ( ! previous.equals("")) && ( ! previous.startsWith("gend")) ) 
-						{ Logger.printlnLog(LoggerLevel.LL_INFO, "-- {{" + previous + "}} :: {{" + nextNext + "}}"); } 
-					else 
-						{ Logger.printlnLog(LoggerLevel.LL_WARNING, "-- {" + previous + "} :: {" + nextNext + "}"); }
+					// String previous = nextNext.substring(0, nextNext.length()-4);
+					// if ( ( ! previous.equals("")) && ( ! previous.startsWith("gend")) ) 
+					// 	{ Logger.printlnLog(LoggerLevel.LL_INFO, "-- {{" + previous + "}} :: {{" + nextNext + "}}"); } 
+					// else 
+					// 	{ Logger.printlnLog(LoggerLevel.LL_WARNING, "-- {" + previous + "} :: {" + nextNext + "}"); }
 				}
 			} // else { Logger.printlnLog(LoggerLevel.LL_WARNING, "not a char ?"); }
 		} // END "while (gfc.isReadable()))" 

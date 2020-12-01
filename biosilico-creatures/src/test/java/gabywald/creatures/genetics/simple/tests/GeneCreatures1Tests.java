@@ -18,7 +18,7 @@ class GeneCreatures1Tests {
 		UnsignedByte[] header = UnsignedByte.headerCutterBytes( "1234567" );
 		int attempted = 0;
 		
-		GeneCreatures1 gc1 = new GeneCreatures1(nameType, header, 0);
+		GeneCreatures1 gc1 = new GeneCreatures1(nameType, header, attempted);
 		Assertions.assertNotNull( gc1 );
 		Assertions.assertEquals(nameType, gc1.getType());
 		Assertions.assertEquals(header, gc1.getHeader());
@@ -26,58 +26,28 @@ class GeneCreatures1Tests {
 		Assertions.assertEquals("GeneCreatures1 ( type , [49, 50, 51, 52, 53, 54, 55] )	 contents: []\n", 
 								gc1.toString());
 		Assertions.assertEquals("type : [49, 50, 51, 52, 53, 54, 55] => []", gc1.printInline());
+		
+		gc1.addContent(new UnsignedByte(42));
+		Assertions.assertEquals("type : [49, 50, 51, 52, 53, 54, 55] => [42]", gc1.printInline());
+		
+		Assertions.assertEquals(0, gc1.getHaserror());
+		gc1.oneMoreError();
+		Assertions.assertEquals(1, gc1.getHaserror());
+		gc1.oneMoreError();
+		Assertions.assertEquals(2, gc1.getHaserror());
+		
+		gc1.addContent(new UnsignedByte(42));
+		Assertions.assertEquals("type : [49, 50, 51, 52, 53, 54, 55] => [42, 42]\t has (2) errors ", gc1.printInline());
+		
+		gc1.addContents(new UnsignedByte(41), new UnsignedByte(50), new UnsignedByte(1));
+		Assertions.assertEquals("type : [49, 50, 51, 52, 53, 54, 55] => [42, 42, 41, 50, 1]\t has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("GeneCreatures1 ( type , [49, 50, 51, 52, 53, 54, 55] )	 contents: [42, 42, 41, 50, 1]\n\t has (2) errors \n", 
+									gc1.toString());
+		
+		gc1.addContentSTR( "EVE_" );gc1.addContentSTR( "ADAM" );
+		Assertions.assertEquals("type : [49, 50, 51, 52, 53, 54, 55] => [EVE_, ADAM]\t has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("GeneCreatures1 ( type , [49, 50, 51, 52, 53, 54, 55] )	 contents: [EVE_, ADAM]\n\t has (2) errors \n",
+									gc1.toString());
 	}
 	
-	// TODO GeneCreatures1Tests
-
-//	@Test
-//	void testGetType() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetType() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetHeader() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetHeader() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetAttemptedLength() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetAttemptedLength() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetContents() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetContents() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetHaserror() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSetHaserror() {
-//		fail("Not yet implemented");
-//	}
-
 }
