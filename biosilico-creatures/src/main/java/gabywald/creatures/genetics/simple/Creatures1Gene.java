@@ -5,12 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import gabywald.creatures.model.UnsignedByte;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreatures1 {
+public class Creatures1Gene {
 	/** Name of the Type/SubType. */
 	private String type;
 	/** Header (expected of size of 6 for C1). */
@@ -21,7 +23,7 @@ public class GeneCreatures1 {
 	private List<String> contentsSTR	= new ArrayList<String>();
 	private int haserror				= 0;
 	
-	public GeneCreatures1(String type, UnsignedByte[] header, int attemptedLength) {
+	public Creatures1Gene(String type, UnsignedByte[] header, int attemptedLength) {
 		this.type = type;
 		this.header = header;
 		this.attemptedLength = attemptedLength;
@@ -60,11 +62,50 @@ public class GeneCreatures1 {
 		return sb.toString();
 	}
 	
-	// TODO complete with autocheck
-
+	public Creatures1Gene autocheck() {
+		// if (this.attemptedLength == null) { print "attempted NOT defined !"; } 
+		if (this.contents == null)		{ this.contents = new ArrayList<UnsignedByte>(); }
+		if (this.contentsSTR == null)	{ this.contentsSTR = new ArrayList<String>(); }
+		
+		if (this.contentsSTR.size() > 0) {
+			this.haserror = Creatures1Gene.applyCheckContent(this.contentsSTR, this.attemptedLength, String.class);
+		} else if (this.contents.size() > 0) {
+			this.haserror = Creatures1Gene.applyCheckContent(this.contents, this.attemptedLength, UnsignedByte.class);
+		} else { ; }
+		
+		if (this.haserror > 0) {
+			Logger.printlnLog(LoggerLevel.LL_INFO, "ERROR: " + this.printInline());
+		}
+		
+		return this;
+	}
+	
+	/**
+	 * 
+	 * @param <T> Common class used here !
+	 * @param lstContent
+	 * @param attemptedLength
+	 * @param classe
+	 * @return Number of errors. 
+	 */
+	private static <T> int applyCheckContent(List<T> lstContent, int attemptedLength, Class<T> classe) {
+		int haserror = 0;
+		
+		while (lstContent.size() < attemptedLength) {
+			try { lstContent.add( classe.newInstance() ); } 
+			// XXX NOTE : throw an exception here ?!
+			catch (InstantiationException e)	{ e.printStackTrace(); } 
+			catch (IllegalAccessException e)	{ e.printStackTrace(); }
+			haserror++;
+		}
+		if (lstContent.size() > attemptedLength) {
+			lstContent = lstContent.subList(attemptedLength, lstContent.size());
+		}
+		return haserror;
+	}
+	
 	public String getType() 
 		{ return this.type; }
-
 
 	public UnsignedByte[] getHeader() 
 		{ return this.header; }

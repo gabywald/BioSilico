@@ -3,14 +3,14 @@ package gabywald.creatures.genetics.simple.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.creatures.genetics.simple.GeneCreatures1;
+import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.model.UnsignedByte;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
-class GeneCreatures1Tests {
+class Creatures1GeneTests {
 	
 	@Test
 	void testGeneCreatures1() {
@@ -18,7 +18,7 @@ class GeneCreatures1Tests {
 		UnsignedByte[] header = UnsignedByte.headerCutterBytes( "1234567" );
 		int attempted = 0;
 		
-		GeneCreatures1 gc1 = new GeneCreatures1(nameType, header, attempted);
+		Creatures1Gene gc1 = new Creatures1Gene(nameType, header, attempted);
 		Assertions.assertNotNull( gc1 );
 		Assertions.assertEquals(nameType, gc1.getType());
 		Assertions.assertEquals(header, gc1.getHeader());

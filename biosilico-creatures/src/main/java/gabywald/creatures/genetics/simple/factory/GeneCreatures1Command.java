@@ -1,11 +1,11 @@
 package gabywald.creatures.genetics.simple.factory;
 
-import gabywald.creatures.genetics.simple.GeneCreatures1;
+import gabywald.creatures.genetics.simple.Creatures1Gene;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
 public interface GeneCreatures1Command {
-	public GeneCreatures1 generateFrom(String input);
+	public Creatures1Gene generateFrom(String input);
 }

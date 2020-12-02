@@ -55,10 +55,9 @@ sub toString {
 sub autocheck {
 	my $self = shift;
 	
-	
 	if ( ! defined $self->{attempted}) 
-		{ print "attempted NOT defined !"; } else {
-		
+		{ print "attempted NOT defined !"; } 
+	else {
 		if ( ! defined $self->{contents}) { $self->{contents} = (); }
 		
 		while (@{$self->{contents}} < $self->{attempted}) {

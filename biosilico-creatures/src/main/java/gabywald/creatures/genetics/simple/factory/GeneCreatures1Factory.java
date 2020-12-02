@@ -3,7 +3,7 @@ package gabywald.creatures.genetics.simple.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import gabywald.creatures.genetics.simple.GeneCreatures1;
+import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -53,11 +53,11 @@ public class GeneCreatures1Factory {
 		return GeneCreatures1Factory.instance;
 	}
 	
-	public static GeneCreatures1 generateFrom(String key, String input) {
+	public static Creatures1Gene generateFrom(String key, String input) {
 		return GeneCreatures1Factory.getInstance().instanceGenerateFrom(key, input);
 	}
 	
-	private GeneCreatures1 instanceGenerateFrom(String key, String input) {
+	private Creatures1Gene instanceGenerateFrom(String key, String input) {
 		if (this.map2cmd.containsKey(key)) {
 			return this.map2cmd.get(key).generateFrom(input);
 		} else {

@@ -11,6 +11,7 @@ import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
+import gabywald.utilities.others.PropertiesLoader;
 
 /**
  * 
@@ -42,7 +43,7 @@ public class Creatures1GeneticParsing {
 //		} // END "while (gfc.isReadable()))" */
 //		Logger.printlnLog(LoggerLevel.LL_FORUSER, "");
 		
-		List<GeneCreatures1> lstGenesC1 = new ArrayList<GeneCreatures1>();
+		List<Creatures1Gene> lstGenesC1 = new ArrayList<Creatures1Gene>();
 		GeneticFileContent gfc03 = new GeneticFileContent( args[0] );
 		while (gfc03.isReadable()) {
 			String tmpBytes = new String( gfc03.nextSequenceOfBytes() );
@@ -62,9 +63,12 @@ public class Creatures1GeneticParsing {
 			if ( (tmpBytes.endsWith("gene")) ) // || (tmpBytes.endsWith("gend")) )
 				{ tmpBytes = tmpBytes.substring(0, tmpBytes.length() - 4); }
 			
-			GeneCreatures1 gc1 = Creatures1GeneticParsing.readGene( tmpBytes );
+			Creatures1Gene gc1 = Creatures1GeneticParsing.readGene( tmpBytes );
 			if (gc1 != null) { Logger.printlnLog(LoggerLevel.LL_INFO, gc1.printInline()); }
-			if (gc1 != null) { lstGenesC1.add( gc1 ); }
+			if (gc1 != null) { 
+				gc1 = gc1.autocheck();
+				lstGenesC1.add( gc1 ); 
+			}
 			
 		} // END "while (gfc.isReadable()))" */
 		
@@ -74,9 +78,8 @@ public class Creatures1GeneticParsing {
 		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + args[0] + "}\t{" + genomeName + "}");
 		
 		StringBuilder sbToExport = new StringBuilder();
-		for (GeneCreatures1 gc : lstGenesC1) {
-			sbToExport.append( gc.printInline()).append("\n");
-		}
+		for (Creatures1Gene gc : lstGenesC1) 
+			{ sbToExport.append( gc.printInline()).append("\n"); }
 		sbToExport	.append("Number of genes (").append(lstGenesC1.size())
 					.append(") {").append(genomeName).append("}\n");
 		Logger.printlnLog(LoggerLevel.LL_FORUSER, sbToExport.toString());
@@ -87,6 +90,7 @@ public class Creatures1GeneticParsing {
 		String fileNameToExport	= basePathToExport + genomeName + exportExtension;
 		
 		Logger.printlnLog(LoggerLevel.LL_FORUSER, fileNameToExport);
+		Logger.printlnLog(LoggerLevel.LL_FORUSER, PropertiesLoader.resolvePath( fileNameToExport ) );
 		
 		try {
 			// XXX NOTE : better location for export (here mis-located)
@@ -99,7 +103,7 @@ public class Creatures1GeneticParsing {
 		
 	}
 	
-	public static GeneCreatures1 readGene(String input) {
+	public static Creatures1Gene readGene(String input) {
 		int type = input.charAt( 0 );
 		int subt = input.charAt( 1 );
 		return GeneCreatures1Factory.generateFrom(	type + "-" + subt, 

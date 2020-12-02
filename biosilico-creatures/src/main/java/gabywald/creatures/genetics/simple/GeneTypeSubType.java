@@ -53,10 +53,12 @@ public class GeneTypeSubType {
 		return toReturn;
 	}
 	
+	public static GeneTypeSubType getGeneTypeSubType(int type, int subt) {
+		return GeneTypeSubType.getGeneTypeSubType( type + "-" + subt );
+	}
+	
 	public static GeneTypeSubType getGeneTypeSubType(String key) {
-		if (GeneTypeSubType.geneTypesSubTypes == null) 
-			{ GeneTypeSubType.geneTypesSubTypes = GeneTypeSubType.load(); }
-		return GeneTypeSubType.geneTypesSubTypes.get( key );
+		return GeneTypeSubType.getGeneTypesSubTypes().get( key );
 	}
 
 	public static Map<String, GeneTypeSubType> getGeneTypesSubTypes() {

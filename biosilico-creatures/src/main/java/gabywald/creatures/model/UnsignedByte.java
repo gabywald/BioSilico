@@ -10,6 +10,8 @@ import java.util.List;
 public class UnsignedByte {
 	private byte value;
 	
+	public UnsignedByte() { this(0); }
+	
 	public UnsignedByte(int bValue) {
 		if (bValue < 0)			{ this.value = Byte.MIN_VALUE; }	/** -128 */
 		else if (bValue >= 255)	{ this.value = Byte.MAX_VALUE; }	/** +127 */

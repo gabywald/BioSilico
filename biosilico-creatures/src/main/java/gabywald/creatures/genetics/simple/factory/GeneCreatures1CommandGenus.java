@@ -1,6 +1,6 @@
 package gabywald.creatures.genetics.simple.factory;
 
-import gabywald.creatures.genetics.simple.GeneCreatures1;
+import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
 import gabywald.creatures.model.UnsignedByte;
 
@@ -17,12 +17,12 @@ public class GeneCreatures1CommandGenus implements GeneCreatures1Command {
 	}
 
 	@Override
-	public GeneCreatures1 generateFrom(String input) {
+	public Creatures1Gene generateFrom(String input) {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
 		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
 
-		GeneCreatures1 gc1ToReturn = new GeneCreatures1(gtst.getName(), header, gtst.getAttemptedLength());
+		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst.getName(), header, gtst.getAttemptedLength());
 		
 		String parent1 = input.substring( 7, 11);
 		String parent2 = input.substring(11, 15);
