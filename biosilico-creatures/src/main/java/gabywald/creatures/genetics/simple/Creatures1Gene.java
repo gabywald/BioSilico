@@ -12,28 +12,25 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class Creatures1Gene {
-	/** Name of the Type/SubType. */
-	private String type;
+public class Creatures1Gene implements ICreaturesGene {
+	/** Type / SubType / Name. */
+	private GeneTypeSubType type;
 	/** Header (expected of size of 6 for C1). */
 	private UnsignedByte[] header;
-	/** Expected size for a given Gene Type / SubType. */
-	private int attemptedLength;
 	private List<UnsignedByte> contents	= new ArrayList<UnsignedByte>();
 	private List<String> contentsSTR	= new ArrayList<String>();
 	private int haserror				= 0;
 	
-	public Creatures1Gene(String type, UnsignedByte[] header, int attemptedLength) {
+	public Creatures1Gene(GeneTypeSubType type, UnsignedByte[] header) {
 		this.type = type;
 		this.header = header;
-		this.attemptedLength = attemptedLength;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("GeneCreatures1 ( ")	.append(this.type).append(" , ")
+		sb.append("GeneCreatures1 ( ")	.append( this.type.getShortName() ).append(" , ")
 										.append( Arrays.asList(this.header).toString() )
 										.append(" )").append("\t contents: ");
 		if (this.contentsSTR.size() > 0)
@@ -47,10 +44,11 @@ public class Creatures1Gene {
 		return sb.toString();
 	}
 	
+	@Override
 	public String printInline() {
 		StringBuilder sb = new StringBuilder();
 		
-		sb	.append(this.type).append(" : ")
+		sb	.append( this.type.getShortName() ).append(" : ")
 			.append( Arrays.asList(this.header).toString() ).append(" => ");
 		if (this.contentsSTR.size() > 0)
 			{ sb.append( this.contentsSTR.toString() ); }
@@ -68,9 +66,9 @@ public class Creatures1Gene {
 		if (this.contentsSTR == null)	{ this.contentsSTR = new ArrayList<String>(); }
 		
 		if (this.contentsSTR.size() > 0) {
-			this.haserror = Creatures1Gene.applyCheckContent(this.contentsSTR, this.attemptedLength, String.class);
+			this.haserror = Creatures1Gene.applyCheckContent(this.contentsSTR, this.type.getAttemptedLength(), String.class);
 		} else if (this.contents.size() > 0) {
-			this.haserror = Creatures1Gene.applyCheckContent(this.contents, this.attemptedLength, UnsignedByte.class);
+			this.haserror = Creatures1Gene.applyCheckContent(this.contents, this.type.getAttemptedLength(), UnsignedByte.class);
 		} else { ; }
 		
 		if (this.haserror > 0) {
@@ -104,15 +102,14 @@ public class Creatures1Gene {
 		return haserror;
 	}
 	
-	public String getType() 
+	@Override
+	public GeneTypeSubType getType() 
 		{ return this.type; }
 
+	@Override
 	public UnsignedByte[] getHeader() 
 		{ return this.header; }
 	
-	public int getAttemptedLength() 
-		{ return this.attemptedLength; }
-
 	public boolean addContentSTR(String content) 
 		{ return this.contentsSTR.add(content); }
 	

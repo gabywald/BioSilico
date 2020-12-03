@@ -59,7 +59,7 @@ class GeneTypeSubTypeTests {
 			Assertions.assertEquals(type, gtst.getType() );
 			Assertions.assertEquals(subt, gtst.getSubtype() );
 			Assertions.assertEquals(attemptedLength, gtst.getAttemptedLength() );
-			Assertions.assertEquals(name, gtst.getName() );
+			Assertions.assertEquals(name, gtst.getShortName() );
 		}
 		
 	}

@@ -6,15 +6,15 @@ import java.util.List;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class Creatures1Genome {
+public class CreaturesGenome {
 	private String name;
 	private String pathOfFile;
-	private List<Creatures1Gene> genome;
+	private List<ICreaturesGene> genome;
 	
-	public Creatures1Genome(String name, String path, List<Creatures1Gene> genome) {
-		this.name = name;
-		this.pathOfFile = path;
-		this.genome = genome;
+	public CreaturesGenome(String name, String path, List<ICreaturesGene> genome) {
+		this.name		= name;
+		this.pathOfFile	= path;
+		this.genome		= genome;
 	}
 
 	public String getName()
@@ -23,7 +23,7 @@ public class Creatures1Genome {
 	public String getPathOfFile() 
 		{ return this.pathOfFile; }
 
-	public List<Creatures1Gene> getGenome() 
+	public List<ICreaturesGene> getGenome() 
 		{ return this.genome; }
 	
 }

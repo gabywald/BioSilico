@@ -42,7 +42,8 @@ public class GeneTypeSubType {
 				try {
 					GeneTypeSubType gtst	= new GeneTypeSubType(	Integer.parseInt(splitter[0]), Integer.parseInt(splitter[1]), 
 																	Integer.parseInt(splitter[2]), 
-																	splitter[3].split(" -- ")[1]);
+																	// splitter[3].split(" -- ")[1]);
+																	splitter[3]);
 					toReturn.put(key, gtst);
 				} catch (NumberFormatException nfe) { Logger.printlnLog(LoggerLevel.LL_WARNING, "GeneTypeSubType NOT treated {" + line + "}"); }
 			}
@@ -78,6 +79,12 @@ public class GeneTypeSubType {
 
 	public String getName() 
 		{ return this.name; }
+	
+	public String getShortName() 
+		{ return this.name.split(" -- ")[1]; }
+	
+	public String getGeneGroup() 
+		{ return this.name.split(" -- ")[0]; }
 	
 	
 }

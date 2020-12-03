@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.exceptions.GenomeParserException;
-import gabywald.creatures.genetics.simple.Creatures1Genome;
+import gabywald.creatures.genetics.simple.CreaturesGenome;
 import gabywald.creatures.genetics.simple.Creatures1GenomeParser;
 
 class Creatures1GenomeParserTests {
@@ -22,7 +22,7 @@ class Creatures1GenomeParserTests {
 	@Test
 	void testParseGenomeMUM1() throws GenomeParserException {
 		String path2test = "creatures/creaturesOriginals/mum1.gen";
-		Creatures1Genome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
+		CreaturesGenome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1gMUM );;
 		Assertions.assertEquals("mum1", c1gMUM.getName());
 		Assertions.assertEquals(path2test, c1gMUM.getPathOfFile());
@@ -32,7 +32,7 @@ class Creatures1GenomeParserTests {
 	@Test
 	void testParseGenomeDAD1() throws GenomeParserException {
 		String path2test = "creatures/creaturesOriginals/dad1.gen";
-		Creatures1Genome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
+		CreaturesGenome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1gMUM );;
 		Assertions.assertEquals("dad1", c1gMUM.getName());
 		Assertions.assertEquals(path2test, c1gMUM.getPathOfFile());

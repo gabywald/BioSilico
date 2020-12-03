@@ -23,7 +23,7 @@ public class GeneCreatures1CommandGeneric implements GeneCreatures1Command {
 		// Header data : 6 first elements !
 		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
 
-		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst.getName(), header, gtst.getAttemptedLength());
+		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst, header);
 		
 		// Rest of data : from the 6th element !
 		gc1ToReturn.addContents( UnsignedByte.headerCutterBytes( input.substring(6) ) );

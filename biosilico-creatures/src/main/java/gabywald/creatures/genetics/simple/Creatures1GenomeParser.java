@@ -19,12 +19,12 @@ import gabywald.utilities.others.PropertiesLoader;
  */
 public class Creatures1GenomeParser {
 
-	public static Creatures1Genome parseGenome(String filePath)  
+	public static CreaturesGenome parseGenome(String filePath)  
 			throws GenomeParserException {
 		if (filePath == null)		{ throw new GenomeParserException( "File Path is null !" ); }
 		if (filePath.equals(""))	{ throw new GenomeParserException( "File Path is empty !" ); }
 		
-		List<Creatures1Gene> lstGenesC1 = new ArrayList<Creatures1Gene>();
+		List<ICreaturesGene> lstGenesC1 = new ArrayList<ICreaturesGene>();
 		GeneticFileContent gfc = new GeneticFileContent( filePath );
 		while (gfc.isReadable()) {
 			String nextGene		= new String( gfc.nextGene() );
@@ -42,7 +42,7 @@ public class Creatures1GenomeParser {
 		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + filePath + "}\t{" + genomeName + "}");
 		
 		StringBuilder sbToExport = new StringBuilder();
-		for (Creatures1Gene gc : lstGenesC1) 
+		for (ICreaturesGene gc : lstGenesC1) 
 			{ sbToExport.append( gc.printInline()).append("\n"); }
 		sbToExport	.append("Number of genes (").append(lstGenesC1.size())
 					.append(") {").append(genomeName).append("}\n");
@@ -64,7 +64,7 @@ public class Creatures1GenomeParser {
 			e.printStackTrace();
 		}
 		
-		return new Creatures1Genome(genomeName, filePath, lstGenesC1);
+		return new CreaturesGenome(genomeName, filePath, lstGenesC1);
 	}
 	
 

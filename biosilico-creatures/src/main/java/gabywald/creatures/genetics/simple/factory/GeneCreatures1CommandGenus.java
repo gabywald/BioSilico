@@ -22,7 +22,7 @@ public class GeneCreatures1CommandGenus implements GeneCreatures1Command {
 		
 		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
 
-		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst.getName(), header, gtst.getAttemptedLength());
+		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst, header);
 		
 		String parent1 = input.substring( 7, 11);
 		String parent2 = input.substring(11, 15);
