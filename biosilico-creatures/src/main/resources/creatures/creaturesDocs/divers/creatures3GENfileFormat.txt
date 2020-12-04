@@ -80,6 +80,7 @@ BYTE [4] Delimiter = 'g' 'e' 'n' 'e'
 
 The end marker is
 BYTE [4] EndMarker = 'g' 'e' 'n' 'd'
+
 The genetic hierarchy
 
 Creatures in Creatures 3 have genetically specified organs, which contain certain genes. These organs and the genes which the contain are in a certain configuration within the genetics files.
@@ -92,6 +93,7 @@ All other types of genes belong to the body and their order does not matter.
 The structure of a gene
 
 Genes each have a header, and a body. The header is of a fixed length, the body of the gene varies in length between gene types, but is consistent within a gene type.
+
 The gene Header BYTE GeneType
 
 BYTE GeneSubType
@@ -101,6 +103,7 @@ BYTE SwitchOnTime
 BYTE Sex-Dependance/Mutability-Flags
 BYTE MutabilityWeighting
 BYTE Expression Variant
+
 The Generation, SwitchOn and Flags entries
 
 The generation byte indicates how many times this gene has been duplicated. The switch on time ranges from 0 (embryo) to 6 (senile). The flags entry is a bit field which is arranged as follows.
@@ -142,6 +145,7 @@ Brain Lobe Information
 BYTE Opcode token
 BYTE Operand token
 BYTE Value/Chemical Token/Variable Token
+
 Brain Organs (Type 00 01 - Size 5)
 
 The Brain organ (of which there should be only one in any genetics file) specifies the properties of the brain organ expressed in the creature. It has the same internal format as the other organs, but a different type identifier.
@@ -151,6 +155,7 @@ BYTE RepairRate
 BYTE LifeForce
 BYTE BioTickStart
 BYTE ATPDamageCoEff
+
 Brain Tract (Type 00 02 - Size 128)
 
 Tract define connections between lobes and detail the number of dendrites and the style in which they are attached and migrate.
@@ -169,6 +174,7 @@ BYTE No Of Connections Is Random
 BYTE [8] spare
 BYTE [48] Initialize Dendrite Rule
 BYTE [48] Update Dendrite Rule
+
 Brain Tract Information
 
 An SV rule consists of 16 entries. Each entry is of the following format:
@@ -179,6 +185,7 @@ BYTE Value/Chemical Token/Variable Token
 Biochemistry Genes (Type 01)
 
 The biochemistry genes govern the functions of the chemicals within the body. They govern reactions, interfaces between the brain and the chemicals, and much, much more.
+
 Biochemical Receptors (Type 01 00 - Size 8)
 
 The biochemical receptors latch onto a locus within the brain or the current organ, and provide feedback to the brain about chemicals within the body.
@@ -197,6 +204,7 @@ The flags indicate if the receptor output is inverted (1) or if it is digital (2
 A digital receptor has its state calculated as:
 
 Output = Nominal ± Gain If Signal>Threshold
+
 Biochemical Emitters (Type 01 01 - Size 8)
 
 Emitters tie to loci2 as do receptors. They read the value of the locus, and emit chemicals based on their input states.
@@ -211,6 +219,7 @@ BYTE Gain
 BYTE Flags
 
 The Emitter flags can be: 1: Clear input signal after reading or 2: Invert Input Signal
+
 Biochemical Reactions (Type 01 02 - Size 9)
 
 These genes govern the reactions, which occur within the Biochemical Sea of the creature. The only type of reaction which is explicitly prevented is a "Nothing -> Something" reaction.
@@ -226,17 +235,20 @@ BYTE Quantity3
 BYTE ReactionRate
 
 The Reaction rate is such that 0=instant, 255=52 years
+
 Biochemical Half Lives (Type 01 03 - Size 256)
 
 These are the decay rates of all of the chemicals within the creature's Biochemical Sea. They are arranged in the same way as the reaction rate.
 
 BYTE [256] Chemical-Half-Life
+
 Biochemical Initial Concentrations (Type 01 04 - Size 2)
 
 These genes allow initial amounts of certain chemicals to be present in the creature at birth, giving a certain level of energy etc to the new born.
 
 BYTE Chemical
 BYTE Amount
+
 Biochemical Neuro Emitters (Type 01 05 - Size 15)
 
 Neuro Emitters tie to loci2 as do receptors. They emit set amounts of 3 chemicals when the three specified neurons fire.
@@ -259,6 +271,7 @@ BYTE Amount Emitted for Chemical #4
 Creature Genes (Type 02)
 
 Creature genes govern sections of the creature such as walking gaits, poses and appearance.
+
 Creature Stimulus (Type 02 00 - Size 13)
 
 This is the genetically specified result of a specific stimulus being applied to the creature. For example, releasing pain into the drive 1 when hit.
@@ -275,6 +288,7 @@ BYTE Drive2
 BYTE Amount2
 BYTE Drive3
 BYTE Amount3
+
 Creature Genus (Type 02 01 - Size 65)
 
 This gene specifies the type of creature, and the monikers of its parents.
@@ -282,6 +296,7 @@ This gene specifies the type of creature, and the monikers of its parents.
 BYTE Genus
 BYTE [32] MumMoniker
 BYTE [32] DadMoniker
+
 Creature Appearance (Type 02 02 - Size 3)
 
 This specifies the appearance of the parts of the creature's body.
@@ -291,6 +306,7 @@ BYTE Variant
 BYTE GenusOfDonor
 
 The GenusOfDonor entry allows the creation of creatures with grendel legs, ettin head and tail, and a norn body and arms, whilst being an ettin (If you see what I mean
+
 Creature Pose (Type 02 03 - Size 17)
 
 This is the arrangement of body parts for a specific pose. Note: C3 uses 1 extra byte in the pose string than C2.
@@ -299,12 +315,14 @@ BYTE PoseNumber
 BYTE [16] PoseString (last byte is spare)
 
 The Pose String can be generated from the Pose Editor.
+
 Creature Gait (Type 02 04 - Size 9)
 
 This is a collection of poses which show movement.
 
 BYTE GaitNumber //A Drive
 BYTE [8] PoseSequence
+
 Creature Instinct (Type 02 05 - Size 9)
 
 These are processed during embryology and whilst the creature is asleep. They provide a way of providing the creature wish some basic information like "Eat Food When Hungry = Good" and "Do Nothing When Bored = Bad"
@@ -318,21 +336,25 @@ BYTE Neuron2
 BYTE Action
 BYTE ReinforcementDrive
 BYTE ReinforcementLevel
+
 Creature Pigments (Type 02 06 - Size 2)
 
 These simple genes are used to give the creature a variation of colouring from the base colour of the variant sprites.
 
 BYTE PigmentColour
 BYTE AmountOfColour
+
 Creature Pigment Bleeds (Type 02 07 - Size 2)
 
 These alter the colours specified by the pigments. They are used to again, provide some way of varying appearance.
 
 BYTE Rotation
 BYTE Swap
+
 Organs (Type 03)
 
 Organs are the genes which specify the organ properties. Organs include the heart, skin, bones etc.
+
 Organs Organ (Type 03 00 - Size 5)
 
 These have the same structure as the Brain Organ. Organs contain all the receptors, emitters and reactions listed after them in the genetics file (or until another organ gene is encountered). Reactions etc, contained within the organ, will only function whilst the organ is alive.
@@ -351,6 +373,7 @@ BYTE Operand token
 BYTE Value/Chemical Token/Variable Token
 
 These rules allow the calculation of a state (strength gain, etc), from predetermined values. The following are the valid SVRule tokens.
+
 Opcodes
 
     * 0 "stop"

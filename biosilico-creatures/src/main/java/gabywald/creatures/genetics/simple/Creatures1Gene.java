@@ -66,9 +66,9 @@ public class Creatures1Gene implements ICreaturesGene {
 		if (this.contentsSTR == null)	{ this.contentsSTR = new ArrayList<String>(); }
 		
 		if (this.contentsSTR.size() > 0) {
-			this.haserror = Creatures1Gene.applyCheckContent(this.contentsSTR, this.type.getAttemptedLength(), String.class);
+			this.haserror = Creatures1Gene.applyCheckContent(this.contentsSTR, this.type.getAttemptedLengthC1(), String.class);
 		} else if (this.contents.size() > 0) {
-			this.haserror = Creatures1Gene.applyCheckContent(this.contents, this.type.getAttemptedLength(), UnsignedByte.class);
+			this.haserror = Creatures1Gene.applyCheckContent(this.contents, this.type.getAttemptedLengthC1(), UnsignedByte.class);
 		} else { ; }
 		
 		if (this.haserror > 0) {

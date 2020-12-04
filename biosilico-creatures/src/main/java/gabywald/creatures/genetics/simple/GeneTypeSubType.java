@@ -1,6 +1,7 @@
 package gabywald.creatures.genetics.simple;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +20,10 @@ public class GeneTypeSubType {
 	
 	private int type;
 	private int subtype;
-	private int attemptedLength;
+	private int[] attemptedLength;
 	private String name;
 	
-	private GeneTypeSubType(int type, int subtype, int attemptedLength, String name) {
+	private GeneTypeSubType(int type, int subtype, int[] attemptedLength, String name) {
 		this.type = type;
 		this.subtype = subtype;
 		this.attemptedLength = attemptedLength;
@@ -41,8 +42,11 @@ public class GeneTypeSubType {
 				String[] splitter	= line.split("\t");
 				String key			= splitter[0] + "-" + splitter[1];
 				try {
+					int[] attLengths = Arrays.asList( splitter[2].split(",") ).stream()
+									.mapToInt( str -> Integer.parseInt(str) )
+									.toArray();
 					GeneTypeSubType gtst	= new GeneTypeSubType(	Integer.parseInt(splitter[0]), Integer.parseInt(splitter[1]), 
-																	Integer.parseInt(splitter[2]), 
+																	attLengths, // Integer.parseInt(splitter[2]), 
 																	// splitter[3].split(" -- ")[1]);
 																	splitter[3]);
 					toReturn.put(key, gtst);
@@ -75,9 +79,21 @@ public class GeneTypeSubType {
 	public int getSubtype() 
 		{ return this.subtype; }
 
-	public int getAttemptedLength() 
+	public int[] getAttemptedLength() 
 		{ return this.attemptedLength; }
-
+	
+	public int getAttemptedLengthSpecific(int i) 
+		{ return this.attemptedLength[ i ]; }
+	
+	public int getAttemptedLengthC1() 
+		{ return this.getAttemptedLengthSpecific( 0 ); }
+	
+	public int getAttemptedLengthC2() 
+		{ return this.getAttemptedLengthSpecific( 1 ); }
+	
+	public int getAttemptedLengthC3() 
+		{ return this.getAttemptedLengthSpecific( 2 ); }
+	
 	public String getName() 
 		{ return this.name; }
 	
