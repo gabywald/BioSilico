@@ -7,18 +7,18 @@ OTHER NAMES
 RANK	Rank Test
 DIVISION	TESTS
 CHEMICAL VARIABLES
-	169	11	Glucose(G6)
+	169	8	Glucose(G6)
 	180	4	DiOxygen
-	181	10	Carbon DiOxid
-	330	2	Starch (Amidon)
+	330	3	Starch (Amidon)
 	390	4	solar energy
+	391	4	heat energy
 	868	1	makegamet
 	870	1	mate
 	951	3	aging
 	952	942	agentype => plant
 	953	912	typeof => agent
 	954	922	status => embryo
-	957	45	fertile
+	957	30	fertile
 
 GENETIC CODE
 	ID	0000000010

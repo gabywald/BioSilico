@@ -33,7 +33,8 @@ public class GeneTypeSubType {
 		Map<String, GeneTypeSubType> toReturn = new HashMap<String, GeneTypeSubType>();
 		
 		try {
-			File geneDefinitions = File.loadFile( "creatures/creaturesDocs/geneticsParsing/data/geneC1C2definitions.txt" );
+			String path2geneTST = Creatures1GenomeParser.PROPERTIES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
+			File geneDefinitions = File.loadFile( path2geneTST );
 			for (int i = 0 ; (i < geneDefinitions.lengthFile()) ; i++) {
 				String line			= geneDefinitions.getChamp(i);
 				if (line.startsWith( "## " )) { continue; }

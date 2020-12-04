@@ -1,119 +1,119 @@
-http://meliweb.net/creatures/chemlist.htm
-
-Please note that the Half-Lives listed are for original Generation 1 Norns.
-Values may vary in later generations or in Variant Norns.
-Number 	Class 	Name 	Half-Life
-Hex 	Dec 	Hex 	Dec
-00 	0 	None 	none 	78 	120
-01 	1 	Drives 	pain 	38 	56
-02 	2 	need for pleasure 	58 	88
-03 	3 	hunger 	90 	144
-04 	4 	coldness 	60 	96
-05 	5 	hotness 	60 	96
-06 	6 	tiredness 	F8 	248
-07 	7 	sleepiness 	FF 	255
-08 	8 	loneliness 	48 	72
-09 	9 	crowded 	40 	64
-0A 	10 	fear 	50 	80
-0B 	11 	boredom 	F8 	248
-0C 	12 	anger 	48 	72
-0D 	13 	sex drive 	68 	104
-0E 	14 	not allocated2 	F8 	248
-0F 	15 	not allocated3 	FF 	255
-10 	16 	not allocated4 	F8 	248
-11 	17 	Drive Raisers 	pain-- 	40 	64
-12 	18 	need for pleasure++ 	40 	64
-13 	19 	hunger++ 	40 	64
-14 	20 	coldness++ 	40 	64
-15 	21 	hotness++ 	40 	64
-16 	22 	tiredness++ 	40 	64
-17 	23 	sleepiness++ 	40 	64
-18 	24 	loneliness++ 	40 	64
-19 	25 	crowded++ 	40 	64
-1A 	26 	fear++ 	40 	64
-1B 	27 	boredom++ 	40 	64
-1C 	28 	anger++ 	40 	64
-1D 	29 	sex drive++ 	40 	64
-1E 	30 	not allocated2++ 	40 	64
-1F 	31 	not allocated3++ 	40 	64
-20 	32 	not allocated4++ 	40 	64
-21 	33 	Drive Reducers 	pain-- 	40 	64
-22 	34 	need for pleasure-- 	40 	64
-23 	35 	hunger-- 	40 	64
-24 	36 	coldness-- 	40 	64
-25 	37 	hotness-- 	40 	64
-26 	38 	tiredness-- 	40 	64
-27 	39 	sleepiness-- 	40 	64
-28 	40 	loneliness-- 	40 	64
-29 	41 	crowded-- 	40 	64
-2A 	42 	fear-- 	40 	64
-2B 	43 	boredom-- 	40 	64
-2C 	44 	anger-- 	40 	64
-2D 	45 	sex drive-- 	40 	64
-2E 	46 	not allocated2-- 	40 	64
-2F 	47 	not allocated3-- 	40 	64
-30 	48 	not allocated4-- 	40 	64
-31 	49 	Learning System 	reward 	F8 	248
-32 	50 	punishment 	F8 	248
-33 	51 	reinforcement 	18 	24
-34 	52 	conASH 	00 	0
-35 	53 	decASH1 	00 	0
-36 	54 	rewardecho 	20 	32
-37 	55 	punishecho 	20 	32
-38 	56 	Aging 	aging 	88 	136
-39 	57 	Digestion 	starch 	F8 	248
-3A 	58 	glucose 	80 	128
-3B 	59 	glycogen 	B0 	176
-3C 	60 	waste water 	80 	128
-3D 	61 	hexokinase 	38 	56
-3E 	62 	CO2 	38 	56
-3F 	63 	Reproduction 	estrogen 	60 	96
-40 	64 	testosterone 	68 	104
-41 	65 	gonadotropin 	60 	96
-42 	66 	progesterone 	60 	96
-43 	67 	Toxins 	glycotoxin 	F8 	248
-44 	68 	alcohol 	58 	88
-45 	69 	adrenaline 	48 	72
-46 	70 	Learning System 	decASH2 	00 	0
-47 	71 	Digestion? 	vitamin E 	F8 	248
-48 	72 	vitamin C 	FF 	255
-49-4F 	73-79 	Unused 	unused 	FF 	255
-50 	80 	?? 	PM 'alcohol' 	FF 	255
-51-5A 	81-90 	Unused 	unused 	FF 	255
-5B 	91 	Sensorimotor? 	activase 	FF 	255
-5C 	92 	Sensorimotor? 	turnase 	FF 	255
-5D 	93 	Sensorimotor? 	collapsase 	FF 	255
-5E-63 	94-99 	Unused 	unused 	FF 	255
-64 	100 	IV chemicals 	energy 	F8 	248
-65 	101 	adrenaline 	FF 	255
-66 	102 	pain killer 	FF 	255
-67 	103 	cough medicine 	FF 	255
-68 	104 	sleeping pill 	FF 	255
-69 	105 	wake-up pill 	FF 	255
-6A 	106 	anti-oxidant 	FF 	255
-6B-7F 	107-127 	Unused 	unused 	FF 	255
-80 	128 	unused 	F8 	248
-81-DF 	129-223 	unused 	FF 	255
-E0-E6 	224-230 	Unused Toxins 	unused 	48 	72
-E7 	231 	Toxins 	geddonase 	48 	72
-E8 	232 	histamine A 	40 	64
-E9 	233 	histamine B 	40 	64
-EA 	234 	sleep toxin 	38 	56
-EB 	235 	fever toxin 	48 	72
-EC-EF 	236-239 	Unused Toxins 	unused toxin 	48 	72
-F0 	240 	Antibodies 	antibody 0 	80 	128
-F1 	241 	antibody 1 	80 	128
-F2 	242 	antibody 2 	80 	128
-F3 	243 	antibody 3 	80 	128
-F4 	244 	antibody 4 	80 	128
-F5 	245 	antibody 5 	80 	128
-F6 	246 	antibody 6 	80 	128
-F7 	247 	antibody 7 	80 	128
-F8 	248 	Antigens 	antigen 0 	48 	72
-F9 	249 	antigen 1 	48 	72
-FA 	250 	antigen 2 	48 	72
-FB 	251 	antigen 3 	48 	72
-FC 	252 	antigen 4 	48 	72
-FD 	253 	antigen 5 	48 	72
-FE 	2554 	antigen 6 	48 	72
-FF 	255 	antigen 7 	48 	72
+## http://meliweb.net/creatures/chemlist.htm
+## 
+## Please note that the Half-Lives listed are for original Generation 1 Norns. 
+## Values may vary in later generations or in Variant Norns.
+## Number		Class	Name	Half-Life
+## Hex	Dec								Hex	Dec
+00	0	None	none	78	120
+01	1	Drives	pain	38	56
+02	2	need for pleasure	58	88
+03	3	hunger	90	144
+04	4	coldness	60	96
+05	5	hotness	60	96
+06	6	tiredness	F8	248
+07	7	sleepiness	FF	255
+08	8	loneliness	48	72
+09	9	crowded	40	64
+0A	10	fear	50	80
+0B	11	boredom	F8	248
+0C	12	anger	48	72
+0D	13	sex drive	68	104
+0E	14	not allocated2	F8	248
+0F	15	not allocated3	FF	255
+10	16	not allocated4	F8	248
+11	17	Drive Raisers	pain--	40	64
+12	18	need for pleasure++	40	64
+13	19	hunger++	40	64
+14	20	coldness++	40	64
+15	21	hotness++	40	64
+16	22	tiredness++	40	64
+17	23	sleepiness++	40	64
+18	24	loneliness++	40	64
+19	25	crowded++	40	64
+1A	26	fear++	40	64
+1B	27	boredom++	40	64
+1C	28	anger++	40	64
+1D	29	sex drive++	40	64
+1E	30	not allocated2++	40	64
+1F	31	not allocated3++	40	64
+20	32	not allocated4++	40	64
+21	33	Drive Reducers	pain--	40	64
+22	34	need for pleasure--	40	64
+23	35	hunger--	40	64
+24	36	coldness--	40	64
+25	37	hotness--	40	64
+26	38	tiredness--	40	64
+27	39	sleepiness--	40	64
+28	40	loneliness--	40	64
+29	41	crowded--	40	64
+2A	42	fear--	40	64
+2B	43	boredom--	40	64
+2C	44	anger--	40	64
+2D	45	sex drive--	40	64
+2E	46	not allocated2--	40	64
+2F	47	not allocated3--	40	64
+30	48	not allocated4--	40	64
+31	49	Learning System	reward	F8	248
+32	50	punishment	F8	248
+33	51	reinforcement	18	24
+34	52	conASH	00	0
+35	53	decASH1	00	0
+36	54	rewardecho	20	32
+37	55	punishecho	20	32
+38	56	Aging	aging	88	136
+39	57	Digestion	starch	F8	248
+3A	58	glucose	80	128
+3B	59	glycogen	B0	176
+3C	60	waste water	80	128
+3D	61	hexokinase	38	56
+3E	62	CO2	38	56
+3F	63	Reproduction	estrogen	60	96
+40	64	testosterone	68	104
+41	65	gonadotropin	60	96
+42	66	progesterone	60	96
+43	67	Toxins	glycotoxin	F8	248
+44	68	alcohol	58	88
+45	69	adrenaline	48	72
+46	70	Learning System	decASH2	00	0
+47	71	Digestion?	vitamin E	F8	248
+48	72	vitamin C	FF	255
+49-4F	73-79	Unused	unused	FF	255
+50	80	??	PM 'alcohol'	FF	255
+51-5A	81-90	Unused	unused	FF	255
+5B	91	Sensorimotor?	activase	FF	255
+5C	92	Sensorimotor?	turnase	FF	255
+5D	93	Sensorimotor?	collapsase	FF	255
+5E-63	94-99	Unused	unused	FF	255
+64	100	IV chemicals	energy	F8	248
+65	101	adrenaline	FF	255
+66	102	pain killer	FF	255
+67	103	cough medicine	FF	255
+68	104	sleeping pill	FF	255
+69	105	wake-up pill	FF	255
+6A	106	anti-oxidant	FF	255
+6B-7F	107-127	Unused	unused	FF	255
+80	128	unused	F8	248
+81-DF	129-223	unused	FF	255
+E0-E6	224-230	Unused Toxins	unused	48	72
+E7	231	Toxins	geddonase	48	72
+E8	232	histamine A	40	64
+E9	233	histamine B	40	64
+EA	234	sleep toxin	38	56
+EB	235	fever toxin	48	72
+EC-EF	236-239	Unused Toxins	unused toxin	48	72
+F0	240	Antibodies	antibody 0	80	128
+F1	241	antibody 1	80	128
+F2	242	antibody 2	80	128
+F3	243	antibody 3	80	128
+F4	244	antibody 4	80	128
+F5	245	antibody 5	80	128
+F6	246	antibody 6	80	128
+F7	247	antibody 7	80	128
+F8	248	Antigens	antigen 0	48	72
+F9	249	antigen 1	48	72
+FA	250	antigen 2	48	72
+FB	251	antigen 3	48	72
+FC	252	antigen 4	48	72
+FD	253	antigen 5	48	72
+FE	2554	antigen 6	48	72
+FF	255	antigen 7	48	72

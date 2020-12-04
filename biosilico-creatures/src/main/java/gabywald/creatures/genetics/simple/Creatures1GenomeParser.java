@@ -18,6 +18,8 @@ import gabywald.utilities.others.PropertiesLoader;
  * @author Gabriel Chandesris (2020)
  */
 public class Creatures1GenomeParser {
+	
+	public static final PropertiesLoader PROPERTIES = new PropertiesLoader( "configuration.properties" );
 
 	public static CreaturesGenome parseGenome(String filePath)  
 			throws GenomeParserException {
@@ -48,9 +50,8 @@ public class Creatures1GenomeParser {
 					.append(") {").append(genomeName).append("}\n");
 		Logger.printlnLog(LoggerLevel.LL_FORUSER, sbToExport.toString());
 		
-		PropertiesLoader pl 	= new PropertiesLoader( "configuration.properties" );
-		String basePathToExport	= pl.getProperty( "parsing.export.creatures1" );
-		String exportExtension	= pl.getProperty( "parsing.export.extension" );
+		String basePathToExport	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.creatures1" );
+		String exportExtension	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.extension" );
 		
 		String fileNameToExport	= basePathToExport + genomeName + exportExtension;
 		
