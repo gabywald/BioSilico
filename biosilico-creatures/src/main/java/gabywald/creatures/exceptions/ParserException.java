@@ -7,7 +7,7 @@ import gabywald.global.exceptions.MessageException;
  * @author Gabriel Chandesris (2020)
  */
 @SuppressWarnings("serial")
-public class GenomeParserException extends MessageException {
-	public GenomeParserException(String message) 
+public class ParserException extends MessageException {
+	public ParserException(String message) 
 		{ super(message); }
 }

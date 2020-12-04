@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gabywald.creatures.exceptions.GenomeParserException;
+import gabywald.creatures.exceptions.ParserException;
 import gabywald.creatures.geneticReader.GeneticFileContent;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
@@ -22,9 +22,9 @@ public class Creatures1GenomeParser {
 	public static final PropertiesLoader PROPERTIES = new PropertiesLoader( "configuration.properties" );
 
 	public static CreaturesGenome parseGenome(String filePath)  
-			throws GenomeParserException {
-		if (filePath == null)		{ throw new GenomeParserException( "File Path is null !" ); }
-		if (filePath.equals(""))	{ throw new GenomeParserException( "File Path is empty !" ); }
+			throws ParserException {
+		if (filePath == null)		{ throw new ParserException( "File Path is null !" ); }
+		if (filePath.equals(""))	{ throw new ParserException( "File Path is empty !" ); }
 		
 		List<ICreaturesGene> lstGenesC1 = new ArrayList<ICreaturesGene>();
 		GeneticFileContent gfc = new GeneticFileContent( filePath );

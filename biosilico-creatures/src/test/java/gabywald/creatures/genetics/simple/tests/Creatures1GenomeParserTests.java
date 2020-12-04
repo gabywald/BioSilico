@@ -3,24 +3,28 @@ package gabywald.creatures.genetics.simple.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.creatures.exceptions.GenomeParserException;
+import gabywald.creatures.exceptions.ParserException;
 import gabywald.creatures.genetics.simple.CreaturesGenome;
 import gabywald.creatures.genetics.simple.Creatures1GenomeParser;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class Creatures1GenomeParserTests {
 	
 	@Test
 	void testParseGenomeNOFILE() {
-		Assertions.assertThrows(GenomeParserException.class, 
+		Assertions.assertThrows(ParserException.class, 
 				() -> Creatures1GenomeParser.parseGenome( "" ), 
 				"File Path is empty !");
-		Assertions.assertThrows(GenomeParserException.class, 
+		Assertions.assertThrows(ParserException.class, 
 				() -> Creatures1GenomeParser.parseGenome( null ), 
 				"File Path is null !");
 	}
 
 	@Test
-	void testParseGenomeMUM1() throws GenomeParserException {
+	void testParseGenomeMUM1() throws ParserException {
 		String path2test = "creatures/creaturesOriginals/mum1.gen";
 		CreaturesGenome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1gMUM );;
@@ -30,7 +34,7 @@ class Creatures1GenomeParserTests {
 	}
 	
 	@Test
-	void testParseGenomeDAD1() throws GenomeParserException {
+	void testParseGenomeDAD1() throws ParserException {
 		String path2test = "creatures/creaturesOriginals/dad1.gen";
 		CreaturesGenome c1gMUM = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1gMUM );;
