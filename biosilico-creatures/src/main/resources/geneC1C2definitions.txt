@@ -10,7 +10,7 @@
 1	3	256,256	Biochemistry Gene -- Half Lives
 1	4	2,2	Biochemistry Gene -- Initial Concentration
 2	0	13,13	Biochemistry Gene -- Stimulus
-2	1	2,2	Creature Gene -- Genus
+2	1	9,9	Creature Gene -- Genus
 2	2	2,2	Creature Gene -- Appearance
 2	3	16,16	Creature Gene -- Pose
 2	4	9,9	Creature Gene -- Gait

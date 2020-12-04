@@ -38,13 +38,10 @@ public class GeneCreatures1Factory {
      2     7        Pigment bleed
      3     0        Organ
  */
-		// this.map2cmd.put("0-0", new GeneCreatures1CommandGeneric( "0-0" ));
 		Map<String, GeneTypeSubType> mapGTST = GeneTypeSubType.getGeneTypesSubTypes();
-		for (String key : mapGTST.keySet()) {
-			this.map2cmd.put(key, new GeneCreatures1CommandGeneric( key ));
-			// TODO precise some specific commands
-		}
-		this.map2cmd.put("2-1", new GeneCreatures1CommandGenus(  ));
+		for (String key : mapGTST.keySet()) 
+			{ this.map2cmd.put(key, new GeneCreatures1CommandGeneric( key )); }
+		// this.map2cmd.put("2-1", new GeneCreatures1CommandGenus(  ));
 	}
 	
 	private static GeneCreatures1Factory getInstance() {

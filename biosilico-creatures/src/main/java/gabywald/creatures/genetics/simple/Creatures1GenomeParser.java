@@ -30,11 +30,10 @@ public class Creatures1GenomeParser {
 		GeneticFileContent gfc = new GeneticFileContent( filePath );
 		while (gfc.isReadable()) {
 			String nextGene		= new String( gfc.nextGene() );
-			Creatures1Gene gc1	= GeneticFileContent.readGene( nextGene );
+			ICreaturesGene gc1	= GeneticFileContent.readGene( nextGene );
 			if (gc1 != null) { 
+				lstGenesC1.add( gc1.autocheck() );
 				Logger.printlnLog(LoggerLevel.LL_DEBUG, gc1.printInline());
-				gc1 = gc1.autocheck();
-				lstGenesC1.add( gc1 ); 
 			}
 		} // END "while (gfc.isReadable()))" */
 		

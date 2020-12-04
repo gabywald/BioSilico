@@ -12,7 +12,10 @@ public interface ICreaturesGene {
 	
 	public UnsignedByte[] getHeader();
 	
+	public ICreaturesGene autocheck();
+	
 	public String printInline();
 	
 	public String toString();
+	
 }
