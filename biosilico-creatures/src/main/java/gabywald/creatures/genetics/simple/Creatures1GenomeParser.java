@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 import gabywald.creatures.exceptions.ParserException;
 import gabywald.creatures.geneticReader.GeneticFileContent;
-import gabywald.global.data.File;
-import gabywald.global.exceptions.DataException;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 import gabywald.utilities.others.PropertiesLoader;
@@ -41,28 +39,6 @@ public class Creatures1GenomeParser {
 		Matcher mGenome = pGenome.matcher( filePath );
 		String genomeName = (mGenome.matches()) ? mGenome.group(1) : "UNK0";
 		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + filePath + "}\t{" + genomeName + "}");
-		
-		StringBuilder sbToExport = new StringBuilder();
-		for (ICreaturesGene gc : lstGenesC1) 
-			{ sbToExport.append( gc.printInline()).append("\n"); }
-		sbToExport	.append("Number of genes (").append(lstGenesC1.size())
-					.append(") {").append(genomeName).append("}\n");
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, sbToExport.toString());
-		
-		String basePathToExport	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.creatures1" );
-		String exportExtension	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.extension" );
-		
-		String fileNameToExport	= basePathToExport + genomeName + exportExtension;
-		
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, fileNameToExport);
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, PropertiesLoader.resolvePath( fileNameToExport ) );
-		
-		try {
-			File exportFile = new File(	fileNameToExport, sbToExport.toString().split("\n"));
-			Logger.printlnLog(LoggerLevel.LL_INFO, exportFile.printFile() );
-		} catch (DataException e) {
-			e.printStackTrace();
-		}
 		
 		return new CreaturesGenome(genomeName, filePath, lstGenesC1);
 	}

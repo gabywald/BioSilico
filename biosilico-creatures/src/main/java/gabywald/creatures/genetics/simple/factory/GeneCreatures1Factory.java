@@ -16,13 +16,13 @@ public class GeneCreatures1Factory {
 	
 	private static GeneCreatures1Factory instance = null;
 	
-	private Map<String, GeneCreatures1Command> map2cmd = null;
+	private Map<String, IGeneCreatures1Command> map2cmd = null;
 	
 	public GeneCreatures1Factory() {
-		this.map2cmd = new HashMap<String, GeneCreatures1Command>();
+		this.map2cmd = new HashMap<String, IGeneCreatures1Command>();
 /*
      0     0        Brain lobe
-     0     1        Brain organ
+     0     1        Brain organ (C2)
      1     0        Receptor
      1     1        Emitter
      1     2        Chemical reaction
@@ -35,8 +35,8 @@ public class GeneCreatures1Factory {
      2     4        Gait
      2     5        Instinct
      2     6        Pigment
-     2     7        Pigment bleed
-     3     0        Organ
+     2     7        Pigment bleed (C2)
+     3     0        Organ (C2)
  */
 		Map<String, GeneTypeSubType> mapGTST = GeneTypeSubType.getGeneTypesSubTypes();
 		for (String key : mapGTST.keySet()) 

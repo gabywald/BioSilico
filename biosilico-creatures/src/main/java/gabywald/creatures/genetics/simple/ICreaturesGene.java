@@ -1,5 +1,7 @@
 package gabywald.creatures.genetics.simple;
 
+import java.util.List;
+
 import gabywald.creatures.model.UnsignedByte;
 
 /**
@@ -10,12 +12,18 @@ public interface ICreaturesGene {
 	
 	public GeneTypeSubType getType();
 	
-	public UnsignedByte[] getHeader();
+	public List<UnsignedByte> getHeader();
+	
+	public List<UnsignedByte> getContents();
 	
 	public ICreaturesGene autocheck();
 	
 	public String printInline();
 	
 	public String toString();
+	
+	public boolean addContent(UnsignedByte content);
+	public boolean addContents(List<UnsignedByte> contents);
+	public boolean addContents(UnsignedByte... contents);
 	
 }

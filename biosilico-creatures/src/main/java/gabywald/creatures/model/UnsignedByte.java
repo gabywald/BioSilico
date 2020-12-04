@@ -1,6 +1,7 @@
 package gabywald.creatures.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,6 +42,10 @@ public class UnsignedByte {
 	
 	/* ***** ***** ***** ***** ***** */
 	
+	public static String[] headerCutter(String header) {
+		return UnsignedByte.splitToNChar(header, 1);
+	}
+	
 	public static UnsignedByte[] headerCutterBytes(String header) {
 		UnsignedByte[] headerBytes = new UnsignedByte[header.length()];
 		String[] headerCutted = UnsignedByte.headerCutter(header);
@@ -49,8 +54,8 @@ public class UnsignedByte {
 		return headerBytes;
 	}
 	
-	public static String[] headerCutter(String header) {
-		return UnsignedByte.splitToNChar(header, 1);
+	public static List<UnsignedByte> headerCutterBytesAsList(String header) {
+		return Arrays.asList( UnsignedByte.headerCutterBytes(header) );
 	}
 	
 	/**

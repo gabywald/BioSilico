@@ -64,12 +64,17 @@ General terms and definitions
 BYTE
 
 BYTE defines a single byte of data. An 8 bit unsigned integer, a BYTE can store whole numbers ranging from zero to 255.
+
 Arrays
+
 Arrays of bytes are defined as BYTE[SIZE] and contain SIZE bytes of data.
+
 A Word about this document
+
 This document is not meant to teach you genetics. Nor is it meant to tell you how to interpret the values within the genome. It is to explain the file format, and to give you a brief insight into how the genetics data is constructed, so that you can write utilities which operate on the genetics files.
 
 The overall file format
+
 The genetics file consists of a magic cookie of four characters at the beginning of the file, and then a series of genes, delimited by gene markers, terminated with an end token.
 
 The cookie is:
@@ -116,9 +121,11 @@ Male Only*
 The Mutability Weighting entry
 
 currently undocumented.... oooooooooh...
+
 Brain Genes (Type 00)
 
 There are three types of brain genes, the first is the brain lobe (Type 00 00), the second, the brain organ (type 00 01), and the third the brain tract (type 00 02).
+
 Brain Lobes (Type 00 00 - Size 121)
 
 In C3 Brain lobe genes perform all their calculations by means of SV rules. BYTE [4] Lobe ID

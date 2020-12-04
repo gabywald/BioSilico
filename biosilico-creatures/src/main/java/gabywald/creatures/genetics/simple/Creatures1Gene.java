@@ -2,6 +2,7 @@ package gabywald.creatures.genetics.simple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import gabywald.creatures.model.UnsignedByte;
@@ -16,12 +17,12 @@ public class Creatures1Gene implements ICreaturesGene {
 	/** Type / SubType / Name. */
 	private GeneTypeSubType type;
 	/** Header (expected of size of 6 for C1). */
-	private UnsignedByte[] header;
+	private List<UnsignedByte> header;
 	private List<UnsignedByte> contents	= new ArrayList<UnsignedByte>();
 	private List<String> contentsSTR	= new ArrayList<String>();
 	private int haserror				= 0;
 	
-	public Creatures1Gene(GeneTypeSubType type, UnsignedByte[] header) {
+	public Creatures1Gene(GeneTypeSubType type, List<UnsignedByte> header) {
 		this.type = type;
 		this.header = header;
 	}
@@ -31,7 +32,7 @@ public class Creatures1Gene implements ICreaturesGene {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("GeneCreatures1 ( ")	.append( this.type.getShortName() ).append(" , ")
-										.append( Arrays.asList(this.header).toString() )
+										.append( this.header.toString() )
 										.append(" )").append("\t contents: ");
 		if (this.contentsSTR.size() > 0)
 			{ sb.append( this.contentsSTR.toString() ); }
@@ -49,13 +50,12 @@ public class Creatures1Gene implements ICreaturesGene {
 		StringBuilder sb = new StringBuilder();
 		
 		sb	.append( this.type.getShortName() ).append(" : ")
-			.append( Arrays.asList(this.header).toString() ).append(" => ");
+			.append( this.header.toString() ).append(" => ");
 		if (this.contentsSTR.size() > 0)
 			{ sb.append( this.contentsSTR.toString() ); }
 		else { sb.append( this.contents.toString() ); }
-		if (this.haserror > 0) {
-			sb.append("\t has (").append(this.haserror).append(") errors ");
-		}
+		if (this.haserror > 0) 
+			{ sb.append("\t has (").append(this.haserror).append(") errors "); }
 		
 		return sb.toString();
 	}
@@ -83,21 +83,28 @@ public class Creatures1Gene implements ICreaturesGene {
 		{ return this.type; }
 
 	@Override
-	public UnsignedByte[] getHeader() 
-		{ return this.header; }
+	public List<UnsignedByte> getHeader() 
+		{ return Collections.unmodifiableList( this.header ); }
+	
+	@Override
+	public List<UnsignedByte> getContents() 
+		{ return Collections.unmodifiableList( this.contents ); }
 	
 	public boolean addContentSTR(String content) 
 		{ return this.contentsSTR.add(content); }
 	
+	@Override
 	public boolean addContent(UnsignedByte content) 
 		{ return this.contents.add(content); }
 
+	@Override
 	public boolean addContents(List<UnsignedByte> contents) 
 		{ return this.contents.addAll(contents); }
 	
+	@Override
 	public boolean addContents(UnsignedByte... contents) 
 		{ return this.addContents(Arrays.asList(contents)); }
-
+	
 	public int getHaserror() 
 		{ return this.haserror; }
 

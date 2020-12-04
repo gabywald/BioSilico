@@ -1,5 +1,7 @@
 package gabywald.creatures.genetics.simple.tests;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +17,7 @@ class Creatures1GeneTests {
 	
 	@Test
 	void testGeneCreatures1() {
-		UnsignedByte[] header = UnsignedByte.headerCutterBytes( "1234567" );
+		List<UnsignedByte> header = UnsignedByte.headerCutterBytesAsList( "1234567" );
 		
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType(1, 1);
 		

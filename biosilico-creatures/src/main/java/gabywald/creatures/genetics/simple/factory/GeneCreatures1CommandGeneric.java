@@ -1,5 +1,7 @@
 package gabywald.creatures.genetics.simple.factory;
 
+import java.util.List;
+
 import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
 import gabywald.creatures.model.UnsignedByte;
@@ -8,7 +10,7 @@ import gabywald.creatures.model.UnsignedByte;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreatures1CommandGeneric implements GeneCreatures1Command {
+public class GeneCreatures1CommandGeneric implements IGeneCreatures1Command {
 	
 	private String key;
 	
@@ -21,7 +23,7 @@ public class GeneCreatures1CommandGeneric implements GeneCreatures1Command {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
 		// Header data : 6 first elements !
-		UnsignedByte[] header = UnsignedByte.headerCutterBytes( input.substring(0, 6) );
+		List<UnsignedByte> header = UnsignedByte.headerCutterBytesAsList( input.substring(0, 6) );
 
 		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst, header);
 		
