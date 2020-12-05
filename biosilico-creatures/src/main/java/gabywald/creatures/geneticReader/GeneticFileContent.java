@@ -1,7 +1,7 @@
 package gabywald.creatures.geneticReader;
 
-import gabywald.creatures.genetics.simple.Creatures1Gene;
-import gabywald.creatures.genetics.simple.factory.GeneCreatures1Factory;
+import gabywald.creatures.genetics.simple.ICreaturesGene;
+import gabywald.creatures.genetics.simple.factory.GeneCreaturesFactory;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 import gabywald.utilities.others.PropertiesLoader;
@@ -119,10 +119,10 @@ public class GeneticFileContent {
 	public String getFileName()	{ return this.fileName; }
 	public boolean isReadable()	{ return this.isReadable; }
 	
-	public static Creatures1Gene readGene(String input) {
+	public static ICreaturesGene readGene(String input) {
 		int type = input.charAt( 0 );
 		int subt = input.charAt( 1 );
-		return GeneCreatures1Factory.generateFrom(	type + "-" + subt, 
+		return GeneCreaturesFactory.generateFrom(	type + "-" + subt, 
 													input.substring(0, input.length()));
 	}
 	

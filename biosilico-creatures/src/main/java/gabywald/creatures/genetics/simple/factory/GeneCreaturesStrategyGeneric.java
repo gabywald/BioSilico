@@ -4,22 +4,23 @@ import java.util.List;
 
 import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
+import gabywald.creatures.genetics.simple.ICreaturesGene;
 import gabywald.creatures.model.UnsignedByte;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreatures1CommandGeneric implements IGeneCreatures1Command {
+public class GeneCreaturesStrategyGeneric implements IGeneCreaturesStrategy {
 	
 	private String key;
 	
-	GeneCreatures1CommandGeneric(String key) {
+	GeneCreaturesStrategyGeneric(String key) {
 		this.key = key;
 	}
 
 	@Override
-	public Creatures1Gene generateFrom(String input) {
+	public ICreaturesGene generateFrom(String input) {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
 		// Header data : 6 first elements !

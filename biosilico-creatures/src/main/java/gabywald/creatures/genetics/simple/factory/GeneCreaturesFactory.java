@@ -3,8 +3,8 @@ package gabywald.creatures.genetics.simple.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import gabywald.creatures.genetics.simple.Creatures1Gene;
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
+import gabywald.creatures.genetics.simple.ICreaturesGene;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -12,14 +12,14 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreatures1Factory {
+public class GeneCreaturesFactory {
 	
-	private static GeneCreatures1Factory instance = null;
+	private static GeneCreaturesFactory instance = null;
 	
-	private Map<String, IGeneCreatures1Command> map2cmd = null;
+	private Map<String, IGeneCreaturesStrategy> map2cmd = null;
 	
-	public GeneCreatures1Factory() {
-		this.map2cmd = new HashMap<String, IGeneCreatures1Command>();
+	public GeneCreaturesFactory() {
+		this.map2cmd = new HashMap<String, IGeneCreaturesStrategy>();
 /*
      0     0        Brain lobe
      0     1        Brain organ (C2)
@@ -40,21 +40,21 @@ public class GeneCreatures1Factory {
  */
 		Map<String, GeneTypeSubType> mapGTST = GeneTypeSubType.getGeneTypesSubTypes();
 		for (String key : mapGTST.keySet()) 
-			{ this.map2cmd.put(key, new GeneCreatures1CommandGeneric( key )); }
-		// this.map2cmd.put("2-1", new GeneCreatures1CommandGenus(  ));
+			{ this.map2cmd.put(key, new GeneCreaturesStrategyGeneric( key )); }
+		// this.map2cmd.put("2-1", new GeneCreaturesStrategyGenusC1(  ));
 	}
 	
-	private static GeneCreatures1Factory getInstance() {
-		if (GeneCreatures1Factory.instance == null) 
-			{ GeneCreatures1Factory.instance = new GeneCreatures1Factory(); }
-		return GeneCreatures1Factory.instance;
+	private static GeneCreaturesFactory getInstance() {
+		if (GeneCreaturesFactory.instance == null) 
+			{ GeneCreaturesFactory.instance = new GeneCreaturesFactory(); }
+		return GeneCreaturesFactory.instance;
 	}
 	
-	public static Creatures1Gene generateFrom(String key, String input) {
-		return GeneCreatures1Factory.getInstance().instanceGenerateFrom(key, input);
+	public static ICreaturesGene generateFrom(String key, String input) {
+		return GeneCreaturesFactory.getInstance().instanceGenerateFrom(key, input);
 	}
 	
-	private Creatures1Gene instanceGenerateFrom(String key, String input) {
+	private ICreaturesGene instanceGenerateFrom(String key, String input) {
 		if (this.map2cmd.containsKey(key)) {
 			return this.map2cmd.get(key).generateFrom(input);
 		} else {

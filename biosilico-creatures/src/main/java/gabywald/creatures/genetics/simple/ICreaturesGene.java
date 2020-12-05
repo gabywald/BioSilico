@@ -25,5 +25,7 @@ public interface ICreaturesGene {
 	public boolean addContent(UnsignedByte content);
 	public boolean addContents(List<UnsignedByte> contents);
 	public boolean addContents(UnsignedByte... contents);
+
+	public boolean addContentSTR(String strContent);
 	
 }

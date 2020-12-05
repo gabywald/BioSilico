@@ -90,6 +90,7 @@ public class Creatures1Gene implements ICreaturesGene {
 	public List<UnsignedByte> getContents() 
 		{ return Collections.unmodifiableList( this.contents ); }
 	
+	@Override
 	public boolean addContentSTR(String content) 
 		{ return this.contentsSTR.add(content); }
 	
