@@ -1,12 +1,14 @@
 package gabywald.creatures.genetics.simple.tests;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.exceptions.ParserException;
 import gabywald.creatures.genetics.simple.CreaturesGenome;
 import gabywald.creatures.genetics.simple.ICreaturesGene;
-import gabywald.creatures.genetics.simple.decoder.GeneCreaturesDecoderGeneric;
+import gabywald.creatures.genetics.simple.decoder.GeneCreaturesDecoderSuite;
 import gabywald.creatures.genetics.simple.decoder.IGeneCreaturesDecoder;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -64,9 +66,15 @@ class Creatures1GenomeParserTests {
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
 		
-		IGeneCreaturesDecoder gcd = new GeneCreaturesDecoderGeneric();
+		
+		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getSuite();
+		
 		for (ICreaturesGene cg : c1g.getGenome()) {
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, cg.printInline() + "\n*****" + gcd.decodeFrom( cg ));
+			for (IGeneCreaturesDecoder igcd : decoders) {
+				String result = igcd.decodeFrom( cg );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, cg.printInline() + "\n*****" + result);
+			}
+			Logger.printlnLog(LoggerLevel.LL_FORUSER, cg.printInline() + "\n" + cg.print4human() );
 		}
 	}
 

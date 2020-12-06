@@ -20,6 +20,8 @@ public interface ICreaturesGene {
 	
 	public String printInline();
 	
+	public String print4human();
+	
 	public String toString();
 	
 	public boolean addContent(UnsignedByte content);
@@ -27,5 +29,6 @@ public interface ICreaturesGene {
 	public boolean addContents(UnsignedByte... contents);
 
 	public boolean addContentSTR(String strContent);
+	public boolean addContentSTR(String... strContents);
 	
 }

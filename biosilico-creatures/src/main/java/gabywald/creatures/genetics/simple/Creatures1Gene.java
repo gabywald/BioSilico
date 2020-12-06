@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import gabywald.creatures.model.UnsignedByte;
 import gabywald.utilities.logger.Logger;
@@ -16,7 +17,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class Creatures1Gene implements ICreaturesGene {
 	/** Type / SubType / Name. */
 	private GeneTypeSubType type;
-	/** Header (expected of size of 6 for C1). */
+	/** Header (expected of size of 6 for C1, 7 for C2 and 8 for C3). */
 	private List<UnsignedByte> header;
 	private List<UnsignedByte> contents	= new ArrayList<UnsignedByte>();
 	private List<String> contentsSTR	= new ArrayList<String>();
@@ -34,9 +35,7 @@ public class Creatures1Gene implements ICreaturesGene {
 		sb.append("GeneCreatures1 ( ")	.append( this.type.getShortName() ).append(" , ")
 										.append( this.header.toString() )
 										.append(" )").append("\t contents: ");
-		if (this.contentsSTR.size() > 0)
-			{ sb.append( this.contentsSTR.toString() ); }
-		else { sb.append( this.contents.toString() ); }
+		sb.append( this.contents.toString() );
 		sb.append("\n");
 		if (this.haserror > 0) {
 			sb.append("\t has (").append(this.haserror).append(") errors \n");
@@ -51,11 +50,23 @@ public class Creatures1Gene implements ICreaturesGene {
 		
 		sb	.append( this.type.getShortName() ).append(" : ")
 			.append( this.header.toString() ).append(" => ");
-		if (this.contentsSTR.size() > 0)
-			{ sb.append( this.contentsSTR.toString() ); }
-		else { sb.append( this.contents.toString() ); }
+		sb.append( this.contents.toString() );
 		if (this.haserror > 0) 
 			{ sb.append("\t has (").append(this.haserror).append(") errors "); }
+		
+		return sb.toString();
+	}
+	
+	@Override
+	public String print4human() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb	.append( this.type.getShortName() ).append(" : ")
+			.append( this.header.toString() ).append(" => ");
+		if (this.haserror > 0) 
+			{ sb.append("\t has (").append(this.haserror).append(") errors "); }
+		
+		sb.append( "\n" ).append( this.contentsSTR.stream().collect(Collectors.joining("\n")) );
 		
 		return sb.toString();
 	}
@@ -91,10 +102,6 @@ public class Creatures1Gene implements ICreaturesGene {
 		{ return Collections.unmodifiableList( this.contents ); }
 	
 	@Override
-	public boolean addContentSTR(String content) 
-		{ return this.contentsSTR.add(content); }
-	
-	@Override
 	public boolean addContent(UnsignedByte content) 
 		{ return this.contents.add(content); }
 
@@ -105,6 +112,14 @@ public class Creatures1Gene implements ICreaturesGene {
 	@Override
 	public boolean addContents(UnsignedByte... contents) 
 		{ return this.addContents(Arrays.asList(contents)); }
+	
+	@Override
+	public boolean addContentSTR(String content) 
+		{ return this.contentsSTR.add(content); }
+	
+	@Override
+	public boolean addContentSTR(String... contents) 
+		{ return this.contentsSTR.addAll(Arrays.asList(contents)); }
 	
 	public int getHaserror() 
 		{ return this.haserror; }

@@ -12,7 +12,7 @@ import gabywald.creatures.model.UnsignedByte;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreaturesDecoderGeneric implements IGeneCreaturesDecoder {
+public class GeneCreaturesDecoderHeader implements IGeneCreaturesDecoder {
 	
 	@Override
 	public String decodeFrom(ICreaturesGene inputGene) {
@@ -41,10 +41,15 @@ public class GeneCreaturesDecoderGeneric implements IGeneCreaturesDecoder {
 			.append( flags.toString() ).append("\n");
 		
 		// TODO C2 mc / Mutation chances (C2)
-		// TODO C3 'expresiion variant
+		// TODO C3 'expression variant'
+		
+		// XXX NOTE : make / apply Visitor Design Pattern (successive applies) on condition ? (key of type-subt)
+		// Add to STR content to give a better translation / comprehensive and human view of the gene !!
 		
 		// ***** Content Part
 		// TODO Content Part !! (specific classes for each king of gene !!)
+		
+		inputGene.addContentSTR(sbToReturn.toString().split("\n"));
 		
 		return sbToReturn.toString();
 	}

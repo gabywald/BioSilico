@@ -23,13 +23,15 @@ public class GeneCreaturesStrategyGeneric implements IGeneCreaturesStrategy {
 	public ICreaturesGene generateFrom(String input) {
 		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType( this.key );
 		
-		// Header data : 6 first elements !
-		List<UnsignedByte> header = UnsignedByte.headerCutterBytesAsList( input.substring(0, 6) );
+		// Header data : 6 first elements for C1, 7 for C2 and 8 for C3 !
+		// TODO load from cinfiguration / properties in GeneTypeSubType(-1, -1) !!
+		int headerlimit = 6; 
+		List<UnsignedByte> header = UnsignedByte.headerCutterBytesAsList( input.substring(0, headerlimit) );
 
-		Creatures1Gene gc1ToReturn = new Creatures1Gene(gtst, header);
+		ICreaturesGene gc1ToReturn = new Creatures1Gene(gtst, header);
 		
 		// Rest of data : from the 6th element !
-		gc1ToReturn.addContents( UnsignedByte.headerCutterBytes( input.substring(6) ) );
+		gc1ToReturn.addContents( UnsignedByte.headerCutterBytes( input.substring( headerlimit ) ) );
 		
 		return gc1ToReturn;
 	}
