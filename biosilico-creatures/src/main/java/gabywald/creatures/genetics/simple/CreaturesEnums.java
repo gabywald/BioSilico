@@ -34,6 +34,10 @@ public class CreaturesEnums {
 	private static List<String> SPECIES			= null;
 	private static List<String> PIGMENT_COLOR	= null;
 	private static List<String> SVRULES			= null;
+	
+	private static List<CreaturesChemical> C1_CHEM = null;
+	private static List<CreaturesChemical> C2_CHEM = null;
+	private static List<CreaturesChemical> C3_CHEM = null;
 
 	/**
 	 * Get content from property and convert it to a List of String. 
@@ -91,6 +95,30 @@ public class CreaturesEnums {
 					( CreaturesEnumsProperties.SVRULES.getProperty() );
 		}
 		return CreaturesEnums.SVRULES;
+	}
+	
+	public static List<CreaturesChemical> getC1Chemicals() {
+		if (CreaturesEnums.C1_CHEM == null) {
+			CreaturesEnums.C1_CHEM = CreaturesChemical
+					.getCreaturesChemicals(CreaturesVersion.CREATURES1);
+		}
+		return CreaturesEnums.C1_CHEM;
+	}
+	
+	public static List<CreaturesChemical> getC2Chemicals() {
+		if (CreaturesEnums.C2_CHEM == null) {
+			CreaturesEnums.C2_CHEM = CreaturesChemical
+					.getCreaturesChemicals(CreaturesVersion.CREATURES1);
+		}
+		return CreaturesEnums.C2_CHEM;
+	}
+	
+	public static List<CreaturesChemical> getC3Chemicals() {
+		if (CreaturesEnums.C3_CHEM == null) {
+			CreaturesEnums.C3_CHEM = CreaturesChemical
+					.getCreaturesChemicals(CreaturesVersion.CREATURES1);
+		}
+		return CreaturesEnums.C3_CHEM;
 	}
 	
 }

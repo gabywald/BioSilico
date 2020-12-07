@@ -38,6 +38,7 @@ class GeneTypeSubTypeTests {
 		String path2geneTST = Creatures1GenomeParser.PROPERTIES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
 		File geneDefinitionsFile = null;
 		try {
+			// NOTE : here file in base of ressources !
 			geneDefinitionsFile = File.loadFile( path2geneTST );
 		} catch (IOException e) { e.printStackTrace(); }
 		Assertions.assertNotNull( geneDefinitionsFile );

@@ -24,7 +24,7 @@ public class GeneCreaturesDecoderPigment extends GeneCreaturesDecoder {
 		
 		// ***** Content Part
 		List<UnsignedByte> contents = inputGene.getContents();
-		sbToReturn.append( "\t PigmentCol: [" ).append( GeneCreaturesDecoder.getPigmentColot(contents.get(0)) ).append( "]\n" );
+		sbToReturn.append( "\t PigmentCol: [" ).append( GeneCreaturesDecoder.getPigmentColor(contents.get(0)) ).append( "]\n" );
 		sbToReturn.append( "\t Intensity-: [" ).append( contents.get(1) ).append( "]\n" );
 		
 		inputGene.addContentSTR(sbToReturn.toString().split("\n"));

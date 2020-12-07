@@ -34,10 +34,16 @@ public abstract class GeneCreaturesDecoder implements IGeneCreaturesDecoder {
 	protected static String getBodyPart(UnsignedByte ub) 
 		{ return CreaturesEnums.getBodyParts().get( ub.getValue() ); }
 	
-	protected static String getPigmentColot(UnsignedByte ub) 
+	protected static String getPigmentColor(UnsignedByte ub) 
 		{ return CreaturesEnums.getPigmentColors().get( ub.getValue() ); }
 	
 	protected static String getBreed(UnsignedByte ub) 
 		{ return "" + ub.getValue(); }
-
+	
+	protected static String getC1ChemicalName(UnsignedByte ub) 
+		{ return CreaturesEnums.getC1Chemicals().get( ub.getValue() ).getName(); }
+	
+	protected static String getC2ChemicalName(UnsignedByte ub) 
+		{ return CreaturesEnums.getC2Chemicals().get( ub.getValue() ).getName(); }
+	
 }
