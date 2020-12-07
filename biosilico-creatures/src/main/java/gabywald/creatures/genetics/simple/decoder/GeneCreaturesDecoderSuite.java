@@ -9,6 +9,9 @@ public class GeneCreaturesDecoderSuite {
 		List<IGeneCreaturesDecoder> toReturn = new ArrayList<IGeneCreaturesDecoder>();
 		toReturn.add( new GeneCreaturesDecoderHeader() );
 		toReturn.add( new GeneCreaturesDecoderGenus() );
+		toReturn.add( new GeneCreaturesDecoderAppearance() );
+		toReturn.add( new GeneCreaturesDecoderPigment() );
+		toReturn.add( new GeneCreaturesDecoderPose() );
 		// TODO continue the 'suite' with other decoders / visitors !!
 		
 		return toReturn;

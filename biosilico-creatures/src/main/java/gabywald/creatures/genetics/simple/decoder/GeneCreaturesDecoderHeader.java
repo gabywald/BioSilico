@@ -1,6 +1,7 @@
 package gabywald.creatures.genetics.simple.decoder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -12,13 +13,17 @@ import gabywald.creatures.model.UnsignedByte;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreaturesDecoderHeader implements IGeneCreaturesDecoder {
+public class GeneCreaturesDecoderHeader extends GeneCreaturesDecoder {
+	
+	public GeneCreaturesDecoderHeader() 
+		{ super(Arrays.asList("*")); }
 	
 	@Override
 	public String decodeFrom(ICreaturesGene inputGene) {
 		StringBuilder sbToReturn = new StringBuilder();
 		
 		List<UnsignedByte> header = inputGene.getHeader();
+		if ( ! this.check(header.get(0), header.get(1)) ) { return sbToReturn.toString(); }
 		
 		// ***** Header Part
 		sbToReturn.append( "\t Gene Type: [" ).append(header.get(0)).append("]\n");
