@@ -19,7 +19,7 @@ class Creatures1GeneTests {
 	void testGeneCreatures1() {
 		List<UnsignedByte> header = UnsignedByte.headerCutterBytesAsList( "1234567" );
 		
-		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType(1, 1);
+		GeneTypeSubType gtst = GeneTypeSubType.getGeneTypeSubType(2, 1);
 		
 		Creatures1Gene gc1 = new Creatures1Gene(gtst, header);
 		Assertions.assertNotNull( gc1 );
@@ -47,9 +47,10 @@ class Creatures1GeneTests {
 									gc1.toString());
 		
 		gc1.addContentSTR( "EVE_" );gc1.addContentSTR( "ADAM" );
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [EVE_, ADAM]\t has (2) errors ", gc1.printInline());
-		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [49, 50, 51, 52, 53, 54, 55] )	 contents: [EVE_, ADAM]\n\t has (2) errors \n",
+		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [42, 42, 41, 50, 1]\t has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [49, 50, 51, 52, 53, 54, 55] )	 contents: [42, 42, 41, 50, 1]\n\t has (2) errors \n", 
 									gc1.toString());
+		
 	}
 	
 }
