@@ -19,6 +19,15 @@ class CreaturesEnumsTests {
 		String propertyContent = Creatures1GenomeParser.PROPERTIES.getProperty( property );
 		return Arrays.asList( propertyContent.split(", ") );
 	}
+	
+	@Test
+	void testGetLobeFlags() {
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.lobeflags"), 
+				CreaturesEnums.getLobeFlags());
+
+		Assertions.assertEquals(	Arrays.asList(new String[] { "Winner Takes All" }), 
+				CreaturesEnums.getLobeFlags());
+	}
 
 	@Test
 	void testGetGeneBitFlags() {

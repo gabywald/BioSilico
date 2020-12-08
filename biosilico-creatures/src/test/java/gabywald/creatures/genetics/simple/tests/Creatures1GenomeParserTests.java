@@ -77,5 +77,23 @@ class Creatures1GenomeParserTests {
 			Logger.printlnLog(LoggerLevel.LL_FORUSER, cg.printInline() + "\n" + cg.print4human() );
 		}
 	}
+	
+	@Test
+	void testParseGenomeDAD1toDecode() throws ParserException {
+		String path2test = "creatures/creaturesOriginals/dad1.gen";
+		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
+		Assertions.assertNotNull( c1g );
+		
+		
+		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getSuite();
+		
+		for (ICreaturesGene cg : c1g.getGenome()) {
+			for (IGeneCreaturesDecoder igcd : decoders) {
+				String result = igcd.decodeFrom( cg );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, cg.printInline() + "\n*****" + result);
+			}
+			Logger.printlnLog(LoggerLevel.LL_FORUSER, cg.printInline() + "\n" + cg.print4human() );
+		}
+	}
 
 }

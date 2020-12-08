@@ -14,6 +14,7 @@ public class CreaturesEnums {
 	 * @author Gabriel Chandesris (2020)
 	 */
 	private enum CreaturesEnumsProperties {
+		LOBE_FLAGS		( "data.enum.creatures1.lobeflags" ), 
 		GENE_BIT_FLAGS	( "data.enum.creatures1.genebitflags" ), 
 		BODY_PARTS		( "data.enum.creatures1.bodyparts" ), 
 		SWITCH_ON_STAGE	( "data.enum.creatures1.switchonstage" ), 
@@ -28,6 +29,7 @@ public class CreaturesEnums {
 		public String getProperty() { return this.property; }
 	}
 	
+	private static List<String> LOBE_FLAGS		= null;
 	private static List<String> GENE_BIT_FLAGS	= null;
 	private static List<String> BODY_PARTS		= null;
 	private static List<String> SWITCH_ON_STAGE	= null;
@@ -47,6 +49,14 @@ public class CreaturesEnums {
 	private static List<String> getEnumFrom(String property) {
 		String propertyContent = Creatures1GenomeParser.PROPERTIES.getProperty( property );
 		return Arrays.asList( propertyContent.split(", ") );
+	}
+	
+	public static List<String> getLobeFlags() {
+		if (CreaturesEnums.LOBE_FLAGS == null) {
+			CreaturesEnums.LOBE_FLAGS = CreaturesEnums.getEnumFrom
+					( CreaturesEnumsProperties.LOBE_FLAGS.getProperty() );
+		}
+		return CreaturesEnums.LOBE_FLAGS;
 	}
 	
 	public static List<String> getGeneBitFlags() {

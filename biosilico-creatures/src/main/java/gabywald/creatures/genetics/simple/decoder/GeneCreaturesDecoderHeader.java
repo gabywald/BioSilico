@@ -16,6 +16,7 @@ import gabywald.creatures.model.UnsignedByte;
 public class GeneCreaturesDecoderHeader extends GeneCreaturesDecoder {
 	
 	public GeneCreaturesDecoderHeader() 
+		// NOTE : Any type-subtype of gene !!
 		{ super(Arrays.asList("*")); }
 	
 	@Override
