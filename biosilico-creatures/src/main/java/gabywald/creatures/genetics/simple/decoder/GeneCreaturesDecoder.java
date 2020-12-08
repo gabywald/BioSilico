@@ -6,6 +6,10 @@ import java.util.List;
 import gabywald.creatures.genetics.simple.CreaturesEnums;
 import gabywald.creatures.model.UnsignedByte;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 public abstract class GeneCreaturesDecoder implements IGeneCreaturesDecoder {
 	
 	private List<String> acceptedTST = new ArrayList<String>();
