@@ -45,9 +45,7 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 		int nextCode = GeneCreaturesDecoderBrainLobe.translateSVRules
 				(	"SVR------", sbToReturn, 10, contents, CreaturesVersion.CREATURES1);
 		
-		String lobeFlag = (contents.get( nextCode ).getValue() < CreaturesEnums.getLobeFlags().size())
-					? CreaturesEnums.getLobeFlags().get( contents.get( nextCode ).getValue() )
-					: contents.get( nextCode ).getValue() + "";
+		String lobeFlag = GeneCreaturesDecoder.getLobeFlags( contents.get( nextCode ) );
 		sbToReturn.append( "\tLobe Flag: [" ).append( lobeFlag ).append( "]\n" );
 		
 		IntStream.rangeClosed(0, 1).forEach( i -> {

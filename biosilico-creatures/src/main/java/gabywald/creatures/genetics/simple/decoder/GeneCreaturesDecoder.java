@@ -3,6 +3,7 @@ package gabywald.creatures.genetics.simple.decoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.creatures.genetics.simple.CreaturesChemical;
 import gabywald.creatures.genetics.simple.CreaturesEnums;
 import gabywald.creatures.model.UnsignedByte;
 
@@ -32,22 +33,34 @@ public abstract class GeneCreaturesDecoder implements IGeneCreaturesDecoder {
 		return sbToReturn.toString();
 	}
 	
+	private static String getFrom(List<String> values, UnsignedByte ub)
+		{ return (ub.getValue() < values.size()) ? values.get( ub.getValue() ) : "" + ub.getValue() ; }
+	
+	private static String getFromChem(List<CreaturesChemical> values, UnsignedByte ub) 
+		{ return (ub.getValue() < values.size()) ? values.get( ub.getValue() ).getName() : "" + ub.getValue() ; }
+	
+	protected static String getLobeFlags(UnsignedByte ub) 
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getLobeFlags(), ub); }
+	
+	protected static String getStimulusFlags(UnsignedByte ub) 
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getStimulusFlags(), ub); }
+	
 	protected static String getSpecie(UnsignedByte ub) 
-		{ return CreaturesEnums.getSpecies().get( ub.getValue() ); }
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getSpecies(), ub); }
 	
 	protected static String getBodyPart(UnsignedByte ub) 
-		{ return CreaturesEnums.getBodyParts().get( ub.getValue() ); }
-	
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getBodyParts(), ub); }
+
 	protected static String getPigmentColor(UnsignedByte ub) 
-		{ return CreaturesEnums.getPigmentColors().get( ub.getValue() ); }
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getPigmentColors(), ub); }
 	
 	protected static String getBreed(UnsignedByte ub) 
 		{ return "" + ub.getValue(); }
 	
 	protected static String getC1ChemicalName(UnsignedByte ub) 
-		{ return CreaturesEnums.getC1Chemicals().get( ub.getValue() ).getName(); }
+		{ return GeneCreaturesDecoder.getFromChem(CreaturesEnums.getC1Chemicals(), ub); }
 	
 	protected static String getC2ChemicalName(UnsignedByte ub) 
-		{ return CreaturesEnums.getC2Chemicals().get( ub.getValue() ).getName(); }
+		{ return GeneCreaturesDecoder.getFromChem(CreaturesEnums.getC1Chemicals(), ub); }
 	
 }
