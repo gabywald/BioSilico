@@ -36,6 +36,7 @@ public class CreaturesChemical {
 	public UnsignedByte getHalfLive() 
 		{ return this.halfLive; }
 	
+	@Override
 	public String toString() {
 		StringBuilder sbToReturn = new StringBuilder();
 		
@@ -49,6 +50,20 @@ public class CreaturesChemical {
 		return sbToReturn.toString();
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)						{ return false; }
+		if (obj.getClass() != this.getClass())	{ return false; }
+		
+		final CreaturesChemical other = (CreaturesChemical) obj;
+		if ( ! this.number.equals(other.number))		{ return false; }
+		if ( ! this.halfLive.equals(other.halfLive))	{ return false; }
+		if ( ! this.group.equals(other.group))			{ return false; }
+		if ( ! this.name.equals(other.name))			{ return false; }
+		
+		return true;
+	}
+
 	public static List<CreaturesChemical> getCreaturesChemicals(CreaturesVersion v) {
 		List<CreaturesChemical> toReturn = new ArrayList<CreaturesChemical>();
 		

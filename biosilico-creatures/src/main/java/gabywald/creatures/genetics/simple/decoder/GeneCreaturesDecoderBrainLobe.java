@@ -84,21 +84,7 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 					("[" + next + "]" + "BackProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
 			next = GeneCreaturesDecoderBrainLobe.translateSVRules
 					("[" + next + "]" + "ForwProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-//			sbToReturn.append( "\tStr. loss SVR: [" ).append( contents.get( index + next + 1 ) ).append( "]\n" );
-//			sbToReturn.append( "\tSuscepti. SVR: [" ).append( contents.get( index + next + 2 ) ).append( "]\n" );
-//			sbToReturn.append( "\tRelaxati. SVR: [" ).append( contents.get( index + next + 3 ) ).append( "]\n" );
-//			sbToReturn.append( "\tBackProp- SVR: [" ).append( contents.get( index + next + 4 ) ).append( "]\n" );
-//			sbToReturn.append( "\tForwProp- SVR: [" ).append( contents.get( index + next + 5 ) ).append( "]\n" );
-			
 		});
-		
-//		StringBuilder sb = new StringBuilder();
-//		GeneCreaturesDecoderBrainLobe.translateSVRules("5", sb, contents.size() - 5*8 - 1, contents, CreaturesVersion.CREATURES1);
-//		GeneCreaturesDecoderBrainLobe.translateSVRules("4", sb, contents.size() - 4*8 - 1, contents, CreaturesVersion.CREATURES1);
-//		GeneCreaturesDecoderBrainLobe.translateSVRules("3", sb, contents.size() - 3*8 - 1, contents, CreaturesVersion.CREATURES1);
-//		GeneCreaturesDecoderBrainLobe.translateSVRules("2", sb, contents.size() - 2*8 - 1, contents, CreaturesVersion.CREATURES1);
-//		GeneCreaturesDecoderBrainLobe.translateSVRules("1", sb, contents.size() - 1*8 - 1, contents, CreaturesVersion.CREATURES1);
-//		sbToReturn.append( sb.toString() );
 		
 		sbToReturn.append( "\t BRAIN LOBE SIZE: [" ).append( contents.size() ).append( "]\n" );
 		

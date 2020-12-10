@@ -2,12 +2,15 @@ package gabywald.creatures.genetics.simple.tests;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.genetics.simple.Creatures1GenomeParser;
+import gabywald.creatures.genetics.simple.CreaturesChemical;
 import gabywald.creatures.genetics.simple.CreaturesEnums;
+import gabywald.creatures.genetics.simple.CreaturesVersion;
 
 /**
  * 
@@ -22,7 +25,7 @@ class CreaturesEnumsTests {
 	
 	@Test
 	void testGetLobeFlags() {
-		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.lobeflags"), 
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.lobeflags"), 
 				CreaturesEnums.getLobeFlags());
 
 		Assertions.assertEquals(	Arrays.asList(new String[] { "Winner Takes All" }), 
@@ -81,6 +84,38 @@ class CreaturesEnumsTests {
 
 		Assertions.assertEquals(	Arrays.asList(new String[] { "<end>", "0", "1", "64", "255", "chem0", "chem1", "chem2", "chem3", "state", "output", "thres", "type0", "type1", "anded0", "anded1", "input", "conduct", "suscept", "STW", "LTW", "strength", "32", "128", "rnd const", "chem4", "chem5", "leak in", "leak out", "curr src leak in", "TRUE", "PLUS", "MINUS", "TIMES", "INCR", "DECR", "FALSE", "multiply", "average", "move twrds", "random", "<ERROR>" }), 
 				CreaturesEnums.getSVRules());
+	}
+	
+	private static void compareChemicals(	List<CreaturesChemical> ccsExpected, 
+											List<CreaturesChemical> ccsObtain, 
+											int size) {
+		Assertions.assertNotNull( ccsExpected );
+		Assertions.assertEquals(size, ccsExpected.size());
+		IntStream.range(0, size).forEach(i -> 
+			{ Assertions.assertEquals(ccsExpected.get( i ), ccsObtain.get( i )); });
+		Assertions.assertTrue(ccsExpected.equals(ccsObtain));
+		Assertions.assertEquals(ccsExpected, ccsObtain);
+	}
+	
+	@Test
+	void testGetCreaturesChemicalsV1() {
+		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES1);
+		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC1Chemicals();
+		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum, 256);
+	}
+	
+	@Test
+	void testGetCreaturesChemicalsV2() {
+		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES2);
+		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC2Chemicals();
+		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum, 256);
+	}
+	
+	@Test
+	void testGetCreaturesChemicalsV3() {
+		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES3);
+		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC3Chemicals();
+		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum,   0);
 	}
 
 }
