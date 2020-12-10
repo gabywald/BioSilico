@@ -72,6 +72,23 @@ public class GeneTypeSubType {
 			{ GeneTypeSubType.geneTypesSubTypes = GeneTypeSubType.load(); }
 		return GeneTypeSubType.geneTypesSubTypes;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)						{ return false; }
+		if (obj.getClass() != this.getClass())	{ return false; }
+		
+		final GeneTypeSubType other = (GeneTypeSubType) obj;
+		if (this.type != other.type)			{ return false; }
+		if (this.subtype != other.subtype)		{ return false; }
+		if (this.attemptedLength.length != other.attemptedLength.length)	{ return false; }
+		for (int i = 0 ; i < this.attemptedLength.length ; i++) {
+			if (this.attemptedLength[i] != other.attemptedLength[i])		{ return false; }
+		}
+		if ( ! this.name.equals(other.name))			{ return false; }
+		
+		return true;
+	}
 
 	public int getType() 
 		{ return this.type; }

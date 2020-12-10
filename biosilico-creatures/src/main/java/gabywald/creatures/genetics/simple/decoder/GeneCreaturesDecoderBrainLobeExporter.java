@@ -13,9 +13,9 @@ import gabywald.creatures.model.UnsignedByte;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
+public class GeneCreaturesDecoderBrainLobeExporter extends GeneCreaturesDecoder {
 	
-	public GeneCreaturesDecoderBrainLobe() 
+	public GeneCreaturesDecoderBrainLobeExporter() 
 		{ super(Arrays.asList("0-0")); }
 
 	@Override
@@ -42,7 +42,7 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 		sbToReturn.append( "InputGain: [" ).append( contents.get(9) ).append( "]\n" );
 		
 		// SVRules
-		int nextCode = GeneCreaturesDecoderBrainLobe.translateSVRules
+		int nextCode = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 				(	"SVR------", sbToReturn, 10, contents, CreaturesVersion.CREATURES1);
 		
 		String lobeFlag = GeneCreaturesDecoder.getLobeFlags( contents.get( nextCode ) );
@@ -75,19 +75,19 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 			sbToReturn.append( "\t\t" );
 			sbToReturn.append( "LTW gain rate: [" ).append( contents.get( index + 12 ) ).append( "]  " );
 			sbToReturn.append( "Strength gain: [" ).append( contents.get( index + 13 ) ).append( "]\n" );
-			int next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			int next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("Str. gain SVR", sbToReturn, index + 14, contents, CreaturesVersion.CREATURES1);
 			// sbToReturn.append( "\tStr. gain SVR: [" ).append( contents.get( index + 13 ) ).append( "]\n" );
 			sbToReturn.append( "\t\tStr. loss ---: [" ).append( contents.get( next ) ).append( "]\n" );
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("[" + (next+1) + "]" + "Str. loss SVR", sbToReturn, next + 1, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("[" + next + "]" + "Suscepti. SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("[" + next + "]" + "Reinforc. SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("[" + next + "]" + "BackProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
+			next = GeneCreaturesDecoderBrainLobeExporter.translateSVRules
 					("[" + next + "]" + "ForwProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
 		});
 		

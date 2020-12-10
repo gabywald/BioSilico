@@ -31,6 +31,33 @@ class CreaturesEnumsTests {
 		Assertions.assertEquals(	Arrays.asList(new String[] { "Winner Takes All" }), 
 				CreaturesEnums.getLobeFlags());
 	}
+	
+	@Test
+	void testGetPerceptionFlags() {
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.perceptionlobelink"), 
+				CreaturesEnums.getPerceptionFlags());
+
+		Assertions.assertEquals(	Arrays.asList(new String[] { "No", "Yes", "Mutually Exclusive" }), 
+				CreaturesEnums.getPerceptionFlags());
+	}
+	
+	@Test
+	void testGetSpread() {
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.spread"), 
+				CreaturesEnums.getSpread());
+
+		Assertions.assertEquals(	Arrays.asList(new String[] { "--- Flat", "/ \\Normal", "| \\ Saw", "/ | waS" }), 
+				CreaturesEnums.getSpread());
+	}
+	
+	@Test
+	void testGetMigrate() {
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.migrate"), 
+				CreaturesEnums.getMigrate());
+
+		Assertions.assertEquals(	Arrays.asList(new String[] { "do NOT migrate", "Migrate if ANY dendrite is loose and this cell is firing", "Migrate when ALL dendrites are loose" }), 
+				CreaturesEnums.getMigrate());
+	}
 
 	@Test
 	void testGetGeneBitFlags() {

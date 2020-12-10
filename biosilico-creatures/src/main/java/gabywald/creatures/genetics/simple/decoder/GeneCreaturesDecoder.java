@@ -42,6 +42,15 @@ public abstract class GeneCreaturesDecoder implements IGeneCreaturesDecoder {
 	protected static String getLobeFlags(UnsignedByte ub) 
 		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getLobeFlags(), ub); }
 	
+	protected static String getPerceptionFlags(UnsignedByte ub) 
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getPerceptionFlags(), ub); }
+	
+	protected static String getSpread(UnsignedByte ub) 
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getSpread(), ub); }
+	
+	protected static String getMigrate(UnsignedByte ub) 
+		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getMigrate(), ub); }
+	
 	protected static String getStimulusFlags(UnsignedByte ub) 
 		{ return GeneCreaturesDecoder.getFrom(CreaturesEnums.getStimulusFlags(), ub); }
 	

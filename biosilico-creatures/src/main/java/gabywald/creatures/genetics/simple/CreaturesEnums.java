@@ -16,6 +16,8 @@ public class CreaturesEnums {
 	private enum CreaturesEnumsProperties {
 		LOBE_FLAGS				( "data.enum.creatures1.brain.lobeflags" ), 
 		PERCEPTION_LINK_FLAGS	( "data.enum.creatures1.brain.perceptionlobelink" ), 
+		SPREAD					( "data.enum.creatures1.brain.spread" ), 
+		MIGRATE					( "data.enum.creatures1.brain.migrate" ), 
 		
 		GENE_BIT_FLAGS	( "data.enum.creatures1.genebitflags" ), 
 		STIMULUS_FLAGS	( "data.enum.creatures1.stimulusflag" ), 
@@ -34,6 +36,8 @@ public class CreaturesEnums {
 	
 	private static List<String> LOBE_FLAGS				= null;
 	private static List<String> PERCEPTION_LINK_FLAGS	= null;
+	private static List<String> SPREAD					= null;
+	private static List<String> MIGRATE					= null;
 	
 	private static List<String> GENE_BIT_FLAGS	= null;
 	private static List<String> STIMULUS_FLAGS	= null;
@@ -68,7 +72,15 @@ public class CreaturesEnums {
 	
 	public static List<String> getPerceptionFlags() 
 		{ return CreaturesEnums.checkReturnEnum(	
-			CreaturesEnums.PERCEPTION_LINK_FLAGS, CreaturesEnumsProperties.PERCEPTION_LINK_FLAGS); }
+				CreaturesEnums.PERCEPTION_LINK_FLAGS, CreaturesEnumsProperties.PERCEPTION_LINK_FLAGS); }
+	
+	public static List<String> getSpread() 
+		{ return CreaturesEnums.checkReturnEnum(	
+				CreaturesEnums.SPREAD, CreaturesEnumsProperties.SPREAD); }
+	
+	public static List<String> getMigrate() 
+		{ return CreaturesEnums.checkReturnEnum(	
+				CreaturesEnums.MIGRATE, CreaturesEnumsProperties.MIGRATE); }	
 	
 	public static List<String> getGeneBitFlags() 
 		{ return CreaturesEnums.checkReturnEnum(	

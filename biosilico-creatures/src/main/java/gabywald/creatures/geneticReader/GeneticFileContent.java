@@ -29,7 +29,7 @@ public class GeneticFileContent {
 	public GeneticFileContent(String file) {
 		this.fileName	= file;
 		
-		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + this.fileName + "}");
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "{" + this.fileName + "}");
 		
 		if ( (this.fileName == null) || (this.fileName.equals("")) ) 
 			{ this.isReadable = false; }

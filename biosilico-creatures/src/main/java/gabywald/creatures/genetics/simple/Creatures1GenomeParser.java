@@ -38,7 +38,7 @@ public class Creatures1GenomeParser {
 		Pattern pGenome = Pattern.compile(".*?\\/([0-9A-Za-z]{4})\\.gen$");
 		Matcher mGenome = pGenome.matcher( filePath );
 		String genomeName = (mGenome.matches()) ? mGenome.group(1) : "UNK0";
-		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + filePath + "}\t{" + genomeName + "}");
+		Logger.printlnLog(LoggerLevel.LL_INFO, "{" + filePath + "}\t{" + genomeName + "}\t{" + lstGenesC1.size() + "}");
 		
 		return new CreaturesGenome(genomeName, filePath, lstGenesC1);
 	}

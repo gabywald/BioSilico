@@ -83,7 +83,7 @@ public class Creatures1Gene implements ICreaturesGene {
 		this.haserror = CreaturesGenesHelper.applyCheckContent(this.contents, this.type.getAttemptedLengthC1(), UnsignedByte.class);
 		
 		if (this.haserror > 0) {
-			Logger.printlnLog(LoggerLevel.LL_INFO, "ERROR: " + this.printInline());
+			Logger.printlnLog(LoggerLevel.LL_WARNING, this.printInline());
 		}
 		
 		return this;
