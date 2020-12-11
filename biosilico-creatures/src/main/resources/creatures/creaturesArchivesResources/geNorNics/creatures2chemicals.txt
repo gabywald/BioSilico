@@ -1,169 +1,170 @@
-http://meliweb.net/creatures/2chemlist.htm
-
-Please note that the Half-Lives listed are for original Generation 1 Norns. Values may vary in later generations.
-Number	Class	Name	Half-Life
-Hex	Dec	Hex	Dec
+## http://meliweb.net/creatures/2chemlist.htm
+## 
+## Please note that the Half-Lives listed are for original Generation 1 Norns. 
+## Values may vary in later generations.
+## Number		Class	Name	Half-Life
+## Hex	Dec								Hex	Dec
 00	0	None	none	F8	248
 01	1	Drives	pain	38	56
-02	2		need for pleasure	F8	248
-03	3		hunger	F8	248
-04	4		coldness	60	96
-05	5		hotness	60	96
-06	6		tiredness	F8	248
-07	7		sleepiness	F8	248
-08	8		loneliness	60	96
-09	9		crowded	60	96
-0A	10		fear	50	80
-0B	11		boredom	F8	248
-0C	12		anger	48	72
-0D	13		sex drive	48	72
-0E	14		injury	48	72
-0F	15		suffocation	48	72
-10	16		thirst	48	72
-11	17		stress	70	112
+02	2	need for pleasure	F8	248
+03	3	hunger	F8	248
+04	4	coldness	60	96
+05	5	hotness	60	96
+06	6	tiredness	F8	248
+07	7	sleepiness	F8	248
+08	8	loneliness	60	96
+09	9	crowded	60	96
+0A	10	fear	50	80
+0B	11	boredom	F8	248
+0C	12	anger	48	72
+0D	13	sex drive	48	72
+0E	14	injury	48	72
+0F	15	suffocation	48	72
+10	16	thirst	48	72
+11	17	stress	70	112
 12	18	Drive Raisers	pain--	28	40
-13	19		need for pleasure++	28	40
-14	20		hunger++	28	40
-15	21		coldness++	28	40
-16	22		hotness++	28	40
-17	23		tiredness++	28	40
-18	24		sleepiness++	28	40
-19	25		loneliness++	28	40
-1A	26		crowded++	28	40
-1B	27		fear++	28	40
-1C	28		boredom++	28	40
-1D	29		anger++	28	40
-1E	30		sex drive++	28	40
-1F	31		injury++	40	64
-20	32		suffocation++	28	40
-21	33		thirst++	28	40
-22	34		stress++	28	40
+13	19	need for pleasure++	28	40
+14	20	hunger++	28	40
+15	21	coldness++	28	40
+16	22	hotness++	28	40
+17	23	tiredness++	28	40
+18	24	sleepiness++	28	40
+19	25	loneliness++	28	40
+1A	26	crowded++	28	40
+1B	27	fear++	28	40
+1C	28	boredom++	28	40
+1D	29	anger++	28	40
+1E	30	sex drive++	28	40
+1F	31	injury++	40	64
+20	32	suffocation++	28	40
+21	33	thirst++	28	40
+22	34	stress++	28	40
 23	35	Drive Reducers	pain--	28	40
-24	36		need for pleasure--	28	40
-25	37		hunger--	30	48
-26	38		coldness--	28	40
-27	39		hotness--	28	40
-28	40		tiredness--	28	40
-29	41		sleepiness--	28	40
-2A	42		loneliness--	28	40
-2B	43		crowded--	28	40
-2C	44		fear--	28	40
-2D	45		boredom--	28	40
-2E	46		anger--	28	40
-2F	47		sex drive--	28	40
-30	48		injury--	40	64
-31	49		suffocation--	28	40
-32	50		thirst--	28	40
-33	51		stress--	28	40
+24	36	need for pleasure--	28	40
+25	37	hunger--	30	48
+26	38	coldness--	28	40
+27	39	hotness--	28	40
+28	40	tiredness--	28	40
+29	41	sleepiness--	28	40
+2A	42	loneliness--	28	40
+2B	43	crowded--	28	40
+2C	44	fear--	28	40
+2D	45	boredom--	28	40
+2E	46	anger--	28	40
+2F	47	sex drive--	28	40
+30	48	injury--	40	64
+31	49	suffocation--	28	40
+32	50	thirst--	28	40
+33	51	stress--	28	40
 34	52	Learning System	reward	F8	248
-35	53		punishment	F8	248
-36	54		reinforcement	18	24
-37	55		conASH	00	0
-38	56		decASH1	00	0
-39	57		reward echo	20	32
-3A	58		punish echo	20	32
-3B	59		decASH2	00	0
+35	53	punishment	F8	248
+36	54	reinforcement	18	24
+37	55	conASH	00	0
+38	56	decASH1	00	0
+39	57	reward echo	20	32
+3A	58	punish echo	20	32
+3B	59	decASH2	00	0
 3C-43	60-67	Unused	unused	00	0
 44	68	Building Blocks	lactate	F8	248
-45	69		pyruvate	F8	248
-46	70		glucose	F8	248
-47	71		fatty acid	F8	248
-48	72		glycogen	F8	248
-49	73		starch	F8	248
-4A	74		fat	F8	248
-4B	75		adipose tissue	F8	248
-4C	76		life	88	136
-4D	77		muscle tissue	F8	248
-4E	78		triglyceride	F8	248
-4F	79		protein	F8	248
-50	80		amino acid	F8	248
+45	69	pyruvate	F8	248
+46	70	glucose	F8	248
+47	71	fatty acid	F8	248
+48	72	glycogen	F8	248
+49	73	starch	F8	248
+4A	74	fat	F8	248
+4B	75	adipose tissue	F8	248
+4C	76	life	88	136
+4D	77	muscle tissue	F8	248
+4E	78	triglyceride	F8	248
+4F	79	protein	F8	248
+50	80	amino acid	F8	248
 51-59	81-89	Unused	unused	00	0
 5A	90	Waste	dissolved CO2	F8	248
 5B	91	Unused	unused	F8	248
 5C	92	Waste	urea	F8	248
-5D	93		ammonia	F8	248
+5D	93	ammonia	F8	248
 5E	94	Unused	unused	00	0
 5F	95	Metabolism	oxygen	F8	248
-60	96		air	F8	248
-61	97		water	F8	248
-62	98		energy	F8	248
-63	99		adenosine triphosphate (ATP)	FF	255
-64	100		adenosine diphosphate (ADP)	F8	248
-65	101		myoglobin	F8	248
-66	102		oxymyoglobin	F8	248
+60	96	air	F8	248
+61	97	water	F8	248
+62	98	energy	F8	248
+63	99	adenosine triphosphate (ATP)	FF	255
+64	100	adenosine diphosphate (ADP)	F8	248
+65	101	myoglobin	F8	248
+66	102	oxymyoglobin	F8	248
 67	103	Unused	unused	00	0
 68	104	Digestion	bilin	48	72
 69	105	Hormones	estrogen	58	88
-6A	106		testosterone	50	80
-6B	107		gonadotropin	58	88
-6C	108		progesterone	50	80
-6D	109		inhibin	38	56
-6E	110		leutenizing hormone (LH)	58	88
-6F	111		follicle stimulating hormone (FSH)	58	88
-70	112		steroidone	48	72
+6A	106	testosterone	50	80
+6B	107	gonadotropin	58	88
+6C	108	progesterone	50	80
+6D	109	inhibin	38	56
+6E	110	leutenizing hormone (LH)	58	88
+6F	111	follicle stimulating hormone (FSH)	58	88
+70	112	steroidone	48	72
 71	113	Digestion	cholesterol	F8	248
 72	114	Pheromones	arousal potential	48	72
-73	115		mating pheromone	48	72
-74	116		species pheromone	48	72
-75	117		parent pheromone	40	64
-76	118		child pheromone	40	64
-77	119		sibling pheromone	40	64
-78	120		opposite sex pheromone	48	72
-79	121		norn smell	40	64
-7A	122		grendel smell	40	64
-7B	123		ettin smell	40	64
+73	115	mating pheromone	48	72
+74	116	species pheromone	48	72
+75	117	parent pheromone	40	64
+76	118	child pheromone	40	64
+77	119	sibling pheromone	40	64
+78	120	opposite sex pheromone	48	72
+79	121	norn smell	40	64
+7A	122	grendel smell	40	64
+7B	123	ettin smell	40	64
 7C-8B	124-139	Unused	unused	00	0
 8C	140	Toxins	heavy metals	F8	248
-8D	141		cyanide	48	72
+8D	141	cyanide	48	72
 8E	142	Unused	unused	00	0
 8F	143	Toxins	belladonna	48	72
-90	144		geddonase	48	72
-91	145		glycotoxin	F8	248
-92	146		fullness	48	72
+90	144	geddonase	48	72
+91	145	glycotoxin	F8	248
+92	146	fullness	48	72
 93-95	147-149	Unused	unused	00	0
 96	150	Digestion	vitamin E	F8	248
-97	151		vitamin C	F8	248
-98	152		bile acid	F8	248
-99	153		insulin	28	40
-9A	154		glycogen synthetase	38	56
-9B	155		dehydrogenase	48	72
+97	151	vitamin C	F8	248
+98	152	bile acid	F8	248
+99	153	insulin	28	40
+9A	154	glycogen synthetase	38	56
+9B	155	dehydrogenase	48	72
 9C	156	Healing	prostaglandin	48	72
-9D	157		EDTA	48	72
-9E	158		sodium thiosulphite	58	88
-9F	159		arnica	00	0
+9D	157	EDTA	48	72
+9E	158	sodium thiosulphite	58	88
+9F	159	arnica	00	0
 A0-A7	160-167	Unused	unused	00	00
 A8	168	??	tyrosine	48	72
-A9	169		triptophan	48	72
-AA	170		alcohol	F8	248
-AB	171		dancing	30	48
-AC	172		adrenaline	30	48
-AD	173		hexokinase	F8	248
-AE	174		activase	30	48
-AF	175		turnase	38	56
-B0	176		collapsase	38	56
-B1	177		downatrophin	30	48
-B2	178		upatrophin	30	48
-B3	179		pacerine	10	16
+A9	169	triptophan	48	72
+AA	170	alcohol	F8	248
+AB	171	dancing	30	48
+AC	172	adrenaline	30	48
+AD	173	hexokinase	F8	248
+AE	174	activase	30	48
+AF	175	turnase	38	56
+B0	176	collapsase	38	56
+B1	177	downatrophin	30	48
+B2	178	upatrophin	30	48
+B3	179	pacerine	10	16
 B4	180	Unused	unused	38	56
 B5-E7	181-231	Unused	unused	00	00
 E8	232	Toxins	histamine A	40	64
-E9	233		histamine B	40	64
-EA	234		sleep toxin	50	80
-EB	235		fever toxin	48	72
+E9	233	histamine B	40	64
+EA	234	sleep toxin	50	80
+EB	235	fever toxin	48	72
 EC-EF	236-239	Unused Toxins	unused toxin	48	72
 F0	240	Antibodies	antibody 0	80	128
-F1	241		antibody 1	80	128
-F2	242		antibody 2	80	128
-F3	243		antibody 3	80	128
-F4	244		antibody 4	80	128
-F5	245		antibody 5	80	128
-F6	246		antibody 6	80	128
-F7	247		antibody 7	80	128
+F1	241	antibody 1	80	128
+F2	242	antibody 2	80	128
+F3	243	antibody 3	80	128
+F4	244	antibody 4	80	128
+F5	245	antibody 5	80	128
+F6	246	antibody 6	80	128
+F7	247	antibody 7	80	128
 F8	248	Antigens	antigen 0	48	72
-F9	249		antigen 1	48	72
-FA	250		antigen 2	48	72
-FB	251		antigen 3	48	72
-FC	252		antigen 4	48	72
-FD	253		antigen 5	48	72
-FE	254		antigen 6	48	72
-FF	255		antigen 7	48	72
+F9	249	antigen 1	48	72
+FA	250	antigen 2	48	72
+FB	251	antigen 3	48	72
+FC	252	antigen 4	48	72
+FD	253	antigen 5	48	72
+FE	2554	antigen 6	48	72
+FF	255	antigen 7	48	72

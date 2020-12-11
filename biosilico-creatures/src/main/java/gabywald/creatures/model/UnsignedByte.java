@@ -1,11 +1,17 @@
 package gabywald.creatures.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2020)
  */
 public class UnsignedByte {
 	private byte value;
+	
+	public UnsignedByte() { this(0); }
 	
 	public UnsignedByte(int bValue) {
 		if (bValue < 0)			{ this.value = Byte.MIN_VALUE; }	/** -128 */
@@ -21,4 +27,48 @@ public class UnsignedByte {
 	
 	public String toString() 
 		{ return "" + this.getValue(); }
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)						{ return false; }
+		if (obj.getClass() != this.getClass())	{ return false; }
+		
+		final UnsignedByte other = (UnsignedByte) obj;
+		if (other.value != this.value)			{ return false; }
+		
+		return true;
+	}
+	
+	/* ***** ***** ***** ***** ***** */
+	
+	public static String[] headerCutter(String header) {
+		return UnsignedByte.splitToNChar(header, 1);
+	}
+	
+	public static UnsignedByte[] headerCutterBytes(String header) {
+		UnsignedByte[] headerBytes = new UnsignedByte[header.length()];
+		String[] headerCutted = UnsignedByte.headerCutter(header);
+		for (int i = 0 ; i < headerCutted.length ; i++) 
+			{ headerBytes[i] = new UnsignedByte( headerCutted[i].charAt(0) ); }
+		return headerBytes;
+	}
+	
+	public static List<UnsignedByte> headerCutterBytesAsList(String header) {
+		return Arrays.asList( UnsignedByte.headerCutterBytes(header) );
+	}
+	
+	/**
+	 * Split text into n number of characters.
+	 * @param text the text to be split.
+	 * @param size the split size.
+	 * @return an array of the split text.
+	 */
+	public static String[] splitToNChar(String text, int size) {
+		List<String> parts = new ArrayList<String>();
+		int length = text.length();
+		for (int i = 0 ; i < length ; i += size) {
+			parts.add(text.substring(i, Math.min(length, i + size)));
+		}
+		return parts.toArray(new String[0]);
+	}
 }

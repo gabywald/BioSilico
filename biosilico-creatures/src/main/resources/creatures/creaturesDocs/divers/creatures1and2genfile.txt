@@ -1,6 +1,50 @@
+
+https://creatures.wiki/Genetics
+
+The details of norns, grendels, ettins and geats in games in the Creatures series - such as their brains, biochemistry and appearance - are to a great degree dictated by virtual genetics using a simulated genome; often called Digital DNA.
+
+Things which are defined in genomes include:
+
+    brain information (lobes, and the dendrites and neurons they contain)
+    chemical reactions and half-lives (norns can become immortal and such things when these mutate)
+    concentrations of chemicals in the bloodstream at birth
+    biochemistry workings (receptors, emitters, and 'neuro emitters' which link with the brain systems)
+    creature appearance; pose, pigments and gait, among other things
+
+Each individual 'gene' of a genome can mutate in various ways and lead to interesting new behaviours which the original designers never thought of.
+
+There are editors available which let you manipulate the genetics directly and birth new creatures with them, such as the Genetics Kit.
+
+The moniker is the name of any creature's genome file. In Creatures and Creatures 2 this was a 4 character alphanumeric string - automatically allocated monikers were in the format numberletterletterletter, eg. "1VWY", but monikers like "lucy" or "eve_" were also valid.
+
+In later games using the Creatures Evolution Engine (from Creatures 3 onwards) the moniker-generating mechanism became more complicated; the format for these gives monikers like "001-norn-xvjbp-xyhye-ign3a-drjyp". The first number is the generation number (the higher of the parent's generations, plus one), the second indicates the species, and the rest are constructed from the genome. This increased length decreases the likelihood of identical monikers.
+
+Importing two creatures with the same moniker can cause the game to crash, which is why it is not a good idea to try to export a creature and then import it twice.  
+
+https://creatures.wiki/GEN_files
+
+.gen files contain the genetic information for new breeds as well as individual creatures, identified by the moniker. 
+
+Format
+
+C2 and newer genome files start with the three characters 'd', 'n', and 'a', followed by the (textual) number representing the genome file version - '2' for Creatures 2, and '3' for the Creatures Evolution Engine.
+
+The main part of the file (which C1-era files start with immediately) consists of any number of genes, which consist of the four characters 'gene', a gene header and gene data, which differs depending on the contents of the header. There is more information about the differing formats of genes in the gene types category.
+
+When all the genes have occured, there is then a end-of-file marker consisting of the four characters 'gend'.
+
+All numbers in the file are in little-endian form. 
+
+Header
+
+A gene header starts with two 8-bit values, representing the gene type and the gene subtype.
+
+There are then another four 8-bit values, representing the gene identifier (for reference by GNO files), the generation number of the gene, the age at which the gene should be switched on, and the gene flags.
+
+In version 2/3 genomes, there's then an 8-bit mutability weighting value, and in version 3 genomes, an 8-bit variant value, used in Creatures Village to turn on different genes for different species without needing separate genome files for each species. 
+
 http://double.co.nz/creatures/creatures2/gnoformat.htm
 The GNO file format is the same for Creatures 2 and Creatures 1.
-
 
 Creatures 2 genome file format
 ==============================

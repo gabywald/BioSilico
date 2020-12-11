@@ -1,0 +1,22 @@
+## type index ; subtype index ; attempted length [c1,c2,c3] ; complete name (<group -- name>)
+## NOTE : [c1,c2,c3] => '-1' does not exist ; '?' is unknown
+## C1 header has size of 6 elts (7 for C2, 8 for C3)
+-1	-1	6,7,8	HEADER -- header of gene (not a gene)
+0	0	112,121,121	Brain Gene -- Brain Lobe
+0	1	-1,6,5	Brain Gene -- Brain Organ
+0	2	-1,-1,128	Brain Gene -- Brain Tract
+1	0	8,8,8	Biochemistry Gene -- Receptor
+1	1	8,8,8	Biochemistry Gene -- Emitter
+1	2	9,9,9	Biochemistry Gene -- Chemical Reaction
+1	3	256,256,256	Biochemistry Gene -- Half Lives
+1	4	2,2,2	Biochemistry Gene -- Initial Concentration
+1	5	-1,-1,15	Biochemistry Gene -- Neuro Emitter
+2	0	13,13,13	Biochemistry Gene -- Stimulus
+2	1	8,9,65	Creature Gene -- Genus
+2	2	2,3,3	Creature Gene -- Appearance
+2	3	16,16,17	Creature Gene -- Pose
+2	4	9,9,9	Creature Gene -- Gait
+2	5	9,9,9	Creature Gene -- Instinct
+2	6	2,2,2	Creature Gene -- Pigment
+2	7	-1,2,2	Creature Gene -- Pigment Bleed
+3	0	-1,5,5	Creature Gene -- Organ

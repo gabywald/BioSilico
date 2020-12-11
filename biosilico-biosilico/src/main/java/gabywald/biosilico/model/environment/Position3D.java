@@ -53,9 +53,10 @@ public class Position3D implements IPosition {
 	public void setPosZ(int posZ)	{ this.posZ = posZ; }
 	
 	@Override
-	public boolean equals(Object toCompare) {
-		if ( ! (toCompare instanceof Position3D) ) { return false; } 
-		return this.equals((Position3D) toCompare);
+	public boolean equals(Object obj) {
+		if (obj == null)						{ return false; }
+		if (obj.getClass() != this.getClass())	{ return false; }
+		return this.equals((Position3D) obj);
 	}
 	
 	@Override

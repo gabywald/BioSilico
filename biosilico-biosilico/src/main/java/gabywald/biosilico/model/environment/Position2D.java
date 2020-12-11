@@ -49,9 +49,10 @@ public class Position2D implements IPosition {
 	public void setPosZ(int posZ)	{ ; }
 	
 	@Override
-	public boolean equals(Object toCompare) {
-		if ( ! (toCompare instanceof Position2D) ) { return false; } 
-		return this.equals((Position2D) toCompare);
+	public boolean equals(Object obj) {
+		if (obj == null)						{ return false; }
+		if (obj.getClass() != this.getClass())	{ return false; }
+		return this.equals((Position2D) obj);
 	}
 	
 	@Override
