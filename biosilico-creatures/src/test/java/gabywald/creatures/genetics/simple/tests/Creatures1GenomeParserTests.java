@@ -74,7 +74,7 @@ class Creatures1GenomeParserTests {
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
 		
-		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getSuite();
+		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getCreatures1Suite();
 		
 		for (ICreaturesGene cg : c1g.getGenome()) {
 			for (IGeneCreaturesDecoder igcd : decoders) {
@@ -92,7 +92,7 @@ class Creatures1GenomeParserTests {
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
 		
-		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getSuite();
+		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getCreatures1Suite();
 		
 		for (ICreaturesGene cg : c1g.getGenome()) {
 			for (IGeneCreaturesDecoder igcd : decoders) {
@@ -146,7 +146,7 @@ class Creatures1GenomeParserTests {
 		
 		System.out.println( "brainLobeGenes: [" + brainLobeGenes.size() + "]" );
 		FileOutputStream fosBrainLobes = new FileOutputStream( "outputBrainLobes.txt" );
-		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getSuite();
+		List<IGeneCreaturesDecoder> decoders = GeneCreaturesDecoderSuite.getCreatures1Suite();
 		for (ICreaturesGene cg : brainLobeGenes) {
 			for (IGeneCreaturesDecoder igcd : decoders) {
 				// String result = 

@@ -10,11 +10,14 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 public class GeneCreaturesDecoderSuite {
 
-	public static List<IGeneCreaturesDecoder> getSuite() {
-		
+	public static List<IGeneCreaturesDecoder> getCreatures1Suite() {
+		return GeneCreaturesDecoderSuite.getSuite( "configuration.GeneCreaturesDecoderSuite.classes.creatures1" );
+	}
+	
+	private static List<IGeneCreaturesDecoder> getSuite(String classesProperty) {
 		List<IGeneCreaturesDecoder> toReturn = new ArrayList<IGeneCreaturesDecoder>();
 		String packagePath		= Creatures1GenomeParser.PROPERTIES.getProperty( "configuration.GeneCreaturesDecoderSuite.package" );
-		List<String> classes	= Arrays.asList( Creatures1GenomeParser.PROPERTIES.getProperty( "configuration.GeneCreaturesDecoderSuite.classes" ).split( ";" ) );
+		List<String> classes	= Arrays.asList( Creatures1GenomeParser.PROPERTIES.getProperty( classesProperty ).split( ";" ) );
 		
 		for (String classe : classes) {
 			String completeClass = packagePath + "." + classe;

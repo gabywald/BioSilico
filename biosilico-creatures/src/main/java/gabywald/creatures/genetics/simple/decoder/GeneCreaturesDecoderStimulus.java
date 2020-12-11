@@ -34,7 +34,7 @@ public class GeneCreaturesDecoderStimulus extends GeneCreaturesDecoder {
 		IntStream.iterate(5, i -> i + 2).limit(4).forEach( i -> {
 			int numberIndex = ( ((i - 5) / 2) + 1 );
 			sbToReturn.append( "\t Lobe Number").append( numberIndex ).append(": [" ).append( contents.get( i ) ).append( "]\n" );
-			sbToReturn.append( "\t Cell Number").append( numberIndex ).append(": [" ).append( contents.get( i + 1) ).append( "]\n" );
+			sbToReturn.append( "\t Cell Number").append( numberIndex ).append(": [" ).append( contents.get( i + 1 ) ).append( "]\n" );
 		});
 
 		inputGene.addContentSTR(sbToReturn.toString().split("\n"));

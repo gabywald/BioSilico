@@ -41,19 +41,21 @@ public class GeneCreaturesDecoderHeader extends GeneCreaturesDecoder {
 			if ( (binaryFlags.length() > i) && (binaryFlags.charAt( i ) == '1') ) 
 				{ flags.add( CreaturesEnums.getGeneBitFlags().get( i ) ); }
 		});
-		sbToReturn.append( "\t FLAGS ---: ")
+		sbToReturn.append( "\t HEAD FLAGS: ")
 			.append("[" ).append( header.get(5).getValue() ).append("]")
 			.append("[" ).append( Integer.toBinaryString(header.get(5).getValue()) ).append("]")
 			.append( flags.toString() ).append("\n");
 		
-		// TODO C2 mc / Mutation chances (C2)
-		// TODO C3 'expression variant'
+		if (header.size() > 6) // for C2 and more !!
+			{ sbToReturn.append( "\t MutationR: [" ).append(header.get(6)).append("]\n"); }
+		if (header.size() > 7) // for C3 !!
+			{ sbToReturn.append( "\t ExpressVa: [" ).append(header.get(7)).append("]\n"); }
 		
 		// XXX NOTE : make / apply Visitor Design Pattern (successive applies) on condition ? (key of type-subt)
 		// Add to STR content to give a better translation / comprehensive and human view of the gene !!
 		
 		// ***** Content Part
-		// TODO Content Part !! (specific classes for each king of gene !!)
+		// NOTE : see other decoders
 		
 		inputGene.addContentSTR(sbToReturn.toString().split("\n"));
 		
