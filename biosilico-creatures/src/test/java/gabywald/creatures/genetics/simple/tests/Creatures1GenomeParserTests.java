@@ -67,7 +67,8 @@ class Creatures1GenomeParserTests {
 		Assertions.assertEquals(259, c1g.getGenome().size());
 	}
 	
-	@Test
+	// This test is for DEBUG Purposes, inactivated !
+	// @Test
 	void testParseGenomeGRENtoDecode() throws ParserException {
 		String path2test = "creatures/creaturesOriginals/Gren.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
@@ -84,7 +85,8 @@ class Creatures1GenomeParserTests {
 		}
 	}
 	
-	@Test
+	// This test is for DEBUG Purposes, inactivated !
+	// @Test
 	void testParseGenomeDAD1toDecode() throws ParserException {
 		String path2test = "creatures/creaturesOriginals/dad1.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
@@ -101,7 +103,8 @@ class Creatures1GenomeParserTests {
 		}
 	}
 	
-	@Test
+	// This test is for DEBUG Purposes, inactivated !
+	// @Test
 	void testExportGenomes() throws ParserException, IOException {
 		
 		FilenameFilter genFilter = new FilenameFilter() {

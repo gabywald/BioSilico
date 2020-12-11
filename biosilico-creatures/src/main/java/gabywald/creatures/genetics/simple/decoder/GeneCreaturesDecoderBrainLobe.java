@@ -31,25 +31,25 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 		sbToReturn.append( "Lobe PosX: [" ).append( contents.get(0) ).append( "]  " );
 		sbToReturn.append( "Lobe PosY: [" ).append( contents.get(1) ).append( "]  " );
 		sbToReturn.append( "LobeWidth: [" ).append( contents.get(2) ).append( "]  " );
-		sbToReturn.append( "LobeHeigt: [" ).append( contents.get(4) ).append( "]\n" );
+		sbToReturn.append( "LobeHeigt: [" ).append( contents.get(3) ).append( "]\n" );
 		sbToReturn.append( "\t" );
 		
-		sbToReturn.append( "Perc Flag: [" ).append( GeneCreaturesDecoder.getPerceptionFlags( contents.get(5) ) ).append( "]  " );
-		sbToReturn.append( "Threshold: [" ).append( contents.get(6) ).append( "]  " );
-		sbToReturn.append( "Leakage--: [" ).append( contents.get(7) ).append( "]  " );
-		sbToReturn.append( "RestState: [" ).append( contents.get(8) ).append( "]\n" );
+		sbToReturn.append( "Perc Flag: [" ).append( GeneCreaturesDecoder.getPerceptionFlags( contents.get(4) ) ).append( "]  " );
+		sbToReturn.append( "Threshold: [" ).append( contents.get(5) ).append( "]  " );
+		sbToReturn.append( "Leakage--: [" ).append( contents.get(6) ).append( "]  " );
+		sbToReturn.append( "RestState: [" ).append( contents.get(7) ).append( "]\n" );
 		sbToReturn.append( "\t" );
-		sbToReturn.append( "InputGain: [" ).append( contents.get(9) ).append( "]\n" );
+		sbToReturn.append( "InputGain: [" ).append( contents.get(8) ).append( "]\n" );
 		
 		// SVRules
 		int nextCode = GeneCreaturesDecoderBrainLobe.translateSVRules
-				(	"SVR------", sbToReturn, 10, contents, CreaturesVersion.CREATURES1);
+				(	"SVR------", sbToReturn,  9, contents, CreaturesVersion.CREATURES1);
 		
 		String lobeFlag = GeneCreaturesDecoder.getLobeFlags( contents.get( nextCode ) );
 		sbToReturn	.append( "\tLobe Flag: [" ).append( lobeFlag ).append( "]\n" );
 		
 		IntStream.rangeClosed(0, 1).forEach( i -> {
-			int index = (i == 0) ? nextCode + 1 : 42;
+			int index = (i == 0) ? nextCode + 1 : 65;
 			sbToReturn.append( "\t Dendrite").append( i ).append(": \n" );
 			sbToReturn.append( "\t\t" );
 			sbToReturn.append( "Source ------: [" ).append( contents.get( index + 0 ) ).append( "]\n" );
@@ -85,10 +85,6 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 					("[" + next + "]" + "Suscepti. SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
 			next = GeneCreaturesDecoderBrainLobe.translateSVRules
 					("[" + next + "]" + "Reinforc. SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
-					("[" + next + "]" + "BackProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
-			next = GeneCreaturesDecoderBrainLobe.translateSVRules
-					("[" + next + "]" + "ForwProp- SVR", sbToReturn, next, contents, CreaturesVersion.CREATURES1);
 		});
 		
 		sbToReturn.append( "\t BRAIN LOBE SIZE: [" ).append( contents.size() ).append( "]\n" );
@@ -127,23 +123,5 @@ public class GeneCreaturesDecoderBrainLobe extends GeneCreaturesDecoder {
 		
 		return startPosition + numSVR;
 	}
-	
-//	private static int concatenateSVRules(	String nameSVR, StringBuilder sbToReturn, 
-//											int startPosition, List<UnsignedByte> contents, 
-//											CreaturesVersion cv) {
-//		sbToReturn.append( "\t").append( nameSVR ).append(": [" );
-//		StringBuilder sbSVR = new StringBuilder();
-//		int indexStateVariableRule = startPosition; // 10;
-//		int numSVR = (cv == CreaturesVersion.CREATURES1) ? 8 : (cv == CreaturesVersion.CREATURES2) ? 12 : (cv == CreaturesVersion.CREATURES3) ? 16 : 1 ;
-//		IntStream.rangeClosed(indexStateVariableRule, indexStateVariableRule + numSVR).forEach( i -> { 
-//			// Logger.printlnLog(LoggerLevel.LL_INFO, i + " -- " + contents.get( i ).getValue() );
-//				sbSVR.append( "[" )
-//					.append( contents.get( i ).getValue() )
-//					.append( "] => " ); 
-//		} );
-//		sbToReturn.append( sbSVR.substring(0, sbSVR.length() - 4)).append( "]\n" );
-//		
-//		return startPosition + numSVR + 1;
-//	}
 	
 }
