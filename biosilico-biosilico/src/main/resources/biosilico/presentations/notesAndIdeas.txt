@@ -1,0 +1,7 @@
+Idées et prises de notes pour faire une présentation sur BioSilico : 
+	* CellModel ?
+	* Creatures : idées de base et évolution (en résumé + une version longue)
+	* Explicitationn éléments programmatique : Java (Interface) / POO / Design Patterns
+	* Formats de fichiers d'export
+	* Intérêt autres outils : Pipeline / Workflow
+	* ... 
