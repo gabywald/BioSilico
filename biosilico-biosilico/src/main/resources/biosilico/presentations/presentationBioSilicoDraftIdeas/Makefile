@@ -1,7 +1,7 @@
 
 ## naming WITHOUT the extensions [.tex] or [.bib]
 LATEXFILE=presentationBioSilicoDraftIdeas
-# BIBTEFILE=presentationBioSilicoDraftIdeas
+BIBTEFILE=presentationBioSilicoDraftIdeas
 
 ## the local software...
 CCPDFLA=pdflatex
@@ -28,11 +28,11 @@ clean : mrproper
 	# rm $(LATEXFILE).dvi
 	# rm $(LATEXFILE).pdf
 
-mrproper : $(LATEXFILE).aux # $(LATEXFILE).bbl $(LATEXFILE).blg $(LATEXFILE).toc
+mrproper : $(LATEXFILE).aux $(LATEXFILE).bbl $(LATEXFILE).blg $(LATEXFILE).toc
 	rm $(LATEXFILE).aux
 	rm $(LATEXFILE).toc
-	# rm $(LATEXFILE).bbl
-	# rm $(LATEXFILE).blg
+	rm $(LATEXFILE).bbl
+	rm $(LATEXFILE).blg
 	
 
 $(LATEXFILE).dvi : $(LATEXFILE).tex # $(BIBTEFILE).bib
@@ -44,8 +44,8 @@ $(LATEXFILE).dvi : $(LATEXFILE).tex # $(BIBTEFILE).bib
 
 pdflatex : $(LATEXFILE).tex # $(BIBTEFILE).bib
 	$(CCPDFLA) $(LATEXFILE).tex
-	# $(CCBIBTE) $(BIBTEFILE)
-	# $(CCPDFLA) $(LATEXFILE).tex
+	$(CCBIBTE) $(BIBTEFILE)
+	$(CCPDFLA) $(LATEXFILE).tex
 	$(CCPDFLA) $(LATEXFILE).tex
 	$(CCPDFLA) $(LATEXFILE).tex
 

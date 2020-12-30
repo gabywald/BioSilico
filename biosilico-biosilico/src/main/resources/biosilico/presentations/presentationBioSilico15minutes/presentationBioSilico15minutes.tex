@@ -28,17 +28,17 @@
 	\small \tableofcontents[hideallsubsections]
 \end{frame} 
 
-\def\titleSectionFirstPart{First Part}
+\def\titleSectionFirstPart{Starting Ideas}
 \section{\titleSectionFirstPart }
 \begin{frame}
 	\frametitle{\titleSectionFirstPart }
 	\tableofcontents[sections=1,currentsection,subsectionstyle=show/shaded/hide]
 \end{frame} 
 
-\def\titleSubSectionPartOne{ ... }
-\subsection{ \titleSubSectionPartOne }
+\def\titleSubSectionFirstPartOne{ ... }
+\subsection{ \titleSubSectionFirstPartOne }
 \begin{frame}
-	\frametitle{ \titleSubSectionPartOne }
+	\frametitle{ \titleSubSectionFirstPartOne }
 	\begin{columns}[T]
 	\begin{column}[T]{6.0cm}
 		\begin{block}{Left Part}
@@ -57,15 +57,25 @@
 	\end{columns}
 \end{frame} 
 
-\def\titleSubSectionPartTwo{ --- }
-\subsection{ \titleSubSectionPartTwo }
+\def\titleSubSectionFirstPartTwo{ --- }
+\subsection{ \titleSubSectionFirstPartTwo }
 \begin{frame}
-	\frametitle{ \titleSubSectionPartTwo }
+	\frametitle{ \titleSubSectionFirstPartTwo }
 	\begin{itemize}
 		\item ...
 	\end{itemize}
 \end{frame}
 
 %% TODO short presentation !!
+
+\def\sectionPartBibliographie{Bibliography / Mediagraphy}
+\section{\sectionPartBibliographie}
+\begin{frame}
+	\frametitle{\sectionPartBibliographie}
+	\nocite{*}
+	\bibliography{presentationBioSilico15minutes}
+	% \bibliographystyle{frplain} % plain or frplain
+	\bibliographystyle{plain}
+\end{frame}
 
 \end{document}
