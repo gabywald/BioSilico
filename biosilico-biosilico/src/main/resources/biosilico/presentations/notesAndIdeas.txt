@@ -5,3 +5,11 @@ Idées et prises de notes pour faire une présentation sur BioSilico :
 	* Formats de fichiers d'export
 	* Intérêt autres outils : Pipeline / Workflow
 	* ... 
+	
+À préciser : 
+ * démonstration
+ * éclaircir concepts
+ * Utilisations
+	- Jeux Vidéos : au moins deux possibilités pour apprentissage biologie et pour tests
+	- Utilisation dans les jeux vidéos : simuler un écosystème
+	- CyberSécurité (préciser)
