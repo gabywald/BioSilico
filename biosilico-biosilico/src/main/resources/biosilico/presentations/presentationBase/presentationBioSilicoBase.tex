@@ -1,0 +1,71 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc} 
+\usepackage[latin1]{inputenc}
+%% \usepackage[frenchb]{babel}
+
+\usetheme{Marburg}
+\usecolortheme{rose}
+\usefonttheme{default}
+
+% Supprimer les icones de navigation (pour les transparents)
+\setbeamertemplate{navigation symbols}{}
+
+\title[Presentation BioSilico Base]{Presentation BioSilico Base}
+\author{Gabriel Chandesris}
+%% \institute{ --- }
+% \institute{ \includegraphics[height=0.5cm]{../img/logo_glider.png} }
+\institute{ \includegraphics[height=0.5cm]{../img/logo-glider-left.png} \includegraphics[height=1.5cm]{../img/digitalBioInfo.jpeg} \includegraphics[height=0.5cm]{../img/logo-glider-right.png} }
+%% \logo{ \includegraphics[height=0.5cm]{../img/logo_glider.png} }
+\date{ Version : \today } %% \date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Table Of Content}
+	\small \tableofcontents[hideallsubsections]
+\end{frame} 
+
+\def\titleSectionFirstPart{Starting Ideas}
+\section{\titleSectionFirstPart }
+\begin{frame}
+	\frametitle{\titleSectionFirstPart }
+	\tableofcontents[sections=1,currentsection,subsectionstyle=show/shaded/hide]
+\end{frame} 
+
+\def\titleSubSectionFirstPartOne{ ... }
+\subsection{ \titleSubSectionFirstPartOne }
+\begin{frame}
+	\frametitle{ \titleSubSectionFirstPartOne }
+	\begin{columns}[T]
+	\begin{column}[T]{6.0cm}
+		\begin{block}{Left Part}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\begin{column}[T]{5.0cm}
+		\begin{block}{Right Part}
+			\begin{itemize}
+				\item ...
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\end{columns}
+\end{frame} 
+
+\def\titleSubSectionFirstPartTwo{ --- }
+\subsection{ \titleSubSectionFirstPartTwo }
+\begin{frame}
+	\frametitle{ \titleSubSectionFirstPartTwo }
+	\begin{itemize}
+		\item ...
+	\end{itemize}
+\end{frame}
+
+\end{document}

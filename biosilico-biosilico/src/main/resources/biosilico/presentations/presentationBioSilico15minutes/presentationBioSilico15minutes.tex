@@ -1,0 +1,188 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc} 
+\usepackage[latin1]{inputenc}
+%% \usepackage[frenchb]{babel}
+
+\usetheme{Marburg}
+\usecolortheme{rose}
+\usefonttheme{default}
+
+% Supprimer les icones de navigation (pour les transparents)
+\setbeamertemplate{navigation symbols}{}
+
+\title[Presentation BioSilico 15 minutes]{Presentation BioSilico 15 minutes}
+\author{Gabriel Chandesris}
+%% \institute{ --- }
+% \institute{ \includegraphics[height=0.5cm]{../img/logo_glider.png} }
+\institute{ \includegraphics[height=0.5cm]{../img/logo-glider-left.png} \includegraphics[height=1.5cm]{../img/digitalBioInfo.jpeg} \includegraphics[height=0.5cm]{../img/logo-glider-right.png} }
+% \logo{ \includegraphics[height=0.5cm]{../img/logo_glider.png} }
+\date{ Version : \today } %% \date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Table Of Content}
+	\small \tableofcontents[hideallsubsections]
+\end{frame} 
+
+\def\titleSectionFirstPart{Starting Ideas (1990's)}
+\section{\titleSectionFirstPart }
+\def\titleSubSectionFirstPartOne{ Passion for two domains }
+\subsection{ \titleSubSectionFirstPartOne }
+\begin{frame}
+	\frametitle{ \titleSubSectionFirstPartOne }
+	\begin{columns}[T]
+	\begin{column}[T]{5.0cm}
+		\begin{block}{Computer Software}
+			\begin{itemize}
+				\item Video Games \newline "how it works"
+				\item Reverse Ingeneering \newline (resources)
+				\item Software Development
+				\item Programmation
+				\item Hack and virus \newline (some readings)
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\begin{column}[T]{5.0cm}
+		\begin{block}{Biology / Life Sciences }
+			\begin{itemize}
+				\item Studying Plants and some animals ; 
+				\item Biochemistry, genomics, proteomics...  ; 
+				\item Modelization and computerization ; 
+				\item Computer Agents 
+				%% with biochemistry and behaviours ; 
+				\item Uses in Virtual Worlds
+				%%  (video games, log analysis...) ; 
+				%% procedural generation && genetic / evolutionary / memetic algorithms
+			\end{itemize}
+		\end{block}
+	\end{column}
+	\end{columns}~\\
+	\begin{itemize}
+		\item SimCity, SimEarth, SimLife... then \emph{Creatures} (1995) !
+	\end{itemize}
+\end{frame}
+
+\def\titleSectionSecondPart{Next Steps (2000's)}
+\section{\titleSectionSecondPart }
+\def\titleSubSectionSecondPartOne{ Gathering information }
+\subsection{ \titleSubSectionSecondPartOne }
+\begin{frame}
+	\frametitle{ \titleSubSectionSecondPartOne }
+	\begin{itemize}
+		\item Articles, computer software...
+		\item Test some developments (HyperTalk, Perl, Scheme...)
+		\item Choice of Java : 
+		\begin{itemize}
+			\item Multiple OS to make effective ; 
+			\item Object-Oriented Programming (OOP) ; 
+			\item Reflectivity ; 
+			\item At start : learning ;
+			\item Evolution : more effective on Design Patterns and numerous frameworks !
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\def\titleSubSectionSecondPartTwo{ Starting exploration and implementations }
+\subsection{ \titleSubSectionSecondPartTwo }
+\begin{frame}
+	\frametitle{ \titleSubSectionSecondPartTwo }
+	\begin{itemize}
+		\item Data analysis and treatment ; 
+		\item Model(s) : Genetic, World / Environment, Interactions ... ; 
+		\item (Design) Patterns ; 
+		\item File(s) Format(s) ; 
+		\item Data Pipelining (?) ...
+		\item[] 
+		\item \textbf{From 2000 to 2010 !} 
+	\end{itemize}
+\end{frame}
+
+%% \def\titleSubSectionSecondPartThree{ ... }
+%% \subsection{ \titleSubSectionSecondPartThree }
+%% \begin{frame}
+%% 	\frametitle{ \titleSubSectionSecondPartThree }
+%% 	\begin{itemize}
+%% 		\item ... 
+%% 	\end{itemize}
+%% \end{frame}
+
+\def\titleSectionThirdPart{Project awakening (July 2020 and present)}
+\section{\titleSectionThirdPart }
+\def\titleSubSectionThirdPartOne{ Passing to GitHub (July 2020) }
+\subsection{ \titleSubSectionThirdPartOne }
+\begin{frame}
+	\frametitle{ \titleSubSectionThirdPartOne }
+	\begin{itemize}
+		\item Publication in GitHub : \texttt{https://github.com/gabywald/BioSilico}
+		\item Using Maven to regroup specific parts in same project : 
+		\begin{itemize}
+			\item Main BioSilico Model and Commons ; 
+			\item Cell Model (Project in Master) ; 
+			\item Creatures Data and exploration ; 
+			\item Neural Networks exploration ; 
+			\item Crypto ideas and data format exploration ; 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\def\titleSubSectionThirdPartTwo{ Implementations and Ideas to come }
+\subsection{ \titleSubSectionThirdPartTwo }
+\begin{frame}
+	\frametitle{ \titleSubSectionThirdPartTwo }
+	\begin{itemize}
+		\item \textbf{Mainly reworking the 'biosilico-biosilico' part !} ; 
+		\item Making an example (\textbf{AntHill}) ; 
+		\item Model reviewed (implementation) : 
+		\begin{itemize}
+			\item Unit Tests with JUnit ; 
+			\item Generalization (IChemicals, IEnvironment...) ; 
+			\item Stream / Lambda (Java 8) ; 
+			\item Design Patterns (Builders, Strategy, ...) ; 
+			\item Enumerations (to clarify use) ; 
+		\end{itemize}
+		\item[] 
+		\item Main purpose : Video Game for Biology \& Life Science, Learning Concepts and Exploration / Use of 'Agents'. 
+	\end{itemize}
+\end{frame}
+
+\def\titleSubSectionThirdPartThree{ More to be done }
+\subsection{ \titleSubSectionThirdPartThree }
+\begin{frame}
+	\frametitle{ \titleSubSectionThirdPartThree }
+	\begin{itemize}
+		\item Need a review for genetics and results ; 
+		\item[] 
+		\item Creatures genetics to be more explored ; 
+		\item Conversion from Creatures (?) ; 
+		\item BioJava exploration \& Tests \& Tutorials ; 
+		\item[] 
+		\item Other applications : Interactive Agents for Computer Systems, CyberSecurity, Evolutive Environment in MMORPG...
+	\end{itemize}
+\end{frame}
+
+\def\sectionPartQuestions{Questions ?}
+\section{\sectionPartQuestions}
+\begin{frame}
+	\frametitle{\sectionPartQuestions}
+	\begin{itemize}
+		\item Questions ?!
+	\end{itemize}
+\end{frame}
+
+\def\sectionPartBibliographie{Bibliography / Mediagraphy}
+\section{\sectionPartBibliographie}
+\begin{frame}
+	\frametitle{\sectionPartBibliographie}
+	\nocite{*}
+	\bibliography{presentationBioSilico15minutes}
+	% \bibliographystyle{frplain} % plain or frplain
+	\bibliographystyle{plain}
+\end{frame}
+
+\end{document}
