@@ -6,6 +6,10 @@ import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.ObjectType;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 public class BaseDecisionSimpleAction<T extends Agent> extends BaseDecisionOnlyOneAttribute {
 
 	private Function<Agent, Boolean> toApply;
