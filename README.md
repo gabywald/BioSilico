@@ -60,7 +60,11 @@ Idea of a Tool to build "meta-genes" / Pathways :
 * StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
 * At Least 6 Genes !
 
-Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
+Some biochemistry to get deeper on this Ant ! 
+
+=> Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
+
+And a Bacteria too ?!
 
 TODO better testing "for real"
 

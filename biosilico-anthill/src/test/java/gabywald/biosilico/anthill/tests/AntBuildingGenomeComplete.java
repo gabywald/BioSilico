@@ -785,7 +785,7 @@ class AntBuildingGenomeComplete {
 		testAnt.cyclePlusPlus(); // to permit correct initialization of "starting genes"
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestAntCompleteGenome.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestAntCompleteGenome.txt", testAnt);
 		
 		BuildingGenomeHelper.exportGenome("GenomeAntCompleteGenome.txt", testAnt);
 		
