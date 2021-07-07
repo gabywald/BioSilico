@@ -60,9 +60,23 @@ Idea of a Tool to build "meta-genes" / Pathways :
 * StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
 * At Least 6 Genes !
 
-Some biochemistry to get deeper on this Ant ! Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
+Some biochemistry to get deeper on this Ant ! 
+
+=> Exploration with Plant (without any Brain / BrainLobe / Instinct / EmitterReceptor genes) !
+
+And a Bacteria too ?!
 
 TODO better testing "for real"
+
+Notes 20210707
+  * Generate full family (bacta, viridita, anima) with builders with genetic algorithm to select correct and valid genomes ; 
+  * Make Builder(s) of pathways (as indicated above ! => selection of genes to make a specific behavior, not only metabolic) : to permit to tests them exhaustively ; 
+  * Graphical view of evolution of populations, elements and chemicals... With charts and plots ! See JFreeChart  (?!) : 
+    * https://zetcode.com/java/jfreechart/
+    * https://caveofprogramming.com/java/charts-in-java-swing-with-jfreechart.html 
+    * https://stackoverflow.com/questions/29708147/custom-graph-java-swing
+
+... 
 
 ### 'biosilico-biojava' : 
 

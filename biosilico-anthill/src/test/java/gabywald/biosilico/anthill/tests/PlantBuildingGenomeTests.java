@@ -407,6 +407,9 @@ class PlantBuildingGenomeTests {
 		testPlant.setNameBiosilico("PlantHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
+		// ***** Export Plant as a TXT file !
+		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
+		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
@@ -449,7 +452,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** one execution in this context
 		w.execution();
-		testPlant.cyclePlusPlus(); // to permit correct initialization of "starting genes"
+		testPlant.cyclePlusPlus();
 		
 		Assertions.assertEquals( 0, testPlant.hasObjectType(ObjectType.FOOD));
 		Assertions.assertEquals( 0, testPlant.hasAgentStatus(StatusType.GAMET));
@@ -477,8 +480,8 @@ class PlantBuildingGenomeTests {
 //			BuildingGenomeHelper.show( p );
 //		});
 		
-		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
+		// ***** Export Plant as a TXT file !
+		// BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
 		
 		BuildingGenomeHelper.exportGenome("GenomePlantCompleteGenome.txt", testPlant);
 		
@@ -820,7 +823,7 @@ class PlantBuildingGenomeTests {
 		BuildingGenomeHelper.show(testPlant, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalReactionGenome.txt", testPlant);
+		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenome.txt", testPlant);
 		
 	}
 	
@@ -1211,7 +1214,7 @@ class PlantBuildingGenomeTests {
 		BuildingGenomeHelper.show(testPlant, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies01.txt", testPlant);
+		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies01.txt", testPlant);
 		
 	}
 
@@ -1656,7 +1659,7 @@ class PlantBuildingGenomeTests {
 		BuildingGenomeHelper.show(testPlant, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies02.txt", testPlant);
+		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies02.txt", testPlant);
 		
 	}
 
@@ -2102,7 +2105,7 @@ class PlantBuildingGenomeTests {
 		BuildingGenomeHelper.show(testPlant, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies03.txt", testPlant);
+		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies03.txt", testPlant);
 		
 	}
 

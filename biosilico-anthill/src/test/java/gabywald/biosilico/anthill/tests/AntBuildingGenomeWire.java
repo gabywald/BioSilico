@@ -749,7 +749,7 @@ class AntBuildingGenomeWire {
 		BuildingGenomeHelper.show(testAnt, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestWireBrainWithDecisionAndInstincts.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestWireBrainWithDecisionAndInstincts.txt", testAnt);
 		
 		BuildingGenomeHelper.exportGenome("GenomeWireBrainWithDecisionAndInstincts.txt", testAnt);
 		

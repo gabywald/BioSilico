@@ -27,7 +27,7 @@ public abstract class BuildingGenomeHelper {
 	
 	public static final int indexLessRemovePheromone = 350;
 
-	public static void exportAntAsTXTfile(String fileName, Organism testAnt) {
+	public static void exportAsTXTfile(String fileName, Organism testAnt) {
 		File antGeneticData = new File("src/test/resources/" + fileName);
 		antGeneticData.setChamps( testAnt.toString().split("\n") );
 		antGeneticData.setChamps(0, "TAXON ID\tRecording from test. ");

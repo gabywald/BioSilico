@@ -283,7 +283,7 @@ class AntBuildingGenomeTests {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestAntstStimulusDecisionAllDirectionsVariant.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestAntstStimulusDecisionAllDirectionsVariant.txt", testAnt);
 		
 	}
 	
@@ -440,7 +440,7 @@ class AntBuildingGenomeTests {
 		BuildingGenomeHelper.show(testAnt, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromones.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromones.txt", testAnt);
 		
 	}
 	
@@ -532,7 +532,7 @@ class AntBuildingGenomeTests {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestStimulusDecisionAllDirectionsFOOD.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsFOOD.txt", testAnt);
 		
 	}
 	
@@ -766,7 +766,7 @@ class AntBuildingGenomeTests {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromonesAndFOOD.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromonesAndFOOD.txt", testAnt);
 		
 	}
 	
@@ -842,7 +842,7 @@ class AntBuildingGenomeTests {
 		BuildingGenomeHelper.show(testAnt, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestStimulusDecisionHasFOOD.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionHasFOOD.txt", testAnt);
 		
 	}
 	
@@ -1145,7 +1145,7 @@ class AntBuildingGenomeTests {
 		BuildingGenomeHelper.show(testAnt, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestWireBrainDecisionMOVEAWAY.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestWireBrainDecisionMOVEAWAY.txt", testAnt);
 		
 	}
 	
@@ -1602,7 +1602,7 @@ class AntBuildingGenomeTests {
 		BuildingGenomeHelper.show(testAnt, wc);
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAntAsTXTfile("TestBiochemicalReactions.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("TestBiochemicalReactions.txt", testAnt);
 		
 		BuildingGenomeHelper.exportGenome("GenomeBiochemicalReactions.txt", testAnt);
 		
