@@ -24,7 +24,7 @@ For this Project or others :
 	
 	- Creatures Game Serie
 	- Memetic AI (use in "NeverWinter" Video Game) : https://sourceforge.net/projects/memeticai/ ; https://github.com/squattingmonk/memeticai ; ... 
-	- World Of WarCraft "Corrupted Blod Incident" : https://en.wikipedia.org/wiki/Corrupted_Blood_incident
+	- World Of WarCraft "Corrupted Blood Incident" : https://en.wikipedia.org/wiki/Corrupted_Blood_incident
 	- Procedural Generation : https://en.wikipedia.org/wiki/Procedural_generation ; https://linuxfr.org/tags/gamedev/public ; https://linuxfr.org/news/je-cree-mon-jeu-video-e10-generation-procedurale-de-carte-partie-1 ; https://linuxfr.org/news/je-cree-mon-jeu-video-e11-generation-procedurale-de-carte-partie-2 ; ...
 	- BioInspiration https://en.wikipedia.org/wiki/Bioinspiration
 	- Deliverable D2.2.3 - Overview on Bio-inspired operation strategies : https://irriis.org/index6bf2.html?lang=en&nav=344 ; https://irriis.org/File6836.pdf?lang=2&oiid=9139&pid=572 ; ...
@@ -92,9 +92,26 @@ Notes 20210707
 
 ... 
 
-### 'biosilico-biojava' : 
+### 'biosilico-bioframeworks' : 
 
-Aim of these Part is to put some example of BioJava FrameWork use !
+Aim of these Part is to put some example of BioFrameWork use !
+  * BioJava
+  * Biopython
+  * BioPerl ?
+  * BioC++
+  * ... 
+
+And some other examples and ideas ?!
+
+Some notes and tutorials : 
+  * Biopython
+    * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
+    * https://biopython.org/DIST/docs/tutorial/Tutorial.html
+    * ... 
+  * BioJava
+  * BioPerl
+  * BioC++
+  * ... 
 
 ### 'biosilico-biosilico' : 
 

@@ -29,7 +29,7 @@
 		
 		<dependency>
 			<groupId>gabywald</groupId>
-			<artifactId>biosilico-biojava</artifactId>
+			<artifactId>biosilico-bioframeworks</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
