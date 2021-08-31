@@ -109,8 +109,16 @@ Some notes and tutorials :
     * https://biopython.org/DIST/docs/tutorial/Tutorial.html
     * ... 
   * BioJava
+    * https://github.com/biojava/biojava-tutorial
+    * https://biojava.org/docs/api5.3.0/index.html
+    * ... 
   * BioPerl
   * BioC++
+    * http://biocpp.sourceforge.net/
+    * https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently
+    * https://github.com/seqan
+    * ...
+    * ...
   * ... 
 
 ### 'biosilico-biosilico' : 

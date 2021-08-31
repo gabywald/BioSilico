@@ -9,7 +9,7 @@ from Bio import SeqIO
 
 ## read and print FASTA data
 fasta_records = []
-for seq_record in SeqIO.parse("ls_orchid.fasta", "fasta"):
+for seq_record in SeqIO.parse("../resources/ls_orchid.fasta", "fasta"):
   print(seq_record.id)
   print(repr(seq_record.name))
   print(repr(seq_record.description))
@@ -20,7 +20,7 @@ for seq_record in SeqIO.parse("ls_orchid.fasta", "fasta"):
 
 ## read and print GENBANK data
 genbank_records = []
-for seq_record in SeqIO.parse("ls_orchid.gbk", "genbank"):
+for seq_record in SeqIO.parse("../resources/ls_orchid.gbk", "genbank"):
   print(seq_record.id)
   print(repr(seq_record.name))
   print(repr(seq_record.description))
