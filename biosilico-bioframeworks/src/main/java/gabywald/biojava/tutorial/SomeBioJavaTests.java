@@ -53,6 +53,10 @@ public class SomeBioJavaTests {
 					);
 			for (String key : map.keySet() ) {
 				Logger.printlnLog(LoggerLevel.LL_INFO, "genbank: \t" + key + "\t::\t" + map.get(key));
+				DNASequence dnaSeq = map.get(key);
+				Logger.printlnLog(LoggerLevel.LL_INFO, "\t\t\t" + dnaSeq.getGCCount() 
+														+ "\t" + dnaSeq.getTaxonomy().getID() 
+														+ "\t" + dnaSeq.getFeatures().size() );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
