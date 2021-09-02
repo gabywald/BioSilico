@@ -14,6 +14,20 @@ More review were also done to get an "AntHill Example" (Ants and Plant in a smal
  - Eclipse 2020
  - Java 8
  - Maven 3
+
+## Things to Explore
+
+For this Project or others : 
+* Python language and usual librairies for data analysis (Pandas, NumPy, Scikit Learn...)
+* BioJava, BioPerl, BioPython... (BioC++ ?)
+* Some Inspirationnal Video Games and associated topics : 
+	
+	- Creatures Game Serie
+	- Memetic AI (use in "NeverWinter" Video Game) : https://sourceforge.net/projects/memeticai/ ; https://github.com/squattingmonk/memeticai ; ... 
+	- World Of WarCraft "Corrupted Blood Incident" : https://en.wikipedia.org/wiki/Corrupted_Blood_incident
+	- Procedural Generation : https://en.wikipedia.org/wiki/Procedural_generation ; https://linuxfr.org/tags/gamedev/public ; https://linuxfr.org/news/je-cree-mon-jeu-video-e10-generation-procedurale-de-carte-partie-1 ; https://linuxfr.org/news/je-cree-mon-jeu-video-e11-generation-procedurale-de-carte-partie-2 ; ...
+	- BioInspiration https://en.wikipedia.org/wiki/Bioinspiration
+	- Deliverable D2.2.3 - Overview on Bio-inspired operation strategies : https://irriis.org/index6bf2.html?lang=en&nav=344 ; https://irriis.org/File6836.pdf?lang=2&oiid=9139&pid=572 ; ...
  
 ## Indication for internal readings 
 
@@ -78,9 +92,43 @@ Notes 20210707
 
 ... 
 
-### 'biosilico-biojava' : 
+### 'biosilico-bioframeworks' : 
 
-Aim of these Part is to put some example of BioJava FrameWork use !
+Aim of these Part is to put some example of BioFrameWork use !
+  * BioJava
+  * Biopython
+  * BioPerl
+  * BioC++
+  * ... 
+
+And some other examples and ideas ?!
+
+Some notes and tutorials : 
+  * Biopython
+    * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
+    * https://biopython.org/DIST/docs/tutorial/Tutorial.html
+    * https://biopython.org/docs/1.75/api/Bio.SeqUtils.html
+    * ... 
+    * ... 
+  * BioJava
+    * https://github.com/biojava/biojava-tutorial
+    * https://biojava.org/docs/api5.3.0/index.html
+    * ... 
+  * BioPerl
+    * https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/
+    * https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm
+    * ... 
+  * BioC++
+    * http://biocpp.sourceforge.net/
+    * https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently
+    * https://github.com/seqan
+    * ...
+    * ...
+  * Some More Courses / Training / Tutorials : 
+    * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
+    * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
+    * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython
+    * ... 
 
 ### 'biosilico-biosilico' : 
 

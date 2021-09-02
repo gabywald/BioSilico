@@ -18,12 +18,12 @@
 		<module>biosilico-commons</module>
 		<module>biosilico-creatures</module>
 		<module>biosilico-neuralnetworks</module>
-		<module>biosilico-tests</module>
 		<module>biosilico-crypto</module>
-		<module>biosilico-biojava</module>
 		<module>biosilico-cellmodel</module>
 		<module>biosilico-biosilico</module>
 		<module>biosilico-anthill</module>
+		<module>biosilico-bioframeworks</module>
+		<module>biosilico-tests</module>
 	</modules>
 
 	<properties>

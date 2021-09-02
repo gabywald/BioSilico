@@ -1,46 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>gabywald</groupId>
 		<artifactId>BioSilico</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
+
+	<artifactId>biosilico-bioframeworks</artifactId>
 	
-	<artifactId>biosilico-anthill</artifactId>
-	
+	<!-- <packaging>jar</packaging> -->
+
 	<dependencies>
 
 		<dependency>
-			<groupId>gabywald</groupId>
-			<artifactId>biosilico-biosilico</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.biojava</groupId>
+			<artifactId>biojava-core</artifactId>
+			<version>5.3.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- junit 5, unit test -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- -->
 
 	</dependencies>
 
@@ -58,4 +40,5 @@
 			</testResource>
 		</testResources>
 	</build>
+
 </project>
