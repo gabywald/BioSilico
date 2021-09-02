@@ -97,7 +97,7 @@ Notes 20210707
 Aim of these Part is to put some example of BioFrameWork use !
   * BioJava
   * Biopython
-  * BioPerl ?
+  * BioPerl
   * BioC++
   * ... 
 
@@ -107,19 +107,24 @@ Some notes and tutorials :
   * Biopython
     * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
     * https://biopython.org/DIST/docs/tutorial/Tutorial.html
+    * https://biopython.org/docs/1.75/api/Bio.SeqUtils.html
+    * ... 
     * ... 
   * BioJava
     * https://github.com/biojava/biojava-tutorial
     * https://biojava.org/docs/api5.3.0/index.html
     * ... 
   * BioPerl
+    * https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/
+    * https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm
+    * ... 
   * BioC++
     * http://biocpp.sourceforge.net/
     * https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently
     * https://github.com/seqan
     * ...
     * ...
-  * Some Courses / Training / Tutorials : 
+  * Some More Courses / Training / Tutorials : 
     * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
     * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
     * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython

@@ -15,6 +15,7 @@ for seq_record in SeqIO.parse("../resources/ls_orchid.fasta", "fasta"):
   print(repr(seq_record.description))
   print(repr(seq_record.seq))
   print(len(seq_record))
+  print(len(seq_record.features))
   fasta_records.append( seq_record )
 
 
@@ -26,7 +27,11 @@ for seq_record in SeqIO.parse("../resources/ls_orchid.gbk", "genbank"):
   print(repr(seq_record.description))
   print(repr(seq_record.seq))
   print(len(seq_record))
+  print(len(seq_record.features))
+  for feat in seq_record.features:
+    print( "\t feature: %s" % ( feat ) )
   genbank_records.append( seq_record )
+  print( "--- " )
 
 print( "*****END*****" )
 
@@ -82,5 +87,34 @@ print( "" )
 print(GC123( fasta_seq_toTest ) )
 # print(GC( genba_seq_toTest ) )
 print(GC123( genba_seq_toTest ) )
+
+
+## NCBI connection
+def FetchSeq(mydb, myrettype, myretmode, myid):
+  from Bio import Entrez
+  from Bio import SeqIO
+  Entrez.email = "gabywald@laposte.net"
+  with Entrez.efetch(db=mydb, rettype=myrettype, retmode=myretmode, id=myid) as handle:
+    seq_record = SeqIO.read(handle, "fasta")
+  print("%s with %i features" % (seq_record.id, len(seq_record.features)))
+
+print( "***** FetchSeq nucleotide fasta text 6273291" )
+FetchSeq("nucleotide", "fasta", "text", "6273291")
+print( "" )
+
+def FetchSeqMulti(mydb, myrettype, myretmode, myid):
+  from Bio import Entrez
+  from Bio import SeqIO
+  Entrez.email = "gabywald@laposte.net"
+  with Entrez.efetch(db=mydb, rettype=myrettype,\
+                       retmode=myretmode, id=myid) as handle:
+    for seq_record in SeqIO.parse(handle, "gb"):
+      print("%s %s..." % (seq_record.id, seq_record.description[:50]))
+      print("Sequence length %i, %i features, from: %s" 
+        % (len(seq_record), len(seq_record.features), seq_record.annotations["source"]))
+
+print( "***** FetchSeqMulti nucleotide fasta text 6273291,6273290,6273289" )
+FetchSeqMulti("nucleotide", "gb", "text", "6273291,6273290,6273289")
+print( "" )
 
 

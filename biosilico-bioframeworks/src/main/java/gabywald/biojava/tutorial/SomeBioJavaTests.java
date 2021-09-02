@@ -7,6 +7,8 @@ import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.RNASequence;
+import org.biojava.nbio.core.sequence.features.FeatureInterface;
+import org.biojava.nbio.core.sequence.features.Qualifier;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
 import org.biojava.nbio.core.sequence.io.GenbankReaderHelper;
 
@@ -54,9 +56,26 @@ public class SomeBioJavaTests {
 			for (String key : map.keySet() ) {
 				Logger.printlnLog(LoggerLevel.LL_INFO, "genbank: \t" + key + "\t::\t" + map.get(key));
 				DNASequence dnaSeq = map.get(key);
-				Logger.printlnLog(LoggerLevel.LL_INFO, "\t\t\t" + dnaSeq.getGCCount() 
+				Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + dnaSeq.getGCCount() 
 														+ "\t" + dnaSeq.getTaxonomy().getID() 
 														+ "\t" + dnaSeq.getFeatures().size() );
+				for (FeatureInterface<?, ?> iFeature : dnaSeq.getFeatures()) {
+					// dnaSeq.getFeatures().get(index)
+					// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + iFeature.getShortDescription());
+					// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + iFeature.getDescription());
+					// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + iFeature.getChildrenFeatures().size());
+					Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + iFeature.getType() + "\t" + iFeature.getSource());
+					for (String keyQualif : iFeature.getQualifiers().keySet()) {
+						if (iFeature.getQualifiers().containsKey(keyQualif)) {
+							// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + keyQualif);
+							for (Qualifier quali : iFeature.getQualifiers().get(keyQualif) ) {
+								Logger.printlnLog(LoggerLevel.LL_INFO, "\t\t" + quali.getName() + "::" + quali.getValue());
+							}
+						} else {
+							Logger.printlnLog(LoggerLevel.LL_INFO, "\t\t" + keyQualif + " is null. ");
+						}
+					}
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
