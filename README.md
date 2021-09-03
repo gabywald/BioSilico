@@ -90,6 +90,17 @@ Notes 20210707
     * https://caveofprogramming.com/java/charts-in-java-swing-with-jfreechart.html 
     * https://stackoverflow.com/questions/29708147/custom-graph-java-swing
 
+Notes 20210903
+  * What make an organism 'valid' / alive exactly ? And what change to 'death' (programmatically) ?
+    * Some specific  active metabolic pathways ? TODO precise analysis here about dynamic of pathways
+    * Death genes
+    * ...
+  * "Genetic Algorithm" to generate Ant valid examples of genomes (optimisation) ?!
+    * test around "optimal genome" from "hand-made genome"
+    * automatisation of tests
+    * ... 
+  * ... 
+
 ... 
 
 ### 'biosilico-bioframeworks' : 
