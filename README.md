@@ -11,15 +11,19 @@ Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some revie
 More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020]
 
 ## NOTE For Dev Configuration
- - Eclipse 2020
- - Java 8
- - Maven 3
+  - Eclipse 2020
+  - Java 8
+  - Maven 3
+ 
+OS used : Ubuntu 20.04
+For elements in python, version used is 3.8
+For elements in Perl, version used is 5.30.0 
 
 ## Things to Explore
 
 For this Project or others : 
 * Python language and usual librairies for data analysis (Pandas, NumPy, Scikit Learn...)
-* BioJava, BioPerl, BioPython... (BioC++ ?)
+* BioJava, BioPerl, BioPython... (BioC++ ?) ; EMBOSS ?
 * Some Inspirationnal Video Games and associated topics : 
 	
 	- Creatures Game Serie
@@ -110,6 +114,7 @@ Aim of these Part is to put some example of BioFrameWork use !
   * Biopython
   * BioPerl
   * BioC++
+  * EMBOSS
   * ... 
 
 And some other examples and ideas ?!
@@ -119,7 +124,14 @@ Some notes and tutorials :
     * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
     * https://biopython.org/DIST/docs/tutorial/Tutorial.html
     * https://biopython.org/docs/1.75/api/Bio.SeqUtils.html
-    * ... 
+    * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
+    * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
+    * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython
+    * => (article gratuit) " GNU/Linux Magazine Hors-série N° Numéro 73 Python : niveau avancé à expert " (Juillet / Août 2014) https://connect.ed-diamond.com/GNU-Linux-Magazine/glmfhs-073/la-bioinformatique-avec-biopython
+    * https://www.tutorialspoint.com/biopython/biopython_sequence_alignments.htm
+    * https://www.hebergementwebs.com/tutoriel-biopython/biopython-alignements-de-sequences
+    * http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html
+    * 
     * ... 
   * BioJava
     * https://github.com/biojava/biojava-tutorial
@@ -135,10 +147,10 @@ Some notes and tutorials :
     * https://github.com/seqan
     * ...
     * ...
+  * EMBOSS (tools suite). 
+    * "Voyage initiatique vers la bio-informatique : les premiers pas" (article payant) https://connect.ed-diamond.com/gnu-linux-magazine/glmf-251/voyage-initiatique-vers-la-bio-informatique-les-premiers-pas
+    * ... 
   * Some More Courses / Training / Tutorials : 
-    * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
-    * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
-    * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython
     * ... 
 
 ### 'biosilico-biosilico' : 
