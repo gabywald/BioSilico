@@ -41,6 +41,48 @@ See document present in "/biosilico-biosilico/src/main/resources/biosilico/docs/
 
 GNU General Public Licence V3 (GPL3)
 
+## To review for BioInformatics 
+
+### See also 'biosilico-bioframeworks'
+
+Specific maven module for some example and frameworks and tools used in BioInformartics
+
+### FAIR Principles "Findable, Accessible, Interoperable, Reusable"
+
+This part in French, corresponding to [Les principes FAIR : Findable, Accessible, Interoperable, Reusable](https://openscience.pasteur.fr/2020/10/05/les-principes-fair-findable-accessible-interoperable-reusable/), linked to ["The FAIR Guiding Principles for scientific data management and stewardship"](https://www.nature.com/articles/sdata201618). 
+
+On vous explique
+Les principes FAIR : Findable, Accessible, Interoperable, Reusable
+5 octobre 2020 CeRIS - Institut Pasteur	
+
+Les principes FAIR (Findable, Accessible, Interoperable, Reusable) correspondent à des lignes directrices dont l’objectif premier est d’améliorer la réutilisation des données de la recherche. Ils ont été publiés en 2016 dans l’article The FAIR Guiding Principles for scientific data management and stewardship.
+
+À bien garder en tête : des données peuvent être « FAIR » sans être librement accessibles. Suivre les principes FAIR permet de s’assurer que ses données sont réutilisables, qu’elles soient partagées ou non.
+
+À chaque lettre du mot FAIR sont liées des bonnes pratiques de gestion des données :
+
+Findable / Facile à trouver :
+  * Déposer les données dans un entrepôt
+  * Attribuer un identifiant unique et pérenne aux données
+  * Décrire les données par des métadonnées riches
+
+Accessible :
+  * Définir les conditions d’accès aux données
+  * Si possible, rendre les données accessibles librement
+  * Si les données doivent rester en accès restreint, rendre accessibles les métadonnées pour signaler l’existence des données
+
+Interopérable :
+  * Privilégier des formats ouverts ou largement utilisés
+  * Mettre à disposition le code source du logiciel nécessaire pour lire, traiter, analyser les données s’il a été développé en interne
+  * Privilégier les standards de métadonnées et les vocabulaires standards
+  * Si possible, indiquer des liens vers d’autres ressources (autres données, publication…)
+
+Reusable / Réutilisable :
+  * Associer une licence de diffusion aux jeux de données
+  * Associer de la documentation pour décrire les données de façon détaillée, les contextualiser, les rendre compréhensibles…
+
+Les principes FAIR peuvent également s’appliquer aux logiciels de recherche, en les reformulant et en les adaptant. C’est ce que proposent les auteurs de l’article Towards FAIR principles for research software.
+
 ## Adding and notes about evolutions
 
 Units Tests ; review ; ...
@@ -109,49 +151,65 @@ Notes 20210903
 
 ### 'biosilico-bioframeworks' : 
 
-Aim of these Part is to put some example of BioFrameWork use !
-  * BioJava
-  * Biopython
-  * BioPerl
-  * BioC++
-  * EMBOSS
+Aim of these Part is to put some example of BioFrameWork use and other tools !
+  * BioJava / Biopython / BioPerl / BioC++
+  * EMBOSS (tool suite)
+  * Pipelining / Pipeline tools : SnakeMake, ...
+  * FAIR principles in bioinformatics (reproductibility, open data, ...) 
   * ... 
 
 And some other examples and ideas ?!
 
 Some notes and tutorials : 
   * Biopython
-    * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
-    * https://biopython.org/DIST/docs/tutorial/Tutorial.html
-    * https://biopython.org/docs/1.75/api/Bio.SeqUtils.html
-    * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
-    * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
-    * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython
-    * => (article gratuit) " GNU/Linux Magazine Hors-série N° Numéro 73 Python : niveau avancé à expert " (Juillet / Août 2014) https://connect.ed-diamond.com/GNU-Linux-Magazine/glmfhs-073/la-bioinformatique-avec-biopython
-    * https://www.tutorialspoint.com/biopython/biopython_sequence_alignments.htm
-    * https://www.hebergementwebs.com/tutoriel-biopython/biopython-alignements-de-sequences
-    * http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html
-    * 
+    * [Tutorial Biopython in PDF](https://biopython.org/DIST/docs/tutorial/Tutorial.pdf)
+    * [Tutorial Biopython in HTML](https://biopython.org/DIST/docs/tutorial/Tutorial.html)
+    * [Biopython SeqUtils](https://biopython.org/docs/1.75/api/Bio.SeqUtils.html)
+    * [Cours BioInfo Université Paris Descartes](http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/)
+    * [Scheme ou Python ? Pour des biologistes...](https://www.epi.asso.fr/revue/articles/a1912b.htm) / [Python Scheme ou Python ? Pour des biologistes...](https://www.laurentbloch.net/MySpip3/Scheme-ou-) (Laurent Bloch)
+    * [Python et Biopython](https://www.laurentbloch.net/MySpip3/Python-et-Biopython)
+    * ["GNU/Linux Magazine Hors-série N° Numéro 73 Python : niveau avancé à expert " (Juillet / Août 2014)](https://connect.ed-diamond.com/GNU-Linux-Magazine/glmfhs-073/la-bioinformatique-avec-biopython)
+    * [Biopython - Sequence Alignments](https://www.tutorialspoint.com/biopython/biopython_sequence_alignments.htm)
+    * [Biopython - Alignements de séquence ](https://www.hebergementwebs.com/tutoriel-biopython/biopython-alignements-de-sequences)
     * ... 
   * BioJava
-    * https://github.com/biojava/biojava-tutorial
-    * https://biojava.org/docs/api5.3.0/index.html
+    * [BioJava tutorial](https://github.com/biojava/biojava-tutorial)
+    * [BioJava API 5.3.0](https://biojava.org/docs/api5.3.0/index.html)
     * ... 
   * BioPerl
-    * https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/
-    * https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm
+    * [Introduction to BioPerl](https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/)
+    * [Tutorial for BioPerl](https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm)
     * ... 
   * BioC++
-    * http://biocpp.sourceforge.net/
-    * https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently
-    * https://github.com/seqan
+    * [BioC++ Offical HomePage](http://biocpp.sourceforge.net/)
+    * [BioC++ - solving daily bioinformatic tasks with C++ efficiently - BIOSTEC 2020](https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently)
+    * [SeqAn](https://github.com/seqan)
     * ...
     * ...
   * EMBOSS (tools suite). 
-    * "Voyage initiatique vers la bio-informatique : les premiers pas" (article payant) https://connect.ed-diamond.com/gnu-linux-magazine/glmf-251/voyage-initiatique-vers-la-bio-informatique-les-premiers-pas
+    * [Voyage initiatique vers la bio-informatique : les premiers pas" (article payant)](https://connect.ed-diamond.com/gnu-linux-magazine/glmf-251/voyage-initiatique-vers-la-bio-informatique-les-premiers-pas)
+    * [Introduction to Sequence Analysis using EMBOSS](http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html)
     * ... 
+  * Pipelining / Pipelines : 
+    * [SnakeMake](https://bioinfo-fr.net/snakemake-pour-les-nuls)
+    * [NextFlow](https://bioinfo-fr.net/nextflow-pour-votre-prochain-pipeline)
+    * [KNIME](https://www.knime.com/)
+    * ... 
+    * ... 
+  * FAIR : 
+    * ["FAIR" à l'UFB / Institut Français de BioInformatique](https://www.france-bioinformatique.fr/?s=FAIR)
+    * [Présentation "Bonnes pratiques en bioinformatique : (essayer) d’aller vers plus de reproductibilité"](https://du-bii.github.io/module-5-Methodes-Outils/seance3_goodpractices/slides.html#1)
+    * [Formation IFB science ouverte & PGD -- Comment gérer des jeux de données haut-débit en sciences de la vie et de la santé](https://ifb-elixirfr.github.io/IFB-FAIR-data-training/)
+    * [Les principes FAIR : Findable, Accessible, Interoperable, Reusable](https://openscience.pasteur.fr/2020/10/05/les-principes-fair-findable-accessible-interoperable-reusable/)
+    * ...
   * Some More Courses / Training / Tutorials : 
     * ... 
+    
+TODO SnakeMake example(s)
+
+TODO other pipieline tools example(s)
+
+TODO BioC++ example(s)
 
 ### 'biosilico-biosilico' : 
 
