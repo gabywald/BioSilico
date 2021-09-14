@@ -191,10 +191,15 @@ Some notes and tutorials :
     * [Introduction to Sequence Analysis using EMBOSS](http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html)
     * ... 
   * Pipelining / Pipelines : 
-    * [SnakeMake](https://bioinfo-fr.net/snakemake-pour-les-nuls)
-    * [NextFlow](https://bioinfo-fr.net/nextflow-pour-votre-prochain-pipeline)
-    * [KNIME](https://www.knime.com/)
+    * [Introduction aux pipelines](https://bioinfo-fr.net/introduction-aux-pipelines)
+    * [SnakeMake on Bioinfo-fr.net](https://bioinfo-fr.net/mot-clef/snakemake)
+    * [GitHub - snakemake / snakemake](https://github.com/snakemake/snakemake)
+    * [snakemake : a framework for reproductible data analysis](https://snakemake.github.io/)
+    * [snakemake stable documentation](https://snakemake.readthedocs.io/en/stable/)
     * ... 
+    * [Nextflow, pour votre prochain pipeline ?](https://bioinfo-fr.net/nextflow-pour-votre-prochain-pipeline)
+    * [Galaxy: Bien plus qu'un gestionnaire de workflows](https://bioinfo-fr.net/galaxy-bien-plus-quun-gestionnaire-de-workflows)
+    * [Bioinformatics and Next Generation Sequencing Extensions](https://www.knime.com/bioinformatics-and-next-generation-sequencing-extensions)
     * ... 
   * FAIR : 
     * ["FAIR" à l'UFB / Institut Français de BioInformatique](https://www.france-bioinformatique.fr/?s=FAIR)
@@ -207,7 +212,7 @@ Some notes and tutorials :
     
 TODO SnakeMake example(s)
 
-TODO other pipieline tools example(s)
+TODO other pipeline tools example(s)
 
 TODO BioC++ example(s)
 
