@@ -12,7 +12,7 @@ public class Pair<U, V> {
 	public final V second; 
 
 	/** Constructs a new Pair with specified values. */
-	Pair(U first, V second) {
+	public Pair(U first, V second) {
 		this.first = first;
 		this.second = second;
 	}
