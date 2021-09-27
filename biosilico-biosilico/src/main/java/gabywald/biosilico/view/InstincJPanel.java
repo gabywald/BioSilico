@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class InstincJPanel extends GeneJPanel {
 	/** Some Label's. */
-	private JLabel posxOrgLabel,posyOrgLabel,posxDesLabel,posyDesLabel,
-					weightLabel,variablLabel,threshoLabel;
+	private JLabel posxOrgLabel, posyOrgLabel, posxDesLabel, posyDesLabel, 
+					weightLabel, variablLabel, threshoLabel;
 	/** Some TextField's. */
-	private JTextField posxOrgField,posyOrgField,posxDesField,posyDesField,
-						weightField,variablField,threshoField;
+	private JTextField posxOrgField, posyOrgField, posxDesField, posyDesField, 
+						weightField, variablField, threshoField;
 	/** A checkBox. */
 	private JCheckBox checkBox;
 	

@@ -31,7 +31,10 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	private JButton createAgent;
 	/** This is used by {@link GeneticKit#agentTypeSelection}. */
 	private static final String agentTypeListe[] = 
-	{ "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
+		{ "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
+	/** This is used by {@link OrganismSelectJPanel#actionCreateAgent}. */
+	private static final String agentTypeNameListe[] = 
+		{ "", "SilicoDaemon", "SilicoBacter", "SilicoViridita", "SilicoAnima", "SilicoViria" };
 	/** Selection list of agent's type. */
 	private JComboBox<String> agentTypeSelection;
 	/** Field for the name of the agent. */
@@ -93,14 +96,10 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 
 	private void actionCreateAgent(int type) {
 		String name = this.getNameOrganism();
+		
 		if (name.equals("")) { name = "anonymous"; }
-		switch(type) {
-		case(1):name = "SilicoDaemon "	+name;break;
-		case(2):name = "SilicoBacter "	+name;break;
-		case(3):name = "SilicoViridita "+name;break;
-		case(4):name = "SilicoAnima "	+name;break;
-		case(5):name = "SilicoViria "	+name;break;
-		}
+		
+		name = agentTypeNameListe[type] + name;
 		
 		if (this.orgNamesPanel != null) {
 			this.orgNamesPanel.setScientificName(name);

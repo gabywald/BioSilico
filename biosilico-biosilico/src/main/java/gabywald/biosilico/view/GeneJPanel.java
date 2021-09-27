@@ -18,13 +18,13 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public abstract class GeneJPanel extends GeneKitsGBJPanel {
 	/** Some Title Label's. */
-	private JLabel generalLabel,specifiLabel;
+	private JLabel generalLabel, specifiLabel;
 	/** Some ChecjBox'es. */
-	private JCheckBox mutateBox,duplicBox,deleteBox,activiBox;
+	private JCheckBox mutateBox, duplicBox, deleteBox, activiBox;
 	/** Some Label's. */
-	private JLabel ageMinLabel,ageMaxLabel,sexLabel,mutRatLabel;
+	private JLabel ageMinLabel, ageMaxLabel, sexLabel, mutRatLabel;
 	/** Some TextField's. */
-	private JTextField ageMinTexte,ageMaxTexte,sexTexte,mutRatTexte;
+	private JTextField ageMinTexte, ageMaxTexte, sexTexte, mutRatTexte;
 	
 	/** Default constructor. */
 	public GeneJPanel() {

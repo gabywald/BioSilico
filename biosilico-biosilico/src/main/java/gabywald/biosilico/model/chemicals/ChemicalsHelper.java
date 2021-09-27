@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import gabywald.biosilico.data.FileBiological;
 import gabywald.global.data.File;
 import gabywald.global.structures.StringCouple;
 import gabywald.utilities.logger.Logger;
@@ -18,10 +19,10 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class ChemicalsHelper {
 	
 	/** Location of the file containing the list of chemicals (abbrev. and names). */
-	private static final String CHEMICAL_LIST_FILE				= "biosilico/data/ChemicalsList.txt";
+	private static final String CHEMICAL_LIST_FILE				= FileBiological.DEFAULT_PATH_NAME + "ChemicalsList.txt";
 	/** Location of the file containing the list of defined chemicals half lives. 
 	 * <br/>Limitations of 'Strictly chemicals' to avoid changes of "positioning and concepts" used otherwise !! */
-	private static final String CHEMICAL_HALFLIVES_LIST_FILE	= "biosilico/data/ChemicalsHalfLivesList.txt";
+	private static final String CHEMICAL_HALFLIVES_LIST_FILE	= FileBiological.DEFAULT_PATH_NAME + "ChemicalsHalfLivesList.txt";
 	/** Number of chemicals. */
 	public static final int CHEMICAL_LENGTH						= 1000;
 	/** Upper limit of "strictly defined chemical", Also "Special Chemical" for BiochemicalReaction. */

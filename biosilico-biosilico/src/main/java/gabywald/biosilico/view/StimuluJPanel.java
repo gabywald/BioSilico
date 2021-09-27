@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class StimuluJPanel extends GeneJPanel {
 	/** Some Label's. */
-	private JLabel indicaLabel,threshLabel,attribLabel,variabLabel,valuesLabel,scriptLabel;
+	private JLabel indicaLabel, threshLabel, attribLabel, variabLabel, valuesLabel, scriptLabel;
 	/** Some TextField's. */
-	private JTextField indicaField,threshField,attribField,variabField,valuesField,scriptField;
+	private JTextField indicaField, threshField, attribField, variabField, valuesField, scriptField;
 	/** Some CheckBox's. */
-	private JCheckBox percepBox,objectBox;
+	private JCheckBox percepBox, objectBox;
 	
 	public StimuluJPanel() {
 		this.indicaLabel	= new JLabel("Indicator : ");

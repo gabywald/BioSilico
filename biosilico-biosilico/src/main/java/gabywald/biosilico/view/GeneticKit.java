@@ -49,10 +49,10 @@ public class GeneticKit extends GeneKitJFrame {
 		this.southPanel.setPathStock(this.pathSelection.getPathStock());
 		this.southPanel.setOrgSelectPanel(this.northPanel);
 		/** Positions in content of JFrame */
-		this.getContentPane().add(this.westernPanel,"West");
-		this.getContentPane().add(this.northPanel,"North");
-		this.getContentPane().add(this.southPanel,"South");
-		this.getContentPane().add(this.centerPanel,"Center");
+		this.getContentPane().add(this.westernPanel, "West");
+		this.getContentPane().add(this.northPanel, "North");
+		this.getContentPane().add(this.southPanel, "South");
+		this.getContentPane().add(this.centerPanel, "Center");
 		this.setTitle("Genetic Kit");
 		this.setVisible(true);
 	}

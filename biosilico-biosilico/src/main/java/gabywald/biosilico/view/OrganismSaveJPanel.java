@@ -115,8 +115,8 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 					currentGenome.add(currentChromosome);
 					currentChromosome = new Chromosome();
 				} else { currentChromosome.addGene(tmp); }
-//				else { currentChromosome.addGene
-//						(GeneGattaca.getInstance(genesNamesList.getString(i))); }
+				// else { currentChromosome.addGene
+				// 		(GeneGattaca.getInstance(genesNamesList.getString(i))); }
 				tmp = null;
 			}
 		}

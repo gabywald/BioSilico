@@ -14,9 +14,9 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class InitConJPanel extends GeneJPanel {
 	/** Some Label's. */
-	private JLabel varLabel,valLabel;
+	private JLabel varLabel, valLabel;
 	/** Some TextField's. */
-	private JTextField valField,varField;
+	private JTextField valField, varField;
 	
 	public InitConJPanel() {
 		this.varLabel = new JLabel("Chemical n° : ");
