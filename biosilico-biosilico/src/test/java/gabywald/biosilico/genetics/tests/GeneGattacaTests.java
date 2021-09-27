@@ -16,6 +16,10 @@ import gabywald.biosilico.genetics.Instinct;
 import gabywald.biosilico.genetics.StimulusDecision;
 import gabywald.biosilico.structures.GeneticTranslator;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class GeneGattacaTests {
 
 	@Test

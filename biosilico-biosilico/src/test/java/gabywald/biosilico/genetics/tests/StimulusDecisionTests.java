@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.StimulusDecision;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class StimulusDecisionTests {
 
 	@Test

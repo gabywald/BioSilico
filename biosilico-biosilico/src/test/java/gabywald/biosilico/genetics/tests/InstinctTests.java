@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.Instinct;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class InstinctTests {
 
 	@Test

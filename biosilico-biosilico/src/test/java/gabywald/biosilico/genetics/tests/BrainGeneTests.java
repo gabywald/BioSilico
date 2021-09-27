@@ -7,6 +7,10 @@ import gabywald.biosilico.genetics.BrainGene;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.model.Brain;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class BrainGeneTests {
 
 	@Test

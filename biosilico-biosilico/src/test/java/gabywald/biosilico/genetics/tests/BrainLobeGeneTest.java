@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import gabywald.biosilico.genetics.BrainLobeGene;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class BrainLobeGeneTest {
 
 	@Test
