@@ -3,7 +3,7 @@ package gabywald.biosilico.genetics.builders.complex;
 import java.util.ArrayList;
 import java.util.List;
 
-import gabywald.biosilico.genetics.GeneGattaca;
+import gabywald.biosilico.genetics.BiochemicalReaction;
 import gabywald.biosilico.genetics.builders.Pair;
 
 /**
@@ -27,7 +27,7 @@ public class PathwayBuilder {
 	// // // - ... 
 	
 	private List<Pair<Integer, Integer> > coefAndChemicals = new ArrayList<Pair<Integer, Integer> >();
-	private List<GeneGattaca> outputGenes = new ArrayList<GeneGattaca>();
+	private List<BiochemicalReaction> outputGenes = new ArrayList<BiochemicalReaction>();
 	
 	public PathwayBuilder() {
 		// Nothing here (see above initialization). 
@@ -42,12 +42,13 @@ public class PathwayBuilder {
 		return this;
 	}
 	
-	public List<GeneGattaca> build() {
+	public List<BiochemicalReaction> build() {
 		// NOTE 20210924 : 
 		// // // - building serie(s) of BR Genes (specific algorithm to set !)
-		// // // - (0, 0) to separate input chemicals from utput chemicals -of the pathway)
+		// // // - (0, 0) to separate input chemicals from output chemicals of the pathway) ??
+		// // // - (0, 0) to separate different steps of pathway !!
 		// // // - different step to be indicated ?!
-		// // // - need of EmitterReceptor here ? (no connexion on brain ?!)
+		// // // - need of EmitterReceptor here ? (no connection on brain ?!)
 		// // // - need of StimulusDecision here ? (further actions ?!)
 		return this.outputGenes;
 	}
