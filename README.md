@@ -83,7 +83,7 @@ Reusable / Réutilisable :
 
 Les principes FAIR peuvent également s’appliquer aux logiciels de recherche, en les reformulant et en les adaptant. C’est ce que proposent les auteurs de l’article Towards FAIR principles for research software.
 
-## Adding and notes about evolutions
+## Adding and notes about evolutions of this project : 
 
 Units Tests ; review ; ...
 
@@ -97,6 +97,7 @@ For dev on BioSilico :
     * Abstraction for Chemicals / IChemicals
     * Decisions and Instincts to be precisely tested (with some examples)
     * Ideas about "Automatic Pathway construction" (GUI / Human Interface, Graphical or not)
+    * ...
 * Review for some genetics model / Type of genes : 
     * BiochemicalReaction
     * Instinct
@@ -149,7 +150,7 @@ Notes 20210903
 
 ... 
 
-### 'biosilico-bioframeworks' : 
+### 'biosilico-bioframeworks' : BioInformatics frameworks and similar tools
 
 Aim of these Part is to put some example of BioFrameWork use and other tools !
   * BioJava / Biopython / BioPerl / BioC++
@@ -216,7 +217,7 @@ TODO other pipeline tools example(s)
 
 TODO BioC++ example(s)
 
-### 'biosilico-biosilico' : 
+### 'biosilico-biosilico' : Core represnetation for "In Silico" modelisation
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
 
@@ -226,7 +227,7 @@ Implemented as a discrete "World" composed of WorldCase, which can contains Agen
 
 Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) to permit other implementations and different global uses !
 
-### 'biosilico-cellmodel' : 
+### 'biosilico-cellmodel' : a previous sample Cell Model
 
 A project made in 2009, in the same idea than the rest : modelisation of a cell in Java. Aim is to visualize tranfert of some elements between part of the cell (RNA, Protein...) and could be used as a basic to teach the CDB (Central Dogma of Biology). Transcription, traduction, treatment, transportation excretion of proteins / RNA / DNA...
 
@@ -242,15 +243,15 @@ Some exploration of Creatures Game series
 
 ...
 
-### 'biosilico-commons' : Common resources
+### 'biosilico-commons' : Common resources. 
 
 Some utils. Data (File, Directory, Filter), Structures, View... 
 
-### 'biosilico-crypto' : 
+### 'biosilico-crypto' : Ciphering ideas and some ressources. 
 
 Some cryptographic ideas, based on biological translation and use of a 'genetic code' to translate a nucleic sequence (DNA / RNA) to protein sequence. Main idea is to translate / reverse-translate 'computer source code' to 'biological sequences' and provides a basis to compare them with bioinformatic tools (phylogeny for example). 
 
-### 'biosilico-neuralnetworks' : 
+### 'biosilico-neuralnetworks' : Some tests on neural networks. 
 
 Some tests on neural networks. 
 
