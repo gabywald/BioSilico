@@ -3,16 +3,16 @@ package gabywald.biosilico.genetics.builders;
 /** 
  * Pair class 
  * see https://www.techiedelight.com/implement-pair-class-java/
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2021)
  */
-public class Pair<U, V> {
+public final class Pair<U, V> {
 	/** First field of a Pair */
 	public final U first;
 	/** Second field of a Pair */
 	public final V second; 
 
 	/** Constructs a new Pair with specified values. */
-	public Pair(U first, V second) {
+	Pair(U first, V second) {
 		this.first = first;
 		this.second = second;
 	}

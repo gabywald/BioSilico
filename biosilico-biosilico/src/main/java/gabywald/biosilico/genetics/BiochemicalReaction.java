@@ -10,8 +10,7 @@ import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
- * This type of Gene is to permit chemicals reactions of these sort, in mass action chemical reaction <b>aA + bB -> cC + dD</b> : 
- * <p></p>
+ * This type of Gene is to permit chemicals reactions of these sorts / kinds, in mass action chemical reaction <b>aA + bB -> cC + dD</b>, according to a certain 'speed' : 
  * <ul>
  * <li>A + B -> C + D : standard chemical reaction</li>
  * <li>A + B -> C : fusion</li>
@@ -120,13 +119,13 @@ public class BiochemicalReaction extends GeneGattaca {
 		boolean reaction = this.testABchemicals(vars);
 		int local_cycle = 0;
 		while (reaction && (this.KminVmax > local_cycle) ) {
-			if (this.Achem != NEUTRAL_INDEX) 
+			if (this.Achem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarLess(this.Achem, this.Acoef); }
-			if (this.Bchem != NEUTRAL_INDEX) 
+			if (this.Bchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarLess(this.Bchem, this.Bcoef); }
-			if (this.Cchem != NEUTRAL_INDEX) 
+			if (this.Cchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarPlus(this.Cchem, this.Ccoef); }
-			if (this.Dchem != NEUTRAL_INDEX) 
+			if (this.Dchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarPlus(this.Dchem, this.Dcoef);}
 			local_cycle++;
 			reaction = this.testABchemicals(vars);

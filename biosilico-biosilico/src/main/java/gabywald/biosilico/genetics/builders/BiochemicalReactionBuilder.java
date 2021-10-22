@@ -104,6 +104,7 @@ public class BiochemicalReactionBuilder extends GeneBuilder<BiochemicalReaction>
 
 	@Override
 	public BiochemicalReaction build() {
+		// TODO throw exception for "The reaction 'null to something' is avoided." check !
 		BiochemicalReaction toReturn = new BiochemicalReaction(	
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.MUTATE).second), 
 				Boolean.parseBoolean(this.map.get(GeneBuilderEnum.DUPLICATE).second), 

@@ -3,8 +3,10 @@ package gabywald.biosilico.genetics.builders.complex;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+
 import gabywald.biosilico.genetics.BiochemicalReaction;
-import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 
 /**
  * Complex builder for Pathways. 
@@ -26,30 +28,47 @@ public class PathwayBuilder {
 	// // // - input : a set of chemicals (or indexes) of starts, intermediates and destinations with ratio / coefficients
 	// // // - ... 
 	
-	private List<Pair<Integer, Integer> > coefAndChemicals = new ArrayList<Pair<Integer, Integer> >();
+	private List<Tuple> coefAndChemicals = new ArrayList<Tuple>();
 	private List<BiochemicalReaction> outputGenes = new ArrayList<BiochemicalReaction>();
 	
 	public PathwayBuilder() {
 		// Nothing here (see above initialization). 
 	}
 	
-	public void add(int coef, int chemical) {
-		this.coefAndChemicals.add(new Pair<Integer, Integer>(coef, chemical));
+	public void add(int coefA, int chemicalA, int coefB, int chemicalB, 
+					int coefC, int chemicalC, int coefD, int chemicalD, 
+					int kmvm) {
+		this.coefAndChemicals.add(Tuple.build(	9, coefA, chemicalA, coefB, chemicalB, 
+												coefC, chemicalC, coefD, chemicalD, kmvm));
 	}
 	
-	public PathwayBuilder addparams(int coef, int chemical) {
-		this.add(coef, chemical);
+	public PathwayBuilder addparams(int coefA, int chemicalA, int coefB, int chemicalB, 
+									int coefC, int chemicalC, int coefD, int chemicalD, 
+									int kmvm) {
+		this.add(coefA, chemicalA, coefB, chemicalB, 
+				 coefC, chemicalC, coefD, chemicalD, 
+				 kmvm);
 		return this;
 	}
 	
 	public List<BiochemicalReaction> build() {
 		// NOTE 20210924 : 
 		// // // - building serie(s) of BR Genes (specific algorithm to set !)
-		// // // - (0, 0) to separate input chemicals from output chemicals of the pathway) ??
-		// // // - (0, 0) to separate different steps of pathway !!
 		// // // - different step to be indicated ?!
 		// // // - need of EmitterReceptor here ? (no connection on brain ?!)
 		// // // - need of StimulusDecision here ? (further actions ?!)
+		
+		BiochemicalReactionBuilder brb = new BiochemicalReactionBuilder();
+		Assertions.assertNotNull( brb );
+		for (Tuple t : this.coefAndChemicals) {
+			BiochemicalReaction brGene = brb.achem( t.getElements()[0] ).acoef( t.getElements()[1] )
+											.bchem( t.getElements()[2] ).bcoef( t.getElements()[3] )
+											.cchem( t.getElements()[4] ).ccoef( t.getElements()[5] )
+											.dchem( t.getElements()[6] ).dcoef( t.getElements()[7] )
+											.kmvm(  t.getElements()[8] ).build();
+			this.outputGenes.add( brGene );
+		}
+		
 		return this.outputGenes;
 	}
 	
