@@ -103,6 +103,9 @@ For dev on BioSilico :
     * Instinct
     * EmitterReceptor
     * StimulusDecision
+    * InitialConcentration
+    * Brain
+    * BrainLobe
     * ... 
 * ... 
 * ... 
@@ -147,6 +150,27 @@ Notes 20210903
     * automatisation of tests
     * ... 
   * ... 
+
+Notes 20211116
+  * Genetic Algorithm and selection upon it : 
+    * Design Pattern : Visitor (or similar : Strategy / Command) to filter on some criteria
+    * Criteria to be defined : what is exactly attempted ?
+    * ... 
+
+  * Ideas of Criterias : 
+    * Number of cycles for "life" ; 
+    * Significant (?) metabolic changes (from step to step or among a defined number of steps) ; 
+    * ... 
+
+  * Ranking / notations : 
+    * Criteria give an amount of score / notation ; 
+    * Eliminatory Criteria ? (very bad note ?! Annotation ?!)
+    * ...
+ *  * Processing Criteria
+    * Group / All / Some Random ? ; 
+    * Double Processing (or more ?) ; 
+    * ... 
+   * TEST WITH : 'Witness indicators' (hard-coded features which correspond to the attempted behaviour) 
 
 ... 
 
