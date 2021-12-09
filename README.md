@@ -241,7 +241,7 @@ TODO other pipeline tools example(s)
 
 TODO BioC++ example(s)
 
-### 'biosilico-biosilico' : Core represnetation for "In Silico" modelisation
+### 'biosilico-biosilico' : Core representation for "In Silico" modelisation
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
 
@@ -274,6 +274,8 @@ Some utils. Data (File, Directory, Filter), Structures, View...
 ### 'biosilico-crypto' : Ciphering ideas and some ressources. 
 
 Some cryptographic ideas, based on biological translation and use of a 'genetic code' to translate a nucleic sequence (DNA / RNA) to protein sequence. Main idea is to translate / reverse-translate 'computer source code' to 'biological sequences' and provides a basis to compare them with bioinformatic tools (phylogeny for example). 
+
+Main idea is is to translate / reverse-translate from a defined alphabet to 'dna' sequence (corresponding defined mapping as 'genetic code', with triplet / quadruplet / ...). This idea make a bigger text sequence but could be transmitted easily as mime / base64 / ASCII text ; one way to compress it is to convert the limited characters  of translation (4 ideally, example are {a,c,g,t}) to a binary transcript (in example : {00,01,10,11}) and convert it to ASCII or equivalent (limited alphabet), as in base64 for transmission of complex data. 
 
 ### 'biosilico-neuralnetworks' : Some tests on neural networks. 
 
