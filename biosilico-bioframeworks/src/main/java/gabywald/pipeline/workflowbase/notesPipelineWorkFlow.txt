@@ -1,0 +1,89 @@
+20211214
+Creating a Tool for applying / using a Pipeline (or workflow) in BioSilico
+
+Some Links : 
+	https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60
+	https://doanduyhai.wordpress.com/2012/07/08/design-pattern-the-pipeline/
+	https://www.doanduyhai.com/blog/?p=1234
+	https://towardsdatascience.com/data-pipeline-design-principles-e7fbba070b4a
+	https://towardsdatascience.com/data-pipelines-design-patterns-for-reusability-extensibility-3df0af020c64
+	!! https://www.bostata.com/data-pipeline-design-considerations
+	https://multithreaded.stitchfix.com/blog/2016/03/16/engineers-shouldnt-write-etl/
+	https://blog.usebutton.com/3-design-principles-for-engineering-data
+
+The Pipeline Pattern : The pipeline pattern is a software design pattern that provides the ability to build and execute a sequence of operations.
+	Sequence of operations, ordered (...)
+	Extension of "Chain of Responsability" Design Pattern
+
+Typically used in : 
+	- Quality Control
+	- Data Extraction / Trasnformation / Loading (ETL)
+	- Data Engineering
+	- Data Processing examples : 
+		+ Ingestion (Sources & Dependencies, Security & Privacy, Validation & Quality, Logging & Monitoring)
+		+ Processing (Source & Target, Security & Privacy, Transformation, Validation & Quality, Logging & Monitoring)
+		+ Result (Source & Target, Security & Privacy, Transformation Rules, Validation & Quality, Logging & Monitoring)
+
+Main Interests
+	1/ Replayability
+	2/ Auditability / Observability
+	3/ Scalability
+	4/ Reliability
+	5/ Security
+
+====================================
+
+Réaliser un "Builder" de Step ?? (aspects génériques, fonctions à construire, éléments possibles par défaut... )
+
+package gabywald.pipeline.workflowbase;
+
+import java.util.function.Function;
+
+/**
+ * 
+ * @author Gabriel Chandesris (2021)
+ * @param <T>
+ */
+public class PipelineStepBuilder<T> {
+	
+	private Class<T> classe = null;
+	private Fucntion
+	
+	public PipelineStepBuilder<T> setClasse(Class<T> classe) {
+		this.classe = classe;
+		return this;
+	}
+	
+	public PipelineStepBuilder<T> setProcessFunction(Function pfunc) {
+		return this;
+	}
+	
+	public IPipelineStep<T> build() {
+		return new IPipelineStep<T>() {
+			@Override
+			public boolean process(T inputData) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			public T getInput() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public T getOutput() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public T getError() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+		}
+	}
+}

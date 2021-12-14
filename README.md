@@ -241,6 +241,8 @@ TODO other pipeline tools example(s)
 
 TODO BioC++ example(s)
 
+NOTE 20211214 : starting some parts of Pipeline / Workflow tool to be used here for some purposes !
+
 ### 'biosilico-biosilico' : Core representation for "In Silico" modelisation
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
