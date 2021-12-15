@@ -7,34 +7,35 @@ import java.util.List;
  * 
  * This class correspond to Main Pipeline Representation (I.E. "Pipeline Manager"). 
  * @author Gabriel Chandesris (2021)
- * @param <T> Data Type Definition
+ * @param <C> Data Type Definition of Container
+ * @param <T> Data carried by IPipelineContainer
  */
-public class PipelineHub<T> {
-	private List<IPipelineStep<T> > steps = new ArrayList<IPipelineStep<T> >();
+public class PipelineHub<C extends IPipelineContainer<T>, T> {
+	private List<IPipelineStep<C, T> > steps = new ArrayList<IPipelineStep<C, T> >();
 	
 	public int size() {
 		return this.steps.size();
 	}
 	
-	public boolean addStep(IPipelineStep<T> step) {
+	public boolean addStep(IPipelineStep<C, T> step) {
 		return this.steps.add(step);
 	}
 	
-	public IPipelineStep<T> getStep(int i) {
+	public IPipelineStep<C, T> getStep(int i) {
 		return this.steps.get( i );
 	}
 	
-	public IPipelineStep<T> remove(int i) {
+	public IPipelineStep<C, T> remove(int i) {
 		return this.steps.remove( i );
 	}
 	
-	public boolean remove(IPipelineStep<T> step) {
+	public boolean remove(IPipelineStep<C, T> step) {
 		return this.steps.remove( step );
 	}
 	
-	public T processAll(T data) {
-		T input = data;
-		for (IPipelineStep<T> step : this.steps) {
+	public C processAll(C data) {
+		C input = data;
+		for (IPipelineStep<C, T> step : this.steps) {
 			boolean isOK = step.process( input );
 			if ( ! isOK) { break; }
 			input = step.getOutput();

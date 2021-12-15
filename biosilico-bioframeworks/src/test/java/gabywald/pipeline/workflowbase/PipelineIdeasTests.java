@@ -2,40 +2,43 @@ package gabywald.pipeline.workflowbase;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+/**
+ * 
+ * @author Gabriel Chandesris (2021)
+ */
 class PipelineIdeasTests {
 
 	@Test
 	void test01() {
 		
-		PipelineHub<String> strph = new PipelineHub<String>();
+		PipelineHub<IPipelineContainer<String>, String> strph = new PipelineHub<IPipelineContainer<String>, String>();
 		Assertions.assertNotNull( strph );
 		Assertions.assertEquals(0, strph.size());
 		
-		strph.addStep(new IPipelineStep<String>() {
-			private String input = null;
-			private String output = null;
-			private String error = null;
+		strph.addStep(new IPipelineStep<IPipelineContainer<String>, String>() {
+			private IPipelineContainer<String> input = null;
+			private IPipelineContainer<String> output = null;
+			private IPipelineContainer<String> error = null;
 
 			@Override
-			public boolean process(String inputData) {
-				this.input = inputData;
-				this.output = inputData.concat( "step1" );
+			public boolean process(IPipelineContainer<String> inputData) {
+				this.input = inputData; // XXX NOTE clone ??
+				this.output = inputData; this.output.getElement().concat( "step1" );
 				return true;
 			}
-
+			
 			@Override
-			public String getInput() 
+			public IPipelineContainer<String> getInput() 
 				{ return this.input; }
 
 			@Override
-			public String getOutput() 
+			public IPipelineContainer<String> getOutput() 
 				{ return this.output; }
 
 			@Override
-			public String getError() 
+			public IPipelineContainer<String> getError() 
 				{ return this.error; }
-			
+
 		});
 		
 		Assertions.assertEquals(1, strph.size());
@@ -44,41 +47,45 @@ class PipelineIdeasTests {
 	@Test
 	void test02() {
 		
-		PipelineHub<String> strph = new PipelineHub<String>();
+		PipelineHub<IPipelineContainer<String>, String> strph = new PipelineHub<IPipelineContainer<String>, String>();
 		Assertions.assertNotNull( strph );
 		Assertions.assertEquals(0, strph.size());
 		
-		strph.addStep(new IPipelineStep<String>() {
-			private String input = null;
-			private String output = null;
-			private String error = null;
+		strph.addStep(new IPipelineStep<IPipelineContainer<String>, String>() {
+			private IPipelineContainer<String> input = null;
+			private IPipelineContainer<String> output = null;
+			private IPipelineContainer<String> error = null;
 
 			@Override
-			public boolean process(String inputData) {
-				this.input = inputData;
-				this.output = inputData.concat( "step1" );
+			public boolean process(IPipelineContainer<String> inputData) {
+				this.input = inputData; // XXX NOTE clone ??
+				this.output = inputData;
+				this.output.setElement( this.output .getElement().concat( "step1" ) );
 				return true;
 			}
-
+			
 			@Override
-			public String getInput() 
+			public IPipelineContainer<String> getInput() 
 				{ return this.input; }
 
 			@Override
-			public String getOutput() 
+			public IPipelineContainer<String> getOutput() 
 				{ return this.output; }
 
 			@Override
-			public String getError() 
+			public IPipelineContainer<String> getError() 
 				{ return this.error; }
-			
+
 		});
 		
 		Assertions.assertEquals(1, strph.size());
 		
-		String result = strph.processAll( "" );
+		IPipelineContainer<String> pcString = PipelineContainerBuilder.build(String.class);
+		pcString.setElement( "" );
 		
-		Assertions.assertEquals("step1", result);
+		IPipelineContainer<String> result = strph.processAll( pcString );
+		
+		Assertions.assertEquals("step1", result.getElement());
 	}
 
 }

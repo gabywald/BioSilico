@@ -5,15 +5,16 @@ package gabywald.pipeline.workflowbase;
  * <br />If processing step fail (aka return false), there is no output (way to check afterward). 
  * <br />Error handling ?! (if any error / exception in processing). 
  * @author Gabriel Chandesris (2021)
- * @param <T> Data Type Definition
+ * @param <C> Data Type Definition of Container
+ * @param <T> Data carried by IPipelineContainer
  */
-public interface IPipelineStep<T> {
-//	private T input;
-//	private T output;
+public interface IPipelineStep<C extends IPipelineContainer<T>, T > {
+//	private C input;
+//	private C output;
 
-	public boolean process(T inputData);
+	public boolean process(C inputData);
 	
-	public T getInput();
-	public T getOutput();
-	public T getError();
+	public C getInput();
+	public C getOutput();
+	public C getError();
 }
