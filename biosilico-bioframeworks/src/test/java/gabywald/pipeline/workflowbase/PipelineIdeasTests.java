@@ -15,31 +15,8 @@ class PipelineIdeasTests {
 		Assertions.assertNotNull( strph );
 		Assertions.assertEquals(0, strph.size());
 		
-		strph.addStep(new IPipelineStep<IPipelineContainer<String>, String>() {
-			private IPipelineContainer<String> input = null;
-			private IPipelineContainer<String> output = null;
-			private IPipelineContainer<String> error = null;
-
-			@Override
-			public boolean process(IPipelineContainer<String> inputData) {
-				this.input = inputData; // XXX NOTE clone ??
-				this.output = inputData; this.output.getElement().concat( "step1" );
-				return true;
-			}
-			
-			@Override
-			public IPipelineContainer<String> getInput() 
-				{ return this.input; }
-
-			@Override
-			public IPipelineContainer<String> getOutput() 
-				{ return this.output; }
-
-			@Override
-			public IPipelineContainer<String> getError() 
-				{ return this.error; }
-
-		});
+		strph.addStep(PipelineStepBuilder.build(String.class));
+		// PipelineStepBuilder.build(String.class)
 		
 		Assertions.assertEquals(1, strph.size());
 	}
@@ -60,7 +37,7 @@ class PipelineIdeasTests {
 			public boolean process(IPipelineContainer<String> inputData) {
 				this.input = inputData; // XXX NOTE clone ??
 				this.output = inputData;
-				this.output.setElement( this.output .getElement().concat( "step1" ) );
+				this.output.setElement( this.output.getElement().concat( "step1" ) );
 				return true;
 			}
 			

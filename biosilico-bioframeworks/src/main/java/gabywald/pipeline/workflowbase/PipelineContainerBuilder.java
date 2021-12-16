@@ -15,7 +15,7 @@ public abstract class PipelineContainerBuilder {
 	 * @param className
 	 * @return
 	 */
-	public static <T> IPipelineContainer<T> build(Class<T> className) {
+	public static <T> IPipelineContainer<T> build(Class<T> classe) {
 		return new IPipelineContainer<T>() {
 			private T eltContent = null;
 			private Map<IPipelineStep<IPipelineContainer<T>, T>, String> errors = new HashMap<>(); 
