@@ -5,8 +5,14 @@ package gabywald.pipeline.workflowbase;
  * @author Gabriel Chandesris (2021)
  */
 public class PipelineStepBuilder {
-
 	
+	/**
+	 * 
+	 * @param <T>
+	 * @param classe
+	 * @return IPipelineStep instance. 
+	 * @deprecated See PipelineStepPreBuild
+	 */
 	public static <T> IPipelineStep<IPipelineContainer<T>, T> build(Class<T> classe) {
 		return new IPipelineStep<IPipelineContainer<T>, T>() {
 			private IPipelineContainer<T> input = null;
