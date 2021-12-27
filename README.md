@@ -4,7 +4,7 @@ Some ideas about Artificial Life, Creatures (game series) and Neural Networks. R
 
 Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2012 (and before then) ; ideas I didn't continue for times spent reasons and I wish to continue (year 2020). 
 
-Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
+Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Sim City, Sim Earth, Sim Life, Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
 
 Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020). 
 
@@ -37,7 +37,7 @@ For this Project or others :
 
 See document present in "/biosilico-biosilico/src/main/resources/biosilico/docs/redaction/", there are some notes (mostly in french, some documentation about Creatures in english). 
 
-## Licence : Libre
+## Licence : "Libre" / Free
 
 GNU General Public Licence V3 (GPL3)
 
@@ -121,8 +121,8 @@ Based on 'biosilico-biosilico' module !
 Work on July, August and September 2020 to get an example of Ant working basically (nervous system / Brain / Brain Lobes, Instincts, EmitterReceptor, StimulusDecisions to GET/DROP FOOD, MOVE_AWAY, MOVE... Seems to be a good example to build a genome and tools to build genomes. 
 
 Idea of a Tool to build "meta-genes" / Pathways : 
-* StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
-* At Least 6 Genes !
+  * StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
+  * At Least 6 Genes for a given "meta-gene" !
 
 Some biochemistry to get deeper on this Ant ! 
 
@@ -166,11 +166,11 @@ Notes 20211116
     * Criteria give an amount of score / notation ; 
     * Eliminatory Criteria ? (very bad note ?! Annotation ?!)
     * ...
- *  * Processing Criteria
+  * Processing Criteria
     * Group / All / Some Random ? ; 
     * Double Processing (or more ?) ; 
     * ... 
-   * TEST WITH : 'Witness indicators' (hard-coded features which correspond to the attempted behaviour) 
+   * TEST WITH : 'Witness Indicators' (hard-coded features which correspond to the attempted behaviour) 
 
 ... 
 
@@ -180,7 +180,8 @@ Aim of these Part is to put some example of BioFrameWork use and other tools !
   * BioJava / Biopython / BioPerl / BioC++
   * EMBOSS (tool suite)
   * Pipelining / Pipeline tools : SnakeMake, ...
-  * FAIR principles in bioinformatics (reproductibility, open data, ...) 
+  * FAIR principles in bioinformatics (reproductibility, open data, ...)
+  * ... 
   * ... 
 
 And some other examples and ideas ?!
@@ -209,7 +210,7 @@ Some notes and tutorials :
     * [BioC++ Offical HomePage](http://biocpp.sourceforge.net/)
     * [BioC++ - solving daily bioinformatic tasks with C++ efficiently - BIOSTEC 2020](https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently)
     * [SeqAn](https://github.com/seqan)
-    * ...
+    * **TODO BioC++ example(s)**
     * ...
   * EMBOSS (tools suite). 
     * [Voyage initiatique vers la bio-informatique : les premiers pas" (article payant)](https://connect.ed-diamond.com/gnu-linux-magazine/glmf-251/voyage-initiatique-vers-la-bio-informatique-les-premiers-pas)
@@ -237,9 +238,13 @@ Some notes and tutorials :
     
 TODO SnakeMake example(s)
 
-TODO other pipeline tools example(s)
+TODO KNIME example(s)
 
-TODO BioC++ example(s)
+TODO NextFlow example(s)
+
+TODO Galaxy example(s)
+
+TODO other pipeline tools example(s) (...)
 
 NOTE 20211214 : starting some parts of Pipeline / Workflow tool to be used here for some purposes !
 
@@ -247,11 +252,13 @@ NOTE 20211214 : starting some parts of Pipeline / Workflow tool to be used here 
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
 
-Mostly inspired from game Creatures and publications around it. 
+Mostly inspired from game Creatures and publications around it, with some personnal ideas and read ideas. 
 
 Implemented as a discrete "World" composed of WorldCase, which can contains Agents. Some Agents are Organisms, which genomes are haploïd (reflexion about diploïd / polyploïd ... ?!). 
 
-Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) to permit other implementations and different global uses !
+Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) have been done to permit other implementations and different global uses ! (2D, 3D...)
+
+NOTE : 
 
 ### 'biosilico-cellmodel' : a previous sample Cell Model
 
