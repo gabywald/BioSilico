@@ -314,3 +314,12 @@ Have Fun !
 
 * biosilico-biosilico : gabywald.biosilico.model.reproduction <= to be reviewed !
 * biosilico-biosilico : gabywald.biosilico.model.decisions <= some review would be great too !
+
+## Other resources and readings
+
+NOTE / TODO : ajout d'autres outils (et algorithmes associés) ici, au moins en référence, ressources... : 
+  * GROOLS ["GROOLS: reactive graph reasoning for genome annotation through biological processes"](https://www.biorxiv.org/content/10.1101/117994v1)
+  * TFold ["Tfold: efficient in silico prediction of non-coding RNA secondary structures"](https://pubmed.ncbi.nlm.nih.gov/20047957/) -- https://evryrna.ibisc.univ-evry.fr/evryrna/tfold
+  * ["In vivo, in vitro... in silico !" Posté le : Lundi 5 Janvier 2009 par : X. Muller Expert : P. Cournède, M. Kern, O. Faugeras](http://www.savoirs.essonne.fr/thematiques/les-technologies/informatique/in-vivo-in-vitro-in-silico/)
+  * ... 
+  * ... 
