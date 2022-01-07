@@ -17,7 +17,7 @@ The Pipeline Pattern : The pipeline pattern is a software design pattern that pr
 
 Typically used in : 
 	- Quality Control
-	- Data Extraction / Trasnformation / Loading (ETL)
+	- Data Extraction / Transformation / Loading (ETL)
 	- Data Engineering
 	- Data Processing examples : 
 		+ Ingestion (Sources & Dependencies, Security & Privacy, Validation & Quality, Logging & Monitoring)
@@ -33,5 +33,7 @@ Main Interests
 
 ====================================
 
-Réaliser un "Builder" de Step ?? (aspects génériques, fonctions à construire, éléments possibles par défaut... )
+Réaliser un "Builder" de Step ?? (aspects génériques, fonction(s) à construire, éléments possibles par défaut... )
 	public class PipelineStepBuilder<T>; ?? 
+
+Étapes constructibles : entrée, sortie, erreur(s)

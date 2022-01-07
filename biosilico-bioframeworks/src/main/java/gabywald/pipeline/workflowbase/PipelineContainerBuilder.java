@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 
- * @author Gabriel Chandesris (2021)
+ * @author Gabriel Chandesris (2021-2022)
  */
 public abstract class PipelineContainerBuilder {
 
@@ -35,6 +35,15 @@ public abstract class PipelineContainerBuilder {
 			@Override
 			public void addError(IPipelineStep<IPipelineContainer<T>, T> step, String message) {
 				this.errors.put(step, message);
+			}
+			
+			@Override
+			public String getErrors() {
+				final StringBuilder toReturn = new StringBuilder();
+				this.errors.keySet().stream().forEach( key -> {
+					toReturn.append( key.toString() ).append(" :: ").append( this.errors.get(key) );
+				});
+				return toReturn.toString();
 			}
 		};
 	}

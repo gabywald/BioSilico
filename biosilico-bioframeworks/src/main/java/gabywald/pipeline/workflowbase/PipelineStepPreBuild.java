@@ -2,14 +2,14 @@ package gabywald.pipeline.workflowbase;
 
 /**
  * 
- * @author Gabriel Chandesris (2021)
+ * @author Gabriel Chandesris (2021-2022)
  * @param <T>
  */
 public abstract class PipelineStepPreBuild<T> 
 		implements IPipelineStep<IPipelineContainer<T>, T>{
-	protected IPipelineContainer<T> input = null;
-	protected IPipelineContainer<T> output = null;
-	protected IPipelineContainer<T> error = null;
+	protected IPipelineContainer<T> input	= null;
+	protected IPipelineContainer<T> output	= null;
+	protected String error					= null;
 
 	@Override
 	public IPipelineContainer<T> getInput() 
@@ -20,6 +20,6 @@ public abstract class PipelineStepPreBuild<T>
 		{ return this.output; }
 
 	@Override
-	public IPipelineContainer<T> getError() 
+	public String getError() 
 		{ return this.error; }
 }

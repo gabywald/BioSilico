@@ -2,7 +2,7 @@ package gabywald.pipeline.workflowbase;
 
 /**
  * 
- * @author Gabriel Chandesris (2021)
+ * @author Gabriel Chandesris (2021-2022)
  */
 public class PipelineStepBuilder {
 	
@@ -15,9 +15,9 @@ public class PipelineStepBuilder {
 	 */
 	public static <T> IPipelineStep<IPipelineContainer<T>, T> build(Class<T> classe) {
 		return new IPipelineStep<IPipelineContainer<T>, T>() {
-			private IPipelineContainer<T> input = null;
-			private IPipelineContainer<T> output = null;
-			private IPipelineContainer<T> error = null;
+			private IPipelineContainer<T> input		= null;
+			private IPipelineContainer<T> output	= null;
+			private String error					= null;
 
 			@Override
 			public boolean process(IPipelineContainer<T> inputData) {
@@ -38,7 +38,7 @@ public class PipelineStepBuilder {
 				{ return this.output; }
 
 			@Override
-			public IPipelineContainer<T> getError() 
+			public String getError() 
 				{ return this.error; }
 
 		};

@@ -1,57 +1,65 @@
 package gabywald.pipeline.workflowbase;
 
+import java.util.function.Function;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import gabywald.pipeline.workflowbase.wip.PipelineStepFunctionImpl;
 /**
  * 
- * @author Gabriel Chandesris (2021)
+ * @author Gabriel Chandesris (2022)
  */
-class PipelineIdeasTests {
+class PipelineIdeasTestsFunction {
 
 	@Test
 	void test01() {
-		
+
 		PipelineHub<IPipelineContainer<String>, String> strph = new PipelineHub<IPipelineContainer<String>, String>();
 		Assertions.assertNotNull( strph );
 		Assertions.assertEquals(0, strph.size());
-		
-		strph.addStep(new PipelineStepPreBuild<String>() {
+
+		PipelineStepFunctionImpl<IPipelineContainer<String>, String> psfi = 
+				new PipelineStepFunctionImpl<IPipelineContainer<String>, String>();
+		psfi.action(new Function<IPipelineContainer<String>, Boolean>() {
 			@Override
-			public boolean process(IPipelineContainer<String> inputData) {
-				this.input	= inputData; // XXX NOTE clone ??
-				this.output	= inputData;
-				this.output.setElement( this.output.getElement().concat( "step1" ) );
+			public Boolean apply(IPipelineContainer<String> step) {
+				step.setElement( step.getElement().concat( "step1" ) );
 				return true;
 			}
 		});
-		
+
+		strph.addStep(psfi);
+
 		Assertions.assertEquals(1, strph.size());
 	}
-	
+
 	@Test
 	void test02() {
-		
+
 		PipelineHub<IPipelineContainer<String>, String> strph = new PipelineHub<IPipelineContainer<String>, String>();
 		Assertions.assertNotNull( strph );
 		Assertions.assertEquals(0, strph.size());
-		
-		strph.addStep(new PipelineStepPreBuild<String>() {
+
+		PipelineStepFunctionImpl<IPipelineContainer<String>, String> psfi = 
+				new PipelineStepFunctionImpl<IPipelineContainer<String>, String>();
+		psfi.action(new Function<IPipelineContainer<String>, Boolean>() {
 			@Override
-			public boolean process(IPipelineContainer<String> inputData) {
-				this.input	= inputData; // XXX NOTE clone ??
-				this.output	= inputData;
-				this.output.setElement( this.output.getElement().concat( "step1" ) );
+			public Boolean apply(IPipelineContainer<String> step) {
+				step.setElement( step.getElement().concat( "step1" ) );
 				return true;
 			}
 		});
-		
+
+		strph.addStep(psfi);
+
 		Assertions.assertEquals(1, strph.size());
-		
+
 		IPipelineContainer<String> pcString = PipelineContainerBuilder.build(String.class);
 		pcString.setElement( "" );
-		
+
 		IPipelineContainer<String> result = strph.processAll( pcString );
-		
+
 		Assertions.assertEquals("step1", result.getElement());
 	}
 
