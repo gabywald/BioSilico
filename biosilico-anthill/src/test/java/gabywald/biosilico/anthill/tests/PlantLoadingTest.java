@@ -66,7 +66,7 @@ class PlantLoadingTest {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		

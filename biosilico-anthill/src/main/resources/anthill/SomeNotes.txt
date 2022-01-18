@@ -129,3 +129,12 @@ Some review to be done here to make following :
 			Detection for some actions / passing
 ... 
 
+20220118 NOTES : 
+	Reactions have to use more Energy ?!
+	Plants have to export Water ?!
+	Plants have to import CO2 ?!
+	Use a CO2 generator for tests in BioSilico Util ??
+	... 
+	
+
+	
