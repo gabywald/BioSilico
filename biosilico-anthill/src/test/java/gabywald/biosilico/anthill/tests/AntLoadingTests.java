@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
-import gabywald.biosilico.anthill.AntReceptionChemicals;
+import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
 import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
 import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
@@ -23,7 +23,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class AntLoadingTests {
 	
@@ -67,7 +67,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -166,7 +166,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -270,7 +270,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -453,7 +453,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -654,7 +654,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -678,7 +678,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
@@ -712,7 +712,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -749,7 +749,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -786,7 +786,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -823,7 +823,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -860,7 +860,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -899,7 +899,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -940,7 +940,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -980,7 +980,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1018,7 +1018,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1056,7 +1056,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1094,7 +1094,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(3, 3);
+		World2D w		= new World2D(3, 3);
 		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
@@ -1118,7 +1118,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
@@ -1152,7 +1152,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1189,7 +1189,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1226,7 +1226,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1263,7 +1263,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1300,7 +1300,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1339,7 +1339,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1380,7 +1380,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1420,7 +1420,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1458,7 +1458,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1496,7 +1496,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1534,7 +1534,7 @@ class AntLoadingTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(3, 3);
+		World2D w		= new World2D(3, 3);
 		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
@@ -1560,7 +1560,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		IntStream.range(0, ChemicalsHelper.CHEMICAL_LENGTH).forEach( k -> {
 			Assertions.assertEquals( 0, wc.getChemicals().getVariable(k) );
@@ -1594,7 +1594,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  1, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1631,7 +1631,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  2, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1668,7 +1668,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  3, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1705,7 +1705,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  4, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1742,7 +1742,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
@@ -1781,7 +1781,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  6, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// ***** TRUE ??
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1822,7 +1822,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  7, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1862,7 +1862,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  8, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1900,7 +1900,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals(  9, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
@@ -1938,7 +1938,7 @@ class AntLoadingTests {
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ACETYLCOA.getIndex()));
 		Assertions.assertEquals( 10, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()));
 		Assertions.assertEquals(ObjectType.AGENT.getIndex(), testAnt.getChemicals().getVariable(StateType.TYPEOF.getIndex()));
-		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(AntReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
+		Assertions.assertEquals(  5, testAnt.getChemicals().getVariable(GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex()));
 		
 		// *** TRUE ??
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );

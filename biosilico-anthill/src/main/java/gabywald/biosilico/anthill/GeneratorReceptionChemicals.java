@@ -11,7 +11,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * 
  * @author Gabriel Chandesris (2020)
  */
-public enum AntReceptionChemicals implements IChemicalsType {
+public enum GeneratorReceptionChemicals implements IChemicalsType {
 	PHEROMONE_00_CURRENT	(700, "00atLLL", "Pheromone 00 at Current"), 
 	PHEROMONE_00_NorthWest	(701, "00atLNW", "Pheromone 00 at Local North-West"), 
 	PHEROMONE_00_North		(702, "00atLNN", "Pheromone 00 at Local North"), 
@@ -46,7 +46,7 @@ public enum AntReceptionChemicals implements IChemicalsType {
 	private int index;
 	private String name, definition;
 
-	AntReceptionChemicals(int index, String name, String definition) {
+	GeneratorReceptionChemicals(int index, String name, String definition) {
 		this.index		= index;
 		this.name		= name;
 		this.definition	= definition;
@@ -59,35 +59,35 @@ public enum AntReceptionChemicals implements IChemicalsType {
 	@Override
 	public String getDefinition()	{ return definition; }
 	
-	public static AntReceptionChemicals getFrom(DirectionWorld dw, SomeChemicals sc) {
-		AntReceptionChemicals arcToReturn = null;
+	public static GeneratorReceptionChemicals getFrom(DirectionWorld dw, SomeChemicals sc) {
+		GeneratorReceptionChemicals arcToReturn = null;
 		switch( sc ) {
 		case PHEROMONE_00: 
 			switch( dw ) {
-			case CURRENT : 	arcToReturn = AntReceptionChemicals.PHEROMONE_00_CURRENT;break;
-			case East : 	arcToReturn = AntReceptionChemicals.PHEROMONE_00_East;break;
-			case North : 	arcToReturn = AntReceptionChemicals.PHEROMONE_00_North;break;
-			case NorthEast :arcToReturn = AntReceptionChemicals.PHEROMONE_00_NorthEast;break;
-			case NorthWest :arcToReturn = AntReceptionChemicals.PHEROMONE_00_NorthWest;break;
-			case South : 	arcToReturn = AntReceptionChemicals.PHEROMONE_00_South;break;
-			case SouthEast :arcToReturn = AntReceptionChemicals.PHEROMONE_00_SouthEast;break;
-			case SouthWest :arcToReturn = AntReceptionChemicals.PHEROMONE_00_SouthWest;break;
-			case West : 	arcToReturn = AntReceptionChemicals.PHEROMONE_00_West;break;
+			case CURRENT : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_CURRENT;break;
+			case East : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_East;break;
+			case North : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_North;break;
+			case NorthEast :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_NorthEast;break;
+			case NorthWest :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_NorthWest;break;
+			case South : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_South;break;
+			case SouthEast :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_SouthEast;break;
+			case SouthWest :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_SouthWest;break;
+			case West : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_00_West;break;
 			default:
 				Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + dw.toString() + "}");
 			}
 			break;
 		case PHEROMONE_01: 
 			switch( dw ) {
-			case CURRENT : 	arcToReturn = AntReceptionChemicals.PHEROMONE_01_CURRENT;break;
-			case East : 	arcToReturn = AntReceptionChemicals.PHEROMONE_01_East;break;
-			case North : 	arcToReturn = AntReceptionChemicals.PHEROMONE_01_North;break;
-			case NorthEast :arcToReturn = AntReceptionChemicals.PHEROMONE_01_NorthEast;break;
-			case NorthWest :arcToReturn = AntReceptionChemicals.PHEROMONE_01_NorthWest;break;
-			case South : 	arcToReturn = AntReceptionChemicals.PHEROMONE_01_South;break;
-			case SouthEast :arcToReturn = AntReceptionChemicals.PHEROMONE_01_SouthEast;break;
-			case SouthWest :arcToReturn = AntReceptionChemicals.PHEROMONE_01_SouthWest;break;
-			case West : 	arcToReturn = AntReceptionChemicals.PHEROMONE_01_West;break;
+			case CURRENT : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_CURRENT;break;
+			case East : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_East;break;
+			case North : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_North;break;
+			case NorthEast :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_NorthEast;break;
+			case NorthWest :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_NorthWest;break;
+			case South : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_South;break;
+			case SouthEast :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_SouthEast;break;
+			case SouthWest :arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_SouthWest;break;
+			case West : 	arcToReturn = GeneratorReceptionChemicals.PHEROMONE_01_West;break;
 			default:
 				Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + dw.toString() + "}");
 			}
@@ -98,20 +98,20 @@ public enum AntReceptionChemicals implements IChemicalsType {
 		return arcToReturn;
 	}
 
-public static AntReceptionChemicals getFrom(DirectionWorld dw, ObjectType ot) {
-	AntReceptionChemicals arcToReturn = null;
+public static GeneratorReceptionChemicals getFrom(DirectionWorld dw, ObjectType ot) {
+	GeneratorReceptionChemicals arcToReturn = null;
 	switch( ot ) {
 	case FOOD: 
 		switch( dw ) {
-		case CURRENT : 	arcToReturn = AntReceptionChemicals.FOOD_CURRENT;break;
-		case East : 	arcToReturn = AntReceptionChemicals.FOOD_East;break;
-		case North : 	arcToReturn = AntReceptionChemicals.FOOD_North;break;
-		case NorthEast :arcToReturn = AntReceptionChemicals.FOOD_NorthEast;break;
-		case NorthWest :arcToReturn = AntReceptionChemicals.FOOD_NorthWest;break;
-		case South : 	arcToReturn = AntReceptionChemicals.FOOD_South;break;
-		case SouthEast :arcToReturn = AntReceptionChemicals.FOOD_SouthEast;break;
-		case SouthWest :arcToReturn = AntReceptionChemicals.FOOD_SouthWest;break;
-		case West : 	arcToReturn = AntReceptionChemicals.FOOD_West;break;
+		case CURRENT : 	arcToReturn = GeneratorReceptionChemicals.FOOD_CURRENT;break;
+		case East : 	arcToReturn = GeneratorReceptionChemicals.FOOD_East;break;
+		case North : 	arcToReturn = GeneratorReceptionChemicals.FOOD_North;break;
+		case NorthEast :arcToReturn = GeneratorReceptionChemicals.FOOD_NorthEast;break;
+		case NorthWest :arcToReturn = GeneratorReceptionChemicals.FOOD_NorthWest;break;
+		case South : 	arcToReturn = GeneratorReceptionChemicals.FOOD_South;break;
+		case SouthEast :arcToReturn = GeneratorReceptionChemicals.FOOD_SouthEast;break;
+		case SouthWest :arcToReturn = GeneratorReceptionChemicals.FOOD_SouthWest;break;
+		case West : 	arcToReturn = GeneratorReceptionChemicals.FOOD_West;break;
 		default:
 			Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + ot.toString() + "}");
 		}

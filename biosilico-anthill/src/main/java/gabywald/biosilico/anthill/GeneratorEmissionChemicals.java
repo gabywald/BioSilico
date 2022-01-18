@@ -12,7 +12,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * @author Gabriel Chandesris (2020)
  * @deprecated Use DirectionWorld and other similar enums for "internal chemicals transmission of data". 
  */
-public enum AntEmissionChemicals implements IChemicalsType {
+public enum GeneratorEmissionChemicals implements IChemicalsType {
 	PHEROMONE_00_CURRENT	(600, "00atLLL", "Pheromone 00 at Current"), 
 	PHEROMONE_00_NorthWest	(601, "00atLNW", "Pheromone 00 at Local North-West"), 
 	PHEROMONE_00_North		(602, "00atLNN", "Pheromone 00 at Local North"), 
@@ -47,7 +47,7 @@ public enum AntEmissionChemicals implements IChemicalsType {
 	private int index;
 	private String name, definition;
 
-	AntEmissionChemicals(int index, String name, String definition) {
+	GeneratorEmissionChemicals(int index, String name, String definition) {
 		this.index		= index;
 		this.name		= name;
 		this.definition	= definition;
@@ -60,35 +60,35 @@ public enum AntEmissionChemicals implements IChemicalsType {
 	@Override
 	public String getDefinition()	{ return definition; }
 	
-	public static AntEmissionChemicals getFrom(DirectionWorld dw, SomeChemicals sc) {
-		AntEmissionChemicals aecToReturn = null;
+	public static GeneratorEmissionChemicals getFrom(DirectionWorld dw, SomeChemicals sc) {
+		GeneratorEmissionChemicals aecToReturn = null;
 		switch( sc ) {
 		case PHEROMONE_00: 
 			switch( dw ) {
-			case CURRENT : 	aecToReturn = AntEmissionChemicals.PHEROMONE_00_CURRENT;break;
-			case East : 	aecToReturn = AntEmissionChemicals.PHEROMONE_00_East;break;
-			case North : 	aecToReturn = AntEmissionChemicals.PHEROMONE_00_North;break;
-			case NorthEast :aecToReturn = AntEmissionChemicals.PHEROMONE_00_NorthEast;break;
-			case NorthWest :aecToReturn = AntEmissionChemicals.PHEROMONE_00_NorthWest;break;
-			case South : 	aecToReturn = AntEmissionChemicals.PHEROMONE_00_South;break;
-			case SouthEast :aecToReturn = AntEmissionChemicals.PHEROMONE_00_SouthEast;break;
-			case SouthWest :aecToReturn = AntEmissionChemicals.PHEROMONE_00_SouthWest;break;
-			case West : 	aecToReturn = AntEmissionChemicals.PHEROMONE_00_West;break;
+			case CURRENT : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_CURRENT;break;
+			case East : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_East;break;
+			case North : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_North;break;
+			case NorthEast :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_NorthEast;break;
+			case NorthWest :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_NorthWest;break;
+			case South : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_South;break;
+			case SouthEast :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_SouthEast;break;
+			case SouthWest :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_SouthWest;break;
+			case West : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_00_West;break;
 			default:
 				Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + dw.toString() + "}");
 			}
 			break;
 		case PHEROMONE_01: 
 			switch( dw ) {
-			case CURRENT : 	aecToReturn = AntEmissionChemicals.PHEROMONE_01_CURRENT;break;
-			case East : 	aecToReturn = AntEmissionChemicals.PHEROMONE_01_East;break;
-			case North : 	aecToReturn = AntEmissionChemicals.PHEROMONE_01_North;break;
-			case NorthEast :aecToReturn = AntEmissionChemicals.PHEROMONE_01_NorthEast;break;
-			case NorthWest :aecToReturn = AntEmissionChemicals.PHEROMONE_01_NorthWest;break;
-			case South : 	aecToReturn = AntEmissionChemicals.PHEROMONE_01_South;break;
-			case SouthEast :aecToReturn = AntEmissionChemicals.PHEROMONE_01_SouthEast;break;
-			case SouthWest :aecToReturn = AntEmissionChemicals.PHEROMONE_01_SouthWest;break;
-			case West : 	aecToReturn = AntEmissionChemicals.PHEROMONE_01_West;break;
+			case CURRENT : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_CURRENT;break;
+			case East : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_East;break;
+			case North : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_North;break;
+			case NorthEast :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_NorthEast;break;
+			case NorthWest :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_NorthWest;break;
+			case South : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_South;break;
+			case SouthEast :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_SouthEast;break;
+			case SouthWest :aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_SouthWest;break;
+			case West : 	aecToReturn = GeneratorEmissionChemicals.PHEROMONE_01_West;break;
 			default:
 				Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + dw.toString() + "}");
 			}
@@ -99,20 +99,20 @@ public enum AntEmissionChemicals implements IChemicalsType {
 		return aecToReturn;
 	}
 	
-	public static AntEmissionChemicals getFrom(DirectionWorld dw, ObjectType ot) {
-		AntEmissionChemicals aecToReturn = null;
+	public static GeneratorEmissionChemicals getFrom(DirectionWorld dw, ObjectType ot) {
+		GeneratorEmissionChemicals aecToReturn = null;
 		switch( ot ) {
 		case FOOD: 
 			switch( dw ) {
-			case CURRENT : 	aecToReturn = AntEmissionChemicals.FOOD_CURRENT;break;
-			case East : 	aecToReturn = AntEmissionChemicals.FOOD_East;break;
-			case North : 	aecToReturn = AntEmissionChemicals.FOOD_North;break;
-			case NorthEast :aecToReturn = AntEmissionChemicals.FOOD_NorthEast;break;
-			case NorthWest :aecToReturn = AntEmissionChemicals.FOOD_NorthWest;break;
-			case South : 	aecToReturn = AntEmissionChemicals.FOOD_South;break;
-			case SouthEast :aecToReturn = AntEmissionChemicals.FOOD_SouthEast;break;
-			case SouthWest :aecToReturn = AntEmissionChemicals.FOOD_SouthWest;break;
-			case West : 	aecToReturn = AntEmissionChemicals.FOOD_West;break;
+			case CURRENT : 	aecToReturn = GeneratorEmissionChemicals.FOOD_CURRENT;break;
+			case East : 	aecToReturn = GeneratorEmissionChemicals.FOOD_East;break;
+			case North : 	aecToReturn = GeneratorEmissionChemicals.FOOD_North;break;
+			case NorthEast :aecToReturn = GeneratorEmissionChemicals.FOOD_NorthEast;break;
+			case NorthWest :aecToReturn = GeneratorEmissionChemicals.FOOD_NorthWest;break;
+			case South : 	aecToReturn = GeneratorEmissionChemicals.FOOD_South;break;
+			case SouthEast :aecToReturn = GeneratorEmissionChemicals.FOOD_SouthEast;break;
+			case SouthWest :aecToReturn = GeneratorEmissionChemicals.FOOD_SouthWest;break;
+			case West : 	aecToReturn = GeneratorEmissionChemicals.FOOD_West;break;
 			default:
 				Logger.printlnLog(LoggerLevel.LL_WARNING, "Unknown DW: {" + ot.toString() + "}");
 			}

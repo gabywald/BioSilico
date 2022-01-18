@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
-import gabywald.biosilico.anthill.AntReceptionChemicals;
+import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
 import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
@@ -34,7 +34,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class AntBuildingGenomeComplete {
 
@@ -174,7 +174,7 @@ class AntBuildingGenomeComplete {
 		// *** EmitterReceptor Input => to first line (inputs) of Brain !! (Ph_00 & direction)
 		String nameFirstPartERinput	= "ER receptor input ";
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 0 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -186,7 +186,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		// *** EmitterReceptor Input => to second line (inputs) of Brain !! (Ph_01 & direction)
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_01 );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_01 );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 1 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -198,7 +198,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		// *** EmitterReceptor Input => to third line (inputs) of Brain !! (FOOD & direction)
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, ObjectType.FOOD );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, ObjectType.FOOD );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 2 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -210,7 +210,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		
 		// *** *** *** StimulusDecision : more impact if PHEROMONE_01 if HIGH
-		AntReceptionChemicals arcCurrentPh01 = AntReceptionChemicals.getFrom( DirectionWorld.CURRENT, SomeChemicals.PHEROMONE_01 );
+		GeneratorReceptionChemicals arcCurrentPh01 = GeneratorReceptionChemicals.getFrom( DirectionWorld.CURRENT, SomeChemicals.PHEROMONE_01 );
 		chrEmitReceiv.addGene( erb
 				.variable( arcCurrentPh01.getIndex() ).threshold(  99 ).ioput( 100 )
 				.posx( 1 ).posy( 1 )
@@ -533,7 +533,7 @@ class AntBuildingGenomeComplete {
 			for (SomeChemicals scPHE : someChems) {
 				// ***** Detect Pheromone_0X at WorldCase with threshold 10, change variable 70X set to 5
 				// basicChromosome.setName( scPHE.getName() + " detection !" );
-				AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, scPHE );
+				GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, scPHE );
 				chrSDdetection.addGene( sdgb.perception( true ).object( false ) 
 						.indicator( scPHE.getIndex() ).threshold( 10 )
 						.attribute( dw.getIndex() )
@@ -546,7 +546,7 @@ class AntBuildingGenomeComplete {
 			} // END "for (SomeChemicals scPHE : someChems)"
 			
 			// ***** FOOD Detection !!
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom(dw, ObjectType.FOOD);
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom(dw, ObjectType.FOOD);
 			chrSDdetection.addGene( sdgb.perception( true ).object( true ) 
 					.indicator( ObjectType.FOOD.getIndex() ).threshold( 0 )
 					.attribute( dw.getIndex() )
