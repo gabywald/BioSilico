@@ -7,6 +7,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -45,12 +46,38 @@ public class DataGenerateImage {
 
 		int width = 640;   /* Width of the image */
 		int height = 480;  /* Height of the image */ 
-		File XYChart = new File( "src/test/resources/XYLineChart.jpeg" ); 
+		File XYChart = new File( "src/test/resources/Export_XYLineChart.jpeg" ); 
 		try {
 			ChartUtils.saveChartAsJPEG( XYChart, xylineChart, width, height);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		// https://www.tutorialspoint.com/jfreechart/jfreechart_line_chart.htm
+		DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+		line_chart_dataset.addValue( 15 , "schools" , "1970" );
+		line_chart_dataset.addValue( 30 , "schools" , "1980" );
+		line_chart_dataset.addValue( 60 , "schools" , "1990" );
+		line_chart_dataset.addValue( 120 , "schools" , "2000" );
+		line_chart_dataset.addValue( 240 , "schools" , "2010" ); 
+		line_chart_dataset.addValue( 300 , "schools" , "2014" );
+
+		JFreeChart lineChartObject = ChartFactory.createLineChart(
+				"Schools Vs Years","Year",
+				"Schools Count",
+				line_chart_dataset,PlotOrientation.VERTICAL,
+				true,true,false);
+
+//		int width = 640;    /* Width of the image */
+//		int height = 480;   /* Height of the image */ 
+		File lineChart = new File( "src/test/resources/Export_LineChart.jpeg" ); 
+		try {
+			ChartUtils.saveChartAsJPEG(lineChart ,lineChartObject, width ,height);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// https://www.tutorialspoint.com/jfreechart/jfreechart_quick_guide.htm
 	}
 
 }
