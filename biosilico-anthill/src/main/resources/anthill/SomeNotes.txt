@@ -136,5 +136,11 @@ Some review to be done here to make following :
 	Use a CO2 generator for tests in BioSilico Util ??
 	... 
 	
-
-	
+20220119 NOTES : 
+	Analyse data and graphical representations. 
+	Further analysis. 
+	Choice of genes to add and analyse evolutions. 
+	Automatic detector of such "anomalies". ?? (XXX to do)
+	Generator of mutations for evolving new Basic Genomes. 
+	See for next version(s) (new tests). 
+	Better equilibrium between Plant(s) and Ant(s) instances. 

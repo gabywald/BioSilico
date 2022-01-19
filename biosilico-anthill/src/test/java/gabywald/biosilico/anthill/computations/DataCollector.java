@@ -73,11 +73,11 @@ public class DataCollector {
 	}
 	
 	/**
-	 * Create image as 640x480px. 
+	 * Create image as 1024 x 768 px. 
 	 * @param path2file Path and name of the image to generate (with '.jpeg' | '.jpg' | '.png' extension). 
 	 */
 	public void buildImage(String path2file) {
-		this.buildImage(640, 480, path2file);
+		this.buildImage(1024, 768, path2file);
 	}
 	
 }
