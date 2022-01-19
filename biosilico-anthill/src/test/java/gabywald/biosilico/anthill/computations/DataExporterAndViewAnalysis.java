@@ -59,7 +59,7 @@ class DataExporterAndViewAnalysis {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlAntHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
@@ -77,7 +77,7 @@ class DataExporterAndViewAnalysis {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlAntHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
@@ -127,7 +127,7 @@ class DataExporterAndViewAnalysis {
 		
 		testAnt.setRank("Rank Test");
 		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("PlAntHill Ant Example");
+		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
 		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
@@ -177,7 +177,7 @@ class DataExporterAndViewAnalysis {
 		
 		testAnt.setRank("Rank Test");
 		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("PlAntHill Ant Example");
+		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
 		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
@@ -188,7 +188,7 @@ class DataExporterAndViewAnalysis {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlAntHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );

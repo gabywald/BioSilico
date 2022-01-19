@@ -1,7 +1,7 @@
 TAXON ID	Recording from test. 
 SCIENTIFIC NAME	
 OTHER NAMES
-	BIOSILICO COMMON NAME	PlantHill Plant Example
+	BIOSILICO COMMON NAME	AntHill Plant Example
 	COMMON NAME		Test Starting Plant
 	INCLUDES		
 RANK	Rank Test

@@ -38,7 +38,7 @@ class PlantLoadingTest {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlAntHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
@@ -59,7 +59,7 @@ class PlantLoadingTest {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlAntHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );

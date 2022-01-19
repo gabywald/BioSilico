@@ -404,7 +404,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** Export Plant as a TXT file !
@@ -707,7 +707,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -1098,7 +1098,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -1489,7 +1489,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -1934,7 +1934,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
