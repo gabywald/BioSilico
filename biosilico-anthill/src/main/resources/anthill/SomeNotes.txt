@@ -144,3 +144,11 @@ Some review to be done here to make following :
 	Generator of mutations for evolving new Basic Genomes. 
 	See for next version(s) (new tests). 
 	Better equilibrium between Plant(s) and Ant(s) instances. 
+
+20220120
+	Pipeline / Workflow ?
+	Outils tests voies métaboliques et optimisation / évolution pour tests
+	Algorithmes évolutionnaires / optimisation : analyse et choix automatique
+	Mutations / tests évolution rapide
+	Mutations / Manipulations "in situ in silico"
+

@@ -3202,3 +3202,883 @@ STEP [200]
 	390	999	solar energy => <NONEXX>
 	391	999	heat energy => <NONEXX>
 *****
+STEP [201]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	201	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [202]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	202	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [203]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	203	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [204]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	204	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [205]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	205	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [206]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	206	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [207]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	207	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [208]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	208	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [209]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	209	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [210]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	210	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [211]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	211	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [212]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	212	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [213]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	213	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [214]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	214	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [215]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	215	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [216]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	216	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [217]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	217	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [218]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	218	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [219]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	219	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [220]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	220	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [221]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	221	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [222]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	222	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [223]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	223	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [224]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	224	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [225]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	225	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [226]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	226	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [227]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	227	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [228]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	228	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [229]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	229	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [230]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	230	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [231]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	231	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [232]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	232	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [233]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	233	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [234]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	234	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [235]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	235	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [236]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	236	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [237]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	237	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [238]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	238	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [239]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	239	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [240]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	240	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [241]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	241	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [242]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	242	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [243]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	243	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [244]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	244	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [245]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	245	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [246]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	246	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [247]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	247	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [248]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	248	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [249]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	249	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [250]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	250	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [251]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	251	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [252]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	252	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [253]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	253	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [254]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	254	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [255]
+	169	25	Glucose(G6)
+	181	25	Carbon DiOxid
+	182	125	DiHydrogen Monoxid (Water / Eau)
+	330	25	Starch (Amidon)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	255	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****

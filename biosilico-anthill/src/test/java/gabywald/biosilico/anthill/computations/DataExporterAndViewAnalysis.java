@@ -99,14 +99,16 @@ class DataExporterAndViewAnalysis {
 		StringBuilder sbExportData = new StringBuilder();
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testPlant.cyclePlusPlus(); // Aging organism
+				sbExportData.append( "STEP [")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+			});
 		});
 		
 		File statisticsData = new File( "src/test/resources/" + "ExportPlantStatistics.txt" );
@@ -149,14 +151,16 @@ class DataExporterAndViewAnalysis {
 		StringBuilder sbExportData = new StringBuilder();
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testAnt.cyclePlusPlus(); // Aging organism
+				sbExportData.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+			});
 		});
 		
 		File statisticsData = new File( "src/test/resources/" + "ExportAntStatistics.txt" );
@@ -211,18 +215,20 @@ class DataExporterAndViewAnalysis {
 		StringBuilder sbExportData = new StringBuilder();
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			testPlant.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("][")
-						.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testAnt.cyclePlusPlus(); // Aging organism
+				testPlant.cyclePlusPlus(); // Aging organism
+				sbExportData.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("][")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+			});
 		});
 		
 		File statisticsData = new File( "src/test/resources/" + "ExportAntAndPlantStatistics.txt" );
@@ -276,54 +282,25 @@ class DataExporterAndViewAnalysis {
 		
 		StringBuilder sbExportData = new StringBuilder();
 		
-		// ***** one execution in this context
-		IntStream.range(0, 100).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			testPlant.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("][")
-						.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testAnt.cyclePlusPlus(); // Aging organism
+				testPlant.cyclePlusPlus(); // Aging organism
+				sbExportData.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("][")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
+			});
+	
+			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
-
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		
-		IntStream.range(101, 200).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			testPlant.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("][")
-						.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-		});
-
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		
-		IntStream.range(201, 300).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			testPlant.cyclePlusPlus(); // Aging organism
-			sbExportData.append( "STEP [")
-						.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("][")
-						.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-						.append("]\n");
-			sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-			sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-		});
 		
 		File statisticsData = new File( "src/test/resources/" + "ExportAntAndPlantStatistics02.txt" );
 		statisticsData.setChamps( sbExportData.toString().split("\n") );
@@ -335,18 +312,19 @@ class DataExporterAndViewAnalysis {
 			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
 		}
 	}
-
 	
-	public static final List<SomeChemicals> toFilterInInt = new ArrayList<SomeChemicals>();
+	public static final int BASE_COMPUTATION = 50;
+	
+	public static final List<SomeChemicals> TO_FILTER_IN_INT = new ArrayList<SomeChemicals>();
 	static {
-		toFilterInInt.add(SomeChemicals.ENERGY_HEAT);
-		toFilterInInt.add(SomeChemicals.ENERGY_SOLAR);
-		toFilterInInt.add(SomeChemicals.DIOXYGEN);
-		toFilterInInt.add(SomeChemicals.CARBON_DIOXYDE);
-		toFilterInInt.add(SomeChemicals.WATER);
-		toFilterInInt.add(SomeChemicals.GLUCOSE);
-		toFilterInInt.add(SomeChemicals.STARCH);
-		// toFilterInInt.add(StateType.AGING);
+		TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_HEAT);
+		TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_SOLAR);
+		TO_FILTER_IN_INT.add(SomeChemicals.DIOXYGEN);
+		TO_FILTER_IN_INT.add(SomeChemicals.CARBON_DIOXYDE);
+		TO_FILTER_IN_INT.add(SomeChemicals.WATER);
+		TO_FILTER_IN_INT.add(SomeChemicals.GLUCOSE);
+		TO_FILTER_IN_INT.add(SomeChemicals.STARCH);
+		// TO_FILTER_IN_INT.add(StateType.AGING);
 	}
 	
 	@Test
@@ -378,17 +356,19 @@ class DataExporterAndViewAnalysis {
 		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
-										"plant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc" + chem.getName(), steps + "");				
+		IntStream.range(0, 1).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testPlant.cyclePlusPlus(); // Aging organism
+				int steps = i;
+				int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
+											"plant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc" + chem.getName(), steps + "");				
+				});
 			});
 		});
 		
@@ -424,17 +404,19 @@ class DataExporterAndViewAnalysis {
 		DataCollector sbExportData = new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testAnt.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-										"ant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc*" + chem.getName(), steps + "");				
+		IntStream.range(0, 1).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testAnt.cyclePlusPlus(); // Aging organism
+				int steps = i;
+				int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+											"ant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc*" + chem.getName(), steps + "");				
+				});
 			});
 		});
 		
@@ -479,25 +461,26 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		
 		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
 		
 		// ***** one execution in this context
-		IntStream.range(0, 200).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			testAnt.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-			// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
-										"plant" + chem.getName(), steps + "");
-				sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-										"ant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc" + chem.getName(), steps + "");				
+		IntStream.range(0, 1).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testPlant.cyclePlusPlus(); // Aging organism
+				testAnt.cyclePlusPlus(); // Aging organism
+				int steps = i;
+				int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
+				// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
+											"plant" + chem.getName(), steps + "");
+					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+											"ant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc" + chem.getName(), steps + "");				
+				});
 			});
 		});
 		
@@ -542,70 +525,29 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		
 		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
 		
-		// ***** one execution in this context
-		IntStream.range(0, 100).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			testAnt.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-			// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
-										"plant" + chem.getName(), steps + "");
-				sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-										"ant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc" + chem.getName(), steps + "");				
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testPlant.cyclePlusPlus();	// Aging organism
+				testAnt.cyclePlusPlus();	// Aging organism
+				int steps = i;
+				int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
+				// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
+											"plant" + chem.getName(), steps + "");
+					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+											"ant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc" + chem.getName(), steps + "");				
+				});
 			});
-		});
-		
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		
-		IntStream.range(101, 200).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			testAnt.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-			// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
-										"plant" + chem.getName(), steps + "");
-				sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-										"ant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc" + chem.getName(), steps + "");				
-			});
-		});
-		
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		
-		IntStream.range(201, 300).forEach( i -> {
-			w.execution();
-			testPlant.cyclePlusPlus(); // Aging organism
-			testAnt.cyclePlusPlus(); // Aging organism
-			int steps = i;
-			int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-			// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-			sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-			toFilterInInt.stream().forEach( chem -> {
-				sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
-										"plant" + chem.getName(), steps + "");
-				sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-										"ant" + chem.getName(), steps + "");
-				sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-										"wc" + chem.getName(), steps + "");				
-			});
+			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
+			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
 		
 		sbExportData.buildImage( "src/test/resources/" + "ExportAntAndPlantStatistics02.jpeg" );
