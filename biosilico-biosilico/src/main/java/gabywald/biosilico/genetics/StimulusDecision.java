@@ -103,7 +103,7 @@ public class StimulusDecision extends GeneGattaca {
 			// ***** This is an input / stimulus
 			DirectionWorld direction	= DirectionWorld.get2DFrom( this.attribute );
 			if (direction == null)		{ return; }
-			IEnvironmentItem detectWC		= orga.getCurrentEnvironmentItem().getDirection( direction );
+			IEnvironmentItem detectWC	= orga.getCurrentEnvironmentItem().getDirection( direction );
 			
 			if (this.object) { 
 				// ***** Acts from an object 
