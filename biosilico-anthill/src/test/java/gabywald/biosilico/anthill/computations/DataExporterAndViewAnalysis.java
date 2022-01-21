@@ -73,248 +73,6 @@ class DataExporterAndViewAnalysis {
 		BuildingGenomeHelper.exportAsTXTfile("InitialPlantTest.txt", testPlant);
 	}
 
-	@Test
-	void testPlantExportChemicalsOnSteps() {
-		
-		Plant testPlant = new Plant();
-		Assertions.assertNotNull( testPlant );
-		Assertions.assertEquals(0, testPlant.getGenome().size());
-		
-		testPlant.setRank("Rank Test");
-		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("AntHill Plant Example");
-		testPlant.setDivision("TESTS");
-		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
-		
-		// ***** test with a World and WorldCase
-		World2D w		= new World2D(1, 1);
-		World2DCase wc	= w.getWorldCase(0,  0);
-		Assertions.assertNotNull( wc );
-		
-		testPlant.setCurrentWorldCase( wc );
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		EnergySource es = new EnergySource();
-		wc.addAgent( es );
-		
-		StringBuilder sbExportData = new StringBuilder();
-		
-		// ***** one execution in this context
-		IntStream.range(0, 5).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				w.execution();
-				testPlant.cyclePlusPlus(); // Aging organism
-				sbExportData.append( "STEP [")
-							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("]\n");
-				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-			});
-		});
-		
-		File statisticsData = new File( "src/test/resources/" + "ExportPlantStatistics.txt" );
-		statisticsData.setChamps( sbExportData.toString().split("\n") );
-		try {
-			statisticsData.printFile();
-		} catch (DataException e) {
-			// e.printStackTrace();
-			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
-			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
-		}
-	}
-	
-	@Test
-	void testAntExportChemicalsOnSteps() {
-		
-		Ant testAnt = new Ant();
-		Assertions.assertNotNull( testAnt );
-		Assertions.assertEquals(0, testAnt.getGenome().size());
-		
-		testAnt.setRank("Rank Test");
-		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("AntHill Ant Example");
-		testAnt.setDivision("TESTS");
-		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
-		
-		// ***** test with a World and WorldCase
-		World2D w		= new World2D(1, 1);
-		World2DCase wc	= w.getWorldCase(0,  0);
-		Assertions.assertNotNull( wc );
-		
-		testAnt.setCurrentWorldCase( wc );
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		EnergySource es = new EnergySource();
-		wc.addAgent( es );
-		
-		StringBuilder sbExportData = new StringBuilder();
-		
-		// ***** one execution in this context
-		IntStream.range(0, 5).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				w.execution();
-				testAnt.cyclePlusPlus(); // Aging organism
-				sbExportData.append( "STEP [")
-							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("]\n");
-				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-			});
-		});
-		
-		File statisticsData = new File( "src/test/resources/" + "ExportAntStatistics.txt" );
-		statisticsData.setChamps( sbExportData.toString().split("\n") );
-		try {
-			statisticsData.printFile();
-		} catch (DataException e) {
-			// e.printStackTrace();
-			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
-			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
-		}
-	}
-	
-	@Test
-	void testAntAndPlantExportChemicalsOnSteps() {
-		
-		Ant testAnt = new Ant();
-		Assertions.assertNotNull( testAnt );
-		Assertions.assertEquals(0, testAnt.getGenome().size());
-		
-		testAnt.setRank("Rank Test");
-		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("AntHill Ant Example");
-		testAnt.setDivision("TESTS");
-		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
-		
-		Plant testPlant = new Plant();
-		Assertions.assertNotNull( testPlant );
-		Assertions.assertEquals(0, testPlant.getGenome().size());
-		
-		testPlant.setRank("Rank Test");
-		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("AntHill Plant Example");
-		testPlant.setDivision("TESTS");
-		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
-		
-		// ***** test with a World and WorldCase
-		World2D w		= new World2D(1, 1);
-		World2DCase wc	= w.getWorldCase(0,  0);
-		Assertions.assertNotNull( wc );
-		
-		testAnt.setCurrentWorldCase( wc );
-		testPlant.setCurrentWorldCase( wc );
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		EnergySource es = new EnergySource();
-		wc.addAgent( es );
-		
-		StringBuilder sbExportData = new StringBuilder();
-		
-		// ***** one execution in this context
-		IntStream.range(0, 5).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				w.execution();
-				testAnt.cyclePlusPlus(); // Aging organism
-				testPlant.cyclePlusPlus(); // Aging organism
-				sbExportData.append( "STEP [")
-							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("][")
-							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("]\n");
-				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-			});
-		});
-		
-		File statisticsData = new File( "src/test/resources/" + "ExportAntAndPlantStatistics.txt" );
-		statisticsData.setChamps( sbExportData.toString().split("\n") );
-		try {
-			statisticsData.printFile();
-		} catch (DataException e) {
-			// e.printStackTrace();
-			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
-			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
-		}
-	}
-
-	@Test
-	void testAntAndPlantExportChemicalsOnSteps02() {
-		
-		Ant testAnt = new Ant();
-		Assertions.assertNotNull( testAnt );
-		Assertions.assertEquals(0, testAnt.getGenome().size());
-		
-		testAnt.setRank("Rank Test");
-		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("AntHill Ant Example");
-		testAnt.setDivision("TESTS");
-		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
-		
-		Plant testPlant = new Plant();
-		Assertions.assertNotNull( testPlant );
-		Assertions.assertEquals(0, testPlant.getGenome().size());
-		
-		testPlant.setRank("Rank Test");
-		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("AntHill Plant Example");
-		testPlant.setDivision("TESTS");
-		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
-		
-		// ***** test with a World and WorldCase
-		World2D w		= new World2D(1, 1);
-		World2DCase wc	= w.getWorldCase(0,  0);
-		Assertions.assertNotNull( wc );
-		
-		testAnt.setCurrentWorldCase( wc );
-		testPlant.setCurrentWorldCase( wc );
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		EnergySource es = new EnergySource();
-		wc.addAgent( es );
-		
-		StringBuilder sbExportData = new StringBuilder();
-		
-		IntStream.range(0, 5).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				w.execution();
-				testAnt.cyclePlusPlus(); // Aging organism
-				testPlant.cyclePlusPlus(); // Aging organism
-				sbExportData.append( "STEP [")
-							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("][")
-							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("]\n");
-				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
-			});
-	
-			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		});
-		
-		
-		File statisticsData = new File( "src/test/resources/" + "ExportAntAndPlantStatistics02.txt" );
-		statisticsData.setChamps( sbExportData.toString().split("\n") );
-		try {
-			statisticsData.printFile();
-		} catch (DataException e) {
-			// e.printStackTrace();
-			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
-			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
-		}
-	}
 	
 	public static final int BASE_COMPUTATION = 50;
 	
@@ -330,8 +88,22 @@ class DataExporterAndViewAnalysis {
 		// TO_FILTER_IN_INT.add(StateType.AGING);
 	}
 	
+	public static final String BASE_EXPORT_DIR = "src/test/resources/";
+	
+	public static void exportChemicalDataFileContent(String filePath, StringBuilder sbExportDataSTR) {
+		File statisticsData = new File( filePath );
+		statisticsData.setChamps( sbExportDataSTR.toString().split("\n") );
+		try {
+			statisticsData.printFile();
+		} catch (DataException e) {
+			// e.printStackTrace();
+			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
+			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
+		}
+	}
+	
 	@Test
-	void testPlantExportImageData() {
+	void testPlantExportImageAndChemicalsData() {
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -356,7 +128,8 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollector sbExportData		= new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
 		IntStream.range(0, 1).forEach( j -> {
@@ -372,14 +145,23 @@ class DataExporterAndViewAnalysis {
 					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
 											"wc" + chem.getName(), steps + "");				
 				});
+				
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 			});
 		});
 		
-		sbExportData.buildImage( "src/test/resources/" + "ExportPlantStatistics.jpeg" );
+		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportPlantStatistics.jpeg" );
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportPlantStatistics.txt", sbExportDataSTR );
+		
 	}
 	
 	@Test
-	void testAntExportImageData() {
+	void testAntExportImageAndChemicalsData() {
 		
 		Ant testAnt = new Ant();
 		Assertions.assertNotNull( testAnt );
@@ -404,7 +186,8 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		DataCollector sbExportData = new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
+		DataCollector sbExportData		= new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
 		IntStream.range(0, 1).forEach( j -> {
@@ -420,14 +203,21 @@ class DataExporterAndViewAnalysis {
 					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
 											"wc*" + chem.getName(), steps + "");				
 				});
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 			});
 		});
 		
-		sbExportData.buildImage( "src/test/resources/" + "ExportAntStatistics.jpeg" );
+		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntStatistics.jpeg" );
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntStatistics.txt", sbExportDataSTR );
 	}
 	
 	@Test
-	void testAntAndPlantExportImageData() {
+	void testAntAndPlantExportImageAndChemicalsData() {
 		
 		Ant testAnt = new Ant();
 		Assertions.assertNotNull( testAnt );
@@ -464,7 +254,8 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
 		IntStream.range(0, 1).forEach( j -> {
@@ -484,14 +275,25 @@ class DataExporterAndViewAnalysis {
 					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
 											"wc" + chem.getName(), steps + "");				
 				});
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("][")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 			});
 		});
 		
-		sbExportData.buildImage( "src/test/resources/" + "ExportAntAndPlantStatistics.jpeg" );
+		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics.jpeg" );
+		
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics.txt", sbExportDataSTR );
 	}
 
 	@Test
-	void testAntAndPlantExportImageData02() {
+	void testAntAndPlantExportImageAndChemicalsData02() {
 		
 		Ant testAnt = new Ant();
 		Assertions.assertNotNull( testAnt );
@@ -528,7 +330,8 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		DataCollector sbExportData = new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
 			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
@@ -547,17 +350,28 @@ class DataExporterAndViewAnalysis {
 					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
 											"wc" + chem.getName(), steps + "");				
 				});
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("][")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 			});
 			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
 			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
 		
-		sbExportData.buildImage( "src/test/resources/" + "ExportAntAndPlantStatistics02.jpeg" );
+		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics02.jpeg" );
+		
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.txt", sbExportDataSTR );
 	}
 
 	@Test
-	void testAntAndPlantExportImageData03() {
+	void testAntAndPlantExportImageAndChemicalsData03() {
 		
 		Ant testAnt = new Ant();
 		Assertions.assertNotNull( testAnt );
@@ -637,7 +451,7 @@ class DataExporterAndViewAnalysis {
 		EnergySource es = new EnergySource();
 		wc.addAgent( es );
 		
-		DataCollector sbExportData		= new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
@@ -672,17 +486,9 @@ class DataExporterAndViewAnalysis {
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
 		
-		sbExportData.buildImage( "src/test/resources/" + "ExportAntAndPlantStatistics03.jpeg" );
+		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.jpeg" );
 		
-		File statisticsData = new File( "src/test/resources/" + "ExportAntAndPlantStatistics03.txt" );
-		statisticsData.setChamps( sbExportDataSTR.toString().split("\n") );
-		try {
-			statisticsData.printFile();
-		} catch (DataException e) {
-			// e.printStackTrace();
-			String msg = "Cannot write {" + statisticsData.getFileName() + "} ; DataException {" + e.getMessage() + "}";
-			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
-		}
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.txt", sbExportDataSTR );
 		
 		BuildingGenomeHelper.exportAsTXTfile("ExtendedAntTest.txt", testAnt);
 		BuildingGenomeHelper.exportAsTXTfile("ExtendedPlantTest.txt", testPlant);
