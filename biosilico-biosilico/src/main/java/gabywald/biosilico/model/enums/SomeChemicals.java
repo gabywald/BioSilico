@@ -35,7 +35,8 @@ public enum SomeChemicals implements IChemicalsType {
 	COMBINATOR_3	(335, "Combinator3",	"P + NRJ"), 
 	
 	ENERGY_SOLAR	(390, "Solar Energy", 	"solar energy"), 
-	ENERGY_HEAT		(391, "Heat Energy", 	"heat energy"), 
+	ENERGY_HEAT		(391, "Heat Energy", 	"heat energy"),
+	NRJ_THRESHOLD	(392, "NRJ Threshold", 	"nrj threshold"),
 	
 	PHEROMONE_00	(350, "Pheromone00", "pheromonone 00"), 
 	PHEROMONE_01	(351, "Pheromone01", "pheromonone 01"),

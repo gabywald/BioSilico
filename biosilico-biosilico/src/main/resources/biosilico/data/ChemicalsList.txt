@@ -48,7 +48,7 @@ Pd	Palladium
 Ag	Silver (Argent)
 Cd	Cadmium
 In	Indium
-Sn	Sin (Etain)
+Sn	Sn (Etain)
 Sb	Stibium / Antymony (antimoine)
 Te	Tellurium
 I	Iodine (Iode)
@@ -390,7 +390,7 @@ Hormone 09	hormone09
 <NONEXX>	<NONEXX>
 Solar Energy	solar energy
 Heat Energy	heat energy
-<NONEXX>	<NONEXX>
+NRJ threshold	nrj threshold
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
 <NONEXX>	<NONEXX>
