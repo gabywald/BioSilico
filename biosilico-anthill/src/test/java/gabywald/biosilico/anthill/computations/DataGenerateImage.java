@@ -12,7 +12,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 /**
- * 
+ * Some JFreeChart image generation tests !
  * @author Gabriel Chandesris (2022)
  */
 public class DataGenerateImage {

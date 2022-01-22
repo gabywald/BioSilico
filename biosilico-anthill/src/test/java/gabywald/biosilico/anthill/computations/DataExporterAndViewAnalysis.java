@@ -49,7 +49,9 @@ class DataExporterAndViewAnalysis {
 		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAsTXTfile("InitialAntTest.txt", testAnt);
+		String exportName = "InitialAntTest.txt";
+		BuildingGenomeHelper.exportAsTXTfile(exportName, testAnt);
+		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + exportName );
 	}
 
 	/**
@@ -70,9 +72,15 @@ class DataExporterAndViewAnalysis {
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** Export Plant as a TXT file !
+		String exportName = "InitialPlantTest.txt";
 		BuildingGenomeHelper.exportAsTXTfile("InitialPlantTest.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + exportName );
 	}
 
+	public static void testFileExists(String path2File) {
+		File file = new File( path2File );
+		Assertions.assertTrue( file.fileExists() );
+	}
 	
 	public static final int BASE_COMPUTATION = 50;
 	
@@ -88,7 +96,7 @@ class DataExporterAndViewAnalysis {
 		// TO_FILTER_IN_INT.add(StateType.AGING);
 	}
 	
-	public static final String BASE_EXPORT_DIR = "src/test/resources/";
+	public static final String BASE_EXPORT_TEST_DIR = "src/test/resources/";
 	
 	public static void exportChemicalDataFileContent(String filePath, StringBuilder sbExportDataSTR) {
 		File statisticsData = new File( filePath );
@@ -155,9 +163,13 @@ class DataExporterAndViewAnalysis {
 			});
 		});
 		
-		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportPlantStatistics.jpeg" );
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportPlantStatistics.txt", sbExportDataSTR );
+		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
+		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
 	
 	@Test
@@ -212,8 +224,13 @@ class DataExporterAndViewAnalysis {
 			});
 		});
 		
-		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntStatistics.jpeg" );
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntStatistics.txt", sbExportDataSTR );
+		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntStatistics.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
+		
+		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntStatistics.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
 	
 	@Test
@@ -287,9 +304,13 @@ class DataExporterAndViewAnalysis {
 			});
 		});
 		
-		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics.jpeg" );
+		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics.txt", sbExportDataSTR );
+		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
 
 	@Test
@@ -365,10 +386,13 @@ class DataExporterAndViewAnalysis {
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
 		
-		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics02.jpeg" );
+		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.txt", sbExportDataSTR );
-	}
+		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );	}
 
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData03() {
@@ -486,12 +510,19 @@ class DataExporterAndViewAnalysis {
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		});
 		
-		sbExportData.buildImage( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.jpeg" );
+		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( BASE_EXPORT_DIR + "ExportAntAndPlantStatistics03.txt", sbExportDataSTR );
+		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
+		
 		
 		BuildingGenomeHelper.exportAsTXTfile("ExtendedAntTest.txt", testAnt);
 		BuildingGenomeHelper.exportAsTXTfile("ExtendedPlantTest.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( "ExtendedAntTest.txt" );
+		DataExporterAndViewAnalysis.testFileExists( "ExtendedPlantTest.txt" );
 	}
 	
 }
