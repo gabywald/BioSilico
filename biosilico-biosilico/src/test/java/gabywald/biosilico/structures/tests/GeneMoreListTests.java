@@ -21,10 +21,12 @@ import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
 import gabywald.biosilico.structures.GeneMoreListe;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
 /**
  * 
- * @author Gabriel Chandesris (2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class GeneMoreListTests {
 
@@ -45,9 +47,9 @@ class GeneMoreListTests {
 		// gml.printFile();
 		
 		Assertions.assertEquals(162, gml.getGenesNames().stream().count());
-		gml.getGenesNames().stream().forEach(System.out::println);
+		// gml.getGenesNames().stream().forEach(System.out::println);
 		LongStream.range(0, gml.getGenesNames().stream().count()).forEach( l -> {
-			System.out.println( l + " :: " + gml.getGene((int)l).toString() );
+			Logger.printlnLog(LoggerLevel.LL_NONE, l + " :: " + gml.getGene((int)l).toString() );
 		});
 		
 		GeneMoreListe gmlBIS = new GeneMoreListe("initialGenes.txt", true);

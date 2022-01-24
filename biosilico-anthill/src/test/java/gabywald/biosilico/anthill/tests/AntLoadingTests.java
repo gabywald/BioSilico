@@ -603,12 +603,12 @@ class AntLoadingTests {
 		testAnt.execution( wc );
 		testAnt.cyclePlusPlus(); // Aging organism
 		
-		Logger.printlnLog(LoggerLevel.LL_INFO, testAnt.toString() );
-		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
-		Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
-		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
-		Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString() );
-		Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, es.toString() );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.PHOSPHOR.getIndex()));
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable(SomeChemicals.ATP.getIndex()));

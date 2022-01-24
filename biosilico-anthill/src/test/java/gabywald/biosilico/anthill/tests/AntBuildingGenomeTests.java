@@ -603,8 +603,8 @@ class AntBuildingGenomeTests {
 		// ***** one execution in this context
 		testAnt.execution( wc );
 		
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, testAnt.toString() );
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, testAnt.toString() );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( GeneratorReceptionChemicals.PHEROMONE_00_CURRENT.getIndex() ) );
 		Assertions.assertEquals(  0, testAnt.getChemicals().getVariable( GeneratorReceptionChemicals.PHEROMONE_00_East.getIndex() ) );

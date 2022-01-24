@@ -26,10 +26,12 @@ import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.tests.TestObjectFoodEgg;
 import gabywald.global.structures.StringCouple;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
 /**
  * 
- * @author Gabriel Chandesris (2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class DecisionsTests {
 
@@ -77,7 +79,7 @@ class DecisionsTests {
 		
 		List<ObjectType> oTypes = Arrays.asList( ObjectType.values() );
 		oTypes.stream().forEach( oType -> {
-			// System.out.println( "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
+			// Logger.printlnLog(LoggerLevel.LL_NONE,  "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
 			int object			= oType.getIndex();
 
 			DecisionType dType	= DecisionType.getFrom( which );
@@ -115,10 +117,10 @@ class DecisionsTests {
 	@Test
 	void testDecisionRandomDirection2D() {
 		DirectionWorld.values2DasList().stream().forEach( dw -> {
-			System.out.println( "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
+			Logger.printlnLog(LoggerLevel.LL_NONE,  "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
 			IntStream.range(0, 10).forEach( i -> {
 				DirectionWorld direction = DecisionToMove.getRandomDirection2D( dw );
-				System.out.println( "\t direction: " + direction );
+				Logger.printlnLog(LoggerLevel.LL_NONE,  "\t direction: " + direction );
 				Assertions.assertTrue( ( (direction.getIndex() >= 800) && (direction.getIndex() <= 808) ) );
 			});
 		});
@@ -127,10 +129,10 @@ class DecisionsTests {
 	@Test
 	void testDecisionRandomDirection3D() {
 		DirectionWorld.valuesAsList().stream().forEach( dw -> {
-			System.out.println( "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
+			Logger.printlnLog(LoggerLevel.LL_NONE,  "dw: " + dw.getName() + " (" + dw.getIndex() + ")" );
 			IntStream.range(0, 10).forEach( i -> {
 				DirectionWorld direction = DecisionToMove.getRandomDirection3D( dw );
-				System.out.println( "\t direction: " + direction );
+				Logger.printlnLog(LoggerLevel.LL_NONE,  "\t direction: " + direction );
 				Assertions.assertTrue( ( (direction.getIndex() >= 800) && (direction.getIndex() <= 826) ) );
 			});
 		});
@@ -192,7 +194,7 @@ class DecisionsTests {
 						DirectionWorld.NorthEast, 	DirectionWorld.NorthWest, 
 						DirectionWorld.SouthEast, 	DirectionWorld.SouthWest );
 		dirs.stream().forEach( dir -> {
-			// System.out.println( "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
+			// Logger.printlnLog(LoggerLevel.LL_NONE,  "dir: " + dir.getName() + " (" + dir.getIndex() + ")" );
 			int attribute	= dir.getIndex();
 			
 			DecisionType dType = DecisionType.getFrom( which );
@@ -220,7 +222,7 @@ class DecisionsTests {
 			testOrga.deplace();
 			
 			IEnvironmentItem nextWC = wc.getDirection(dir);
-			// System.out.println( "\t next: (" + nextWC.getPosX() + ", " + nextWC.getPosY() + ")" );
+			// Logger.printlnLog(LoggerLevel.LL_NONE,  "\t next: (" + nextWC.getPosX() + ", " + nextWC.getPosY() + ")" );
 			Assertions.assertEquals(nextWC, testOrga.getCurrentEnvironmentItem());
 		});
 

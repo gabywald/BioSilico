@@ -3,8 +3,6 @@ package gabywald.biosilico.genetics.builders.complex;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-
 import gabywald.biosilico.genetics.BiochemicalReaction;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 
@@ -59,7 +57,6 @@ public class PathwayBuilder {
 		// // // - need of StimulusDecision here ? (further actions ?!)
 		
 		BiochemicalReactionBuilder brb = new BiochemicalReactionBuilder();
-		Assertions.assertNotNull( brb );
 		for (Tuple t : this.coefAndChemicals) {
 			BiochemicalReaction brGene = brb.achem( t.getElements()[0] ).acoef( t.getElements()[1] )
 											.bchem( t.getElements()[2] ).bcoef( t.getElements()[3] )

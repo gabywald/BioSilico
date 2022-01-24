@@ -19,7 +19,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 public abstract class BuildingGenomeHelper {
 	
@@ -110,27 +110,33 @@ public abstract class BuildingGenomeHelper {
 	
 	public static void show(Organism testOrg, EnergySource es, World2DCase wc) {
 		if (testOrg != null) { 
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, testOrg.toString() ); 
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("+", 80) );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, testOrg.toString() ); 
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
 		}
 		if (es != null) { 
-			Logger.printlnLog(LoggerLevel.LL_INFO, es.toString() );
-			Logger.printlnLog(LoggerLevel.LL_INFO, StringUtils.repeat("+", 80) );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, es.toString() );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
 		}
 		if (wc != null) { 
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, wc.toString() );
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("*", 80) );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, wc.toString() );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("*", 80) );
 		}
 	}
 	
+	/**
+	 * SOME LOGS ! (change it if needed to LL_INFO // LL_FORUSER
+	 * @param ant
+	 * @param plant
+	 * @param wcs
+	 */
 	public static void showAll(Organism ant, Organism plant, List<World2DCase> wcs) {
 		BuildingGenomeHelper.show( ant );
 		BuildingGenomeHelper.show( plant );
 		wcs.stream().forEach( wc -> {
-			Logger.printlnLog(LoggerLevel.LL_INFO, wc.toString());
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("+", 80) );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, wc.toString());
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("+", 80) );
 		});
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, StringUtils.repeat("*", 80) );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, StringUtils.repeat("*", 80) );
 	}
 	
 }

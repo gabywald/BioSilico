@@ -31,7 +31,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class PlantBuildingGenomeTests {
 
@@ -396,7 +396,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 2 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 36, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -699,7 +699,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals( 21, testPlant.getGenome().get( 0 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 21, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1090,7 +1090,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1481,7 +1481,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1926,7 +1926,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1941,7 +1941,7 @@ class PlantBuildingGenomeTests {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(3, 3);
+		World2D w		= new World2D(3, 3);
 		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		

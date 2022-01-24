@@ -22,8 +22,7 @@ import gabywald.biosilico.model.environment.World2DCase;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class OrganismInWorldCaseEmitterReceptorsTests {
 
