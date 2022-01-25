@@ -3,7 +3,10 @@ package gabywald.biosilico.anthill.computations;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -42,13 +45,7 @@ public class DataCollector {
 		this.lineChartDataset.addValue(value, row, col);
 	}
 	
-	/**
-	 * 
-	 * @param width Width of the image. 
-	 * @param height Height of the image. 
-	 * @param path2file Path and name of the image to generate (with '.jpeg' | '.jpg' | '.png' extension).  
-	 */
-	public void buildImage(int width, int height, String path2file) {
+	private JFreeChart generate() {
 		JFreeChart lineChartObject = ChartFactory.createLineChart(
 				this.titleLabel,
 				this.categoryAxisLabel,
@@ -56,6 +53,17 @@ public class DataCollector {
 				this.lineChartDataset, 
 				PlotOrientation.VERTICAL,
 				true, true, false);
+		return lineChartObject;
+	}
+	
+	/**
+	 * 
+	 * @param width Width of the image. 
+	 * @param height Height of the image. 
+	 * @param path2file Path and name of the image to generate (with '.jpeg' | '.jpg' | '.png' extension).  
+	 */
+	public void buildImage(int width, int height, String path2file) {
+		JFreeChart lineChartObject = this.generate();
 
 		File lineChartFile = new File( path2file ); 
 		try {
@@ -78,6 +86,23 @@ public class DataCollector {
 	 */
 	public void buildImage(String path2file) {
 		this.buildImage(1024, 768, path2file);
+	}
+	
+	public void showJFrame() {
+		JFrame frame = new JFrame();
+//		frame.add( new Canvas() {
+//			public void paint(Graphics g) {  
+//				this.setBackground(Color.WHITE);
+//				this.setForeground(Color.RED);
+//				// g.drawLine(x1, y1, x2, y2);
+//			}
+//		});
+		frame.setSize(1024, 768);
+		
+		frame.add(new ChartPanel(this.generate()));
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 	
 }
