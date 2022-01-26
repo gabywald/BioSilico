@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.computations;
+package gabywald.biosilico.anthill.graphics.data;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,13 +90,7 @@ public class DataCollector {
 	
 	public void showJFrame() {
 		JFrame frame = new JFrame();
-//		frame.add( new Canvas() {
-//			public void paint(Graphics g) {  
-//				this.setBackground(Color.WHITE);
-//				this.setForeground(Color.RED);
-//				// g.drawLine(x1, y1, x2, y2);
-//			}
-//		});
+
 		frame.setSize(1024, 768);
 		
 		frame.add(new ChartPanel(this.generate()));

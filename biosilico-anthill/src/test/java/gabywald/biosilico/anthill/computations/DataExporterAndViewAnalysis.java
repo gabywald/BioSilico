@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
+import gabywald.biosilico.anthill.graphics.data.DataCollector;
 import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
 import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.Gene;
