@@ -23,6 +23,9 @@ public class DataCollector {
 	private String	titleLabel			= null,
 					categoryAxisLabel	= null, 
 					valueAxisLabel		= null;
+	
+	private JFrame frame = null;
+	
 	/**
 	 * 
 	 * @param title Title of the graphical output. 
@@ -89,7 +92,9 @@ public class DataCollector {
 	}
 	
 	public void showJFrame() {
-		JFrame frame = new JFrame();
+		if (this.frame == null) {
+			this.frame = new JFrame();
+		}
 
 		frame.setSize(1024, 768);
 		
@@ -98,5 +103,10 @@ public class DataCollector {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
+	
+//	public void hideJFrame() {
+//		if (this.frame != null) 
+//			{ System.exit(0); }
+//	}
 	
 }

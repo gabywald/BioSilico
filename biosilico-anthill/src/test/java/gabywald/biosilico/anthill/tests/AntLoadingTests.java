@@ -45,7 +45,7 @@ class AntLoadingTests {
 		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** Export Ant as a TXT file !
-		BuildingGenomeHelper.exportAsTXTfile("InitialAntTest.txt", testAnt);
+		BuildingGenomeHelper.exportAsTXTfile("2020InitialAntTest.txt", testAnt);
 	}
 
 	/**

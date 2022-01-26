@@ -44,7 +44,7 @@ class PlantLoadingTest {
 		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** Export Plant as a TXT file !
-		BuildingGenomeHelper.exportAsTXTfile("InitialPlantTest.txt", testPlant);
+		BuildingGenomeHelper.exportAsTXTfile("2020InitialPlantTest.txt", testPlant);
 	}
 
 	/**
