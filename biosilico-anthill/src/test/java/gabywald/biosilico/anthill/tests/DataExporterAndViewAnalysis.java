@@ -663,6 +663,15 @@ STEP [255][255]
 		BuildingGenomeHelper.exportAsTXTfile(plantGenomeFile, testPlant);
 		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + antGenomeFile );
 		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + plantGenomeFile );
+		
+		BuildingGenomeHelper.exportGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_ANT_2022, testAnt);
+		BuildingGenomeHelper.exportGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022, testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_ANT_2022 );
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022 );
+		
+		// BuildingGenomeHelper.copyMoveGenome("GenomeAntCompleteGenome.txt", "baseGenomeAnt.txt");
+		BuildingGenomeHelper.removeACGTsequence( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_ANT_2022 );
+		BuildingGenomeHelper.removeACGTsequence( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022 );
 	}
 	
 	@Test
@@ -852,7 +861,7 @@ STEP [255][255]
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_ANT_2022) );
 		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
@@ -864,51 +873,10 @@ STEP [255][255]
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022) );
 		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
-		// HERE adding new GeneS
-		StimulusDecisionBuilder sdb = new StimulusDecisionBuilder();
-		// New gene to EMIT water if more than 350 !
-		Gene waterEmitter = sdb		.perception( false ).object( false )
-									.indicator( 800 ).threshold( 350 )
-									.attribute( SomeChemicals.WATER.getIndex() ).varia( SomeChemicals.WATER.getIndex() )
-									.value( 30 ).script( DecisionType.EMIT.getIndex() )
-								.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
-								.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
-								.name("StimulusDecision EMIT WATER (added)")
-					.build();
-		testPlant.getGenome().get(testPlant.getGenome().size() - 1 /** !! */).addGene( waterEmitter );
-		// New gene to EMIT dioxygen if more than 350 !
-		Gene dioxygenEmitter = sdb		.perception( false ).object( false )
-										.indicator( 800 ).threshold( 350 )
-										.attribute( SomeChemicals.DIOXYGEN.getIndex() ).varia( SomeChemicals.DIOXYGEN.getIndex() )
-										.value( 30 ).script( DecisionType.EMIT.getIndex() )
-									.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
-									.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
-									.name("StimulusDecision EMIT DIOXYGEN (added)")
-						.build();
-		testAnt.getGenome().get(testAnt.getGenome().size() - 2 /** !! */).addGene( dioxygenEmitter );
-
-		
-		Gene energyHeatEmitter = sdb		.perception( false ).object( false )
-											.indicator( 800 ).threshold( 500 )
-											.attribute( SomeChemicals.ENERGY_HEAT.getIndex() ).varia( SomeChemicals.ENERGY_HEAT.getIndex() )
-											.value( 100 ).script( DecisionType.EMIT.getIndex() )
-										.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
-										.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
-										.name("StimulusDecision EMIT ENERGY_HEAT (added)").build();
-		Gene energySolarEmitter = sdb		.perception( false ).object( false )
-											.indicator( 800 ).threshold( 500 )
-											.attribute( SomeChemicals.ENERGY_SOLAR.getIndex() ).varia( SomeChemicals.ENERGY_SOLAR.getIndex() )
-											.value( 100 ).script( DecisionType.EMIT.getIndex() )
-										.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
-										.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
-										.name("StimulusDecision EMIT ENERGY_SOLAR (added)").build();
-		testPlant.getGenome().get(testPlant.getGenome().size() - 1 /** !! */).addGene( energyHeatEmitter );
-		testAnt.getGenome().get(testAnt.getGenome().size() - 2 /** !! */).addGene( energyHeatEmitter.clone() );
-		testPlant.getGenome().get(testPlant.getGenome().size() - 1 /** !! */).addGene( energySolarEmitter );
-		// testAnt.getGenome().get(testAnt.getGenome().size() - 2 /** !! */).addGene( energySolarEmitter.clone() );
+		// HERE NEW GENES ARE ALREADY ADDED (see above)
 		
 		// ***** test with a World and WorldCase
 		World2D w		= new World2D(1, 1);

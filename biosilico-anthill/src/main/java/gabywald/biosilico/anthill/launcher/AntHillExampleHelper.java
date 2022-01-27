@@ -25,11 +25,11 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class AntHillExampleHelper {
 
 	public static List<Chromosome> loadingAntGenome() {
-		return AntHillExampleHelper.loadingGenome( "anthill/baseGenomeAnt.txt" );
+		return AntHillExampleHelper.loadingGenome( "src/main/resources/" + "anthill/baseGenomeAnt.txt" );
 	}
 	
 	public static List<Chromosome> loadingPlantGenome() {
-		return AntHillExampleHelper.loadingGenome( "anthill/baseGenomePlant.txt" );
+		return AntHillExampleHelper.loadingGenome( "src/main/resources/" + "anthill/baseGenomePlant.txt" );
 	}
 	
 	public static List<Chromosome> loadingGenome(String path2file) {
@@ -98,10 +98,10 @@ public class AntHillExampleHelper {
 								.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))
 								.build();
 				} else {
-					currentGene = brb	.achem(Integer.parseInt(datas[ 9])).acoef(Integer.parseInt(datas[10]))
-										.bchem(Integer.parseInt(datas[11])).bcoef(Integer.parseInt(datas[12]))
-										.cchem(Integer.parseInt(datas[13])).ccoef(Integer.parseInt(datas[14]))
-										.dchem(Integer.parseInt(datas[15])).dcoef(Integer.parseInt(datas[16]))
+					currentGene = brb	.acoef(Integer.parseInt(datas[ 9])).achem(Integer.parseInt(datas[10]))
+										.bcoef(Integer.parseInt(datas[11])).achem(Integer.parseInt(datas[12]))
+										.ccoef(Integer.parseInt(datas[13])).achem(Integer.parseInt(datas[14]))
+										.dcoef(Integer.parseInt(datas[15])).achem(Integer.parseInt(datas[16]))
 										 .kmvm(Integer.parseInt(datas[17]))
 											.mutate(Boolean.parseBoolean(datas[ 1]))	.duplicate(Boolean.parseBoolean(datas[ 2]))	.delete(Boolean.parseBoolean(datas[ 3])).activ(Boolean.parseBoolean(datas[ 4]))
 											.agemin(Integer.parseInt(datas[ 5]))		.agemax(Integer.parseInt(datas[ 6]))		.sex(Integer.parseInt(datas[ 7]))		.mutation(Integer.parseInt(datas[ 8]))

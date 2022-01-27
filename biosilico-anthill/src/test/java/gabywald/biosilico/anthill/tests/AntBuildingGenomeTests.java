@@ -1604,7 +1604,10 @@ class AntBuildingGenomeTests {
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestBiochemicalReactions.txt", testAnt);
 		
-		BuildingGenomeHelper.exportGenome("GenomeBiochemicalReactions.txt", testAnt);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeBiochemicalReactions.txt", testAnt);
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestBiochemicalReactions.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeBiochemicalReactions.txt" );
 		
 	}
 

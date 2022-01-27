@@ -1,8 +1,8 @@
 STEP [1]
+	0	157	<NONE00>
 	169	25	Glucose(G6)
 	180	35	DiOxygen
 	181	20	Carbon DiOxid
-	182	20	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	25	heat energy
@@ -18,10 +18,10 @@ STEP [1]
 	391	25	heat energy
 *****
 STEP [2]
+	0	114	<NONE00>
 	169	25	Glucose(G6)
 	180	45	DiOxygen
 	181	15	Carbon DiOxid
-	182	15	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	30	heat energy
@@ -32,15 +32,15 @@ STEP [2]
 *****
 	180	80	DiOxygen
 	181	10	Carbon DiOxid
-	182	110	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	50	solar energy
 	391	45	heat energy
 *****
 STEP [3]
+	0	71	<NONE00>
 	169	25	Glucose(G6)
 	180	55	DiOxygen
 	181	10	Carbon DiOxid
-	182	10	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	35	heat energy
@@ -51,15 +51,15 @@ STEP [3]
 *****
 	180	70	DiOxygen
 	181	15	Carbon DiOxid
-	182	115	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	75	solar energy
 	391	65	heat energy
 *****
 STEP [4]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	65	DiOxygen
 	181	5	Carbon DiOxid
-	182	5	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	40	heat energy
@@ -70,11 +70,12 @@ STEP [4]
 *****
 	180	60	DiOxygen
 	181	20	Carbon DiOxid
-	182	120	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	100	solar energy
 	391	85	heat energy
 *****
 STEP [5]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	75	DiOxygen
 	330	25	Starch (Amidon)
@@ -87,11 +88,12 @@ STEP [5]
 *****
 	180	50	DiOxygen
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	125	solar energy
 	391	105	heat energy
 *****
 STEP [6]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	85	DiOxygen
 	330	25	Starch (Amidon)
@@ -104,11 +106,12 @@ STEP [6]
 *****
 	180	40	DiOxygen
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	150	solar energy
 	391	125	heat energy
 *****
 STEP [7]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	95	DiOxygen
 	330	25	Starch (Amidon)
@@ -121,11 +124,12 @@ STEP [7]
 *****
 	180	30	DiOxygen
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	175	solar energy
 	391	145	heat energy
 *****
 STEP [8]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	105	DiOxygen
 	330	25	Starch (Amidon)
@@ -138,11 +142,12 @@ STEP [8]
 *****
 	180	20	DiOxygen
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	200	solar energy
 	391	165	heat energy
 *****
 STEP [9]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	115	DiOxygen
 	330	25	Starch (Amidon)
@@ -155,11 +160,12 @@ STEP [9]
 *****
 	180	10	DiOxygen
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	225	solar energy
 	391	185	heat energy
 *****
 STEP [10]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -171,11 +177,12 @@ STEP [10]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	250	solar energy
 	391	205	heat energy
 *****
 STEP [11]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -187,11 +194,12 @@ STEP [11]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	275	solar energy
 	391	225	heat energy
 *****
 STEP [12]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -203,11 +211,12 @@ STEP [12]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	300	solar energy
 	391	245	heat energy
 *****
 STEP [13]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -219,11 +228,12 @@ STEP [13]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	325	solar energy
 	391	265	heat energy
 *****
 STEP [14]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -235,11 +245,12 @@ STEP [14]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	350	solar energy
 	391	285	heat energy
 *****
 STEP [15]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -251,11 +262,12 @@ STEP [15]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	375	solar energy
 	391	305	heat energy
 *****
 STEP [16]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -267,11 +279,12 @@ STEP [16]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	400	solar energy
 	391	325	heat energy
 *****
 STEP [17]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -283,11 +296,12 @@ STEP [17]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	425	solar energy
 	391	345	heat energy
 *****
 STEP [18]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -299,11 +313,12 @@ STEP [18]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	450	solar energy
 	391	365	heat energy
 *****
 STEP [19]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -315,11 +330,12 @@ STEP [19]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	475	solar energy
 	391	385	heat energy
 *****
 STEP [20]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -331,11 +347,12 @@ STEP [20]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	500	solar energy
 	391	405	heat energy
 *****
 STEP [21]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -347,11 +364,12 @@ STEP [21]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	525	solar energy
 	391	425	heat energy
 *****
 STEP [22]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -363,11 +381,12 @@ STEP [22]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	550	solar energy
 	391	445	heat energy
 *****
 STEP [23]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -379,11 +398,12 @@ STEP [23]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	575	solar energy
 	391	465	heat energy
 *****
 STEP [24]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -395,11 +415,12 @@ STEP [24]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	600	solar energy
 	391	485	heat energy
 *****
 STEP [25]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -411,11 +432,12 @@ STEP [25]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	625	solar energy => <NONEXX>
 	391	505	heat energy
 *****
 STEP [26]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -427,11 +449,12 @@ STEP [26]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	650	solar energy => <NONEXX>
 	391	525	heat energy
 *****
 STEP [27]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -443,11 +466,12 @@ STEP [27]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	675	solar energy => <NONEXX>
 	391	545	heat energy
 *****
 STEP [28]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -459,11 +483,12 @@ STEP [28]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	700	solar energy => <NONEXX>
 	391	565	heat energy
 *****
 STEP [29]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -475,11 +500,12 @@ STEP [29]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	725	solar energy => <NONEXX>
 	391	585	heat energy
 *****
 STEP [30]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -491,11 +517,12 @@ STEP [30]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	750	solar energy => <NONEXX>
 	391	605	heat energy => <NONEXX>
 *****
 STEP [31]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -507,11 +534,12 @@ STEP [31]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	775	solar energy => <NONEXX>
 	391	625	heat energy => <NONEXX>
 *****
 STEP [32]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -523,11 +551,12 @@ STEP [32]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	800	solar energy => Local / Current Position
 	391	645	heat energy => <NONEXX>
 *****
 STEP [33]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -539,11 +568,12 @@ STEP [33]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	825	solar energy => Down South-West
 	391	665	heat energy => <NONEXX>
 *****
 STEP [34]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -555,11 +585,12 @@ STEP [34]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	850	solar energy => stay
 	391	685	heat energy => <NONEXX>
 *****
 STEP [35]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -571,11 +602,12 @@ STEP [35]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	875	solar energy => (free)
 	391	705	heat energy => <NONEXX>
 *****
 STEP [36]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -587,11 +619,12 @@ STEP [36]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	900	solar energy => current
 	391	725	heat energy => <NONEXX>
 *****
 STEP [37]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -603,11 +636,12 @@ STEP [37]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	925	solar energy => teen
 	391	745	heat energy => <NONEXX>
 *****
 STEP [38]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -619,11 +653,12 @@ STEP [38]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	950	solar energy
 	391	765	heat energy => <NONEXX>
 *****
 STEP [39]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -635,11 +670,12 @@ STEP [39]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	975	solar energy => <NONEXX>
 	391	785	heat energy => <NONEXX>
 *****
 STEP [40]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -651,11 +687,12 @@ STEP [40]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	805	heat energy => Local South-East
 *****
 STEP [41]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -667,11 +704,12 @@ STEP [41]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	825	heat energy => Down South-West
 *****
 STEP [42]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -683,11 +721,12 @@ STEP [42]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	845	heat energy => <NONEXX>
 *****
 STEP [43]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -699,11 +738,12 @@ STEP [43]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	865	heat energy => receive
 *****
 STEP [44]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -715,11 +755,12 @@ STEP [44]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	885	heat energy => <NONEXX>
 *****
 STEP [45]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -731,11 +772,12 @@ STEP [45]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	905	heat energy => drink
 *****
 STEP [46]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -747,11 +789,12 @@ STEP [46]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	925	heat energy => teen
 *****
 STEP [47]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -763,11 +806,12 @@ STEP [47]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	945	heat energy => (free)
 *****
 STEP [48]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -779,11 +823,12 @@ STEP [48]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	965	heat energy => (free)
 *****
 STEP [49]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -795,11 +840,12 @@ STEP [49]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	985	heat energy => <NONEXX>
 *****
 STEP [50]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -811,11 +857,12 @@ STEP [50]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	999	heat energy => <NONEXX>
 *****
 STEP [51]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	125	DiOxygen
 	330	25	Starch (Amidon)
@@ -827,7 +874,7 @@ STEP [51]
 	954	921	status => egg
 *****
 	181	25	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	999	solar energy => <NONEXX>
 	391	999	heat energy => <NONEXX>
 *****

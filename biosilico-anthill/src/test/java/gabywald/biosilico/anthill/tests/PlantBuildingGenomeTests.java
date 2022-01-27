@@ -481,12 +481,16 @@ class PlantBuildingGenomeTests {
 //		});
 		
 		// ***** Export Plant as a TXT file !
-		// BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
+		// BuildingGenomeHelper.exportAsTXTfile(AntBuildingGenomeComplete.SRC_TEST_RSC + "TestAntCompleteGenome.txt", testPlant);
 		
-		BuildingGenomeHelper.exportGenome("GenomePlantCompleteGenome.txt", testPlant);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt", testPlant);
 		
-		BuildingGenomeHelper.copyMoveGenome("GenomePlantCompleteGenome.txt", "baseGenomePlant.txt");
-		BuildingGenomeHelper.removeACGTsequence( "baseGenomePlant.txt" );
+		BuildingGenomeHelper.copyMoveGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt", 
+											AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt");
+		BuildingGenomeHelper.removeACGTsequence( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt" );
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt" );
 	}
 
 	@Test

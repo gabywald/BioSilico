@@ -37,6 +37,9 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * @author Gabriel Chandesris (2020, 2022)
  */
 class AntBuildingGenomeComplete {
+	
+	public static final String SRC_TEST_RSC			= "src/test/resources/";
+	public static final String SRC_MAIN_RSC_ANTHILL	= "src/main/resources/anthill/";
 
 	@Test
 	void testAntCompleteGenome() {
@@ -787,10 +790,15 @@ class AntBuildingGenomeComplete {
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestAntCompleteGenome.txt", testAnt);
 		
-		BuildingGenomeHelper.exportGenome("GenomeAntCompleteGenome.txt", testAnt);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt", testAnt);
 		
-		BuildingGenomeHelper.copyMoveGenome("GenomeAntCompleteGenome.txt", "baseGenomeAnt.txt");
-		BuildingGenomeHelper.removeACGTsequence( "baseGenomeAnt.txt" );
+		BuildingGenomeHelper.copyMoveGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt", 
+											AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt");
+		BuildingGenomeHelper.removeACGTsequence( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt" );
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestAntCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt" );
 	}
 
 }

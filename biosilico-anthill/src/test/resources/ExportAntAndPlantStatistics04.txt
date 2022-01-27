@@ -1,8 +1,8 @@
 STEP [1][1]
+	0	157	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	181	20	Carbon DiOxid
-	182	20	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	25	heat energy
@@ -11,10 +11,11 @@ STEP [1][1]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	5	<NONE00>
 	169	25	Glucose(G6)
 	181	25	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	21	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	1	aging
@@ -29,10 +30,10 @@ STEP [1][1]
 	391	25	heat energy
 *****
 STEP [2][2]
+	0	114	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	181	15	Carbon DiOxid
-	182	15	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	30	heat energy
@@ -41,10 +42,11 @@ STEP [2][2]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	10	<NONE00>
 	169	25	Glucose(G6)
 	181	25	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	17	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	2	aging
@@ -54,15 +56,15 @@ STEP [2][2]
 *****
 	180	110	DiOxygen
 	181	10	Carbon DiOxid
-	182	130	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	30	solar energy
 	391	35	heat energy
 *****
 STEP [3][3]
+	0	71	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	181	10	Carbon DiOxid
-	182	10	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	35	heat energy
@@ -71,10 +73,11 @@ STEP [3][3]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	15	<NONE00>
 	169	25	Glucose(G6)
 	181	25	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	13	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	3	aging
@@ -84,15 +87,15 @@ STEP [3][3]
 *****
 	180	100	DiOxygen
 	181	15	Carbon DiOxid
-	182	115	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	35	solar energy
 	391	45	heat energy
 *****
 STEP [4][4]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	181	5	Carbon DiOxid
-	182	5	DiHydrogen Monoxid (Water / Eau)
 	330	25	Starch (Amidon)
 	332	25	Glycogen
 	391	40	heat energy
@@ -101,10 +104,11 @@ STEP [4][4]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	20	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	9	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	4	aging
@@ -113,11 +117,12 @@ STEP [4][4]
 	954	922	status => embryo
 *****
 	180	120	DiOxygen
-	182	130	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	40	solar energy
 	391	55	heat energy
 *****
 STEP [5][5]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -128,10 +133,11 @@ STEP [5][5]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	25	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	5	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	5	aging
@@ -141,11 +147,12 @@ STEP [5][5]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	145	solar energy
 	391	65	heat energy
 *****
 STEP [6][6]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -156,10 +163,11 @@ STEP [6][6]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	30	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
+	330	1	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	6	aging
@@ -169,11 +177,12 @@ STEP [6][6]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	150	solar energy
 	391	75	heat energy
 *****
 STEP [7][7]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -184,10 +193,10 @@ STEP [7][7]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	44	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	7	aging
@@ -197,11 +206,12 @@ STEP [7][7]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	155	solar energy
 	391	85	heat energy
 *****
 STEP [8][8]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -212,10 +222,10 @@ STEP [8][8]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	61	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	8	aging
@@ -225,11 +235,12 @@ STEP [8][8]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	160	solar energy
 	391	95	heat energy
 *****
 STEP [9][9]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -240,10 +251,10 @@ STEP [9][9]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	78	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	9	aging
@@ -253,11 +264,12 @@ STEP [9][9]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	165	solar energy
 	391	130	heat energy
 *****
 STEP [10][10]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -268,10 +280,10 @@ STEP [10][10]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	95	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	10	aging
@@ -281,11 +293,12 @@ STEP [10][10]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	195	solar energy
 	391	140	heat energy
 *****
 STEP [11][11]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -296,10 +309,10 @@ STEP [11][11]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	112	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	11	aging
@@ -309,11 +322,12 @@ STEP [11][11]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	200	solar energy
 	391	150	heat energy
 *****
 STEP [12][12]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -324,10 +338,10 @@ STEP [12][12]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	129	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	12	aging
@@ -337,11 +351,12 @@ STEP [12][12]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	130	solar energy
 	391	160	heat energy
 *****
 STEP [13][13]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -352,10 +367,10 @@ STEP [13][13]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	146	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	13	aging
@@ -365,11 +380,12 @@ STEP [13][13]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	135	solar energy
 	391	170	heat energy
 *****
 STEP [14][14]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -380,10 +396,10 @@ STEP [14][14]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	163	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	14	aging
@@ -393,11 +409,12 @@ STEP [14][14]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	140	solar energy
 	391	180	heat energy
 *****
 STEP [15][15]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -408,10 +425,10 @@ STEP [15][15]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	180	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	15	aging
@@ -421,11 +438,12 @@ STEP [15][15]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	170	solar energy
 	391	190	heat energy
 *****
 STEP [16][16]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -435,10 +453,10 @@ STEP [16][16]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	197	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	16	aging
@@ -448,11 +466,12 @@ STEP [16][16]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	175	solar energy
 	391	225	heat energy
 *****
 STEP [17][17]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -463,10 +482,10 @@ STEP [17][17]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	214	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	17	aging
@@ -476,11 +495,12 @@ STEP [17][17]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	180	solar energy
 	391	160	heat energy
 *****
 STEP [18][18]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -491,10 +511,10 @@ STEP [18][18]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	231	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	18	aging
@@ -504,11 +524,12 @@ STEP [18][18]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	185	solar energy
 	391	170	heat energy
 *****
 STEP [19][19]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -519,10 +540,10 @@ STEP [19][19]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	248	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	19	aging
@@ -532,11 +553,12 @@ STEP [19][19]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	190	solar energy
 	391	205	heat energy
 *****
 STEP [20][20]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -547,10 +569,10 @@ STEP [20][20]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	265	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	20	aging
@@ -560,11 +582,12 @@ STEP [20][20]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	220	solar energy
 	391	140	heat energy
 *****
 STEP [21][21]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -575,10 +598,10 @@ STEP [21][21]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	282	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	21	aging
@@ -588,11 +611,12 @@ STEP [21][21]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	150	solar energy
 	391	150	heat energy
 *****
 STEP [22][22]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -603,10 +627,10 @@ STEP [22][22]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	299	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	22	aging
@@ -616,11 +640,12 @@ STEP [22][22]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	155	solar energy
 	391	160	heat energy
 *****
 STEP [23][23]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -631,10 +656,10 @@ STEP [23][23]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	316	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	23	aging
@@ -644,11 +669,12 @@ STEP [23][23]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	160	solar energy
 	391	170	heat energy
 *****
 STEP [24][24]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -659,10 +685,10 @@ STEP [24][24]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	333	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	24	aging
@@ -672,11 +698,12 @@ STEP [24][24]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	165	solar energy
 	391	180	heat energy
 *****
 STEP [25][25]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -687,10 +714,10 @@ STEP [25][25]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	350	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	25	aging
@@ -700,11 +727,12 @@ STEP [25][25]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	195	solar energy
 	391	190	heat energy
 *****
 STEP [26][26]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -715,10 +743,10 @@ STEP [26][26]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	367	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	26	aging
@@ -728,11 +756,12 @@ STEP [26][26]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	200	solar energy
 	391	200	heat energy
 *****
 STEP [27][27]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -743,10 +772,10 @@ STEP [27][27]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	384	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	27	aging
@@ -756,11 +785,12 @@ STEP [27][27]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	130	solar energy
 	391	135	heat energy
 *****
 STEP [28][28]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -771,10 +801,10 @@ STEP [28][28]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	401	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	28	aging
@@ -784,11 +814,12 @@ STEP [28][28]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	135	solar energy
 	391	145	heat energy
 *****
 STEP [29][29]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -799,10 +830,10 @@ STEP [29][29]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	418	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	29	aging
@@ -812,11 +843,12 @@ STEP [29][29]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	140	solar energy
 	391	180	heat energy
 *****
 STEP [30][30]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -827,10 +859,10 @@ STEP [30][30]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	435	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	30	aging
@@ -840,11 +872,12 @@ STEP [30][30]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	170	solar energy
 	391	190	heat energy
 *****
 STEP [31][31]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -855,10 +888,10 @@ STEP [31][31]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	452	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	31	aging
@@ -868,11 +901,12 @@ STEP [31][31]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	175	solar energy
 	391	200	heat energy
 *****
 STEP [32][32]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -883,10 +917,10 @@ STEP [32][32]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	469	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	32	aging
@@ -896,11 +930,12 @@ STEP [32][32]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	180	solar energy
 	391	135	heat energy
 *****
 STEP [33][33]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -911,10 +946,10 @@ STEP [33][33]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	486	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	33	aging
@@ -924,11 +959,12 @@ STEP [33][33]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	185	solar energy
 	391	145	heat energy
 *****
 STEP [34][34]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -939,10 +975,10 @@ STEP [34][34]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	503	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	34	aging
@@ -952,11 +988,12 @@ STEP [34][34]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	190	solar energy
 	391	155	heat energy
 *****
 STEP [35][35]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -967,10 +1004,10 @@ STEP [35][35]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	520	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	35	aging
@@ -980,11 +1017,12 @@ STEP [35][35]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	220	solar energy
 	391	165	heat energy
 *****
 STEP [36][36]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -994,10 +1032,10 @@ STEP [36][36]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	537	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	36	aging
@@ -1007,11 +1045,12 @@ STEP [36][36]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	150	solar energy
 	391	200	heat energy
 *****
 STEP [37][37]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1022,10 +1061,10 @@ STEP [37][37]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	554	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	37	aging
@@ -1035,11 +1074,12 @@ STEP [37][37]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	155	solar energy
 	391	135	heat energy
 *****
 STEP [38][38]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1050,10 +1090,10 @@ STEP [38][38]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	571	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	38	aging
@@ -1063,11 +1103,12 @@ STEP [38][38]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	160	solar energy
 	391	145	heat energy
 *****
 STEP [39][39]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1078,10 +1119,10 @@ STEP [39][39]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	588	<NONE00>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	39	aging
@@ -1091,11 +1132,12 @@ STEP [39][39]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	165	solar energy
 	391	180	heat energy
 *****
 STEP [40][40]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1106,10 +1148,10 @@ STEP [40][40]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	605	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	40	aging
@@ -1119,11 +1161,12 @@ STEP [40][40]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	195	solar energy
 	391	190	heat energy
 *****
 STEP [41][41]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1134,10 +1177,10 @@ STEP [41][41]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	622	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	41	aging
@@ -1147,11 +1190,12 @@ STEP [41][41]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	200	solar energy
 	391	200	heat energy
 *****
 STEP [42][42]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1162,10 +1206,10 @@ STEP [42][42]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	639	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	42	aging
@@ -1175,11 +1219,12 @@ STEP [42][42]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	130	solar energy
 	391	135	heat energy
 *****
 STEP [43][43]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1190,10 +1235,10 @@ STEP [43][43]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	656	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	43	aging
@@ -1203,11 +1248,12 @@ STEP [43][43]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	135	solar energy
 	391	145	heat energy
 *****
 STEP [44][44]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1218,10 +1264,10 @@ STEP [44][44]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	673	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	44	aging
@@ -1231,11 +1277,12 @@ STEP [44][44]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	140	solar energy
 	391	155	heat energy
 *****
 STEP [45][45]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1246,10 +1293,10 @@ STEP [45][45]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	690	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	45	aging
@@ -1259,11 +1306,12 @@ STEP [45][45]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	170	solar energy
 	391	165	heat energy
 *****
 STEP [46][46]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1274,10 +1322,10 @@ STEP [46][46]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	707	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	46	aging
@@ -1287,11 +1335,12 @@ STEP [46][46]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	175	solar energy
 	391	175	heat energy
 *****
 STEP [47][47]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1302,10 +1351,10 @@ STEP [47][47]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	724	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	47	aging
@@ -1315,11 +1364,12 @@ STEP [47][47]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	180	solar energy
 	391	185	heat energy
 *****
 STEP [48][48]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1330,10 +1380,10 @@ STEP [48][48]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	741	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	48	aging
@@ -1343,11 +1393,12 @@ STEP [48][48]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	185	solar energy
 	391	195	heat energy
 *****
 STEP [49][49]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1358,10 +1409,10 @@ STEP [49][49]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	758	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	49	aging
@@ -1371,11 +1422,12 @@ STEP [49][49]
 *****
 	180	120	DiOxygen
 	181	5	Carbon DiOxid
-	182	135	DiHydrogen Monoxid (Water / Eau)
+	182	115	DiHydrogen Monoxid (Water / Eau)
 	390	190	solar energy
 	391	230	heat energy
 *****
 STEP [50][50]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1386,10 +1438,10 @@ STEP [50][50]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	775	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	50	aging
@@ -1399,11 +1451,12 @@ STEP [50][50]
 *****
 	180	110	DiOxygen
 	181	5	Carbon DiOxid
-	182	145	DiHydrogen Monoxid (Water / Eau)
+	182	125	DiHydrogen Monoxid (Water / Eau)
 	390	220	solar energy
 	391	165	heat energy
 *****
 STEP [51][51]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1414,10 +1467,10 @@ STEP [51][51]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	792	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	51	aging
@@ -1427,11 +1480,12 @@ STEP [51][51]
 *****
 	180	100	DiOxygen
 	181	5	Carbon DiOxid
-	182	125	DiHydrogen Monoxid (Water / Eau)
+	182	105	DiHydrogen Monoxid (Water / Eau)
 	390	150	solar energy
 	391	175	heat energy
 *****
 STEP [52][52]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1442,10 +1496,10 @@ STEP [52][52]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	809	<NONE00> => UP Position
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	52	aging
@@ -1460,6 +1514,7 @@ STEP [52][52]
 	391	185	heat energy
 *****
 STEP [53][53]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1470,10 +1525,10 @@ STEP [53][53]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	826	<NONE00> => Down West
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	53	aging
@@ -1488,6 +1543,7 @@ STEP [53][53]
 	391	195	heat energy
 *****
 STEP [54][54]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1498,10 +1554,10 @@ STEP [54][54]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	843	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	54	aging
@@ -1516,6 +1572,7 @@ STEP [54][54]
 	391	130	heat energy
 *****
 STEP [55][55]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1526,10 +1583,10 @@ STEP [55][55]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	860	<NONE00> => rest
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	55	aging
@@ -1544,6 +1601,7 @@ STEP [55][55]
 	391	140	heat energy
 *****
 STEP [56][56]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1553,10 +1611,10 @@ STEP [56][56]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	877	<NONE00> => (free)
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	56	aging
@@ -1571,6 +1629,7 @@ STEP [56][56]
 	391	175	heat energy
 *****
 STEP [57][57]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1581,10 +1640,10 @@ STEP [57][57]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	894	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	57	aging
@@ -1599,6 +1658,7 @@ STEP [57][57]
 	391	185	heat energy
 *****
 STEP [58][58]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1609,10 +1669,10 @@ STEP [58][58]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	911	<NONE00> => cellphone
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	58	aging
@@ -1627,6 +1687,7 @@ STEP [58][58]
 	391	195	heat energy
 *****
 STEP [59][59]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1637,10 +1698,10 @@ STEP [59][59]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	928	<NONE00> => dead
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	59	aging
@@ -1655,6 +1716,7 @@ STEP [59][59]
 	391	230	heat energy
 *****
 STEP [60][60]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1665,10 +1727,10 @@ STEP [60][60]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	945	<NONE00> => (free)
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	60	aging
@@ -1683,6 +1745,7 @@ STEP [60][60]
 	391	165	heat energy
 *****
 STEP [61][61]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1693,10 +1756,10 @@ STEP [61][61]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	962	<NONE00> => (free)
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	61	aging
@@ -1711,6 +1774,7 @@ STEP [61][61]
 	391	175	heat energy
 *****
 STEP [62][62]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1721,10 +1785,10 @@ STEP [62][62]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	979	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	62	aging
@@ -1739,6 +1803,7 @@ STEP [62][62]
 	391	185	heat energy
 *****
 STEP [63][63]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1749,10 +1814,10 @@ STEP [63][63]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	996	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	63	aging
@@ -1767,6 +1832,7 @@ STEP [63][63]
 	391	195	heat energy
 *****
 STEP [64][64]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1777,10 +1843,10 @@ STEP [64][64]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	64	aging
@@ -1795,6 +1861,7 @@ STEP [64][64]
 	391	130	heat energy
 *****
 STEP [65][65]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1805,10 +1872,10 @@ STEP [65][65]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	65	aging
@@ -1823,6 +1890,7 @@ STEP [65][65]
 	391	140	heat energy
 *****
 STEP [66][66]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1833,10 +1901,10 @@ STEP [66][66]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	66	aging
@@ -1851,6 +1919,7 @@ STEP [66][66]
 	391	150	heat energy
 *****
 STEP [67][67]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1861,10 +1930,10 @@ STEP [67][67]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	67	aging
@@ -1879,6 +1948,7 @@ STEP [67][67]
 	391	160	heat energy
 *****
 STEP [68][68]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1889,10 +1959,10 @@ STEP [68][68]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	68	aging
@@ -1907,6 +1977,7 @@ STEP [68][68]
 	391	170	heat energy
 *****
 STEP [69][69]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -1917,10 +1988,10 @@ STEP [69][69]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	69	aging
@@ -1935,6 +2006,7 @@ STEP [69][69]
 	391	205	heat energy
 *****
 STEP [70][70]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -1945,10 +2017,10 @@ STEP [70][70]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	70	aging
@@ -1963,6 +2035,7 @@ STEP [70][70]
 	391	140	heat energy
 *****
 STEP [71][71]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -1973,10 +2046,10 @@ STEP [71][71]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	71	aging
@@ -1991,6 +2064,7 @@ STEP [71][71]
 	391	150	heat energy
 *****
 STEP [72][72]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2001,10 +2075,10 @@ STEP [72][72]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	72	aging
@@ -2019,6 +2093,7 @@ STEP [72][72]
 	391	160	heat energy
 *****
 STEP [73][73]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2029,10 +2104,10 @@ STEP [73][73]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	73	aging
@@ -2047,6 +2122,7 @@ STEP [73][73]
 	391	170	heat energy
 *****
 STEP [74][74]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2057,10 +2133,10 @@ STEP [74][74]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	74	aging
@@ -2075,6 +2151,7 @@ STEP [74][74]
 	391	180	heat energy
 *****
 STEP [75][75]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2085,10 +2162,10 @@ STEP [75][75]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	75	aging
@@ -2103,6 +2180,7 @@ STEP [75][75]
 	391	190	heat energy
 *****
 STEP [76][76]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2112,10 +2190,10 @@ STEP [76][76]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	76	aging
@@ -2130,6 +2208,7 @@ STEP [76][76]
 	391	225	heat energy
 *****
 STEP [77][77]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2140,10 +2219,10 @@ STEP [77][77]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	77	aging
@@ -2158,6 +2237,7 @@ STEP [77][77]
 	391	160	heat energy
 *****
 STEP [78][78]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2168,10 +2248,10 @@ STEP [78][78]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	78	aging
@@ -2186,6 +2266,7 @@ STEP [78][78]
 	391	170	heat energy
 *****
 STEP [79][79]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2196,10 +2277,10 @@ STEP [79][79]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	79	aging
@@ -2214,6 +2295,7 @@ STEP [79][79]
 	391	205	heat energy
 *****
 STEP [80][80]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2224,10 +2306,10 @@ STEP [80][80]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	80	aging
@@ -2242,6 +2324,7 @@ STEP [80][80]
 	391	140	heat energy
 *****
 STEP [81][81]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2252,10 +2335,10 @@ STEP [81][81]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	81	aging
@@ -2270,6 +2353,7 @@ STEP [81][81]
 	391	150	heat energy
 *****
 STEP [82][82]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2280,10 +2364,10 @@ STEP [82][82]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	82	aging
@@ -2298,6 +2382,7 @@ STEP [82][82]
 	391	160	heat energy
 *****
 STEP [83][83]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2308,10 +2393,10 @@ STEP [83][83]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	83	aging
@@ -2326,6 +2411,7 @@ STEP [83][83]
 	391	170	heat energy
 *****
 STEP [84][84]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2336,10 +2422,10 @@ STEP [84][84]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	84	aging
@@ -2354,6 +2440,7 @@ STEP [84][84]
 	391	180	heat energy
 *****
 STEP [85][85]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2364,10 +2451,10 @@ STEP [85][85]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	85	aging
@@ -2382,6 +2469,7 @@ STEP [85][85]
 	391	190	heat energy
 *****
 STEP [86][86]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2392,10 +2480,10 @@ STEP [86][86]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	86	aging
@@ -2410,6 +2498,7 @@ STEP [86][86]
 	391	200	heat energy
 *****
 STEP [87][87]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2420,10 +2509,10 @@ STEP [87][87]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	87	aging
@@ -2438,6 +2527,7 @@ STEP [87][87]
 	391	135	heat energy
 *****
 STEP [88][88]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2448,10 +2538,10 @@ STEP [88][88]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	88	aging
@@ -2466,6 +2556,7 @@ STEP [88][88]
 	391	145	heat energy
 *****
 STEP [89][89]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2476,10 +2567,10 @@ STEP [89][89]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	89	aging
@@ -2494,6 +2585,7 @@ STEP [89][89]
 	391	180	heat energy
 *****
 STEP [90][90]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2504,10 +2596,10 @@ STEP [90][90]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	90	aging
@@ -2522,6 +2614,7 @@ STEP [90][90]
 	391	190	heat energy
 *****
 STEP [91][91]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2532,10 +2625,10 @@ STEP [91][91]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	91	aging
@@ -2550,6 +2643,7 @@ STEP [91][91]
 	391	200	heat energy
 *****
 STEP [92][92]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2560,10 +2654,10 @@ STEP [92][92]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	92	aging
@@ -2578,6 +2672,7 @@ STEP [92][92]
 	391	135	heat energy
 *****
 STEP [93][93]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2588,10 +2683,10 @@ STEP [93][93]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	93	aging
@@ -2606,6 +2701,7 @@ STEP [93][93]
 	391	145	heat energy
 *****
 STEP [94][94]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2616,10 +2712,10 @@ STEP [94][94]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	94	aging
@@ -2634,6 +2730,7 @@ STEP [94][94]
 	391	155	heat energy
 *****
 STEP [95][95]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2644,10 +2741,10 @@ STEP [95][95]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	95	aging
@@ -2662,6 +2759,7 @@ STEP [95][95]
 	391	165	heat energy
 *****
 STEP [96][96]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2671,10 +2769,10 @@ STEP [96][96]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	96	aging
@@ -2689,6 +2787,7 @@ STEP [96][96]
 	391	200	heat energy
 *****
 STEP [97][97]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2699,10 +2798,10 @@ STEP [97][97]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	97	aging
@@ -2717,6 +2816,7 @@ STEP [97][97]
 	391	135	heat energy
 *****
 STEP [98][98]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2727,10 +2827,10 @@ STEP [98][98]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	98	aging
@@ -2745,6 +2845,7 @@ STEP [98][98]
 	391	145	heat energy
 *****
 STEP [99][99]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2755,10 +2856,10 @@ STEP [99][99]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	99	aging
@@ -2773,6 +2874,7 @@ STEP [99][99]
 	391	180	heat energy
 *****
 STEP [100][100]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2783,10 +2885,10 @@ STEP [100][100]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	100	aging
@@ -2801,6 +2903,7 @@ STEP [100][100]
 	391	190	heat energy
 *****
 STEP [101][101]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2811,10 +2914,10 @@ STEP [101][101]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	101	aging
@@ -2829,6 +2932,7 @@ STEP [101][101]
 	391	200	heat energy
 *****
 STEP [102][102]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2839,10 +2943,10 @@ STEP [102][102]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	102	aging
@@ -2857,6 +2961,7 @@ STEP [102][102]
 	391	135	heat energy
 *****
 STEP [103][103]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2867,10 +2972,10 @@ STEP [103][103]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	103	aging
@@ -2885,6 +2990,7 @@ STEP [103][103]
 	391	145	heat energy
 *****
 STEP [104][104]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2895,10 +3001,10 @@ STEP [104][104]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	104	aging
@@ -2913,6 +3019,7 @@ STEP [104][104]
 	391	155	heat energy
 *****
 STEP [105][105]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -2923,10 +3030,10 @@ STEP [105][105]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	105	aging
@@ -2941,6 +3048,7 @@ STEP [105][105]
 	391	165	heat energy
 *****
 STEP [106][106]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -2951,10 +3059,10 @@ STEP [106][106]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	106	aging
@@ -2969,6 +3077,7 @@ STEP [106][106]
 	391	175	heat energy
 *****
 STEP [107][107]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -2979,10 +3088,10 @@ STEP [107][107]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	107	aging
@@ -2997,6 +3106,7 @@ STEP [107][107]
 	391	185	heat energy
 *****
 STEP [108][108]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3007,10 +3117,10 @@ STEP [108][108]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	108	aging
@@ -3025,6 +3135,7 @@ STEP [108][108]
 	391	195	heat energy
 *****
 STEP [109][109]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3035,10 +3146,10 @@ STEP [109][109]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	109	aging
@@ -3053,6 +3164,7 @@ STEP [109][109]
 	391	230	heat energy
 *****
 STEP [110][110]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3063,10 +3175,10 @@ STEP [110][110]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	110	aging
@@ -3081,6 +3193,7 @@ STEP [110][110]
 	391	165	heat energy
 *****
 STEP [111][111]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3091,10 +3204,10 @@ STEP [111][111]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	111	aging
@@ -3109,6 +3222,7 @@ STEP [111][111]
 	391	175	heat energy
 *****
 STEP [112][112]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3119,10 +3233,10 @@ STEP [112][112]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	112	aging
@@ -3137,6 +3251,7 @@ STEP [112][112]
 	391	185	heat energy
 *****
 STEP [113][113]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3147,10 +3262,10 @@ STEP [113][113]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	113	aging
@@ -3165,6 +3280,7 @@ STEP [113][113]
 	391	195	heat energy
 *****
 STEP [114][114]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3175,10 +3291,10 @@ STEP [114][114]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	114	aging
@@ -3193,6 +3309,7 @@ STEP [114][114]
 	391	130	heat energy
 *****
 STEP [115][115]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3203,10 +3320,10 @@ STEP [115][115]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	115	aging
@@ -3221,6 +3338,7 @@ STEP [115][115]
 	391	140	heat energy
 *****
 STEP [116][116]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3230,10 +3348,10 @@ STEP [116][116]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	116	aging
@@ -3248,6 +3366,7 @@ STEP [116][116]
 	391	175	heat energy
 *****
 STEP [117][117]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3258,10 +3377,10 @@ STEP [117][117]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	117	aging
@@ -3276,6 +3395,7 @@ STEP [117][117]
 	391	185	heat energy
 *****
 STEP [118][118]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3286,10 +3406,10 @@ STEP [118][118]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	118	aging
@@ -3304,6 +3424,7 @@ STEP [118][118]
 	391	195	heat energy
 *****
 STEP [119][119]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3314,10 +3435,10 @@ STEP [119][119]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	119	aging
@@ -3332,6 +3453,7 @@ STEP [119][119]
 	391	230	heat energy
 *****
 STEP [120][120]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3342,10 +3464,10 @@ STEP [120][120]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	120	aging
@@ -3360,6 +3482,7 @@ STEP [120][120]
 	391	165	heat energy
 *****
 STEP [121][121]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3370,10 +3493,10 @@ STEP [121][121]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	121	aging
@@ -3388,6 +3511,7 @@ STEP [121][121]
 	391	175	heat energy
 *****
 STEP [122][122]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3398,10 +3522,10 @@ STEP [122][122]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	122	aging
@@ -3416,6 +3540,7 @@ STEP [122][122]
 	391	185	heat energy
 *****
 STEP [123][123]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3426,10 +3551,10 @@ STEP [123][123]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	123	aging
@@ -3444,6 +3569,7 @@ STEP [123][123]
 	391	195	heat energy
 *****
 STEP [124][124]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3454,10 +3580,10 @@ STEP [124][124]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	124	aging
@@ -3472,6 +3598,7 @@ STEP [124][124]
 	391	130	heat energy
 *****
 STEP [125][125]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3482,10 +3609,10 @@ STEP [125][125]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	125	aging
@@ -3500,6 +3627,7 @@ STEP [125][125]
 	391	140	heat energy
 *****
 STEP [126][126]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3510,10 +3638,10 @@ STEP [126][126]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	126	aging
@@ -3528,6 +3656,7 @@ STEP [126][126]
 	391	150	heat energy
 *****
 STEP [127][127]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3538,10 +3667,10 @@ STEP [127][127]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	127	aging
@@ -3556,6 +3685,7 @@ STEP [127][127]
 	391	160	heat energy
 *****
 STEP [128][128]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3566,10 +3696,10 @@ STEP [128][128]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	128	aging
@@ -3584,6 +3714,7 @@ STEP [128][128]
 	391	170	heat energy
 *****
 STEP [129][129]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3594,10 +3725,10 @@ STEP [129][129]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	129	aging
@@ -3612,6 +3743,7 @@ STEP [129][129]
 	391	205	heat energy
 *****
 STEP [130][130]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3622,10 +3754,10 @@ STEP [130][130]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	130	aging
@@ -3640,6 +3772,7 @@ STEP [130][130]
 	391	140	heat energy
 *****
 STEP [131][131]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3650,10 +3783,10 @@ STEP [131][131]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	131	aging
@@ -3668,6 +3801,7 @@ STEP [131][131]
 	391	150	heat energy
 *****
 STEP [132][132]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3678,10 +3812,10 @@ STEP [132][132]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	132	aging
@@ -3696,6 +3830,7 @@ STEP [132][132]
 	391	160	heat energy
 *****
 STEP [133][133]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3706,10 +3841,10 @@ STEP [133][133]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	133	aging
@@ -3724,6 +3859,7 @@ STEP [133][133]
 	391	170	heat energy
 *****
 STEP [134][134]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3734,10 +3870,10 @@ STEP [134][134]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	134	aging
@@ -3752,6 +3888,7 @@ STEP [134][134]
 	391	180	heat energy
 *****
 STEP [135][135]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3762,10 +3899,10 @@ STEP [135][135]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	135	aging
@@ -3780,6 +3917,7 @@ STEP [135][135]
 	391	190	heat energy
 *****
 STEP [136][136]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3789,10 +3927,10 @@ STEP [136][136]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	136	aging
@@ -3807,6 +3945,7 @@ STEP [136][136]
 	391	225	heat energy
 *****
 STEP [137][137]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3817,10 +3956,10 @@ STEP [137][137]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	137	aging
@@ -3835,6 +3974,7 @@ STEP [137][137]
 	391	160	heat energy
 *****
 STEP [138][138]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3845,10 +3985,10 @@ STEP [138][138]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	138	aging
@@ -3863,6 +4003,7 @@ STEP [138][138]
 	391	170	heat energy
 *****
 STEP [139][139]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3873,10 +4014,10 @@ STEP [139][139]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	139	aging
@@ -3891,6 +4032,7 @@ STEP [139][139]
 	391	205	heat energy
 *****
 STEP [140][140]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3901,10 +4043,10 @@ STEP [140][140]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	140	aging
@@ -3919,6 +4061,7 @@ STEP [140][140]
 	391	140	heat energy
 *****
 STEP [141][141]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -3929,10 +4072,10 @@ STEP [141][141]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	141	aging
@@ -3947,6 +4090,7 @@ STEP [141][141]
 	391	150	heat energy
 *****
 STEP [142][142]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -3957,10 +4101,10 @@ STEP [142][142]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	142	aging
@@ -3975,6 +4119,7 @@ STEP [142][142]
 	391	160	heat energy
 *****
 STEP [143][143]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -3985,10 +4130,10 @@ STEP [143][143]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	143	aging
@@ -4003,6 +4148,7 @@ STEP [143][143]
 	391	170	heat energy
 *****
 STEP [144][144]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4013,10 +4159,10 @@ STEP [144][144]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	144	aging
@@ -4031,6 +4177,7 @@ STEP [144][144]
 	391	180	heat energy
 *****
 STEP [145][145]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4041,10 +4188,10 @@ STEP [145][145]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	145	aging
@@ -4059,6 +4206,7 @@ STEP [145][145]
 	391	190	heat energy
 *****
 STEP [146][146]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4069,10 +4217,10 @@ STEP [146][146]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	146	aging
@@ -4087,6 +4235,7 @@ STEP [146][146]
 	391	200	heat energy
 *****
 STEP [147][147]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4097,10 +4246,10 @@ STEP [147][147]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	147	aging
@@ -4115,6 +4264,7 @@ STEP [147][147]
 	391	135	heat energy
 *****
 STEP [148][148]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4125,10 +4275,10 @@ STEP [148][148]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	148	aging
@@ -4143,6 +4293,7 @@ STEP [148][148]
 	391	145	heat energy
 *****
 STEP [149][149]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4153,10 +4304,10 @@ STEP [149][149]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	149	aging
@@ -4171,6 +4322,7 @@ STEP [149][149]
 	391	180	heat energy
 *****
 STEP [150][150]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4181,10 +4333,10 @@ STEP [150][150]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	150	aging
@@ -4199,6 +4351,7 @@ STEP [150][150]
 	391	190	heat energy
 *****
 STEP [151][151]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4209,10 +4362,10 @@ STEP [151][151]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	151	aging
@@ -4227,6 +4380,7 @@ STEP [151][151]
 	391	200	heat energy
 *****
 STEP [152][152]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4237,10 +4391,10 @@ STEP [152][152]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	152	aging
@@ -4255,6 +4409,7 @@ STEP [152][152]
 	391	135	heat energy
 *****
 STEP [153][153]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4265,10 +4420,10 @@ STEP [153][153]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	153	aging
@@ -4283,6 +4438,7 @@ STEP [153][153]
 	391	145	heat energy
 *****
 STEP [154][154]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4293,10 +4449,10 @@ STEP [154][154]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	154	aging
@@ -4311,6 +4467,7 @@ STEP [154][154]
 	391	155	heat energy
 *****
 STEP [155][155]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4321,10 +4478,10 @@ STEP [155][155]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	155	aging
@@ -4339,6 +4496,7 @@ STEP [155][155]
 	391	165	heat energy
 *****
 STEP [156][156]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4348,10 +4506,10 @@ STEP [156][156]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	156	aging
@@ -4366,6 +4524,7 @@ STEP [156][156]
 	391	200	heat energy
 *****
 STEP [157][157]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4376,10 +4535,10 @@ STEP [157][157]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	157	aging
@@ -4394,6 +4553,7 @@ STEP [157][157]
 	391	135	heat energy
 *****
 STEP [158][158]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4404,10 +4564,10 @@ STEP [158][158]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	158	aging
@@ -4422,6 +4582,7 @@ STEP [158][158]
 	391	145	heat energy
 *****
 STEP [159][159]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4432,10 +4593,10 @@ STEP [159][159]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	159	aging
@@ -4450,6 +4611,7 @@ STEP [159][159]
 	391	180	heat energy
 *****
 STEP [160][160]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4460,10 +4622,10 @@ STEP [160][160]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	160	aging
@@ -4478,6 +4640,7 @@ STEP [160][160]
 	391	190	heat energy
 *****
 STEP [161][161]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4488,10 +4651,10 @@ STEP [161][161]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	161	aging
@@ -4506,6 +4669,7 @@ STEP [161][161]
 	391	200	heat energy
 *****
 STEP [162][162]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4516,10 +4680,10 @@ STEP [162][162]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	162	aging
@@ -4534,6 +4698,7 @@ STEP [162][162]
 	391	135	heat energy
 *****
 STEP [163][163]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4544,10 +4709,10 @@ STEP [163][163]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	163	aging
@@ -4562,6 +4727,7 @@ STEP [163][163]
 	391	145	heat energy
 *****
 STEP [164][164]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4572,10 +4738,10 @@ STEP [164][164]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	164	aging
@@ -4590,6 +4756,7 @@ STEP [164][164]
 	391	155	heat energy
 *****
 STEP [165][165]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4600,10 +4767,10 @@ STEP [165][165]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	165	aging
@@ -4618,6 +4785,7 @@ STEP [165][165]
 	391	165	heat energy
 *****
 STEP [166][166]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4628,10 +4796,10 @@ STEP [166][166]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	166	aging
@@ -4646,6 +4814,7 @@ STEP [166][166]
 	391	175	heat energy
 *****
 STEP [167][167]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4656,10 +4825,10 @@ STEP [167][167]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	167	aging
@@ -4674,6 +4843,7 @@ STEP [167][167]
 	391	185	heat energy
 *****
 STEP [168][168]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4684,10 +4854,10 @@ STEP [168][168]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	168	aging
@@ -4702,6 +4872,7 @@ STEP [168][168]
 	391	195	heat energy
 *****
 STEP [169][169]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4712,10 +4883,10 @@ STEP [169][169]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	169	aging
@@ -4730,6 +4901,7 @@ STEP [169][169]
 	391	230	heat energy
 *****
 STEP [170][170]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4740,10 +4912,10 @@ STEP [170][170]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	170	aging
@@ -4758,6 +4930,7 @@ STEP [170][170]
 	391	165	heat energy
 *****
 STEP [171][171]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4768,10 +4941,10 @@ STEP [171][171]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	171	aging
@@ -4786,6 +4959,7 @@ STEP [171][171]
 	391	175	heat energy
 *****
 STEP [172][172]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4796,10 +4970,10 @@ STEP [172][172]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	172	aging
@@ -4814,6 +4988,7 @@ STEP [172][172]
 	391	185	heat energy
 *****
 STEP [173][173]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4824,10 +4999,10 @@ STEP [173][173]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	173	aging
@@ -4842,6 +5017,7 @@ STEP [173][173]
 	391	195	heat energy
 *****
 STEP [174][174]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4852,10 +5028,10 @@ STEP [174][174]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	174	aging
@@ -4870,6 +5046,7 @@ STEP [174][174]
 	391	130	heat energy
 *****
 STEP [175][175]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4880,10 +5057,10 @@ STEP [175][175]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	175	aging
@@ -4898,6 +5075,7 @@ STEP [175][175]
 	391	140	heat energy
 *****
 STEP [176][176]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4907,10 +5085,10 @@ STEP [176][176]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	176	aging
@@ -4925,6 +5103,7 @@ STEP [176][176]
 	391	175	heat energy
 *****
 STEP [177][177]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -4935,10 +5114,10 @@ STEP [177][177]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	177	aging
@@ -4953,6 +5132,7 @@ STEP [177][177]
 	391	185	heat energy
 *****
 STEP [178][178]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -4963,10 +5143,10 @@ STEP [178][178]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	178	aging
@@ -4981,6 +5161,7 @@ STEP [178][178]
 	391	195	heat energy
 *****
 STEP [179][179]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -4991,10 +5172,10 @@ STEP [179][179]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	179	aging
@@ -5009,6 +5190,7 @@ STEP [179][179]
 	391	230	heat energy
 *****
 STEP [180][180]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5019,10 +5201,10 @@ STEP [180][180]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	180	aging
@@ -5037,6 +5219,7 @@ STEP [180][180]
 	391	165	heat energy
 *****
 STEP [181][181]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5047,10 +5230,10 @@ STEP [181][181]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	181	aging
@@ -5065,6 +5248,7 @@ STEP [181][181]
 	391	175	heat energy
 *****
 STEP [182][182]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5075,10 +5259,10 @@ STEP [182][182]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	182	aging
@@ -5093,6 +5277,7 @@ STEP [182][182]
 	391	185	heat energy
 *****
 STEP [183][183]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5103,10 +5288,10 @@ STEP [183][183]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	183	aging
@@ -5121,6 +5306,7 @@ STEP [183][183]
 	391	195	heat energy
 *****
 STEP [184][184]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5131,10 +5317,10 @@ STEP [184][184]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	184	aging
@@ -5149,6 +5335,7 @@ STEP [184][184]
 	391	130	heat energy
 *****
 STEP [185][185]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5159,10 +5346,10 @@ STEP [185][185]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	185	aging
@@ -5177,6 +5364,7 @@ STEP [185][185]
 	391	140	heat energy
 *****
 STEP [186][186]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5187,10 +5375,10 @@ STEP [186][186]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	186	aging
@@ -5205,6 +5393,7 @@ STEP [186][186]
 	391	150	heat energy
 *****
 STEP [187][187]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5215,10 +5404,10 @@ STEP [187][187]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	187	aging
@@ -5233,6 +5422,7 @@ STEP [187][187]
 	391	160	heat energy
 *****
 STEP [188][188]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5243,10 +5433,10 @@ STEP [188][188]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	188	aging
@@ -5261,6 +5451,7 @@ STEP [188][188]
 	391	170	heat energy
 *****
 STEP [189][189]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5271,10 +5462,10 @@ STEP [189][189]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	189	aging
@@ -5289,6 +5480,7 @@ STEP [189][189]
 	391	205	heat energy
 *****
 STEP [190][190]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5299,10 +5491,10 @@ STEP [190][190]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	190	aging
@@ -5317,6 +5509,7 @@ STEP [190][190]
 	391	140	heat energy
 *****
 STEP [191][191]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5327,10 +5520,10 @@ STEP [191][191]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	191	aging
@@ -5345,6 +5538,7 @@ STEP [191][191]
 	391	150	heat energy
 *****
 STEP [192][192]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5355,10 +5549,10 @@ STEP [192][192]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	192	aging
@@ -5373,6 +5567,7 @@ STEP [192][192]
 	391	160	heat energy
 *****
 STEP [193][193]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5383,10 +5578,10 @@ STEP [193][193]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	193	aging
@@ -5401,6 +5596,7 @@ STEP [193][193]
 	391	170	heat energy
 *****
 STEP [194][194]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5411,10 +5607,10 @@ STEP [194][194]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	194	aging
@@ -5429,6 +5625,7 @@ STEP [194][194]
 	391	180	heat energy
 *****
 STEP [195][195]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5439,10 +5636,10 @@ STEP [195][195]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	195	aging
@@ -5457,6 +5654,7 @@ STEP [195][195]
 	391	190	heat energy
 *****
 STEP [196][196]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5466,10 +5664,10 @@ STEP [196][196]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	196	aging
@@ -5484,6 +5682,7 @@ STEP [196][196]
 	391	225	heat energy
 *****
 STEP [197][197]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5494,10 +5693,10 @@ STEP [197][197]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	197	aging
@@ -5512,6 +5711,7 @@ STEP [197][197]
 	391	160	heat energy
 *****
 STEP [198][198]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5522,10 +5722,10 @@ STEP [198][198]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	198	aging
@@ -5540,6 +5740,7 @@ STEP [198][198]
 	391	170	heat energy
 *****
 STEP [199][199]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5550,10 +5751,10 @@ STEP [199][199]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	199	aging
@@ -5568,6 +5769,7 @@ STEP [199][199]
 	391	205	heat energy
 *****
 STEP [200][200]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5578,10 +5780,10 @@ STEP [200][200]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	200	aging
@@ -5596,6 +5798,7 @@ STEP [200][200]
 	391	140	heat energy
 *****
 STEP [201][201]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5606,10 +5809,10 @@ STEP [201][201]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	201	aging
@@ -5624,6 +5827,7 @@ STEP [201][201]
 	391	150	heat energy
 *****
 STEP [202][202]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5634,10 +5838,10 @@ STEP [202][202]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	202	aging
@@ -5652,6 +5856,7 @@ STEP [202][202]
 	391	160	heat energy
 *****
 STEP [203][203]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5662,10 +5867,10 @@ STEP [203][203]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	203	aging
@@ -5680,6 +5885,7 @@ STEP [203][203]
 	391	170	heat energy
 *****
 STEP [204][204]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5690,10 +5896,10 @@ STEP [204][204]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	204	aging
@@ -5708,6 +5914,7 @@ STEP [204][204]
 	391	180	heat energy
 *****
 STEP [205][205]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5718,10 +5925,10 @@ STEP [205][205]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	205	aging
@@ -5736,6 +5943,7 @@ STEP [205][205]
 	391	190	heat energy
 *****
 STEP [206][206]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5746,10 +5954,10 @@ STEP [206][206]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	206	aging
@@ -5764,6 +5972,7 @@ STEP [206][206]
 	391	200	heat energy
 *****
 STEP [207][207]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5774,10 +5983,10 @@ STEP [207][207]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	207	aging
@@ -5792,6 +6001,7 @@ STEP [207][207]
 	391	135	heat energy
 *****
 STEP [208][208]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5802,10 +6012,10 @@ STEP [208][208]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	208	aging
@@ -5820,6 +6030,7 @@ STEP [208][208]
 	391	145	heat energy
 *****
 STEP [209][209]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5830,10 +6041,10 @@ STEP [209][209]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	209	aging
@@ -5848,6 +6059,7 @@ STEP [209][209]
 	391	180	heat energy
 *****
 STEP [210][210]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5858,10 +6070,10 @@ STEP [210][210]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	210	aging
@@ -5876,6 +6088,7 @@ STEP [210][210]
 	391	190	heat energy
 *****
 STEP [211][211]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5886,10 +6099,10 @@ STEP [211][211]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	211	aging
@@ -5904,6 +6117,7 @@ STEP [211][211]
 	391	200	heat energy
 *****
 STEP [212][212]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5914,10 +6128,10 @@ STEP [212][212]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	212	aging
@@ -5932,6 +6146,7 @@ STEP [212][212]
 	391	135	heat energy
 *****
 STEP [213][213]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -5942,10 +6157,10 @@ STEP [213][213]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	213	aging
@@ -5960,6 +6175,7 @@ STEP [213][213]
 	391	145	heat energy
 *****
 STEP [214][214]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -5970,10 +6186,10 @@ STEP [214][214]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	214	aging
@@ -5988,6 +6204,7 @@ STEP [214][214]
 	391	155	heat energy
 *****
 STEP [215][215]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -5998,10 +6215,10 @@ STEP [215][215]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	215	aging
@@ -6016,6 +6233,7 @@ STEP [215][215]
 	391	165	heat energy
 *****
 STEP [216][216]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6025,10 +6243,10 @@ STEP [216][216]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	216	aging
@@ -6043,6 +6261,7 @@ STEP [216][216]
 	391	200	heat energy
 *****
 STEP [217][217]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6053,10 +6272,10 @@ STEP [217][217]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	217	aging
@@ -6071,6 +6290,7 @@ STEP [217][217]
 	391	135	heat energy
 *****
 STEP [218][218]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6081,10 +6301,10 @@ STEP [218][218]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	218	aging
@@ -6099,6 +6319,7 @@ STEP [218][218]
 	391	145	heat energy
 *****
 STEP [219][219]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6109,10 +6330,10 @@ STEP [219][219]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	219	aging
@@ -6127,6 +6348,7 @@ STEP [219][219]
 	391	180	heat energy
 *****
 STEP [220][220]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6137,10 +6359,10 @@ STEP [220][220]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	220	aging
@@ -6155,6 +6377,7 @@ STEP [220][220]
 	391	190	heat energy
 *****
 STEP [221][221]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6165,10 +6388,10 @@ STEP [221][221]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	221	aging
@@ -6183,6 +6406,7 @@ STEP [221][221]
 	391	200	heat energy
 *****
 STEP [222][222]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6193,10 +6417,10 @@ STEP [222][222]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	222	aging
@@ -6211,6 +6435,7 @@ STEP [222][222]
 	391	135	heat energy
 *****
 STEP [223][223]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6221,10 +6446,10 @@ STEP [223][223]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	223	aging
@@ -6239,6 +6464,7 @@ STEP [223][223]
 	391	145	heat energy
 *****
 STEP [224][224]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6249,10 +6475,10 @@ STEP [224][224]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	224	aging
@@ -6267,6 +6493,7 @@ STEP [224][224]
 	391	155	heat energy
 *****
 STEP [225][225]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6277,10 +6504,10 @@ STEP [225][225]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	225	aging
@@ -6295,6 +6522,7 @@ STEP [225][225]
 	391	165	heat energy
 *****
 STEP [226][226]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6305,10 +6533,10 @@ STEP [226][226]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	226	aging
@@ -6323,6 +6551,7 @@ STEP [226][226]
 	391	175	heat energy
 *****
 STEP [227][227]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6333,10 +6562,10 @@ STEP [227][227]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	227	aging
@@ -6351,6 +6580,7 @@ STEP [227][227]
 	391	185	heat energy
 *****
 STEP [228][228]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6361,10 +6591,10 @@ STEP [228][228]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	228	aging
@@ -6379,6 +6609,7 @@ STEP [228][228]
 	391	195	heat energy
 *****
 STEP [229][229]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6389,10 +6620,10 @@ STEP [229][229]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	229	aging
@@ -6407,6 +6638,7 @@ STEP [229][229]
 	391	230	heat energy
 *****
 STEP [230][230]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6417,10 +6649,10 @@ STEP [230][230]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	230	aging
@@ -6435,6 +6667,7 @@ STEP [230][230]
 	391	165	heat energy
 *****
 STEP [231][231]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6445,10 +6678,10 @@ STEP [231][231]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	231	aging
@@ -6463,6 +6696,7 @@ STEP [231][231]
 	391	175	heat energy
 *****
 STEP [232][232]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6473,10 +6707,10 @@ STEP [232][232]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	232	aging
@@ -6491,6 +6725,7 @@ STEP [232][232]
 	391	185	heat energy
 *****
 STEP [233][233]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6501,10 +6736,10 @@ STEP [233][233]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	233	aging
@@ -6519,6 +6754,7 @@ STEP [233][233]
 	391	195	heat energy
 *****
 STEP [234][234]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6529,10 +6765,10 @@ STEP [234][234]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	234	aging
@@ -6547,6 +6783,7 @@ STEP [234][234]
 	391	130	heat energy
 *****
 STEP [235][235]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6557,10 +6794,10 @@ STEP [235][235]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	235	aging
@@ -6575,6 +6812,7 @@ STEP [235][235]
 	391	140	heat energy
 *****
 STEP [236][236]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6584,10 +6822,10 @@ STEP [236][236]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	236	aging
@@ -6602,6 +6840,7 @@ STEP [236][236]
 	391	175	heat energy
 *****
 STEP [237][237]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6612,10 +6851,10 @@ STEP [237][237]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	237	aging
@@ -6630,6 +6869,7 @@ STEP [237][237]
 	391	185	heat energy
 *****
 STEP [238][238]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6640,10 +6880,10 @@ STEP [238][238]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	238	aging
@@ -6658,6 +6898,7 @@ STEP [238][238]
 	391	195	heat energy
 *****
 STEP [239][239]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6668,10 +6909,10 @@ STEP [239][239]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	239	aging
@@ -6686,6 +6927,7 @@ STEP [239][239]
 	391	230	heat energy
 *****
 STEP [240][240]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6696,10 +6938,10 @@ STEP [240][240]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	240	aging
@@ -6714,6 +6956,7 @@ STEP [240][240]
 	391	165	heat energy
 *****
 STEP [241][241]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6724,10 +6967,10 @@ STEP [241][241]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	241	aging
@@ -6742,6 +6985,7 @@ STEP [241][241]
 	391	175	heat energy
 *****
 STEP [242][242]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6752,10 +6996,10 @@ STEP [242][242]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	242	aging
@@ -6770,6 +7014,7 @@ STEP [242][242]
 	391	185	heat energy
 *****
 STEP [243][243]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6780,10 +7025,10 @@ STEP [243][243]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	243	aging
@@ -6798,6 +7043,7 @@ STEP [243][243]
 	391	195	heat energy
 *****
 STEP [244][244]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6808,10 +7054,10 @@ STEP [244][244]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	244	aging
@@ -6826,6 +7072,7 @@ STEP [244][244]
 	391	130	heat energy
 *****
 STEP [245][245]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6836,10 +7083,10 @@ STEP [245][245]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	245	aging
@@ -6854,6 +7101,7 @@ STEP [245][245]
 	391	140	heat energy
 *****
 STEP [246][246]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6864,10 +7112,10 @@ STEP [246][246]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	75	heat energy
 	951	246	aging
@@ -6882,6 +7130,7 @@ STEP [246][246]
 	391	150	heat energy
 *****
 STEP [247][247]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6892,10 +7141,10 @@ STEP [247][247]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	85	heat energy
 	951	247	aging
@@ -6910,6 +7159,7 @@ STEP [247][247]
 	391	160	heat energy
 *****
 STEP [248][248]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -6920,10 +7170,10 @@ STEP [248][248]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	95	heat energy
 	951	248	aging
@@ -6938,6 +7188,7 @@ STEP [248][248]
 	391	170	heat energy
 *****
 STEP [249][249]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -6948,10 +7199,10 @@ STEP [249][249]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	5	heat energy
 	951	249	aging
@@ -6966,6 +7217,7 @@ STEP [249][249]
 	391	205	heat energy
 *****
 STEP [250][250]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -6976,10 +7228,10 @@ STEP [250][250]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	15	heat energy
 	951	250	aging
@@ -6994,6 +7246,7 @@ STEP [250][250]
 	391	140	heat energy
 *****
 STEP [251][251]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -7004,10 +7257,10 @@ STEP [251][251]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	25	solar energy
 	391	25	heat energy
 	951	251	aging
@@ -7022,6 +7275,7 @@ STEP [251][251]
 	391	150	heat energy
 *****
 STEP [252][252]
+	0	32	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -7032,10 +7286,10 @@ STEP [252][252]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	45	solar energy
 	391	35	heat energy
 	951	252	aging
@@ -7050,6 +7304,7 @@ STEP [252][252]
 	391	160	heat energy
 *****
 STEP [253][253]
+	0	33	<NONE00>
 	169	25	Glucose(G6)
 	180	5	DiOxygen
 	330	25	Starch (Amidon)
@@ -7060,10 +7315,10 @@ STEP [253][253]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	15	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	65	solar energy
 	391	45	heat energy
 	951	253	aging
@@ -7078,6 +7333,7 @@ STEP [253][253]
 	391	170	heat energy
 *****
 STEP [254][254]
+	0	34	<NONE00>
 	169	25	Glucose(G6)
 	180	15	DiOxygen
 	330	25	Starch (Amidon)
@@ -7088,10 +7344,10 @@ STEP [254][254]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	5	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	85	solar energy
 	391	55	heat energy
 	951	254	aging
@@ -7106,6 +7362,7 @@ STEP [254][254]
 	391	180	heat energy
 *****
 STEP [255][255]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -7116,10 +7373,10 @@ STEP [255][255]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	255	aging

@@ -751,7 +751,10 @@ class AntBuildingGenomeWire {
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestWireBrainWithDecisionAndInstincts.txt", testAnt);
 		
-		BuildingGenomeHelper.exportGenome("GenomeWireBrainWithDecisionAndInstincts.txt", testAnt);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeWireBrainWithDecisionAndInstincts.txt", testAnt);
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestWireBrainWithDecisionAndInstincts.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeWireBrainWithDecisionAndInstincts.txt" );
 		
 	}
 

@@ -28,6 +28,8 @@ public abstract class BuildingGenomeHelper {
 	public static final int indexLessRemovePheromone = 350;
 
 	public static void exportAsTXTfile(String fileName, Organism testAnt) {
+		// TODO Change PATH HERE (make it as use in argument !)
+		// TODO add "AntBuildingGenomeComplete.SRC_TEST_RSC + " in argument here !!
 		File antGeneticData = new File("src/test/resources/" + fileName);
 		antGeneticData.setChamps( testAnt.toString().split("\n") );
 		antGeneticData.setChamps(0, "TAXON ID\tRecording from test. ");
@@ -53,7 +55,7 @@ public abstract class BuildingGenomeHelper {
 		
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "\n" + result.toString());
 		
-		File geneticData = new File("src/test/resources/" + fileName);
+		File geneticData = new File( fileName );
 		geneticData.setChamps( result.toString().split("\n") );
 		try {
 			geneticData.printFile();
@@ -66,17 +68,17 @@ public abstract class BuildingGenomeHelper {
 	
 	public static void copyMoveGenome(String sourceFile, String destinationFile) {
 		try {
-			Files.copy( Paths.get("src/test/resources/" + sourceFile), Paths.get("src/main/resources/anthill/" + destinationFile), StandardCopyOption.REPLACE_EXISTING);
+			Files.copy( Paths.get( sourceFile ), Paths.get( destinationFile ), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			// e.printStackTrace();
-			String msg = "Cannot move {" + "src/test/resources/" + sourceFile + "} to {" + "src/main/resources/anthill/" + destinationFile + "}; IOException {" + e.getMessage() + "}";
+			String msg = "Cannot move {" + sourceFile + "} to {" + destinationFile + "}; IOException {" + e.getMessage() + "}";
 			Logger.printlnLog(LoggerLevel.LL_ERROR, msg);
 		}
 	}
 	
 	public static void removeACGTsequence(String destinationFile) {
 		
-		String filePath = "src/main/resources/anthill/" + destinationFile;
+		String filePath = destinationFile;
 		
 		try {
 			File geneticData = File.loadFile( filePath );
