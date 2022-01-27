@@ -24,7 +24,6 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  */
 public class AntHillExampleHelper {
 
-	
 	public static List<Chromosome> loadingAntGenome() {
 		return AntHillExampleHelper.loadingGenome( "anthill/baseGenomeAnt.txt" );
 	}

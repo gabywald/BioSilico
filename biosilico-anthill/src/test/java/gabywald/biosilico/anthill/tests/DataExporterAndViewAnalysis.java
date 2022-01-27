@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.computations;
+package gabywald.biosilico.anthill.tests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +48,13 @@ class DataExporterAndViewAnalysis {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** Export Ant as a TXT file !
-		String exportName = "2022InitialAntTest.txt";
+		String exportName = AntPlantLoadingTests.GENOME_ANT_RE_2020;
 		BuildingGenomeHelper.exportAsTXTfile(exportName, testAnt);
-		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + exportName );
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + exportName );
 	}
 
 	/**
@@ -71,12 +72,13 @@ class DataExporterAndViewAnalysis {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** Export Plant as a TXT file !
-		String exportName = "2022InitialPlantTest.txt";
+		String exportName = AntPlantLoadingTests.GENOME_PLANT_RE_2020;
 		BuildingGenomeHelper.exportAsTXTfile(exportName, testPlant);
-		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + exportName );
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + exportName );
 	}
 
 	public static void testFileExists(String path2File) {
@@ -98,7 +100,7 @@ class DataExporterAndViewAnalysis {
 		// TO_FILTER_IN_INT.add(StateType.AGING);
 	}
 	
-	public static final String BASE_EXPORT_TEST_DIR = "src/test/resources/";
+	
 	
 	public static void exportChemicalDataFileContent(String filePath, StringBuilder sbExportDataSTR) {
 		File statisticsData = new File( filePath );
@@ -113,6 +115,67 @@ class DataExporterAndViewAnalysis {
 	}
 	
 	@Test
+	void testAntExportImageAndChemicalsData() {
+		
+		Ant testAnt = new Ant();
+		Assertions.assertNotNull( testAnt );
+		Assertions.assertEquals(0, testAnt.getGenome().size());
+		
+		testAnt.setRank("Rank Test");
+		testAnt.setNameCommon("Test Starting Ant");
+		testAnt.setNameBiosilico("AntHill Ant Example");
+		testAnt.setDivision("TESTS");
+		
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		
+		// ***** test with a World and WorldCase
+		World2D w		= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testAnt.setCurrentWorldCase( wc );
+		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.addAgent( new EnergySource() );
+		
+		DataCollector sbExportData		= new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
+		
+		// ***** one execution in this context
+		IntStream.range(0, 1).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testAnt.cyclePlusPlus(); // Aging organism
+				int steps = i;
+				int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+											"ant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc*" + chem.getName(), steps + "");				
+				});
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
+			});
+		});
+		
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntStatistics.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
+		
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntStatistics.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
+	}
+	
+	@Test
 	void testPlantExportImageAndChemicalsData() {
 		
 		Plant testPlant = new Plant();
@@ -124,7 +187,8 @@ class DataExporterAndViewAnalysis {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		World2D w		= new World2D(1, 1);
@@ -164,71 +228,11 @@ class DataExporterAndViewAnalysis {
 			});
 		});
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.txt";
-		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
-		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
-	}
-	
-	@Test
-	void testAntExportImageAndChemicalsData() {
-		
-		Ant testAnt = new Ant();
-		Assertions.assertNotNull( testAnt );
-		Assertions.assertEquals(0, testAnt.getGenome().size());
-		
-		testAnt.setRank("Rank Test");
-		testAnt.setNameCommon("Test Starting Ant");
-		testAnt.setNameBiosilico("AntHill Ant Example");
-		testAnt.setDivision("TESTS");
-		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
-		
-		// ***** test with a World and WorldCase
-		World2D w		= new World2D(1, 1);
-		World2DCase wc	= w.getWorldCase(0,  0);
-		Assertions.assertNotNull( wc );
-		
-		testAnt.setCurrentWorldCase( wc );
-		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
-		wc.addAgent( new EnergySource() );
-		
-		DataCollector sbExportData		= new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
-		StringBuilder sbExportDataSTR	= new StringBuilder();
-		
-		// ***** one execution in this context
-		IntStream.range(0, 1).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				w.execution();
-				testAnt.cyclePlusPlus(); // Aging organism
-				int steps = i;
-				int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-				TO_FILTER_IN_INT.stream().forEach( chem -> {
-					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
-											"ant" + chem.getName(), steps + "");
-					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
-											"wc*" + chem.getName(), steps + "");				
-				});
-				
-				sbExportDataSTR.append( "STEP [")
-							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-							.append("]\n");
-				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
-			});
-		});
-		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntStatistics.jpeg";
-		sbExportData.buildImage( exportImageName );
-		DataExporterAndViewAnalysis.testFileExists( exportImageName );
-		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntStatistics.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportPlantStatistics.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
@@ -245,7 +249,8 @@ class DataExporterAndViewAnalysis {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -256,7 +261,8 @@ class DataExporterAndViewAnalysis {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		World2D w		= new World2D(1, 1);
@@ -341,11 +347,11 @@ STEP [51][51]
 		Assertions.assertEquals(275, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
 		Assertions.assertEquals(525, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
@@ -362,7 +368,8 @@ STEP [51][51]
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -373,7 +380,8 @@ STEP [51][51]
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		World2D w		= new World2D(1, 1);
@@ -468,11 +476,11 @@ STEP [999][999]
 		Assertions.assertEquals(999, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
 		Assertions.assertEquals(999, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics02.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );	}
 
@@ -488,7 +496,8 @@ STEP [999][999]
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -499,7 +508,8 @@ STEP [999][999]
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// HERE adding new GeneS
 		StimulusDecisionBuilder sdb = new StimulusDecisionBuilder();
@@ -638,21 +648,21 @@ STEP [255][255]
 		Assertions.assertEquals(999, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
 		Assertions.assertEquals(999, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics03.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 		
 		// Export new modified genomes !
-		String antGenomeFile = "2022ExtendedAntTest.txt";
-		String plantGenomeFile = "2022ExtendedPlantTest.txt";
+		String antGenomeFile	= AntPlantLoadingTests.GENOME_ANT_EXT_2022;
+		String plantGenomeFile	= AntPlantLoadingTests.GENOME_PLANT_EXT_2022;
 		BuildingGenomeHelper.exportAsTXTfile(antGenomeFile, testAnt);
 		BuildingGenomeHelper.exportAsTXTfile(plantGenomeFile, testPlant);
-		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + antGenomeFile );
-		DataExporterAndViewAnalysis.testFileExists( BASE_EXPORT_TEST_DIR + plantGenomeFile );
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + antGenomeFile );
+		DataExporterAndViewAnalysis.testFileExists( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + plantGenomeFile );
 	}
 	
 	@Test
@@ -667,7 +677,8 @@ STEP [255][255]
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -678,7 +689,8 @@ STEP [255][255]
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// HERE adding new GeneS
 		StimulusDecisionBuilder sdb = new StimulusDecisionBuilder();
@@ -818,11 +830,11 @@ STEP [255][255]
 		Assertions.assertEquals(170, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
 		Assertions.assertEquals(190, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics04.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics04.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics04.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics04.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 		
@@ -840,7 +852,8 @@ STEP [255][255]
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		Plant testPlant = new Plant();
 		Assertions.assertNotNull( testPlant );
@@ -851,7 +864,8 @@ STEP [255][255]
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// HERE adding new GeneS
 		StimulusDecisionBuilder sdb = new StimulusDecisionBuilder();
@@ -999,11 +1013,11 @@ STEP [255][255]
 		Assertions.assertEquals(170, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
 		Assertions.assertEquals(190, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
 		
-		String exportImageName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics05.jpeg";
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics05.jpeg";
 		sbExportData.buildImage( exportImageName );
 		DataExporterAndViewAnalysis.testFileExists( exportImageName );
 		
-		String exportCDataName = BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics05.txt";
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics05.txt";
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 
