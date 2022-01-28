@@ -626,6 +626,24 @@ class AntBuildingGenomeComplete {
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
 				.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 ).build() );
 		
+		chrInitialConcentrations.addGene( sdgb		
+				.perception( false ).object( false )
+				.indicator( 800 ).threshold( 350 )
+				.attribute( SomeChemicals.DIOXYGEN.getIndex() ).varia( SomeChemicals.DIOXYGEN.getIndex() )
+				.value( 30 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT DIOXYGEN (added)").build() );
+		
+		chrInitialConcentrations.addGene( sdgb	
+				.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_HEAT.getIndex() ).varia( SomeChemicals.ENERGY_HEAT.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_HEAT (added)").build() );
+		
 		// EMISSION / RECEPTION ***** Use Heat NRJ, Oxygen !
 		chrInitialConcentrations.addGene(	sdgb.perception( false ).object( false ) 
 				.indicator( DirectionWorld.CURRENT.getIndex() ).threshold( 0 )
@@ -755,15 +773,15 @@ class AntBuildingGenomeComplete {
 		Assertions.assertEquals( 61, testAnt.getGenome().get( 2 ).length());
 		Assertions.assertEquals( 18, testAnt.getGenome().get( 3 ).length()); 
 		Assertions.assertEquals( 29, testAnt.getGenome().get( 4 ).length());
-		Assertions.assertEquals( 11, testAnt.getGenome().get( 5 ).length());
+		Assertions.assertEquals( 13, testAnt.getGenome().get( 5 ).length());
 		Assertions.assertEquals(  7, testAnt.getGenome().get( 6 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testAnt );
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
-		Assertions.assertEquals(188, genesNumber.intValue() );
+		Assertions.assertEquals(190, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testAnt.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
-		Assertions.assertEquals(188, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
+		Assertions.assertEquals(190, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
 		
 		testAnt.setRank("Rank Test");
 		testAnt.setNameCommon("Test Starting Ant");

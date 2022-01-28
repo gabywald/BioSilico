@@ -84,8 +84,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		// testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2022) );
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2022) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** Export Ant as a TXT file !
 		String exportName = AntPlantLoadingTests.GENOME_ANT_RE_2022;
@@ -108,7 +108,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -207,7 +208,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -311,7 +313,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -494,7 +497,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -695,7 +699,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -1135,7 +1140,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -1575,7 +1581,8 @@ class AntPlantLoadingTests {
 		testAnt.setNameBiosilico("AntHill Ant Example");
 		testAnt.setDivision("TESTS");
 		
-		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_ANT_2020) );
+		// testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -2044,8 +2051,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		// testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2022) );
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2022) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** Export Plant as a TXT file !
 		String exportName = AntPlantLoadingTests.GENOME_PLANT_RE_2022;
@@ -2068,7 +2075,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -2175,7 +2183,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -2292,7 +2301,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -2475,7 +2485,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** test with a World and WorldCase
 		
@@ -2676,7 +2687,8 @@ class AntPlantLoadingTests {
 		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
-		testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
+		testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.GENOME_PLANT_2020) );
+		// testPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		// ***** test with a World and WorldCase
 		

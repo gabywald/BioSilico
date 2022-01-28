@@ -237,6 +237,9 @@ class DataExporterAndViewAnalysis {
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
 	
+	/**
+	 * One cycle of 50 iterations
+	 */
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData() {
 		
@@ -356,6 +359,9 @@ STEP [51][51]
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 	}
 
+	/*
+	 * Five cycles of 50 iterations
+	 */
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData02() {
 		
@@ -431,34 +437,36 @@ STEP [51][51]
 		});
 		
 		/*
-STEP [999][999]
+STEP [255][255]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
-	180	515	DiOxygen
+	180	25	DiOxygen
 	330	25	Starch (Amidon)
 	332	25	Glycogen
-	391	999	heat energy => <NONEXX>
-	951	999	aging => <NONEXX>
+	391	95	heat energy
+	951	255	aging
 	952	943	agentype => anima
 	953	912	typeof => agent
-	954	928	status => dead
+	954	921	status => egg
 *****
+	0	35	<NONE00>
 	169	25	Glucose(G6)
-	181	45	Carbon DiOxid
-	182	525	DiHydrogen Monoxid (Water / Eau)
+	180	25	DiOxygen
 	330	25	Starch (Amidon)
-	390	999	solar energy => <NONEXX>
-	391	999	heat energy => <NONEXX>
-	951	999	aging => <NONEXX>
+	332	25	Glycogen
+	391	95	heat energy
+	951	255	aging
 	952	942	agentype => plant
 	953	912	typeof => agent
-	954	928	status => dead
+	954	922	status => embryo
 *****
-	180	10	DiOxygen
-	181	5	Carbon DiOxid
-	182	20	DiHydrogen Monoxid (Water / Eau)
-	390	999	solar energy => <NONEXX>
-	391	999	heat energy => <NONEXX>
+	180	100	DiOxygen
+	181	50	Carbon DiOxid
+	182	100	DiHydrogen Monoxid (Water / Eau)
+	390	150	solar energy
+	391	160	heat energy
 *****
+
 		 */
 		// 5*BASE_COMPUTATION+1
 		Assertions.assertEquals(999, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) );
@@ -484,6 +492,10 @@ STEP [999][999]
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );	}
 
+	/**
+	 * Five cycles of 50 iterations
+	 * Adding Emitter Genes to Ant and Plant
+	 */
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData03() {
 		
@@ -674,6 +686,11 @@ STEP [255][255]
 		BuildingGenomeHelper.removeACGTsequence( AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022 );
 	}
 	
+	/**
+	 * Five cycles of 50 iterations
+	 * Adding Emitter Genes to Ant and Plant
+	 * Add BlackHole
+	 */
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData04() {
 		
@@ -849,6 +866,11 @@ STEP [255][255]
 		
 	}
 	
+	/*
+	 * Five cycles of 50 iterations
+	 * Load genomes with already added Emitter Genes to Ant and Plant
+	 * BlackHole
+	 */
 	@Test
 	void testAntAndPlantExportImageAndChemicalsData05() {
 		
@@ -894,7 +916,7 @@ STEP [255][255]
 		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
-		sbExportData.showJFrame();
+// 		sbExportData.showJFrame();
 		
 		IntStream.range(0, 5).forEach( j -> {
 			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
@@ -923,15 +945,15 @@ STEP [255][255]
 				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
 				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 				
-				try { Thread.sleep(100); }
-				catch (InterruptedException e) { e.printStackTrace(); }
+//				try { Thread.sleep(100); }
+//				catch (InterruptedException e) { e.printStackTrace(); }
 			});
 			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
 			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 			
-			try { Thread.sleep(1000); }
-			catch (InterruptedException e) { e.printStackTrace(); }
+//			try { Thread.sleep(1000); }
+//			catch (InterruptedException e) { e.printStackTrace(); }
 		});
 		
 		/*
@@ -989,10 +1011,148 @@ STEP [255][255]
 		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
 		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
 
-		// try { System.in.read(); } // TODO better than that to avoid automatic closing JFrame at end !
-		// catch (IOException e) { e.printStackTrace(); }
+	}
+	
+	/*
+	 * Five cycles of 50 iterations
+	 * Load genomes with already added Emitter Genes to Ant and Plant (2)
+	 * BlackHole
+	 */
+	@Test
+	void testAntAndPlantExportImageAndChemicalsData06() {
 		
-		// sbExportData.hideJFrame();
+		Ant testAnt = new Ant();
+		Assertions.assertNotNull( testAnt );
+		Assertions.assertEquals(0, testAnt.getGenome().size());
+		
+		testAnt.setRank("Rank Test");
+		testAnt.setNameCommon("Test Starting Ant");
+		testAnt.setNameBiosilico("AntHill Ant Example");
+		testAnt.setDivision("TESTS");
+		
+		// testAnt.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_ANT_2022) );
+		testAnt.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		
+		Plant testPlant = new Plant();
+		Assertions.assertNotNull( testPlant );
+		Assertions.assertEquals(0, testPlant.getGenome().size());
+		
+		testPlant.setRank("Rank Test");
+		testPlant.setNameCommon("Test Starting Plant");
+		testPlant.setNameBiosilico("AntHill Plant Example");
+		testPlant.setDivision("TESTS");
+		
+		// testPlant.setGenome( AntHillExampleHelper.loadingGenome(AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + AntPlantLoadingTests.GENOME_PLANT_2022) );
+		testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		
+		// HERE NEW GENES ARE ALREADY ADDED (see above)
+		
+		// ***** test with a World and WorldCase
+		World2D w		= new World2D(1, 1);
+		World2DCase wc	= w.getWorldCase(0,  0);
+		Assertions.assertNotNull( wc );
+		
+		testAnt.setCurrentWorldCase( wc );
+		testPlant.setCurrentWorldCase( wc );
+		// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
+		wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+		wc.addAgent( new EnergySource() );
+		wc.addAgent( new BlackHole() );
+		
+		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportDataSTR	= new StringBuilder();
+		
+		IntStream.range(0, 5).forEach( j -> {
+			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
+				w.execution();
+				testPlant.cyclePlusPlus();	// Aging organism
+				testAnt.cyclePlusPlus();	// Aging organism
+				int steps = i;
+				int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
+				// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				TO_FILTER_IN_INT.stream().forEach( chem -> {
+					sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
+											"plant" + chem.getName(), steps + "");
+					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+											"ant" + chem.getName(), steps + "");
+					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+											"wc" + chem.getName(), steps + "");				
+				});
+				
+				sbExportDataSTR.append( "STEP [")
+							.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("][")
+							.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+							.append("]\n");
+				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
+				
+			});
+			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
+			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
+			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
+			
+		});
+		
+		/*
+STEP [255][255]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	25	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	95	heat energy
+	951	255	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	25	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	95	heat energy
+	951	255	aging
+	952	942	agentype => plant
+	953	912	typeof => agent
+	954	922	status => embryo
+*****
+	180	100	DiOxygen
+	181	50	Carbon DiOxid
+	182	100	DiHydrogen Monoxid (Water / Eau)
+	390	150	solar energy
+	391	160	heat energy
+*****
+
+		 */
+		// 5*BASE_COMPUTATION+5
+		Assertions.assertEquals(5*BASE_COMPUTATION+5, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) );
+		Assertions.assertEquals( 95, testAnt.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertTrue( testAnt.isAlive() );
+		
+		Assertions.assertEquals(5*BASE_COMPUTATION+5, testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) );
+		Assertions.assertEquals(  0, testPlant.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals( 95, testPlant.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		Assertions.assertTrue( testPlant.isAlive() );
+		
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
+		Assertions.assertEquals(50, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
+		Assertions.assertEquals(100, wc.getChemicals().getVariable(SomeChemicals.WATER.getIndex()));
+		Assertions.assertEquals(150, wc.getChemicals().getVariable(SomeChemicals.ENERGY_SOLAR.getIndex()));
+		Assertions.assertEquals(160, wc.getChemicals().getVariable(SomeChemicals.ENERGY_HEAT.getIndex()));
+		
+		String exportImageName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics06.jpeg";
+		sbExportData.buildImage( exportImageName );
+		DataExporterAndViewAnalysis.testFileExists( exportImageName );
+		
+		String exportCDataName = AntPlantLoadingTests.BASE_EXPORT_TEST_DIR + "ExportAntAndPlantStatistics06.txt";
+		DataExporterAndViewAnalysis.exportChemicalDataFileContent( exportCDataName, sbExportDataSTR );
+		DataExporterAndViewAnalysis.testFileExists( exportCDataName );
+
 	}
 	
 }

@@ -381,6 +381,30 @@ class PlantBuildingGenomeTests {
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
 			.name( "DEATH of AGING over 950" )
 			.build() );
+
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 350 )
+				.attribute( SomeChemicals.WATER.getIndex() ).varia( SomeChemicals.WATER.getIndex() )
+				.value( 30 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT WATER (added)").build()) ;
+		
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_HEAT.getIndex() ).varia( SomeChemicals.ENERGY_HEAT.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_HEAT (added)").build());
+		
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_SOLAR.getIndex() ).varia( SomeChemicals.ENERGY_SOLAR.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_SOLAR (added)").build());
 		
 		// ***** Instantiate Plant and Organism With Genome !!
 		Plant testPlant = new Plant( Arrays.asList( chrBiochemical, chrSDdecision, chrSDdetection ) );
@@ -393,14 +417,14 @@ class PlantBuildingGenomeTests {
 		
 		Assertions.assertEquals( 21, testPlant.getGenome().get( 0 ).length());
 		Assertions.assertEquals( 10, testPlant.getGenome().get( 1 ).length());
-		Assertions.assertEquals(  5, testPlant.getGenome().get( 2 ).length());
+		Assertions.assertEquals(  8, testPlant.getGenome().get( 2 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
 		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
-		Assertions.assertEquals( 36, genesNumber.intValue() );
+		Assertions.assertEquals( 39, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
-		Assertions.assertEquals( 36, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
+		Assertions.assertEquals( 39, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
