@@ -23,13 +23,18 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public class AntHillExampleHelper {
+	
+	public static final String BASE_EXPORT_MAIN_DIR = "src/main/resources/";
+	public static final String BASE_EXPORT_TEST_DIR = "src/test/resources/";
+	
+	public static final String BASE_EXPORT_MAIN_DIR_ANTHILL = AntHillExampleHelper.BASE_EXPORT_MAIN_DIR + "anthill/";
 
 	public static List<Chromosome> loadingAntGenome() {
-		return AntHillExampleHelper.loadingGenome( "src/main/resources/" + "anthill/baseGenomeAnt.txt" );
+		return AntHillExampleHelper.loadingGenome( AntHillExampleHelper.BASE_EXPORT_MAIN_DIR_ANTHILL + "baseGenomeAnt.txt" );
 	}
 	
 	public static List<Chromosome> loadingPlantGenome() {
-		return AntHillExampleHelper.loadingGenome( "src/main/resources/" + "anthill/baseGenomePlant.txt" );
+		return AntHillExampleHelper.loadingGenome( AntHillExampleHelper.BASE_EXPORT_MAIN_DIR_ANTHILL + "baseGenomePlant.txt" );
 	}
 	
 	public static List<Chromosome> loadingGenome(String path2file) {

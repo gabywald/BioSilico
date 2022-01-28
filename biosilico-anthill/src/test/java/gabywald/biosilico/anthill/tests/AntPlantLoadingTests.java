@@ -31,7 +31,7 @@ class AntPlantLoadingTests {
 	public static final String EXPORT_DIR_2020		= "anthill2020/";
 	public static final String EXPORT_DIR_2022		= "anthill2022/";
 	
-	public static final String BASE_EXPORT_TEST_DIR = "src/test/resources/";
+	public static final String BASE_EXPORT_TEST_DIR = AntHillExampleHelper.BASE_EXPORT_TEST_DIR;
 	
 	public static final String GENOME_ANT_2020		= AntPlantLoadingTests.EXPORT_DIR_2020 + "2020baseGenomeAnt.txt";
 	public static final String GENOME_ANT_RE_2020	= AntPlantLoadingTests.EXPORT_DIR_2020 + "2020InitialAntTest.txt";

@@ -828,6 +828,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenome.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenome.txt" );
 		
 	}
 	
@@ -1219,6 +1220,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies01.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies01.txt" );
 		
 	}
 
@@ -1664,6 +1666,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies02.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies02.txt" );
 		
 	}
 
@@ -2110,7 +2113,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies03.txt", testPlant);
-		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies03.txt" );
 	}
 
 	

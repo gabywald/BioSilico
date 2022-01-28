@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
+import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
 import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
@@ -38,8 +39,8 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  */
 class AntBuildingGenomeComplete {
 	
-	public static final String SRC_TEST_RSC			= "src/test/resources/";
-	public static final String SRC_MAIN_RSC_ANTHILL	= "src/main/resources/anthill/";
+	public static final String SRC_TEST_RSC			= AntHillExampleHelper.BASE_EXPORT_TEST_DIR;
+	public static final String SRC_MAIN_RSC_ANTHILL	= AntHillExampleHelper.BASE_EXPORT_MAIN_DIR_ANTHILL;
 
 	@Test
 	void testAntCompleteGenome() {

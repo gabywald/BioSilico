@@ -284,6 +284,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestAntstStimulusDecisionAllDirectionsVariant.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestAntstStimulusDecisionAllDirectionsVariant.txt" );
 		
 	}
 	
@@ -441,6 +442,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromones.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestStimulusDecisionAllDirectionsTwoPheromones.txt" );
 		
 	}
 	
@@ -533,6 +535,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsFOOD.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestStimulusDecisionAllDirectionsFOOD.txt" );
 		
 	}
 	
@@ -767,6 +770,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionAllDirectionsTwoPheromonesAndFOOD.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestStimulusDecisionAllDirectionsTwoPheromonesAndFOOD.txt" );
 		
 	}
 	
@@ -843,6 +847,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestStimulusDecisionHasFOOD.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestStimulusDecisionHasFOOD.txt" );
 		
 	}
 	
@@ -1146,6 +1151,7 @@ class AntBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestWireBrainDecisionMOVEAWAY.txt", testAnt);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestWireBrainDecisionMOVEAWAY.txt" );
 		
 	}
 	
