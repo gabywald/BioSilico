@@ -916,8 +916,6 @@ STEP [255][255]
 		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
-// 		sbExportData.showJFrame();
-		
 		IntStream.range(0, 5).forEach( j -> {
 			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
 				w.execution();
@@ -945,15 +943,11 @@ STEP [255][255]
 				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
 				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
 				
-//				try { Thread.sleep(100); }
-//				catch (InterruptedException e) { e.printStackTrace(); }
 			});
 			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
 			wc.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
 			wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 			
-//			try { Thread.sleep(1000); }
-//			catch (InterruptedException e) { e.printStackTrace(); }
 		});
 		
 		/*

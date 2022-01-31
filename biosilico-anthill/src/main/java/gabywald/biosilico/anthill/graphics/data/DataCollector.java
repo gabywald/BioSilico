@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
@@ -24,7 +25,9 @@ public class DataCollector {
 					categoryAxisLabel	= null, 
 					valueAxisLabel		= null;
 	
-	private JFrame frame = null;
+	private JFrame frame		= null;
+	
+	private ChartFrame cFrame	= null;
 	
 	/**
 	 * 
@@ -91,22 +94,28 @@ public class DataCollector {
 		this.buildImage(1024, 768, path2file);
 	}
 	
-	public void showJFrame() {
+	public void showJFrameWithChartPanel() {
 		if (this.frame == null) {
 			this.frame = new JFrame();
 		}
 
-		frame.setSize(1024, 768);
+		this.frame.setSize(1024, 768);
 		
-		frame.add(new ChartPanel(this.generate()));
+		this.frame.add(new ChartPanel(this.generate()));
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setVisible(true);
 	}
 	
-//	public void hideJFrame() {
-//		if (this.frame != null) 
-//			{ System.exit(0); }
-//	}
+	public void showChartFrame() {
+		if (this.cFrame == null) {
+			this.cFrame = new ChartFrame("ChartFrame", this.generate());
+		}
+
+		this.cFrame.setSize(1024, 768);
+		
+		this.cFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.cFrame.setVisible(true);
+	}
 	
 }
