@@ -59,7 +59,7 @@ public class GeneCreator extends GeneKitJFrame {
 	
 	/**
 	 * To get the current instance of graphical view. 
-	 * @return (GenericJFrame)
+	 * @return (GeneCreator)
 	 */
 	public static GeneCreator getInstance() {
 		if (GeneCreator.instance == null) 
