@@ -1,5 +1,6 @@
 package gabywald.biosilico.view;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -49,10 +50,10 @@ public class GeneticKit extends GeneKitJFrame {
 		this.southPanel.setPathStock(this.pathSelection.getPathStock());
 		this.southPanel.setOrgSelectPanel(this.northPanel);
 		/** Positions in content of JFrame */
-		this.getContentPane().add(this.westernPanel, "West");
-		this.getContentPane().add(this.northPanel, "North");
-		this.getContentPane().add(this.southPanel, "South");
-		this.getContentPane().add(this.centerPanel, "Center");
+		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
+		this.getContentPane().add(this.northPanel, BorderLayout.NORTH);
+		this.getContentPane().add(this.southPanel, BorderLayout.SOUTH);
+		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
 		this.setTitle("Genetic Kit");
 		this.setVisible(true);
 	}

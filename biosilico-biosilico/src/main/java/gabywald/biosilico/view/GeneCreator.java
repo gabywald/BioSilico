@@ -50,9 +50,9 @@ public class GeneCreator extends GeneKitJFrame {
 		this.initEasternPanel();
 		/** Positions in content of JFrame */
 		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(this.centerPanel, "Center");
-		this.getContentPane().add(this.westernPanel, "West");
-		this.getContentPane().add(this.easternPanel, "East");
+		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
+		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
+		this.getContentPane().add(this.easternPanel, BorderLayout.EAST);
 		this.setTitle("Gene Creator");
 		this.setVisible(true);
 	}
@@ -78,7 +78,7 @@ public class GeneCreator extends GeneKitJFrame {
 		this.geneName = new JTextField();
 		
 		this.centerPanel = new GeneKitsGBJPanel();
-		this.centerPanel.setPreferredSize(new Dimension(800,600));
+		this.centerPanel.setPreferredSize(new Dimension(800, 600));
 		this.centerPanel.addBagComponent(this.geneTypeSelection		, 0, 0);
 		this.centerPanel.addBagComponent(this.createGene			, 1, 0);
 		this.centerPanel.addBagComponent(this.changeGene			, 2, 0);
