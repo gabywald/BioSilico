@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.launcher;
+package gabywald.biosilico.anthill.helpers;
 
 import java.io.IOException;
 import java.nio.file.Files;

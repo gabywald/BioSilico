@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.graphics.data;
+package gabywald.biosilico.anthill.data;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
- * 
+ * This class defines some built-in functions to build build graphical visualisation. 
  * @author Gabriel Chandesris (2022)
  */
 public class DataCollector {
@@ -61,6 +61,11 @@ public class DataCollector {
 				true, true, false);
 		return lineChartObject;
 	}
+	
+	public ChartPanel generateChartPanel() {
+		return new ChartPanel(this.generate());
+	}
+	
 	
 	/**
 	 * 

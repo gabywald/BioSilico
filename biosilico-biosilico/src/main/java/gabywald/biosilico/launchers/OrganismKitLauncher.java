@@ -15,7 +15,7 @@ public class OrganismKitLauncher {
 	
 	/**
 	 * To get the unique instance of the launcher. 
-	 * @return (GenKit)
+	 * @return (OrganismKitLauncher)
 	 */
 	public static OrganismKitLauncher getInstance() {
 		if (OrganismKitLauncher.instance == null) 

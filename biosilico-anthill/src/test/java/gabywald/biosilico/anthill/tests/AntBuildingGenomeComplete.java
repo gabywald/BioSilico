@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
-import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
-import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
+import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
+import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;

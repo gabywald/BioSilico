@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.graphics.data;
+package gabywald.biosilico.anthill.view;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -8,10 +8,12 @@ import javax.swing.JPanel;
 
 import org.jfree.chart.ChartPanel;
 
+import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.global.view.graph.GenericJFrame;
 
 /**
  * 
+ * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2022)
  */
 @SuppressWarnings("serial")
@@ -29,18 +31,19 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	 * To get the current instance of graphical view. 
 	 * @return (AntHillGraphicalFrame)
 	 */
-	public static AntHillGraphicalFrame getInstance() {
-		if (AntHillGraphicalFrame.instance == null) {
-			AntHillGraphicalFrame.instance = new AntHillGraphicalFrame();
-		}
+	public static AntHillGraphicalFrame getInstance(DataCollector dc) {
+		if (AntHillGraphicalFrame.instance == null) 
+			{ AntHillGraphicalFrame.instance = new AntHillGraphicalFrame( dc ); }
 		return AntHillGraphicalFrame.instance;
 	}
 	
-	private AntHillGraphicalFrame() {
+	private AntHillGraphicalFrame(DataCollector dc) {
 		
 		// TODO complete view !
+		// TODO Western Panel
+		// TODO Northern Panel
 		
-		this.initCenterPanel();
+		this.initCenterPanel( dc );
 		
 		/** Positions in content of JFrame */
 		this.getContentPane().setLayout(new BorderLayout());
@@ -50,14 +53,15 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.setVisible(true);
 	}
 	
-	private void initCenterPanel() {
+	private void initCenterPanel(DataCollector dc) {
 		// CenterPanel : ChartPanel
-		this.enableCenterPanel(false);
+		// this.enableCenterPanel(false);
+		
+		this.cPanel = dc.generateChartPanel();
 		
 		this.centerPanel = new JPanel();
 		this.centerPanel.setLayout(new BorderLayout());
 		this.centerPanel.add(this.cPanel, BorderLayout.CENTER);
-		
 	}
 	
 	public ChartPanel setChartPanel(ChartPanel cp) {

@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
+import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
+import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;

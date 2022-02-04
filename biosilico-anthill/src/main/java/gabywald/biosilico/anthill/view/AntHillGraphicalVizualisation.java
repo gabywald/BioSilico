@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.graphics.data;
+package gabywald.biosilico.anthill.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.stream.IntStream;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
-import gabywald.biosilico.anthill.launcher.AntHillExampleHelper;
+import gabywald.biosilico.anthill.data.DataCollector;
+import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.environment.World2D;
@@ -15,7 +16,7 @@ import gabywald.biosilico.model.utils.agents.BlackHole;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
- * 
+ *
  * @author Gabriel Chandesris (2022)
  */
 public class AntHillGraphicalVizualisation {
@@ -53,8 +54,6 @@ public class AntHillGraphicalVizualisation {
 
 		testPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
 
-		// HERE NEW GENES ARE ALREADY ADDED (see above)
-
 		// ***** test with a World and WorldCase
 		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
@@ -67,11 +66,11 @@ public class AntHillGraphicalVizualisation {
 		wc.addAgent( new EnergySource() );
 		wc.addAgent( new BlackHole() );
 
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
-		StringBuilder sbExportDataSTR	= new StringBuilder();
+		DataCollector dcExportData	= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		StringBuilder sbExportData	= new StringBuilder();
 
 		// sbExportData.showJFrameWithChartPanel();
-		sbExportData.showChartFrame();
+		dcExportData.showChartFrame();
 
 		IntStream.range(0, 5).forEach( j -> {
 			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
@@ -81,24 +80,24 @@ public class AntHillGraphicalVizualisation {
 				int steps = i;
 				int aging = testPlant.getChemicals().getVariable(StateType.AGING.getIndex());
 				// int aging = testAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-				sbExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
+				dcExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
 				TO_FILTER_IN_INT.stream().forEach( chem -> {
-					sbExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
+					dcExportData.addValue(	testPlant.getChemicals().getVariable( chem.getIndex() ), 
 							"plant" + chem.getName(), steps + "");
-					sbExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
+					dcExportData.addValue(	testAnt.getChemicals().getVariable( chem.getIndex() ), 
 							"ant" + chem.getName(), steps + "");
-					sbExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
+					dcExportData.addValue(	wc.getChemicals().getVariable( chem.getIndex() ), 
 							"wc" + chem.getName(), steps + "");				
 				});
 
-				sbExportDataSTR.append( "STEP [")
+				sbExportData.append( "STEP [")
 				.append( testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
 				.append("][")
 				.append( testPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
 				.append("]\n");
-				sbExportDataSTR.append( testAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportDataSTR.append( testPlant.getChemicals().toString() ).append( "*****\n" );
-				sbExportDataSTR.append( wc.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( testAnt.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( testPlant.getChemicals().toString() ).append( "*****\n" );
+				sbExportData.append( wc.getChemicals().toString() ).append( "*****\n" );
 
 				try { Thread.sleep(100); }
 				catch (InterruptedException e) { e.printStackTrace(); }
@@ -110,7 +109,6 @@ public class AntHillGraphicalVizualisation {
 			try { Thread.sleep(1000); }
 			catch (InterruptedException e) { e.printStackTrace(); }
 		});
-
 	}
 
 }

@@ -15,7 +15,7 @@ public class GeneCreatorLauncher {
 	
 	/**
 	 * To get the unique instance of the launcher. 
-	 * @return (GenKit)
+	 * @return (GeneCreatorLauncher)
 	 */
 	public static GeneCreatorLauncher getInstance() {
 		if (GeneCreatorLauncher.instance == null) 
