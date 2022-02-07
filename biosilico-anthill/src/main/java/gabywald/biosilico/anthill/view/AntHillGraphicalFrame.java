@@ -1,15 +1,24 @@
 package gabywald.biosilico.anthill.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartPanel;
 
 import gabywald.biosilico.anthill.data.DataCollector;
+import gabywald.biosilico.anthill.launcher.AntHillGraphicalLauncher;
+import gabywald.biosilico.model.Organism;
+import gabywald.biosilico.model.environment.World2D;
+import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.global.view.graph.GenericJFrame;
+import gabywald.global.view.graph.GridBagJPanel;
 
 /**
  * 
@@ -26,28 +35,34 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	private ChartPanel cPanel = null;
 	/** JPanel in Center of the JFrame. */
 	private JPanel centerPanel;
+	private GridBagJPanel westernPanel;
+	
+	private AntHillSelectionJScroll<Organism> organismsJScroll		= null;
+	private AntHillSelectionJScroll<World2DCase> locationsJScroll	= null;
 	
 	/**
 	 * To get the current instance of graphical view. 
 	 * @return (AntHillGraphicalFrame)
 	 */
-	public static AntHillGraphicalFrame getInstance(DataCollector dc) {
+	public static AntHillGraphicalFrame getInstance(AntHillGraphicalLauncher agl) {
 		if (AntHillGraphicalFrame.instance == null) 
-			{ AntHillGraphicalFrame.instance = new AntHillGraphicalFrame( dc ); }
+			{ AntHillGraphicalFrame.instance = new AntHillGraphicalFrame( agl ); }
 		return AntHillGraphicalFrame.instance;
 	}
 	
-	private AntHillGraphicalFrame(DataCollector dc) {
+	private AntHillGraphicalFrame(AntHillGraphicalLauncher agl) {
 		
 		// TODO complete view !
 		// TODO Western Panel
 		// TODO Northern Panel
 		
-		this.initCenterPanel( dc );
+		this.initCenterPanel( agl.getDataCollector() );
+		this.initWesternPanel( agl );
 		
 		/** Positions in content of JFrame */
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
+		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
 		
 		this.setTitle("AntHill Graphical Frame");
 		this.setVisible(true);
@@ -62,6 +77,20 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.centerPanel = new JPanel();
 		this.centerPanel.setLayout(new BorderLayout());
 		this.centerPanel.add(this.cPanel, BorderLayout.CENTER);
+	}
+	
+	private void initWesternPanel(AntHillGraphicalLauncher agl) {
+		this.organismsJScroll = new AntHillSelectionJScroll<Organism>(agl.getOrganisms());
+		this.locationsJScroll = new AntHillSelectionJScroll<World2DCase>(agl.getLocations());
+		
+		this.westernPanel = new GridBagJPanel() { };
+		// this.westernPanel.setPreferredSize(new Dimension(100, 0));
+		this.westernPanel.setSize(this.getWidth() / 2, this.getHeight());
+		this.westernPanel.addBagComponent(new JLabel("Organisms List")		, 0, 0);
+		this.westernPanel.addBagComponent(this.organismsJScroll				, 0, 1);
+		this.westernPanel.addBagComponent(new JLabel("Locations List")		, 0, 2);
+		this.westernPanel.addBagComponent(this.locationsJScroll				, 0, 3);
+		
 	}
 	
 	public ChartPanel setChartPanel(ChartPanel cp) {

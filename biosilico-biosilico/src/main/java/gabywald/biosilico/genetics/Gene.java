@@ -2,6 +2,7 @@ package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IGeneMutation;
+import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.Organism;
 
 
@@ -13,7 +14,7 @@ import gabywald.biosilico.model.Organism;
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  * @see gabywald.biosilico.genetics.InitialConcentration
  */
-public abstract class Gene implements Cloneable, IGeneMutation {
+public abstract class Gene implements Cloneable, IGeneMutation, INamedElement {
 	/** Default name if not attributed. */
 	public static final String DEFAULT_GENE_NAME = "UnNamedGene";
 	/** Gene name / identification. */
@@ -88,6 +89,7 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 	
 	public void setName(String name) { this.name = name; }
 	
+	@Override
 	public String getName() {
 		if (this.name == null) 
 			{ return Gene.DEFAULT_GENE_NAME; }

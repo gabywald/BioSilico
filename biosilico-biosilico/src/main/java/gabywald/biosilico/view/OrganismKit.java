@@ -139,7 +139,7 @@ public class OrganismKit extends GenericJFrame
 	public void enableWesternPanel(boolean b)	
 		{ this.buildingGene.setEnabled(b); }
 
-	public void actionPerformed(ActionEvent arg0) {
-		// Object source = arg0.getSource();
+	public void actionPerformed(ActionEvent ae) {
+		// Object source = ae.getSource();
 	}
 }

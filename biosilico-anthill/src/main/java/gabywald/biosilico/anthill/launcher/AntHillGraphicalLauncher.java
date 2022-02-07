@@ -9,6 +9,7 @@ import gabywald.biosilico.anthill.Plant;
 import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
 import gabywald.biosilico.anthill.view.AntHillGraphicalFrame;
+import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.environment.World2D;
@@ -46,6 +47,19 @@ public class AntHillGraphicalLauncher {
 	
 	public void setView(AntHillGraphicalFrame view) { this.localView = view; }
 	public AntHillGraphicalFrame getView() { return this.localView; }
+	
+	public DataCollector getDataCollector()	{ return this.dcExportData; }
+	
+	public List<Organism> getOrganisms()	{ 
+		List<Organism> orgs = new ArrayList<>();
+		orgs.add(this.currentAnt);
+		orgs.add(this.currentPlant);
+		return orgs;
+	}
+	
+	public List<World2DCase> getLocations() {
+		return this.currentWSimulation.getWorldCases();
+	}
 	
 	/** 
 	 * MAIN launch for this view. 
@@ -92,7 +106,7 @@ public class AntHillGraphicalLauncher {
 		controller.currentAnt			= testAnt;
 		controller.dcExportData = new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		controller.sbExportData = new StringBuilder();
-		controller.setView(AntHillGraphicalFrame.getInstance( controller.dcExportData ));
+		controller.setView(AntHillGraphicalFrame.getInstance( controller ));
 	}
 	
 	public static final int BASE_COMPUTATION = 50;

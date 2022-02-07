@@ -8,6 +8,7 @@ import gabywald.biosilico.interfaces.IAgentActions;
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.interfaces.IChemicalsContent;
 import gabywald.biosilico.interfaces.IEnvironmentItem;
+import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.chemicals.ChemicalsBuilder;
 import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.model.enums.DirectionWorld;
@@ -22,7 +23,7 @@ import gabywald.global.structures.StringCouple;
  * @author Gabriel Chandesris (2009, 2020)
  */
 public abstract class Agent extends ObservableObject 
-							implements IChemicalsContent, IAgentActions {
+							implements IChemicalsContent, IAgentActions, INamedElement {
 	/** Chemical concentrations. */
 	protected IChemicals variables;
 	/** Flag to know if it is alive or not. */
@@ -50,6 +51,15 @@ public abstract class Agent extends ObservableObject
 	/** Default Constructor (not alive, not eatable, but movable).  */
 	public Agent() {
 		this(false, false, true);
+	}
+	
+	@Override
+	public String getName() {
+		for (String name : this.allOtherNames) {
+			if ( ! name.equals("")) 
+				{ return name; }
+		}
+		return "*No Name*"; // TODO Change return default name ?!
 	}
 	
 	/**

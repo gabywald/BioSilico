@@ -121,8 +121,8 @@ public class GeneticKit extends GeneKitJFrame {
 		return GeneticKit.instance;
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		Object source = arg0.getSource();
+	public void actionPerformed(ActionEvent ae) {
+		Object source = ae.getSource();
 		if (source.equals(this.geneTypeSelection)) {
 			int type = this.geneTypeSelection.getSelectedIndex();
 			this.parameterViewer.selectCard(type);

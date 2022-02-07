@@ -36,10 +36,10 @@ public class GeneListJScroll extends GenericJScroll
 		this.init();
 	}
 	
-	/** Helpêr for constructors (initialization). */
+	/** Helper for constructors (initialization). */
 	private void init() {
 		this.setSize(20, 400);
-		this.setPreferredSize(new Dimension(30,400));
+		this.setPreferredSize(new Dimension(30, 400));
 		this.removeGene	= new JButton("Rem. Gene");
 		this.uppeGene	= new JButton("Up Gene");
 		this.downGene	= new JButton("Down Gene");
@@ -61,8 +61,8 @@ public class GeneListJScroll extends GenericJScroll
 		this.setEnabled(true);
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		Object source = arg0.getSource();
+	public void actionPerformed(ActionEvent ae) {
+		Object source = ae.getSource();
 		if (source.equals(this.removeGene)) {
 			/** Removing a Gene from current Pathway. */
 			this.removeCurrentSelection();
@@ -78,6 +78,7 @@ public class GeneListJScroll extends GenericJScroll
 		}
 	}
 	
+	@Override
 	public void setEnabled(boolean b) {
 		this.removeGene.setEnabled(b);
 		this.uppeGene.setEnabled(b);
