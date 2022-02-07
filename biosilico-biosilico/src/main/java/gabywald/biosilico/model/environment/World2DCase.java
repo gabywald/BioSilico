@@ -49,7 +49,9 @@ public class World2DCase implements IEnvironmentItem {
 		this.pos		= position;
 		
 		// Setting a default name !
-		this.setName(world.getName() + ":" + position.toString());
+		this.setName( ( (this.world != null) ? this.world.getName() : "Isolated")
+						+ ":" + 
+						( (this.pos != null) ? this.pos.toString() : "No Position !") );
 	}
 	
 	@Override
