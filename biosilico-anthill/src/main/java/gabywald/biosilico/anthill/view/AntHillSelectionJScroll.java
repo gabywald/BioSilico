@@ -28,10 +28,10 @@ public class AntHillSelectionJScroll<T extends INamedElement>	extends GenericJSc
 	}
 	
 	private void init() {
-		this.setSize(50, 200);
-		this.setPreferredSize(new Dimension(50, 200));
+		this.setSize(100, 200);
+		this.setPreferredSize(new Dimension(100, 200));
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// Object source = ae.getSource();

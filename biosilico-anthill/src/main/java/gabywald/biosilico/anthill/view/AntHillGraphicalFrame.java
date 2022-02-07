@@ -1,21 +1,20 @@
 package gabywald.biosilico.anthill.view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
 
 import org.jfree.chart.ChartPanel;
 
 import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.anthill.launcher.AntHillGraphicalLauncher;
 import gabywald.biosilico.model.Organism;
-import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.global.view.graph.GenericJFrame;
 import gabywald.global.view.graph.GridBagJPanel;
@@ -85,11 +84,23 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		
 		this.westernPanel = new GridBagJPanel() { };
 		// this.westernPanel.setPreferredSize(new Dimension(100, 0));
-		this.westernPanel.setSize(this.getWidth() / 2, this.getHeight());
-		this.westernPanel.addBagComponent(new JLabel("Organisms List")		, 0, 0);
-		this.westernPanel.addBagComponent(this.organismsJScroll				, 0, 1);
-		this.westernPanel.addBagComponent(new JLabel("Locations List")		, 0, 2);
-		this.westernPanel.addBagComponent(this.locationsJScroll				, 0, 3);
+		// this.westernPanel.setSize(this.getWidth() / 5, this.getHeight());
+		this.westernPanel.addBagComponent(new JLabel("Organisms List")		, 0, 0, 2);
+		this.westernPanel.addBagComponent(this.organismsJScroll				, 0, 1, 2);
+		this.westernPanel.addBagComponent(new JLabel("Locations List")		, 0, 2, 2);
+		this.westernPanel.addBagComponent(this.locationsJScroll				, 0, 3, 2);
+		this.westernPanel.addBagComponent(new JSeparator()					, 0, 4, 2);
+		this.westernPanel.addBagComponent(new JTextField("0")				, 0, 5);
+		this.westernPanel.addBagComponent(new JButton("One Step")			, 1, 5);
+		this.westernPanel.addBagComponent(new JButton("Start")				, 0, 6);
+		this.westernPanel.addBagComponent(new JButton("Stop")				, 1, 6);
+		
+		// TODO : JTextField to be extracted and controlled (cannot be changed by user ! )
+		// TODO : actionPerformed on OneStep Button
+		// TODO : actionPerformed on Stop Button
+		// TODO : actionPerformed on Start Button
+		
+		// TODO : interact and show data about elements in the two (2) lists above !!
 		
 	}
 	
