@@ -165,6 +165,35 @@ public class StimulusDecision extends GeneGattaca {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		StimulusDecision sdg = (StimulusDecision) obj;
+		
+		if ( ! super.equalCommonAttributes( sdg )) { return false; }
+		
+		if ( this.perception != sdg.perception)
+			{ return false; }
+		if ( this.object != sdg.object)
+			{ return false; }
+		if ( this.indicator != sdg.indicator)
+			{ return false; }
+		if ( this.threshold != sdg.threshold)
+			{ return false; }
+		if ( this.attribute != sdg.attribute)
+			{ return false; }
+		if ( this.varia != sdg.varia)
+			{ return false; }
+		if ( this.value != sdg.value)
+			{ return false; }
+		return ( this.scrip == sdg.scrip);
+	}
+	
+	@Override
 	public Gene clone() {
 		Gene toReturn = new StimulusDecision(	this.canMutate(), this.canDuplicate(), this.canDelete(), this.isActiv(), 
 												this.getAgeMin(), this.getAgeMax(), this.getSexAct(), this.getMutationRate(), 

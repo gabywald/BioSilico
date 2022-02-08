@@ -108,6 +108,27 @@ public class BrainGene extends GeneGattaca {
 							this.depth+"\t"+this.more+"\t";
 		return stringenize;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		BrainGene bg = (BrainGene) obj;
+		
+		if ( ! super.equalCommonAttributes( bg )) { return false; }
+		
+		if ( this.height != bg.height)
+			{ return false; }
+		if ( this.width != bg.width)
+			{ return false; }
+		if ( this.depth != bg.depth)
+			{ return false; }
+		return ( this.more == bg.more);
+	}
 
 	@Override
 	public Gene clone() {

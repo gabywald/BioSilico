@@ -5,7 +5,6 @@ import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.Organism;
 
-
 /**
  * This class define a generic gene.<br>
  * The aim of building constructor and Getters / Setters is to instanciate a gene
@@ -105,6 +104,42 @@ public abstract class Gene implements Cloneable, IGeneMutation, INamedElement {
 		return stringenize;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		return this.equalCommonAttributes( (Gene) obj );
+	}
+	
+	protected boolean equalCommonAttributes(Gene gg) {
+		if (gg == null) { return false; }
+		
+		// Call equals() method of the underlying objects
+		if ( (this.name != null) && (gg.name != null) ) {
+			if ( ! this.name.equals(gg.name))
+				{ return false; }
+		}
+		if ( this.mutate != gg.mutate)
+			{ return false; }
+		if ( this.duplicate != gg.duplicate)
+			{ return false; }
+		if ( this.delete != gg.delete)
+			{ return false; }
+		if ( this.activ != gg.activ)
+			{ return false; }
+		if ( this.ageMin != gg.ageMin)
+			{ return false; }
+		if ( this.ageMax != gg.ageMax)
+			{ return false; }
+		if ( this.sex != gg.sex)
+			{ return false; }
+		return ( this.mutationRate == gg.mutationRate);
+	}
+	
 	/**
 	 * The true execution of gene (specific code), excepted if bad parameters. 
 	 * @param orga (Organism) variable of current organism.
@@ -123,6 +158,7 @@ public abstract class Gene implements Cloneable, IGeneMutation, INamedElement {
 	 * Creating Gene from sequence. 
 	 * @param sequence (String)
 	 * @return (Gene) 'null' if not recognized properly. 
+	 * NOTE : here is main choice to use UpperCase 'ACGT' characters to encode GeneGattaca sequences. 
 	 */
 	public static Gene loadGene(String sequence) {
 		/** Standard genetic code application : nothing */

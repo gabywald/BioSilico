@@ -4,6 +4,7 @@ package gabywald.biosilico.genetics.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.Instinct;
 
 /**
@@ -340,6 +341,27 @@ class InstinctTests {
 				iGene.reverseTranslation(true));
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTTTCCTTTTCCTTTTCCTTCTTCTTCTTCTTCTTCTTCTTCTTCTTCGCTAGGGT	false	false	false	false	0	999	0	50	50	50	50	50	0	0	0	false	false	", 
 				iGene.toString());
+	}
+	
+	@Test
+	void testCloneEquals() {
+		Instinct iGene = new Instinct(	false, false, false, false, 
+										0, 999, 0, 50,
+										0, 0, 0, 0, 0, 0, 0, false, true);
+
+		Gene iGeneClone = iGene.clone();
+		Assertions.assertNotNull( iGeneClone );
+		Instinct biGeneClone = (Instinct) iGeneClone;
+		Assertions.assertNotNull( biGeneClone );
+		
+		Assertions.assertTrue( iGene.equals( iGeneClone ) );
+		Assertions.assertTrue( iGene.equals( biGeneClone ) );
+		
+		Instinct iGeneOther = new Instinct(	false, false, false, false, 
+											0, 999, 0, 50,
+											0, 0, 0, 0, 0, 0, 0, false, false);
+		
+		Assertions.assertFalse( iGene.equals( iGeneOther ) );
 	}
 
 }

@@ -3,6 +3,7 @@ package gabywald.biosilico.genetics.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.StimulusDecision;
 
 /**
@@ -289,6 +290,29 @@ class StimulusDecisionTests {
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTACGCTAGTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTGGT	false	false	false	false	0	999	0	50	false	false	500	500	500	500	500	500	", 
 				sdGene.toString());
 		
+	}
+	
+	@Test
+	void testCloneEquals() {
+		StimulusDecision sdGene = new StimulusDecision(	false, false, false, false, 
+														0, 999, 0, 50,
+														false, false, 
+														0, 0, 0, 0, 0, 0);
+
+		Gene sdGeneClone = sdGene.clone();
+		Assertions.assertNotNull( sdGeneClone );
+		StimulusDecision bsdGeneClone = (StimulusDecision) sdGeneClone;
+		Assertions.assertNotNull( bsdGeneClone );
+		
+		Assertions.assertTrue( sdGene.equals( sdGeneClone ) );
+		Assertions.assertTrue( sdGene.equals( bsdGeneClone ) );
+		
+		StimulusDecision sdGeneOther = new StimulusDecision(	false, false, false, false, 
+																0, 999, 0, 50,
+																false, false, 
+																0, 0, 0, 0, 0, 1);
+		
+		Assertions.assertFalse( sdGene.equals( sdGeneOther ) );
 	}
 
 }

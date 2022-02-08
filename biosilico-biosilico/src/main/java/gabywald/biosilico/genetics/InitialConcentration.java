@@ -80,6 +80,23 @@ public class InitialConcentration extends GeneGattaca {
 		toReturn.setName( this.getName() );
 		return toReturn;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		InitialConcentration icg = (InitialConcentration) obj;
+		
+		if ( ! super.equalCommonAttributes( icg )) { return false; }
+		
+		if ( this.varia != icg.varia)
+			{ return false; }
+		return ( this.value == icg.value);
+	}
 
 	@Override
 	public void mutationChanges() {

@@ -154,6 +154,33 @@ public class EmitterReceptor extends GeneGattaca {
 		toReturn.setName( this.getName() );
 		return toReturn;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		EmitterReceptor erg = (EmitterReceptor) obj;
+		
+		if ( ! super.equalCommonAttributes( erg )) { return false; }
+		
+		if ( this.variable != erg.variable)
+			{ return false; }
+		if ( this.threshold != erg.threshold)
+			{ return false; }
+		if ( this.ioput != erg.ioput)
+			{ return false; }
+		if ( this.posx != erg.posx)
+			{ return false; }
+		if ( this.posy != erg.posy)
+			{ return false; }
+		if ( this.receptor != erg.receptor)
+			{ return false; }
+		return ( this.internal == erg.internal);
+	}
 
 	@Override
 	public void mutationChanges() {

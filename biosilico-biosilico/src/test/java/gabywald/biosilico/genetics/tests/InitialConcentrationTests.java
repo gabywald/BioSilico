@@ -3,6 +3,7 @@ package gabywald.biosilico.genetics.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.InitialConcentration;
 
 /**
@@ -139,6 +140,33 @@ class InitialConcentrationTests {
 				icGene.reverseTranslation(true));
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTGGT	false	false	false	false	0	999	0	50	500	500	", 
 				icGene.toString());
+	}
+	
+	@Test
+	void testCloneEquals() {
+		InitialConcentration icGene = new InitialConcentration(	false, false, false, false, 
+																0, 999, 0, 50,
+																0, 0);
+
+		Gene icGeneClone = icGene.clone();
+		Assertions.assertNotNull( icGeneClone );
+		InitialConcentration bicGeneClone = (InitialConcentration) icGeneClone;
+		Assertions.assertNotNull( bicGeneClone );
+		
+		Assertions.assertTrue( icGene.equals( icGeneClone ) );
+		Assertions.assertTrue( icGene.equals( bicGeneClone ) );
+		
+		InitialConcentration icGeneOther1 = new InitialConcentration(	false, false, false, false, 
+																		0, 999, 0, 50,
+																		0, 1);
+
+		Assertions.assertFalse( icGene.equals( icGeneOther1 ) );
+		
+		InitialConcentration icGeneOther2 = new InitialConcentration(	false, false, false, false, 
+																		0, 999, 0, 50,
+																		1, 0);
+		
+		Assertions.assertFalse( icGene.equals( icGeneOther2 ) );
 	}
 
 }

@@ -177,6 +177,47 @@ public class BrainLobeGene extends GeneGattaca {
 		toReturn.setName( this.getName() );
 		return toReturn;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		BrainLobeGene blg = (BrainLobeGene) obj;
+		
+		if ( ! super.equalCommonAttributes( blg )) { return false; }
+		
+		if ( this.rest != blg.rest)
+			{ return false; }
+		if ( this.thre != blg.thre)
+			{ return false; }
+		if ( this.desc != blg.desc)
+			{ return false; }		
+		if ( this.dendriticmin != blg.dendriticmin)
+			{ return false; }
+		if ( this.dendriticmax != blg.dendriticmax)
+			{ return false; }
+		if ( this.prox != blg.prox)
+			{ return false; }
+		if ( this.repr != blg.repr)
+			{ return false; }
+		if ( this.repy != blg.repy)
+			{ return false; }
+		if ( this.wta != blg.wta)
+			{ return false; }
+		if ( this.height != blg.height)
+			{ return false; }
+		if ( this.width != blg.width)
+			{ return false; }
+		if ( this.posx != blg.posx)
+			{ return false; }
+		if ( this.posy != blg.posy)
+			{ return false; }
+		return ( this.replace == blg.replace);
+	}
 
 	@Override
 	public void mutationChanges() {

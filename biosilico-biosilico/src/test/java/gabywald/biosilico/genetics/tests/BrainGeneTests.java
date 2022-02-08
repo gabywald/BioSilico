@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.BrainGene;
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.model.Brain;
 
@@ -178,6 +179,26 @@ class BrainGeneTests {
 		Assertions.assertEquals(bGene.getBrainMore(), 0);
 		
 	}
-	
+
+	@Test
+	void testCloneEquals() {
+		BrainGene bGene = new BrainGene(	false, false, false, false, 
+											0, 999, 0, 50,
+											1, 1, 1, 0);
+
+		Gene bGeneClone = bGene.clone();
+		Assertions.assertNotNull( bGeneClone );
+		BrainGene bbGeneClone = (BrainGene) bGeneClone;
+		Assertions.assertNotNull( bbGeneClone );
+		
+		Assertions.assertTrue( bGene.equals( bGeneClone ) );
+		Assertions.assertTrue( bGene.equals( bbGeneClone ) );
+		
+		BrainGene bGeneOther = new BrainGene(	false, false, false, false, 
+												0, 999, 0, 50,
+												1, 1, 1, 1);
+		
+		Assertions.assertFalse( bGene.equals( bGeneOther ) );
+	}
 
 }

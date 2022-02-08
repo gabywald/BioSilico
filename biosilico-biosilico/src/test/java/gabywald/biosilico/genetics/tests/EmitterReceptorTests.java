@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.EmitterReceptor;
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 
 /**
@@ -300,6 +301,27 @@ class EmitterReceptorTests {
 				erGene.reverseTranslation(true));
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTTTCCTTCGCTAGGGT	false	false	false	false	0	999	0	50	500	500	500	50	50	false	false	", 
 				erGene.toString());
+	}
+	
+	@Test
+	void testCloneEquals() {
+		EmitterReceptor erGene = new EmitterReceptor(	false, false, false, false, 
+														0, 999, 0, 50,
+														0, 0, 0, 0, 0, false, false);
+
+		Gene erGeneClone = erGene.clone();
+		Assertions.assertNotNull( erGeneClone );
+		EmitterReceptor berGeneClone = (EmitterReceptor) erGeneClone;
+		Assertions.assertNotNull( berGeneClone );
+		
+		Assertions.assertTrue( erGene.equals( erGeneClone ) );
+		Assertions.assertTrue( erGene.equals( berGeneClone ) );
+		
+		EmitterReceptor erGeneOther = new EmitterReceptor(	false, false, false, false, 
+															0, 999, 0, 50,
+															0, 0, 0, 0, 0, false, true);
+		
+		Assertions.assertFalse( erGene.equals( erGeneOther ) );
 	}
 
 }
