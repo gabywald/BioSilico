@@ -10,17 +10,17 @@ import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.global.view.graph.GenericJScroll;
 
 /**
- * 
+ * For {@code AntHillGraphicalFrame} : "Generic JList / JScroll" with Named Elements (Agents, World...). 
  * @author Gabriel Chandesris (2022)
- * @param <T>
+ * @param <T> (extends INamedElement)
  */
 @SuppressWarnings("serial")
-public class AntHillSelectionJScroll<T extends INamedElement>	extends GenericJScroll 
+public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJScroll 
 																implements ActionListener {
 	
 	private List<T> currentList = null;
 	
-	public AntHillSelectionJScroll(List<T> elements) {
+	public AntHillGraphicalJScroll(List<T> elements) {
 		super(elements.stream()	.map( elt -> elt.getName() )
 								.collect(Collectors.toList()) );
 		this.currentList = elements;

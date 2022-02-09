@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.view;
+package gabywald.biosilico.anthill.launcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,10 @@ import gabywald.biosilico.model.utils.agents.BlackHole;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
- *
+ * To run a simulation and show graphical plot evolution. 
  * @author Gabriel Chandesris (2022)
  */
-public class AntHillGraphicalVizualisation {
+public class AntHillSimulationVizualisation {
 
 	public static final int BASE_COMPUTATION = 50;
 	public static final List<SomeChemicals> TO_FILTER_IN_INT = new ArrayList<SomeChemicals>();
