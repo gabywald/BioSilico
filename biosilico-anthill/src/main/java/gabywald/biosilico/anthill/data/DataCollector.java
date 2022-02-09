@@ -122,5 +122,7 @@ public class DataCollector {
 		this.cFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.cFrame.setVisible(true);
 	}
+
+	public String getTitle() { return this.titleLabel; }
 	
 }

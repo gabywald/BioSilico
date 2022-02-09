@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import org.jfree.chart.ChartPanel;
@@ -75,7 +76,31 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		
 		this.centerPanel = new JPanel();
 		this.centerPanel.setLayout(new BorderLayout());
-		this.centerPanel.add(this.cPanel, BorderLayout.CENTER);
+		
+		JTabbedPane tabbedPane = new JTabbedPane();
+		
+		tabbedPane.addTab("Graphic Results", null, this.cPanel, dc.getTitle());
+		
+		JPanel panel1 = new JPanel();
+		tabbedPane.addTab("Organism Kit", null, panel1, "Does nothing");
+		// tabbedPane.setMnemonicAt(1, KeyEvent.VK_1);
+		
+		JPanel panel2 = new JPanel();
+		tabbedPane.addTab("Genetic Kit", null, panel2, "Does nothing");
+		// tabbedPane.setMnemonicAt(2, KeyEvent.VK_2);
+		
+		JPanel panel3 = new JPanel();
+		tabbedPane.addTab("Gene Creator", null, panel3, "Does nothing");
+		// tabbedPane.setMnemonicAt(3, KeyEvent.VK_3);
+		
+		JPanel panel4 = new JPanel();
+		tabbedPane.addTab("World Editor", null, panel4, "Does nothing");
+		
+		JPanel panel5 = new JPanel();
+		tabbedPane.addTab("World Case Editor", null, panel5, "Does nothing");
+		
+		this.centerPanel.add(tabbedPane, BorderLayout.CENTER);
+		
 	}
 	
 	private void initWesternPanel(AntHillGraphicalLauncher agl) {
