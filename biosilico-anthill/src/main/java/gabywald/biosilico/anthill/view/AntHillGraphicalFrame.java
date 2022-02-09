@@ -30,6 +30,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	/** Unique instance of this view. */
 	private static AntHillGraphicalFrame instance = null;
 	
+	private AntHillGraphicalModel localModel	= null;
+	
 	/** Panel for plot evolution of Chemicals... */
 	private ChartPanel cPanel = null;
 	/** JPanel in Center of the JFrame. */
@@ -38,6 +40,11 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	
 	private AntHillGraphicalJScroll<Organism> organismsJScroll		= null;
 	private AntHillGraphicalJScroll<World2DCase> locationsJScroll	= null;
+	
+	private JTextField stepsTextField	= new JTextField("0");
+	private JButton oneStepButton		= new JButton("One Step"), 
+					startButton			= new JButton("Start"), 
+					stopButton			= new JButton("Stop");
 	
 	/**
 	 * To get the current instance of graphical view. 
@@ -54,6 +61,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		// TODO complete view !
 		// TODO Western Panel
 		// TODO Northern Panel
+		
+		this.localModel = agm;
 		
 		this.initCenterPanel( agm.getDataCollector() );
 		this.initWesternPanel( agm );
@@ -114,10 +123,14 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.westernPanel.addBagComponent(new JLabel("Locations List")		, 0, 2, 2);
 		this.westernPanel.addBagComponent(this.locationsJScroll				, 0, 3, 2);
 		this.westernPanel.addBagComponent(new JSeparator()					, 0, 4, 2);
-		this.westernPanel.addBagComponent(new JTextField("0")				, 0, 5);
-		this.westernPanel.addBagComponent(new JButton("One Step")			, 1, 5);
-		this.westernPanel.addBagComponent(new JButton("Start")				, 0, 6);
-		this.westernPanel.addBagComponent(new JButton("Stop")				, 1, 6);
+		this.westernPanel.addBagComponent(this.stepsTextField				, 0, 5);
+		this.westernPanel.addBagComponent(this.oneStepButton				, 1, 5);
+		this.westernPanel.addBagComponent(this.startButton					, 0, 6);
+		this.westernPanel.addBagComponent(this.stopButton					, 1, 6);
+		
+		this.oneStepButton.addActionListener(this);
+		this.startButton.addActionListener(this);
+		this.stopButton.addActionListener(this);
 		
 		// TODO : JTextField to be extracted and controlled (cannot be changed by user ! )
 		// TODO : actionPerformed on OneStep Button
@@ -172,8 +185,17 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		// TODO Auto-generated method stub
+		Object source = ae.getSource();
 		
+		System.out.println( source );
+		
+		// TODO actions for Buttons : OneStep, Start, Stop
+		
+		if (source.equals(this.oneStepButton)) { 
+			this.localModel.oneStep();
+		}
+		
+		this.stepsTextField.setText( this.localModel.getStepsCounter() + "" );
 	}
 	
 	

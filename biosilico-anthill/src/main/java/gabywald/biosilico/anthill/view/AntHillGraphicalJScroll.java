@@ -3,6 +3,7 @@ package gabywald.biosilico.anthill.view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,11 @@ public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJSc
 		this.setSize(100, 200);
 		this.setPreferredSize(new Dimension(100, 200));
 	}
+	
+	public List<String> getListOfName() 
+		{ return Collections.unmodifiableList( 
+				this.currentList.stream().map( elt -> elt.getName() ).
+				collect(Collectors.toList()) ); }
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {

@@ -33,6 +33,8 @@ public class AntHillGraphicalModel {
 	private DataCollector dcExportData	= null;
 	private StringBuilder sbExportData	= null;
 	
+	private int stepsCounter			= 0;
+	
 	/**
 	 * To get the current instance of graphical view. 
 	 * @return (AntHillGraphicalModel)
@@ -75,7 +77,7 @@ public class AntHillGraphicalModel {
 		this.currentWCase.addAgent( new EnergySource() );
 		this.currentWCase.addAgent( new BlackHole() );
 		
-		this.currentWCase.addAgent( new Condensator() );
+		// this.currentWCase.addAgent( new Condensator() );
 		
 		/* ***** To visualise / export data of simulation. ***** */
 		this.dcExportData = new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
@@ -108,6 +110,33 @@ public class AntHillGraphicalModel {
 		TO_FILTER_IN_INT.add(SomeChemicals.GLUCOSE);
 		TO_FILTER_IN_INT.add(SomeChemicals.STARCH);
 		// TO_FILTER_IN_INT.add(StateType.AGING);
+	}
+	
+	public void oneStep() {
+		this.currentWSimulation.execution();
+		this.currentPlant.cyclePlusPlus();	// Aging organism
+		this.currentAnt.cyclePlusPlus();	// Aging organism
+		this.stepsCounter++;
+		int aging = this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex());
+		// int aging = this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex());
+		dcExportData.addValue(	aging, StateType.AGING.name(), this.stepsCounter + "" );
+		TO_FILTER_IN_INT.stream().forEach( chem -> {
+			dcExportData.addValue(	this.currentPlant.getChemicals().getVariable( chem.getIndex() ), 
+					"plant" + chem.getName(), this.stepsCounter + "");
+			dcExportData.addValue(	this.currentAnt.getChemicals().getVariable( chem.getIndex() ), 
+					"ant" + chem.getName(), this.stepsCounter + "");
+			dcExportData.addValue(	this.currentWCase.getChemicals().getVariable( chem.getIndex() ), 
+					"case" + chem.getName(), this.stepsCounter + "");				
+		});
+
+		sbExportData.append( "STEP [")
+		.append( this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex()) )
+		.append("][")
+		.append( this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
+		.append("]\n");
+		sbExportData.append( this.currentAnt.getChemicals().toString() ).append( "*****\n" );
+		sbExportData.append( this.currentPlant.getChemicals().toString() ).append( "*****\n" );
+		sbExportData.append( this.currentWCase.getChemicals().toString() ).append( "*****\n" );
 	}
 	
 	// TODO use this in controller (or externalize simulation part !)
@@ -150,4 +179,7 @@ public class AntHillGraphicalModel {
 			catch (InterruptedException e) { e.printStackTrace(); }
 		});
 	}
+
+	public int getStepsCounter() 
+		{ return this.stepsCounter; }
 }
