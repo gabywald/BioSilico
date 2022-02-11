@@ -29,8 +29,8 @@ public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJSc
 	}
 	
 	private void init() {
-		this.setSize(100, 200);
-		this.setPreferredSize(new Dimension(100, 200));
+		this.setSize(100, 150);
+		this.setPreferredSize(new Dimension(100, 150));
 	}
 	
 	public List<String> getListOfName() 
@@ -41,7 +41,6 @@ public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJSc
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// Object source = ae.getSource();
-		
 		// TODO content in AntHillSelectionJScroll List. 
 	}
 	

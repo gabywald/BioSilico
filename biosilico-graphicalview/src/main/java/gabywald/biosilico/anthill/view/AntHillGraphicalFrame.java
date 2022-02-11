@@ -16,8 +16,8 @@ import org.jfree.chart.ChartPanel;
 import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.environment.World2DCase;
+import gabywald.biosilico.view.GeneKitsGBJPanel;
 import gabywald.global.view.graph.GenericJFrame;
-import gabywald.global.view.graph.GridBagJPanel;
 
 /**
  * 
@@ -36,7 +36,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	private ChartPanel cPanel = null;
 	/** JPanel in Center of the JFrame. */
 	private JPanel centerPanel;
-	private GridBagJPanel westernPanel;
+	private GeneKitsGBJPanel westernPanel;
 	
 	private AntHillGraphicalJScroll<Organism> organismsJScroll		= null;
 	private AntHillGraphicalJScroll<World2DCase> locationsJScroll	= null;
@@ -45,6 +45,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	private JButton oneStepButton		= new JButton("One Step"), 
 					startButton			= new JButton("Start"), 
 					stopButton			= new JButton("Stop");
+	
+	private AntHillGraphicalWorld2DCaseJPanel wcInfosPanel			= new AntHillGraphicalWorld2DCaseJPanel();
 	
 	/**
 	 * To get the current instance of graphical view. 
@@ -114,8 +116,9 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	private void initWesternPanel(AntHillGraphicalModel agm) {
 		this.organismsJScroll = new AntHillGraphicalJScroll<Organism>(agm.getOrganisms());
 		this.locationsJScroll = new AntHillGraphicalJScroll<World2DCase>(agm.getLocations());
+		// TODO add Listener here !! (container ?)
 		
-		this.westernPanel = new GridBagJPanel() { };
+		this.westernPanel = new GeneKitsGBJPanel();
 		// this.westernPanel.setPreferredSize(new Dimension(100, 0));
 		// this.westernPanel.setSize(this.getWidth() / 5, this.getHeight());
 		this.westernPanel.addBagComponent(new JLabel("Organisms List")		, 0, 0, 2);
@@ -127,6 +130,10 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.westernPanel.addBagComponent(this.oneStepButton				, 1, 5);
 		this.westernPanel.addBagComponent(this.startButton					, 0, 6);
 		this.westernPanel.addBagComponent(this.stopButton					, 1, 6);
+		
+		this.westernPanel.addBagComponent(new JPanel(), 0, 7, 3); /** blank space */
+		
+		this.westernPanel.addBagComponent(this.wcInfosPanel, 0, 8, 3);
 		
 		this.oneStepButton.addActionListener(this);
 		this.startButton.addActionListener(this);
@@ -193,9 +200,21 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		
 		if (source.equals(this.oneStepButton)) { 
 			this.localModel.oneStep();
+			this.stepsTextField.setText( this.localModel.getStepsCounter() + "" );
 		}
 		
-		this.stepsTextField.setText( this.localModel.getStepsCounter() + "" );
+		else if (source.equals(this.locationsJScroll)) {
+			// TODO chedck specific listener to activate here !!
+			if (this.locationsJScroll.getSelectedIndex() > 0) {
+				
+				System.out.println( "locationJScroll : " + this.locationsJScroll.getSelectedIndex() );
+				
+				this.wcInfosPanel.setEnabled( true );
+			} else { 
+				this.wcInfosPanel.setEnabled( false );
+				this.wcInfosPanel.emptyInfos();
+			}
+		}
 	}
 	
 	
