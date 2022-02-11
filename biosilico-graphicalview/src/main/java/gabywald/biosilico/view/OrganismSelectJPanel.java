@@ -29,12 +29,17 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	private JButton openAgentFile;
 	/** Button to create an agent. */
 	private JButton createAgent;
+	
 	/** This is used by {@link GeneticKit#agentTypeSelection}. */
 	private static final String agentTypeListe[] = 
 		{ "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
 	/** This is used by {@link OrganismSelectJPanel#actionCreateAgent}. */
 	private static final String agentTypeNameListe[] = 
 		{ "", "SilicoDaemon", "SilicoBacter", "SilicoViridita", "SilicoAnima", "SilicoViria" };
+	
+	/** FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME : "src/main/resources" + "biological/data/" */
+	public static final String BASE_ORGANISM_DIR_FILECHOOSER = FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME;
+	
 	/** Selection list of agent's type. */
 	private JComboBox<String> agentTypeSelection;
 	/** Field for the name of the agent. */
@@ -114,7 +119,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 			this.mainFrame.enableCenterPanel(true);
 		}
 		
-		String completePathFile = FileBiological.DEFAULT_PATH_NAME;
+		String completePathFile =  OrganismSelectJPanel.BASE_ORGANISM_DIR_FILECHOOSER ; // FileBiological.DEFAULT_PATH_NAME;
 		completePathFile += this.getNameOrganismUnited()+".gatorg";
 		Organism orga = new Organism();
 		orga.setNameScientific(name);
@@ -123,7 +128,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	}
 
 	private void loadOrganism() {
-		JFileChooser chooser = new JFileChooser(FileBiological.DEFAULT_PATH_NAME);
+		JFileChooser chooser = new JFileChooser( OrganismSelectJPanel.BASE_ORGANISM_DIR_FILECHOOSER );
 		chooser.setFileFilter(new FilterBioSilico());
 		chooser.setAcceptAllFileFilterUsed(false);
 
@@ -178,7 +183,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	public static void loadOrganism(GeneListJScroll geneScroll,
 									LineageListJScroll lineageScroll,
 									OrganismSelectJPanel orgSelectPane) {
-		JFileChooser chooser = new JFileChooser(FileBiological.DEFAULT_PATH_NAME);
+		JFileChooser chooser = new JFileChooser( OrganismSelectJPanel.BASE_ORGANISM_DIR_FILECHOOSER );
 		chooser.setFileFilter(new FilterBioSilico());
 		chooser.setAcceptAllFileFilterUsed(false);
 
@@ -217,7 +222,7 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	}
 
 	public static FileOrganism loadOrganism(GenericJScroll parent) {
-		JFileChooser chooser = new JFileChooser(FileBiological.DEFAULT_PATH_NAME);
+		JFileChooser chooser = new JFileChooser( OrganismSelectJPanel.BASE_ORGANISM_DIR_FILECHOOSER );
 		chooser.setFileFilter(new FilterBioSilico());
 		chooser.setAcceptAllFileFilterUsed(false);
 

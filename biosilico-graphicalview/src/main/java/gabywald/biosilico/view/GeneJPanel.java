@@ -13,13 +13,13 @@ import javax.swing.SwingConstants;
 
 /**
  * This class defines a GridBagJPanel with fields and labels for user for Genes. 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public abstract class GeneJPanel extends GeneKitsGBJPanel {
 	/** Some Title Label's. */
 	private JLabel generalLabel, specifiLabel;
-	/** Some ChecjBox'es. */
+	/** Some CheckBoxe's. */
 	private JCheckBox mutateBox, duplicBox, deleteBox, activiBox;
 	/** Some Label's. */
 	private JLabel ageMinLabel, ageMaxLabel, sexLabel, mutRatLabel;
@@ -29,7 +29,7 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 	/** Default constructor. */
 	public GeneJPanel() {
 		/** Initialize instance items */
-		Font writing = new Font("writing",Font.BOLD,12);
+		Font writing = new Font("writing", Font.BOLD,12);
 		this.generalLabel = new JLabel("\nGeneral Parameters");
 		this.specifiLabel = new JLabel("\nSpecific Parameters");
 		this.generalLabel.setForeground(Color.MAGENTA);
@@ -37,10 +37,10 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 		this.generalLabel.setFont(writing);
 		this.specifiLabel.setFont(writing);
 		
-		this.mutateBox = new JCheckBox("mutate",true);
-		this.duplicBox = new JCheckBox("duplic",true);
-		this.deleteBox = new JCheckBox("delete",true);
-		this.activiBox = new JCheckBox("actif",true);
+		this.mutateBox = new JCheckBox("mutate", true);
+		this.duplicBox = new JCheckBox("duplic", true);
+		this.deleteBox = new JCheckBox("delete", true);
+		this.activiBox = new JCheckBox("actif", true);
 		
 		this.ageMinLabel	= new JLabel("Min. age : ");
 		this.ageMaxLabel	= new JLabel("Max. age : ");
@@ -104,10 +104,10 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 	}
 	
 	public static String convertThreeChars(int value) 
-		{ return ((value < 100)?"0"+((value < 10)?"0":""):"")+value; }
+		{ return ((value < 100) ? "0"+((value < 10) ? "0" : "") : "") + value; }
 	
 	public static String convertTwoChars(int value) 
-		{ return ((value < 10)?"0":"")+value; }
+		{ return ((value < 10) ? "0" : "") + value; }
 	
 	/**
 	 * To set-up attribute view values with specific Gene instance. 

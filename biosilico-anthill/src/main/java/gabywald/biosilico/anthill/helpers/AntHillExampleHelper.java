@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
@@ -24,8 +25,8 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  */
 public class AntHillExampleHelper {
 	
-	public static final String BASE_EXPORT_MAIN_DIR = "src/main/resources/";
-	public static final String BASE_EXPORT_TEST_DIR = "src/test/resources/";
+	public static final String BASE_EXPORT_MAIN_DIR = FileBiological.BASE_MAIN_DIR;
+	public static final String BASE_EXPORT_TEST_DIR = FileBiological.BASE_TEST_DIR;
 	
 	public static final String BASE_EXPORT_MAIN_DIR_ANTHILL = AntHillExampleHelper.BASE_EXPORT_MAIN_DIR + "anthill/";
 

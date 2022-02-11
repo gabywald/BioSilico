@@ -7,10 +7,13 @@ import gabywald.global.data.File;
 
 /**
  * Generic biological file format (with sequence list to be defined in inherited classes). 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public abstract class FileBiological extends File {
+	
+	public static final String BASE_MAIN_DIR = "src/main/resources/";
+	public static final String BASE_TEST_DIR = "src/test/resources/";
 
 	/** Default path to record files for BioSilico. */
 	public static final String DEFAULT_PATH_NAME = "biosilico/data/";

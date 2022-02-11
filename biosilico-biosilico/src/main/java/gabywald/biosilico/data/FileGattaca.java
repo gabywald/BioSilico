@@ -9,7 +9,7 @@ import gabywald.global.data.File;
 
 /**
  * This class for Genomes in gattaca format (genes line by line written with A,C,G,T). 
- * @author Gabriel Chandesris (2009-2010, 2020)
+ * @author Gabriel Chandesris (2009-2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class FileGattaca extends FileBiological {
@@ -23,7 +23,7 @@ public class FileGattaca extends FileBiological {
 	 * @see File#File(String, String)
 	 */
 	public FileGattaca(String name, String content) {
-		super("gattaca",name+".gat");
+		super("gattaca", name + ".gat");
 		if (FileGattaca.isGattaca(content)) {
 			this.setValid(true);
 			String tabContent[] = content.split("\n");
