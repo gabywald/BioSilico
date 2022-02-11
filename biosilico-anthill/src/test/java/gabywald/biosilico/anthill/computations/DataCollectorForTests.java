@@ -1,12 +1,10 @@
-package gabywald.biosilico.anthill.data;
+package gabywald.biosilico.anthill.computations;
 
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
@@ -17,7 +15,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * This class defines some built-in functions to build build graphical visualisation. 
  * @author Gabriel Chandesris (2022)
  */
-public class DataCollector {
+public class DataCollectorForTests {
 	
 	private DefaultCategoryDataset lineChartDataset = new DefaultCategoryDataset();
 	
@@ -25,17 +23,13 @@ public class DataCollector {
 					categoryAxisLabel	= null, 
 					valueAxisLabel		= null;
 	
-	private JFrame frame		= null;
-	
-	private ChartFrame cFrame	= null;
-	
 	/**
 	 * 
 	 * @param title Title of the graphical output. 
 	 * @param category Title of category of Data. 
 	 * @param value Title of the value of Data. 
 	 */
-	public DataCollector(String title, String category, String value) {
+	public DataCollectorForTests(String title, String category, String value) {
 		this.titleLabel			= title;
 		this.categoryAxisLabel	= category;
 		this.valueAxisLabel		= value;
@@ -98,31 +92,5 @@ public class DataCollector {
 	public void buildImage(String path2file) {
 		this.buildImage(1024, 768, path2file);
 	}
-	
-	public void showJFrameWithChartPanel() {
-		if (this.frame == null) {
-			this.frame = new JFrame();
-		}
-
-		this.frame.setSize(1024, 768);
-		
-		this.frame.add(new ChartPanel(this.generate()));
-		
-		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setVisible(true);
-	}
-	
-	public void showChartFrame() {
-		if (this.cFrame == null) {
-			this.cFrame = new ChartFrame("ChartFrame", this.generate());
-		}
-
-		this.cFrame.setSize(1024, 768);
-		
-		this.cFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.cFrame.setVisible(true);
-	}
-
-	public String getTitle() { return this.titleLabel; }
 	
 }

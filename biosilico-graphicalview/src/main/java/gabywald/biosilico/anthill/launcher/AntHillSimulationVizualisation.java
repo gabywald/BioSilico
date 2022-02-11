@@ -70,7 +70,7 @@ public class AntHillSimulationVizualisation {
 		StringBuilder sbExportData	= new StringBuilder();
 
 		// sbExportData.showJFrameWithChartPanel();
-		dcExportData.showChartFrame();
+		// dcExportData.showChartFrame();
 
 		IntStream.range(0, 5).forEach( j -> {
 			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {

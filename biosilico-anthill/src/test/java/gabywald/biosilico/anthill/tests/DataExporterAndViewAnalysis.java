@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
-import gabywald.biosilico.anthill.data.DataCollector;
+import gabywald.biosilico.anthill.computations.DataCollectorForTests;
 import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
 import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.Gene;
@@ -140,7 +140,7 @@ class DataExporterAndViewAnalysis {
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		wc.addAgent( new EnergySource() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
@@ -201,7 +201,7 @@ class DataExporterAndViewAnalysis {
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		wc.addAgent( new EnergySource() );
 		
-		DataCollector sbExportData		= new DataCollector("Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
@@ -279,7 +279,7 @@ class DataExporterAndViewAnalysis {
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		wc.addAgent( new EnergySource() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		// ***** one execution in this context
@@ -401,7 +401,7 @@ STEP [51][51]
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		wc.addAgent( new EnergySource() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
@@ -578,7 +578,7 @@ STEP [255][255]
 		wc.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 		100);
 		wc.addAgent( new EnergySource() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
@@ -774,7 +774,7 @@ STEP [255][255]
 		wc.addAgent( new EnergySource() );
 		wc.addAgent( new BlackHole() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
@@ -913,7 +913,7 @@ STEP [255][255]
 		wc.addAgent( new EnergySource() );
 		wc.addAgent( new BlackHole() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {
@@ -1054,7 +1054,7 @@ STEP [255][255]
 		wc.addAgent( new EnergySource() );
 		wc.addAgent( new BlackHole() );
 		
-		DataCollector sbExportData		= new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
+		DataCollectorForTests sbExportData		= new DataCollectorForTests("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		StringBuilder sbExportDataSTR	= new StringBuilder();
 		
 		IntStream.range(0, 5).forEach( j -> {

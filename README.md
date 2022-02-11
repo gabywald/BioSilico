@@ -248,7 +248,7 @@ TODO other pipeline tools example(s) (...)
 
 NOTE 20211214 : starting some parts of Pipeline / Workflow tool to be used here for some purposes !
 
-### 'biosilico-biosilico' : Core representation for "In Silico" modelisation
+### 'biosilico-biosilico' : Core representation for "In Silico" biological modelisation
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
 
@@ -258,7 +258,7 @@ Implemented as a discrete "World" composed of WorldCase, which can contains Agen
 
 Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) have been done to permit other implementations and different global uses ! (2D, 3D...)
 
-NOTE : 
+NOTE : See also module biosilico-anthill for further evolution, tests and extension of modelisation and exemple use of BioSilico (Core) and examples of simulation. 
 
 ### 'biosilico-cellmodel' : a previous sample Cell Model
 
@@ -289,6 +289,10 @@ Main idea is is to translate / reverse-translate from a defined alphabet to 'dna
 ### 'biosilico-neuralnetworks' : Some tests on neural networks. 
 
 Some tests on neural networks. 
+
+### 'biosilico-graphicalview' : 
+
+Graphical viewsfor modelisation and simulation using BioSilico (Core) using Java Swing.  
 
 ### 'biosilico-tests' : 
 
