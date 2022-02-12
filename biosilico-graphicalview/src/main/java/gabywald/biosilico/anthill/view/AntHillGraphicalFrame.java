@@ -49,6 +49,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 					stopButton			= new JButton("Stop");
 	
 	private AntHillGraphicalWorld2DCaseJPanel wcInfosPanel			= new AntHillGraphicalWorld2DCaseJPanel();
+	private AntHillGraphicalRunner agr								= null;
 	
 	/**
 	 * To get the current instance of graphical view. 
@@ -158,10 +159,16 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		return tmp;
 	}
 	
-	public ChartPanel getChartPanel() {
-		return this.cPanel;
-	}
+	public ChartPanel getChartPanel() 
+		{ return this.cPanel; }
 	
+	public AntHillGraphicalModel getLocalModel() 
+		{ return this.localModel; }
+	
+	public void setSteps(int stepsCount) {
+		this.stepsTextField.setText( stepsCount + "" );
+	}
+
 	@Override
 	public void enableCenterPanel(boolean b) {
 		this.centerPanel.setEnabled( b );
@@ -198,13 +205,17 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	public void actionPerformed(ActionEvent ae) {
 		Object source = ae.getSource();
 		
-		System.out.println( source );
-		
-		// TODO actions for Buttons : OneStep, Start, Stop
-		
 		if (source.equals(this.oneStepButton)) { 
 			this.localModel.oneStep();
-			this.stepsTextField.setText( this.localModel.getStepsCounter() + "" );
+			this.setSteps( this.localModel.getStepsCounter() );
+		} else if (source.equals(this.startButton)) {
+			if (this.agr == null) 
+				{ this.agr = new AntHillGraphicalRunner( this ); }
+			this.agr.setActive( true );
+			Thread runner = new Thread( this.agr );
+			runner.start();
+		} else if (source.equals(this.stopButton)) {
+			if (this.agr != null) { this.agr.setActive( false ); }
 		}
 		
 	}

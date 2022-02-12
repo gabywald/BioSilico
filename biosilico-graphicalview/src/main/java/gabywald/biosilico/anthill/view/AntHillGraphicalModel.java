@@ -2,7 +2,6 @@ package gabywald.biosilico.anthill.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
@@ -14,7 +13,6 @@ import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.BlackHole;
-import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.EnergySource;
 
 /**
@@ -77,8 +75,6 @@ public class AntHillGraphicalModel {
 		this.currentWCase.addAgent( new EnergySource() );
 		this.currentWCase.addAgent( new BlackHole() );
 		
-		this.currentWCase.addAgent( new Condensator() );
-		
 		/* ***** To visualise / export data of simulation. ***** */
 		this.dcExportData = new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");
 		this.sbExportData = new StringBuilder();
@@ -98,29 +94,13 @@ public class AntHillGraphicalModel {
 	public DataCollector getDataCollector()	
 		{ return this.dcExportData; }
 	
-	public static final int BASE_COMPUTATION = 50;
-	
-	public static final List<SomeChemicals> TO_FILTER_IN_INT = new ArrayList<SomeChemicals>();
-	static { // TODO review / remake this List (not for all elts). 
-		TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_HEAT);
-		TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_SOLAR);
-		TO_FILTER_IN_INT.add(SomeChemicals.DIOXYGEN);
-		TO_FILTER_IN_INT.add(SomeChemicals.CARBON_DIOXYDE);
-		TO_FILTER_IN_INT.add(SomeChemicals.WATER);
-		TO_FILTER_IN_INT.add(SomeChemicals.GLUCOSE);
-		TO_FILTER_IN_INT.add(SomeChemicals.STARCH);
-		// TO_FILTER_IN_INT.add(StateType.AGING);
-	}
-	
 	public void oneStep() {
-		this.currentWSimulation.execution();
-		this.currentPlant.cyclePlusPlus();	// Aging organism
-		this.currentAnt.cyclePlusPlus();	// Aging organism
+		this.execution();
 		this.stepsCounter++;
 		int aging = this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex());
 		// int aging = this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex());
 		dcExportData.addValue(	aging, StateType.AGING.name(), this.stepsCounter + "" );
-		TO_FILTER_IN_INT.stream().forEach( chem -> {
+		AntHillGraphicalRunner.TO_FILTER_IN_INT.stream().forEach( chem -> {
 			dcExportData.addValue(	this.currentPlant.getChemicals().getVariable( chem.getIndex() ), 
 					"plant" + chem.getName(), this.stepsCounter + "");
 			dcExportData.addValue(	this.currentAnt.getChemicals().getVariable( chem.getIndex() ), 
@@ -139,47 +119,12 @@ public class AntHillGraphicalModel {
 		sbExportData.append( this.currentWCase.getChemicals().toString() ).append( "*****\n" );
 	}
 	
-	// TODO use this in controller (or externalize simulation part !)
-	public void justArun() {
-		IntStream.range(0, 5).forEach( j -> {
-			IntStream.range(j*BASE_COMPUTATION, j*BASE_COMPUTATION+BASE_COMPUTATION+1).forEach( i -> {
-				this.currentWSimulation.execution();
-				this.currentPlant.cyclePlusPlus();	// Aging organism
-				this.currentAnt.cyclePlusPlus();	// Aging organism
-				int steps = i;
-				int aging = this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex());
-				// int aging = this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex());
-				dcExportData.addValue(	aging, StateType.AGING.name(), steps + "" );
-				TO_FILTER_IN_INT.stream().forEach( chem -> {
-					dcExportData.addValue(	this.currentPlant.getChemicals().getVariable( chem.getIndex() ), 
-							"plant" + chem.getName(), steps + "");
-					dcExportData.addValue(	this.currentAnt.getChemicals().getVariable( chem.getIndex() ), 
-							"ant" + chem.getName(), steps + "");
-					dcExportData.addValue(	this.currentWCase.getChemicals().getVariable( chem.getIndex() ), 
-							"case" + chem.getName(), steps + "");				
-				});
-
-				sbExportData.append( "STEP [")
-				.append( this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex()) )
-				.append("][")
-				.append( this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex()) ) 
-				.append("]\n");
-				sbExportData.append( this.currentAnt.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( this.currentPlant.getChemicals().toString() ).append( "*****\n" );
-				sbExportData.append( this.currentWCase.getChemicals().toString() ).append( "*****\n" );
-
-				try { Thread.sleep(100); }
-				catch (InterruptedException e) { e.printStackTrace(); }
-			});
-			// ***** Put DiOxygen && H2O && Energy in local WorldCase !!
-			this.currentWCase.getChemicals().setVariable(SomeChemicals.DIOXYGEN.getIndex(), 	100);
-			this.currentWCase.getChemicals().setVariable(SomeChemicals.WATER.getIndex(), 	100);
-
-			try { Thread.sleep(1000); }
-			catch (InterruptedException e) { e.printStackTrace(); }
-		});
-	}
-
 	public int getStepsCounter() 
 		{ return this.stepsCounter; }
+	
+	public void execution() {
+		this.currentWSimulation.execution();
+		this.currentPlant.cyclePlusPlus();	// Aging organism
+		this.currentAnt.cyclePlusPlus();	// Aging organism
+	}
 }
