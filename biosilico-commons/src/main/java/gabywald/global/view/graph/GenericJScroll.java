@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * This class provides generation of a easy-to-use JScrollPane 
@@ -112,4 +113,8 @@ public class GenericJScroll extends JScrollPane {
 	
 	public void enableItemList(boolean b) 
 		{ this.itemListe.setEnabled(b); }
+	
+	public void addListSelectionListener(ListSelectionListener listener) {
+		this.itemListe.addListSelectionListener(listener);
+	}
 }

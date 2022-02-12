@@ -77,7 +77,7 @@ public class AntHillGraphicalModel {
 		this.currentWCase.addAgent( new EnergySource() );
 		this.currentWCase.addAgent( new BlackHole() );
 		
-		// this.currentWCase.addAgent( new Condensator() );
+		this.currentWCase.addAgent( new Condensator() );
 		
 		/* ***** To visualise / export data of simulation. ***** */
 		this.dcExportData = new DataCollector("Ant and Plant Analysis", "Steps", "Values of Chemicals");

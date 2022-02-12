@@ -38,6 +38,18 @@ public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJSc
 				this.currentList.stream().map( elt -> elt.getName() ).
 				collect(Collectors.toList()) ); }
 	
+	public T getElement(String name) {
+		for (T elt : this.currentList) {
+			if (elt.getName().equals(name)) 
+				{ return elt; }
+		}
+		return null;
+	}
+	
+	public T getElement(int index) {
+		return this.currentList.get( index );
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// Object source = ae.getSource();

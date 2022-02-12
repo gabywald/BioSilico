@@ -78,6 +78,21 @@ public interface IAgentContent {
 	public Agent getAgentStatus(StatusType type);
 	
 	/**
+	 * Determine if current instance owns a certain type of object. 
+	 * @param name String
+	 * @return (int) Number of object's of that type. 
+	 */
+	public int hasAgentWithName(String name);
+	
+	/**
+	 * In order to get an agent of a certain type. 
+	 * @param type StatusType
+	 * @return (Agent) Can be null.
+	 * @see IAgentContent#hasAgentName(String)
+	 */
+	public Agent getAgentWithName(String name);
+	
+	/**
 	 * In order to put an object in (nothing if object is null).  
 	 * @param object (Agent)
 	 */
@@ -89,7 +104,7 @@ public interface IAgentContent {
 	 * @param typeStatus
 	 * @param index
 	 * @param agents
-	 * @return
+	 * @return (int)
 	 */
 	public static <T extends IChemicalsType> int hasType(T typeStatus, int index, List<Agent> agents) {
 		return (int)agents.stream().filter( a -> (a.getChemicals().getVariable(index) == typeStatus.getIndex()) ).count();
@@ -101,7 +116,7 @@ public interface IAgentContent {
 	 * @param typeStatus
 	 * @param index
 	 * @param agents
-	 * @return
+	 * @return (Agent)
 	 */
 	public static <T extends IChemicalsType> Agent getType(T typeStatus, int index, List<Agent> agents) {
 		if (agents.stream().anyMatch( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() )) {
@@ -117,10 +132,34 @@ public interface IAgentContent {
 	 * @param typeStatus
 	 * @param index
 	 * @param agents
-	 * @return
+	 * @return (List&lt;Agent&gt;)
 	 */
 	public static <T extends IChemicalsType> List<Agent> getListOfType(T typeStatus, int index, List<Agent> agents) {
 		return agents.stream().filter( a -> a.getChemicals().getVariable(index) == typeStatus.getIndex() ).collect(Collectors.toList());
+	}
+	
+	/**
+	 * To know number of Agent present with a given name. 
+	 * @param name
+	 * @param agents
+	 * @return (int)
+	 */
+	public static int hasName(String name, List<Agent> agents) {
+		return (int)agents.stream().filter( a -> (a.getName().equals(name)) ).count();
+	}
+	
+	/**
+	 * To get a List of Agent's instances with a given name. 
+	 * @param name
+	 * @param agents
+	 * @return (Agent)
+	 */
+	public static Agent getName(String name, List<Agent> agents) {
+		if (agents.stream().anyMatch( a -> (a.getName().equals(name)) ) ) {
+			Optional<Agent> optAgent = agents.stream().filter( a -> (a.getName().equals(name)) ).findFirst();
+			if (optAgent.isPresent()) { return optAgent.get(); }
+		}
+		return null;
 	}
 	
 }

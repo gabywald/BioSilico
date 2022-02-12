@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.jfree.chart.ChartPanel;
 
@@ -26,7 +28,7 @@ import gabywald.global.view.graph.GenericJFrame;
  */
 @SuppressWarnings("serial")
 public class AntHillGraphicalFrame	extends GenericJFrame 
-									implements ActionListener {
+									implements ActionListener, ListSelectionListener {
 	/** Unique instance of this view. */
 	private static AntHillGraphicalFrame instance = null;
 	
@@ -139,6 +141,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.startButton.addActionListener(this);
 		this.stopButton.addActionListener(this);
 		
+		this.locationsJScroll.addListSelectionListener( this );
+		
 		// TODO : JTextField to be extracted and controlled (cannot be changed by user ! )
 		// TODO : actionPerformed on OneStep Button
 		// TODO : actionPerformed on Stop Button
@@ -203,19 +207,18 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 			this.stepsTextField.setText( this.localModel.getStepsCounter() + "" );
 		}
 		
-		else if (source.equals(this.locationsJScroll)) {
-			// TODO chedck specific listener to activate here !!
-			if (this.locationsJScroll.getSelectedIndex() > 0) {
-				
-				System.out.println( "locationJScroll : " + this.locationsJScroll.getSelectedIndex() );
-				
-				this.wcInfosPanel.setEnabled( true );
-			} else { 
-				this.wcInfosPanel.setEnabled( false );
-				this.wcInfosPanel.emptyInfos();
-			}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent lse) {
+		int selectedIndex = this.locationsJScroll.getSelectedIndex();
+		if (selectedIndex >= 0) {
+			this.wcInfosPanel.setEnabled( true );
+			this.wcInfosPanel.setCurrentWorldCase( this.locationsJScroll.getElement( selectedIndex ) );
+		} else { 
+			this.wcInfosPanel.setEnabled( false );
+			this.wcInfosPanel.emptyInfos();
 		}
 	}
-	
-	
+
 }

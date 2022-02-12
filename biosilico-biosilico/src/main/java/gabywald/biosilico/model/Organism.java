@@ -278,6 +278,14 @@ public class Organism extends Agent implements IAgentContent {
 	}
 	
 	@Override
+	public int hasAgentWithName(String name) 
+		{ return IAgentContent.hasName(name, this.liste); }
+
+	@Override
+	public Agent getAgentWithName(String name) 
+		{ return IAgentContent.getName(name, this.liste); }
+	
+	@Override
 	public void addAgent(Agent object) { 
 		if (object != null) { this.liste.add(object); } 
 	}
