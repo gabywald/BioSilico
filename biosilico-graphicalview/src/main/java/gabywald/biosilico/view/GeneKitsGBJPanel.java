@@ -13,6 +13,8 @@ import gabywald.global.view.graph.GridBagJPanel;
 public class GeneKitsGBJPanel 
 					extends GridBagJPanel 
 					implements ActionListener {
+	
+	// TODO removing ActionListenerInterface here !
 
 	@Override
 	public void actionPerformed(ActionEvent e) { ; }

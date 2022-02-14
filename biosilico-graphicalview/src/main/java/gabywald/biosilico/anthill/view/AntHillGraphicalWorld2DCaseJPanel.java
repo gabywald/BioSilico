@@ -1,7 +1,6 @@
 package gabywald.biosilico.anthill.view;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,7 +20,7 @@ import gabywald.biosilico.view.GeneKitsGBJPanel;
 @SuppressWarnings("serial")
 public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 	/** Some CheckBoxe's. */
-	private JCheckBox energySourceBox, blackHoleBox, condenstorBox;
+	private JCheckBox energySourceBox, blackHoleBox, condensatorBox;
 	/** Some Label's. */
 	private JLabel worldNameLabel, worldCaseNameLabel, worldCasePosLabel;
 	/** Some TextField's. */
@@ -38,7 +37,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		
 		this.energySourceBox	= new JCheckBox("Energy Source", true);
 		this.blackHoleBox		= new JCheckBox("Black Hole", true);
-		this.condenstorBox		= new JCheckBox("Condensator", false);
+		this.condensatorBox		= new JCheckBox("Condensator", false);
 		
 		this.worldNameLabel		= new JLabel("World : ");
 		this.worldCaseNameLabel	= new JLabel("World Case : ");
@@ -61,13 +60,13 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		
 		this.addBagComponent(this.energySourceBox,		 0, 3, 3);
 		this.addBagComponent(this.blackHoleBox,			 0, 4, 3);
-		this.addBagComponent(this.condenstorBox,		 0, 5, 3);
+		this.addBagComponent(this.condensatorBox,		 0, 5, 3);
 		
 		this.addBagComponent(this.applyButton,			 0, 6, 3);
 		
 		this.setEnabled(false);
 		
-		this.applyButton.addActionListener( this );
+		this.applyButton.addActionListener( new AntHillGraphicalWorld2DCaseActionListener( this ) );
 	}
 	
 	@Override
@@ -83,7 +82,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		
 		this.energySourceBox.setEnabled( b );
 		this.blackHoleBox.setEnabled( b );
-		this.condenstorBox.setEnabled( b );
+		this.condensatorBox.setEnabled( b );
 		
 		this.applyButton.setEnabled( b );
 	}
@@ -98,7 +97,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		
 		this.energySourceBox.setSelected( true );
 		this.blackHoleBox.setSelected( true );
-		this.condenstorBox.setSelected( false );
+		this.condensatorBox.setSelected( false );
 	}
 
 	public void setCurrentWorldCase(World2DCase element) {
@@ -111,40 +110,22 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		
 		this.energySourceBox.setSelected( element.hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) > 0 );
 		this.blackHoleBox.setSelected( element.hasAgentWithName( BlackHole.COMMON_BIOSILICO_NAME ) > 0 );
-		this.condenstorBox.setSelected( element.hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) > 0 );
+		this.condensatorBox.setSelected( element.hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) > 0 );
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		if (ae.getSource().equals(this.applyButton)) {
-			if (this.current != null) {
-				/** Only change presence of any "*Box" element ! */
-				/** Removal cases. */
-				if ( (this.current.hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) > 0) 
-						&& ( ! this.energySourceBox.isSelected()) ) 
-					{ this.current.remAgent( this.current.getAgentWithName( EnergySource.COMMON_BIOSILICO_NAME )); }
-				
-				if ( (this.current.hasAgentWithName( BlackHole.COMMON_BIOSILICO_NAME ) > 0) 
-						&& ( ! this.blackHoleBox.isSelected()) ) 
-					{ this.current.remAgent( this.current.getAgentWithName( BlackHole.COMMON_BIOSILICO_NAME )); }
-				
-				if ( (this.current.hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) > 0) 
-						&& ( ! this.condenstorBox.isSelected()) ) 
-					{ this.current.remAgent( this.current.getAgentWithName( Condensator.COMMON_BIOSILICO_NAME )); }
-				/** Adding cases. */
-				if ( (this.current.hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) == 0) 
-						&& (this.energySourceBox.isSelected()) ) 
-					{ this.current.addAgent( new EnergySource() ); }
-				
-				if ( (this.current.hasAgentWithName( BlackHole.COMMON_BIOSILICO_NAME ) == 0) 
-						&& (this.blackHoleBox.isSelected()) ) 
-					{ this.current.addAgent( new BlackHole() ); }
-				
-				if ( (this.current.hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) == 0) 
-						&& (this.condenstorBox.isSelected()) ) 
-					{ this.current.addAgent( new Condensator() ); }				
-				/** Only change presence of any "*Box" element ! */
-			}
-		}
-	}
+	public JButton getApplyButton() 
+		{return this.applyButton; }
+
+	public World2DCase getCurrentWorldCase() 
+		{ return this.current; }
+
+	public JCheckBox getEnergySourceBox() 
+		{ return this.energySourceBox; }
+	
+	public JCheckBox getBlackHoleBox() 
+		{ return this.blackHoleBox; }
+	
+	public JCheckBox getCondensatorBox() 
+		{ return this.condensatorBox; }
+	
 }

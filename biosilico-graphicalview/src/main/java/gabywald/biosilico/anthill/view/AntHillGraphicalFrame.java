@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import org.jfree.chart.ChartPanel;
 
@@ -28,7 +26,7 @@ import gabywald.global.view.graph.GenericJFrame;
  */
 @SuppressWarnings("serial")
 public class AntHillGraphicalFrame	extends GenericJFrame 
-									implements ActionListener, ListSelectionListener {
+									implements ActionListener {
 	/** Unique instance of this view. */
 	private static AntHillGraphicalFrame instance = null;
 	
@@ -142,15 +140,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.startButton.addActionListener(this);
 		this.stopButton.addActionListener(this);
 		
-		this.locationsJScroll.addListSelectionListener( this );
-		
-		// TODO : JTextField to be extracted and controlled (cannot be changed by user ! )
-		// TODO : actionPerformed on OneStep Button
-		// TODO : actionPerformed on Stop Button
-		// TODO : actionPerformed on Start Button
-		
-		// TODO : interact and show data about elements in the two (2) lists above !!
-		
+		this.locationsJScroll.addListSelectionListener( new AntHillGraphicalJScrollLocationListener(this) );
+		this.organismsJScroll.addListSelectionListener( new AntHillGraphicalJScrollOrganismListener(this) );
 	}
 	
 	public ChartPanel setChartPanel(ChartPanel cp) {
@@ -200,7 +191,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	@Override
 	public void enableEasternPanel(boolean b)	{ ; }
 
-
+	// TODO externalize ActionListener behavior (controller)
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		Object source = ae.getSource();
@@ -217,19 +208,15 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		} else if (source.equals(this.stopButton)) {
 			if (this.agr != null) { this.agr.setActive( false ); }
 		}
-		
 	}
 
-	@Override
-	public void valueChanged(ListSelectionEvent lse) {
-		int selectedIndex = this.locationsJScroll.getSelectedIndex();
-		if (selectedIndex >= 0) {
-			this.wcInfosPanel.setEnabled( true );
-			this.wcInfosPanel.setCurrentWorldCase( this.locationsJScroll.getElement( selectedIndex ) );
-		} else { 
-			this.wcInfosPanel.setEnabled( false );
-			this.wcInfosPanel.emptyInfos();
-		}
-	}
+	public AntHillGraphicalWorld2DCaseJPanel getWcInfosPanel() 
+		{ return this.wcInfosPanel; }
+
+	public AntHillGraphicalJScroll<World2DCase> getLocationJScroll() 
+		{ return this.locationsJScroll; }
+
+	public AntHillGraphicalJScroll<Organism> getOrganismJScroll() 
+		{ return this.organismsJScroll; }
 
 }
