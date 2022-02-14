@@ -161,7 +161,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		String completePathFile = FileBiological.DEFAULT_PATH_NAME;
 		if (this.orgSelectPanel != null) 
 			{ completePathFile += this.orgSelectPanel.getNameOrganismUnited() + ".gatorg"; }
-		System.out.println(completePathFile);
+		// System.out.println(completePathFile);
 		JFileChooser saver = new JFileChooser(completePathFile);
 		saver.setFileFilter(new FilterBioSilico());
 		saver.setAcceptAllFileFilterUsed(false);

@@ -193,7 +193,7 @@ public class FileGene extends FileBiological {
 				lastGA = new GeneAnnotation();
 				this.genesAnnotated.add( new GeneAnnotation() ); 
 			}
-			else { System.out.println(currentLine); }
+			else { ; }
 		}
 		/** Removing Last GeneAnnotation instance (not valid / empty). */
 		this.genesAnnotated.remove(this.genesAnnotated.size()-1);
