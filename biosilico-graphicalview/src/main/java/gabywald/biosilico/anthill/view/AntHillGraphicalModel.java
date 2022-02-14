@@ -100,15 +100,22 @@ public class AntHillGraphicalModel {
 		int aging = this.currentPlant.getChemicals().getVariable(StateType.AGING.getIndex());
 		// int aging = this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex());
 		dcExportData.addValue(	aging, StateType.AGING.name(), this.stepsCounter + "" );
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.stream().forEach( chem -> {
+		
+		// ***** Set measures in Plot *****
+		// ***** Set measures in Plot for Organism's
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.stream().forEach( chem -> {
 			dcExportData.addValue(	this.currentPlant.getChemicals().getVariable( chem.getIndex() ), 
 					"plant" + chem.getName(), this.stepsCounter + "");
 			dcExportData.addValue(	this.currentAnt.getChemicals().getVariable( chem.getIndex() ), 
-					"ant" + chem.getName(), this.stepsCounter + "");
+					"ant--" + chem.getName(), this.stepsCounter + "");
+		});
+		// ***** Set measures in Plot for WorldCase
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.stream().forEach( chem -> {
 			dcExportData.addValue(	this.currentWCase.getChemicals().getVariable( chem.getIndex() ), 
 					"case" + chem.getName(), this.stepsCounter + "");				
 		});
 
+		// ***** To Export Measures in data !!!
 		sbExportData.append( "STEP [")
 		.append( this.currentAnt.getChemicals().getVariable(StateType.AGING.getIndex()) )
 		.append("][")

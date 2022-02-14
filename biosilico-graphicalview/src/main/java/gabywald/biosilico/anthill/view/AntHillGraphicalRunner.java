@@ -17,7 +17,6 @@ public class AntHillGraphicalRunner implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println( "" + this.isActive );
 		while (this.isActive) {
 			this.standardRun();
 		}
@@ -27,15 +26,25 @@ public class AntHillGraphicalRunner implements Runnable {
 
 	public static final int BASE_COMPUTATION = 50;
 	
-	public static final List<SomeChemicals> TO_FILTER_IN_INT = new ArrayList<SomeChemicals>();
+	public static final List<SomeChemicals> TO_FILTER_IN_INT_Organism = new ArrayList<SomeChemicals>();
 	static { // TODO review / remake this List (not for all elts). 
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_HEAT);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.ENERGY_SOLAR);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.DIOXYGEN);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.CARBON_DIOXYDE);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.WATER);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.GLUCOSE);
-		AntHillGraphicalRunner.TO_FILTER_IN_INT.add(SomeChemicals.STARCH);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.ENERGY_HEAT);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.ENERGY_SOLAR);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.DIOXYGEN);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.CARBON_DIOXYDE);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.WATER);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.GLUCOSE);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_Organism.add(SomeChemicals.STARCH);
+		// AntHillGraphicalRunner.TO_FILTER_IN_INT.add(StateType.AGING);
+	}
+	
+	public static final List<SomeChemicals> TO_FILTER_IN_INT_WorldCase = new ArrayList<SomeChemicals>();
+	static { // TODO review / remake this List (not for all elts). 
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.add(SomeChemicals.ENERGY_HEAT);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.add(SomeChemicals.ENERGY_SOLAR);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.add(SomeChemicals.DIOXYGEN);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.add(SomeChemicals.CARBON_DIOXYDE);
+		AntHillGraphicalRunner.TO_FILTER_IN_INT_WorldCase.add(SomeChemicals.WATER);
 		// AntHillGraphicalRunner.TO_FILTER_IN_INT.add(StateType.AGING);
 	}
 	
