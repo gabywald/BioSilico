@@ -7,8 +7,6 @@ import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.utils.Sequence;
 import gabywald.global.view.graph.GenericJScroll;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -19,18 +17,22 @@ import javax.swing.JTextField;
 
 /**
  * To open a file or create an agent from scratch, aim is to be on north / top of a JFrame.
- * @author Gabriel Chandesris (2010, 2020)
- * @see GeneticKit
+ * @author Gabriel Chandesris (2010, 2020, 2022)
+ * @see OrganismSelectActionListener
+ * @see GeneticKitJFrame
  * @see OrganismKit
  */
 @SuppressWarnings("serial")
 public class OrganismSelectJPanel extends GeneKitsGBJPanel {
+	
+	private OrganismSelectActionListener localActionListener = null;
+	
 	/** Button to load a file of an agent. */
 	private JButton openAgentFile;
 	/** Button to create an agent. */
 	private JButton createAgent;
 	
-	/** This is used by {@link GeneticKit#agentTypeSelection}. */
+	/** This is used by {@link GeneticKitJFrame#agentTypeSelection}. */
 	private static final String agentTypeListe[] = 
 		{ "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
 	/** This is used by {@link OrganismSelectJPanel#actionCreateAgent}. */
@@ -53,24 +55,20 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 	/** Instance of FileOrganism use when creation or selection. */
 	private FileOrganism toLoad;
 	
-	/** Default Constructor (self-ActionListener). */
-	public OrganismSelectJPanel() { this.init(this); }
+	/** Default Constructor. */
+	public OrganismSelectJPanel() { this.init(); }
 
-	/**
-	 * Constructor with given ActionListener implementation. 
-	 * @param act (ActionListener)
-	 * @deprecated [auto-listener]
-	 */
-	public OrganismSelectJPanel(ActionListener act) { this.init(act); }
-
-	private void init(ActionListener act) {
+	private void init() {
+		
+		this.localActionListener = new OrganismSelectActionListener( this );
+		
 		this.openAgentFile		= new JButton("Open Agent File...");
 		this.createAgent		= new JButton("Create an Agent");
 		this.agentName			= new JTextField(20);
 		this.agentTypeSelection	= new JComboBox<String>(OrganismSelectJPanel.agentTypeListe);
 
-		this.openAgentFile.addActionListener(act);
-		this.createAgent.addActionListener(act);
+		this.openAgentFile.addActionListener( this.localActionListener );
+		this.createAgent.addActionListener( this.localActionListener );
 
 		this.enablePanel(true);
 
@@ -89,22 +87,16 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		this.agentName.setEditable(b);
 	}
 
-	public void actionPerformed(ActionEvent arg0) {
-		Object source = arg0.getSource();
-		if (source.equals(this.openAgentFile)) 
-			{ this.loadOrganism(); }
-		else if (source.equals(this.createAgent)) {
-			int type = this.agentTypeSelection.getSelectedIndex();
-			if (type != 0) { this.actionCreateAgent(type); }
-		}
-	}
-
-	private void actionCreateAgent(int type) {
+	/**
+	 * 
+	 * @param type (int)
+	 */
+	void actionCreateAgent(int type) {
 		String name = this.getNameOrganism();
 		
 		if (name.equals("")) { name = "anonymous"; }
 		
-		name = agentTypeNameListe[type] + name;
+		name = OrganismSelectJPanel.agentTypeNameListe[type] + name;
 		
 		if (this.orgNamesPanel != null) {
 			this.orgNamesPanel.setScientificName(name);
@@ -127,7 +119,10 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		this.toLoad = new FileOrganism(completePathFile,orga);
 	}
 
-	private void loadOrganism() {
+	/**
+	 * 
+	 */
+	void loadOrganism() {
 		JFileChooser chooser = new JFileChooser( OrganismSelectJPanel.BASE_ORGANISM_DIR_FILECHOOSER );
 		chooser.setFileFilter(new FilterBioSilico());
 		chooser.setAcceptAllFileFilterUsed(false);
@@ -280,6 +275,16 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		{ this.orgNamesPanel = names; }
 	
 	
-	public FileOrganism getLoadOrganism() { return this.toLoad; }
+	public FileOrganism getLoadOrganism() 
+		{ return this.toLoad; }
+
+	public JButton getOpenAgentFile() 
+		{ return this.openAgentFile; }
+
+	public JButton getCreateAgent() 
+		{ return this.createAgent; }
+
+	public int getAgentTypeSelected() 
+		{ return this.agentTypeSelection.getSelectedIndex(); }
 
 }

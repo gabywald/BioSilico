@@ -1,6 +1,6 @@
 package gabywald.biosilico.launchers;
 
-import gabywald.biosilico.view.GeneCreator;
+import gabywald.biosilico.view.GeneCreatorJFrame;
 
 /**
  * Launcher of Genetic Kit view. 
@@ -11,7 +11,7 @@ public class GeneCreatorLauncher {
 	/** Unique instance of this launcher. */
 	private static GeneCreatorLauncher instance = null;
 	/** View of the controller. */
-	private GeneCreator localView;
+	private GeneCreatorJFrame localView;
 	
 	/**
 	 * To get the unique instance of the launcher. 
@@ -23,8 +23,8 @@ public class GeneCreatorLauncher {
 		return GeneCreatorLauncher.instance;
 	}
 	
-	public void setView(GeneCreator view) { this.localView = view; }
-	public GeneCreator getView() { return this.localView; }
+	public void setView(GeneCreatorJFrame view) { this.localView = view; }
+	public GeneCreatorJFrame getView() { return this.localView; }
 	
 	/** 
 	 * MAIN launch for this view. 
@@ -32,6 +32,6 @@ public class GeneCreatorLauncher {
 	 */
 	public static void main(String[] args) {
 		GeneCreatorLauncher controller = GeneCreatorLauncher.getInstance();
-		controller.setView(GeneCreator.getInstance());
+		controller.setView(GeneCreatorJFrame.getInstance());
 	}
 }

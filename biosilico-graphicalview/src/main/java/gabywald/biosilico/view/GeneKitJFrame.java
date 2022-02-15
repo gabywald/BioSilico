@@ -3,21 +3,19 @@ package gabywald.biosilico.view;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 
 import gabywald.global.view.graph.GenericJFrame;
 import gabywald.global.view.graph.SelectBox;
 
 /**
  * This mother class defines a generic use of Gene's parameters and type selection. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see GeneParametersViewer
- * @see GeneCreator
- * @see GeneticKit
+ * @see GeneCreatorJFrame
+ * @see GeneticKitJFrame
  */
 @SuppressWarnings("serial")
-public abstract class GeneKitJFrame extends GenericJFrame 
-									implements ActionListener {
+public abstract class GeneKitJFrame extends GenericJFrame {
 	/** For viewing the parameters. (Use CardLayout). */
 	protected GeneParametersViewer parameterViewer;
 	/** To select the Gene's Type. */
@@ -45,10 +43,13 @@ public abstract class GeneKitJFrame extends GenericJFrame
 		this.addsavGene				= new JButton("Add Gene to Agent");
 		this.changeGene				= new JButton("Change Gene");
 		this.makeneGene				= new JButton("As new Gene");
-		
-		this.geneSelection.addActionListener(this);
-		this.pathSelection.addActionListener(this);
-		this.geneTypeSelection.addActionListener(this);
+	}
+	
+	protected void setActionListener(ActionListener al) {
+		// TODO create GeneKitActionListener dependant of GeneKitJFrame
+		this.geneSelection.addActionListener( al );
+		this.pathSelection.addActionListener( al );
+		this.geneTypeSelection.addActionListener( al );
 	}
 	
 	public JButton getCreateGene() { return this.createGene; }
@@ -59,10 +60,19 @@ public abstract class GeneKitJFrame extends GenericJFrame
 	public GeneParametersViewer getGenesViewer() 
 		{ return this.parameterViewer; }
 	
-	public JComboBox<String> getGeneTypeSelection() 
+	public GeneParametersViewer getParameterViewer() 
+		{ return this.parameterViewer; }
+	
+	public SelectBox getGeneTypeSelection() 
 		{ return this.geneTypeSelection; }
 	
 	protected void setGeneTypeSelection(int geneType) 
 		{ this.geneTypeSelection.setSelection(geneType); }
+	
+	public GeneSelectBox getGeneSelection() 
+		{ return this.geneSelection; }
+	
+	public PathwaySelectBox getPathSelection() 
+		{ return this.pathSelection; }
 	
 }

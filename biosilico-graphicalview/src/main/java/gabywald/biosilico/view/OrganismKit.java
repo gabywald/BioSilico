@@ -1,8 +1,5 @@
 package gabywald.biosilico.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JLabel;
 
 import gabywald.biosilico.structures.GeneMoreListe;
@@ -12,14 +9,13 @@ import gabywald.global.view.graph.GenericJFrame;
 /**
  * This class defines a graphical view to manipulate precisely an Organism. 
  * <br><i>Design-Pattern Singleton. </i>
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * TODO adding chromosome separation
  * TODO changing name(s)
  * TODO test organism
  */
 @SuppressWarnings("serial")
-public class OrganismKit extends GenericJFrame 
-						 implements ActionListener {
+public class OrganismKit extends GenericJFrame {
 	/** Unique instance of this view. */
 	private static OrganismKit instance = null;
 	/** North Panel : to open a file or create an agent from scratch. */
@@ -139,7 +135,4 @@ public class OrganismKit extends GenericJFrame
 	public void enableWesternPanel(boolean b)	
 		{ this.buildingGene.setEnabled(b); }
 
-	public void actionPerformed(ActionEvent ae) {
-		// Object source = ae.getSource();
-	}
 }

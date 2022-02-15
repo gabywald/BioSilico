@@ -1,8 +1,5 @@
 package gabywald.biosilico.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import gabywald.global.view.graph.GridBagJPanel;
 
 /**
@@ -10,13 +7,5 @@ import gabywald.global.view.graph.GridBagJPanel;
  * @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
-public class GeneKitsGBJPanel 
-					extends GridBagJPanel 
-					implements ActionListener {
-	
-	// TODO removing ActionListenerInterface here !
-
-	@Override
-	public void actionPerformed(ActionEvent e) { ; }
-
-}
+public class GeneKitsGBJPanel extends GridBagJPanel 
+	{ ; }

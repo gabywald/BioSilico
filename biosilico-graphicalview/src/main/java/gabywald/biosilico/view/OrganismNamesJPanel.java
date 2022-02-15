@@ -1,6 +1,5 @@
 package gabywald.biosilico.view;
 
-import java.awt.event.ActionEvent;
 import java.util.List;
 
 import gabywald.global.view.graph.GenericJScroll;
@@ -11,7 +10,8 @@ import javax.swing.JTextField;
 
 /**
  * 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
+ * @see OrganismNamesActionListener
  */
 @SuppressWarnings("serial")
 public class OrganismNamesJPanel extends GeneKitsGBJPanel {
@@ -20,7 +20,7 @@ public class OrganismNamesJPanel extends GeneKitsGBJPanel {
 	/** List of Other names. */
 	private GenericJScroll othersNamesList;
 	/** To add a new other name. */
-	private JTextField othersName;
+	private JTextField otherName;
 	/** To activate the add of a new other name. */
 	private JButton addOtherName;
 	
@@ -33,10 +33,10 @@ public class OrganismNamesJPanel extends GeneKitsGBJPanel {
 		this.commonName			= new JTextField();
 		this.includName			= new JTextField();
 		this.othersNamesList	= new GenericJScroll(5);
-		this.othersName			= new JTextField();
+		this.otherName			= new JTextField();
 		this.addOtherName		= new JButton("Add Other Name");
 		
-		this.addOtherName.addActionListener(this);
+		this.addOtherName.addActionListener( new OrganismNamesActionListener(this) );
 		
 		this.addBagComponent(new JLabel("Scientific name : ")	, 0, 0);
 		this.addBagComponent(this.scientificName				, 1, 0, 2);
@@ -48,26 +48,17 @@ public class OrganismNamesJPanel extends GeneKitsGBJPanel {
 		this.addBagComponent(this.includName					, 1, 3, 2);
 		this.addBagComponent(new JLabel("Others Names : ")		, 0, 4);
 		this.addBagComponent(this.othersNamesList				, 1, 4, 2, 3);
-		this.addBagComponent(this.othersName					, 0, 5);
+		this.addBagComponent(this.otherName						, 0, 5);
 		this.addBagComponent(this.addOtherName					, 0, 6);
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		Object source = arg0.getSource();
-		if (source.equals(this.addOtherName)) {
-			if (!this.othersName.getText().equals("")) {
-				this.othersNamesList.addString(this.othersName.getText());
-				this.othersName.setText("");
-			}
-		}
-	}
 	public void enablePanel(boolean b) {
 		this.addOtherName.setEnabled(b);
 		this.biosilicosName.setEnabled(b);
 		this.scientificName.setEnabled(b);
 		this.commonName.setEnabled(b);
 		this.includName.setEnabled(b);
-		this.othersName.setEnabled(b);
+		this.otherName.setEnabled(b);
 		this.othersNamesList.setEnabled(b);
 	}
 	
@@ -94,5 +85,14 @@ public class OrganismNamesJPanel extends GeneKitsGBJPanel {
 		{ this.othersNamesList.setStringListe(names); }
 	public void addOtherName(String name)
 		{ this.othersNamesList.addString(name); }
+
+	public JButton getAddOtherName() 
+		{ return this.addOtherName; }
+
+	public JTextField getOtherName() 
+		{ return this.otherName; }
+
+	public GenericJScroll getOthersNamesList() 
+		{ return this.othersNamesList; }
 
 }

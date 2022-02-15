@@ -14,8 +14,6 @@ import gabywald.global.exceptions.DataException;
 import gabywald.global.view.graph.GenericJFrame;
 
 import java.awt.ComponentOrientation;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +23,16 @@ import javax.swing.JLabel;
 
 /**
  * To save Organism's intance with all data included (especially data from selected or created. 
- * @author Gabriel Chandesris (2010, 2020)
- * @see GeneticKit
+ * @author Gabriel Chandesris (2010, 2020, 2022)
+ * @see OrganismSaveActionListener
+ * @see GeneticKitJFrame
  * @see OrganismKit
  */
 @SuppressWarnings("serial")
 public class OrganismSaveJPanel extends GeneKitsGBJPanel {
+	
+	private OrganismSaveActionListener localActionListener = null;
+	
 	/** To save current organism. */
 	private JButton saveOrganism;
 	/** To test current organism. */
@@ -45,22 +47,18 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 	/** Instance of FileOrganism to save.  */
 	private FileOrganism toSave;
 	
-	/** Default Constructor (self-ActionListener). */
-	public OrganismSaveJPanel() { this.init(this); }
+	/** Default Constructor. */
+	public OrganismSaveJPanel() { this.init(); }
 	
-	/**
-	 * Constructor with given ActionListener implementation. 
-	 * @param act (ActionListener)
-	 * @deprecated [auto-listener]
-	 */
-	public OrganismSaveJPanel(ActionListener act) { this.init(act); }
-	
-	public void init(ActionListener act) {
+	public void init() {
+		
+		this.localActionListener = new OrganismSaveActionListener( this );
+		
 		this.saveOrganism	= new JButton("Save Agent");
 		this.testOrganism	= new JButton("Test Agent");
 		
-		this.saveOrganism.addActionListener(act);
-		this.testOrganism.addActionListener(act);
+		this.saveOrganism.addActionListener( this.localActionListener );
+		this.testOrganism.addActionListener( this.localActionListener );
 		this.enablePanel(false);
 		
 		this.setSize(GenericJFrame.WIDTH, 20);
@@ -73,11 +71,6 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 	public void enablePanel(boolean b) {
 		this.saveOrganism.setEnabled(b);
 		this.testOrganism.setEnabled(b);
-	}
-	
-	public void actionPerformed(ActionEvent arg0) {
-		Object source = arg0.getSource();
-		if (source.equals(this.saveOrganism)) { this.saveOrganism(); }
 	}
 	
 	public void setGeneStock(GeneMoreListe stock) 
@@ -94,7 +87,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		{ this.orgNamesPanel = names; }
 	
 	
-	private void saveOrganism() {
+	void saveOrganism() {
 		// ***** Establishing genome (gene list) ; Genetic / Organism Kit. 
 		List<Chromosome> currentGenome	= new ArrayList<Chromosome>();
 		Chromosome currentChromosome	= new Chromosome();
@@ -180,5 +173,8 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 		// return FileBiological.DEFAULT_PATH_NAME+this.orgSelectPanel.getNameOrganismUnited();
 		return null;
 	}
+
+	public JButton getSaveOrganism() 
+		{ return this.saveOrganism; }
 	
 }

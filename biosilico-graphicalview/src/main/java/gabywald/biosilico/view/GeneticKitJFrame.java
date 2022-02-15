@@ -1,25 +1,25 @@
 package gabywald.biosilico.view;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import gabywald.biosilico.structures.Pathway;
 
 /**
  * Genetic Kit Genuine User Interface (GUI).
  * This class defines manipulation of an organism about its Gene's (add / remove, pathways...). 
  * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2009-2010, 2020)
- * TODO export controller part from this view !!
+ * @see GeneticKitActionListener
  */
 @SuppressWarnings("serial")
-public class GeneticKit extends GeneKitJFrame {
+public class GeneticKitJFrame extends GeneKitJFrame {
+	
+	private GeneticKitActionListener localActionListener = null;
+	
 	/** Unique instance of this view. */
-	private static GeneticKit instance = null;
+	private static GeneticKitJFrame instance = null;
 	/** North Panel : to open a file or create an agent from scratch. */
 	private OrganismSelectJPanel northPanel;
 	/** Center JPanel : "agent viewer". */
@@ -33,7 +33,11 @@ public class GeneticKit extends GeneKitJFrame {
 	/** Interaction for outputing result (save file || test). */
 	private OrganismSaveJPanel southPanel;
 
-	private GeneticKit() {
+	private GeneticKitJFrame() {
+		
+		this.localActionListener = new GeneticKitActionListener( this );
+		super.setActionListener( this.localActionListener );
+		
 		/** Western JPanel */
 		this.initWesternPanel();
 		/** Center JPanel */
@@ -73,8 +77,8 @@ public class GeneticKit extends GeneKitJFrame {
 		// this.metabWaySelection	= new JComboBox(GeneticKit.metabolicListe);
 		this.addPathWay	= new JButton("Add Metabolic Way to Agent");
 		
-		this.addsavGene.addActionListener(this);
-		this.addPathWay.addActionListener(this);
+		this.addsavGene.addActionListener( this.localActionListener  );
+		this.addPathWay.addActionListener( this.localActionListener  );
 		
 		this.enableCenterPanel(false);
 		this.createGene.setEnabled(false);
@@ -115,84 +119,10 @@ public class GeneticKit extends GeneKitJFrame {
 	 * To get the current instance of graphical view. 
 	 * @return (GeneticKit)
 	 */
-	public static GeneticKit getInstance() {
-		if (GeneticKit.instance == null) 
-			{ GeneticKit.instance = new GeneticKit(); }
-		return GeneticKit.instance;
-	}
-	
-	public void actionPerformed(ActionEvent ae) {
-		Object source = ae.getSource();
-		if (source.equals(this.geneTypeSelection)) {
-			int type = this.geneTypeSelection.getSelectedIndex();
-			this.parameterViewer.selectCard(type);
-			if (type != 0) {
-				// this.sendMessage(this.geneTypeSelection.getSelectedIndex()+" G");
-				this.addsavGene.setEnabled(false);
-				// this.addsavGene.setEnabled(true);
-				this.addPathWay.setEnabled(false);
-				this.pathSelection.setSelection(0);
-				this.geneSelection.setSelection(0);
-			} else { 
-				this.addsavGene.setEnabled(false);
-				this.pathSelection.setSelection(0);
-				this.geneSelection.setSelection(0);
-			}
-		} else if (source.equals(this.pathSelection)) {
-			// ***** Selection in menu of previous defined pathways. 
-			// this.selectedPath = this.pathSelection.getSelectedIndex();
-			if (this.pathSelection.getSelected() > 0) {
-				// this.sendMessage(this.pathSelection.getSelectedIndex()+" M");
-				this.addPathWay.setEnabled(true);
-				this.addsavGene.setEnabled(false);
-				this.parameterViewer.selectCard(0);
-				this.setGeneTypeSelection(0);
-				this.geneSelection.setSelection(0);
-			} else { 
-				this.addPathWay.setEnabled(false);
-				this.setGeneTypeSelection(0);
-				this.geneSelection.setSelection(0);
-			}
-		} else if (source.equals(this.geneSelection)) {
-			// ***** Selection in menu of previous defined genes. 
-			// this.selectedGene = this.geneSelection.getSelectedIndex();
-			if (this.geneSelection.getSelected() > 0) {
-				// System.out.println(this.geneSelection.getSelected() );
-				int geneType = this.geneSelection.getSelectedType();
-				this.parameterViewer.selectCard(geneType);
-				this.parameterViewer.setCompiledParameters
-							(this.geneSelection.getSelectedGene(),
-							geneType);
-				this.setGeneTypeSelection(geneType);
-				this.addsavGene.setEnabled(true);
-				this.addPathWay.setEnabled(false);
-				this.pathSelection.setSelection(0);
-			} else {
-				this.addsavGene.setEnabled(false);
-				this.parameterViewer.selectCard(0);
-				this.setGeneTypeSelection(0);
-				this.pathSelection.setSelection(0);
-			}
-		} else if (source.equals(this.addsavGene)) {
-			// ***** Selection in menu of previous defined genes. 
-			// this.selectedGene = this.existentSelection.getSelectedIndex();
-			if (this.geneSelection.getSelected() > 0) {
-				// this.sendMessage("selected "+this.selectedGene);
-				this.geneScroll.addString(this.geneSelection.getSelectedGeneName());
-				this.enableWesternPanel(true);
-				this.enableSouthPanel(true);
-			} else { ; }
-		} else if (source.equals(this.addPathWay)) {
-			// ***** Selection in menu of previous defined pathways. 
-			// this.selectedPath = this.pathSelection.getSelectedIndex();
-			if (this.pathSelection.getSelected() > 0) {
-				Pathway pathSelected = this.pathSelection.getSelectedPathway();
-				for (int i = 0 ;  i < pathSelected.length() ; i++) 
-					{ this.geneScroll.addString(pathSelected.getGeneName(i)); }
-				this.enableWesternPanel(true);
-				this.enableSouthPanel(true);
-			} else { ; }
-		}
+	public static GeneticKitJFrame getInstance() {
+		if (GeneticKitJFrame.instance == null) 
+			{ GeneticKitJFrame.instance = new GeneticKitJFrame(); }
+		return GeneticKitJFrame.instance;
 	}
 	
 	public void enableEasternPanel(boolean b)	{ ; }
@@ -214,7 +144,13 @@ public class GeneticKit extends GeneKitJFrame {
 		this.pathSelection.setEnabled(b);
 		this.geneSelection.setEnabled(b);
 	}
-	
+
+	public JButton getAddPathway() 
+		{ return this.addPathWay; }
+
+	public GeneListJScroll getGeneScroll() 
+		{ return this.geneScroll; }
+
 }
 
 
