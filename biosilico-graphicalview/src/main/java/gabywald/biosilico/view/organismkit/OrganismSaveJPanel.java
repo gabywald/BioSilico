@@ -1,4 +1,4 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.organismkit;
 
 import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.data.FileOrganism;
@@ -10,6 +10,10 @@ import gabywald.biosilico.model.enums.AgentType;
 import gabywald.biosilico.structures.GeneMoreListe;
 import gabywald.biosilico.structures.Pathway;
 import gabywald.biosilico.structures.PathwayListe;
+import gabywald.biosilico.view.GeneKitsGBJPanel;
+import gabywald.biosilico.view.GeneListJScroll;
+import gabywald.biosilico.view.LineageListJScroll;
+import gabywald.biosilico.view.genetickit.GeneticKitJFrame;
 import gabywald.global.exceptions.DataException;
 import gabywald.global.view.graph.GenericJFrame;
 
@@ -20,6 +24,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * To save Organism's intance with all data included (especially data from selected or created. 
@@ -144,9 +149,17 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 			if (this.lineageScroll != null) 
 				{ this.toSave.setExtendedLineage
 							(this.lineageScroll.getExtendedLineage()); }
+			String record = null;
 			// ***** Recording the FileOrganism. 
-			try { this.toSave.printFile(); } 
+			try { record = this.toSave.printFile(); } 
 			catch (DataException e) { e.printStackTrace(); }
+			if (record.contains("ERROR")) {
+				JOptionPane.showMessageDialog(this, record,
+					    "Recording error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(this, this.toSave.getFileName(), 
+						"File Recorded !", JOptionPane.INFORMATION_MESSAGE );
+			}
 		}
 	}
 	
@@ -156,7 +169,7 @@ public class OrganismSaveJPanel extends GeneKitsGBJPanel {
 			{ completePathFile += this.orgSelectPanel.getNameOrganismUnited() + ".gatorg"; }
 		// System.out.println(completePathFile);
 		JFileChooser saver = new JFileChooser(completePathFile);
-		saver.setFileFilter(new FilterBioSilico());
+		saver.setFileFilter(FilterBioSilico.FILTER_ORGANISM_ONLY);
 		saver.setAcceptAllFileFilterUsed(false);
 		saver.setDialogType(JFileChooser.SAVE_DIALOG);
 		// ***** To set a proposed name of file. 

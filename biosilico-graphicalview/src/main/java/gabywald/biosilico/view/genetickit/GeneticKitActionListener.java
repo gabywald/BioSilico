@@ -1,4 +1,4 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.genetickit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +34,8 @@ public class GeneticKitActionListener implements ActionListener {
 				this.localFrame.getAddSavGene().setEnabled(false);
 				this.localFrame.getPathSelection().setSelection(0);
 				this.localFrame.getGeneSelection().setSelection(0);
+				this.localFrame.getCreateGene().setEnabled(true);
+				
 			}
 		} else if (source.equals(this.localFrame.getPathSelection())) {
 			// ***** Selection in menu of previous defined pathways. 

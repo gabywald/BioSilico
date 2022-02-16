@@ -1,6 +1,6 @@
 package gabywald.biosilico.launchers;
 
-import gabywald.biosilico.view.GeneticKitJFrame;
+import gabywald.biosilico.view.genetickit.GeneticKitJFrame;
 
 /**
  * Launcher of Genetic Kit view. 

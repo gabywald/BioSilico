@@ -1,6 +1,6 @@
 package gabywald.biosilico.launchers;
 
-import gabywald.biosilico.view.OrganismKit;
+import gabywald.biosilico.view.organismkit.OrganismKit;
 
 /**
  * Launcher of Organism Kit View. 

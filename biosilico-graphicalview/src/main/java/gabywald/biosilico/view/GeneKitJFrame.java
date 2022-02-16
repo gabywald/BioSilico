@@ -11,8 +11,8 @@ import gabywald.global.view.graph.SelectBox;
  * This mother class defines a generic use of Gene's parameters and type selection. 
  * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see GeneParametersViewer
- * @see GeneCreatorJFrame
- * @see GeneticKitJFrame
+ * @see gabywald.biosilico.view.genecreator.GeneCreatorJFrame
+ * @see gabywald.biosilico.view.genetickit.GeneticKitJFrame
  */
 @SuppressWarnings("serial")
 public abstract class GeneKitJFrame extends GenericJFrame {
@@ -21,7 +21,7 @@ public abstract class GeneKitJFrame extends GenericJFrame {
 	/** To select the Gene's Type. */
 	protected SelectBox geneTypeSelection;
 	/** To modify current selection of Gene. */
-	protected JButton createGene,changeGene,makeneGene,addsavGene;
+	protected JButton createGene, changeGene, makeneGene, addsavGene;
 	
 	/** Contain Gene Selector. */
 	protected GeneSelectBox geneSelection;
@@ -66,7 +66,7 @@ public abstract class GeneKitJFrame extends GenericJFrame {
 	public SelectBox getGeneTypeSelection() 
 		{ return this.geneTypeSelection; }
 	
-	protected void setGeneTypeSelection(int geneType) 
+	public void setGeneTypeSelection(int geneType) 
 		{ this.geneTypeSelection.setSelection(geneType); }
 	
 	public GeneSelectBox getGeneSelection() 

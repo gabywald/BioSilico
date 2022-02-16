@@ -1,4 +1,4 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.organismkit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

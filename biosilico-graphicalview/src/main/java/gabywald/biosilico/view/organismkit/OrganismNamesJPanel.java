@@ -1,7 +1,8 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.organismkit;
 
 import java.util.List;
 
+import gabywald.biosilico.view.GeneKitsGBJPanel;
 import gabywald.global.view.graph.GenericJScroll;
 
 import javax.swing.JButton;

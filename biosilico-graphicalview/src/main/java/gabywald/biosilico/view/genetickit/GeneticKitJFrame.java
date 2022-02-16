@@ -1,10 +1,16 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.genetickit;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import gabywald.biosilico.view.GeneKitJFrame;
+import gabywald.biosilico.view.GeneKitsGBJPanel;
+import gabywald.biosilico.view.GeneListJScroll;
+import gabywald.biosilico.view.organismkit.OrganismSaveJPanel;
+import gabywald.biosilico.view.organismkit.OrganismSelectJPanel;
 
 /**
  * Genetic Kit Genuine User Interface (GUI).

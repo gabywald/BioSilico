@@ -17,7 +17,7 @@ import javax.swing.JButton;
  * This class defines a Lineage List JScroll which can reacts. 
  * <br>Add / Removing buttons. 
  * <br>Up / Down buttons. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class LineageListJScroll extends GenericJScroll 
@@ -63,7 +63,7 @@ public class LineageListJScroll extends GenericJScroll
 				{ this.setEnabled(false); }
 		} else if (source.equals(this.addLineage)) {
 			/** TODO add lineage [select a file of an organism] */
-			FileOrganism toLoad = OrganismSelectJPanel.loadOrganism(this);
+			FileOrganism toLoad = BioSilicoViewUtils.loadOrganism(this);
 			if (toLoad != null) {
 				String rank = toLoad.getRank();
 				String unID = toLoad.getUniqueID();

@@ -1,9 +1,12 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.organismkit;
 
 import javax.swing.JLabel;
 
 import gabywald.biosilico.structures.GeneMoreListe;
 import gabywald.biosilico.structures.PathwayListe;
+import gabywald.biosilico.view.GeneKitsGBJPanel;
+import gabywald.biosilico.view.GeneListJScroll;
+import gabywald.biosilico.view.LineageListJScroll;
 import gabywald.global.view.graph.GenericJFrame;
 
 /**

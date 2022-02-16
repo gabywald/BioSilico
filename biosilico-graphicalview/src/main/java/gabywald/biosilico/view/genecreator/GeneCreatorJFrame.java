@@ -1,4 +1,4 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.genecreator;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -7,6 +7,11 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import gabywald.biosilico.view.GeneKitJFrame;
+import gabywald.biosilico.view.GeneKitsGBJPanel;
+import gabywald.biosilico.view.GeneListJScroll;
+import gabywald.biosilico.view.GeneParametersViewer;
 
 /**
  * This class defines a graphical view to create and manipulate Gene's. 

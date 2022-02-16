@@ -1,9 +1,11 @@
-package gabywald.biosilico.view;
+package gabywald.biosilico.view.genecreator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import gabywald.biosilico.view.GeneJPanel;
 
 /**
  * ActionListener for GeneCreatorJFrame's instance. 
