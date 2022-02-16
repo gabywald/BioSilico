@@ -7,7 +7,7 @@ import gabywald.global.view.graph.GenericJScroll;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +32,8 @@ public class LineageListJScroll extends GenericJScroll
 	
 	/** Default Constructor. */
 	public LineageListJScroll() {
+		this.setSize(20, 300);
+		this.setPreferredSize(new Dimension(30, 300));
 		this.addLineage			= new JButton("Add Lineage");
 		this.remLineage			= new JButton("Rem. Lineage");
 		this.uppeLineage		= new JButton("Up Lineage");

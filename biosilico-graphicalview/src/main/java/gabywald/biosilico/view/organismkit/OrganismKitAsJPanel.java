@@ -7,20 +7,17 @@ import gabywald.biosilico.structures.PathwayListe;
 import gabywald.biosilico.view.GeneKitsGBJPanel;
 import gabywald.biosilico.view.GeneListJScroll;
 import gabywald.biosilico.view.LineageListJScroll;
-import gabywald.global.view.graph.GenericJFrame;
+import gabywald.global.view.graph.GenericJPanel;
 
 /**
  * This class defines a graphical view to manipulate precisely an Organism. 
- * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2010, 2020, 2022)
  * TODO adding chromosome separation
  * TODO changing name(s)
  * TODO test organism
  */
 @SuppressWarnings("serial")
-public class OrganismKit extends GenericJFrame {
-	/** Unique instance of this view. */
-	private static OrganismKit instance = null;
+public class OrganismKitAsJPanel extends GenericJPanel {
 	/** North Panel : to open a file or create an agent from scratch. */
 	private OrganismSelectJPanel northPanel;
 	/** Interaction for outputing result (save file || test). */
@@ -43,7 +40,7 @@ public class OrganismKit extends GenericJFrame {
 	/** To view list of lineage. */
 	private LineageListJScroll buildingLineage;
 	
-	private OrganismKit() {
+	public OrganismKitAsJPanel() {
 		this.initGenePath();
 		this.centerPanel		= new OrganismNamesJPanel();
 		this.initWesternPanel();
@@ -51,23 +48,11 @@ public class OrganismKit extends GenericJFrame {
 		this.initNorthPanel();
 		this.initSouthPanel();
 		
-		this.getContentPane().add(this.northPanel, 		"North");
-		this.getContentPane().add(this.southPanel, 		"South");
-		this.getContentPane().add(this.westernPanel, 	"West");
-		this.getContentPane().add(this.easternPanel, 	"East");
-		this.getContentPane().add(this.centerPanel, 	"Center");
-		this.setTitle("Organism Kit");
-		this.setVisible(true);
-	}
-	
-	/**
-	 * To get the current instance of graphical view. 
-	 * @return (OrganismKit)
-	 */
-	public static OrganismKit getInstance() {
-		if (OrganismKit.instance == null) 
-			{ OrganismKit.instance = new OrganismKit(); }
-		return OrganismKit.instance;
+		this.add(this.northPanel, 	"North");
+		this.add(this.southPanel, 	"South");
+		this.add(this.westernPanel, "West");
+		this.add(this.easternPanel, "East");
+		this.add(this.centerPanel, 	"Center");
 	}
 	
 	private void initGenePath() {

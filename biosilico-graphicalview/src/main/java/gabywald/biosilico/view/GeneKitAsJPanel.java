@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import gabywald.global.view.graph.GenericJFrame;
+import gabywald.global.view.graph.GenericJPanel;
 import gabywald.global.view.graph.SelectBox;
 
 /**
@@ -15,7 +15,7 @@ import gabywald.global.view.graph.SelectBox;
  * @see gabywald.biosilico.view.genetickit.GeneticKitJFrame
  */
 @SuppressWarnings("serial")
-public abstract class GeneKitJFrame extends GenericJFrame implements GeneKitInterface {
+public abstract class GeneKitAsJPanel extends GenericJPanel implements GeneKitInterface {
 	/** For viewing the parameters. (Use CardLayout). */
 	protected GeneParametersViewer parameterViewer;
 	/** To select the Gene's Type. */
@@ -31,7 +31,7 @@ public abstract class GeneKitJFrame extends GenericJFrame implements GeneKitInte
 	protected ChemicalSelectBox chemicalBox;
 	
 	/** Default Constructor. */
-	protected GeneKitJFrame() {
+	protected GeneKitAsJPanel() {
 		this.chemicalBox			= ChemicalSelectBox.getInstance();
 		this.geneSelection			= new GeneSelectBox();
 		this.pathSelection			= new PathwaySelectBox();

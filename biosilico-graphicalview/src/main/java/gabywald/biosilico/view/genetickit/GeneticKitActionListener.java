@@ -12,84 +12,84 @@ import gabywald.biosilico.structures.Pathway;
  */
 public class GeneticKitActionListener implements ActionListener {
 	
-	private GeneticKitJFrame localFrame = null;
+	private GeneticKitInterface localKit = null;
 	
-	public GeneticKitActionListener(GeneticKitJFrame frame) 
-		{ this.localFrame = frame; }
+	public GeneticKitActionListener(GeneticKitInterface frame) 
+		{ this.localKit = frame; }
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		Object source = ae.getSource();
-		if (source.equals(this.localFrame.getGeneTypeSelection())) {
-			int type = this.localFrame.getGeneTypeSelection().getSelectedIndex();
-			this.localFrame.getParameterViewer().selectCard(type);
+		if (source.equals(this.localKit.getGeneTypeSelection())) {
+			int type = this.localKit.getGeneTypeSelection().getSelectedIndex();
+			this.localKit.getParameterViewer().selectCard(type);
 			if (type != 0) {
-				// this.sendMessage(this.localFrame.getGeneTypeSelection().getSelectedIndex()+" G");
-				this.localFrame.getAddSavGene().setEnabled(false);
-				// this.localFrame.getAddSavGene().setEnabled(true);
-				this.localFrame.getAddPathway().setEnabled(false);
-				this.localFrame.getPathSelection().setSelection(0);
-				this.localFrame.getGeneSelection().setSelection(0);
+				// this.sendMessage(this.localKit.getGeneTypeSelection().getSelectedIndex()+" G");
+				this.localKit.getAddSavGene().setEnabled(false);
+				// this.localKit.getAddSavGene().setEnabled(true);
+				this.localKit.getAddPathway().setEnabled(false);
+				this.localKit.getPathSelection().setSelection(0);
+				this.localKit.getGeneSelection().setSelection(0);
 			} else { 
-				this.localFrame.getAddSavGene().setEnabled(false);
-				this.localFrame.getPathSelection().setSelection(0);
-				this.localFrame.getGeneSelection().setSelection(0);
-				this.localFrame.getCreateGene().setEnabled(true);
+				this.localKit.getAddSavGene().setEnabled(false);
+				this.localKit.getPathSelection().setSelection(0);
+				this.localKit.getGeneSelection().setSelection(0);
+				this.localKit.getCreateGene().setEnabled(true);
 				
 			}
-		} else if (source.equals(this.localFrame.getPathSelection())) {
+		} else if (source.equals(this.localKit.getPathSelection())) {
 			// ***** Selection in menu of previous defined pathways. 
-			// this.selectedPath = this.localFrame.getPathSelection().getSelectedIndex();
-			if (this.localFrame.getPathSelection().getSelected() > 0) {
-				// this.sendMessage(this.localFrame.getPathSelection().getSelectedIndex()+" M");
-				this.localFrame.getAddPathway().setEnabled(true);
-				this.localFrame.getAddSavGene().setEnabled(false);
-				this.localFrame.getParameterViewer().selectCard(0);
-				this.localFrame.setGeneTypeSelection(0);
-				this.localFrame.getGeneSelection().setSelection(0);
+			// this.selectedPath = this.localKit.getPathSelection().getSelectedIndex();
+			if (this.localKit.getPathSelection().getSelected() > 0) {
+				// this.sendMessage(this.localKit.getPathSelection().getSelectedIndex()+" M");
+				this.localKit.getAddPathway().setEnabled(true);
+				this.localKit.getAddSavGene().setEnabled(false);
+				this.localKit.getParameterViewer().selectCard(0);
+				this.localKit.setGeneTypeSelection(0);
+				this.localKit.getGeneSelection().setSelection(0);
 			} else { 
-				this.localFrame.getAddPathway().setEnabled(false);
-				this.localFrame.setGeneTypeSelection(0);
-				this.localFrame.getGeneSelection().setSelection(0);
+				this.localKit.getAddPathway().setEnabled(false);
+				this.localKit.setGeneTypeSelection(0);
+				this.localKit.getGeneSelection().setSelection(0);
 			}
-		} else if (source.equals(this.localFrame.getGeneSelection())) {
+		} else if (source.equals(this.localKit.getGeneSelection())) {
 			// ***** Selection in menu of previous defined genes. 
-			// this.selectedGene = this.localFrame.getGeneSelection().getSelectedIndex();
-			if (this.localFrame.getGeneSelection().getSelected() > 0) {
-				// System.out.println(this.localFrame.getGeneSelection().getSelected() );
-				int geneType = this.localFrame.getGeneSelection().getSelectedType();
-				this.localFrame.getParameterViewer().selectCard(geneType);
-				this.localFrame.getParameterViewer().setCompiledParameters
-							(this.localFrame.getGeneSelection().getSelectedGene(),
+			// this.selectedGene = this.localKit.getGeneSelection().getSelectedIndex();
+			if (this.localKit.getGeneSelection().getSelected() > 0) {
+				// System.out.println(this.localKit.getGeneSelection().getSelected() );
+				int geneType = this.localKit.getGeneSelection().getSelectedType();
+				this.localKit.getParameterViewer().selectCard(geneType);
+				this.localKit.getParameterViewer().setCompiledParameters
+							(this.localKit.getGeneSelection().getSelectedGene(),
 							geneType);
-				this.localFrame.setGeneTypeSelection(geneType);
-				this.localFrame.getAddSavGene().setEnabled(true);
-				this.localFrame.getAddPathway().setEnabled(false);
-				this.localFrame.getPathSelection().setSelection(0);
+				this.localKit.setGeneTypeSelection(geneType);
+				this.localKit.getAddSavGene().setEnabled(true);
+				this.localKit.getAddPathway().setEnabled(false);
+				this.localKit.getPathSelection().setSelection(0);
 			} else {
-				this.localFrame.getAddSavGene().setEnabled(false);
-				this.localFrame.getParameterViewer().selectCard(0);
-				this.localFrame.setGeneTypeSelection(0);
-				this.localFrame.getPathSelection().setSelection(0);
+				this.localKit.getAddSavGene().setEnabled(false);
+				this.localKit.getParameterViewer().selectCard(0);
+				this.localKit.setGeneTypeSelection(0);
+				this.localKit.getPathSelection().setSelection(0);
 			}
-		} else if (source.equals(this.localFrame.getAddSavGene())) {
+		} else if (source.equals(this.localKit.getAddSavGene())) {
 			// ***** Selection in menu of previous defined genes. 
 			// this.selectedGene = this.existentSelection.getSelectedIndex();
-			if (this.localFrame.getGeneSelection().getSelected() > 0) {
+			if (this.localKit.getGeneSelection().getSelected() > 0) {
 				// this.sendMessage("selected "+this.selectedGene);
-				this.localFrame.getGeneScroll().addString(this.localFrame.getGeneSelection().getSelectedGeneName());
-				this.localFrame.enableWesternPanel(true);
-				this.localFrame.enableSouthPanel(true);
+				this.localKit.getGeneScroll().addString(this.localKit.getGeneSelection().getSelectedGeneName());
+				this.localKit.enableWesternPanel(true);
+				this.localKit.enableSouthPanel(true);
 			} else { ; }
-		} else if (source.equals(this.localFrame.getAddPathway())) {
+		} else if (source.equals(this.localKit.getAddPathway())) {
 			// ***** Selection in menu of previous defined pathways. 
-			// this.selectedPath = this.localFrame.getPathSelection().getSelectedIndex();
-			if (this.localFrame.getPathSelection().getSelected() > 0) {
-				Pathway pathSelected = this.localFrame.getPathSelection().getSelectedPathway();
+			// this.selectedPath = this.localKit.getPathSelection().getSelectedIndex();
+			if (this.localKit.getPathSelection().getSelected() > 0) {
+				Pathway pathSelected = this.localKit.getPathSelection().getSelectedPathway();
 				for (int i = 0 ;  i < pathSelected.length() ; i++) 
-					{ this.localFrame.getGeneScroll().addString(pathSelected.getGeneName(i)); }
-				this.localFrame.enableWesternPanel(true);
-				this.localFrame.enableSouthPanel(true);
+					{ this.localKit.getGeneScroll().addString(pathSelected.getGeneName(i)); }
+				this.localKit.enableWesternPanel(true);
+				this.localKit.enableSouthPanel(true);
 			} else { ; }
 		}
 	}

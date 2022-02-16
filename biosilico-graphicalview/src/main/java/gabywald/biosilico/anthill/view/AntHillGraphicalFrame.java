@@ -3,6 +3,7 @@ package gabywald.biosilico.anthill.view;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,6 +18,9 @@ import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.view.GeneKitsGBJPanel;
+import gabywald.biosilico.view.genecreator.GeneCreatorAsJPanel;
+import gabywald.biosilico.view.genetickit.GeneticKitAsJPanel;
+import gabywald.biosilico.view.organismkit.OrganismKitAsJPanel;
 import gabywald.global.view.graph.GenericJFrame;
 
 /**
@@ -92,17 +96,14 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		
 		tabbedPane.addTab("Graphic Results", null, this.cPanel, dc.getTitle());
 		
-		JPanel panel1 = new JPanel();
-		tabbedPane.addTab("Organism Kit", null, panel1, "Does nothing");
-		// tabbedPane.setMnemonicAt(1, KeyEvent.VK_1);
+		tabbedPane.addTab("Organism Kit", null, new OrganismKitAsJPanel(), "Organism Creation & modifications");
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_F10);
 		
-		JPanel panel2 = new JPanel();
-		tabbedPane.addTab("Genetic Kit", null, panel2, "Does nothing");
-		// tabbedPane.setMnemonicAt(2, KeyEvent.VK_2);
+		tabbedPane.addTab("Genetic Kit", null, new GeneticKitAsJPanel(), "Manipulate Gene of Organism");
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_F11);
 		
-		JPanel panel3 = new JPanel();
-		tabbedPane.addTab("Gene Creator", null, panel3, "Does nothing");
-		// tabbedPane.setMnemonicAt(3, KeyEvent.VK_3);
+		tabbedPane.addTab("Gene Creator", null, new GeneCreatorAsJPanel(), "Gene Creation");
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_F12);
 		
 		JPanel panel4 = new JPanel();
 		tabbedPane.addTab("World Editor", null, panel4, "Does nothing");

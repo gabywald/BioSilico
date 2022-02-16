@@ -14,7 +14,7 @@ import gabywald.global.view.graph.GenericJScroll;
  * This class defines a Gene List JScroll which can reacts. 
  * <br>Removing button : remove current selected element. 
  * <br>Up / Down buttons : moving current selected element. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class GeneListJScroll extends GenericJScroll
@@ -38,8 +38,8 @@ public class GeneListJScroll extends GenericJScroll
 	
 	/** Helper for constructors (initialization). */
 	private void init() {
-		this.setSize(20, 400);
-		this.setPreferredSize(new Dimension(30, 400));
+		this.setSize(20, 300);
+		this.setPreferredSize(new Dimension(30, 300));
 		this.removeGene	= new JButton("Rem. Gene");
 		this.uppeGene	= new JButton("Up Gene");
 		this.downGene	= new JButton("Down Gene");

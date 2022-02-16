@@ -14,105 +14,105 @@ import gabywald.biosilico.view.GeneJPanel;
  */
 public class GeneCreatorActionListener implements ActionListener {
 	
-	private GeneCreatorJFrame localFrame = null;
+	private GeneCreatorInterface localKit = null;
 	
-	public GeneCreatorActionListener(GeneCreatorJFrame frame) 
-		{ this.localFrame = frame; }
+	public GeneCreatorActionListener(GeneCreatorInterface frame) 
+		{ this.localKit = frame; }
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		Object source = ae.getSource();
-		if (source.equals(this.localFrame.getGeneTypeSelection())) {
+		if (source.equals(this.localKit.getGeneTypeSelection())) {
 
 			// ***** Selection in Gene type menu. 
-			int type = this.localFrame.getGeneTypeSelection().getSelectedIndex();
+			int type = this.localKit.getGeneTypeSelection().getSelectedIndex();
 
-			this.localFrame.getParameterViewer().selectCard(type);
+			this.localKit.getParameterViewer().selectCard(type);
 			if (type > 0) { 
-				((GeneJPanel)this.localFrame.getParameterViewer().getCard(type)).setDefaultValues();
-				this.localFrame.getGeneName().setText("");
-				this.localFrame.getCreateGene().setEnabled(true);
-				this.localFrame.getChangeGene().setEnabled(false);
-				this.localFrame.getMakeNeGene().setEnabled(false);
-				this.localFrame.getGeneSelection().setSelection(0);
+				((GeneJPanel)this.localKit.getParameterViewer().getCard(type)).setDefaultValues();
+				this.localKit.getGeneName().setText("");
+				this.localKit.getCreateGene().setEnabled(true);
+				this.localKit.getChangeGene().setEnabled(false);
+				this.localKit.getMakeNeGene().setEnabled(false);
+				this.localKit.getGeneSelection().setSelection(0);
 			} else { 
-				this.localFrame.getGeneName().setText("");
-				this.localFrame.enableCenterPanel(false);
-				this.localFrame.getGeneSelection().setSelection(0);
+				this.localKit.getGeneName().setText("");
+				this.localKit.enableCenterPanel(false);
+				this.localKit.getGeneSelection().setSelection(0);
 			}
-		} else if (source.equals(this.localFrame.getGeneSelection())) {
+		} else if (source.equals(this.localKit.getGeneSelection())) {
 			// ***** Selection in menu of previous defined genes. 
-			if (this.localFrame.getGeneSelection().getSelected() > 0) {
-				this.localFrame.getGeneName().setText(this.localFrame.getGeneSelection().getSelectedGeneName());
-				int geneType = this.localFrame.getGeneSelection().getSelectedType();
-				this.localFrame.setGeneTypeSelection(geneType);
-				this.localFrame.getParameterViewer().selectCard(geneType);
-				this.localFrame.getParameterViewer().setCompiledParameters
-										(this.localFrame.getGeneSelection().getSelectedGene(),
+			if (this.localKit.getGeneSelection().getSelected() > 0) {
+				this.localKit.getGeneName().setText(this.localKit.getGeneSelection().getSelectedGeneName());
+				int geneType = this.localKit.getGeneSelection().getSelectedType();
+				this.localKit.setGeneTypeSelection(geneType);
+				this.localKit.getParameterViewer().selectCard(geneType);
+				this.localKit.getParameterViewer().setCompiledParameters
+										(this.localKit.getGeneSelection().getSelectedGene(),
 										geneType);
 				// setGeneTypeSelection(geneType);
-				this.localFrame.getCreateGene().setEnabled(false);
-				this.localFrame.getChangeGene().setEnabled(true);
-				this.localFrame.getMakeNeGene().setEnabled(true);
-				this.localFrame.getAddGene2Pathway().setEnabled(true);
+				this.localKit.getCreateGene().setEnabled(false);
+				this.localKit.getChangeGene().setEnabled(true);
+				this.localKit.getMakeNeGene().setEnabled(true);
+				this.localKit.getAddGene2Pathway().setEnabled(true);
 			} else { 
-				this.localFrame.getGeneName().setText("");
-				this.localFrame.enableCenterPanel(false);
-				this.localFrame.getAddGene2Pathway().setEnabled(false);
-				this.localFrame.setGeneTypeSelection(0);
-				this.localFrame.getGeneSelection().setSelection(0);
-				this.localFrame.getParameterViewer().selectCard(0);
+				this.localKit.getGeneName().setText("");
+				this.localKit.enableCenterPanel(false);
+				this.localKit.getAddGene2Pathway().setEnabled(false);
+				this.localKit.setGeneTypeSelection(0);
+				this.localKit.getGeneSelection().setSelection(0);
+				this.localKit.getParameterViewer().selectCard(0);
 			}
-		} else if ( (source.equals(this.localFrame.getCreateGene())) 
-				|| (source.equals(this.localFrame.getMakeNeGene())) ) {
-			if ( (!this.localFrame.getGeneName().getText().equals("")) 
-					&& (!this.localFrame.getGeneName().getText()
-							.equals(this.localFrame.getGeneSelection().getLastGeneName())) ) {
-				String oneMoreGene	= this.localFrame.getParameterViewer().getCompiledParameters(
-										this.localFrame.getGeneName().getText(),
-										this.localFrame.getGeneTypeSelection().getSelectedIndex());
-				this.localFrame.getGeneSelection().addGene(oneMoreGene);
+		} else if ( (source.equals(this.localKit.getCreateGene())) 
+				|| (source.equals(this.localKit.getMakeNeGene())) ) {
+			if ( (!this.localKit.getGeneName().getText().equals("")) 
+					&& (!this.localKit.getGeneName().getText()
+							.equals(this.localKit.getGeneSelection().getLastGeneName())) ) {
+				String oneMoreGene	= this.localKit.getParameterViewer().getCompiledParameters(
+										this.localKit.getGeneName().getText(),
+										this.localKit.getGeneTypeSelection().getSelectedIndex());
+				this.localKit.getGeneSelection().addGene(oneMoreGene);
 
-				this.localFrame.getCreateGene().setEnabled(false);
-				this.localFrame.getChangeGene().setEnabled(true);
-				this.localFrame.getMakeNeGene().setEnabled(true);
+				this.localKit.getCreateGene().setEnabled(false);
+				this.localKit.getChangeGene().setEnabled(true);
+				this.localKit.getMakeNeGene().setEnabled(true);
 			}
-		} else if (source.equals(this.localFrame.getChangeGene())) {
-			String oneMoreGene	= this.localFrame.getParameterViewer().getCompiledParameters(
-									this.localFrame.getGeneName().getText(),
-									this.localFrame.getGeneTypeSelection().getSelectedIndex());
-			this.localFrame.getGeneSelection().setCurrentGene(oneMoreGene);
-		} else if (source.equals(this.localFrame.getDeleteGene())) {
-			int selectedGene = this.localFrame.getBuildingGene().getSelectedIndex();
-			this.localFrame.getBuildingGene().removeCurrentSelection();
-			this.localFrame.getGeneSelection().remGene(selectedGene);
-		} else if (source.equals(this.localFrame.getAddGene2Pathway())) {
+		} else if (source.equals(this.localKit.getChangeGene())) {
+			String oneMoreGene	= this.localKit.getParameterViewer().getCompiledParameters(
+									this.localKit.getGeneName().getText(),
+									this.localKit.getGeneTypeSelection().getSelectedIndex());
+			this.localKit.getGeneSelection().setCurrentGene(oneMoreGene);
+		} else if (source.equals(this.localKit.getDeleteGene())) {
+			int selectedGene = this.localKit.getBuildingGene().getSelectedIndex();
+			this.localKit.getBuildingGene().removeCurrentSelection();
+			this.localKit.getGeneSelection().remGene(selectedGene);
+		} else if (source.equals(this.localKit.getAddGene2Pathway())) {
 			// ******* Adding a Gene to current Pathway. 
-			this.localFrame.getBuildingPathway().addString(this.localFrame.getGeneSelection().getSelectedGeneName());
-			if (this.localFrame.getBuildingPathway().length() > 1) 
-				{ this.localFrame.getCreatePathway().setEnabled(true); }
-		} else if (source.equals(this.localFrame.getCreatePathway())) {
+			this.localKit.getBuildingPathway().addString(this.localKit.getGeneSelection().getSelectedGeneName());
+			if (this.localKit.getBuildingPathway().length() > 1) 
+				{ this.localKit.getCreatePathway().setEnabled(true); }
+		} else if (source.equals(this.localKit.getCreatePathway())) {
 			// ******* Creating+Recording current Pathway. 
-			String pathwayName			= this.localFrame.getPathwayName().getText();
-			List<String> genesNamesList	= this.localFrame.getBuildingPathway().getStringListe();
+			String pathwayName			= this.localKit.getPathwayName().getText();
+			List<String> genesNamesList	= this.localKit.getBuildingPathway().getStringListe();
 			if ( (!pathwayName.equals("")) && (genesNamesList.size() > 1) ) {
 				// ******* Name ; number of genes ; \n[\tgene\n]+ 
 				String compiledPathway = pathwayName + "\t" + genesNamesList.size();
 				
 				for (int i = 0 ; i < genesNamesList.size() ; i++) {
-					String tmpGeneLine = this.localFrame.getGeneSelection().getGeneString
+					String tmpGeneLine = this.localKit.getGeneSelection().getGeneString
 											(genesNamesList.get(i));
 					if (!tmpGeneLine.equals(""))
 						{ compiledPathway += "\t"+tmpGeneLine; }
 				}
-				this.localFrame.getPathSelection().addPathway(compiledPathway);
-				this.localFrame.getPathwayName().setText("");
-				this.localFrame.getBuildingPathway().setStringListe(new ArrayList<String>());
+				this.localKit.getPathSelection().addPathway(compiledPathway);
+				this.localKit.getPathwayName().setText("");
+				this.localKit.getBuildingPathway().setStringListe(new ArrayList<String>());
 			}
 		}
-		this.localFrame.getGeneSelection().initSelection();
-		if (this.localFrame.getBuildingGene() != null) 
-			{ this.localFrame.getBuildingGene().setStringListe(this.localFrame.getGeneSelection().getGeneNames()); }
+		this.localKit.getGeneSelection().initSelection();
+		if (this.localKit.getBuildingGene() != null) 
+			{ this.localKit.getBuildingGene().setStringListe(this.localKit.getGeneSelection().getGeneNames()); }
 		
 	}
 

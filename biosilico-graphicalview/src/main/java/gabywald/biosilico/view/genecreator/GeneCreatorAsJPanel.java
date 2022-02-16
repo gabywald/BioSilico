@@ -7,24 +7,21 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import gabywald.biosilico.view.GeneKitJFrame;
+import gabywald.biosilico.view.GeneKitAsJPanel;
 import gabywald.biosilico.view.GeneKitsGBJPanel;
 import gabywald.biosilico.view.GeneListJScroll;
 import gabywald.biosilico.view.GeneParametersViewer;
 
 /**
  * This class defines a graphical view to create and manipulate Gene's. 
- * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see GeneCreatorActionListener
  */
 @SuppressWarnings("serial")
-public class GeneCreatorJFrame extends GeneKitJFrame implements GeneCreatorInterface {
+public class GeneCreatorAsJPanel extends GeneKitAsJPanel implements GeneCreatorInterface {
 	
 	private GeneCreatorActionListener localActionListener = null;
 	
-	/** Unique instance of this view. */
-	private static GeneCreatorJFrame instance = null;
 	/** JPanel in Center of the JFrame. */
 	private GeneKitsGBJPanel centerPanel;
 	/** To see / read the current Gene's name. */
@@ -42,12 +39,12 @@ public class GeneCreatorJFrame extends GeneKitJFrame implements GeneCreatorInter
 	/** To view  current Pathway "in the way" tobbe added. */
 	private GeneListJScroll buildingPathway;
 	/** Buttons to permit changes and add a pathway.  */
-	private JButton addGene2pathway, createPathWay;
+	private JButton addGene2pathway,createPathWay;
 	/** TO write the name for a new pathway. */
 	private JTextField pathwayName;
 	
 	/** Default constructor. */ 
-	private GeneCreatorJFrame() {
+	public GeneCreatorAsJPanel() {
 		
 		this.localActionListener = new GeneCreatorActionListener( this );
 		super.setActionListener( this.localActionListener );
@@ -59,22 +56,10 @@ public class GeneCreatorJFrame extends GeneKitJFrame implements GeneCreatorInter
 		/** Eastern JPanel */
 		this.initEasternPanel();
 		/** Positions in content of JFrame */
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
-		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
-		this.getContentPane().add(this.easternPanel, BorderLayout.EAST);
-		this.setTitle("Gene Creator");
-		this.setVisible(true);
-	}
-	
-	/**
-	 * To get the current instance of graphical view. 
-	 * @return (GeneCreatorJFrame)
-	 */
-	public static GeneCreatorJFrame getInstance() {
-		if (GeneCreatorJFrame.instance == null) 
-			{ GeneCreatorJFrame.instance = new GeneCreatorJFrame(); }
-		return GeneCreatorJFrame.instance;
+		this.setLayout(new BorderLayout());
+		this.add(this.centerPanel, BorderLayout.CENTER);
+		this.add(this.westernPanel, BorderLayout.WEST);
+		this.add(this.easternPanel, BorderLayout.EAST);
 	}
 	
 	private void initCenterPanel() {

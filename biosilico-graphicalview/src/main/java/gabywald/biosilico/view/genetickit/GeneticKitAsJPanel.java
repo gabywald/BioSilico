@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gabywald.biosilico.view.GeneKitJFrame;
+import gabywald.biosilico.view.GeneKitAsJPanel;
 import gabywald.biosilico.view.GeneKitsGBJPanel;
 import gabywald.biosilico.view.GeneListJScroll;
 import gabywald.biosilico.view.organismkit.OrganismSaveJPanel;
@@ -15,17 +15,14 @@ import gabywald.biosilico.view.organismkit.OrganismSelectJPanel;
 /**
  * Genetic Kit Genuine User Interface (GUI).
  * This class defines manipulation of an organism about its Gene's (add / remove, pathways...). 
- * <br><i>Design-Pattern Singleton. </i>
  * @author Gabriel Chandesris (2009-2010, 2020, 2022)
  * @see GeneticKitActionListener
  */
 @SuppressWarnings("serial")
-public class GeneticKitJFrame extends GeneKitJFrame implements GeneticKitInterface {
+public class GeneticKitAsJPanel extends GeneKitAsJPanel implements GeneticKitInterface {
 	
 	private GeneticKitActionListener localActionListener = null;
 	
-	/** Unique instance of this view. */
-	private static GeneticKitJFrame instance = null;
 	/** North Panel : to open a file or create an agent from scratch. */
 	private OrganismSelectJPanel northPanel;
 	/** Center JPanel : "agent viewer". */
@@ -39,7 +36,7 @@ public class GeneticKitJFrame extends GeneKitJFrame implements GeneticKitInterfa
 	/** Interaction for outputing result (save file || test). */
 	private OrganismSaveJPanel southPanel;
 
-	private GeneticKitJFrame() {
+	public GeneticKitAsJPanel() {
 		
 		this.localActionListener = new GeneticKitActionListener( this );
 		super.setActionListener( this.localActionListener );
@@ -60,12 +57,10 @@ public class GeneticKitJFrame extends GeneKitJFrame implements GeneticKitInterfa
 		this.southPanel.setPathStock(this.pathSelection.getPathStock());
 		this.southPanel.setOrgSelectPanel(this.northPanel);
 		/** Positions in content of JFrame */
-		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
-		this.getContentPane().add(this.northPanel, BorderLayout.NORTH);
-		this.getContentPane().add(this.southPanel, BorderLayout.SOUTH);
-		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
-		this.setTitle("Genetic Kit");
-		this.setVisible(true);
+		this.add(this.westernPanel, BorderLayout.WEST);
+		this.add(this.northPanel, BorderLayout.NORTH);
+		this.add(this.southPanel, BorderLayout.SOUTH);
+		this.add(this.centerPanel, BorderLayout.CENTER);
 	}
 	
 	private void initWesternPanel() {
@@ -119,16 +114,6 @@ public class GeneticKitJFrame extends GeneKitJFrame implements GeneticKitInterfa
 //		more.setBackground(Color.BLACK);
 		
 		this.centerPanel.addBagComponent(new JLabel(" "), 4, 0, 1, 2);
-	}
-	
-	/**
-	 * To get the current instance of graphical view. 
-	 * @return (GeneticKit)
-	 */
-	public static GeneticKitJFrame getInstance() {
-		if (GeneticKitJFrame.instance == null) 
-			{ GeneticKitJFrame.instance = new GeneticKitJFrame(); }
-		return GeneticKitJFrame.instance;
 	}
 	
 	public void enableEasternPanel(boolean b)	{ ; }

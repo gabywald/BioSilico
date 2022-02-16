@@ -97,9 +97,9 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		this.setNameOrganism(name);
 		this.enablePanel(false);
 		/** Enable other elements */
-		if (this.mainFrame != null) { 
-			this.mainFrame.enableNorthernPanel(false);
-			this.mainFrame.enableCenterPanel(true);
+		if (this.getMainEnabler() != null) { 
+			this.getMainEnabler().enableNorthernPanel(false);
+			this.getMainEnabler().enableCenterPanel(true);
 		}
 		
 		String completePathFile =  BioSilicoViewUtils.BASE_ORGANISM_DIR_FILECHOOSER ;
@@ -157,9 +157,9 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		// ***** End Treatment 
 		this.enablePanel(false);
 		// ***** Enable other elements 
-		if (this.mainFrame != null) { 
-			this.mainFrame.enableNorthernPanel(false);
-			this.mainFrame.enableCenterPanel(true);
+		if (this.getMainEnabler() != null) { 
+			this.getMainEnabler().enableNorthernPanel(false);
+			this.getMainEnabler().enableCenterPanel(true);
 		}
 	}
 
