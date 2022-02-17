@@ -79,6 +79,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
 		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
 		
+		this.setSize(1152, 864); 
 		this.setTitle("AntHill Graphical Frame");
 		this.setVisible(true);
 	}

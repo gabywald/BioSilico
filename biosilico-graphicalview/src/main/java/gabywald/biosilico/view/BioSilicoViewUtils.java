@@ -5,22 +5,36 @@ import javax.swing.JFileChooser;
 import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.data.FileOrganism;
 import gabywald.biosilico.data.FilterBioSilico;
-import gabywald.biosilico.view.genetickit.GeneticKitJFrame;
-import gabywald.biosilico.view.organismkit.OrganismSelectJPanel;
+import gabywald.biosilico.model.enums.AgentType;
 import gabywald.global.view.graph.GenericJScroll;
 
 /**
  * 
  * @author Gabriel Chandesris (2022)
  */
-public interface BioSilicoViewUtils {
+public abstract class BioSilicoViewUtils {
 
-	/** This is used by {@link GeneticKitJFrame#agentTypeSelection}. */
-	public static final String agentTypeListe[] = 
-		{ "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
-	/** This is used by {@link OrganismSelectJPanel#actionCreateAgent}. */
-	public static final String agentTypeNameListe[] = 
-		{ "", "SilicoDaemon", "SilicoBacter", "SilicoViridita", "SilicoAnima", "SilicoViria" };
+	/** This is used by {@link gabywald.biosilico.view.genetickit.GeneticKitJFrame#agentTypeSelection}. */
+	public static String agentTypeListe[] = null;
+		// { "Organism", "-Daemon", "-Bacta", "-Viridita", "-Anima", "-Viria" };
+	/** This is used by {@link gabywald.biosilico.view.organismkit.OrganismSelectJPanel#actionCreateAgent}. */
+	public static String agentTypeNameListe[] = null;
+		// { "", "SilicoDaemon", "SilicoBacter", "SilicoViridita", "SilicoAnima", "SilicoViria" };
+	
+	static {
+		int atlength = AgentType.values().length;
+		
+		BioSilicoViewUtils.agentTypeListe = new String[atlength + 1];
+		BioSilicoViewUtils.agentTypeListe[0] = "Organism";
+		for (int i = 0 ; i < atlength ; i++) 
+			{ BioSilicoViewUtils.agentTypeListe[i+1] = "-" + AgentType.getFrom( AgentType.starter + i).getName(); }
+		
+		BioSilicoViewUtils.agentTypeNameListe = new String[atlength + 1];
+		BioSilicoViewUtils.agentTypeNameListe[0] = ""; // Empty String !
+		for (int i = 0 ; i < atlength ; i++) 
+			{ BioSilicoViewUtils.agentTypeNameListe[i+1] = AgentType.PREFIX + AgentType.getFrom( AgentType.starter + i).getName(); }
+		
+	}
 	
 	/** FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME : "src/main/resources" + "biological/data/" */
 	public static final String BASE_ORGANISM_DIR_FILECHOOSER = FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME;

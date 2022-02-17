@@ -10,6 +10,6 @@
 		- MAKE_VIRION (similar as MAKE_GAMET, but with virion part of genome, a selected chromosome to export (?) ) ;  
 		- TRANSPOSITION (move virion genome inside genome of organism ; could delete part of genome (?) ) ... 
 	* New Status : VIRION (929) as EGG or GAMET
-	* Use AgentType : BIOSILICO_VIRIA (939)
+	* Use AgentType : BIOSILICO_VIRIA (944)
 	* Use ObjectType : SMALL_ELT (901)
 	

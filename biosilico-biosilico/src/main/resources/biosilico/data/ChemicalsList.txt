@@ -942,7 +942,7 @@ Daemon	daemon
 Bacta	bacta
 Plant	plant
 Anima	anima
-Virus	virus
+Viria	viria
 (free)	(free)
 (free)	(free)
 (free)	(free)

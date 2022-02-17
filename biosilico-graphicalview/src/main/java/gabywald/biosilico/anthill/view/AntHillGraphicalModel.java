@@ -85,6 +85,9 @@ public class AntHillGraphicalModel {
 		List<Organism> orgs = new ArrayList<>();
 		orgs.add(this.currentAnt);
 		orgs.add(this.currentPlant);
+		
+		// this.currentWCase.getAgentType(type)
+		
 		return orgs;
 	}
 	
