@@ -92,6 +92,10 @@ class GeneGattacaTests {
 		Assertions.assertNotNull( brainExpected );
 		Assertions.assertEquals(BrainGene.class, brainExpected.getClass());
 		
+		GeneGattaca brainError	= GeneGattaca.getInstance( "GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACGCCTTCTTCGCCTTCTTCTTCGCCTTCGCGGT" );
+		Assertions.assertNull( brainError );
+		// Assertions.fail("", GeneGattaca.getInstance( "GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACGCCTTCTTCGCCTTCTTCTTCGCCTTCGCGGT") );
+		
 		for (String sequence : Arrays.asList(	"M024600000000025:00001000100000000010003013000005*", "M024600000000025:00001000100101600410002011529005*", 
 												"M024600000000025:00001000100801600410003011529155*", "M024600000000025:00001000100200400401003013001005*")) {
 			GeneGattaca brainlobeExpected	= GeneGattaca.getInstance( GeneticTranslator.reverseSequenceGattaca( sequence ) );

@@ -8,18 +8,18 @@ import gabywald.global.data.FilterUtils;
  */
 public class FilterBioSilico extends FilterUtils {
 	/** BioSilico Phase II files extension. '.ph2' */
-	public final static String ph2 = "ph2";
+	public final static String ph2 = FilePhaseTwo.DEFAULT_EXTENSION;
 	/** BioSilico Gattaca files extension. '.gat' */
-	public final static String gat = "gat";
+	public final static String gat = FileGattaca.DEFAULT_EXTENSION;
 	/** BioSilico Gattaca files extension (organism). '.gatorg' */
-	public final static String gatorg = "gatorg";
-	/** BioSilico Gattaca files extension (organism). '.gatgen' */
+	public final static String gatorg = FileOrganism.DEFAULT_EXTENSION;
+	/** BioSilico Gattaca files extension (gene (?) ). '.gatgen' */
 	public final static String gatgen = "gatgen";
 	
 	public static final FilterBioSilico FILTER_ORGANISM_ONLY = 
-			new FilterBioSilico("BiSilico Organism Files", FilterBioSilico.gatorg);
+			new FilterBioSilico("BioSilico Organism Files", FilterBioSilico.gatorg);
 	public static final FilterBioSilico FILTER_GENE_ONLY = 
-			new FilterBioSilico("BiSilico Organism Files", FilterBioSilico.gatgen);
+			new FilterBioSilico("BioSilico Organism Files", FilterBioSilico.gatgen);
 
 	/** Default Constructor. (All extensions. )*/
 	public FilterBioSilico() 

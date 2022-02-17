@@ -77,6 +77,7 @@ public class FileGene extends FileBiological {
 			Matcher featuMatch = FileGene.FEATURES.matcher(currentLine);
 			Matcher origiMatch = FileGene.ORIGIN.matcher(currentLine);
 			Matcher endgeMatch = FileGene.ENDGENE.matcher(currentLine);
+			
 			if (locusMatch.matches()) {
 				String locus = locusMatch.group(1);
 				String numPB = locusMatch.group(2);

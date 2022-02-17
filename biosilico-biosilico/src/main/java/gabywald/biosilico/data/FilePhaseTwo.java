@@ -9,49 +9,24 @@ import gabywald.global.data.File;
 
 /**
  * This class for Genomes in Phase II format (genes line by line written with U,B,V,P). 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class FilePhaseTwo extends FileBiological {
 	
+	public static final String DEFAULT_EXTENSION = ".ph2";
+	
+	/** Sequence's instanceS. */
 	private List<Sequence> liste;
 
-	/**
-	 * Constructor with given content. 
-	 * @param content (String)
-	 * @see Fichier#Fichier(String, String)
-	 */
-/**	public FichierPhaseTwo(String content) {
-		super("phase2","no_name");
-		if (FichierPhaseTwo.isPhaseTwo(content)) {
-			this.setValid(true);
-			String tabContent[] = content.split("\n");
-			content = "";
-			for (int i = 0 ; i < tabContent.length ; i++) 
-				{ content += tabContent[i].toUpperCase()+"\n"; } 
-		} else { this.setValid(false); }
-		
-		if (this.isValid()) {
-			this.liste = new SequenceListe();
-			String[] tempo = content.split("\n");
-			String nom = "",sequence = "";
-			for (int i = 0 ; i < tempo.length ; i++) {
-				super.addToChamps(tempo[i]);	
-				nom = "Gene "+i;
-				sequence = tempo[i]; 
-				this.liste.addSequence(new Sequence(nom,sequence));
-			}
-		}
-	}*/
-	
 	/**
 	 * Constructor with given name and content. 
 	 * @param name (String)
 	 * @param content (String)
 	 * @see File#File(String, String)
 	 */
-	public FilePhaseTwo(String name,String content) {
-		super("phase2",name+".ph2");
+	public FilePhaseTwo(String name, String content) {
+		super("phase2", name + FilePhaseTwo.DEFAULT_EXTENSION);
 		if (FilePhaseTwo.isPhaseTwo(content)) {
 			this.setValid(true);
 			String tabContent[] = content.split("\n");

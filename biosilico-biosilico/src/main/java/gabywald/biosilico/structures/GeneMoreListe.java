@@ -18,6 +18,7 @@ import gabywald.global.view.text.Terminal;
  * @author Gabriel Chandesris (2010, 2020)
  * @see Pathway
  * @see gabywald.biosilico.view.GeneParametersViewer
+ * TODO review this class (bug detected when re-recording this file with adding a gene ! not in good place !)
  */
 public class GeneMoreListe implements IStructureRecordFile {
 	/** List of Gene's instances. */
@@ -114,6 +115,7 @@ public class GeneMoreListe implements IStructureRecordFile {
 		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. "); }
 		// ***** GeneGattaca.translation(cute[2], 0) 
 		Gene result = GeneGattaca.getInstance(cute[2]);
+		if (result == null)		{ throw new DataException("Gene not instanciated with '" + cute[2] + "'"); }
 		result.setName(cute[0]);
 		if (result != null)		{ this.addGene(result, Integer.parseInt(cute[1])); }
 		return result;

@@ -28,12 +28,12 @@ public class Brain extends ObservableObject {
 	/** Depth of current Brain. */
 	private int maxDepth;
 
-	/** The maximum height of a Brain. (100) */
-	public static final int MAX_HEIGHT	= 100;
-	/** The maximum width of a Brain.  (100) */
-	public static final int MAX_WIDTH	= 100;
-	/** The maximum depth (3D) of a Brain.  (100) */
-	public static final int MAX_DEPTH	= 100;
+	/** The maximum height of a Brain. (99) */
+	public static final int MAX_HEIGHT	= 99;
+	/** The maximum width of a Brain.  (99) */
+	public static final int MAX_WIDTH	= 99;
+	/** The maximum depth (3D) of a Brain.  (99) */
+	public static final int MAX_DEPTH	= 99;
 	
 	/** The number of iterations on each run. */
 	public static final int ITERATIONS_ON_EACH_RUN = 1000;

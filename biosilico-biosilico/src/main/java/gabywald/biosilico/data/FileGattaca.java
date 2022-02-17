@@ -14,6 +14,9 @@ import gabywald.global.data.File;
 @SuppressWarnings("serial")
 public class FileGattaca extends FileBiological {
 	
+	public static final String DEFAULT_EXTENSION = ".gat";
+	
+	/** Sequence's instanceS. */
 	private List<Sequence> liste;
 
 	/**
@@ -23,7 +26,7 @@ public class FileGattaca extends FileBiological {
 	 * @see File#File(String, String)
 	 */
 	public FileGattaca(String name, String content) {
-		super("gattaca", name + ".gat");
+		super("gattaca", name + FileGattaca.DEFAULT_EXTENSION);
 		if (FileGattaca.isGattaca(content)) {
 			this.setValid(true);
 			String tabContent[] = content.split("\n");

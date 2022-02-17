@@ -103,11 +103,11 @@ public class OrganismSelectJPanel extends GeneKitsGBJPanel {
 		}
 		
 		String completePathFile =  BioSilicoViewUtils.BASE_ORGANISM_DIR_FILECHOOSER ;
-		completePathFile += this.getNameOrganismUnited()+".gatorg";
+		completePathFile += this.getNameOrganismUnited(); // ext => ".gatorg"
 		Organism orga = new Organism();
 		orga.setNameScientific(name);
 		orga.setNameBiosilico(name);
-		this.toLoad = new FileOrganism(completePathFile,orga);
+		this.toLoad = new FileOrganism(completePathFile, orga);
 	}
 
 	/**
