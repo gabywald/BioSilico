@@ -1,6 +1,8 @@
 package gabywald.global.data;
 
 import gabywald.global.exceptions.DataException;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 import gabywald.utilities.others.PropertiesLoader;
 
 import java.io.BufferedReader;
@@ -9,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -180,7 +184,7 @@ public class File extends Directory {
 				{ contenuFichier += line+"\n"; }
 		} 
 		catch (FileNotFoundException e) 
-			{ contenuFichier = filename+" : File Not Found"; } 
+			{ contenuFichier = filename + " : File Not Found"; } 
 		finally { 
 			if (br != null) { br.close(); } 
 		}
@@ -204,7 +208,7 @@ public class File extends Directory {
 				{ instance.addToChamps(line); }
 		} 
 		catch (FileNotFoundException e) 
-			{ instance.addToChamps(filename+" : File Not Found"); } 
+			{ instance.addToChamps(filename + " : File Not Found"); } 
 		finally { 
 			if (br != null) { br.close(); } 
 		}
@@ -267,10 +271,24 @@ public class File extends Directory {
 		return sb.toString();
 	}
 
+//	/**
+//	 * To delete the file : . 
+//	 * @throws DataException
+//	 */
+//	public void deleteFile() throws DataException 
+//		{  }
+	
 	/**
 	 * To delete the file : overload of superClass about pathName. 
 	 * @throws DataException
 	 */
-	public void deleteFile() throws DataException 
-		{ Directory.deleteDirComplete(new File( this.pathName + this.fileName )); }
+	public void deleteFile() throws DataException {
+		Logger.printlnLog(LoggerLevel.LL_WARNING, this.delete() + ""); 
+		try { Files.delete(Paths.get(this.pathName + this.fileName)); }
+		catch (IOException e) { 
+			e.printStackTrace();
+		}
+		// NOTE to delete complete dir of path, use superclass : 
+		// Directory.deleteDirComplete(new File( this.pathName + this.fileName ));
+	}
 }

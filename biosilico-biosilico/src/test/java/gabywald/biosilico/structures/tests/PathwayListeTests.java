@@ -19,7 +19,7 @@ class PathwayListeTests {
 		Assertions.assertEquals(0, pl.length());
 	}
 	
-	// TODO complete these tests !! GeneMoreListTests
+	// TODO complete these tests !! PathwayListeTests
 
 //	@Test
 //	void testGetPathway() {

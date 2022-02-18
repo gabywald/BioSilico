@@ -9,16 +9,18 @@ import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.interfaces.IStructureRecordFile;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
-import gabywald.global.view.text.Terminal;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * Aim of this class is to provide a Liste of Pathways and read / record them in a File. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see Pathway
  */
 public class PathwayListe implements IStructureRecordFile {
 	/** Location of the default file to record PathwayListe instance. */
-	public static final String PATH_LIST_FILE = FileBiological.DEFAULT_PATH_NAME + "definedPathWays.txt";
+	public static final String PATH_LIST_FILE = 
+			FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME + "definedPathWays.txt";
 	/** File for Pathway records. */
 	private File recordingPath;
 	/** List of Pathway's instances. */
@@ -157,31 +159,54 @@ public class PathwayListe implements IStructureRecordFile {
 			if (currentPath != null) { this.addPathway(currentPath); }
 		} 
 		catch (IOException e)	{ e.printStackTrace(); } 
-		catch (DataException e)	{ Terminal.ecrireStringln(e.getRequest()); }
+		catch (DataException e) {
+			e.printStackTrace();
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest());
+		}
 	}
 	
 	private void printPathwayFile() {
 		try { this.recordingPath.printFile(); } 
-		catch (DataException e) { Terminal.ecrireStringln(e.getRequest()); }
+		catch (DataException e) {
+			e.printStackTrace();
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest());
+		}
 	}
 	
+	@Override
 	public void readFile()	{ this.readPathWayFile(); }
 	
+	@Override
 	public void printFile()	{ this.printPathwayFile(); }
 
+	@Override
 	public void addToChamps(String line) { 
 		this.recordingPath.addToChamps(line);
 		this.printPathwayFile(); 
 	}
 	
+	@Override
 	public void setChamps(int index,String line) { 
 		this.recordingPath.setChamps(index, line);
 		this.printPathwayFile(); 
 	}
 
+	@Override
 	public void removeChamps(int i) { 
 		this.recordingPath.removeChamps(i); 
 		this.printPathwayFile(); 
 	}
 
+	@Override
+	public void deleteFile() {
+		if (this.recordingPath != null) {
+			try 
+				{ this.recordingPath.deleteFile(); } 
+			catch (DataException e) {
+				e.printStackTrace();
+				Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest());
+			}
+		}
+		
+	}
 }
