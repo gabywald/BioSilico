@@ -9,7 +9,7 @@ import gabywald.biosilico.model.enums.StateType;
 
 /**
  * To give a specific table of variables and tools to use it. 
- * @author Gabriel Chandesris (2009-2010, 2020)
+ * @author Gabriel Chandesris (2009-2010, 2020, 2022)
  */
 public class Chemicals implements IChemicals {
 	
@@ -68,15 +68,19 @@ public class Chemicals implements IChemicals {
 	 * @param i (int) variable to regulate. 
 	 */
 	private void regulate(int i) {
-		if (this.vars.get(i).intValue() < 0)	{ this.vars.set(i, 0); }
-		if (this.vars.get(i).intValue() > 999)	{ this.vars.set(i, 999); }
+		if (this.vars.get(i).intValue() < ChemicalsHelper.CHEMICAL_VALUE_MIN)
+			{ this.vars.set(i, ChemicalsHelper.CHEMICAL_VALUE_MIN); }
+		if (this.vars.get(i).intValue() > ChemicalsHelper.CHEMICAL_VALUE_MAX)
+			{ this.vars.set(i, ChemicalsHelper.CHEMICAL_VALUE_MAX); }
 	}
 	
 	public String toString() {
 		StringBuilder sbResult = new StringBuilder();
 		for (int i = 0 ; i < this.vars.size() ; i++) {
 			if (this.vars.get(i).intValue() != 0) {
-				sbResult.append("\t").append(i).append("\t").append(this.vars.get( i ).intValue()).append("\t").append(ChemicalsHelper.getChemicalNames().get(i));
+				sbResult.append("\t").append(i)
+						.append("\t").append(this.vars.get( i ).intValue())
+						.append("\t").append(ChemicalsHelper.getChemicalNames().get(i));
 				if ( (this.vars.get(i).intValue() > ChemicalsHelper.CHEMICAL_STRICT_CHEM) 
 						&& ( ! StateType.numericList().contains(this.vars.get(i).intValue()) ) ) {
 					sbResult.append(" => ").append(ChemicalsHelper.getChemicalNames().get( this.vars.get(i).intValue() ));

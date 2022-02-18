@@ -19,6 +19,7 @@ import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
+import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.AgentType;
@@ -73,11 +74,15 @@ class AntBuildingGenomeComplete {
 		// ***** Building Brain and BrainLobe Genes
 		chrBrain.setName( "Brain and Connections" );
 		// *** "Basic" Brain ... 
-		chrBrain.addGene( bgb.heigth( 100 ).width( 100 ).depth( 1 ).more( 0 )
-			.name( "Brain Gene 100*100*1*0" )
-			.mutate( true ).duplicate( true ).delete( true ).activ( true )
-			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
-			.build() );
+		StringBuilder sbBrainGene = new StringBuilder();
+		sbBrainGene	.append("Brain Gene ")	.append( Brain.MAX_HEIGHT ).append("*")
+											.append( Brain.MAX_WIDTH ).append("*")
+											.append( 1 ).append("*").append( 0 );
+		chrBrain.addGene( bgb	.heigth( Brain.MAX_HEIGHT ).width( Brain.MAX_WIDTH ).depth( 1 ).more( 0 )
+								.name( sbBrainGene.toString() )
+								.mutate( true ).duplicate( true ).delete( true ).activ( true )
+								.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
+								.build() );
 		// *** Input neurons : one group of 27 neurons => pheromones_00 directions ! (9 used for new)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
@@ -155,7 +160,7 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 20 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( selectedDirs.size() + 3 ).posx( 90 ).posy( 0 )
+				.heigth( 1 ).width( selectedDirs.size() + 3 ).posx( 89 ).posy( 0 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD) + EAT(FOOD) + DEATH" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -166,7 +171,7 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 50 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( 10 ).posx( 90 ).posy( 50 )
+				.heigth( 1 ).width( 10 ).posx( 89 ).posy( 50 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 2 : other decisions / Decision Lobe" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -261,7 +266,7 @@ class AntBuildingGenomeComplete {
 			// AntEmissionChemicals aec = AntEmissionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
 			chrEmitReceiv.addGene( erb
 					.variable( dw.getIndex() ).threshold( 5 ).ioput( 20 )
-					.posx( 90 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
+					.posx( 89 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
 					.receptor( false ).internal( true )
 				.name( nameFirstPartERoutput + dw.getName() )
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -273,7 +278,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYMOVEAWAY = selectedDirs.size() + 0;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.MOVE_AWAY.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYMOVEAWAY )
+				.posx( 89 ).posy( outputPosYMOVEAWAY )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.MOVE_AWAY.getName() )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -283,7 +288,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYGETFOOD = selectedDirs.size() + 1;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.GET.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYGETFOOD )
+				.posx( 89 ).posy( outputPosYGETFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.GET.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -293,7 +298,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYDROPFOOD = selectedDirs.size() + 2;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.DROP.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYDROPFOOD )
+				.posx( 89 ).posy( outputPosYDROPFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.DROP.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -303,7 +308,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYEATFOOD = selectedDirs.size() + 3;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.EAT.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYEATFOOD )
+				.posx( 89 ).posy( outputPosYEATFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.EAT.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )

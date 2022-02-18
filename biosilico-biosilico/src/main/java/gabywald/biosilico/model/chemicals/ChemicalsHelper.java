@@ -13,10 +13,10 @@ import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
- * 
- * @author Gabriel Chandesris (2020)
+ * Helper for Chemicals. 
+ * @author Gabriel Chandesris (2020, 2022)
  */
-public class ChemicalsHelper {
+public abstract class ChemicalsHelper {
 	
 	/** Location of the file containing the list of chemicals (abbrev. and names). */
 	private static final String CHEMICAL_LIST_FILE				= FileBiological.DEFAULT_PATH_NAME + "ChemicalsList.txt";
@@ -28,7 +28,11 @@ public class ChemicalsHelper {
 	/** Upper limit of "strictly defined chemical", Also "Special Chemical" for BiochemicalReaction. */
 	public static final int CHEMICAL_STRICT_CHEM				= 600;
 	
-	/** to avoid instanciation. */
+	public static final int CHEMICAL_VALUE_MIN					= 0;
+	
+	public static final int CHEMICAL_VALUE_MAX					= 999;
+	
+	/** Private Constructor to avoid instanciation (via inheritance). */
 	private ChemicalsHelper() { ; }
 
 	/** List of abbreviations of chemicals. */

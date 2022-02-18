@@ -16,9 +16,9 @@ class BrainGeneTests {
 
 	@Test
 	void testConstruction001() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-											0, 999, 0, 50,
-											1, 1, 1, 0);
+		BrainGene bGene = new BrainGene(false, false, false, false, 
+										0, 999, 0, 50,
+										1, 1, 1, 0);
 
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -45,9 +45,9 @@ class BrainGeneTests {
 
 	@Test
 	void testConstruction002() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-				0, 999, 0, 50,
-				0, 0, 0, 0);
+		BrainGene bGene = new BrainGene(false, false, false, false, 
+										0, 999, 0, 50,
+										0, 0, 0, 0);
 
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -74,9 +74,9 @@ class BrainGeneTests {
 
 	@Test
 	void testConstruction003() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-				0, 999, 0, 50,
-				Brain.MAX_HEIGHT, Brain.MAX_WIDTH, Brain.MAX_DEPTH, 0);
+		BrainGene bGene = new BrainGene(false, false, false, false, 
+										0, 999, 0, 50,
+										Brain.MAX_HEIGHT, Brain.MAX_WIDTH, Brain.MAX_DEPTH, 0);
 
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -103,9 +103,9 @@ class BrainGeneTests {
 
 	@Test
 	void testConstruction004() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-				0, 999, 0, 50,
-				Brain.MAX_HEIGHT / 2, Brain.MAX_WIDTH / 2, Brain.MAX_DEPTH / 2, 0);
+		BrainGene bGene = new BrainGene(false, false, false, false, 
+										0, 999, 0, 50,
+										Brain.MAX_HEIGHT / 2, Brain.MAX_WIDTH / 2, Brain.MAX_DEPTH / 2, 0);
 
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -132,9 +132,9 @@ class BrainGeneTests {
 
 	@Test
 	void testConstruction005() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-				0, 999, 0, 50,
-				Brain.MAX_HEIGHT, Brain.MAX_WIDTH, Brain.MAX_DEPTH, 0);
+		BrainGene bGene = new BrainGene(false, false, false, false, 
+										0, 999, 0, 50,
+										Brain.MAX_HEIGHT, Brain.MAX_WIDTH, Brain.MAX_DEPTH, 0);
 
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -162,7 +162,8 @@ class BrainGeneTests {
 	@Test
 	void testConstruction006() {
 		BrainGeneBuilder bgb	= new BrainGeneBuilder();
-		BrainGene bGene			= bgb.heigth(99).width(99).depth(1).activ(true).agemax(0).mutation(50).build();
+		BrainGene bGene			= bgb	.heigth( Brain.MAX_HEIGHT ).width( Brain.MAX_WIDTH )
+										.depth(1).activ(true).agemax(0).mutation(50).build();
 		
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -173,8 +174,8 @@ class BrainGeneTests {
 		Assertions.assertEquals(bGene.getSexAct(), 0);
 		Assertions.assertEquals(bGene.getMutationRate(), 50);
 
-		Assertions.assertEquals(bGene.getBrainHeight(), 99);
-		Assertions.assertEquals(bGene.getBrainWidth(), 99);
+		Assertions.assertEquals(bGene.getBrainHeight(), Brain.MAX_HEIGHT );
+		Assertions.assertEquals(bGene.getBrainWidth(), Brain.MAX_WIDTH );
 		Assertions.assertEquals(bGene.getBrainDepth(), 1);
 		Assertions.assertEquals(bGene.getBrainMore(), 0);
 		
@@ -183,7 +184,8 @@ class BrainGeneTests {
 	@Test
 	void testConstruction007() {
 		BrainGeneBuilder bgb	= new BrainGeneBuilder();
-		BrainGene bGene			= bgb.heigth( 100 ).width( 100 ).depth(1).activ(true).agemax(0).mutation(50).build();
+		BrainGene bGene			= bgb	.heigth( Brain.MAX_HEIGHT + 1 ).width( Brain.MAX_WIDTH + 1 )
+										.depth(1).activ(true).agemax(0).mutation(50).build();
 		
 		Assertions.assertFalse(bGene.canMutate());
 		Assertions.assertFalse(bGene.canDuplicate());
@@ -194,9 +196,53 @@ class BrainGeneTests {
 		Assertions.assertEquals(bGene.getSexAct(), 0);
 		Assertions.assertEquals(bGene.getMutationRate(), 50);
 
-		Assertions.assertEquals(bGene.getBrainHeight(), 99);
-		Assertions.assertEquals(bGene.getBrainWidth(), 99);
+		Assertions.assertEquals(bGene.getBrainHeight(), Brain.MAX_HEIGHT );
+		Assertions.assertEquals(bGene.getBrainWidth(), Brain.MAX_WIDTH );
 		Assertions.assertEquals(bGene.getBrainDepth(), 1);
+		Assertions.assertEquals(bGene.getBrainMore(), 0);
+		
+	}
+	
+	@Test
+	void testConstruction008() {
+		BrainGeneBuilder bgb	= new BrainGeneBuilder();
+		BrainGene bGene			= bgb	.heigth( Brain.MAX_HEIGHT ).width( Brain.MAX_WIDTH )
+										.depth( Brain.MAX_DEPTH ).activ(true).agemax(0).mutation(50).build();
+		
+		Assertions.assertFalse(bGene.canMutate());
+		Assertions.assertFalse(bGene.canDuplicate());
+		Assertions.assertFalse(bGene.canDelete());
+		Assertions.assertTrue(bGene.isActiv());
+		Assertions.assertEquals(bGene.getAgeMin(), 0);
+		Assertions.assertEquals(bGene.getAgeMax(), 0);
+		Assertions.assertEquals(bGene.getSexAct(), 0);
+		Assertions.assertEquals(bGene.getMutationRate(), 50);
+
+		Assertions.assertEquals(bGene.getBrainHeight(), Brain.MAX_HEIGHT );
+		Assertions.assertEquals(bGene.getBrainWidth(), Brain.MAX_WIDTH );
+		Assertions.assertEquals(bGene.getBrainDepth(), Brain.MAX_DEPTH );
+		Assertions.assertEquals(bGene.getBrainMore(), 0);
+		
+	}
+	
+	@Test
+	void testConstruction009() {
+		BrainGeneBuilder bgb	= new BrainGeneBuilder();
+		BrainGene bGene			= bgb	.heigth( Brain.MAX_HEIGHT + 1 ).width( Brain.MAX_WIDTH + 1 )
+										.depth( Brain.MAX_DEPTH + 1 ).activ(true).agemax(0).mutation(50).build();
+		
+		Assertions.assertFalse(bGene.canMutate());
+		Assertions.assertFalse(bGene.canDuplicate());
+		Assertions.assertFalse(bGene.canDelete());
+		Assertions.assertTrue(bGene.isActiv());
+		Assertions.assertEquals(bGene.getAgeMin(), 0);
+		Assertions.assertEquals(bGene.getAgeMax(), 0);
+		Assertions.assertEquals(bGene.getSexAct(), 0);
+		Assertions.assertEquals(bGene.getMutationRate(), 50);
+
+		Assertions.assertEquals(bGene.getBrainHeight(), Brain.MAX_HEIGHT );
+		Assertions.assertEquals(bGene.getBrainWidth(), Brain.MAX_WIDTH );
+		Assertions.assertEquals(bGene.getBrainDepth(), Brain.MAX_DEPTH );
 		Assertions.assertEquals(bGene.getBrainMore(), 0);
 		
 	}

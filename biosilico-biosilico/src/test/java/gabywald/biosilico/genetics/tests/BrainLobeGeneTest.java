@@ -3,7 +3,6 @@ package gabywald.biosilico.genetics.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.biosilico.genetics.BrainGene;
 import gabywald.biosilico.genetics.BrainLobeGene;
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
@@ -587,23 +586,27 @@ class BrainLobeGeneTest {
 	
 	@Test
 	void testCloneEquals() {
-		BrainGene bGene = new BrainGene(	false, false, false, false, 
-											0, 999, 0, 50,
-											1, 1, 1, 0);
+		BrainLobeGene blGene = new BrainLobeGene(	false, false, false, false, 
+													0, 999, 0, 50,
+													0, 0, 0, 0, 0, 
+													0, false, 0, false, 
+													0, 0, 0, 0, false);
 
-		Gene bGeneClone = bGene.clone();
+		Gene bGeneClone = blGene.clone();
 		Assertions.assertNotNull( bGeneClone );
-		BrainGene bbGeneClone = (BrainGene) bGeneClone;
+		BrainLobeGene bbGeneClone = (BrainLobeGene) bGeneClone;
 		Assertions.assertNotNull( bbGeneClone );
 		
-		Assertions.assertTrue( bGene.equals( bGeneClone ) );
-		Assertions.assertTrue( bGene.equals( bbGeneClone ) );
+		Assertions.assertTrue( blGene.equals( bGeneClone ) );
+		Assertions.assertTrue( blGene.equals( bbGeneClone ) );
 		
-		BrainGene bGeneOther = new BrainGene(	false, false, false, false, 
-												0, 999, 0, 50,
-												1, 1, 1, 1);
+		BrainLobeGene blGeneOther = new BrainLobeGene(	false, false, false, false, 
+														0, 999, 0, 50,
+														0, 0, 0, 0, 0, 
+														0, false, 0, false, 
+														0, 0, 0, 0, true);
 		
-		Assertions.assertFalse( bGene.equals( bGeneOther ) );
+		Assertions.assertFalse( blGene.equals( blGeneOther ) );
 	}
 
 }
