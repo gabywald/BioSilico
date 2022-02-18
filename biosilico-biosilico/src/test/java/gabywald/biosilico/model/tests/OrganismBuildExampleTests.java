@@ -835,8 +835,8 @@ class OrganismBuildExampleTests {
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(
 				new BrainGene(	false, false, false, false, 
-						0, 0, 0, 0,
-						100, 200, 0, 0));
+								0, 0, 0, 0,
+								100, 200, 0, 0));
 		Organism test		= new Organism(basicGenome);
 		
 		test.execution(null);
@@ -855,8 +855,8 @@ class OrganismBuildExampleTests {
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(
 				new BrainGene(	false, false, false, true, 
-						0, 0, 0, 0,
-						100, 200, 0, 0));
+								0, 0, 0, 0,
+								100, 200, 0, 0));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertNull(test.getBrain());
@@ -869,8 +869,8 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
-		Assertions.assertEquals(100, test.getBrain().getWidth() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getWidth() );
 	}
 
 	@Test
@@ -879,8 +879,8 @@ class OrganismBuildExampleTests {
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(
 				new BrainGene(	false, false, false, true, 
-						0, 0, 0, 0,
-						100, 50, 0, 0));
+								0, 0, 0, 0,
+								100, 50, 0, 0));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertNull(test.getBrain());
@@ -894,7 +894,7 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
 		Assertions.assertEquals( 50, test.getBrain().getWidth() );
 	}
 
@@ -904,8 +904,8 @@ class OrganismBuildExampleTests {
 		Chromosome basicGenome = new Chromosome();
 		basicGenome.addGene(
 				new BrainGene(	false, false, false, true, 
-						0, 0, 0, 0,
-						100, 100, 0, 0));
+								0, 0, 0, 0,
+								100, 100, 0, 0));
 		Organism test		= new Organism(basicGenome);
 
 		Assertions.assertNull(test.getBrain());
@@ -919,8 +919,45 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
-		Assertions.assertEquals(100, test.getBrain().getWidth() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getWidth() );
+	}
+	
+	@Test
+	void testBrainGene04bis() {
+
+		Chromosome basicGenome = new Chromosome();
+		basicGenome.addGene(
+				new BrainGene(	false, false, false, true, 
+								0, 0, 0, 0,
+								Brain.MAX_HEIGHT, Brain.MAX_WIDTH, 0, 0));
+		Organism test		= new Organism(basicGenome);
+
+		Assertions.assertNull(test.getBrain());
+
+		test.execution(null);
+		test.cyclePlusPlus();
+
+		Assertions.assertEquals(1, basicGenome.length());
+		Assertions.assertEquals(1, test.getGenome().size());
+		Assertions.assertEquals(1, test.getGenome().get(0).length());
+
+		Assertions.assertNotNull(test.getBrain());
+
+		Assertions.assertEquals( Brain.MAX_HEIGHT, test.getBrain().getHeight() );
+		Assertions.assertEquals( Brain.MAX_WIDTH,  test.getBrain().getWidth() );
+		Assertions.assertEquals( 0,  test.getBrain().getDepth() );
+		
+		BrainGeneBuilder bgb	= new BrainGeneBuilder();
+		BrainGene brainGene		= bgb.heigth(Brain.MAX_HEIGHT).width(Brain.MAX_WIDTH).depth( 1 ).activ(true)
+									 .agemin(0).agemax(0).mutation(0).build();
+		
+		Assertions.assertEquals( Brain.MAX_HEIGHT, brainGene.getBrainHeight() );
+		Assertions.assertEquals( Brain.MAX_WIDTH,  brainGene.getBrainWidth() );
+		Assertions.assertEquals( 1,  brainGene.getBrainDepth() );
+		Assertions.assertEquals( 0,  brainGene.getAgeMin() );
+		Assertions.assertEquals( 0,  brainGene.getAgeMax() );
+		Assertions.assertEquals( 0,  brainGene.getMutationRate() );
 	}
 
 	@Test
@@ -930,7 +967,7 @@ class OrganismBuildExampleTests {
 
 		BrainGeneBuilder bgb	= new BrainGeneBuilder();
 		BrainGene brainGene		= bgb.heigth(100).width(100).depth(1).activ(true)
-				.agemin(0).agemax(0).mutation(0).build();
+									 .agemin(0).agemax(0).mutation(0).build();
 
 		basicGenome.addGene( brainGene );
 
@@ -954,8 +991,8 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
-		Assertions.assertEquals(100, test.getBrain().getWidth() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getWidth() );
 
 		Brain testBrain = test.getBrain();
 		IntStream.range(0, 50).forEach( j -> {
@@ -1015,8 +1052,8 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
-		Assertions.assertEquals(100, test.getBrain().getWidth() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getWidth() );
 
 		Brain testBrain = test.getBrain();
 		IntStream.range(0, 50).forEach( j -> {
@@ -1108,8 +1145,8 @@ class OrganismBuildExampleTests {
 
 		Assertions.assertNotNull(test.getBrain());
 
-		Assertions.assertEquals(100, test.getBrain().getHeight() );
-		Assertions.assertEquals(100, test.getBrain().getWidth() );
+		Assertions.assertEquals( 99, test.getBrain().getHeight() );
+		Assertions.assertEquals( 99, test.getBrain().getWidth() );
 
 		Brain testBrain = test.getBrain();
 		IntStream.range(0, 50).forEach( j -> {

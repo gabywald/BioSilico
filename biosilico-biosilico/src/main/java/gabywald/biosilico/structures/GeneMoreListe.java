@@ -112,10 +112,10 @@ public class GeneMoreListe implements IStructureRecordFile {
 	public Gene addLineOfGeneMoreListeFile(String line) throws DataException {
 		String[] cute = line.split("\t");
 		// ***** name ; type ; code ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others... 
-		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. "); }
+		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. {" + line + "}"); }
 		// ***** GeneGattaca.translation(cute[2], 0) 
 		Gene result = GeneGattaca.getInstance(cute[2]);
-		if (result == null)		{ throw new DataException("Gene not instanciated with '" + cute[2] + "'"); }
+		if (result == null)		{ throw new DataException("Gene not instanciated with '" + cute[2] + "' {" + line + "}"); }
 		result.setName(cute[0]);
 		if (result != null)		{ this.addGene(result, Integer.parseInt(cute[1])); }
 		return result;

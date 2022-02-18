@@ -24,6 +24,29 @@ class GeneTests {
 		});
 		return sbToReturn.toString();
 	}
+	
+	@Test
+	void testObtainValue() {
+		Assertions.assertEquals(  0, Gene.obtainValue(0, 99,   0));
+		Assertions.assertEquals( 99, Gene.obtainValue(0, 99,  99));
+		Assertions.assertEquals( 99, Gene.obtainValue(0, 99, 100));
+		Assertions.assertEquals(  0, Gene.obtainValue(0, 99,  -5));
+		Assertions.assertEquals( 99, Gene.obtainValue(0, 99, 200));
+	}
+	
+	@Test
+	void testconvert0to999() {
+		Assertions.assertEquals("000", Gene.convert0to999( 0 ));
+		Assertions.assertEquals("001", Gene.convert0to999( 1 ));
+		Assertions.assertEquals("099", Gene.convert0to999( 99 ));
+	}
+	
+	@Test
+	void testconvert0to99() {
+		Assertions.assertEquals("00", Gene.convert0to99( 0 ));
+		Assertions.assertEquals("01", Gene.convert0to99( 1 ));
+		Assertions.assertEquals("99", Gene.convert0to99( 99 ));
+	}
 
 	@Test
 	void testLoadGene() {
