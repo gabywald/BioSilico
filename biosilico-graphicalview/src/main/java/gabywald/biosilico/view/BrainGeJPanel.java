@@ -29,10 +29,10 @@ public class BrainGeJPanel extends GeneJPanel {
 		this.depthLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.moreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.heightField	= new JTextField("00");
-		this.widthField		= new JTextField("00");
-		this.depthField		= new JTextField("01");
-		this.moreField		= new JTextField("01");
+		this.heightField	= new JTextField("99"); // TODO JScroll 00-99, seletion to "99" ?
+		this.widthField		= new JTextField("99"); // TODO JScroll 00-99, seletion to "99" ?
+		this.depthField		= new JTextField("01"); // TODO JScroll 00-99, seletion to "01" ?
+		this.moreField		= new JTextField("01"); // TODO JScroll 00-99, seletion to "01" ?
 		
 		this.addBagComponent(this.heightLabel, 0, 7);
 		this.addBagComponent(this.heightField, 1, 7);

@@ -6,13 +6,14 @@ import java.util.List;
 
 import gabywald.biosilico.interfaces.IPosition;
 import gabywald.biosilico.model.environment.PositionBuilder;
+import gabywald.global.structures.ObservableObject;
 
 /**
  * This class describes a neurone and its properties
  * (activation, threshold, rest state, and inputing connections). 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
-public class Neuron {
+public class Neuron extends ObservableObject {
 	/** Rest state of the neuron. */
 	private int restState;
 	/** Activation level of the neuron. */
@@ -166,6 +167,8 @@ public class Neuron {
 				{ this.activity += this.weights.get(i).intValue(); }
 		}
 		this.activity = (this.activity < 0) ? 0 : (this.activity > 999) ? 999 : this.activity;
+		
+		this.change();
 	}
 	
 	/**

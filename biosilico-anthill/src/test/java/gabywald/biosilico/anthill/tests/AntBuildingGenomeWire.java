@@ -12,13 +12,11 @@ import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
 import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
-import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.InstinctBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
-import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
@@ -58,7 +56,6 @@ class AntBuildingGenomeWire {
 															SomeChemicals.PHEROMONE_04, SomeChemicals.PHEROMONE_05, SomeChemicals.PHEROMONE_06, 
 															SomeChemicals.PHEROMONE_07, SomeChemicals.PHEROMONE_08, SomeChemicals.PHEROMONE_09 );
 		
-		BrainGeneBuilder bgb				= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb			= new BrainLobeGeneBuilder();
 		EmitterReceptorBuilder erb			= new EmitterReceptorBuilder();
 		InitialConcentrationBuilder icb		= new InitialConcentrationBuilder();
@@ -69,16 +66,8 @@ class AntBuildingGenomeWire {
 		// ***** ***** ***** ***** ***** 
 		// ***** Building Brain and BrainLobe Genes
 		chrBrain.setName( "Brain and Connections" );
-		StringBuilder sbBrainGene = new StringBuilder();
-		sbBrainGene	.append("Brain Gene ")	.append( Brain.MAX_HEIGHT ).append("*")
-											.append( Brain.MAX_WIDTH ).append("*")
-											.append( 1 ).append("*").append( 0 );
-		chrBrain.addGene( bgb	.heigth( Brain.MAX_HEIGHT ).width( Brain.MAX_WIDTH ).depth( 1 ).more( 0 )
-								.name( sbBrainGene.toString() )
-								.mutate( true ).duplicate( true ).delete( true ).activ( true )
-								.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
-								.build() );
-		// *** Input neurons : one group of 27 neurons => pheromones_00 directions ! (9 used for new)
+		chrBrain.addGene( AntBuildingGenomeDataHelper.buildBasicBrainGene() );
+		// *** Input neurons : one group of 27 neurons => pheromones_00 directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )
@@ -89,7 +78,7 @@ class AntBuildingGenomeWire {
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
 			.build() );
-		// *** Input neurons : one group of 27 neurons => pheromones_01 directions ! (9 used for new)
+		// *** Input neurons : one group of 27 neurons => pheromones_01 directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )
@@ -100,7 +89,7 @@ class AntBuildingGenomeWire {
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 25 )
 			.build() );
-		// *** Input neurons : one group of 27 neurons => FOOD directions ! (9 used for new)
+		// *** Input neurons : one group of 27 neurons => FOOD directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )

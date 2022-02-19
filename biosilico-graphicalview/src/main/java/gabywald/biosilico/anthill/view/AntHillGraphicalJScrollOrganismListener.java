@@ -24,6 +24,8 @@ public class AntHillGraphicalJScrollOrganismListener implements ListSelectionLis
 			
 			System.out.println( orga.getBioSilicoName() + " (" + orga.getCommonName() + ")" );
 			
+			this.localFrame.setBrainPanelSelectionWith( orga );
+			
 			// TODO treat selection of organism to be viewed correctly (in tabbed panel ?!)
 			
 		} else { 

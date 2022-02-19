@@ -39,7 +39,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	/** Panel for plot evolution of Chemicals... */
 	private ChartPanel cPanel = null;
 	/** JPanel in Center of the JFrame. */
-	private JPanel centerPanel;
+	private JPanel centerPanel, brainEditorPanel;
 	private GeneKitsGBJPanel westernPanel;
 	
 	private AntHillGraphicalJScroll<Organism> organismsJScroll		= null;
@@ -106,11 +106,14 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		tabbedPane.addTab("Gene Creator", null, new GeneCreatorAsJPanel(), "Gene Creation");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_F12);
 		
-		JPanel panel4 = new JPanel();
-		tabbedPane.addTab("World Editor", null, panel4, "Does nothing");
+		this.brainEditorPanel = new JPanel();
+		tabbedPane.addTab("Brain Editor", null, this.brainEditorPanel, "Brain Activity Visualization");
 		
-		JPanel panel5 = new JPanel();
-		tabbedPane.addTab("World Case Editor", null, panel5, "Does nothing");
+		JPanel panel2 = new JPanel();
+		tabbedPane.addTab("World Editor", null, panel2, "Does nothing");
+		
+		JPanel panel3 = new JPanel();
+		tabbedPane.addTab("World Case Editor", null, panel3, "Does nothing");
 		
 		this.centerPanel.add(tabbedPane, BorderLayout.CENTER);
 		
@@ -220,5 +223,10 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 
 	public AntHillGraphicalJScroll<Organism> getOrganismJScroll() 
 		{ return this.organismsJScroll; }
+
+	public void setBrainPanelSelectionWith(Organism orga) {
+		this.brainEditorPanel.removeAll();
+		this.brainEditorPanel.add(new AntHillGraphicalBrainJPanel(orga));
+	}
 
 }
