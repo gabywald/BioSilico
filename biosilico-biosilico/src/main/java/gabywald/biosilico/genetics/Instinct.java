@@ -8,6 +8,8 @@ import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This type of gene instanciates connections between Neurons in the Brain. 
@@ -105,6 +107,12 @@ public class Instinct extends GeneGattaca {
 			if (this.check) { control = output.getConnectPosition(input); }
 			if ( ( (input != null) && (output != null) ) && (control == -1) ) 
 				{ output.addConnection(input, this.weight * (this.isPositive ? +1 : -1 ) ); }
+			else {
+				// ***** Some log for information !!
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() input: {"   + input + "} ("  + this.inputPosX + ", " + this.inputPosY + ")");
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() output: {"  + output + "} (" + this.outputPosX + ", " + this.outputPosY + ")");
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() control: {" + control + "}");
+			}
 			// ***** if already connected and checked : set weight */
 			if (control != -1) { output.getWeights().set(control, this.weight * (this.isPositive ? +1 : -1 ) ); }
 		} // END "if (orga.getChemicals().getVariable(this.variable) >= this.threshold)"

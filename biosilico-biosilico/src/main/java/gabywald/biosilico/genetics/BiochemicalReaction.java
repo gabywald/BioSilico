@@ -114,7 +114,7 @@ public class BiochemicalReaction extends GeneGattaca {
 		IChemicals vars = orga.getChemicals();
 		// ***** Avoiding the reaction from nothing. 
 		if ( (this.Achem == 0) && (this.Bchem == 0) )
-			{ throw new GeneException("Chemical A and B are 0. "); }
+			{ return; } // { throw new GeneException("Chemical A and B are 0. "); }
 		// ***** Need to get enough A and B. One can be 'default var'. 
 		boolean reaction = this.testABchemicalsNeutral(vars);
 		int local_cycle = 0;
@@ -130,7 +130,6 @@ public class BiochemicalReaction extends GeneGattaca {
 			local_cycle++;
 			reaction = this.testABchemicalsNeutral(vars);
 		} // end "while (reaction && (this.KminVmax > local_cycle) )"
-		
 	}
 	
 	/**

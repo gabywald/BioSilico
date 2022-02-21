@@ -767,8 +767,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -804,8 +804,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -841,8 +841,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -878,8 +878,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -915,8 +915,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -955,8 +955,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -996,8 +996,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1036,8 +1036,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1074,8 +1074,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1112,8 +1112,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1208,8 +1208,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1245,8 +1245,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1282,8 +1282,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1319,8 +1319,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1356,8 +1356,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1396,8 +1396,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1437,8 +1437,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1477,8 +1477,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1515,8 +1515,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1553,8 +1553,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1651,8 +1651,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 90, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals(  5, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1688,8 +1688,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 80, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1725,8 +1725,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 70, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 15, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1762,8 +1762,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 60, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1799,8 +1799,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 50, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1839,8 +1839,8 @@ class AntPlantLoadingTests {
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 40, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1880,8 +1880,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 30, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1920,8 +1920,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 20, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1958,8 +1958,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals( 10, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));
@@ -1996,8 +1996,8 @@ class AntPlantLoadingTests {
 		Assertions.assertTrue( testAnt.getBrain().getNeuronAt( 0,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  0).ckActivated() );
 		Assertions.assertFalse( testAnt.getBrain().getNeuronAt( 3,  1).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90,  0).ckActivated() );
-		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(90, 10).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89,  0).ckActivated() );
+		Assertions.assertFalse( testAnt.getBrain().getNeuronAt(89, 10).ckActivated() );
 		
 		Assertions.assertEquals(  0, wc.getChemicals().getVariable(SomeChemicals.DIOXYGEN.getIndex()));
 		Assertions.assertEquals( 25, wc.getChemicals().getVariable(SomeChemicals.CARBON_DIOXYDE.getIndex()));

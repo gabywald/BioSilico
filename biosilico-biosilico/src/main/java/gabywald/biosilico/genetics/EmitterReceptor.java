@@ -6,6 +6,8 @@ import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This type of Gene is to input data from chemicals to brain
@@ -92,6 +94,12 @@ public class EmitterReceptor extends GeneGattaca {
 	 */
 	@Override
 	protected void exec(Organism orga) throws GeneException {
+		// ***** Some log for information !!
+		if (orga.getBrain() == null) {
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "EmitterReceptor exec() : Brain is null. ");
+		} else if (orga.getBrain().getNeuronAt(this.posx, this.posy) == null) {
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "EmitterReceptor exec() : no neuron at ("  + this.posx + ", " + this.posy + ") {" + this.getName() + "}");
+		}
 		// Work only if a brain and a neuron are on position
 		if ( (orga.getBrain() == null) 
 				|| (orga.getBrain().getNeuronAt(this.posx, this.posy) == null) ) 

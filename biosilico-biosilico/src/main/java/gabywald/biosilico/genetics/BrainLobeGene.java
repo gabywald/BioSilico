@@ -10,6 +10,8 @@ import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene.  <br /> 
@@ -123,8 +125,13 @@ public class BrainLobeGene extends GeneGattaca {
 
 	@Override
 	protected void exec(Organism orga) throws GeneException {
-		Brain brain = orga.getBrain();
-		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
+		// ***** Some log for information !!
+		if (orga.getBrain() == null) {
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : Brain is null. ");
+		}
+		
+		// ***** Exception if organism has no brain instance !
+		if (orga.getBrain() == null) { throw new GeneException("Organism has no Brain. "); }
 		
 		// ***** Re-load brain lobes on each execution. Nothing if error. 
 		// XXX NOTE just initiate on first execution of this gene ??
@@ -132,12 +139,20 @@ public class BrainLobeGene extends GeneGattaca {
 									this.dendriticmin, this.dendriticmax, 
 									this.prox, this.repr, this.repy, this.wta);
 		try {
-			brain.setLobe(	this.height, 	this.width, 
-							this.posx, 		this.posy, 
-							sample, 		this.replace);
+			orga.getBrain().setLobe(this.height, 	this.width, 
+									this.posx, 		this.posy, 
+									sample, 		this.replace);
 		} 
-		catch (BrainLengthException e)		{ /** e.printStackTrace() */; } 
-		catch (BrainLobeReplaceException e)	{ /** e.printStackTrace() */; }
+		catch (BrainLengthException e)		{ 
+			// ***** Some log for information !!
+			/** e.printStackTrace() */;
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : BrainLengthException : {" + e.getMessage() + "}. ");
+		} 
+		catch (BrainLobeReplaceException e)	{ 
+			// ***** Some log for information !!
+			/** e.printStackTrace() */;
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : BrainLobeReplaceException : {" + e.getMessage() + "}. ");
+		} 
 	}
 	
 	public int getRestState()		{ return this.rest; }

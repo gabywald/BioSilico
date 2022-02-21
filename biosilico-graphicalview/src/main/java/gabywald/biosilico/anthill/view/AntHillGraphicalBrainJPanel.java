@@ -73,7 +73,8 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 			if (this.localNeuron != null) {
 				// ToolTipText
 				StringBuilder sbPositionToolTipTXT = new StringBuilder();
-				sbPositionToolTipTXT.append("x : ").append(this.localNeuron.getPosition().getPosX()).append( "\t" )
+				sbPositionToolTipTXT.append("x : ").append(this.localNeuron.getPosition().getPosX())
+									.append( "    " )
 									.append("y : ").append(this.localNeuron.getPosition().getPosY());
 				this.setToolTipText( sbPositionToolTipTXT.toString() );
 				// Observation

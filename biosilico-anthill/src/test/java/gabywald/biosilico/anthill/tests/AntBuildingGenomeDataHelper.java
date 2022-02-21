@@ -16,6 +16,7 @@ public abstract class AntBuildingGenomeDataHelper {
 	/** At 2020-2022, is (1). */
 	private static final int BRAIN_DEPTH	=  1;
 
+	public static final int BRAIN_LOBE_OUTPUT	= 10;
 	
 	/**
 	 * To build "Basic" Brain ... 

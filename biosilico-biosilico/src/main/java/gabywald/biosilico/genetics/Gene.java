@@ -4,6 +4,8 @@ import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IGeneMutation;
 import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.Organism;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This class define a generic gene.<br>
@@ -71,7 +73,11 @@ public abstract class Gene implements Cloneable, IGeneMutation, INamedElement {
 			if ( (this.sex <= 0) || (this.sex == orga.getSex()) ) {
 				// Execute current gene, can be excepted (nothing happened). 
 				try { this.exec(orga); } 
-				catch (GeneException e) { ; }
+				catch (GeneException e) { 
+					// ***** Some log for information !!
+					/** e.printStackTrace() */;
+					Logger.printlnLog(LoggerLevel.LL_WARNING, "Gene execution() : GeneException : {" + e.getMessage() + "}. ");
+				} 
 			}
 		}
 	}

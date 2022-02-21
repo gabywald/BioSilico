@@ -148,7 +148,8 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 20 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( selectedDirs.size() + 3 ).posx( 89 ).posy( 0 )
+				.heigth( 1 ).width( selectedDirs.size() + AntBuildingGenomeDataHelper.BRAIN_LOBE_OUTPUT )
+				.posx( 89 ).posy( 0 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD) + EAT(FOOD) + DEATH" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -159,7 +160,8 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 50 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( 10 ).posx( 89 ).posy( 50 )
+				.heigth( 1 ).width( AntBuildingGenomeDataHelper.BRAIN_LOBE_OUTPUT )
+				.posx( 89 ).posy( 50 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 2 : other decisions / Decision Lobe" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -292,7 +294,7 @@ class AntBuildingGenomeComplete {
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
 			.build() );
-		// ER DROP FOOD ... 
+		// ER EAT FOOD ... 
 		final int outputPosYEATFOOD = selectedDirs.size() + 3;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.EAT.getIndex() ).threshold( 10 ).ioput( 10 )
@@ -318,10 +320,10 @@ class AntBuildingGenomeComplete {
 				int neuronYIndex = dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection;
 				chrInstinct.addGene( igb
 					.inputPosX( i ).inputPosY( neuronYIndex )
-					.outputPosX( 90 ).outputPosY( neuronYIndex )
+					.outputPosX( 89 ).outputPosY( neuronYIndex )
 					.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 					.threshold( 5 ).check( false ).positiv( true )
-					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (90, " + neuronYIndex + ") " 
+					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (89, " + neuronYIndex + ") " 
 								+ dw.getName() + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 						.mutate( true ).duplicate( true ).delete( true ).activ( true )
 						.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -331,10 +333,10 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for MOVE_AWAY
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( SomeChemicals.PHEROMONE_00.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone )
-				.outputPosX( 90 ).outputPosY( outputPosYMOVEAWAY )
+				.outputPosX( 89 ).outputPosY( outputPosYMOVEAWAY )
 				.weight(  5 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 0 + ", " + 0 + ") to (90, " + outputPosYMOVEAWAY + ") " 
+				.name( "Instinct (" + 0 + ", " + 0 + ") to (89, " + outputPosYMOVEAWAY + ") " 
 							+ "INT PHER01 => MOVE_AWAY" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -345,10 +347,10 @@ class AntBuildingGenomeComplete {
 				int neuronYIndex = dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection;
 				chrInstinct.addGene( igb
 					.inputPosX( i ).inputPosY( neuronYIndex )
-					.outputPosX( 90 ).outputPosY( outputPosYMOVEAWAY )
+					.outputPosX( 89 ).outputPosY( outputPosYMOVEAWAY )
 					.weight( 1 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 					.threshold( 5 ).check( false ).positiv( false )
-					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (90, " + outputPosYMOVEAWAY + ") " 
+					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (89, " + outputPosYMOVEAWAY + ") " 
 								+ dw.getName() + " => MOVE_AWAY [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 						.mutate( true ).duplicate( true ).delete( true ).activ( true )
 						.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -358,10 +360,10 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for GET(FOOD) : if FOOD in CURRENT
 		chrInstinct.addGene( igb
 				.inputPosX( 0 ).inputPosY( 0 )
-				.outputPosX( 90 ).outputPosY( outputPosYGETFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYGETFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 0 + ", " + 0 + ") to (90, " + outputPosYGETFOOD + ") " 
+				.name( "Instinct (" + 0 + ", " + 0 + ") to (89, " + outputPosYGETFOOD + ") " 
 							+ "GET(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -369,20 +371,20 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for DROP(FOOD) : HAS(FOOD) + if PHEROMONE_01 is detected enough
 		chrInstinct.addGene( igb
 				.inputPosX( 1 ).inputPosY( 1 )
-				.outputPosX( 90 ).outputPosY( outputPosYDROPFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYDROPFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 1 + ", " + 1 + ") to (90, " + outputPosYDROPFOOD + ") " 
+				.name( "Instinct (" + 1 + ", " + 1 + ") to (89, " + outputPosYDROPFOOD + ") " 
 							+ "LLL PHER01 => DROP(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 					.build() );
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone )
-				.outputPosX( 90 ).outputPosY( outputPosYDROPFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYDROPFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 3 + ", " + (SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone) + ") to (90, " + outputPosYDROPFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone) + ") to (89, " + outputPosYDROPFOOD + ") " 
 							+ "INT PHER01 => HAS(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -390,20 +392,20 @@ class AntBuildingGenomeComplete {
 		
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( allPheromones.size() + 0 )
-				.outputPosX( 90 ).outputPosY( outputPosYEATFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYEATFOOD )
 				.weight( 1 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( false )
-				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 0) + ") to (90, " + outputPosYEATFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 0) + ") to (89, " + outputPosYEATFOOD + ") " 
 							+ SomeChemicals.GLUCOSE.getName() + " => EAT(FOOD) [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 					.build() );
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( allPheromones.size() + 1 )
-				.outputPosX( 90 ).outputPosY( outputPosYEATFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYEATFOOD )
 				.weight( 1 ).variable( SomeChemicals.FRUCTOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( false )
-				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 1) + ") to (90, " + outputPosYEATFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 1) + ") to (89, " + outputPosYEATFOOD + ") " 
 							+ SomeChemicals.FRUCTOSE.getName() + " => EAT(FOOD) [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -419,8 +421,8 @@ class AntBuildingGenomeComplete {
 					.indicator( dw.getIndex() ) 				// to be detected
 					.threshold( 10 )							// detection
 					.attribute( dw.getIndex() ) 				// where to go !
-					.varia( 0 ).value( 0 )		// varia && value are irrelevant here !
-					.script( DecisionType.MOVE_TO.getIndex() )	// What to do !
+					.varia( 0 ).value( 0 )								// varia && value are irrelevant here !
+					.script( DecisionType.MOVE_TO.getIndex() )			// What to do !
 				.name( "StimulusDecisionGene_MOVETO_" + dw.getName() )
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
 				.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
@@ -430,8 +432,8 @@ class AntBuildingGenomeComplete {
 		// Decision MOVE_AWAY
 		chrSDdecision.addGene( sdgb.perception( false ).object( true ) 
 				.indicator( DecisionType.MOVE_AWAY.getIndex() ) // to be detected
-				.threshold( 0 ).attribute( 0 ).varia( 0 ).value( 0 )			// attribute && varia && value are irrelevant here !
-				.script( DecisionType.MOVE_AWAY.getIndex() )	// What to do !
+				.threshold( 0 ).attribute( 0 ).varia( 0 ).value( 0 )		// attribute && varia && value are irrelevant here !
+				.script( DecisionType.MOVE_AWAY.getIndex() )				// What to do !
 			.name( "StimulusDecisionGene_MOVEAWAY" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )

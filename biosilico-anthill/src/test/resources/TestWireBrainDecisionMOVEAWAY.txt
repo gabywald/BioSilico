@@ -30,7 +30,7 @@ GENOME
 		Brain Lobe Gene Data Input DW Ph_01	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTCGCCTTCTTCTTTTCCTTCTTCTTCTTCTTCTTCTTCTTCTTCGCCTTCTTCTTTAGCTTCGCTAATGGCTTCGCCTTCTTTTCGGT
 		Brain Lobe Gene Data Input DW FOOD 	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTCGCCTTCTTCTTTTCCTTCTTCTTCTTCTTCTTCTTCTTCTTCGCCTTCTTCTTTAGCTTCGCTAATGGCTTTAACTTCTTTTCGGT
 		Brain Lobe Gene Data Input Pheromones	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTCGCCTTCTTCTTTAACTTCTTCTTCTTCTTCTTCTTCTTCTTCGCCTTCTTCTTTAGCTTCGCCGCTGACTTTAGCTTCTTTTCGGT
-		Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD)	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTTAACTTCTTCGCCTTCTTCTTTTCCTTCTTGCCCTTCTTTAACGCCTTCTTCTTTAACTTCGCCGCTAAGATGCCCTTCTTTTCGGT
+		Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD)	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTTAACTTCTTCGCCTTCTTCTTTTCCTTCTTGCCCTTCTTTAACGCCTTCTTCTTTAACTTCGCCGCGCCGATGCCCTTCTTTTCGGT
 		Brain Lobe Gene Data Output 2 : other decisions / Decision Lobe	GGACTTTAATCTTGACTTCTTCTTCTTCTTCTTCTTCTTCTTTAATTCGTACTTCTTCTTCTTTTCCTTCTTCGCCTTCTTCTTTTCCTTCTTGCCCTTCTTTAACGCCTTCTTCTTTAACTTCGCCGCCTTGATGCCTTCCTTTTCGGT
 	chr1	EmitterReceptor's input / output
 		ER receptor input 01atLLL FORCE	GGACTTTAATCTTGACTTCTTCTTGCCGCCGCCCTTCTTCTTTAATTCGTATGGTAGCTTCTTGCCGCCCGCCTTCTTCTTCGCCTTCGCCTTTAAGGT
@@ -181,16 +181,16 @@ BRAIN
 	0	10	0 (false)	2	[03, 13]	0:0 (0)	0	false	0	false	16
 	0	10	0 (false)	2	[03, 14]	0:0 (0)	0	false	0	false	16
 	0	10	0 (false)	2	[03, 15]	0:0 (0)	0	false	0	false	16
-	0	20	0 (false)	10	[89, 00]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 01]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 02]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 03]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 04]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 05]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 06]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 07]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 08]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 09]	5:9 (28)	28	false	0	true	12
+	0	20	0 (false)	10	[89, 00]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 01]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 02]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 03]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 04]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 05]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 06]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 07]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 08]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 09]	5:9 (28)	28	false	0	true	19
 	BackLink[03, 00]***5
 	BackLink[00, 00]***-1
 	BackLink[00, 08]***-1
@@ -219,8 +219,15 @@ BRAIN
 	BackLink[02, 05]***-1
 	BackLink[02, 06]***-1
 	BackLink[02, 07]***-1
-	0	20	0 (false)	10	[89, 10]	5:9 (0)	0	false	0	true	12
-	0	20	0 (false)	10	[89, 11]	5:9 (0)	0	false	0	true	12
+	0	20	0 (false)	10	[89, 10]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 11]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 12]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 13]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 14]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 15]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 16]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 17]	5:9 (0)	0	false	0	true	19
+	0	20	0 (false)	10	[89, 18]	5:9 (0)	0	false	0	true	19
 	0	50	0 (false)	10	[89, 50]	5:9 (0)	0	false	0	true	10
 	0	50	0 (false)	10	[89, 51]	5:9 (0)	0	false	0	true	10
 	0	50	0 (false)	10	[89, 52]	5:9 (0)	0	false	0	true	10

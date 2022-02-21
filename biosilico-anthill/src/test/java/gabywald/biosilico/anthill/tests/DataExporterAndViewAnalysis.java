@@ -437,7 +437,8 @@ STEP [51][51]
 		});
 		
 		/*
-STEP [255][255]
+*****
+STEP [255][999]
 	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
@@ -449,24 +450,22 @@ STEP [255][255]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
-	0	35	<NONE00>
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
-	180	25	DiOxygen
-	330	25	Starch (Amidon)
-	332	25	Glycogen
-	391	95	heat energy
-	951	255	aging
+	181	45	Carbon DiOxid
+	182	525	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+	951	999	aging => <NONEXX>
 	952	942	agentype => plant
 	953	912	typeof => agent
-	954	922	status => embryo
+	954	928	status => dead
 *****
 	180	100	DiOxygen
-	181	50	Carbon DiOxid
-	182	100	DiHydrogen Monoxid (Water / Eau)
-	390	150	solar energy
-	391	160	heat energy
+	181	5	Carbon DiOxid
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
 *****
-
 		 */
 		// 5*BASE_COMPUTATION+1
 		Assertions.assertEquals(999, testAnt.getChemicals().getVariable(StateType.AGING.getIndex()) );
@@ -616,6 +615,7 @@ STEP [255][255]
 		/*
 *****
 STEP [255][255]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -626,10 +626,10 @@ STEP [255][255]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	255	aging
@@ -812,6 +812,7 @@ STEP [255][255]
 		/*
 *****
 STEP [255][255]
+	0	35	<NONE00>
 	169	25	Glucose(G6)
 	180	25	DiOxygen
 	330	25	Starch (Amidon)
@@ -822,10 +823,10 @@ STEP [255][255]
 	953	912	typeof => agent
 	954	921	status => egg
 *****
+	0	999	<NONE00> => <NONEXX>
 	169	25	Glucose(G6)
 	181	45	Carbon DiOxid
 	182	25	DiHydrogen Monoxid (Water / Eau)
-	330	25	Starch (Amidon)
 	390	5	solar energy
 	391	65	heat energy
 	951	255	aging
