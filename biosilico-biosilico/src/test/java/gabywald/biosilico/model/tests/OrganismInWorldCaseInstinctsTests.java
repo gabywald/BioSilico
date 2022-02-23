@@ -82,8 +82,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -177,8 +176,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -294,8 +292,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -457,8 +454,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -620,8 +616,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -789,8 +784,7 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		

@@ -1,4 +1,4 @@
-package gabywald.biosilico.model.tests;
+package gabywald.biosilico.model.utils.agents;
 
 import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Organism;
@@ -17,7 +17,12 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  */
 public class TestObjectFoodEgg extends Organism {
 	
+	public static final String COMMON_BIOSILICO_NAME	= "TestObjectFoodEgg";
+	
 	public TestObjectFoodEgg() {
+		// this.setName( TestObjectFoodEgg.COMMON_BIOSILICO_NAME );
+		this.setNameBiosilico( TestObjectFoodEgg.COMMON_BIOSILICO_NAME );
+		this.setNameCommon( TestObjectFoodEgg.COMMON_BIOSILICO_NAME );
 		this.setAgentType(AgentType.BIOSILICO_VIRIDITA);
 		this.setObjectType(ObjectType.FOOD);
 		this.setOrganismStatus(StatusType.EGG);

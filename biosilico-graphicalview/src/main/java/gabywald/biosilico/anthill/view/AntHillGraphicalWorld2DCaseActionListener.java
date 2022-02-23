@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import gabywald.biosilico.model.utils.agents.BlackHole;
 import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.EnergySource;
+import gabywald.biosilico.model.utils.agents.TestObjectFoodEgg;
 
 /**
  * 
@@ -23,6 +24,9 @@ public class AntHillGraphicalWorld2DCaseActionListener implements ActionListener
 		if (ae.getSource().equals(this.localPanel.getApplyButton())) {
 			if (this.localPanel.getCurrentWorldCase() != null) {
 				/** Only change presence of any "*Box" element ! */
+				
+				// NOTE TODO reworking this part with lambda generalisation ? [readability][maintain]
+				
 				/** Removal cases. */
 				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) > 0) 
 						&& ( ! this.localPanel.getEnergySourceBox().isSelected()) ) 
@@ -35,6 +39,12 @@ public class AntHillGraphicalWorld2DCaseActionListener implements ActionListener
 				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) > 0) 
 						&& ( ! this.localPanel.getCondensatorBox().isSelected()) ) 
 					{ this.localPanel.getCurrentWorldCase().remAgent( this.localPanel.getCurrentWorldCase().getAgentWithName( Condensator.COMMON_BIOSILICO_NAME )); }
+				
+				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( TestObjectFoodEgg.COMMON_BIOSILICO_NAME ) > 0) 
+						&& ( ! this.localPanel.getCondensatorBox().isSelected()) ) 
+					{ this.localPanel.getCurrentWorldCase().remAgent( this.localPanel.getCurrentWorldCase().getAgentWithName( TestObjectFoodEgg.COMMON_BIOSILICO_NAME )); }
+				
+				
 				/** Adding cases. */
 				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) == 0) 
 						&& (this.localPanel.getEnergySourceBox().isSelected()) ) 
@@ -46,7 +56,11 @@ public class AntHillGraphicalWorld2DCaseActionListener implements ActionListener
 				
 				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) == 0) 
 						&& (this.localPanel.getCondensatorBox().isSelected()) ) 
-					{ this.localPanel.getCurrentWorldCase().addAgent( new Condensator() ); }				
+					{ this.localPanel.getCurrentWorldCase().addAgent( new Condensator() ); }
+				
+				if ( (this.localPanel.getCurrentWorldCase().hasAgentWithName( TestObjectFoodEgg.COMMON_BIOSILICO_NAME ) == 0) 
+						&& (this.localPanel.getTestEggFoodBox().isSelected()) ) 
+					{ this.localPanel.getCurrentWorldCase().addAgent( new TestObjectFoodEgg() ); }
 				/** Only change presence of any "*Box" element ! */
 			}
 		}

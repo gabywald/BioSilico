@@ -29,7 +29,7 @@ import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
-import gabywald.biosilico.model.tests.TestObjectFoodEgg;
+import gabywald.biosilico.model.utils.agents.TestObjectFoodEgg;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -502,7 +502,7 @@ class AntBuildingGenomeWire {
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(3, 3);
+		World2D w		= new World2D(3, 3);
 		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		

@@ -11,6 +11,7 @@ import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.utils.agents.BlackHole;
 import gabywald.biosilico.model.utils.agents.Condensator;
 import gabywald.biosilico.model.utils.agents.EnergySource;
+import gabywald.biosilico.model.utils.agents.TestObjectFoodEgg;
 import gabywald.biosilico.view.GeneKitsGBJPanel;
 
 /**
@@ -20,7 +21,7 @@ import gabywald.biosilico.view.GeneKitsGBJPanel;
 @SuppressWarnings("serial")
 public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 	/** Some CheckBoxe's. */
-	private JCheckBox energySourceBox, blackHoleBox, condensatorBox;
+	private JCheckBox energySourceBox, blackHoleBox, condensatorBox, testEggFoodBox;
 	/** Some Label's. */
 	private JLabel worldNameLabel, worldCaseNameLabel, worldCasePosLabel;
 	/** Some TextField's. */
@@ -32,12 +33,13 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 	
 	
 	public AntHillGraphicalWorld2DCaseJPanel() {
-		this.setSize(100, 150);
-		this.setPreferredSize(new Dimension(100, 150));
+		this.setSize(100, 170);
+		this.setPreferredSize(new Dimension(100, 170));
 		
 		this.energySourceBox	= new JCheckBox("Energy Source", true);
 		this.blackHoleBox		= new JCheckBox("Black Hole", true);
 		this.condensatorBox		= new JCheckBox("Condensator", false);
+		this.testEggFoodBox		= new JCheckBox("Test Food Egg", false);
 		
 		this.worldNameLabel		= new JLabel("World : ");
 		this.worldCaseNameLabel	= new JLabel("World Case : ");
@@ -61,8 +63,9 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		this.addBagComponent(this.energySourceBox,		 0, 3, 3);
 		this.addBagComponent(this.blackHoleBox,			 0, 4, 3);
 		this.addBagComponent(this.condensatorBox,		 0, 5, 3);
+		this.addBagComponent(this.testEggFoodBox,		 0, 6, 3);
 		
-		this.addBagComponent(this.applyButton,			 0, 6, 3);
+		this.addBagComponent(this.applyButton,			 0, 7, 3);
 		
 		this.setEnabled(false);
 		
@@ -83,6 +86,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		this.energySourceBox.setEnabled( b );
 		this.blackHoleBox.setEnabled( b );
 		this.condensatorBox.setEnabled( b );
+		this.testEggFoodBox.setEnabled( b );
 		
 		this.applyButton.setEnabled( b );
 	}
@@ -98,6 +102,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		this.energySourceBox.setSelected( true );
 		this.blackHoleBox.setSelected( true );
 		this.condensatorBox.setSelected( false );
+		this.testEggFoodBox.setSelected( false );
 	}
 
 	public void setCurrentWorldCase(World2DCase element) {
@@ -111,6 +116,7 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		this.energySourceBox.setSelected( element.hasAgentWithName( EnergySource.COMMON_BIOSILICO_NAME ) > 0 );
 		this.blackHoleBox.setSelected( element.hasAgentWithName( BlackHole.COMMON_BIOSILICO_NAME ) > 0 );
 		this.condensatorBox.setSelected( element.hasAgentWithName( Condensator.COMMON_BIOSILICO_NAME ) > 0 );
+		this.testEggFoodBox.setSelected( element.hasAgentWithName( TestObjectFoodEgg.COMMON_BIOSILICO_NAME ) > 0 );
 	}
 	
 	public JButton getApplyButton() 
@@ -127,5 +133,8 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 	
 	public JCheckBox getCondensatorBox() 
 		{ return this.condensatorBox; }
+	
+	public JCheckBox getTestEggFoodBox() 
+		{ return this.testEggFoodBox; }
 	
 }

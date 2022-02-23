@@ -30,7 +30,7 @@ import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.biosilico.model.reproduction.ReproductionHelper;
-import gabywald.biosilico.model.tests.TestObjectFoodEgg;
+import gabywald.biosilico.model.utils.agents.TestObjectFoodEgg;
 import gabywald.global.data.StringUtils;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;

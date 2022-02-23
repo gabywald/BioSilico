@@ -61,7 +61,10 @@ public class UtilAgent extends Agent {
 		});
 	}
 	
-	/** To Set nams of utilitaries Agents. */
+	/**
+	 * To set names of utilitaries Agents (BioSilico and Common Names). 
+	 * @param name (String)
+	 */
 	protected void setName(String name) {
 		this.setNameBiosilico( name );
 		this.setNameCommon( name );

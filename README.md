@@ -1,14 +1,14 @@
 # BioSilico
 
-Some ideas about Artificial Life, Creatures (game series) and Neural Networks. Rare review to make this working with Maven / Java 8 / in a GitHub Repository ! (i.e. some file reading in relative path). 
+Some ideas about Artificial Life, Creatures (game series) and Neural Networks. Rare review to make this working with Maven / Java 8 / in a GitHub Repository ! (i.e. some file reading in relative path, readability, organisation of ideas). 
 
 Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2012 (and before then) ; ideas I didn't continue for times spent reasons and I wish to continue (year 2020). 
 
 Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Sim City, Sim Earth, Sim Life, Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
 
-Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020). 
+Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020, and some after that). 
 
-More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020]
+More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020] On this part and topic, more developments and tests done from September 2021 to [February 2022]. 
 
 ## NOTE For Dev Configuration
   - Eclipse 2020
@@ -290,9 +290,9 @@ Main idea is is to translate / reverse-translate from a defined alphabet to 'dna
 
 Some tests on neural networks. 
 
-### 'biosilico-graphicalview' : 
+### 'biosilico-graphicalview' : Visualisation of Modelisation / simulation
 
-Graphical viewsfor modelisation and simulation using BioSilico (Core) using Java Swing.  
+Graphical views for modelisation and simulation using BioSilico (Core) using Java Swing.  
 
 ### 'biosilico-tests' : 
 
