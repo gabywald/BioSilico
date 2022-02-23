@@ -1,12 +1,12 @@
-package gabywald.biosilico.anthill.view;
+package gabywald.biosilico.anthill.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.anthill.Ant;
 import gabywald.biosilico.anthill.Plant;
-import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
+import gabywald.biosilico.anthill.view.AntHillGraphicalRunner;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.model.enums.StateType;

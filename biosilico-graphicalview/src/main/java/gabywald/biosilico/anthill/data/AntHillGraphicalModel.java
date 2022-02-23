@@ -1,8 +1,8 @@
-package gabywald.biosilico.anthill.view;
+package gabywald.biosilico.anthill.data;
 
 import java.util.List;
 
-import gabywald.biosilico.anthill.data.DataCollector;
+import gabywald.biosilico.anthill.view.AntHillGraphicalRunner;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.environment.World2D;

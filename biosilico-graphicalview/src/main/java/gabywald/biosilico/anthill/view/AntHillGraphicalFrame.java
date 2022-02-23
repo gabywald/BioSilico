@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import org.jfree.chart.ChartPanel;
 
+import gabywald.biosilico.anthill.data.AntHillGraphicalModel;
 import gabywald.biosilico.anthill.data.DataCollector;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.environment.World2DCase;

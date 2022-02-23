@@ -1,4 +1,4 @@
-package gabywald.biosilico.anthill.view;
+package gabywald.biosilico.anthill.data;
 
 import java.util.ArrayList;
 import java.util.List;

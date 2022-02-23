@@ -1,8 +1,8 @@
 package gabywald.biosilico.anthill.launcher;
 
+import gabywald.biosilico.anthill.data.AntHillGraphicalModel;
+import gabywald.biosilico.anthill.data.AntHillGraphicalModelBuilder;
 import gabywald.biosilico.anthill.view.AntHillGraphicalFrame;
-import gabywald.biosilico.anthill.view.AntHillGraphicalModel;
-import gabywald.biosilico.anthill.view.AntHillGraphicalModelBuilder;
 
 /**
  * Launcher of AntHill (Graphical) View. 
