@@ -2,6 +2,7 @@ package gabywald.biosilico.anthill.launcher;
 
 import gabywald.biosilico.anthill.view.AntHillGraphicalFrame;
 import gabywald.biosilico.anthill.view.AntHillGraphicalModel;
+import gabywald.biosilico.anthill.view.AntHillGraphicalModelBuilder;
 
 /**
  * Launcher of AntHill (Graphical) View. 
@@ -30,7 +31,7 @@ public class AntHillGraphicalLauncher {
 	public AntHillGraphicalFrame getView()			{ return this.localView; }
 	
 	public void setModel(AntHillGraphicalModel model)	{ this.localModel = model; }
-	public AntHillGraphicalModel getModel()				{ return this.localModel; }
+	public AntHillGraphicalModel getModel()			{ return this.localModel; }
 	
 	/** 
 	 * MAIN launch for this view. 
@@ -38,8 +39,13 @@ public class AntHillGraphicalLauncher {
 	 */
 	public static void main(String[] args) {
 		AntHillGraphicalLauncher controller	= AntHillGraphicalLauncher.getInstance();
-		AntHillGraphicalModel model			= AntHillGraphicalModel.getInstance();
-		controller.setModel(model);
+		// AntHillGraphicalModelBase model	= AntHillGraphicalModelBase.getInstance();
+		AntHillGraphicalModelBuilder ahgmb = new AntHillGraphicalModelBuilder();
+		ahgmb.setWorldDimension(1, 1);
+		ahgmb.addAnt("A");
+		ahgmb.addPlant("P");
+		AntHillGraphicalModel model = ahgmb.build();
+		controller.setModel( model );
 		controller.setView(AntHillGraphicalFrame.getInstance( model ));
 	}
 	

@@ -5,12 +5,13 @@ import java.util.List;
 
 import gabywald.biosilico.genetics.BiochemicalReaction;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
+import gabywald.biosilico.interfaces.IBuilder;
 
 /**
  * Complex builder for Pathways. 
- * @author Gabriel Chandesris (2021)
+ * @author Gabriel Chandesris (2021, 2022)
  */
-public class PathwayBuilder {
+public class PathwayBuilder implements IBuilder<List<BiochemicalReaction> > {
 	
 	// XXX NOTE 20210921 : aim of this class is to build several gene at the same time 
 	// // // - BiochemicalReaction (for base metabolic pathway)
@@ -49,6 +50,7 @@ public class PathwayBuilder {
 		return this;
 	}
 	
+	@Override
 	public List<BiochemicalReaction> build() {
 		// NOTE 20210924 : 
 		// // // - building serie(s) of BR Genes (specific algorithm to set !)

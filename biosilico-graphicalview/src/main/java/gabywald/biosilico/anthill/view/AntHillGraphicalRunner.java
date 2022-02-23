@@ -5,6 +5,10 @@ import java.util.List;
 
 import gabywald.biosilico.model.enums.SomeChemicals;
 
+/**
+ * Runner implementation for AntHill Modelisation. 
+ * @author Gabriel Chandesris (2022)
+ */
 public class AntHillGraphicalRunner implements Runnable {
 	
 	private boolean isActive						= false;

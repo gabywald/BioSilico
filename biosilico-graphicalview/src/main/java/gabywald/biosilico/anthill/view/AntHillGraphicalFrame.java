@@ -120,8 +120,8 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	}
 	
 	private void initWesternPanel(AntHillGraphicalModel agm) {
-		this.organismsJScroll = new AntHillGraphicalJScroll<Organism>(agm.getOrganisms());
-		this.locationsJScroll = new AntHillGraphicalJScroll<World2DCase>(agm.getLocations());
+		this.organismsJScroll = new AntHillGraphicalJScroll<Organism>( agm.getOrganisms() );
+		this.locationsJScroll = new AntHillGraphicalJScroll<World2DCase>( agm.getLocations() );
 		// TODO add Listener here !! (container ?)
 		
 		this.westernPanel = new GeneKitsGBJPanel();
