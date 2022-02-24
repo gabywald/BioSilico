@@ -7,22 +7,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  * JPanel Card Interface of the Genetic Kit dedicaced to BrainLobeGene. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see gabywald.biosilico.genetics.BrainLobeGene
+ * TODO externalize ActionListener from BrainLoJPanel !
  */
 @SuppressWarnings("serial")
-public class BrainLoJPanel extends GeneJPanel implements ActionListener {
+public class BrainLoJPanel extends GeneJPanel<BrainLobeGene>
+		implements ActionListener {
 	/** Some Label's. */
 	private JLabel	restLabel, threLabel, descLabel, dendrminLabel, dendrmaxLabel,
 					proxLabel, heightLabel, widthLabel, posxLabel, posyLabel; 
-	/** Some TextField's. */
-	private JTextField	restField, threField, descField, dendrminField, dendrmaxField,
-						proxField, repyField, heightField, widthField, posxField, posyField;
+	/** Some TextField's / SpeceficJScroll's. */
+	private SpecificJScroll	restField, threField, descField, dendrminField, dendrmaxField,
+							proxField, repyField, heightField, widthField, posxField, posyField;
 	/** Some ChecjBox'es. */
 	private JCheckBox reprBox, wtaaBox, replBox;
 	
@@ -56,20 +57,20 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 		this.posxLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.posyLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.restField		= new JTextField("000");
-		this.threField		= new JTextField("000");
-		this.descField		= new JTextField("000");
-		this.dendrminField	= new JTextField("00");
-		this.dendrmaxField	= new JTextField("00");
-		this.proxField		= new JTextField("00");
-		this.repyField		= new JTextField("00");
-		this.heightField	= new JTextField("00");
-		this.widthField		= new JTextField("00");
-		this.posxField		= new JTextField("00");
-		this.posyField		= new JTextField("00");
+		this.restField		= SpecificJScroll.getSpecificJScroll0to999();
+		this.threField		= SpecificJScroll.getSpecificJScroll0to999();
+		this.descField		= SpecificJScroll.getSpecificJScroll0to999();
+		this.dendrminField	= SpecificJScroll.getSpecificJScroll0to99();
+		this.dendrmaxField	= SpecificJScroll.getSpecificJScroll0to99();
+		this.proxField		= SpecificJScroll.getSpecificJScroll0to99();
+		this.repyField		= SpecificJScroll.getSpecificJScroll0to99();
+		this.heightField	= SpecificJScroll.getSpecificJScroll0to99();
+		this.widthField		= SpecificJScroll.getSpecificJScroll0to99();
+		this.posxField		= SpecificJScroll.getSpecificJScroll0to99();
+		this.posyField		= SpecificJScroll.getSpecificJScroll0to99();
 		
 		/** To enable if replBox is checked */
-		this.repyField.setText("0");
+		this.repyField.setSelectedIndex( 0 );
 		this.repyField.setEnabled(false);
 		this.reprBox.addActionListener(this);
 		
@@ -117,55 +118,57 @@ public class BrainLoJPanel extends GeneJPanel implements ActionListener {
 	public boolean getWTA()			{ return this.wtaaBox.isSelected(); }
 	public boolean getReplace()		{ return this.replBox.isSelected(); }
 	
-	public int getRestState()	{ return Integer.parseInt(this.restField.getText()); }
-	public int getThreshold()	{ return Integer.parseInt(this.threField.getText()); }
-	public int getDescent()		{ return Integer.parseInt(this.descField.getText()); }
-	public int getProximity()	{ return Integer.parseInt(this.proxField.getText()); }
-	public int getReproduct()	{ return Integer.parseInt(this.repyField.getText()); }
-	public int getLobeHeight()	{ return Integer.parseInt(this.heightField.getText()); }
-	public int getLobeWidth()	{ return Integer.parseInt(this.widthField.getText()); }
-	public int getLobePosX()	{ return Integer.parseInt(this.posxField.getText()); }
-	public int getLobePosY()	{ return Integer.parseInt(this.posyField.getText()); }
-	public int getDendritMin()	{ return Integer.parseInt(this.dendrminField.getText()); }
-	public int getDendritMax()	{ return Integer.parseInt(this.dendrmaxField.getText()); }
+	public int getRestState()	{ return this.restField.getSelectedIndex(); }
+	public int getThreshold()	{ return this.threField.getSelectedIndex(); }
+	public int getDescent()		{ return this.descField.getSelectedIndex(); }
+	public int getProximity()	{ return this.proxField.getSelectedIndex(); }
+	public int getReproduct()	{ return this.repyField.getSelectedIndex(); }
+	public int getLobeHeight()	{ return this.heightField.getSelectedIndex(); }
+	public int getLobeWidth()	{ return this.widthField.getSelectedIndex(); }
+	public int getLobePosX()	{ return this.posxField.getSelectedIndex(); }
+	public int getLobePosY()	{ return this.posyField.getSelectedIndex(); }
+	public int getDendritMin()	{ return this.dendrminField.getSelectedIndex(); }
+	public int getDendritMax()	{ return this.dendrmaxField.getSelectedIndex(); }
 	
+	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
 		this.reprBox.setSelected(false);
 		this.wtaaBox.setSelected(false);
 		this.replBox.setSelected(false);
-		this.restField.setText("000");
-		this.threField.setText("000");
-		this.descField.setText("000");
-		this.dendrminField.setText("00");
-		this.dendrmaxField.setText("00");
-		this.proxField.setText("00");
-		this.repyField.setText("00");
-		this.heightField.setText("00");
-		this.widthField.setText("00");
-		this.posxField.setText("00");
-		this.posyField.setText("00");
+		this.restField.setSelectedIndex( 000 );
+		this.threField.setSelectedIndex( 010 );
+		this.descField.setSelectedIndex( 001 );
+		this.dendrminField.setSelectedIndex( 00 );
+		this.dendrmaxField.setSelectedIndex( 10 );
+		this.proxField.setSelectedIndex( 00 );
+		this.repyField.setSelectedIndex( 00 );
+		this.heightField.setSelectedIndex( 01 );
+		this.widthField .setSelectedIndex( 01 );
+		this.posxField  .setSelectedIndex( 00 );
+		this.posyField  .setSelectedIndex( 00 );
 	}
 	
 	/**
 	 * To set-up attribute view values with specific Gene instance. 
 	 * @param gene (BrainLobeGene)
 	 */
+	@Override
 	public void setPanelSpecificValueWith(BrainLobeGene gene) {
 		super.setPanelValueWith(gene);
-		this.restField.setText(GeneJPanel.convertThreeChars(gene.getRestState()));
-		this.threField.setText(GeneJPanel.convertThreeChars(gene.getThreshold()));
-		this.descField.setText(GeneJPanel.convertThreeChars(gene.getDescent()));
-		this.dendrminField.setText(GeneJPanel.convertThreeChars(gene.getDendritMin()));
-		this.dendrmaxField.setText(GeneJPanel.convertThreeChars(gene.getDendritMax()));
-		this.proxField.setText(GeneJPanel.convertThreeChars(gene.getProximity()));
+		this.restField.setSelectedIndex(gene.getRestState());
+		this.threField.setSelectedIndex(gene.getThreshold());
+		this.descField.setSelectedIndex(gene.getDescent());
+		this.dendrminField.setSelectedIndex(gene.getDendritMin());
+		this.dendrmaxField.setSelectedIndex(gene.getDendritMax());
+		this.proxField.setSelectedIndex(gene.getProximity());
 		this.reprBox.setSelected(gene.getReproduce());
-		this.repyField.setText(GeneJPanel.convertThreeChars(gene.getReproduct()));
+		this.repyField.setSelectedIndex(gene.getReproduct());
 		this.wtaaBox.setSelected(gene.getWTA());
-		this.heightField.setText(GeneJPanel.convertTwoChars(gene.getLobeHeight()));
-		this.widthField.setText(GeneJPanel.convertTwoChars(gene.getLobeWidth()));
-		this.posxField.setText(GeneJPanel.convertTwoChars(gene.getLobePosX()));
-		this.posyField.setText(GeneJPanel.convertTwoChars(gene.getLobePosY()));
+		this.heightField.setSelectedIndex(gene.getLobeHeight());
+		this.widthField .setSelectedIndex(gene.getLobeWidth());
+		this.posxField  .setSelectedIndex(gene.getLobePosX());
+		this.posyField  .setSelectedIndex(gene.getLobePosY());
 		this.replBox.setSelected(gene.getReplace());
 	}
 	

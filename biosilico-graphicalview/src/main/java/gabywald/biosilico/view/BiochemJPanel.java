@@ -3,24 +3,23 @@ package gabywald.biosilico.view;
 import gabywald.biosilico.genetics.BiochemicalReaction;
 
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  * JPanel Card Interface of the Genetic Kit dedicaced to BiochemicalReaction Gene. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  */
 @SuppressWarnings("serial")
-public class BiochemJPanel extends GeneJPanel {
+public class BiochemJPanel extends GeneJPanel<BiochemicalReaction> {
 	/** Some Label's. */
 	private JLabel	AcoefLabel, BcoefLabel, CcoefLabel, DcoefLabel, 
 					AchemLabel, BchemLabel, CchemLabel, DchemLabel, 
 					KMLabel;
-	/** Some TextField's. */
-	private JTextField	AcoefField, BcoefField, CcoefField, DcoefField, 
-						AchemField, BchemField, CchemField, DchemField, 
-						KMField;
+	/** Some TextField's / SpeceficJScroll's. */
+	private SpecificJScroll	AcoefField, BcoefField, CcoefField, DcoefField, 
+							AchemField, BchemField, CchemField, DchemField, 
+							KMField;
 	
 	public BiochemJPanel() {
 		this.AcoefLabel = new JLabel("Acoef : ");
@@ -43,15 +42,15 @@ public class BiochemJPanel extends GeneJPanel {
 		this.DchemLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.KMLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.AcoefField = new JTextField("001");
-		this.BcoefField = new JTextField("001");
-		this.CcoefField = new JTextField("001");
-		this.DcoefField = new JTextField("001");
-		this.AchemField = new JTextField("000");
-		this.BchemField = new JTextField("000");
-		this.CchemField = new JTextField("000");
-		this.DchemField = new JTextField("000");
-		this.KMField = new JTextField("001");
+		this.AcoefField = SpecificJScroll.getSpecificJScroll0to999();
+		this.BcoefField = SpecificJScroll.getSpecificJScroll0to999();
+		this.CcoefField = SpecificJScroll.getSpecificJScroll0to999();
+		this.DcoefField = SpecificJScroll.getSpecificJScroll0to999();
+		this.AchemField = SpecificJScroll.getSpecificJScroll0to999();
+		this.BchemField = SpecificJScroll.getSpecificJScroll0to999();
+		this.CchemField = SpecificJScroll.getSpecificJScroll0to999();
+		this.DchemField = SpecificJScroll.getSpecificJScroll0to999();
+		this.KMField = SpecificJScroll.getSpecificJScroll0to999();
 		
 		this.addBagComponent(this.AcoefLabel, 0, 7);
 		this.addBagComponent(this.AcoefField, 1, 7);
@@ -83,44 +82,46 @@ public class BiochemJPanel extends GeneJPanel {
 		this.addBagComponent(this.DchemField, 3, 13);
 	}
 	
-	public int getAcoef() { return Integer.parseInt(this.AcoefField.getText()); }
-	public int getAchem() { return Integer.parseInt(this.AchemField.getText()); }
-	public int getBcoef() { return Integer.parseInt(this.BcoefField.getText()); }
-	public int getBchem() { return Integer.parseInt(this.BchemField.getText()); }
-	public int getCcoef() { return Integer.parseInt(this.CcoefField.getText()); }
-	public int getCchem() { return Integer.parseInt(this.CchemField.getText()); }
-	public int getDcoef() { return Integer.parseInt(this.DcoefField.getText()); }
-	public int getDchem() { return Integer.parseInt(this.DchemField.getText()); }
-	public int getKMVMs() { return Integer.parseInt(this.KMField.getText()); }
+	public int getAcoef() { return this.AcoefField.getSelectedIndex(); }
+	public int getAchem() { return this.AchemField.getSelectedIndex(); }
+	public int getBcoef() { return this.BcoefField.getSelectedIndex(); }
+	public int getBchem() { return this.BchemField.getSelectedIndex(); }
+	public int getCcoef() { return this.CcoefField.getSelectedIndex(); }
+	public int getCchem() { return this.CchemField.getSelectedIndex(); }
+	public int getDcoef() { return this.DcoefField.getSelectedIndex(); }
+	public int getDchem() { return this.DchemField.getSelectedIndex(); }
+	public int getKMVMs() { return this.KMField.getSelectedIndex(); }
 	
+	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
-		this.AcoefField.setText("001");
-		this.BcoefField.setText("001");
-		this.CcoefField.setText("001");
-		this.DcoefField.setText("001");
-		this.AchemField.setText("000");
-		this.BchemField.setText("000");
-		this.CchemField.setText("000");
-		this.DchemField.setText("000");
-		this.KMField.setText("001");
+		this.AcoefField.setSelectedIndex( 001 );
+		this.BcoefField.setSelectedIndex( 001 );
+		this.CcoefField.setSelectedIndex( 001 );
+		this.DcoefField.setSelectedIndex( 001 );
+		this.AchemField.setSelectedIndex( 000 );
+		this.BchemField.setSelectedIndex( 000 );
+		this.CchemField.setSelectedIndex( 000 );
+		this.DchemField.setSelectedIndex( 000 );
+		this.KMField.setSelectedIndex( 001 );
 	}
 	
 	/**
 	 * To set-up attribute view values with specific Gene instance. 
 	 * @param gene (BiochemicalReaction)
 	 */
+	@Override
 	public void setPanelSpecificValueWith(BiochemicalReaction gene) {
 		super.setPanelValueWith(gene);
-		this.AchemField.setText(GeneJPanel.convertThreeChars(gene.getAchem()));
-		this.BchemField.setText(GeneJPanel.convertThreeChars(gene.getBchem()));
-		this.CchemField.setText(GeneJPanel.convertThreeChars(gene.getCchem()));
-		this.DchemField.setText(GeneJPanel.convertThreeChars(gene.getDchem()));
-		this.AcoefField.setText(GeneJPanel.convertThreeChars(gene.getAcoef()));
-		this.BcoefField.setText(GeneJPanel.convertThreeChars(gene.getBcoef()));
-		this.CcoefField.setText(GeneJPanel.convertThreeChars(gene.getCcoef()));
-		this.DcoefField.setText(GeneJPanel.convertThreeChars(gene.getDcoef()));
-		this.KMField.setText(GeneJPanel.convertThreeChars(gene.getKMVMs()));
+		this.AchemField.setSelectedIndex(gene.getAchem());
+		this.BchemField.setSelectedIndex(gene.getBchem());
+		this.CchemField.setSelectedIndex(gene.getCchem());
+		this.DchemField.setSelectedIndex(gene.getDchem());
+		this.AcoefField.setSelectedIndex(gene.getAcoef());
+		this.BcoefField.setSelectedIndex(gene.getBcoef());
+		this.CcoefField.setSelectedIndex(gene.getCcoef());
+		this.DcoefField.setSelectedIndex(gene.getDcoef());
+		this.KMField.setSelectedIndex(gene.getKMVMs());
 	}
 	
 }

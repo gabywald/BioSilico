@@ -4,20 +4,19 @@ import gabywald.biosilico.genetics.EmitterReceptor;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  * JPanel Card Interface of the Genetic Kit dedicaced to EmitterReceptor Gene. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see gabywald.biosilico.genetics.EmitterReceptor
  */
 @SuppressWarnings("serial")
-public class EmitterJPanel extends GeneJPanel {
+public class EmitterJPanel extends GeneJPanel<EmitterReceptor> {
 	/** Some Label's. */
 	private JLabel variabLabel, threshLabel, ionputLabel, posxneLabel, posyneLabel;
-	/** Some TextField's. */
-	private JTextField variabField, threshField, ionputField, posxneField, posyneField;
+	/** Some TextField's / SpeceficJScroll's. */
+	private SpecificJScroll variabField, threshField, ionputField, posxneField, posyneField;
 	/** Some CheckBox's. */
 	private JCheckBox receptBox, internBox;
 	
@@ -34,11 +33,11 @@ public class EmitterJPanel extends GeneJPanel {
 		this.posxneLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.posyneLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.variabField	= new JTextField("000");
-		this.threshField	= new JTextField("000");
-		this.ionputField	= new JTextField("000");
-		this.posxneField	= new JTextField("00");
-		this.posyneField	= new JTextField("00");
+		this.variabField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.threshField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.ionputField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.posxneField	= SpecificJScroll.getSpecificJScroll0to99();
+		this.posyneField	= SpecificJScroll.getSpecificJScroll0to99();
 		
 		this.receptBox = new JCheckBox("Receptor",true);
 		this.internBox = new JCheckBox("Internal",true);
@@ -62,19 +61,20 @@ public class EmitterJPanel extends GeneJPanel {
 	public boolean getReceptor() { return this.receptBox.isSelected(); }
 	public boolean getInternal() { return this.internBox.isSelected(); }
 	
-	public int getVariable()	{ return Integer.parseInt(this.variabField.getText()); }
-	public int getThreshold()	{ return Integer.parseInt(this.threshField.getText()); }
-	public int getIOnput()		{ return Integer.parseInt(this.ionputField.getText()); }
-	public int getPosXNeurone()	{ return Integer.parseInt(this.posxneField.getText()); }
-	public int getPosYNeurone()	{ return Integer.parseInt(this.posyneField.getText()); }
+	public int getVariable()	{ return this.variabField.getSelectedIndex(); }
+	public int getThreshold()	{ return this.threshField.getSelectedIndex(); }
+	public int getIOnput()		{ return this.ionputField.getSelectedIndex(); }
+	public int getPosXNeurone()	{ return this.posxneField.getSelectedIndex(); }
+	public int getPosYNeurone()	{ return this.posyneField.getSelectedIndex(); }
 	
+	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
-		this.variabField.setText("000");
-		this.threshField.setText("000");
-		this.ionputField.setText("000");
-		this.posxneField.setText("00");
-		this.posyneField.setText("00");
+		this.variabField.setSelectedIndex( 000 );
+		this.threshField.setSelectedIndex( 000 );
+		this.ionputField.setSelectedIndex( 000 );
+		this.posxneField.setSelectedIndex( 00 );
+		this.posyneField.setSelectedIndex( 00 );
 		this.receptBox.setSelected(true);
 		this.internBox.setSelected(true);
 	}
@@ -83,13 +83,14 @@ public class EmitterJPanel extends GeneJPanel {
 	 * To set-up attribute view values with specific Gene instance. 
 	 * @param gene (EmitterReceptor)
 	 */
+	@Override
 	public void setPanelSpecificValueWith(EmitterReceptor gene) {
 		super.setPanelValueWith(gene);
-		this.variabField.setText(GeneJPanel.convertThreeChars(gene.getVariable()));
-		this.threshField.setText(GeneJPanel.convertThreeChars(gene.getThreshold()));
-		this.ionputField.setText(GeneJPanel.convertThreeChars(gene.getIOnput()));
-		this.posxneField.setText(GeneJPanel.convertTwoChars(gene.getPosXNeurone()));
-		this.posyneField.setText(GeneJPanel.convertTwoChars(gene.getPosYNeurone()));
+		this.variabField.setSelectedIndex(gene.getVariable());
+		this.threshField.setSelectedIndex(gene.getThreshold());
+		this.ionputField.setSelectedIndex(gene.getIOnput());
+		this.posxneField.setSelectedIndex(gene.getPosXNeurone());
+		this.posyneField.setSelectedIndex(gene.getPosYNeurone());
 		this.receptBox.setSelected(gene.getReceptor());
 		this.internBox.setSelected(gene.getInternal());
 	}

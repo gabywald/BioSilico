@@ -38,7 +38,7 @@ public abstract class GeneKitJFrame extends GenericJFrame implements GeneKitInte
 
 		/** Cards for parameters */
 		this.parameterViewer		= GeneParametersViewer.getInstance();
-		this.geneTypeSelection		= new SelectBox(GeneParametersViewer.geneTypeListe);
+		this.geneTypeSelection		= new SelectBox(GeneParametersViewerEnum.getTypeNames());
 		this.createGene				= new JButton("Create Gene");
 		this.addsavGene				= new JButton("Add Gene to Agent");
 		this.changeGene				= new JButton("Change Gene");

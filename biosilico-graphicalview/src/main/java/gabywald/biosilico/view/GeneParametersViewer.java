@@ -13,35 +13,16 @@ import gabywald.global.view.graph.CardJPanel;
 /**
  * This kind of JPanel provides a Card Layout JPanel about Gene's and their parameters. 
  *  <br><i>Design-Pattern Singleton. </i>
- *  @author Gabriel Chandesris (2010, 2020)
+ *  @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class GeneParametersViewer extends CardJPanel {
 	/** Unique instance of this view. */
 	private static GeneParametersViewer instance = null;
 	
-	/** Default empty card then others. */
-	private static final String DEFAULT_CARD	= "Choose a type of Gene";
-	private static final String INITCON_CARD	= "InitialConcentration";
-	private static final String BIOCHEM_CARD	= "BiochemicalReaction";
-	private static final String BRAINGE_CARD	= "BrainGene";
-	private static final String BRAINLO_CARD	= "BrainLobeGene";
-	private static final String EMITTER_CARD	= "EmitterReceptor";
-	private static final String STIMULU_CARD	= "StimulusDecision";
-	private static final String INSTINC_CARD	= "Instinct";
-	/** This is used by {@link GeneKitJFrame#GeneKitJFrame()} and inheritant classes. */
-	public static final String geneTypeListe[] = {
-		GeneParametersViewer.DEFAULT_CARD, GeneParametersViewer.INITCON_CARD, 
-		GeneParametersViewer.BIOCHEM_CARD, GeneParametersViewer.BRAINGE_CARD, 
-		GeneParametersViewer.BRAINLO_CARD, GeneParametersViewer.EMITTER_CARD, 
-		GeneParametersViewer.STIMULU_CARD, GeneParametersViewer.INSTINC_CARD
-	};
-	/** List of Card JPanel's (GeneKitsGBJPanel). */
-	private static final GeneKitsGBJPanel[] geneticParam = GeneParametersViewer.getLocalPanelList();
-	
 	/** Default Constructor. */
 	private GeneParametersViewer() { 
-		super(GeneParametersViewer.geneTypeListe, GeneParametersViewer.geneticParam);
+		super(GeneParametersViewerEnum.getTypeNames(), GeneParametersViewerEnum.getTypePanels());
 	}
 	
 	/**
@@ -54,57 +35,9 @@ public class GeneParametersViewer extends CardJPanel {
 		return GeneParametersViewer.instance;
 	}
 	
-	private static GeneKitsGBJPanel[] getLocalPanelList() {
-		GeneKitsGBJPanel liste[] = new GeneKitsGBJPanel[GeneParametersViewer.geneTypeListe.length];
-		// ***** TODO [??] Design Pattern [Abstract]?Factory 
-		// ***** 0 has no fields, initialize it then start to 1 !!
-		liste[0] = new GeneKitsGBJPanel();
-		liste[1] = new InitConJPanel();
-		liste[2] = new BiochemJPanel();
-		liste[3] = new BrainGeJPanel();
-		liste[4] = new BrainLoJPanel();
-		liste[5] = new EmitterJPanel();
-		liste[6] = new StimuluJPanel();
-		liste[7] = new InstincJPanel();
-
-		return liste;
-	}
-	
 	public void setCompiledParameters(Gene gene, int type) {
 		// ***** code ; name ;  type ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others... 
-		
-		// TODO HERE replace int with an ENUM !!
-		
-		switch (type) {
-		case(1): /** Initial Concentration */
-			((InitConJPanel)this.getCard(type))
-				.setPanelSpecificValueWith((InitialConcentration)gene);
-			break;
-		case(2): /** BiochemicalReaction */
-			((BiochemJPanel)this.getCard(type))
-				.setPanelSpecificValueWith((BiochemicalReaction)gene);
-			break;
-		case(3): /** Brain */
-			((BrainGeJPanel)this.getCard(type))
-				.setPanelSpecificValueWith((BrainGene)gene);
-			break;
-		case(4): /** Brain Lobe */
-			((BrainLoJPanel)this.getCard(type))
-				.setPanelSpecificValueWith((BrainLobeGene)gene);
-			break;
-		case(5): /** EmitterReceptor */
-			((EmitterJPanel)this.getCard(type))
-				.setPanelSpecificValueWith((EmitterReceptor)gene);
-			break;
-		case(6): /** StimulusDecision */
-			((StimuluJPanel)this.getCard(type))
-				.setPanelSpecificValueWith(((StimulusDecision)gene));
-			break;
-		case(7): /** Instinct */
-			((InstincJPanel)this.getCard(type))
-				.setPanelSpecificValueWith(((Instinct)gene));
-			break;
-		}
+		((GeneJPanel<?>)this.getCard(type)).setPanelSpecificValueWithGene(gene);
 	}
 	
 	public String getCompiledParameters(String geneName, int geneType) {
@@ -112,16 +45,16 @@ public class GeneParametersViewer extends CardJPanel {
 
 		// TODO HERE replace int with an ENUM !!
 		
-		boolean mutate = ((GeneJPanel)this.getCard(geneType)).getMutate();
-		boolean duplic = ((GeneJPanel)this.getCard(geneType)).getDuplic();
-		boolean delete = ((GeneJPanel)this.getCard(geneType)).getDelete();
-		boolean activi = ((GeneJPanel)this.getCard(geneType)).getActivi();
-		int minimalAge = ((GeneJPanel)this.getCard(geneType)).getAgeMin();
-		int maximalAge = ((GeneJPanel)this.getCard(geneType)).getAgeMax();
-		int sex		   = ((GeneJPanel)this.getCard(geneType)).getSex();
-		int mutateRate = ((GeneJPanel)this.getCard(geneType)).getMutRat();
+		boolean mutate = ((GeneJPanel<?>)this.getCard(geneType)).getMutate();
+		boolean duplic = ((GeneJPanel<?>)this.getCard(geneType)).getDuplic();
+		boolean delete = ((GeneJPanel<?>)this.getCard(geneType)).getDelete();
+		boolean activi = ((GeneJPanel<?>)this.getCard(geneType)).getActivi();
+		int minimalAge = ((GeneJPanel<?>)this.getCard(geneType)).getAgeMin();
+		int maximalAge = ((GeneJPanel<?>)this.getCard(geneType)).getAgeMax();
+		int sex		   = ((GeneJPanel<?>)this.getCard(geneType)).getSex();
+		int mutateRate = ((GeneJPanel<?>)this.getCard(geneType)).getMutRat();
 		
-		String middleOfLine = geneName+"\t"+geneType+"\t";
+		String middleOfLine = geneName + "\t" + geneType + "\t";
 		
 		switch (geneType) {
 		case(1): /** Initial Concentration */

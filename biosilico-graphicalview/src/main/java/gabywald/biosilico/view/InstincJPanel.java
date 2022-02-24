@@ -4,22 +4,21 @@ import gabywald.biosilico.genetics.Instinct;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  * JPanel Card Interface of the Genetic Kit dedicaced to Instinct Gene. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see gabywald.biosilico.genetics.Instinct
  */
 @SuppressWarnings("serial")
-public class InstincJPanel extends GeneJPanel {
+public class InstincJPanel extends GeneJPanel<Instinct> {
 	/** Some Label's. */
 	private JLabel posxOrgLabel, posyOrgLabel, posxDesLabel, posyDesLabel, 
 					weightLabel, variablLabel, threshoLabel;
-	/** Some TextField's. */
-	private JTextField posxOrgField, posyOrgField, posxDesField, posyDesField, 
-						weightField, variablField, threshoField;
+	/** Some TextField's / SpeceficJScroll's. */
+	private SpecificJScroll posxOrgField, posyOrgField, posxDesField, posyDesField, 
+							weightField, variablField, threshoField;
 	/** A checkBox. */
 	private JCheckBox checkBox;
 	
@@ -38,13 +37,13 @@ public class InstincJPanel extends GeneJPanel {
 		this.weightLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.variablLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.threshoLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		this.posxOrgField = new JTextField("00");
-		this.posyOrgField = new JTextField("00");
-		this.posxDesField = new JTextField("00");
-		this.posyDesField = new JTextField("00");
-		this.weightField  = new JTextField("000");
-		this.variablField = new JTextField("000");
-		this.threshoField = new JTextField("000");
+		this.posxOrgField = SpecificJScroll.getSpecificJScroll0to99();
+		this.posyOrgField = SpecificJScroll.getSpecificJScroll0to99();
+		this.posxDesField = SpecificJScroll.getSpecificJScroll0to99();
+		this.posyDesField = SpecificJScroll.getSpecificJScroll0to99();
+		this.weightField  = SpecificJScroll.getSpecificJScroll0to999();
+		this.variablField = SpecificJScroll.getSpecificJScroll0to999();
+		this.threshoField = SpecificJScroll.getSpecificJScroll0to999();
 		this.checkBox = new JCheckBox("check (or add)",true);
 		
 		this.addBagComponent(this.posxOrgLabel, 0, 7);
@@ -63,29 +62,30 @@ public class InstincJPanel extends GeneJPanel {
 		this.addBagComponent(this.threshoLabel, 2, 10);
 		this.addBagComponent(this.threshoField, 3, 10);
 		
-		this.setAgeMax("000");
+		this.setAgeMax( 0 );
 	}
 	
 	public boolean getCheck() { return this.checkBox.isSelected(); }
 	
-	public int getVariable()	{ return Integer.parseInt(this.variablField.getText()); }
-	public int getThreshold()	{ return Integer.parseInt(this.threshoField.getText()); }
-	public int getWeight()		{ return Integer.parseInt(this.weightField.getText()); }
-	public int getPosXOrg()		{ return Integer.parseInt(this.posxOrgField.getText()); }
-	public int getPosYOrg()		{ return Integer.parseInt(this.posyOrgField.getText()); }
-	public int getPosXDes()		{ return Integer.parseInt(this.posxDesField.getText()); }
-	public int getPosYDes()		{ return Integer.parseInt(this.posyDesField.getText()); }
+	public int getVariable()	{ return this.variablField.getSelectedIndex(); }
+	public int getThreshold()	{ return this.threshoField.getSelectedIndex(); }
+	public int getWeight()		{ return this.weightField .getSelectedIndex(); }
+	public int getPosXOrg()		{ return this.posxOrgField.getSelectedIndex(); }
+	public int getPosYOrg()		{ return this.posyOrgField.getSelectedIndex(); }
+	public int getPosXDes()		{ return this.posxDesField.getSelectedIndex(); }
+	public int getPosYDes()		{ return this.posyDesField.getSelectedIndex(); }
 	
+	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
-		this.setAgeMax("000");
-		this.posxOrgField.setText("00");
-		this.posyOrgField.setText("00");
-		this.posxDesField.setText("00");
-		this.posyDesField.setText("00");
-		this.weightField .setText("000");
-		this.variablField.setText("000");
-		this.threshoField.setText("000");
+		this.setAgeMax( 0 );
+		this.posxOrgField.setSelectedIndex( 00 );
+		this.posyOrgField.setSelectedIndex( 00 );
+		this.posxDesField.setSelectedIndex( 00 );
+		this.posyDesField.setSelectedIndex( 00 );
+		this.weightField .setSelectedIndex( 000 );
+		this.variablField.setSelectedIndex( 000 );
+		this.threshoField.setSelectedIndex( 000 );
 		this.checkBox.setSelected(true);
 	}
 	
@@ -93,15 +93,16 @@ public class InstincJPanel extends GeneJPanel {
 	 * To set-up attribute view values with specific Gene instance. 
 	 * @param gene (Instinct)
 	 */
+	@Override
 	public void setPanelSpecificValueWith(Instinct gene) {
 		super.setPanelValueWith(gene);
-		this.posxOrgField.setText(GeneJPanel.convertTwoChars(gene.getPosXOrg()));
-		this.posyOrgField.setText(GeneJPanel.convertTwoChars(gene.getPosYOrg()));
-		this.posxDesField.setText(GeneJPanel.convertTwoChars(gene.getPosXDes()));
-		this.posyDesField.setText(GeneJPanel.convertTwoChars(gene.getPosYDes()));
-		this.weightField.setText(GeneJPanel.convertThreeChars(gene.getWeight()));
-		this.variablField.setText(GeneJPanel.convertThreeChars(gene.getVariable()));
-		this.threshoField.setText(GeneJPanel.convertThreeChars(gene.getThreshold()));
+		this.posxOrgField.setSelectedIndex(gene.getPosXOrg());
+		this.posyOrgField.setSelectedIndex(gene.getPosYOrg());
+		this.posxDesField.setSelectedIndex(gene.getPosXDes());
+		this.posyDesField.setSelectedIndex(gene.getPosYDes());
+		this.weightField .setSelectedIndex(gene.getWeight());
+		this.variablField.setSelectedIndex(gene.getVariable());
+		this.threshoField.setSelectedIndex(gene.getThreshold());
 		this.checkBox.setSelected(gene.getCheck());
 	}
 	

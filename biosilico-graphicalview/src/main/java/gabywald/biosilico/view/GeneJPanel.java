@@ -8,7 +8,6 @@ import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
@@ -16,20 +15,20 @@ import javax.swing.SwingConstants;
  * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 @SuppressWarnings("serial")
-public abstract class GeneJPanel extends GeneKitsGBJPanel {
+public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 	/** Some Title Label's. */
 	private JLabel generalLabel, specifiLabel;
 	/** Some CheckBoxe's. */
 	private JCheckBox mutateBox, duplicBox, deleteBox, activiBox;
 	/** Some Label's. */
 	private JLabel ageMinLabel, ageMaxLabel, sexLabel, mutRatLabel;
-	/** Some TextField's. */
-	private JTextField ageMinTexte, ageMaxTexte, sexTexte, mutRatTexte;
+	/** Some SpecificJScroll. */
+	private SpecificJScroll ageMinTexte, ageMaxTexte, sexTexte, mutRatTexte;
 	
 	/** Default constructor. */
 	public GeneJPanel() {
 		/** Initialize instance items */
-		Font writing = new Font("writing", Font.BOLD,12);
+		Font writing = new Font("writing", Font.BOLD, 12);
 		this.generalLabel = new JLabel("\nGeneral Parameters");
 		this.specifiLabel = new JLabel("\nSpecific Parameters");
 		this.generalLabel.setForeground(Color.MAGENTA);
@@ -49,13 +48,13 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 		
 		this.ageMinLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.ageMaxLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		this.sexLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		this.sexLabel   .setHorizontalAlignment(SwingConstants.RIGHT);
 		this.mutRatLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.ageMinTexte	= new JTextField("000");
-		this.ageMaxTexte	= new JTextField("999");
-		this.sexTexte		= new JTextField("0");
-		this.mutRatTexte	= new JTextField("25");
+		this.ageMinTexte	= SpecificJScroll.getSpecificJScroll0to999();
+		this.ageMaxTexte	= SpecificJScroll.getSpecificJScroll0to999();
+		this.sexTexte		= SpecificJScroll.getSpecificJScroll0to99();
+		this.mutRatTexte	= SpecificJScroll.getSpecificJScroll0to99();
 		
 		/** Setting locations of items */
 		this.addBagComponent(this.generalLabel, 0, 0, 4);
@@ -84,30 +83,27 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 	public boolean getDelete() { return this.deleteBox.isSelected(); }
 	public boolean getActivi() { return this.activiBox.isSelected(); }
 	
-	public int getAgeMin()	{ return Integer.parseInt(this.ageMinTexte.getText()); }
-	public int getAgeMax()	{ return Integer.parseInt(this.ageMaxTexte.getText()); }
-	public int getSex() 	{ return Integer.parseInt(this.sexTexte.getText()); }
-	public int getMutRat()	{ return Integer.parseInt(this.mutRatTexte.getText()); }
+	public int getAgeMin()	{ return Integer.parseInt(this.ageMinTexte.getSelectedValue()); }
+	public int getAgeMax()	{ return Integer.parseInt(this.ageMaxTexte.getSelectedValue()); }
+	public int getSex() 	{ return Integer.parseInt(this.sexTexte   .getSelectedValue()); }
+	public int getMutRat()	{ return Integer.parseInt(this.mutRatTexte.getSelectedValue()); }
 	
-	protected void setAgeMax(String agemax)	{ this.ageMaxTexte.setText(agemax); }
+	protected void setAgeMax(int agemax)	{ this.ageMaxTexte.setSelectedIndex(agemax); }
 	
+	/**
+	 * Set Some default selection value for the current instance of GeneJPanel. 
+	 */
 	public void setDefaultValues() {
 		this.mutateBox.setSelected(true);
 		this.duplicBox.setSelected(true);
 		this.deleteBox.setSelected(true);
 		this.activiBox.setSelected(true);
 		
-		this.ageMinTexte.setText("000");
-		this.ageMaxTexte.setText("999");
-		this.sexTexte.setText("0");		
-		this.mutRatTexte.setText("25");
+		this.ageMinTexte.setSelectedIndex(   0 );
+		this.ageMaxTexte.setSelectedIndex( 999 );
+		this.sexTexte   .setSelectedIndex(   0 );		
+		this.mutRatTexte.setSelectedIndex(  25 );
 	}
-	
-	public static String convertThreeChars(int value) 
-		{ return ((value < 100) ? "0"+((value < 10) ? "0" : "") : "") + value; }
-	
-	public static String convertTwoChars(int value) 
-		{ return ((value < 10) ? "0" : "") + value; }
 	
 	/**
 	 * To set-up attribute view values with specific Gene instance. 
@@ -118,10 +114,26 @@ public abstract class GeneJPanel extends GeneKitsGBJPanel {
 		this.duplicBox.setSelected(gene.canDuplicate());
 		this.deleteBox.setSelected(gene.canDelete());
 		this.activiBox.setSelected(gene.isActiv());
-		this.ageMinTexte.setText(GeneJPanel.convertThreeChars(gene.getAgeMin()));
-		this.ageMaxTexte.setText(GeneJPanel.convertThreeChars(gene.getAgeMax()));
-		this.sexTexte.setText(GeneJPanel.convertThreeChars(gene.getSexAct()));
-		this.mutRatTexte.setText(GeneJPanel.convertThreeChars(gene.getMutationRate()));
+		this.ageMinTexte.setSelectedIndex(gene.getAgeMin());
+		this.ageMaxTexte.setSelectedIndex(gene.getAgeMax());
+		this.sexTexte.setSelectedIndex(gene.getSexAct());
+		this.mutRatTexte.setSelectedIndex(gene.getMutationRate());
 	}
 	
+	/**
+	 * To set-up attribute view values with specific Gene instance. 
+	 * @param gene (Gene)
+	 */
+	@SuppressWarnings("unchecked")
+	public void setPanelSpecificValueWithGene(Gene gene) { 
+		// TODO check inheritant class ?!
+		this.setPanelSpecificValueWith((T)gene);
+	}
+
+	/**
+	 * To set-up attribute view values with specific Gene instance. 
+	 * @param gene Inheritant Class of Gene. 
+	 */
+	public abstract void setPanelSpecificValueWith(T gene);
+
 }

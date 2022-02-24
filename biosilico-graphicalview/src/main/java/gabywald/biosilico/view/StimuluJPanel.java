@@ -4,20 +4,19 @@ import gabywald.biosilico.genetics.StimulusDecision;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
  * JPanel Card Interface of the Genetic Kit dedicaced to StimulusDecision Gene. 
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see gabywald.biosilico.genetics.StimulusDecision
  */
 @SuppressWarnings("serial")
-public class StimuluJPanel extends GeneJPanel {
+public class StimuluJPanel extends GeneJPanel<StimulusDecision> {
 	/** Some Label's. */
 	private JLabel indicaLabel, threshLabel, attribLabel, variabLabel, valuesLabel, scriptLabel;
-	/** Some TextField's. */
-	private JTextField indicaField, threshField, attribField, variabField, valuesField, scriptField;
+	/** Some TextField's / SpeceficJScroll's. */
+	private SpecificJScroll indicaField, threshField, attribField, variabField, valuesField, scriptField;
 	/** Some CheckBox's. */
 	private JCheckBox percepBox, objectBox;
 	
@@ -36,12 +35,12 @@ public class StimuluJPanel extends GeneJPanel {
 		this.valuesLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		this.scriptLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.indicaField	= new JTextField("000");
-		this.threshField	= new JTextField("000");
-		this.attribField	= new JTextField("000");
-		this.variabField	= new JTextField("000");
-		this.valuesField	= new JTextField("000");
-		this.scriptField	= new JTextField("000");
+		this.indicaField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.threshField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.attribField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.variabField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.valuesField	= SpecificJScroll.getSpecificJScroll0to999();
+		this.scriptField	= SpecificJScroll.getSpecificJScroll0to999();
 		
 		this.percepBox = new JCheckBox("Perceptor",true);
 		this.objectBox = new JCheckBox("Object",true);
@@ -68,21 +67,22 @@ public class StimuluJPanel extends GeneJPanel {
 	public boolean getPerception() 	{ return this.percepBox.isSelected(); }
 	public boolean getObject() 		{ return this.objectBox.isSelected(); }
 	
-	public int getIndicator()	{ return Integer.parseInt(this.indicaField.getText()); }
-	public int getThreshold()	{ return Integer.parseInt(this.threshField.getText()); }
-	public int getAttribute()	{ return Integer.parseInt(this.attribField.getText()); }
-	public int getVariable()	{ return Integer.parseInt(this.variabField.getText()); }
-	public int getValue()		{ return Integer.parseInt(this.valuesField.getText()); }
-	public int getScript()		{ return Integer.parseInt(this.scriptField.getText()); }
+	public int getIndicator()	{ return this.indicaField.getSelectedIndex(); }
+	public int getThreshold()	{ return this.threshField.getSelectedIndex(); }
+	public int getAttribute()	{ return this.attribField.getSelectedIndex(); }
+	public int getVariable()	{ return this.variabField.getSelectedIndex(); }
+	public int getValue()		{ return this.valuesField.getSelectedIndex(); }
+	public int getScript()		{ return this.scriptField.getSelectedIndex(); }
 	
+	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
-		this.indicaField.setText("000");
-		this.threshField.setText("000");
-		this.attribField.setText("000");
-		this.variabField.setText("000");
-		this.valuesField.setText("000");
-		this.scriptField.setText("000");
+		this.indicaField.setSelectedIndex( 000 );
+		this.threshField.setSelectedIndex( 000 );
+		this.attribField.setSelectedIndex( 000 );
+		this.variabField.setSelectedIndex( 000 );
+		this.valuesField.setSelectedIndex( 000 );
+		this.scriptField.setSelectedIndex( 000 );
 		
 		this.percepBox.setSelected(true);
 		this.objectBox.setSelected(true);
@@ -92,16 +92,17 @@ public class StimuluJPanel extends GeneJPanel {
 	 * To set-up attribute view values with specific Gene instance. 
 	 * @param gene (StimulusDecision)
 	 */
+	@Override
 	public void setPanelSpecificValueWith(StimulusDecision gene) {
 		super.setPanelValueWith(gene);
 		this.percepBox.setSelected(gene.getPerception());
 		this.objectBox.setSelected(gene.getObject());
-		this.indicaField.setText(GeneJPanel.convertThreeChars(gene.getIndicator()));
-		this.threshField.setText(GeneJPanel.convertThreeChars(gene.getThreshold()));
-		this.attribField.setText(GeneJPanel.convertThreeChars(gene.getAttribute()));
-		this.variabField.setText(GeneJPanel.convertThreeChars(gene.getVariable()));
-		this.valuesField.setText(GeneJPanel.convertThreeChars(gene.getValue()));
-		this.scriptField.setText(GeneJPanel.convertThreeChars(gene.getScript()));
+		this.indicaField.setSelectedIndex(gene.getIndicator());
+		this.threshField.setSelectedIndex(gene.getThreshold());
+		this.attribField.setSelectedIndex(gene.getAttribute());
+		this.variabField.setSelectedIndex(gene.getVariable());
+		this.valuesField.setSelectedIndex(gene.getValue());
+		this.scriptField.setSelectedIndex(gene.getScript());
 	}
 	
 }

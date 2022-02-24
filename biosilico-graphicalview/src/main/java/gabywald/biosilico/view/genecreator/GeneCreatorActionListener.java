@@ -28,8 +28,9 @@ public class GeneCreatorActionListener implements ActionListener {
 			int type = this.localKit.getGeneTypeSelection().getSelectedIndex();
 
 			this.localKit.getParameterViewer().selectCard(type);
+			// this.localKit.getParameterViewer().repaint();
 			if (type > 0) { 
-				((GeneJPanel)this.localKit.getParameterViewer().getCard(type)).setDefaultValues();
+				((GeneJPanel<?>)this.localKit.getParameterViewer().getCard(type)).setDefaultValues();
 				this.localKit.getGeneName().setText("");
 				this.localKit.getCreateGene().setEnabled(true);
 				this.localKit.getChangeGene().setEnabled(false);
@@ -42,7 +43,7 @@ public class GeneCreatorActionListener implements ActionListener {
 			}
 		} else if (source.equals(this.localKit.getGeneSelection())) {
 			// ***** Selection in menu of previous defined genes. 
-			if (this.localKit.getGeneSelection().getSelected() > 0) {
+			if (this.localKit.getGeneSelection().getSelectedIndex() > 0) {
 				this.localKit.getGeneName().setText(this.localKit.getGeneSelection().getSelectedGeneName());
 				int geneType = this.localKit.getGeneSelection().getSelectedType();
 				this.localKit.setGeneTypeSelection(geneType);
