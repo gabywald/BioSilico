@@ -104,5 +104,17 @@ public class StimuluJPanel extends GeneJPanel<StimulusDecision> {
 		this.valuesField.setSelectedIndex(gene.getValue());
 		this.scriptField.setSelectedIndex(gene.getScript());
 	}
+
+	@Override
+	public StimulusDecision getPanelSpecificValueWithGene() {
+		return new StimulusDecision(super.getMutate(), super.getDuplic(),
+									super.getDelete(), super.getActivi(), 
+									super.getAgeMin(), super.getAgeMax(), 
+									super.getSex(), super.getMutRat(), 
+									this.getPerception(), this.getObject(), 
+									this.getIndicator(), this.getThreshold(), 
+									this.getAttribute(), this.getVariable(), 
+									this.getValue(), this.getScript());
+	}
 	
 }

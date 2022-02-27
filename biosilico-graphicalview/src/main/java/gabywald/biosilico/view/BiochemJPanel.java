@@ -123,5 +123,18 @@ public class BiochemJPanel extends GeneJPanel<BiochemicalReaction> {
 		this.DcoefField.setSelectedIndex(gene.getDcoef());
 		this.KMField.setSelectedIndex(gene.getKMVMs());
 	}
+
+	@Override
+	public BiochemicalReaction getPanelSpecificValueWithGene() {
+		return new BiochemicalReaction(	super.getMutate(), super.getDuplic(),
+										super.getDelete(), super.getActivi(), 
+										super.getAgeMin(), super.getAgeMax(), 
+										super.getSex(), super.getMutRat(), 
+										this.getAchem(), this.getAcoef(), 
+										this.getBchem(), this.getBcoef(), 
+										this.getCchem(), this.getCcoef(), 
+										this.getDchem(), this.getDcoef(), 
+										this.getKMVMs());
+	}
 	
 }

@@ -54,5 +54,14 @@ public class InitConJPanel extends GeneJPanel<InitialConcentration> {
 		this.varField.setSelectedIndex(gene.getVariable());
 		this.valField.setSelectedIndex(gene.getValue());
 	}
+
+	@Override
+	public InitialConcentration getPanelSpecificValueWithGene() {
+		return new InitialConcentration(super.getMutate(), super.getDuplic(),
+										super.getDelete(), super.getActivi(), 
+										super.getAgeMin(), super.getAgeMax(), 
+										super.getSex(), super.getMutRat(), 
+										this.getVariable(), this.getValue());
+	}
 	
 }

@@ -99,10 +99,13 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 		this.deleteBox.setSelected(true);
 		this.activiBox.setSelected(true);
 		
-		this.ageMinTexte.setSelectedIndex(   0 );
+		this.ageMinTexte.setSelectedIndex( 000 );
 		this.ageMaxTexte.setSelectedIndex( 999 );
-		this.sexTexte   .setSelectedIndex(   0 );		
-		this.mutRatTexte.setSelectedIndex(  25 );
+		this.sexTexte   .setSelectedIndex( 000 );		
+		this.mutRatTexte.setSelectedIndex( 25 );
+		
+		this.revalidate();
+		this.repaint();
 	}
 	
 	/**
@@ -116,7 +119,7 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 		this.activiBox.setSelected(gene.isActiv());
 		this.ageMinTexte.setSelectedIndex(gene.getAgeMin());
 		this.ageMaxTexte.setSelectedIndex(gene.getAgeMax());
-		this.sexTexte.setSelectedIndex(gene.getSexAct());
+		this.sexTexte   .setSelectedIndex(gene.getSexAct());
 		this.mutRatTexte.setSelectedIndex(gene.getMutationRate());
 	}
 	
@@ -135,5 +138,12 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 	 * @param gene Inheritant Class of Gene. 
 	 */
 	public abstract void setPanelSpecificValueWith(T gene);
+	
+	/**
+	 * Get Generated Gene created from this (inheritant) Panel. 
+	 * @return (Gene)
+	 */
+	public abstract T getPanelSpecificValueWithGene();
+	// public abstract Gene getPanelSpecificValueWithGene();
 
 }

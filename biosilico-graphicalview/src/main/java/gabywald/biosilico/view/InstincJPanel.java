@@ -105,5 +105,18 @@ public class InstincJPanel extends GeneJPanel<Instinct> {
 		this.threshoField.setSelectedIndex(gene.getThreshold());
 		this.checkBox.setSelected(gene.getCheck());
 	}
+
+	@Override
+	public Instinct getPanelSpecificValueWithGene() {
+		return new Instinct(super.getMutate(), super.getDuplic(),
+							super.getDelete(), super.getActivi(), 
+							super.getAgeMin(), super.getAgeMax(), 
+							super.getSex(), super.getMutRat(), 
+							this.getPosXOrg(), this.getPosYOrg(), 
+							this.getPosXDes(), this.getPosYDes(), 
+							this.getWeight(), this.getVariable(), 
+							this.getThreshold(), this.getCheck(), 
+							true ); // TODO add visualization of Pos / Neg creation for instinct !
+	}
 	
 }

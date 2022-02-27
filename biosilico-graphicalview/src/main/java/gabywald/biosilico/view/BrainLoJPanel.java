@@ -171,5 +171,21 @@ public class BrainLoJPanel extends GeneJPanel<BrainLobeGene>
 		this.posyField  .setSelectedIndex(gene.getLobePosY());
 		this.replBox.setSelected(gene.getReplace());
 	}
+
+	@Override
+	public BrainLobeGene getPanelSpecificValueWithGene() {
+		return new BrainLobeGene(	super.getMutate(), super.getDuplic(),
+									super.getDelete(), super.getActivi(), 
+									super.getAgeMin(), super.getAgeMax(), 
+									super.getSex(), super.getMutRat(), 
+									this.getRestState(), this.getThreshold(), 
+									this.getDescent(), 
+									this.getDendritMin(), this.getDendritMax(), 
+									this.getProximity(), this.getReproduce(), 
+									this.getReproduct(), this.getWTA(), 
+									this.getLobeHeight(), this.getLobeWidth(), 
+									this.getLobePosX(), this.getLobePosY(), 
+									this.getReplace() );
+	}
 	
 }

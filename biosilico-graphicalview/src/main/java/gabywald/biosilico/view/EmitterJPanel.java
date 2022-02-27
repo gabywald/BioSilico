@@ -94,5 +94,17 @@ public class EmitterJPanel extends GeneJPanel<EmitterReceptor> {
 		this.receptBox.setSelected(gene.getReceptor());
 		this.internBox.setSelected(gene.getInternal());
 	}
+
+	@Override
+	public EmitterReceptor getPanelSpecificValueWithGene() {
+		return new EmitterReceptor(	super.getMutate(), super.getDuplic(),
+									super.getDelete(), super.getActivi(), 
+									super.getAgeMin(), super.getAgeMax(), 
+									super.getSex(), super.getMutRat(), 
+									this.getVariable(), this.getThreshold(), 
+									this.getIOnput(), 
+									this.getPosXNeurone(), this.getPosYNeurone(), 
+									this.getReceptor(), this.getInternal());
+	}
 	
 }

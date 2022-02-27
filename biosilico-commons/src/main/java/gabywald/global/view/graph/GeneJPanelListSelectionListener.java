@@ -16,7 +16,7 @@ public class GeneJPanelListSelectionListener implements ListSelectionListener {
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		Logger.printlnLog(LoggerLevel.LL_WARNING, e.getFirstIndex() + "::" + e.getSource());
+		Logger.printlnLog(LoggerLevel.LL_WARNING, e.getFirstIndex() + "::" + e.getSource().toString());
 	}
 
 }

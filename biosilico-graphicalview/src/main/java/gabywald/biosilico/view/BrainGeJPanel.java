@@ -59,15 +59,15 @@ public class BrainGeJPanel extends GeneJPanel<BrainGene> {
 	@Override
 	public void setDefaultValues() {
 		super.setDefaultValues();
-		this.setAgeMax( 1 );
-		this.heightField.setSelectedIndex( 99 );
-		this.widthField .setSelectedIndex( 99 );
-		this.depthField .setSelectedIndex(  1 );
-		this.moreField  .setSelectedIndex(  1 );
+		this.setAgeMax( 1 ); // !!
+		this.heightField.setSelectedIndex( 75 );
+		this.widthField .setSelectedIndex( 75 );
+		this.depthField .setSelectedIndex( 001 );
+		this.moreField  .setSelectedIndex( 001 );
 		
+		// change / actualize view !!
 		this.revalidate();
 		this.repaint();
-		
 		super.revalidate();
 		super.repaint();
 	}
@@ -85,4 +85,13 @@ public class BrainGeJPanel extends GeneJPanel<BrainGene> {
 		this.moreField  .setSelectedIndex(gene.getBrainMore());
 	}
 	
+	@Override
+	public BrainGene getPanelSpecificValueWithGene() {
+		return (new BrainGene(	super.getMutate(), super.getDuplic(),
+								super.getDelete(), super.getActivi(), 
+								super.getAgeMin(), super.getAgeMax(), 
+								super.getSex(), super.getMutRat(), 
+								this.getBrainHeight(), this.getBrainWidth(), 
+								this.getBrainDepth(), this.getBrainMore()));
+	}
 }
