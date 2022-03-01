@@ -1,6 +1,7 @@
 package gabywald.biosilico.anthill.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -144,6 +145,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.westernPanel.addBagComponent(new JPanel(), 0, 7, 3); /** blank space */
 		
 		this.westernPanel.addBagComponent(this.wcInfosPanel, 0, 8, 3);
+		this.westernPanel.setPreferredSize(new Dimension(200, 100));
 		
 		this.oneStepButton.addActionListener(this);
 		this.startButton.addActionListener(this);

@@ -33,8 +33,8 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 	
 	
 	public AntHillGraphicalWorld2DCaseJPanel() {
-		this.setSize(100, 170);
-		this.setPreferredSize(new Dimension(100, 170));
+		this.setSize(200, 170);
+		this.setPreferredSize(new Dimension(200, 170));
 		
 		this.energySourceBox	= new JCheckBox("Energy Source", true);
 		this.blackHoleBox		= new JCheckBox("Black Hole", true);
@@ -51,6 +51,9 @@ public class AntHillGraphicalWorld2DCaseJPanel extends GeneKitsGBJPanel {
 		this.worldCasePosY		= new JTextField("---");
 		
 		this.applyButton		= new JButton("Apply");
+		
+		this.worldCasePosX.setSize(50, 14);
+		this.worldCasePosY.setSize(50, 14);
 		
 		this.addBagComponent(this.worldNameLabel,		 0, 0);
 		this.addBagComponent(this.worldNameTexte,		 1, 0, 2);

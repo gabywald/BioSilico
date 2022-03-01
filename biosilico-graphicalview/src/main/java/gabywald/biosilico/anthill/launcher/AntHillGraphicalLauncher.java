@@ -44,6 +44,7 @@ public class AntHillGraphicalLauncher {
 		ahgmb.setWorldDimension(1, 1);
 		ahgmb.addAnt("A");
 		ahgmb.addPlant("P");
+		ahgmb.setWorldDimension(10, 10);
 		AntHillGraphicalModel model = ahgmb.build();
 		controller.setModel( model );
 		controller.setView(AntHillGraphicalFrame.getInstance( model ));

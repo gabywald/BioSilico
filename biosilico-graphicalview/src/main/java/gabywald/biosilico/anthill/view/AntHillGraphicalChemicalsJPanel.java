@@ -52,8 +52,11 @@ public class AntHillGraphicalChemicalsJPanel extends JPanel implements Observer 
 		IChemicals localChemicals = this.localOrga.getChemicals();
 		
 		for (int i = 0 ; i < ChemicalsHelper.CHEMICAL_LENGTH ; i++) {
-			int val = localChemicals.getVariable(i) / 4;
-			this.getComponent(i).setBackground(new Color(val, val, val));
+			int val = localChemicals.getVariable(i);
+			if (i > ChemicalsHelper.CHEMICAL_STRICT_CHEM) 
+				{ val = val / 4; }
+			if (val > 255) { val = 255; }
+			this.getComponent(i).setBackground(new Color(255-val, 255-val, 255-val));
 			StringBuilder sbToolTipTXT = new StringBuilder();
 			sbToolTipTXT.append("varia : [").append( i).append( "] [" )
 						.append( this.localOrga.getChemicals().getVariable( i ) ).append("]");
@@ -72,7 +75,7 @@ public class AntHillGraphicalChemicalsJPanel extends JPanel implements Observer 
 		private Organism localOrga	= null;
 		
 		public ChemicalButton(int i, Organism orga) {
-			this.setBackground(new Color(0, 0, 0));
+			this.setBackground(new Color(255, 255, 255)); // (new Color(0, 0, 0));
 			this.setForeground(Color.RED);
 			this.setEnabled(false);
 			this.setPreferredSize(new Dimension(7, 7));

@@ -60,7 +60,7 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 		private Neuron localNeuron = null;
 		
 		public NeuronButton(Neuron neuron) {
-			this.setBackground(new Color(0, 0, 0));
+			this.setBackground(new Color(255, 255, 255)); // (new Color(0, 0, 0));
 			this.setForeground(Color.RED);
 			this.setEnabled(false);
 			this.setPreferredSize(new Dimension(7, 7));
@@ -83,8 +83,9 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 		public void update(Observable o, Object arg) {
 			Neuron neu = (Neuron)o;
 			
-			int val = neu.getActivity() / 4;
-			this.setBackground(new Color(val, val, val));
+			int val = neu.getActivity();
+			if (val > 255) { val = 255; }
+			this.setBackground(new Color(255-val, 255-val, 255-val));
 			
 			StringBuilder sbPositionToolTipTXT = new StringBuilder();
 			sbPositionToolTipTXT.append("x : ").append(this.localNeuron.getPosition().getPosX())

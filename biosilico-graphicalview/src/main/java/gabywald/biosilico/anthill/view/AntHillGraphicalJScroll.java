@@ -29,8 +29,8 @@ public class AntHillGraphicalJScroll<T extends INamedElement>	extends GenericJSc
 	}
 	
 	private void init() {
-		this.setSize(100, 150);
-		this.setPreferredSize(new Dimension(100, 150));
+		this.setSize(200, 150);
+		this.setPreferredSize(new Dimension(200, 150));
 	}
 	
 	public List<String> getListOfName() 
