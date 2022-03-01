@@ -71,6 +71,7 @@ public class AntHillGraphicalModel {
 		// TODO NOTE create some "aging gene", for some specific periods (0, 1...) for example of Brain Lobe creations !
 		this.organismsList.stream().forEach( orga -> {
 			orga.cyclePlusPlus();	// Aging organism
+			orga.change(); // To notify change ! 
 		});
 	}
 

@@ -72,7 +72,7 @@ public class AntHillGraphicalModelBuilder implements IBuilder<AntHillGraphicalMo
 		currentPlant.setNameCommon( "{" + name + "}PlantStartTest" );
 		currentPlant.setNameBiosilico( "{" + name + "} AntHill Plant Example" );
 		currentPlant.setDivision( "TESTS") ;
-		currentPlant.setGenome( AntHillExampleHelper.loadingAntGenome() );
+		currentPlant.setGenome( AntHillExampleHelper.loadingPlantGenome() );
 		
 		this.organismsList.add( currentPlant );
 		return this;

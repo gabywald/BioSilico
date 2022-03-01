@@ -65,7 +65,7 @@ public class BrainGeJPanel extends GeneJPanel<BrainGene> {
 		this.depthField .setSelectedIndex( 001 );
 		this.moreField  .setSelectedIndex( 001 );
 		
-		// change / actualize view !!
+		// TODO change / actualize view !!
 		this.revalidate();
 		this.repaint();
 		super.revalidate();

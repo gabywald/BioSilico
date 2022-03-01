@@ -142,6 +142,8 @@ public class Organism extends Agent implements IAgentContent {
 		// ***** Running the brain (if not null). 
 		if (this.currentBrain != null) 
 			{ this.currentBrain.networking(); }
+		
+		this.change();
 	}
 
 	/**

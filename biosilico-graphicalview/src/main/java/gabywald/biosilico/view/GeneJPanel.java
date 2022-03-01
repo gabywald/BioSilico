@@ -104,6 +104,7 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 		this.sexTexte   .setSelectedIndex( 000 );		
 		this.mutRatTexte.setSelectedIndex( 25 );
 		
+		// TODO change / actualize view !!
 		this.revalidate();
 		this.repaint();
 	}
@@ -129,7 +130,6 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 	 */
 	@SuppressWarnings("unchecked")
 	public void setPanelSpecificValueWithGene(Gene gene) { 
-		// TODO check inheritant class ?!
 		this.setPanelSpecificValueWith((T)gene);
 	}
 
@@ -144,6 +144,5 @@ public abstract class GeneJPanel<T extends Gene> extends GeneKitsGBJPanel {
 	 * @return (Gene)
 	 */
 	public abstract T getPanelSpecificValueWithGene();
-	// public abstract Gene getPanelSpecificValueWithGene();
 
 }

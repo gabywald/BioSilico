@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Organism;
 import gabywald.utilities.logger.Logger;
@@ -30,13 +29,13 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 
 	public AntHillGraphicalBrainJPanel(Organism orga) {
 		this.localOrga		= orga;
-		Brain localBrain	= this.localOrga.getBrain();
-		if ( (this.localOrga == null) || (localBrain == null) ) {
+		if ( (this.localOrga == null) || (this.localOrga.getBrain() == null) ) {
 			// ***** Organism has NO brain !! (or no organism selected at all !)
 			this.setLayout(new BorderLayout());
 			this.add(new JLabel("No Data To Show !"), BorderLayout.CENTER);
 			this.add(new JLabel((this.localOrga == null)?"No Organism !":"No Brain !!"), BorderLayout.NORTH);
 		} else {
+			Brain localBrain = this.localOrga.getBrain();
 			// ***** Organism HAS brain !!
 			this.setLayout(new GridLayout(localBrain.getHeight(), localBrain.getWidth()));
 			this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -46,11 +45,9 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 					this.add( new NeuronButton( localBrain.getNeuronAt(i, j) ) );
 				}
 			}
-			
-			// TODO ...
 		}
 
-		System.out.println( ( ( (this.localOrga == null) || (localBrain == null) )?"NULL":"not null") + " LOADED => " + this );
+		System.out.println( ( ( (this.localOrga == null) || (this.localOrga.getBrain() == null) )?"NULL":"not null") + " LOADED => " + this );
 
 	}
 
@@ -85,16 +82,16 @@ public class AntHillGraphicalBrainJPanel extends JPanel {
 		@Override
 		public void update(Observable o, Object arg) {
 			Neuron neu = (Neuron)o;
-			boolean neg = false;
-			int val = (int)(neu.getActivity()*255);		// "(neu.getActivity()*100)"
-			if (val < 0) { neg = true; val = -val; }
-			val = Gene.obtainValue(0, 255, val);
-			// Possibly to visualize differently (or not ?)
-			this.setBackground(new Color((neg)?val:0, 0, (!neg)?val:0));
-			// this.setBackground(new Color(val, val, val));
 			
-			// this.setText(neu.getInputLength()+"");
-			// this.test = (!this.test);
+			int val = neu.getActivity() / 4;
+			this.setBackground(new Color(val, val, val));
+			
+			StringBuilder sbPositionToolTipTXT = new StringBuilder();
+			sbPositionToolTipTXT.append("x : ").append(this.localNeuron.getPosition().getPosX())
+								.append( "    " )
+								.append("y : ").append(this.localNeuron.getPosition().getPosY())
+								.append(" [").append(this.localNeuron.getActivity()).append("]");
+			this.setToolTipText( sbPositionToolTipTXT.toString() );
 			
 			if (this.localNeuron.getActivity() > 0) {
 				Logger.printlnLog(LoggerLevel.LL_WARNING, this.getToolTipText() + " : " + this.localNeuron.getActivity());

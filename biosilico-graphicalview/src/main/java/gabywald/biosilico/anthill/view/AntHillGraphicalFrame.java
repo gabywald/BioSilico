@@ -40,7 +40,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 	/** Panel for plot evolution of Chemicals... */
 	private ChartPanel cPanel = null;
 	/** JPanel in Center of the JFrame. */
-	private JPanel centerPanel, brainEditorPanel;
+	private JPanel centerPanel, brainPanel, chemicalPanel;
 	private GeneKitsGBJPanel westernPanel;
 	
 	private AntHillGraphicalJScroll<Organism> organismsJScroll		= null;
@@ -62,7 +62,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		if (AntHillGraphicalFrame.instance == null) 
 			{ AntHillGraphicalFrame.instance = new AntHillGraphicalFrame( agm ); }
 		return AntHillGraphicalFrame.instance;
-	}
+	} 
 	
 	private AntHillGraphicalFrame(AntHillGraphicalModel agm) {
 		
@@ -80,7 +80,7 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.getContentPane().add(this.centerPanel, BorderLayout.CENTER);
 		this.getContentPane().add(this.westernPanel, BorderLayout.WEST);
 		
-		this.setSize(1152, 864); 
+		this.setSize(1400, 900); 
 		this.setTitle("AntHill Graphical Frame");
 		this.setVisible(true);
 	}
@@ -107,14 +107,17 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		tabbedPane.addTab("Gene Creator", null, new GeneCreatorAsJPanel(), "Gene Creation");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_F12);
 		
-		this.brainEditorPanel = new JPanel();
-		tabbedPane.addTab("Brain Editor", null, this.brainEditorPanel, "Brain Activity Visualization");
+		this.brainPanel = new JPanel();
+		tabbedPane.addTab("Brain Vizualiser", null, this.brainPanel, "Brain Activity Visualization");
+		
+		this.chemicalPanel = new JPanel();
+		tabbedPane.addTab("Chemical Vizualiser", null, this.chemicalPanel, "Chemical Activity Visualization");
 		
 		JPanel panel2 = new JPanel();
-		tabbedPane.addTab("World Editor", null, panel2, "Does nothing");
+		tabbedPane.addTab("World Vizualiser", null, panel2, "Does nothing");
 		
 		JPanel panel3 = new JPanel();
-		tabbedPane.addTab("World Case Editor", null, panel3, "Does nothing");
+		tabbedPane.addTab("World Case Vizualiser", null, panel3, "Does nothing");
 		
 		this.centerPanel.add(tabbedPane, BorderLayout.CENTER);
 		
@@ -172,7 +175,6 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		this.cPanel.setEnabled( b );
 	}
 
-
 	@Override
 	public void enableWesternPanel(boolean b) {
 		// "Little" map of World, can be selected (set of buttons). 
@@ -226,8 +228,13 @@ public class AntHillGraphicalFrame	extends GenericJFrame
 		{ return this.organismsJScroll; }
 
 	public void setBrainPanelSelectionWith(Organism orga) {
-		this.brainEditorPanel.removeAll();
-		this.brainEditorPanel.add(new AntHillGraphicalBrainJPanel(orga));
+		this.brainPanel.removeAll();
+		this.brainPanel.add(new AntHillGraphicalBrainJPanel(orga));
+	}
+
+	public void setChemicalsPanelSelectionWith(Organism orga) {
+		this.chemicalPanel.removeAll();
+		this.chemicalPanel.add(new AntHillGraphicalChemicalsJPanel(orga));		
 	}
 
 }
