@@ -22,10 +22,13 @@ public class Chemicals implements IChemicals {
 						.map( i -> 0 ).boxed().collect(Collectors.toList());
 	}
 	
+	@Override
 	public int length()				{ return this.vars.size(); }
 	
+	@Override
 	public int getVariable(int i)	{ return this.vars.get(i).intValue(); }
 	
+	@Override
 	public void setVariable(int i, int value) {
 		if ( (i >= 0) && (i < this.vars.size()) )
 			{ this.vars.set(i, value); }

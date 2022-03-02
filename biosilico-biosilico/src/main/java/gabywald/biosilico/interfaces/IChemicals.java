@@ -2,12 +2,18 @@ package gabywald.biosilico.interfaces;
 
 /**
  * To represent actions on 'chemicals'. 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 public interface IChemicals {
 
+	/** Length / size of the Chemical repository. */
 	public int length();
 	
+	/**
+	 * Value of the variable. 
+	 * @param i (int) Index. 
+	 * @return (int)
+	 */
 	public int getVariable(int i);
 	
 	/** 
