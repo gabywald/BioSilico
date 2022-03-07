@@ -4,7 +4,7 @@ use strict;
 
 my @dataNCBI = (
 		## "pubmed",				
-		"protein",				"nuccore",				"nucleotide",	
+		"protein",				"nuccore",		"nucleotide",	
 		"nucgss",				"nucest",		"structure",			"genome",		
 		"genomeprj",			"bioproject",	"biosample",			"biosystems",	
 		"blastdbinfo",			"books",		"cancerchromosomes",	"cdd",			

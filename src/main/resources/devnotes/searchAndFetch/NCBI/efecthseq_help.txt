@@ -1,0 +1,164 @@
+
+		
+Entrez	PubMed	Nucleotide	Protein	Genome	Structure	OMIM	PMC	Journals	Books
+EFetch for Sequence and other Molecular Biology Databases
+
+Last updated: $Date: 2010-10-08 12:28:28 -0400 (Fri, 08 Oct 2010) $
+EFetch documenation is also available for the Literature, and Taxonomy databases.
+	https://eutils.ncbi.nlm.nih.gov/entrez/query/static/efetchlit_help.html
+	https://eutils.ncbi.nlm.nih.gov/entrez/query/static/efetchtax_help.html
+	
+EFetch: Retrieves records in the requested format from a list of one or more unique identifiers.
+	URL Parameters
+	Examples
+	User System Requirements
+	Entrez DTDs
+	Demonstration Program
+	Announcement Mailing List
+
+
+Base URL: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi
+
+URL parameters:
+NOTE: Utility parameters may be case sensitive. Use lower case characters for all parameters except WebEnv
+	Database (db)
+	Web Environment (WebEnv)
+	Query key (query_key)
+	Record Identifiers (id)
+	Tool (tool)
+	E-mail address (email)
+	Display Numbers (retstart, retmax)
+	Report formats and specifiers (rettype, retmode):
+		Retrieval Type and Mode for sequence databases
+		Retrieval Type and Mode for genome databases
+		Retrieval Type and Mode for SNP database
+		Retrieval Type and Mode for SRA database
+
+Database
+Current database values:
+	gene
+	snp
+	popset
+		sequences:
+		genome
+		nucleotide:
+			nuccore
+			nucest
+			nucgss
+		protein
+	sra
+Example:
+db=protein
+
+Web Environment (WebEnv)
+History link value previously returned in XML results from ESearch and used with EFetch in place of primary ID result list.
+Example:
+WebEnv=NCID_1_23402205_210.26.30.681_3051_6265373359
+
+Query Key
+The value used for a history search number or previously returned in XML results from Esearch or EPost.
+Example:
+query_key=6
+Note: WebEnv is similar to the cookie that is set on a user's computers when accessing PubMed on the web.  If the parameter usehistory=y is included in an ESearch URL both a WebEnv (cookie string) and query_key (history number) values will be returned in the results. Rather then using the retrieved PMIDs in an ESummary URL you may simply use the WebEnv and query_key values to retrieve the records. WebEnv will change for each ESearch query.
+
+Record Identifier
+IDs required if WebEnv is not used.
+Current values:
+	NCBI sequence number (GI)
+	accession
+	accession.version
+	fasta
+	genome ID
+	GeneID
+	seqid
+Example:
+id=123,U12345,U12345.1,gb|U12345|
+
+Tool
+A string with no internal spaces that identifies the resource which is using Entrez links (e.g., tool=flybase). This argument is used to help NCBI provide better service to third parties generating Entrez queries from programs. As with any query system, it is sometimes possible to ask the same question different ways, with different effects on performance. NCBI requests that developers sending batch requests include a constant 'tool' argument for all requests using the utilities.
+Example:
+tool=flybase
+
+E-mail Address
+If you choose to provide an email address, we will use it to contact you if there are problems with your queries or if we are changing software interfaces that might specifically affect your requests. If you choose not to include an email address we cannot provide specific help to you,  but you can still sign up for utilities-announce to receive general
+announcements.
+Example:
+email=john@doe.org
+
+Display Numbers
+	retstart - sequential number of the first id retrieved - default=0 which will retrieve the first record
+	retmax - number of items retrieved
+Example:
+retstart=100&retmax=50
+
+
+Retrieval Type and Mode
+rettype - output types based on database 
+rettmode - output format
+
+rettype	databases	retmode (xml	text	html*	asn1)	Comment
+-- Retrieval Type (rettype) and Modes (retmode) for sequence databases -- 
+	native (full record)	all	x	n/a	n/a	x	ASN Default report for viewing sequences
+	fasta	all	x	x	n/a	n/a	FASTA view of a sequence. Existence of the mode depends on gi type
+	gb	all but protein	x	x	x	n/a	GenBank report for sequences, constructed sequences will be shown as contigs (by pointing to its parts)
+	gbwithparts	all but protein	n/a	x	x	n/a	GenBank report for sequences, the sequence will always be shown
+	gbc	all but protein	x	n/a	x	n/a	INSDSeq ()
+	gp	protein	x	x	x	n/a	GenPept report
+	gpc	protein sequence only	x	n/a	x	n/a	INSDSeq structured flat file
+	est	dbEST sequence only	n/a	x	x	n/a	EST Report
+	gss	dbGSS sequence only	n/a	x	x	n/a	GSS Report
+	seqid	sequence only	n/a	n/a	n/a	x	To convert list of gis into list of seqids
+	acc	sequence only	n/a	x	n/a	n/a	To convert list of gis into list of accessions
+	ft	sequence only	n/a	x	n/a	n/a	Feature Table report
+	Retrieval Type (rettype) and Modes (retmode) for Gene database
+	n/a	all	x	n/a	n/a	x	
+	Retrieval Type (rettype) and Modes (retmode) for SNP database
+	chr	all	n/a	x	x	n/a	SNP Chromosome Report
+	flt	all	n/a	x	x	n/a	SNP Flat File report
+	rsr	all	n/a	x	x	n/a	SNP RS Cluster report
+	brief	all	n/a	x	x	n/a	SNP ID list
+	docset	all	n/a	x	x	n/a	SNP RS summary
+	Retrieval Type (rettype) and Modes (retmode) for SRA database
+	full	all	x	n/a	n/a	n/a	Experiment Package Set report
+	ftplist	all	x	x	n/a	n/a	List of FTP links to the Run data report
+	asperalist	all	x	x	n/a	n/a	List of Aspera links to the Run data report
+x – retrieval mode available. Click to it to run an example
+*  – the same content as text report but with some HTML elements (anchors, sections, etc)
+n/a – not available
+Example:
+rettype=gb&retmode=text
+
+Sequence Strand, Start, Stop and Complexity Parameters
+	strand - what strand of DNA to show (1 = plus or 2 = minus)
+	seq_start - show sequence starting from this base number
+	seq_stop - show sequence ending on this base number
+	complexity - gi is often a part of a biological blob, containing other gis
+	Complexity regulates the display:
+		0 - get the whole blob
+		1 - get the bioseq for gi of interest (default in Entrez)
+		2 - get the minimal bioseq-set containing the gi of interest
+		3 - get the minimal nuc-prot containing the gi of interest
+		4 - get the minimal pub-set containing the gi of interest
+	
+Example:
+strand=2&seq_start=50&seq_stop=2000&complexity=2
+
+Examples
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5&complexity=0&rettype=fasta
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5&rettype=gb&seq_start=1&seq_stop=9
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.cgi?db=nucleotide&id=5&rettype=fasta&seq_start=1&seq_stop=9&strand=2
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5&rettype=gb
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=popset&id=12829836&rettype=gp
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=8&rettype=gp
+Entrez display format GBSeqXML:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5&rettype=gb&retmode=xml
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=8&rettype=gp&retmode=xml
+Entrez display format TinySeqXML:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=5&rettype=fasta&retmode=xml
+Entrez Gene, full display as xml:
+http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=gene&id=2&retmode=xml
+ 
+NCBI | NLM | NIH 
+Department of Health & Human Services 
+Freedom of Information Act | Disclaimer
