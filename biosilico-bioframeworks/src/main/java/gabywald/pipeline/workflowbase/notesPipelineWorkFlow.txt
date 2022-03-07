@@ -37,3 +37,4 @@ Réaliser un "Builder" de Step ?? (aspects génériques, fonction(s) à construi
 	public class PipelineStepBuilder<T>; ?? 
 
 Étapes constructibles : entrée, sortie, erreur(s)
+

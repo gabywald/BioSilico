@@ -6,7 +6,7 @@ import gabywald.pipeline.workflowbase.IPipelineContainer;
 
 /**
  * 
- * <br/>NOTE : WIP / Work In Progress !!N
+ * <br/>NOTE : WIP / Work In Progress !!
  * @author Gabriel Chandesris (2021-2022)
  * @param <C> Data Type Definition of Container
  * @param <T> Data carried by IPipelineContainer

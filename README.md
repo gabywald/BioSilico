@@ -292,7 +292,11 @@ Some tests on neural networks.
 
 ### 'biosilico-graphicalview' : Visualisation of Modelisation / simulation
 
-Graphical views for modelisation and simulation using BioSilico (Core) using Java Swing.  
+Graphical views for modelisation and simulation using BioSilico (Core) using Java Swing. 
+
+Specialisation and re-use for AntHill example : centralisation of graphical views. 
+
+TODO regroup ideas for "what do we want exactly to see ?". 
 
 ### 'biosilico-tests' : 
 
