@@ -7,7 +7,7 @@ import gabywald.crypto.data.BiologicalFormat;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 public abstract class BiologicalFileCreator {
 	
@@ -15,12 +15,6 @@ public abstract class BiologicalFileCreator {
 	
 	protected List<String> encodedPath		= new ArrayList<String>();
 	protected List<String> encodedContent	= new ArrayList<String>();
-	
-//	protected BiologicalFileCreator() 
-//		{ this("", ""); }
-//	
-//	protected BiologicalFileCreator(String content) 
-//		{ this("", content); }
 	
 	/**
 	 * Constructor with given path and content. 
@@ -66,12 +60,12 @@ public abstract class BiologicalFileCreator {
 	}
 	
 	private String addPath(String path) {
-		this.encodedPath.add(path.equals("") ? "" : BiologicalFileCreatorHelper.forPathDirName.encode(path, 1, false) );
+		this.encodedPath.add(path.equals("") ? "" : BiologicalFileCreatorHelper.forPathDirName.encode(path, 1) );
 		return this.encodedPath.get(this.encodedPath.size() - 1);
 	}
 	
 	private String addContent(String content) {
-		this.encodedContent.add(content.equals("") ? "" : BiologicalFileCreatorHelper.forFileContent.encode(content, 1, false) );
+		this.encodedContent.add(content.equals("") ? "" : BiologicalFileCreatorHelper.forFileContent.encode(content, 1) );
 		return this.encodedContent.get(this.encodedContent.size() - 1);
 	}
 

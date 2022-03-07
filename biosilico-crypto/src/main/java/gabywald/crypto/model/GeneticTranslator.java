@@ -4,7 +4,7 @@ import java.util.Vector;
 
 /**
  * Aim of this class is to ensure a Genetic Encryption according to a selected code. 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2022)
  */
 public class GeneticTranslator {
 	/** Genetic code selected. */
@@ -107,11 +107,21 @@ public class GeneticTranslator {
 	 * <br>If asked, add randomly generated chars from Genetic Code. 
 	 * @param sequence (String) whet to encode. 
 	 * @param which (int) 0 : simple encoding ; 1 : More encoding ; 2 (default) : random encoding. 
-	 * @param addRandBases (boolean) to add random bases at begin and end...
+	 * @return (String)
+	 */
+	public String encode(String sequence, int which) 
+		{ return this.encode(sequence, which, null); }
+	
+	/**
+	 * Encoding given sequence and add a 'start' and an 'stop' n-uplet / codon. 
+	 * <br>If asked, add randomly generated chars from Genetic Code. 
+	 * @param sequence (String) whet to encode. 
+	 * @param which (int) 0 : simple encoding ; 1 : More encoding ; 2 (default) : random encoding. 
+	 * @param gtr (GeneticTranslatorRandomizer) to add random bases at begin and end...
 	 * @return (String)
 	 * TODO avoid "no encoding" when a character is not in 'AA' list"...
 	 */
-	public String encode(String sequence, int which, boolean addRandBases) {
+	public String encode(String sequence, int which, GeneticTranslatorRandomizer gtr) {
 		String toReturn = new String("");
 		
 		switch(which) {
@@ -144,10 +154,10 @@ public class GeneticTranslator {
 		}
 		
 		/** Adding random characters before and after the encoded sequence. */
-		if (addRandBases) {
-			char[] alphabet = this.genCode.getAlphabet();
-			int numBefore	= 0;
-			int numAfter	= 0;
+		if ( (gtr != null) && (gtr.addRandomBases()) ) {
+//			char[] alphabet = gtr.getAlphabet(); // this.genCode.getAlphabet();
+//			gtr.getBefore();
+//			gtr.getAfter();
 			// TODO adding random characters at begin and end of the encoded sequence
 			// how to returning it for decoding purposes ?
 			// then put it into an 'CDS information' tag or 'TATA box' position !?

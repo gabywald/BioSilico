@@ -1,5 +1,6 @@
 package gabywald.crypto.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -15,7 +16,7 @@ import gabywald.global.view.GenericJFrame;
 
 /**
  * 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2022)
  */
 @SuppressWarnings("serial")
 public class CryptoFrame extends GenericJFrame {
@@ -58,7 +59,7 @@ public class CryptoFrame extends GenericJFrame {
 			this.actionButtons[i].addActionListener(new ActionButtonsListener(i));
 			westPanel.add(this.actionButtons[i]);
 		}
-		this.add(westPanel, "West");
+		this.add(westPanel, BorderLayout.WEST);
 		
 		/** Central Part. */
 		int localWidthCent		= CryptoFrame.FRAME_WIDTH - localWidthWest;
@@ -101,7 +102,7 @@ public class CryptoFrame extends GenericJFrame {
 		cumulYPos += localTextAreaHeight;
 		centPanel.add(scroll02);
 		
-		this.add(centPanel, "Center");
+		this.add(centPanel, BorderLayout.CENTER);
 		
 		this.setVisible(true);
 	}
