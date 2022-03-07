@@ -25,4 +25,20 @@ public class StringCouple {
 	public String toStringComma() { return "("+this.valueA+","+this.valueB+")"; }
 	
 	public String toString() { return this.valueA+"          "+this.valueB; }
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		StringCouple sc = (StringCouple) obj;
+		
+		// Call equals() method of the underlying objects
+		if ( ! this.valueA.equals(sc.valueA))
+			{ return false; }
+		return this.valueB.equals(sc.valueB);
+	}
 }

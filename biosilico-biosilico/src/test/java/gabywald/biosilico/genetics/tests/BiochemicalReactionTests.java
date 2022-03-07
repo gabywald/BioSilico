@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.BiochemicalReaction;
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 
 /**
@@ -319,6 +320,27 @@ class BiochemicalReactionTests {
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTCTTCTTCGCCTTGGT	false	false	false	false	0	999	0	50	500	500	500	500	500	500	500	500	10	", 
 				brGene.toString());
 
+	}
+	
+	@Test
+	void testCloneEquals() {
+		BiochemicalReaction brGene = new BiochemicalReaction(	false, false, false, false, 
+																0, 999, 0, 50, 
+																0, 0, 0, 0, 0, 0, 0, 0, 10);
+
+		Gene brGeneClone = brGene.clone();
+		Assertions.assertNotNull( brGeneClone );
+		BiochemicalReaction brbrGeneClone = (BiochemicalReaction) brGeneClone;
+		Assertions.assertNotNull( brbrGeneClone );
+		
+		Assertions.assertTrue( brGene.equals( brGeneClone ) );
+		Assertions.assertTrue( brGene.equals( brbrGeneClone ) );
+		
+		BiochemicalReaction brGeneOther = new BiochemicalReaction(	false, false, false, false, 
+				0, 999, 0, 50, 
+				0, 0, 0, 0, 0, 0, 0, 0, 1);
+		
+		Assertions.assertFalse( brGene.equals( brGeneOther ) );
 	}
 
 }

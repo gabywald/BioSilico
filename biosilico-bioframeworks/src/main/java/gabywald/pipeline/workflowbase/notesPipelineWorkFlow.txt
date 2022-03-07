@@ -1,0 +1,40 @@
+20211214
+Creating a Tool for applying / using a Pipeline (or workflow) in BioSilico
+
+Some Links : 
+	https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60
+	https://doanduyhai.wordpress.com/2012/07/08/design-pattern-the-pipeline/
+	https://www.doanduyhai.com/blog/?p=1234
+	https://towardsdatascience.com/data-pipeline-design-principles-e7fbba070b4a
+	https://towardsdatascience.com/data-pipelines-design-patterns-for-reusability-extensibility-3df0af020c64
+	!! https://www.bostata.com/data-pipeline-design-considerations
+	https://multithreaded.stitchfix.com/blog/2016/03/16/engineers-shouldnt-write-etl/
+	https://blog.usebutton.com/3-design-principles-for-engineering-data
+
+The Pipeline Pattern : The pipeline pattern is a software design pattern that provides the ability to build and execute a sequence of operations.
+	Sequence of operations, ordered (...)
+	Extension of "Chain of Responsability" Design Pattern
+
+Typically used in : 
+	- Quality Control
+	- Data Extraction / Transformation / Loading (ETL)
+	- Data Engineering
+	- Data Processing examples : 
+		+ Ingestion (Sources & Dependencies, Security & Privacy, Validation & Quality, Logging & Monitoring)
+		+ Processing (Source & Target, Security & Privacy, Transformation, Validation & Quality, Logging & Monitoring)
+		+ Result (Source & Target, Security & Privacy, Transformation Rules, Validation & Quality, Logging & Monitoring)
+
+Main Interests
+	1/ Replayability
+	2/ Auditability / Observability
+	3/ Scalability
+	4/ Reliability
+	5/ Security
+
+====================================
+
+Réaliser un "Builder" de Step ?? (aspects génériques, fonction(s) à construire, éléments possibles par défaut... )
+	public class PipelineStepBuilder<T>; ?? 
+
+Étapes constructibles : entrée, sortie, erreur(s)
+

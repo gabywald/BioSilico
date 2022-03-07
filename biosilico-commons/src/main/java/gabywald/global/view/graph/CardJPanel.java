@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  * This kind of JPanel provides a Card Layout JPanel. 
- *  @author Gabriel Chandesris (2010, 2020)
+ *  @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public abstract class CardJPanel extends JPanel {
@@ -25,7 +25,7 @@ public abstract class CardJPanel extends JPanel {
 	 * @param strings (String[]) names of cards
 	 * @param cards (JPanel[])
 	 */
-	public CardJPanel(String[] strings,JPanel[] cards) {
+	public CardJPanel(String[] strings, JPanel[] cards) {
 		this.stringParam	= strings;
 		this.cardParam		= cards;
 		/** The whole CardLayout */
@@ -45,6 +45,8 @@ public abstract class CardJPanel extends JPanel {
 			CardLayout cl = (CardLayout)(this.getLayout());
 		    cl.show(this, this.stringParam[i]);
 		}
+		this.revalidate();
+		this.repaint();
 	}
 	
 	/**

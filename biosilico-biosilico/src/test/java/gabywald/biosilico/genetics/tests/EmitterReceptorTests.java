@@ -4,7 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.EmitterReceptor;
+import gabywald.biosilico.genetics.Gene;
+import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020, 2021)
+ */
 class EmitterReceptorTests {
 
 	@Test
@@ -261,6 +267,61 @@ class EmitterReceptorTests {
 				erGene.reverseTranslation(true));
 		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTTTCCTTCGCTAGGGT	false	false	false	false	0	999	0	50	500	500	500	50	50	false	false	", 
 				erGene.toString());
+	}
+	
+	@Test
+	void testConstruction009() {
+		EmitterReceptorBuilder erb = new EmitterReceptorBuilder();
+		EmitterReceptor erGene = erb.variable(500).threshold(500)
+										.ioput(500).posx(50).posy(50)
+										.receptor(false).internal(false)
+										.agemax(999).mutation(50).build();
+
+		Assertions.assertFalse(erGene.canMutate());
+		Assertions.assertFalse(erGene.canDuplicate());
+		Assertions.assertFalse(erGene.canDelete());
+		Assertions.assertFalse(erGene.isActiv());
+		Assertions.assertEquals(erGene.getAgeMin(), 0);
+		Assertions.assertEquals(erGene.getAgeMax(), 999);
+		Assertions.assertEquals(erGene.getSexAct(), 0);
+		Assertions.assertEquals(erGene.getMutationRate(), 50);
+		
+		Assertions.assertEquals(erGene.getVariable(), 500);
+		Assertions.assertEquals(erGene.getThreshold(), 500);
+		Assertions.assertEquals(erGene.getIOnput(), 500);
+		Assertions.assertEquals(erGene.getPosXNeurone(), 50);
+		Assertions.assertEquals(erGene.getPosYNeurone(), 50);
+		
+		Assertions.assertFalse(erGene.getReceptor());
+		Assertions.assertFalse(erGene.getInternal());
+		
+		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTTTCCTTCGCTAGGGT", 
+				erGene.reverseTranslation(false));
+		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTTTCCTTCGCTAGGGT", 
+				erGene.reverseTranslation(true));
+		Assertions.assertEquals("GGACGCTAGTTCTGGCTTCTTCTTGCCGCCGCCCTTCTTCTTTTCCTTGTATTCCTTCTTTTCCTTCTTTTCCTTCTTTTCCTTTTCCTTCGCTAGGGT	false	false	false	false	0	999	0	50	500	500	500	50	50	false	false	", 
+				erGene.toString());
+	}
+	
+	@Test
+	void testCloneEquals() {
+		EmitterReceptor erGene = new EmitterReceptor(	false, false, false, false, 
+														0, 999, 0, 50,
+														0, 0, 0, 0, 0, false, false);
+
+		Gene erGeneClone = erGene.clone();
+		Assertions.assertNotNull( erGeneClone );
+		EmitterReceptor berGeneClone = (EmitterReceptor) erGeneClone;
+		Assertions.assertNotNull( berGeneClone );
+		
+		Assertions.assertTrue( erGene.equals( erGeneClone ) );
+		Assertions.assertTrue( erGene.equals( berGeneClone ) );
+		
+		EmitterReceptor erGeneOther = new EmitterReceptor(	false, false, false, false, 
+															0, 999, 0, 50,
+															0, 0, 0, 0, 0, false, true);
+		
+		Assertions.assertFalse( erGene.equals( erGeneOther ) );
 	}
 
 }

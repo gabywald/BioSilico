@@ -17,7 +17,6 @@ import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,15 +48,6 @@ public class Organism extends Agent implements IAgentContent {
 		this.currentBrain		= null;
 		this.liste				= new ArrayList<Agent>();
 		this.extendedlineage	= new ArrayList<ExtendedLineageItem>();
-	}
-
-	/**
-	 * Constructor with several chromosomes (sex is 0). 
-	 * @param genome (Chromosome[]) pre-build genome. 
-	 */
-	public Organism(Chromosome genome[]) {
-		this();
-		this.genome.addAll(Arrays.asList(genome));
 	}
 
 	/**
@@ -107,9 +97,8 @@ public class Organism extends Agent implements IAgentContent {
 	public void addExtendedLineageItem(	ExtendedLineageItem eli ) 
 		{ this.extendedlineage.add( eli ); }
 
-	public List<String> getSimpleLinage() {
-		return this.extendedlineage.stream().map(el -> el.getScientificName()).collect(Collectors.toList());
-	}
+	public List<String> getSimpleLinage() 
+		{ return this.extendedlineage.stream().map(el -> el.getScientificName()).collect(Collectors.toList()); }
 
 	public String getSimpleLineage(int i) 
 		{ return this.extendedlineage.get(i).getScientificName(); }
@@ -153,6 +142,8 @@ public class Organism extends Agent implements IAgentContent {
 		// ***** Running the brain (if not null). 
 		if (this.currentBrain != null) 
 			{ this.currentBrain.networking(); }
+		
+		this.change();
 	}
 
 	/**
@@ -289,6 +280,14 @@ public class Organism extends Agent implements IAgentContent {
 	}
 	
 	@Override
+	public int hasAgentWithName(String name) 
+		{ return IAgentContent.hasName(name, this.liste); }
+
+	@Override
+	public Agent getAgentWithName(String name) 
+		{ return IAgentContent.getName(name, this.liste); }
+	
+	@Override
 	public void addAgent(Agent object) { 
 		if (object != null) { this.liste.add(object); } 
 	}
@@ -310,6 +309,7 @@ public class Organism extends Agent implements IAgentContent {
 			{ result.append("\tNO DATA\n"); }
 		else {
 			this.extendedlineage.stream().forEach( el -> result.append( "\t" ).append( el.getScientificName() ).append(" (").append( el.getUniqueID() ).append(")\n") );
+			// { return this.extendedlineage.stream().map(el -> el.getScientificName()).collect(Collectors.toList()); }
 		}
 		
 		result.append("GENOME\n");

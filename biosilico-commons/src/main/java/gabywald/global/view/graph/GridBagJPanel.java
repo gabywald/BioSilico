@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  * Aim of this class is to define a JPanel with a default GridBagLayout. 
- * @author Gabriel Chandesris (2009-2010, 2020)
+ * @author Gabriel Chandesris (2009-2010, 2020, 2022)
  * @see <a href="http://java.sun.com/docs/books/tutorial/uiswing/layout/gridbag.html">How to Use GridBagLayout</a>
  * @see <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/awt/GridBagLayout.html">Class GridBagLayout (Java 1.4.2)</a>
  * @see <a href="http://louis.cova.neuf.fr/blocs-notes/page11.html">Maitriser le GridBagLayout</a>
@@ -21,40 +21,41 @@ public abstract class GridBagJPanel extends JPanel {
 	// private static final long serialVersionUID = 422L;
 	
 	/** GenericJFrame where JPanel is included in. */
-	protected GenericJFrame mainFrame;
+	private IEnablerBorderLayoutPanels mainEnabler;
 	
 	/** Default Constructor. */
 	public GridBagJPanel() { 
 		super(new GridBagLayout());
-		this.setBackground(Color.LIGHT_GRAY);
-		this.setSize(
-				new Dimension(
-					GenericJFrame.WIDTH, 
-					GenericJFrame.HEIGHT));
+		this.setBackground( Color.LIGHT_GRAY );
+		this.setSize(	new Dimension(	GenericJFrame.WIDTH, 
+										GenericJFrame.HEIGHT));
 	}
 	
-	public void addBagComponent(Component comp,int gridx,int gridy) {
+	public void addBagComponent(Component comp, int gridx, int gridy) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = gridx;c.gridy = gridy;
 		this.add(comp,c);
 	}
 	
-	public void addBagComponent(Component comp,int gridx,int gridy,int gridwidth) {
+	public void addBagComponent(Component comp, int gridx, int gridy, int gridwidth) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = gridx;c.gridy = gridy;c.gridwidth = gridwidth;
 		this.add(comp,c);
 	}
 	
-	public void addBagComponent(Component comp,int gridx,int gridy,int gridwidth,int gridHeight) {
+	public void addBagComponent(Component comp, int gridx, int gridy, int gridwidth, int gridHeight) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = gridx;c.gridy = gridy;
 		c.gridwidth = gridwidth;c.gridheight = gridHeight;
 		this.add(comp,c);
 	}
+	
+	public IEnablerBorderLayoutPanels getMainEnabler() 
+		{ return this.mainEnabler; }
 
-	public void setMainJFrame(GenericJFrame main) 
-		{ this.mainFrame = main; }
+	public void setMainEnabler(IEnablerBorderLayoutPanels main) 
+		{ this.mainEnabler = main; }
 }

@@ -1,12 +1,13 @@
 package gabywald.biosilico.interfaces;
 
+import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
-public interface IEnvironment {
+public interface IEnvironment extends INamedElement {
 	
 	/**
 	 * Gives environment's item at given position. 

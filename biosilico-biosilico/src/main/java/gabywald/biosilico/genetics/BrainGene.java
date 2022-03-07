@@ -53,9 +53,9 @@ public class BrainGene extends GeneGattaca {
 			int ageMin, int ageMax, int sex, int mutRate,
 			int height, int width, int depth, int more) {
 		super(mutate, duplicate, delete, activ, ageMin, ageMax, sex, mutRate);
-		this.height	= BrainGene.obtainValueSpecific(0, Brain.MAX_HEIGHT, height);
-		this.width	= BrainGene.obtainValueSpecific(0, Brain.MAX_WIDTH, width);
-		this.depth	= BrainGene.obtainValueSpecific(0, Brain.MAX_DEPTH, depth);
+		this.height	= Gene.obtainValue(0, Brain.MAX_HEIGHT, height);
+		this.width	= Gene.obtainValue(0, Brain.MAX_WIDTH, width);
+		this.depth	= Gene.obtainValue(0, Brain.MAX_DEPTH, depth);
 		this.more = more;
 		/** Instantiation of Brain done only one time 
 		 * (not at each execution of BrainGene if it is case). */
@@ -70,10 +70,10 @@ public class BrainGene extends GeneGattaca {
 	 * @param max (int) Maximal value. 
 	 * @param val (int) Current value of attribute. 
 	 * @return (int) Minimal, maximal or value. 
+	 * @deprecated (no exception, for easy-to-use reasons)
 	 */
-	public static final int obtainValueSpecific(int min, int max, int val) { 
-		return (val > max) ? max : ((val <= 0) ? max : val);
-	}
+	public static final int obtainValueSpecific(int min, int max, int val) 
+		{  return (val > max) ? max : ((val <= 0) ? max : val); }
 
 	@Override
 	public String reverseTranslation(boolean end) {
@@ -107,6 +107,27 @@ public class BrainGene extends GeneGattaca {
 							this.height+"\t"+this.width+"\t"+
 							this.depth+"\t"+this.more+"\t";
 		return stringenize;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		BrainGene bg = (BrainGene) obj;
+		
+		if ( ! super.equalCommonAttributes( bg )) { return false; }
+		
+		if ( this.height != bg.height)
+			{ return false; }
+		if ( this.width != bg.width)
+			{ return false; }
+		if ( this.depth != bg.depth)
+			{ return false; }
+		return ( this.more == bg.more);
 	}
 
 	@Override

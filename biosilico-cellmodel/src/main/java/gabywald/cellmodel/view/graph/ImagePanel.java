@@ -25,7 +25,7 @@ public class ImagePanel extends JPanel {
 	/** Default constructor. */
 	private ImagePanel() {
 		// try { this.fond = ImageIO.read(new File("bin/gabywald/cellmodel/view/graph/interfacejava.png")); }
-		try { this.fond = ImageIO.read(PropertiesLoader.openResource("biosilico/interfacejavaCellModel.png")); }
+		try { this.fond = ImageIO.read(PropertiesLoader.openResource("interfaceJavaCellModel.png")); }
 		catch (IOException e) { e.printStackTrace(); }
 	}
 	

@@ -21,11 +21,16 @@ import gabywald.biosilico.model.enums.StateType;
 import gabywald.biosilico.model.enums.StatusType;
 import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
+import gabywald.biosilico.model.utils.agents.TestObjectFoodEgg;
 import gabywald.global.data.StringUtils;
+
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
+ * TODO review and replace "Logger.printlnLog(LoggerLevel.LL_NONE, " with "Logger.printlnLog(LoggerLevel.LL_NONE, "
  */
 class OrganismInWorldCaseDecisionsTests {
 
@@ -99,15 +104,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -123,14 +127,14 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  1, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals( testOrga.getUniqueID() + "::think about [Glucose]\t", testOrga.getState() );
+		Assertions.assertEquals( testOrga.getUniqueID() + "::think about [" + SomeChemicals.GLUCOSE.getDefinition() + "]\t", testOrga.getState() );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  4, testOrga.getChemicals().getVariable( DecisionType.THINK.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -138,14 +142,14 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
-		Assertions.assertEquals(  testOrga.getUniqueID() + "::think about [Glucose]\t", testOrga.getState() );
+		Assertions.assertEquals( testOrga.getUniqueID() + "::think about [" + SomeChemicals.GLUCOSE.getDefinition() + "]\t", testOrga.getState() );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( DecisionType.THINK.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 	
@@ -221,14 +225,14 @@ class OrganismInWorldCaseDecisionsTests {
 		
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -242,10 +246,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -256,10 +260,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		wc.addAgent( new TestObjectFoodEgg() );
 		
@@ -272,10 +276,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals( 42, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_01.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 	
@@ -350,15 +354,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -376,10 +379,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -394,10 +397,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		wc.addAgent( new TestObjectFoodEgg() );
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
@@ -415,10 +418,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		testOrga.addAgent( new TestObjectFoodEgg() );
 		
@@ -438,10 +441,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals( 42, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 	
@@ -516,15 +519,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -541,10 +543,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -558,10 +560,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		wc.addAgent( new TestObjectFoodEgg() );
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
@@ -582,10 +584,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		testOrga.addAgent( new TestObjectFoodEgg() );
 		
@@ -602,10 +604,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -620,10 +622,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 	
@@ -698,15 +700,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -725,10 +726,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -742,10 +743,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		wc.addAgent( new TestObjectFoodEgg() );
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
@@ -768,10 +769,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		testOrga.addAgent( new TestObjectFoodEgg() );
 		
@@ -790,10 +791,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -810,10 +811,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 
@@ -888,15 +889,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -915,10 +915,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals( "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -934,10 +934,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		wc.addAgent( new TestObjectFoodEgg() );
 		Assertions.assertEquals(  1, wc.hasObjectType(ObjectType.FOOD) );
@@ -960,10 +960,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		testOrga.addAgent( new TestObjectFoodEgg() );
 		
@@ -982,10 +982,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** one execution in this context
 		testOrga.execution( wc );
@@ -1002,10 +1002,10 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.PHEROMONE_09.getIndex() ) );
 		Assertions.assertEquals(  "", testOrga.getState() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
-		System.out.println( wc.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, wc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 	}
 	
@@ -1081,15 +1081,14 @@ class OrganismInWorldCaseDecisionsTests {
 		Assertions.assertEquals(15, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertTrue( testOrga.isAlive() );
 		Assertions.assertNotEquals( StatusType.DEAD, testOrga.getOrganismStatus() );

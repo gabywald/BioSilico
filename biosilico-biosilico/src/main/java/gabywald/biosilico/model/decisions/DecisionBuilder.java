@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.interfaces.IAgentContent;
+import gabywald.biosilico.interfaces.IBuilder;
 import gabywald.biosilico.interfaces.IEnvironmentItem;
 import gabywald.biosilico.model.Agent;
 import gabywald.biosilico.model.Organism;
@@ -27,7 +28,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * Builder for IDecision. 
  * @author Gabriel Chandesris (2020)
  */
-public class DecisionBuilder {
+public class DecisionBuilder implements IBuilder<IDecision> {
 	private DecisionType type	= null;		
 	private Organism orga		= null;
 	private Integer	object		= null, 
@@ -73,6 +74,7 @@ public class DecisionBuilder {
 		return this;
 	}
 	
+	@Override
 	public IDecision build() {
 		if (this.type == null) { return null; }
 		if (this.orga == null) { return null; }

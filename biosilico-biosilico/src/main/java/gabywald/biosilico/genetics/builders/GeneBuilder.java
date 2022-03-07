@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gabywald.biosilico.genetics.Gene;
+import gabywald.biosilico.interfaces.IBuilder;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  * @param <T>
  */
-public abstract class GeneBuilder<T extends Gene> {
+public abstract class GeneBuilder<T extends Gene> implements IBuilder<T> {
 	
 	protected Map<GeneBuilderEnum, Pair<GeneAttemptedType, String> > map = new HashMap<GeneBuilderEnum, Pair<GeneAttemptedType, String> >();
 	
@@ -159,6 +160,7 @@ public abstract class GeneBuilder<T extends Gene> {
 		return this;
 	}
 	
+	@Override
 	public abstract T build();
 	
 }

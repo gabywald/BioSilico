@@ -18,6 +18,9 @@ import gabywald.biosilico.model.environment.World2D;
 import gabywald.biosilico.model.environment.World2DCase;
 import gabywald.global.data.StringUtils;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
 /**
  * 
  * @author Gabriel Chandesris (2020)
@@ -79,15 +82,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -105,8 +107,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
 		Assertions.assertNotNull( testNeuronAt0dot0 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -174,15 +176,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -200,8 +201,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
 		Assertions.assertNotNull( testNeuronAt0dot0 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -223,8 +224,8 @@ class OrganismInWorldCaseInstinctsTests {
 		
 		Assertions.assertEquals(  0, testNeuronAt0dot0.getActivity() );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		// List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -291,15 +292,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(5, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -317,8 +317,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
 		Assertions.assertNotNull( testNeuronAt0dot0 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -342,8 +342,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(99, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals(42, testNeuronAt9dot0.getActivity() );
@@ -370,8 +370,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(98, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals(83, testNeuronAt9dot0.getActivity() ); // 42 + 42 - 1
@@ -454,15 +454,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -480,8 +479,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot0 = testOrga.getBrain().getNeuronAt(0, 0);
 		Assertions.assertNotNull( testNeuronAt0dot0 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -505,8 +504,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(99, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals( 1, testNeuronAt9dot0.getActivity() );
@@ -533,8 +532,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(98, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals( 1, testNeuronAt9dot0.getActivity() ); // 42 + 42 - 1
@@ -617,15 +616,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -645,8 +643,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot1 = testOrga.getBrain().getNeuronAt(0, 1);
 		Assertions.assertNotNull( testNeuronAt0dot1 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -672,8 +670,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(99, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals( 0, testNeuronAt0dot1.getActivity() );
@@ -701,8 +699,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(98, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals( 0, testNeuronAt0dot1.getActivity() );
@@ -786,15 +784,14 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals(6, testOrga.getGenome().get(0).length());
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
 		testOrga.setCurrentWorldCase( wc );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  0, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
@@ -814,8 +811,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Neuron testNeuronAt0dot1 = testOrga.getBrain().getNeuronAt(0, 1);
 		Assertions.assertNotNull( testNeuronAt0dot1 );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		// ***** Check connection from (9, 0) to (0, 0) and weights
 		List<Neuron> testConnections9dot0	= testNeuronAt9dot0.getConnections();
@@ -844,8 +841,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  2, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(99, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals(99, testNeuronAt0dot1.getActivity() );
@@ -876,8 +873,8 @@ class OrganismInWorldCaseInstinctsTests {
 		Assertions.assertEquals( 25, testOrga.getChemicals().getVariable( SomeChemicals.GLUCOSE.getIndex() ) );
 		Assertions.assertEquals(  3, testOrga.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
-		System.out.println( testOrga.toString() );
-		System.out.println( StringUtils.repeat("+", 80) );
+		Logger.printlnLog(LoggerLevel.LL_NONE, testOrga.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, StringUtils.repeat("+", 80) );
 		
 		Assertions.assertEquals(98, testNeuronAt0dot0.getActivity() );
 		Assertions.assertEquals(98, testNeuronAt0dot1.getActivity() );

@@ -11,9 +11,12 @@ import gabywald.biosilico.interfaces.IPosition;
 import gabywald.biosilico.model.environment.PositionBuilder;
 import gabywald.global.structures.ObservableObject;
 
+// import gabywald.utilities.logger.Logger;
+// import gabywald.utilities.logger.Logger.LoggerLevel;
+
 /**
  * Brain is a defined class of a two-dimensionnal neural network of Neuron's. 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 public class Brain extends ObservableObject {
 	/** A two-dimensional table of Neuron. */
@@ -25,12 +28,12 @@ public class Brain extends ObservableObject {
 	/** Depth of current Brain. */
 	private int maxDepth;
 
-	/** The maximum height of a Brain. (100) */
-	public static final int MAX_HEIGHT	= 100;
-	/** The maximum width of a Brain.  (100) */
-	public static final int MAX_WIDTH	= 100;
-	/** The maximum depth (3D) of a Brain.  (100) */
-	public static final int MAX_DEPTH	= 100;
+	/** The maximum height of a Brain. (99) */
+	public static final int MAX_HEIGHT	= 99;
+	/** The maximum width of a Brain.  (99) */
+	public static final int MAX_WIDTH	= 99;
+	/** The maximum depth (3D) of a Brain.  (99) */
+	public static final int MAX_DEPTH	= 99;
 	
 	/** The number of iterations on each run. */
 	public static final int ITERATIONS_ON_EACH_RUN = 1000;
@@ -120,7 +123,7 @@ public class Brain extends ObservableObject {
 		int diffHeight = Gene.obtainValue(0, this.maxHeight-1, x-prox);
 		int diffWidth1 = Gene.obtainValue(0, this.maxWidth-1, y-prox);
 		int diffWidth2 = Gene.obtainValue(0, this.maxWidth-1, y+prox);
-		// System.out.println( "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
+		// Logger.printlnLog(LoggerLevel.LL_NONE, "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
 
 		// ***** in same Y-pos first !!
 		IntStream.range(diffHeight, x).forEach( i -> {
@@ -167,7 +170,7 @@ public class Brain extends ObservableObject {
 		int diffHeight = Gene.obtainValue(0, this.maxHeight-1, x-prox);
 		int diffWidth1 = Gene.obtainValue(0, this.maxWidth-1, y-prox);
 		int diffWidth2 = Gene.obtainValue(0, this.maxWidth-1, y+prox);
-		// System.out.println( "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
+		// Logger.printlnLog(LoggerLevel.LL_NONE, "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
 
 		IntStream.range(diffHeight, x).forEach( i -> {
 			IntStream.range(diffWidth1, diffWidth2 + 1).forEach( j -> {
@@ -199,7 +202,7 @@ public class Brain extends ObservableObject {
 		int diffHeight2 = Gene.obtainValue(0, this.maxHeight-1, x+prox);
 		int diffWidth1 = Gene.obtainValue(0, this.maxWidth-1, y-prox);
 		int diffWidth2 = Gene.obtainValue(0, this.maxWidth-1, y+prox);
-		// System.out.println( "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
+		// Logger.printlnLog(LoggerLevel.LL_NONE, "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
 
 		IntStream.range(diffHeight1, diffHeight2 + 1).forEach( i -> {
 			IntStream.range(diffWidth1, diffWidth2 + 1).forEach( j -> {
@@ -233,7 +236,7 @@ public class Brain extends ObservableObject {
 		int diffHeight2 = Gene.obtainValue(0, this.maxHeight-1, x+prox);
 		int diffWidth1 = Gene.obtainValue(0, this.maxWidth-1, y-prox);
 		int diffWidth2 = Gene.obtainValue(0, this.maxWidth-1, y+prox);
-		// System.out.println( "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
+		// Logger.printlnLog(LoggerLevel.LL_NONE, "h" + pos + "::" + prox + " -> " + diffHeight + "\t" + (x-1) + " =>... w" + pos + "::" + prox + " -> " + diffWidth1 + "\t" + diffWidth2 );
 
 		for (int i = diffHeight1 ; i < diffHeight2 ; i++) {
 			for (int j = diffWidth1 ; j < diffWidth2 ; j++) {

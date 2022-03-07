@@ -17,7 +17,7 @@ import gabywald.biosilico.model.enums.DirectionWorld;
 
 /**
  * This class defines global environment for simulation and containing WorldCases. 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 public class World2D implements IEnvironment, IChemicalsContent {
 	/** The map of WorldCase's contained. */
@@ -28,6 +28,8 @@ public class World2D implements IEnvironment, IChemicalsContent {
 	
 	private List<World2DCase> wcs = null;
 	
+	private String name = null;
+	
 	public static final int MAX_HEIGHT	= 20;
 	public static final int MAX_WIDTH	= 20;
 	
@@ -35,12 +37,22 @@ public class World2D implements IEnvironment, IChemicalsContent {
 		this.halfLives	= ChemicalsBuilder.build();
 		this.map		= new World2DCase[height][width];
 		
+		// Setting a default name !
+		this.setName(this.getClass().getSimpleName() + "[" + height + ", " + width + "]");
+		
 		IntStream.range(0, this.map.length).forEach( i -> {
 			IntStream.range(0, this.map[i].length).forEach( j -> {
 				this.map[i][j] = new World2DCase(this, PositionBuilder.buildPosition(i, j)); 
 			});
 		});
 	}
+	
+	@Override
+	public String getName() 
+		{ return this.name; }
+	
+	public void setName(String name) 
+		{ this.name = name; }
 	
 	@Override
 	public IEnvironmentItem getEnvironmentItem(IPosition position) {

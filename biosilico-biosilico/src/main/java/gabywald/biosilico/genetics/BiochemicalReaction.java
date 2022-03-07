@@ -10,8 +10,7 @@ import gabywald.biosilico.model.enums.SomeChemicals;
 import gabywald.biosilico.structures.GeneticTranslator;
 
 /**
- * This type of Gene is to permit chemicals reactions of these sort, in mass action chemical reaction <b>aA + bB -> cC + dD</b> : 
- * <p></p>
+ * This type of Gene is to permit chemicals reactions of these sorts / kinds, in mass action chemical reaction <b>aA + bB -> cC + dD</b>, according to a certain 'speed' : 
  * <ul>
  * <li>A + B -> C + D : standard chemical reaction</li>
  * <li>A + B -> C : fusion</li>
@@ -115,29 +114,33 @@ public class BiochemicalReaction extends GeneGattaca {
 		IChemicals vars = orga.getChemicals();
 		// ***** Avoiding the reaction from nothing. 
 		if ( (this.Achem == 0) && (this.Bchem == 0) )
-			{ throw new GeneException("Chemical A and B are 0. "); }
+			{ return; } // { throw new GeneException("Chemical A and B are 0. "); }
 		// ***** Need to get enough A and B. One can be 'default var'. 
-		boolean reaction = this.testABchemicals(vars);
+		boolean reaction = this.testABchemicalsNeutral(vars);
 		int local_cycle = 0;
 		while (reaction && (this.KminVmax > local_cycle) ) {
-			if (this.Achem != NEUTRAL_INDEX) 
+			if (this.Achem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarLess(this.Achem, this.Acoef); }
-			if (this.Bchem != NEUTRAL_INDEX) 
+			if (this.Bchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarLess(this.Bchem, this.Bcoef); }
-			if (this.Cchem != NEUTRAL_INDEX) 
+			if (this.Cchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarPlus(this.Cchem, this.Ccoef); }
-			if (this.Dchem != NEUTRAL_INDEX) 
+			if (this.Dchem != BiochemicalReaction.NEUTRAL_INDEX) 
 				{ vars.setVarPlus(this.Dchem, this.Dcoef);}
 			local_cycle++;
-			reaction = this.testABchemicals(vars);
+			reaction = this.testABchemicalsNeutral(vars);
 		} // end "while (reaction && (this.KminVmax > local_cycle) )"
-		
 	}
 	
-	private boolean testABchemicals(IChemicals vars) {
-		return ( ( (this.Achem == NEUTRAL_INDEX) ||
+	/**
+	 * Test if Achem and Bchem are both Neutral or not (and actives). 
+	 * @param vars (IChemicals)
+	 * @return (boolean)
+	 */
+	private boolean testABchemicalsNeutral(IChemicals vars) {
+		return ( ( (this.Achem == BiochemicalReaction.NEUTRAL_INDEX) ||
 						 (vars.getVariable(this.Achem) >= this.Acoef) )
-				 && ( (this.Bchem == NEUTRAL_INDEX) ||
+				 && ( (this.Bchem == BiochemicalReaction.NEUTRAL_INDEX) ||
 						 (vars.getVariable(this.Bchem) >= this.Bcoef) ) );
 	}
 
@@ -159,6 +162,37 @@ public class BiochemicalReaction extends GeneGattaca {
 							this.Ccoef + "\t" + this.Cchem + "\t" +
 							this.Dcoef + "\t" + this.Dchem + "\t" + this.KminVmax+"\t";
 		return stringenize;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		BiochemicalReaction brg = (BiochemicalReaction) obj;
+		
+		if ( ! super.equalCommonAttributes( brg )) { return false; }
+		
+		if ( this.Achem != brg.Achem)
+			{ return false; }
+		if ( this.Acoef != brg.Acoef)
+			{ return false; }
+		if ( this.Bchem != brg.Bchem)
+			{ return false; }
+		if ( this.Bcoef != brg.Bcoef)
+			{ return false; }
+		if ( this.Cchem != brg.Cchem)
+			{ return false; }
+		if ( this.Ccoef != brg.Ccoef)
+			{ return false; }
+		if ( this.Dchem != brg.Dchem)
+			{ return false; }
+		if ( this.Dcoef != brg.Dcoef)
+			{ return false; }
+		return ( this.KminVmax == brg.KminVmax);
 	}
 
 	@Override

@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.genetics.Gene;
+import gabywald.biosilico.interfaces.IBuilder;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class AntBuilder {
+public class AntBuilder implements IBuilder<Ant> {
 
-	public AntBuilder() {
-		;
-	}
+	public AntBuilder() { ; }
 	
 	public List<Gene> generateBasicGenome() {
 		List<Gene> toReturn = new ArrayList<Gene>();
@@ -23,6 +22,7 @@ public class AntBuilder {
 		return toReturn;
 	}
 	
+	@Override
 	public Ant build() {
 		
 		return null;

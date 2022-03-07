@@ -10,14 +10,17 @@ import gabywald.biosilico.genetics.GeneGattaca;
 import gabywald.biosilico.interfaces.IStructureRecordFile;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
-import gabywald.global.view.text.Terminal;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This class describes a more complete list of Gene's with types. 
  * <br>Link to a file to record the list.  
- * @author Gabriel Chandesris (2010, 2020)
+ * @author Gabriel Chandesris (2010, 2020, 2022)
  * @see Pathway
  * @see gabywald.biosilico.view.GeneParametersViewer
+ * TODO review this class (bug detected when re-recording this file with adding a gene ! not in good place !)
+ * 
  */
 public class GeneMoreListe implements IStructureRecordFile {
 	/** List of Gene's instances. */
@@ -25,7 +28,8 @@ public class GeneMoreListe implements IStructureRecordFile {
 	/** List of Gene's types. */
 	private List<Integer> geneTypes;
 	/** Location of the default file to record GeneMoreListe instance. */
-	public static final String GENE_LIST_FILE = FileBiological.DEFAULT_PATH_NAME + "definedGenes.txt";
+	public static final String GENE_LIST_FILE = 
+			FileBiological.BASE_MAIN_DIR + FileBiological.DEFAULT_PATH_NAME + "definedGenes.txt";
 	/** Location of the current defined file to record GeneMoreListe instance. */
 	private String geneListFile = null;
 	/** File for Gene records. */
@@ -111,9 +115,10 @@ public class GeneMoreListe implements IStructureRecordFile {
 	public Gene addLineOfGeneMoreListeFile(String line) throws DataException {
 		String[] cute = line.split("\t");
 		// ***** name ; type ; code ; mutate ; duplicate ; delete ; active ; minimal age ; maximal age ; sex ; mutation rate ; others... 
-		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. "); }
+		if (cute.length <= 1)	{ throw new DataException("GeneMoreListe File : incorrect data. {" + line + "}"); }
 		// ***** GeneGattaca.translation(cute[2], 0) 
 		Gene result = GeneGattaca.getInstance(cute[2]);
+		if (result == null)		{ throw new DataException("Gene not instanciated with '" + cute[2] + "' {" + line + "}"); }
 		result.setName(cute[0]);
 		if (result != null)		{ this.addGene(result, Integer.parseInt(cute[1])); }
 		return result;
@@ -139,12 +144,25 @@ public class GeneMoreListe implements IStructureRecordFile {
 			}
 		} 
 		catch (IOException e)	{ e.printStackTrace(); } 
-		catch (DataException e)	{ Terminal.ecrireStringln(e.getRequest()); }
+		catch (DataException e)	{ 
+			e.printStackTrace();
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest()); 
+		}
 	}
 	
 	private void printGenesListeFile() {
+		if (this.recordingGene == null) {
+			this.recordingGene = new File( this.geneListFile );
+			this.genesStock.stream().forEach( g -> {
+				this.recordingGene.addToChamps( g.toString() );
+			});
+		}
 		try { this.recordingGene.printFile(); } 
-		catch (DataException e) { Terminal.ecrireStringln(e.getRequest()); }
+		catch (DataException e) { 
+			e.printStackTrace();
+			Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest());
+		}
+		
 	}
 	
 	public String getGeneString(String geneName) {
@@ -155,22 +173,39 @@ public class GeneMoreListe implements IStructureRecordFile {
 		return "";
 	}
 	
+	@Override
 	public void readFile()	{ this.readGenesListeFile(); }
 	
+	@Override
 	public void printFile()	{ this.printGenesListeFile(); }
 	
+	@Override
 	public void addToChamps(String line) { 
 		this.recordingGene.addToChamps(line);
 		this.printGenesListeFile(); 
 	}
 	
+	@Override
 	public void setChamps(int index, String line) { 
 		this.recordingGene.setChamps(index, line);
 		this.printGenesListeFile(); 
 	}
 
+	@Override
 	public void removeChamps(int i) { 
 		this.recordingGene.removeChamps(i); 
 		this.printGenesListeFile(); 
+	}
+	
+	@Override
+	public void deleteFile() {
+		if (this.recordingGene != null) {
+			try { this.recordingGene.deleteFile(); } 
+			catch (DataException e) {
+				e.printStackTrace();
+				Logger.printlnLog(LoggerLevel.LL_ERROR, e.getRequest());
+			}
+		}
+		
 	}
 }

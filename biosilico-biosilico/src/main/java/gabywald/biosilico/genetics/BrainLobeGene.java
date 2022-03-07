@@ -10,6 +10,8 @@ import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This type of Gene is to instantiate Neuron's and create lobes in Brain created by a previous BrainGene.  <br /> 
@@ -78,7 +80,7 @@ public class BrainLobeGene extends GeneGattaca {
 	 * @see Gene#Gene(boolean, boolean, boolean, boolean, int, int, int, int)
 	 */
 	public BrainLobeGene(
-			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
+			boolean mutate, boolean duplicate, boolean delete, boolean activ, 
 			int ageMin, int ageMax, int sex, int mutRate,
 			int rest, int thre, int desc, int dendriticmin, int dendriticmax,
 			int prox, boolean repr, int repy, boolean wta,
@@ -123,8 +125,13 @@ public class BrainLobeGene extends GeneGattaca {
 
 	@Override
 	protected void exec(Organism orga) throws GeneException {
-		Brain brain = orga.getBrain();
-		if (brain == null) { throw new GeneException("Organism has no Brain. "); }
+		// ***** Some log for information !!
+		if (orga.getBrain() == null) {
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : Brain is null. ");
+		}
+		
+		// ***** Exception if organism has no brain instance !
+		if (orga.getBrain() == null) { throw new GeneException("Organism has no Brain. "); }
 		
 		// ***** Re-load brain lobes on each execution. Nothing if error. 
 		// XXX NOTE just initiate on first execution of this gene ??
@@ -132,12 +139,20 @@ public class BrainLobeGene extends GeneGattaca {
 									this.dendriticmin, this.dendriticmax, 
 									this.prox, this.repr, this.repy, this.wta);
 		try {
-			brain.setLobe(	this.height, 	this.width, 
-							this.posx, 		this.posy, 
-							sample, 		this.replace);
+			orga.getBrain().setLobe(this.height, 	this.width, 
+									this.posx, 		this.posy, 
+									sample, 		this.replace);
 		} 
-		catch (BrainLengthException e)		{ /** e.printStackTrace() */; } 
-		catch (BrainLobeReplaceException e)	{ /** e.printStackTrace() */; }
+		catch (BrainLengthException e)		{ 
+			// ***** Some log for information !!
+			/** e.printStackTrace() */;
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : BrainLengthException : {" + e.getMessage() + "}. ");
+		} 
+		catch (BrainLobeReplaceException e)	{ 
+			// ***** Some log for information !!
+			/** e.printStackTrace() */;
+			Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene exec() : BrainLobeReplaceException : {" + e.getMessage() + "}. ");
+		} 
 	}
 	
 	public int getRestState()		{ return this.rest; }
@@ -176,6 +191,47 @@ public class BrainLobeGene extends GeneGattaca {
 											this.posx, this.posy, this.replace);
 		toReturn.setName( this.getName() );
 		return toReturn;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		BrainLobeGene blg = (BrainLobeGene) obj;
+		
+		if ( ! super.equalCommonAttributes( blg )) { return false; }
+		
+		if ( this.rest != blg.rest)
+			{ return false; }
+		if ( this.thre != blg.thre)
+			{ return false; }
+		if ( this.desc != blg.desc)
+			{ return false; }		
+		if ( this.dendriticmin != blg.dendriticmin)
+			{ return false; }
+		if ( this.dendriticmax != blg.dendriticmax)
+			{ return false; }
+		if ( this.prox != blg.prox)
+			{ return false; }
+		if ( this.repr != blg.repr)
+			{ return false; }
+		if ( this.repy != blg.repy)
+			{ return false; }
+		if ( this.wta != blg.wta)
+			{ return false; }
+		if ( this.height != blg.height)
+			{ return false; }
+		if ( this.width != blg.width)
+			{ return false; }
+		if ( this.posx != blg.posx)
+			{ return false; }
+		if ( this.posy != blg.posy)
+			{ return false; }
+		return ( this.replace == blg.replace);
 	}
 
 	@Override

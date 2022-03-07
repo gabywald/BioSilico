@@ -8,6 +8,8 @@ import gabywald.biosilico.model.Brain;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.structures.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This type of gene instanciates connections between Neurons in the Brain. 
@@ -52,7 +54,7 @@ public class Instinct extends GeneGattaca {
 	 * @param var (int) Chemical to test to apply Instinct.
 	 * @param thr (int) Minimal Threshold of chemical to apply Instinct.
 	 * @param check (boolean) If input Neuron already present set weight or simply add Neuron.
-	 * @param check (boolean) If connection is positive or negative. 
+	 * @param posi (boolean) If connection is positive or negative. 
 	 */
 	public Instinct(
 			boolean mutate, boolean duplicate,boolean delete, boolean activ, 
@@ -105,6 +107,12 @@ public class Instinct extends GeneGattaca {
 			if (this.check) { control = output.getConnectPosition(input); }
 			if ( ( (input != null) && (output != null) ) && (control == -1) ) 
 				{ output.addConnection(input, this.weight * (this.isPositive ? +1 : -1 ) ); }
+			else {
+				// ***** Some log for information !!
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() input: {"   + input + "} ("  + this.inputPosX + ", " + this.inputPosY + ")");
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() output: {"  + output + "} (" + this.outputPosX + ", " + this.outputPosY + ")");
+				Logger.printlnLog(LoggerLevel.LL_WARNING, "Instinct exec() control: {" + control + "}");
+			}
 			// ***** if already connected and checked : set weight */
 			if (control != -1) { output.getWeights().set(control, this.weight * (this.isPositive ? +1 : -1 ) ); }
 		} // END "if (orga.getChemicals().getVariable(this.variable) >= this.threshold)"
@@ -140,6 +148,37 @@ public class Instinct extends GeneGattaca {
 										this.weight, this.variable, this.threshold, this.check, this.isPositive);
 		toReturn.setName( this.getName() );
 		return toReturn;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		Instinct ig = (Instinct) obj;
+		
+		if ( ! super.equalCommonAttributes( ig )) { return false; }
+		
+		if ( this.inputPosX != ig.inputPosX)
+			{ return false; }
+		if ( this.inputPosY != ig.inputPosY)
+			{ return false; }
+		if ( this.outputPosX != ig.outputPosX)
+			{ return false; }
+		if ( this.outputPosY != ig.outputPosY)
+			{ return false; }
+		if ( this.weight != ig.weight)
+			{ return false; }
+		if ( this.variable != ig.variable)
+			{ return false; }
+		if ( this.threshold != ig.threshold)
+			{ return false; }
+		if ( this.check != ig.check)
+			{ return false; }
+		return ( this.isPositive == ig.isPositive);
 	}
 	
 	@Override

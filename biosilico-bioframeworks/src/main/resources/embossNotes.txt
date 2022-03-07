@@ -1,0 +1,52 @@
+
+EMBOSS : "A high-quality package of free, Open Source software for molecular biology"
+
+Site officiel : emboss.sourceforge.net
+
+About > Overview
+EMBOSS is "The European Molecular Biology Open Software Suite". EMBOSS is a free Open Source software analysis package specially developed for the needs of the molecular biology (e.g. EMBnet) user community. The software automatically copes with data in a variety of formats and even allows transparent retrieval of sequence data from the web. Also, as extensive libraries are provided with the package, it is a platform to allow other scientists to develop and release software in true open source spirit. EMBOSS also integrates a range of currently available packages and tools for sequence analysis into a seamless whole. EMBOSS breaks the historical trend towards commercial software packages. 
+
+20210906
+## to install on a debian-based distribution of linux (i.e. Ubuntu)
+sudo apt-get install emboss emboss-lib emboss-data emboss-doc
+## also present and could be installed : explorer, test
+
+## some commands and uses : 
+
+## list of commands : 
+wossname -search ""
+
+## read FASTA files : 
+seqcount ls_orchid.fasta -auto -stdout
+
+infoseq ls_orchid.fasta -only -name -length -auto
+
+nthseq ls_orchid.fasta -number 3 -auto -stdout
+
+nthseq ls_orchid.fasta -number 3 -auto -stdout | infoseq -filter -only -name -length
+
+mkdir seqsdata
+seqretsplit ls_orchid.fasta -osdirectory2 seqsdata -auto
+ls seqsdata | wc -l
+
+## sequence analysis and comparisons 
+# needle (Needleman and Wunsch : global alignment)
+needle -asequence seqsdata/caz78525.fasta -bsequence seqsdata/ccz78521.fasta -auto
+# water (Swmith-Waterman : local alignment)
+water -asequence seqsdata/caz78525.fasta -bsequence seqsdata/ccz78521.fasta -auto
+
+## plotting ORFs
+plotorf seqsdata/caz78525.fasta -auto -stdout
+plotorf seqsdata/caz78525.fasta -auto -graph png -goutfile result_caz78525_ORF
+
+## exporting ORFs
+showorf seqsdata/caz78525.fasta -frame 1 -auto -outfile caz78525_ORF.fasta
+showorf seqsdata/caz78525.fasta -frame 1,2,3 -auto -outfile caz78525_ORF_multiple.fasta
+
+## showing ORF in text mode
+showorf seqsdata/caz78525.fasta -frame 1,2,3 -stdout -auto
+
+## export valid ORFs as text
+getorf seqsdata/caz78525.fasta -find 1 -auto -noreverse -outseq cas78525_ORF.fasta
+
+

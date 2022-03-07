@@ -44,7 +44,7 @@ public interface IGeneMutation {
 	 * Mutation done via the sequence (more accurate for biology / bioinformatics). 
 	 * @param gene
 	 * @return Mutated Gene instance. 
-	 * @deprecated Make better version and test it !!
+	 * @deprecated TODO [ mutate(Gene gene)] Make better version and test it !!
 	 */
 	public static Gene mutate(Gene gene) {
 		String reversed	= gene.reverseTranslation(true);

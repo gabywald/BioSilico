@@ -11,7 +11,7 @@ class FileTests {
 
 	@Test
 	void testBasics() {
-		String pathNameFile01	= "src/test/resources/testFile.txt";
+		String pathNameFile01	= "src/test/resources/" + "testFile.txt";
 		File baseFile01			= new File( pathNameFile01 );
 		Assertions.assertNotNull( baseFile01 );
 		Assertions.assertEquals(File.NOTYPE, baseFile01.getType());

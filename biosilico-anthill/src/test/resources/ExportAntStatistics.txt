@@ -1,0 +1,880 @@
+STEP [1]
+	0	157	<NONE00>
+	169	25	Glucose(G6)
+	180	35	DiOxygen
+	181	20	Carbon DiOxid
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	25	heat energy
+	951	1	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	90	DiOxygen
+	181	5	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	25	solar energy
+	391	25	heat energy
+*****
+STEP [2]
+	0	114	<NONE00>
+	169	25	Glucose(G6)
+	180	45	DiOxygen
+	181	15	Carbon DiOxid
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	30	heat energy
+	951	2	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	80	DiOxygen
+	181	10	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	50	solar energy
+	391	45	heat energy
+*****
+STEP [3]
+	0	71	<NONE00>
+	169	25	Glucose(G6)
+	180	55	DiOxygen
+	181	10	Carbon DiOxid
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	35	heat energy
+	951	3	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	70	DiOxygen
+	181	15	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	75	solar energy
+	391	65	heat energy
+*****
+STEP [4]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	65	DiOxygen
+	181	5	Carbon DiOxid
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	40	heat energy
+	951	4	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	60	DiOxygen
+	181	20	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	100	solar energy
+	391	85	heat energy
+*****
+STEP [5]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	75	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	45	heat energy
+	951	5	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	50	DiOxygen
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	125	solar energy
+	391	105	heat energy
+*****
+STEP [6]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	85	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	50	heat energy
+	951	6	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	40	DiOxygen
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	150	solar energy
+	391	125	heat energy
+*****
+STEP [7]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	95	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	55	heat energy
+	951	7	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	30	DiOxygen
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	175	solar energy
+	391	145	heat energy
+*****
+STEP [8]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	105	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	60	heat energy
+	951	8	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	20	DiOxygen
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	200	solar energy
+	391	165	heat energy
+*****
+STEP [9]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	115	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	65	heat energy
+	951	9	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	180	10	DiOxygen
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	225	solar energy
+	391	185	heat energy
+*****
+STEP [10]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	70	heat energy
+	951	10	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	250	solar energy
+	391	205	heat energy
+*****
+STEP [11]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	75	heat energy
+	951	11	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	275	solar energy
+	391	225	heat energy
+*****
+STEP [12]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	80	heat energy
+	951	12	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	300	solar energy
+	391	245	heat energy
+*****
+STEP [13]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	85	heat energy
+	951	13	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	325	solar energy
+	391	265	heat energy
+*****
+STEP [14]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	90	heat energy
+	951	14	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	350	solar energy
+	391	285	heat energy
+*****
+STEP [15]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	95	heat energy
+	951	15	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	375	solar energy
+	391	305	heat energy
+*****
+STEP [16]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	100	heat energy
+	951	16	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	400	solar energy
+	391	325	heat energy
+*****
+STEP [17]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	105	heat energy
+	951	17	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	425	solar energy
+	391	345	heat energy
+*****
+STEP [18]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	110	heat energy
+	951	18	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	450	solar energy
+	391	365	heat energy
+*****
+STEP [19]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	115	heat energy
+	951	19	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	475	solar energy
+	391	385	heat energy
+*****
+STEP [20]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	120	heat energy
+	951	20	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	500	solar energy
+	391	405	heat energy
+*****
+STEP [21]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	125	heat energy
+	951	21	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	525	solar energy
+	391	425	heat energy
+*****
+STEP [22]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	130	heat energy
+	951	22	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	550	solar energy
+	391	445	heat energy
+*****
+STEP [23]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	135	heat energy
+	951	23	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	575	solar energy
+	391	465	heat energy
+*****
+STEP [24]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	140	heat energy
+	951	24	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	600	solar energy
+	391	485	heat energy
+*****
+STEP [25]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	145	heat energy
+	951	25	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	625	solar energy => <NONEXX>
+	391	505	heat energy
+*****
+STEP [26]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	150	heat energy
+	951	26	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	650	solar energy => <NONEXX>
+	391	525	heat energy
+*****
+STEP [27]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	155	heat energy
+	951	27	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	675	solar energy => <NONEXX>
+	391	545	heat energy
+*****
+STEP [28]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	160	heat energy
+	951	28	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	700	solar energy => <NONEXX>
+	391	565	heat energy
+*****
+STEP [29]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	165	heat energy
+	951	29	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	725	solar energy => <NONEXX>
+	391	585	heat energy
+*****
+STEP [30]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	170	heat energy
+	951	30	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	750	solar energy => <NONEXX>
+	391	605	heat energy => <NONEXX>
+*****
+STEP [31]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	175	heat energy
+	951	31	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	775	solar energy => <NONEXX>
+	391	625	heat energy => <NONEXX>
+*****
+STEP [32]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	180	heat energy
+	951	32	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	800	solar energy => Local / Current Position
+	391	645	heat energy => <NONEXX>
+*****
+STEP [33]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	185	heat energy
+	951	33	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	825	solar energy => Down South-West
+	391	665	heat energy => <NONEXX>
+*****
+STEP [34]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	190	heat energy
+	951	34	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	850	solar energy => stay
+	391	685	heat energy => <NONEXX>
+*****
+STEP [35]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	195	heat energy
+	951	35	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	875	solar energy => (free)
+	391	705	heat energy => <NONEXX>
+*****
+STEP [36]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	200	heat energy
+	951	36	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	900	solar energy => current
+	391	725	heat energy => <NONEXX>
+*****
+STEP [37]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	205	heat energy
+	951	37	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	925	solar energy => teen
+	391	745	heat energy => <NONEXX>
+*****
+STEP [38]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	210	heat energy
+	951	38	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	950	solar energy
+	391	765	heat energy => <NONEXX>
+*****
+STEP [39]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	215	heat energy
+	951	39	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	975	solar energy => <NONEXX>
+	391	785	heat energy => <NONEXX>
+*****
+STEP [40]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	220	heat energy
+	951	40	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	805	heat energy => Local South-East
+*****
+STEP [41]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	225	heat energy
+	951	41	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	825	heat energy => Down South-West
+*****
+STEP [42]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	230	heat energy
+	951	42	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	845	heat energy => <NONEXX>
+*****
+STEP [43]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	235	heat energy
+	951	43	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	865	heat energy => receive
+*****
+STEP [44]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	240	heat energy
+	951	44	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	885	heat energy => <NONEXX>
+*****
+STEP [45]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	245	heat energy
+	951	45	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	905	heat energy => drink
+*****
+STEP [46]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	250	heat energy
+	951	46	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	925	heat energy => teen
+*****
+STEP [47]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	255	heat energy
+	951	47	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	945	heat energy => (free)
+*****
+STEP [48]
+	0	32	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	260	heat energy
+	951	48	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	965	heat energy => (free)
+*****
+STEP [49]
+	0	33	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	265	heat energy
+	951	49	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	985	heat energy => <NONEXX>
+*****
+STEP [50]
+	0	34	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	270	heat energy
+	951	50	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****
+STEP [51]
+	0	35	<NONE00>
+	169	25	Glucose(G6)
+	180	125	DiOxygen
+	330	25	Starch (Amidon)
+	332	25	Glycogen
+	391	275	heat energy
+	951	51	aging
+	952	943	agentype => anima
+	953	912	typeof => agent
+	954	921	status => egg
+*****
+	181	25	Carbon DiOxid
+	182	105	DiHydrogen Monoxid (Water / Eau)
+	390	999	solar energy => <NONEXX>
+	391	999	heat energy => <NONEXX>
+*****

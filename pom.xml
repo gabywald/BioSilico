@@ -6,7 +6,7 @@
 
 	<groupId>gabywald</groupId>
 	<artifactId>BioSilico</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 
 	<name>BioSilico</name>
 	<description>Some ideas about Artificial Life, Creatures (game series) and Neural Networks. </description>
@@ -24,6 +24,7 @@
 		<module>biosilico-anthill</module>
 		<module>biosilico-bioframeworks</module>
 		<module>biosilico-tests</module>
+		<module>biosilico-graphicalview</module>
 	</modules>
 
 	<properties>
@@ -79,11 +80,16 @@
 				<version>2.8</version>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.0</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+            </plugin>
 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

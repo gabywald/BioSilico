@@ -1,25 +1,29 @@
 # BioSilico
 
-Some ideas about Artificial Life, Creatures (game series) and Neural Networks. Rare review to make this working with Maven / Java 8 / in a GitHub Repository ! (i.e. some file reading in relative path). 
+Some ideas about Artificial Life, Creatures (game series) and Neural Networks. Rare review to make this working with Maven / Java 8 / in a GitHub Repository ! (i.e. some file reading in relative path, readability, organisation of ideas). 
 
 Probably out-of-date for some reasons (but many ideas inside), codes from 2008-2012 (and before then) ; ideas I didn't continue for times spent reasons and I wish to continue (year 2020). 
 
-Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
+Tests and learning on coding / programming (Java, Perl, I did some HyperTalk / HyperCard before that long ago) ; some studies on biochemistry and video games (Sim City, Sim Earth, Sim Life, Myst, Marathon, and the first Creature game) then bioinformatics. Find some old code here, and reviewed so far. 
 
-Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020). 
+Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some reviews for generics and some other for stream (Java 8 !). Adding some unit tests and more review ! (these were done in June and July 2020, and some after that). 
 
-More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020]
+More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020] On this part and topic, more developments and tests done from September 2021 to [February 2022]. 
 
 ## NOTE For Dev Configuration
- - Eclipse 2020
- - Java 8
- - Maven 3
+  - Eclipse 2020
+  - Java 8
+  - Maven 3
+ 
+OS used : Ubuntu 20.04
+For elements in python, version used is 3.8
+For elements in Perl, version used is 5.30.0 
 
 ## Things to Explore
 
 For this Project or others : 
 * Python language and usual librairies for data analysis (Pandas, NumPy, Scikit Learn...)
-* BioJava, BioPerl, BioPython... (BioC++ ?)
+* BioJava, BioPerl, BioPython... (BioC++ ?) ; EMBOSS ?
 * Some Inspirationnal Video Games and associated topics : 
 	
 	- Creatures Game Serie
@@ -33,11 +37,53 @@ For this Project or others :
 
 See document present in "/biosilico-biosilico/src/main/resources/biosilico/docs/redaction/", there are some notes (mostly in french, some documentation about Creatures in english). 
 
-## Licence : Libre
+## Licence : "Libre" / Free
 
 GNU General Public Licence V3 (GPL3)
 
-## Adding and notes about evolutions
+## To review for BioInformatics 
+
+### See also 'biosilico-bioframeworks'
+
+Specific maven module for some example and frameworks and tools used in BioInformartics
+
+### FAIR Principles "Findable, Accessible, Interoperable, Reusable"
+
+This part in French, corresponding to [Les principes FAIR : Findable, Accessible, Interoperable, Reusable](https://openscience.pasteur.fr/2020/10/05/les-principes-fair-findable-accessible-interoperable-reusable/), linked to ["The FAIR Guiding Principles for scientific data management and stewardship"](https://www.nature.com/articles/sdata201618). 
+
+On vous explique
+Les principes FAIR : Findable, Accessible, Interoperable, Reusable
+5 octobre 2020 CeRIS - Institut Pasteur	
+
+Les principes FAIR (Findable, Accessible, Interoperable, Reusable) correspondent à des lignes directrices dont l’objectif premier est d’améliorer la réutilisation des données de la recherche. Ils ont été publiés en 2016 dans l’article The FAIR Guiding Principles for scientific data management and stewardship.
+
+À bien garder en tête : des données peuvent être « FAIR » sans être librement accessibles. Suivre les principes FAIR permet de s’assurer que ses données sont réutilisables, qu’elles soient partagées ou non.
+
+À chaque lettre du mot FAIR sont liées des bonnes pratiques de gestion des données :
+
+Findable / Facile à trouver :
+  * Déposer les données dans un entrepôt
+  * Attribuer un identifiant unique et pérenne aux données
+  * Décrire les données par des métadonnées riches
+
+Accessible :
+  * Définir les conditions d’accès aux données
+  * Si possible, rendre les données accessibles librement
+  * Si les données doivent rester en accès restreint, rendre accessibles les métadonnées pour signaler l’existence des données
+
+Interopérable :
+  * Privilégier des formats ouverts ou largement utilisés
+  * Mettre à disposition le code source du logiciel nécessaire pour lire, traiter, analyser les données s’il a été développé en interne
+  * Privilégier les standards de métadonnées et les vocabulaires standards
+  * Si possible, indiquer des liens vers d’autres ressources (autres données, publication…)
+
+Reusable / Réutilisable :
+  * Associer une licence de diffusion aux jeux de données
+  * Associer de la documentation pour décrire les données de façon détaillée, les contextualiser, les rendre compréhensibles…
+
+Les principes FAIR peuvent également s’appliquer aux logiciels de recherche, en les reformulant et en les adaptant. C’est ce que proposent les auteurs de l’article Towards FAIR principles for research software.
+
+## Adding and notes about evolutions of this project : 
 
 Units Tests ; review ; ...
 
@@ -51,11 +97,15 @@ For dev on BioSilico :
     * Abstraction for Chemicals / IChemicals
     * Decisions and Instincts to be precisely tested (with some examples)
     * Ideas about "Automatic Pathway construction" (GUI / Human Interface, Graphical or not)
+    * ...
 * Review for some genetics model / Type of genes : 
     * BiochemicalReaction
     * Instinct
     * EmitterReceptor
     * StimulusDecision
+    * InitialConcentration
+    * Brain
+    * BrainLobe
     * ... 
 * ... 
 * ... 
@@ -71,8 +121,8 @@ Based on 'biosilico-biosilico' module !
 Work on July, August and September 2020 to get an example of Ant working basically (nervous system / Brain / Brain Lobes, Instincts, EmitterReceptor, StimulusDecisions to GET/DROP FOOD, MOVE_AWAY, MOVE... Seems to be a good example to build a genome and tools to build genomes. 
 
 Idea of a Tool to build "meta-genes" / Pathways : 
-* StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
-* At Least 6 Genes !
+  * StimulusDecision in Input => EmitterReceptor (receptor) => InputNeuron => Instinct's [=> Concept Neuron's => Instincts =>]* => OutPutNeuron => EmitterReceptor ( ! receptor) => StimulusDecision (decision)
+  * At Least 6 Genes for a given "meta-gene" !
 
 Some biochemistry to get deeper on this Ant ! 
 
@@ -90,57 +140,132 @@ Notes 20210707
     * https://caveofprogramming.com/java/charts-in-java-swing-with-jfreechart.html 
     * https://stackoverflow.com/questions/29708147/custom-graph-java-swing
 
+Notes 20210903
+  * What make an organism 'valid' / alive exactly ? And what change to 'death' (programmatically) ?
+    * Some specific  active metabolic pathways ? TODO precise analysis here about dynamic of pathways
+    * Death genes
+    * ...
+  * "Genetic Algorithm" to generate Ant valid examples of genomes (optimisation) ?!
+    * test around "optimal genome" from "hand-made genome"
+    * automatisation of tests
+    * ... 
+  * ... 
+
+Notes 20211116
+  * Genetic Algorithm and selection upon it : 
+    * Design Pattern : Visitor (or similar : Strategy / Command) to filter on some criteria
+    * Criteria to be defined : what is exactly attempted ?
+    * ... 
+  * Ideas of Criterias : 
+    * Number of cycles for "life" ; 
+    * Significant (?) metabolic changes (from step to step or among a defined number of steps) ; 
+    * ... 
+  * Ranking / notations : 
+    * Criteria give an amount of score / notation ; 
+    * Eliminatory Criteria ? (very bad note ?! Annotation ?!)
+    * ...
+  * Processing Criteria
+    * Group / All / Some Random ? ; 
+    * Double Processing (or more ?) ; 
+    * ... 
+  * TEST WITH : 'Witness Indicators' (hard-coded features which correspond to the attempted behaviour) 
+   
+Notes 20220307
+  * To go further : use Graphical Interface done in Java Swing ; 
+  * Preparing indicators ; 
+  * Preparing other examples (Procedural Generation and Computer Ecosystem) ; 
+  * Others Agent Modelling Systems ? ; 
+  * ... 
+
 ... 
 
-### 'biosilico-bioframeworks' : 
+### 'biosilico-bioframeworks' : BioInformatics frameworks and similar tools
 
-Aim of these Part is to put some example of BioFrameWork use !
-  * BioJava
-  * Biopython
-  * BioPerl
-  * BioC++
+Aim of these Part is to put some example of BioFrameWork use and other tools !
+  * BioJava / Biopython / BioPerl / BioC++
+  * EMBOSS (tool suite)
+  * Pipelining / Pipeline tools : SnakeMake, ...
+  * FAIR principles in bioinformatics (reproductibility, open data, ...)
+  * ... 
   * ... 
 
 And some other examples and ideas ?!
 
 Some notes and tutorials : 
   * Biopython
-    * https://biopython.org/DIST/docs/tutorial/Tutorial.pdf
-    * https://biopython.org/DIST/docs/tutorial/Tutorial.html
-    * https://biopython.org/docs/1.75/api/Bio.SeqUtils.html
-    * ... 
+    * [Tutorial Biopython in PDF](https://biopython.org/DIST/docs/tutorial/Tutorial.pdf)
+    * [Tutorial Biopython in HTML](https://biopython.org/DIST/docs/tutorial/Tutorial.html)
+    * [Biopython SeqUtils](https://biopython.org/docs/1.75/api/Bio.SeqUtils.html)
+    * [Cours BioInfo Université Paris Descartes](http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/)
+    * [Scheme ou Python ? Pour des biologistes...](https://www.epi.asso.fr/revue/articles/a1912b.htm) / [Python Scheme ou Python ? Pour des biologistes...](https://www.laurentbloch.net/MySpip3/Scheme-ou-) (Laurent Bloch)
+    * [Python et Biopython](https://www.laurentbloch.net/MySpip3/Python-et-Biopython)
+    * ["GNU/Linux Magazine Hors-série N° Numéro 73 Python : niveau avancé à expert " (Juillet / Août 2014)](https://connect.ed-diamond.com/GNU-Linux-Magazine/glmfhs-073/la-bioinformatique-avec-biopython)
+    * [Biopython - Sequence Alignments](https://www.tutorialspoint.com/biopython/biopython_sequence_alignments.htm)
+    * [Biopython - Alignements de séquence ](https://www.hebergementwebs.com/tutoriel-biopython/biopython-alignements-de-sequences)
     * ... 
   * BioJava
-    * https://github.com/biojava/biojava-tutorial
-    * https://biojava.org/docs/api5.3.0/index.html
+    * [BioJava tutorial](https://github.com/biojava/biojava-tutorial)
+    * [BioJava API 5.3.0](https://biojava.org/docs/api5.3.0/index.html)
     * ... 
   * BioPerl
-    * https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/
-    * https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm
+    * [Introduction to BioPerl](https://etutorials.org/Programming/perl+bioinformatics/Part+II+Perl+and+Bioinformatics/Chapter+9.+Introduction+to+Bioperl/)
+    * [Tutorial for BioPerl](https://www.math.utah.edu/~palais/pcr/Ian/Perl/BioPerl%20Docs/BioPerlTutorial%20-%20a%20tutorial%20for%20bioperl.htm)
     * ... 
   * BioC++
-    * http://biocpp.sourceforge.net/
-    * https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently
-    * https://github.com/seqan
+    * [BioC++ Offical HomePage](http://biocpp.sourceforge.net/)
+    * [BioC++ - solving daily bioinformatic tasks with C++ efficiently - BIOSTEC 2020](https://www.denbi.de/training/810-bioc-solving-daily-bioinformatic-tasks-with-c-efficiently)
+    * [SeqAn](https://github.com/seqan)
+    * **TODO BioC++ example(s)**
     * ...
+  * EMBOSS (tools suite). 
+    * [Voyage initiatique vers la bio-informatique : les premiers pas" (article payant)](https://connect.ed-diamond.com/gnu-linux-magazine/glmf-251/voyage-initiatique-vers-la-bio-informatique-les-premiers-pas)
+    * [Introduction to Sequence Analysis using EMBOSS](http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html)
+    * ... 
+  * Pipelining / Pipelines : 
+    * [Introduction aux pipelines](https://bioinfo-fr.net/introduction-aux-pipelines)
+    * [SnakeMake on Bioinfo-fr.net](https://bioinfo-fr.net/mot-clef/snakemake)
+    * [GitHub - snakemake / snakemake](https://github.com/snakemake/snakemake)
+    * [snakemake : a framework for reproductible data analysis](https://snakemake.github.io/)
+    * [snakemake stable documentation](https://snakemake.readthedocs.io/en/stable/)
+    * ... 
+    * [Nextflow, pour votre prochain pipeline ?](https://bioinfo-fr.net/nextflow-pour-votre-prochain-pipeline)
+    * [Galaxy: Bien plus qu'un gestionnaire de workflows](https://bioinfo-fr.net/galaxy-bien-plus-quun-gestionnaire-de-workflows)
+    * [Bioinformatics and Next Generation Sequencing Extensions](https://www.knime.com/bioinformatics-and-next-generation-sequencing-extensions)
+    * ... 
+  * FAIR : 
+    * ["FAIR" à l'UFB / Institut Français de BioInformatique](https://www.france-bioinformatique.fr/?s=FAIR)
+    * [Présentation "Bonnes pratiques en bioinformatique : (essayer) d’aller vers plus de reproductibilité"](https://du-bii.github.io/module-5-Methodes-Outils/seance3_goodpractices/slides.html#1)
+    * [Formation IFB science ouverte & PGD -- Comment gérer des jeux de données haut-débit en sciences de la vie et de la santé](https://ifb-elixirfr.github.io/IFB-FAIR-data-training/)
+    * [Les principes FAIR : Findable, Accessible, Interoperable, Reusable](https://openscience.pasteur.fr/2020/10/05/les-principes-fair-findable-accessible-interoperable-reusable/)
     * ...
   * Some More Courses / Training / Tutorials : 
-    * http://helios.mi.parisdescartes.fr/~lomn/Cours/BI/
-    * https://www.epi.asso.fr/revue/articles/a1912b.htm / https://www.laurentbloch.net/MySpip3/Scheme-ou-Python Scheme ou Python ? Pour des biologistes... (Laurent Bloch)
-    * https://www.laurentbloch.net/MySpip3/Python-et-Biopython Python et Biopython
     * ... 
+    
+TODO SnakeMake example(s)
 
-### 'biosilico-biosilico' : 
+TODO KNIME example(s)
+
+TODO NextFlow example(s)
+
+TODO Galaxy example(s)
+
+TODO other pipeline tools example(s) (...)
+
+NOTE 20211214 : starting some parts of Pipeline / Workflow tool to be used here for some purposes !
+
+### 'biosilico-biosilico' : Core representation for "In Silico" biological modelisation
 
 A complete (?) dev framework to build a computer modelization / simulation for 'biological' agents. 
 
-Mostly inspired from game Creatures and publications around it. 
+Mostly inspired from game Creatures and publications around it, with some personnal ideas and read ideas. 
 
 Implemented as a discrete "World" composed of WorldCase, which can contains Agents. Some Agents are Organisms, which genomes are haploïd (reflexion about diploïd / polyploïd ... ?!). 
 
-Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) to permit other implementations and different global uses !
+Some generalisation about Chemicals (IChemicals) and Environment (IEnvironment, IEnvironmentItem, IPosition...) have been done to permit other implementations and different global uses ! (2D, 3D...)
 
-### 'biosilico-cellmodel' : 
+NOTE : See also module biosilico-anthill for further evolution, tests and extension of modelisation and exemple use of BioSilico (Core) and examples of simulation. 
+
+### 'biosilico-cellmodel' : a previous sample Cell Model
 
 A project made in 2009, in the same idea than the rest : modelisation of a cell in Java. Aim is to visualize tranfert of some elements between part of the cell (RNA, Protein...) and could be used as a basic to teach the CDB (Central Dogma of Biology). Transcription, traduction, treatment, transportation excretion of proteins / RNA / DNA...
 
@@ -156,17 +281,27 @@ Some exploration of Creatures Game series
 
 ...
 
-### 'biosilico-commons' : Common resources
+### 'biosilico-commons' : Common resources. 
 
 Some utils. Data (File, Directory, Filter), Structures, View... 
 
-### 'biosilico-crypto' : 
+### 'biosilico-crypto' : Ciphering ideas and some ressources. 
 
 Some cryptographic ideas, based on biological translation and use of a 'genetic code' to translate a nucleic sequence (DNA / RNA) to protein sequence. Main idea is to translate / reverse-translate 'computer source code' to 'biological sequences' and provides a basis to compare them with bioinformatic tools (phylogeny for example). 
 
-### 'biosilico-neuralnetworks' : 
+Main idea is is to translate / reverse-translate from a defined alphabet to 'dna' sequence (corresponding defined mapping as 'genetic code', with triplet / quadruplet / ...). This idea make a bigger text sequence but could be transmitted easily as mime / base64 / ASCII text ; one way to compress it is to convert the limited characters  of translation (4 ideally, example are {a,c,g,t}) to a binary transcript (in example : {00,01,10,11}) and convert it to ASCII or equivalent (limited alphabet), as in base64 for transmission of complex data. 
+
+### 'biosilico-neuralnetworks' : Some tests on neural networks. 
 
 Some tests on neural networks. 
+
+### 'biosilico-graphicalview' : Visualisation of Modelisation / simulation
+
+Graphical views for modelisation and simulation using BioSilico (Core) using Java Swing. 
+
+Specialisation and re-use for AntHill example : centralisation of graphical views. 
+
+TODO regroup ideas for "what do we want exactly to see ?". 
 
 ### 'biosilico-tests' : 
 
@@ -192,3 +327,12 @@ Have Fun !
 
 * biosilico-biosilico : gabywald.biosilico.model.reproduction <= to be reviewed !
 * biosilico-biosilico : gabywald.biosilico.model.decisions <= some review would be great too !
+
+## Other resources and readings
+
+NOTE / TODO : ajout d'autres outils (et algorithmes associés) ici, au moins en référence, ressources... : 
+  * GROOLS ["GROOLS: reactive graph reasoning for genome annotation through biological processes"](https://www.biorxiv.org/content/10.1101/117994v1)
+  * TFold ["Tfold: efficient in silico prediction of non-coding RNA secondary structures"](https://pubmed.ncbi.nlm.nih.gov/20047957/) -- https://evryrna.ibisc.univ-evry.fr/evryrna/tfold
+  * ["In vivo, in vitro... in silico !" Posté le : Lundi 5 Janvier 2009 par : X. Muller Expert : P. Cournède, M. Kern, O. Faugeras](http://www.savoirs.essonne.fr/thematiques/les-technologies/informatique/in-vivo-in-vitro-in-silico/)
+  * ... 
+  * ... 

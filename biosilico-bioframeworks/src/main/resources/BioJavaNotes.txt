@@ -1,0 +1,31 @@
+https://biojava.org/wiki/BioJava%3AGetStarted --
+https://github.com/biojava/biojava -- 
+https://github.com/biojava/biojava-tutorial -- 
+https://mvnrepository.com/artifact/org.biojava -- 
+https://biojava.org/wiki/BioJava:CookBook4.0/ -- 
+https://biojava.org/docs/api/ -- 
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2530884/ BioJava: an open-source framework for bioinformatics
+
+https://www.developpez.net/forums/d827942/autres-langages/perl/bioinformatique/langage-bioinformatique/ -- 
+
+https://linuxfr.org/news/bioinformatique-libre -- 
+https://linuxfr.org/news/biologie-libre -- 
+http://www.bioinformatics.org/ -- 
+
+https://www.developpez.net/forums/d787364/autres-langages/perl/bioinformatique/creation-d-application-bioinformatique/ --
+https://www.developpez.net/forums/d253638-2/autres-langages/perl/bioinformatique/sondage-faq-bioinfo-tutoriaux/ -- 
+
+https://en.wikipedia.org/wiki/Bioinformatics -- 
+	=> Software and tools 
+		=> Open-source bioinformatics software ;
+		=> Web services in bioinformatics ; 
+		=> Bioinformatics workflow management systems ; 
+		=> BioCompute and BioCompute Objects ; 
+		... 
+https://en.wikipedia.org/wiki/Bioinformatics_workflow_management_system -- Bioinformatics workflow management system
+	=> KNIME, Galaxy, (Pipeline Pilot)... 
+https://en.wikipedia.org/wiki/List_of_bioinformatics_software -- List of bioinformatics software
+https://en.wikipedia.org/wiki/List_of_proprietary_bioinformatics_software -- List of proprietary bioinformatics software
+https://en.wikipedia.org/wiki/List_of_open-source_bioinformatics_software -- List of open-source bioinformatics software
+

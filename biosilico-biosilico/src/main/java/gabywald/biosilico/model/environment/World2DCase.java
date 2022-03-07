@@ -18,7 +18,7 @@ import gabywald.biosilico.model.enums.StatusType;
 
 /**
  * This classe defines elements of the simulation environment where Agent's evolve. 
- * @author Gabriel Chandesris (2009, 2020)
+ * @author Gabriel Chandesris (2009, 2020, 2022)
  */
 public class World2DCase implements IEnvironmentItem {
 	/** Chemical list of current element. */
@@ -29,6 +29,8 @@ public class World2DCase implements IEnvironmentItem {
 	private World2D world;
 	/** Position of this element (x -> height, y -> width). */
 	private IPosition pos;
+	
+	private String name = null;
 	
 	/** Default constructor of element of environment. */
 	public World2DCase() {
@@ -45,7 +47,19 @@ public class World2DCase implements IEnvironmentItem {
 		this.liste		= new ArrayList<Agent>();
 		this.world		= world;
 		this.pos		= position;
+		
+		// Setting a default name !
+		this.setName( ( (this.world != null) ? this.world.getName() : "Isolated")
+						+ ":" + 
+						( (this.pos != null) ? this.pos.toString() : "No Position !") );
 	}
+	
+	@Override
+	public String getName() 
+		{ return this.name; }
+	
+	public void setName(String name) 
+		{ this.name = name; }
 	
 	@Override
 	public IPosition getPosition()			{ return this.pos; }
@@ -107,6 +121,14 @@ public class World2DCase implements IEnvironmentItem {
 	public Agent getAgentStatus(StatusType status) {
 		return IAgentContent.getType(status, StateType.STATUS.getIndex(), this.liste);
 	}
+	
+	@Override
+	public int hasAgentWithName(String name) 
+		{ return IAgentContent.hasName(name, this.liste); }
+
+	@Override
+	public Agent getAgentWithName(String name) 
+		{ return IAgentContent.getName(name, this.liste); }
 	
 	@Override
 	public void addAgent(Agent object) { 

@@ -3,9 +3,9 @@ package gabywald.biosilico.genetics.builders;
 /** 
  * Pair class 
  * see https://www.techiedelight.com/implement-pair-class-java/
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2021)
  */
-public class Pair<U, V> {
+public final class Pair<U, V> {
 	/** First field of a Pair */
 	public final U first;
 	/** Second field of a Pair */
@@ -21,19 +21,19 @@ public class Pair<U, V> {
 	 * Checks specified object is "equal to" current object or not
 	 */
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) 
+	public boolean equals(Object obj) {
+		if (this == obj) 
 			{ return true; }
 
-		if ( (o == null) || (this.getClass() != o.getClass()) )
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
 			{ return false; }
 
-		Pair<?, ?> pair = (Pair<?, ?>) o;
+		Pair<?, ?> pair = (Pair<?, ?>) obj;
 
 		// Call equals() method of the underlying objects
-		if (!first.equals(pair.first))
+		if ( ! this.first.equals(pair.first))
 			{ return false; }
-		return second.equals(pair.second);
+		return this.second.equals(pair.second);
 	}
 
 	/**

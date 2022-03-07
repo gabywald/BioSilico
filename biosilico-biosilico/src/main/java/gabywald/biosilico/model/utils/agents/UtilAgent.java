@@ -41,6 +41,18 @@ public class UtilAgent extends Agent {
 		}
 	}
 	
+	/**
+	 * To remove WC variables for given chemical and value. 
+	 * @param local (IEnvironmentItem)
+	 * @param index (int) index of Chemical. 
+	 * @param value (int) value / amount of chemical. 
+	 */
+	public static void removeChemicalTo(IEnvironmentItem local, int index, int value) {
+		if (local != null) {
+			local.getChemicals().setVarLess(index, value);
+		}
+	}
+	
 	@Override
 	public void execution(IEnvironmentItem local) {
 		if (local == null) { return; }
@@ -49,7 +61,10 @@ public class UtilAgent extends Agent {
 		});
 	}
 	
-	/** To Set nams of utilitaries Agents. */
+	/**
+	 * To set names of utilitaries Agents (BioSilico and Common Names). 
+	 * @param name (String)
+	 */
 	protected void setName(String name) {
 		this.setNameBiosilico( name );
 		this.setNameCommon( name );

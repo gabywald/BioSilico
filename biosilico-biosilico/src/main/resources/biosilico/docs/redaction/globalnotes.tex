@@ -2643,7 +2643,7 @@ Par convention, le premier {\'e}l{\'e}ment de cette liste normalis{\'e}e (tablea
 		\end{tabular}
 	\caption[Nomenclature pour les Stimuli et D{\'e}cisions]
 		{ Nomenclature pour les Stimuli et D{\'e}cisions~\\
-Cette partie de la nomenclature concerne une utilisation (interne ou externe) par les g{\`e}nes de type \emph{StimulusDecision} et \emph{EmitterReceptor}. \emph{Seules les 9 premi{\`e}res directions sont utilis{\'e}es. L'action 864 entra{\^\i}ne la mort de l'agent courant, les {\'e}tats {\`a} partir de 940 le d{\'e}crivent. }}
+Cette partie de la nomenclature concerne une utilisation (interne ou externe) par les g{\`e}nes de type \emph{StimulusDecision} et \emph{EmitterReceptor}. \emph{Seules les 9 premi{\`e}res directions sont utilis{\'e}es. L'action 863 entra{\^\i}ne la mort de l'agent courant, les {\'e}tats {\`a} partir de 940 le d{\'e}crivent. }}
 	\label{tab:NomenclatureStimuliDecision}
 \end{table}
 
@@ -2822,7 +2822,7 @@ D'autres types de g{\`e}nes peuvent {\^e}tre d{\'e}velopp{\'e}s au-del{\`a} de c
 	\cline{3-4} % \hline
 								&				&	script		& [000-999] \\
 	\hline \hline
-	Instinct					&	17 (3*3+4*2)&	variable	& [000-999] \\
+	Instinct					&19 (3*3+4*2+2)	&	variable	& [000-999] \\
 	\cline{3-4} % \hline
 								&				&	threshold	& [000-999] \\
 	\cline{3-4} % \hline
@@ -2924,7 +2924,7 @@ Ces agents sont cod{\'e}s g{\'e}n{\'e}tiquement afin d'interagir de fa\c{c}on si
 
 \subsubsection{Organismes de bases : bact{\'e}ries et plantes}
 
-Les genres \emph{Silicobacter} et \emph{Silicoviriditae} repr{\'e}sentent des types particuliers d'organismes : les bact{\'e}ries et les plantes. Ces types d'agents ne se d{\'e}placent pas {\`a} priori dans l'environnement mais peuvent se reproduire (scissiparit{\'e} et production de fruits). L'int{\'e}r{\^e}t de mod{\'e}liser ces deux types est de permettre d'impl{\'e}menter des agents repr{\'e}setant des organismes simples, limit{\'e}s {\`a} une biochimie et sans syst{\`e}me nerveux.~\\
+Les genres \emph{Silicobacta} et \emph{Silicoviridita} repr{\'e}sentent des types particuliers d'organismes : les bact{\'e}ries et les plantes. Ces types d'agents ne se d{\'e}placent pas {\`a} priori dans l'environnement mais peuvent se reproduire (scissiparit{\'e} et production de fruits). L'int{\'e}r{\^e}t de mod{\'e}liser ces deux types est de permettre d'impl{\'e}menter des agents repr{\'e}setant des organismes simples, limit{\'e}s {\`a} une biochimie et sans syst{\`e}me nerveux.~\\
 
 Les bact{\'e}ries sont notamment utiles pour cr{\'e}er une biochimie et composer des chaines de r{\'e}actions m{\'e}taboliques et tester les comportements possibles. Les plantes sont utiles pour les comportements de production d'objets ou d'autres agents (des fruits, pouvant devenir des plantes) utilisables par d'autres agents diff{\'e}rents comme sources de nourriture. 
 
@@ -2938,7 +2938,7 @@ Une exp{\'e}rience ensuite est de mettre en place des esp{\`e}ces du genre \emph
 
 \subsubsection{Virus, syst{\`e}me immunitaire : impact...}
 
-Une {\'e}tude peut {\^e}tre men{\'e}e dans l'introduction de g{\'e}nomes viraux dans les organismes ou, plus simplement, l'introduction de particules virales dans l'environnement. L'impact sur la survie des organismes est int{\'e}ressante {\`a} plusieurs titre ({\`a} comparer avec des mod{\`e}les r{\'e}els ; r{\'e}actions des organismes ; mise en place d'un syst{\`e}me immunitaire ; ...)
+Une {\'e}tude peut {\^e}tre men{\'e}e dans l'introduction de g{\'e}nomes viraux dans les organismes ou, plus simplement, l'introduction de particules virales dans l'environnement. L'impact sur la survie des organismes est int{\'e}ressante {\`a} plusieurs titre ({\`a} comparer avec des mod{\`e}les r{\'e}els ; r{\'e}actions des organismes ; mise en place d'un syst{\`e}me immunitaire ; ...). 
 
 \subsubsection{{\'E}cosyst{\`e}me complexe}
 
@@ -3060,9 +3060,9 @@ Le but global est que la fourmili{\`e}re soit approvisionn{\'e}e le plus rapidem
 				& <Select metabolic way>	& 		& Add metabolic way to Agent	     \\
 				\cline{2-3}
 	\hline
-	\emph{Remove Gene}	& \multicolumn{2}{|c|}{~}					& 		      \\
+	\emph{Remove Gene}	& \multicolumn{2}{|c|}{~}						& 		      \\
 	\hline
-				& \multicolumn{2}{|c|}{Save}					& 		      \\
+						& \multicolumn{2}{|c|}{Save}					& 		      \\
 	\hline
 	\end{tabular}
 	\caption[L'interface \emph{GeneticKit}]{L'interface \emph{GeneticKit}}
@@ -3190,20 +3190,20 @@ Ce projet a {\'e}t{\'e} mis en veille pendant un certain temps (une petite dizai
 
 Un r{\'e}sum{\'e} des quelques {\'e}l{\'e}ments repris, modifi{\'e}s, ajout{\'e}s (juillet-septembre 2020) : 
 \begin{itemize}
-	\item reprise du code pour le rendre plus professionnel et industriel : 
+	\item Reprise du code pour le rendre plus professionnel et industriel : 
 	\begin{itemize}
-		\item tests unitaires syst{\'e}matiques sur le code existant, 
-		\item relecture du code (\emph{review}), 
-		\item g{\'e}n{\'e}ralisation de certaines parties (Interfaces IChemicals, IEnvironment, IEnvironmentItem...) : l'id{\'e}e {\'e}tant de pouvoir r{\'e}utiliser certains {\'e}l{\'e}ments ailleurs, 
-		\item partitionnement via \emph{Maven} entre parties ind{\'e}pendantes rendre ce projet plus lisible, 
-		\item int{\'e}gration de parties jusqu'ici s{\'e}par{\'e}es et / ou faites ind{\'e}pendamment mais en lien avec ce projet (chiffrement, mod{\'e}lisation cellulaire, documentation et reverse-ing{\'e}nierie dur \emph{Creatures}, tests sur des r{\'e}seaux de neurones, volont{\'e} de tester \emph{BioJava}...)
+		\item Tests Unitaires syst{\'e}matiques sur le code existant, 
+		\item Relecture du code (\emph{review}), 
+		\item G{\'e}n{\'e}ralisation de certaines parties (Interfaces IChemicals, IEnvironment, IEnvironmentItem...) : l'id{\'e}e {\'e}tant de pouvoir r{\'e}utiliser certains {\'e}l{\'e}ments ailleurs, 
+		\item Partitionnement via \emph{Maven} entre parties ind{\'e}pendantes rendre ce projet plus lisible, 
+		\item Int{\'e}gration de parties jusqu'ici s{\'e}par{\'e}es et / ou faites ind{\'e}pendamment mais en lien avec ce projet (chiffrement, mod{\'e}lisation cellulaire, documentation et reverse-ing{\'e}nierie dur \emph{Creatures}, tests sur des r{\'e}seaux de neurones, volont{\'e} de tester \emph{BioJava}...)
 		\item ...
 	\end{itemize} 
-	\item revue et correction de la liste des <<{\'e}l{\'e}ments chimiques>> (Chemicals) utilis{\'e}s (ajouts et changements utiles) ; 
-	\item des id{\'e}es compl{\'e}mentaires concernant les \emph{Daemons} (agents utilitaires), les g{\`e}nes viraux (transposition mais aussi production de particules virales) ; 
-	\item mod{\'e}lisation {\`a} partir d'un syst{\`e}me de voies m{\'e}taboliques minimales (repris de \emph{Creatures}) afin d'effectuer des premiers tests plus facilement (une fourmi et une plante, une source d'{\'e}nergie, un fournisseur d'{\'e}l{\'e}ments chimiques basiques et un convertisseur de fruits) ;
-	\item une mod{\'e}lisation des cycles existant connus (Krebs, Lynen...) est possible et {\`a} {\'e}tudier / pr{\'e}ciser ; 
-	\item id{\'e}es d'utilisation de ce projet : agents autonomes dans un mod{\`e}le informatique et / ou un environnement logiciel (analyse de logs, analyses de machines, analyses de r{\'e}seau informatique...), et {\'e}galement dans un univers de type MMORPG / Jeu Vid{\'e}o (g{\'e}n{\'e}ration proc{\'e}durale, animaux et plantes avec des comportements coh{\'e}rents...) ; 
+	\item Revue et correction de la liste des <<{\'e}l{\'e}ments chimiques>> (Chemicals) utilis{\'e}s (ajouts et changements utiles) ; 
+	\item Des id{\'e}es compl{\'e}mentaires concernant les \emph{Daemons} (agents utilitaires), les g{\`e}nes viraux (transposition mais aussi production de particules virales) ; 
+	\item Mod{\'e}lisation {\`a} partir d'un syst{\`e}me de voies m{\'e}taboliques minimales (repris de \emph{Creatures}) afin d'effectuer des premiers tests plus facilement (une fourmi et une plante, une source d'{\'e}nergie, un fournisseur d'{\'e}l{\'e}ments chimiques basiques et un convertisseur de fruits) ;
+	\item Une mod{\'e}lisation des cycles existant connus (Krebs, Lynen...) est possible et {\`a} {\'e}tudier / pr{\'e}ciser ; 
+	\item Id{\'e}es d'utilisation de ce projet : agents autonomes dans un mod{\`e}le informatique et / ou un environnement logiciel (analyse de logs, analyses de machines, analyses de r{\'e}seau informatique...), et {\'e}galement dans un univers de type MMORPG / Jeu Vid{\'e}o (g{\'e}n{\'e}ration proc{\'e}durale, animaux et plantes avec des comportements coh{\'e}rents...) ; 
 	\item ... 
 \end{itemize}
 
@@ -3217,6 +3217,32 @@ Ce projet est sur la plate-forme GitHub depuis la fin juin 2020, pour diff{\'e}r
 	\item Faire participer d'autres personnes ; 
 	\item Pouvoir int{\'e}grer d'autres id{\'e}es et outils ; 
 	\item Int{\'e}grer des cas d'utilisation de BioJava (et {\'e}ventuellement BioPerl et / ou BioPython ?)
+	\item Construction de voies m{\'e}taboliques (outils d{\'e}di{\'e}s) ; 
+	\item 
+	\item ... 
+\end{itemize}
+
+\clearpage 
+
+\subsection{D{\'e}veloppements 2021, 2022...}
+
+\begin{itemize}
+	\item Ajout de quelques ressources (notes, code...) sur les BioFrameworks et outils (BioPython, BioJava, EMBOSS) ; 
+	\item D{\'e}marrage sur les Workflow / Pipelines ; 
+	\item Reprise et travaux sur Interfaces graphiques communes BioSilico : 
+	\begin{itemize}
+		\item G{\'e}n{\'e}ralisation, reprise et revue des {\'e}l{\'e}ments cr{\'e}{\'e}s auparavant ; 
+		\item Int{\'e}gration pour la d{\'e}monstration \emph{AntHill} et adaptation ; 
+		\item Affichages graphiques adapt{\'e}s, dynamiques, interactifs...
+	\end{itemize}
+	\item {\'E}l{\'e}m{\'e}nets {\`a} venir et {\`a} pr{\'e}ciser : 
+	\begin{itemize}
+		\item G{\'e}nomes exemples complets dans l'impl{\'e}mentation g{\'e}n{\'e}tique actuelle \emph{GeneGattaca} ; 
+		\item Autres impl{\'e}mentations possibles (\emph{GenePhaseTwo} ou "code informatique complet"...) ; 
+		\item Faire un exemple d'impl{\'e}mentation g{\'e}n{\'e}tique contextuelle appliqu{\'e}e (g{\'e}n{\'e}ration proc{\'e}durale en jeu vid{\'e}o ou {\'e}cosyst{\`e}me informatique, par exemple) ; 
+		\item Autres id{\'e}es pour des Syst{\`e}mes Multi-Agents (?) ... 
+		\item ... 
+	\end{itemize}
 	\item ... 
 \end{itemize}
 

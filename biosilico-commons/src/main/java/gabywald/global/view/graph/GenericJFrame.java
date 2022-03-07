@@ -10,7 +10,7 @@ import javax.swing.JFrame;
  * @author Gabriel Chandesris (2009 - 2010, 2020)
  */
 @SuppressWarnings("serial")
-public abstract class GenericJFrame extends JFrame {
+public abstract class GenericJFrame extends JFrame implements IEnablerBorderLayoutPanels {
 	/** To avoid a Warning. */
 	// private static final long serialVersionUID = 421L;
 	/** Unique instance of this view. */
@@ -42,10 +42,15 @@ public abstract class GenericJFrame extends JFrame {
 	
 	// public abstract static GenericJFrame getInstance();
 
+	@Override
 	public abstract void enableWesternPanel(boolean b);
+	@Override
 	public abstract void enableEasternPanel(boolean b);
+	@Override
 	public abstract void enableNorthernPanel(boolean b);
-	public abstract void enableSouthPanel(boolean b);	
+	@Override
+	public abstract void enableSouthPanel(boolean b);
+	@Override
 	public abstract void enableCenterPanel(boolean b);
 	
 	/**

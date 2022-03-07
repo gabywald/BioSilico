@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gabywald.biosilico.genetics.Gene;
+import gabywald.biosilico.interfaces.IBuilder;
 
 /**
  * 
  * @author Gabriel Chandesris (2020)
  */
-public class PlantBuilder {
+public class PlantBuilder implements IBuilder<Plant> {
 
 	public PlantBuilder() {
 		;
@@ -23,6 +24,7 @@ public class PlantBuilder {
 		return toReturn;
 	}
 	
+	@Override
 	public Plant build() {
 		
 		return null;

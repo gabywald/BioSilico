@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Plant;
-import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
+import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
 import gabywald.biosilico.genetics.builders.StimulusDecisionBuilder;
@@ -31,7 +31,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class PlantBuildingGenomeTests {
 
@@ -381,6 +381,30 @@ class PlantBuildingGenomeTests {
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
 			.name( "DEATH of AGING over 950" )
 			.build() );
+
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 350 )
+				.attribute( SomeChemicals.WATER.getIndex() ).varia( SomeChemicals.WATER.getIndex() )
+				.value( 30 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT WATER (added)").build()) ;
+		
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_HEAT.getIndex() ).varia( SomeChemicals.ENERGY_HEAT.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_HEAT (added)").build());
+		
+		chrSDdetection.addGene( sdgb		.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_SOLAR.getIndex() ).varia( SomeChemicals.ENERGY_SOLAR.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_SOLAR (added)").build());
 		
 		// ***** Instantiate Plant and Organism With Genome !!
 		Plant testPlant = new Plant( Arrays.asList( chrBiochemical, chrSDdecision, chrSDdetection ) );
@@ -393,18 +417,18 @@ class PlantBuildingGenomeTests {
 		
 		Assertions.assertEquals( 21, testPlant.getGenome().get( 0 ).length());
 		Assertions.assertEquals( 10, testPlant.getGenome().get( 1 ).length());
-		Assertions.assertEquals(  5, testPlant.getGenome().get( 2 ).length());
+		Assertions.assertEquals(  8, testPlant.getGenome().get( 2 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
-		Assertions.assertEquals( 36, genesNumber.intValue() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
+		Assertions.assertEquals( 39, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
-		Assertions.assertEquals( 36, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
+		Assertions.assertEquals( 39, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** Export Plant as a TXT file !
@@ -481,12 +505,16 @@ class PlantBuildingGenomeTests {
 //		});
 		
 		// ***** Export Plant as a TXT file !
-		// BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalGenome.txt", testPlant);
+		// BuildingGenomeHelper.exportAsTXTfile(AntBuildingGenomeComplete.SRC_TEST_RSC + "TestAntCompleteGenome.txt", testPlant);
 		
-		BuildingGenomeHelper.exportGenome("GenomePlantCompleteGenome.txt", testPlant);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt", testPlant);
 		
-		BuildingGenomeHelper.copyMoveGenome("GenomePlantCompleteGenome.txt", "baseGenomePlant.txt");
-		BuildingGenomeHelper.removeACGTsequence( "baseGenomePlant.txt" );
+		BuildingGenomeHelper.copyMoveGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt", 
+											AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt");
+		BuildingGenomeHelper.removeACGTsequence( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt" );
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomePlantCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomePlant.txt" );
 	}
 
 	@Test
@@ -699,7 +727,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals( 21, testPlant.getGenome().get( 0 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 21, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -707,7 +735,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -824,6 +852,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenome.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenome.txt" );
 		
 	}
 	
@@ -1090,7 +1119,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1098,7 +1127,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -1215,6 +1244,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies01.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies01.txt" );
 		
 	}
 
@@ -1481,7 +1511,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1489,7 +1519,7 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
@@ -1660,6 +1690,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies02.txt", testPlant);
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies02.txt" );
 		
 	}
 
@@ -1926,7 +1957,7 @@ class PlantBuildingGenomeTests {
 		Assertions.assertEquals(  5, testPlant.getGenome().get( 1 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testPlant );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, genesNumber.toString());
 		Assertions.assertEquals( 26, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testPlant.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
@@ -1934,14 +1965,14 @@ class PlantBuildingGenomeTests {
 		
 		testPlant.setRank("Rank Test");
 		testPlant.setNameCommon("Test Starting Plant");
-		testPlant.setNameBiosilico("PlantHill Plant Example");
+		testPlant.setNameBiosilico("AntHill Plant Example");
 		testPlant.setDivision("TESTS");
 		
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 		// ***** test with a World and WorldCase
 		
-		World2D w			= new World2D(3, 3);
+		World2D w		= new World2D(3, 3);
 		World2DCase wc	= w.getWorldCase(1, 1);
 		Assertions.assertNotNull( wc );
 		
@@ -2106,7 +2137,7 @@ class PlantBuildingGenomeTests {
 		
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestPlantBiochemicalReactionGenomeWithEnergies03.txt", testPlant);
-		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestPlantBiochemicalReactionGenomeWithEnergies03.txt" );
 	}
 
 	

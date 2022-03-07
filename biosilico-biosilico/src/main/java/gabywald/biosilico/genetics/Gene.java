@@ -2,8 +2,10 @@ package gabywald.biosilico.genetics;
 
 import gabywald.biosilico.exceptions.GeneException;
 import gabywald.biosilico.interfaces.IGeneMutation;
+import gabywald.biosilico.interfaces.functionnals.INamedElement;
 import gabywald.biosilico.model.Organism;
-
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This class define a generic gene.<br>
@@ -13,7 +15,7 @@ import gabywald.biosilico.model.Organism;
  * @see gabywald.biosilico.genetics.BiochemicalReaction
  * @see gabywald.biosilico.genetics.InitialConcentration
  */
-public abstract class Gene implements Cloneable, IGeneMutation {
+public abstract class Gene implements Cloneable, IGeneMutation, INamedElement {
 	/** Default name if not attributed. */
 	public static final String DEFAULT_GENE_NAME = "UnNamedGene";
 	/** Gene name / identification. */
@@ -71,7 +73,11 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 			if ( (this.sex <= 0) || (this.sex == orga.getSex()) ) {
 				// Execute current gene, can be excepted (nothing happened). 
 				try { this.exec(orga); } 
-				catch (GeneException e) { ; }
+				catch (GeneException e) { 
+					// ***** Some log for information !!
+					/** e.printStackTrace() */;
+					Logger.printlnLog(LoggerLevel.LL_WARNING, "Gene execution() : GeneException : {" + e.getMessage() + "}. ");
+				} 
 			}
 		}
 	}
@@ -88,6 +94,7 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 	
 	public void setName(String name) { this.name = name; }
 	
+	@Override
 	public String getName() {
 		if (this.name == null) 
 			{ return Gene.DEFAULT_GENE_NAME; }
@@ -101,6 +108,42 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 			this.activ+"\t"+this.ageMin+"\t"+this.ageMax+"\t"+
 			this.sex+"\t"+this.mutationRate+"\t";
 		return stringenize;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		return this.equalCommonAttributes( (Gene) obj );
+	}
+	
+	protected boolean equalCommonAttributes(Gene gg) {
+		if (gg == null) { return false; }
+		
+		// Call equals() method of the underlying objects
+		if ( (this.name != null) && (gg.name != null) ) {
+			if ( ! this.name.equals(gg.name))
+				{ return false; }
+		}
+		if ( this.mutate != gg.mutate)
+			{ return false; }
+		if ( this.duplicate != gg.duplicate)
+			{ return false; }
+		if ( this.delete != gg.delete)
+			{ return false; }
+		if ( this.activ != gg.activ)
+			{ return false; }
+		if ( this.ageMin != gg.ageMin)
+			{ return false; }
+		if ( this.ageMax != gg.ageMax)
+			{ return false; }
+		if ( this.sex != gg.sex)
+			{ return false; }
+		return ( this.mutationRate == gg.mutationRate);
 	}
 	
 	/**
@@ -121,6 +164,7 @@ public abstract class Gene implements Cloneable, IGeneMutation {
 	 * Creating Gene from sequence. 
 	 * @param sequence (String)
 	 * @return (Gene) 'null' if not recognized properly. 
+	 * NOTE : here is main choice to use UpperCase 'ACGT' characters to encode GeneGattaca sequences. 
 	 */
 	public static Gene loadGene(String sequence) {
 		/** Standard genetic code application : nothing */

@@ -103,7 +103,7 @@ public class StimulusDecision extends GeneGattaca {
 			// ***** This is an input / stimulus
 			DirectionWorld direction	= DirectionWorld.get2DFrom( this.attribute );
 			if (direction == null)		{ return; }
-			IEnvironmentItem detectWC		= orga.getCurrentEnvironmentItem().getDirection( direction );
+			IEnvironmentItem detectWC	= orga.getCurrentEnvironmentItem().getDirection( direction );
 			
 			if (this.object) { 
 				// ***** Acts from an object 
@@ -162,6 +162,35 @@ public class StimulusDecision extends GeneGattaca {
 							this.threshold+"\t"+this.attribute+"\t"+
 							this.varia+"\t"+this.value+"\t"+this.scrip+"\t";
 		return stringenize;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			{ return true; }
+
+		if ( (obj == null) || (this.getClass() != obj.getClass()) )
+			{ return false; }
+		
+		StimulusDecision sdg = (StimulusDecision) obj;
+		
+		if ( ! super.equalCommonAttributes( sdg )) { return false; }
+		
+		if ( this.perception != sdg.perception)
+			{ return false; }
+		if ( this.object != sdg.object)
+			{ return false; }
+		if ( this.indicator != sdg.indicator)
+			{ return false; }
+		if ( this.threshold != sdg.threshold)
+			{ return false; }
+		if ( this.attribute != sdg.attribute)
+			{ return false; }
+		if ( this.varia != sdg.varia)
+			{ return false; }
+		if ( this.value != sdg.value)
+			{ return false; }
+		return ( this.scrip == sdg.scrip);
 	}
 	
 	@Override

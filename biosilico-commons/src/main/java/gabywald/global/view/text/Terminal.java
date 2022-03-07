@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 /**
  * Classe utilisee pour les entree / sorties. 
- * N'est pas faire pour etre instanciee toutes les methodes sont statiques. 
- * Merci au CNAM : http://deptinfo.cnam.fr/Enseignement/CycleA/APA/
+ * <br/>N'est pas faire pour etre instanciee toutes les methodes sont statiques. 
+ * <br/>Merci au CNAM : http://deptinfo.cnam.fr/Enseignement/CycleA/APA/
+ * @author Gabriel Chandesris (2007)
  */
-public class Terminal{    
+public abstract class Terminal {  
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
 	/**

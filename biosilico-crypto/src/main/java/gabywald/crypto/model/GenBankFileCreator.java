@@ -21,7 +21,7 @@ import gabywald.global.data.samples.UplinkDataFile;
  * Aim of this class is to generate a GenBank file with encrypted data. 
  * <br>Data is encrypted when included (content and path of file, respectively as proteomic and nucleotidic data). 
  * <br>Encryption according to current "genetic encryption". 
- * @author Gabriel Chandesris (2011, 2020)
+ * @author Gabriel Chandesris (2011, 2020, 2022)
  */
 public class GenBankFileCreator {
 	private static final GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
@@ -209,6 +209,14 @@ public class GenBankFileCreator {
 		return orga;
 	}
 	
+	/**
+	 * 
+	 * @param n (int) Number of the reference. 
+	 * @param year
+	 * @param start
+	 * @param stopp
+	 * @return (Reference)
+	 */
 	public static Reference createReference(int n, int year, int start, int stopp) {
 		Reference tmpRef = new Reference(n+1, start + 1, start + 1 + stopp);
 		tmpRef.setTitle(GenBankFileCreator.createTitle() + " " + (n+1) ); /** XXX !! */
@@ -283,12 +291,12 @@ public class GenBankFileCreator {
 	}
 	
 	private String addPath(String path) {
-		this.encodedPath.add(path.equals("") ? "" : GenBankFileCreator.forPathDirName.encode(path, 1, false) );
+		this.encodedPath.add(path.equals("") ? "" : GenBankFileCreator.forPathDirName.encode(path, 1) );
 		return this.encodedPath.get(this.encodedPath.size() - 1);
 	}
 	
 	private String addContent(String content) {
-		this.encodedContent.add(content.equals("") ? "" : GenBankFileCreator.forFileContent.encode(content, 1, false) );
+		this.encodedContent.add(content.equals("") ? "" : GenBankFileCreator.forFileContent.encode(content, 1) );
 		return this.encodedContent.get(this.encodedContent.size() - 1);
 	}
 	

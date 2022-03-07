@@ -1,0 +1,28 @@
+
+EBI Home » ENA › About ENA › Formats › EMBL-Bank ›
+
+EMBL-Bank format
+
+The main EMBL-Bank format is the flatfile format, which is defined in full detail in the EMBL-Bank User Manual. EMBL-Bank records are available in flatfile and other formats, namely Fasta and XML, through the ENA Browser. The EMBL-Bank sequence feature annotation usage and interpretation is defined by the INSDC Feature Table Document, which is also made available through the Feature Table Browser.
+	ftp://ftp.ebi.ac.uk/pub/databases/embl/release/usrman.txt
+	https://www.ebi.ac.uk/ena/about/browser
+	ftp://ftp.ebi.ac.uk/pub/databases/embl/doc/FT_current.html
+	http://www.ebi.ac.uk/ena/WebFeat/
+
+EMBL-Bank data classes
+
+Please refer to the table below for a summary of EMBL-Bank data classes and supported formats. The 'Example' column contains example entries retrieved from the ENA Browser in HTML, XML, Fasta, and flatfile formats. The ENA Browser provides retrieval and visualisation functionality over ENA data and metadata and uses REST URLs to support both interactive and programmatic access. Please note that all EMBL-Bank data classes use the same flatfile format and are constrained by the same XML Schema: ENA.embl.xsd. Please also note that all XML documents returned by the ENA Browser are included in and validate against the ENA.root.xsd XML Schema.
+
+Data class 	Definition 	Example
+EST 	Raw expressed sequence tag sequence data (no qualities) and sample/library information 	Fasta ; Flatfile ; HTML ; XML
+WGS 	Data from ongoing whole genome shotgun sequencing projects with optional annotation, typically showing an intermediate level of assembly 	Fasta ; Flatfile ; HTML ; XML
+GSS 	Genome survey sequence; single pass, single direction sequence 	Fasta ; Flatfile ; HTML ; XML
+HTC 	High throughput assembled transcriptomic sequence and optional annotation 	Fasta ; Flatfile ; HTML ; XML
+HTG 	High throughput assembled genomic sequence and optional annotation 	Fasta ; Flatfile ; HTML ; XML
+STD 	Standard annotated assembled sequence 	Fasta ; Flatfile ; HTML ; XML
+CON 	High level (contig upwards) assembly information, constructed sequence and optional annotation 	Fasta ; Flatfile ; HTML ; XML
+STS 	Sequence tagged site 	Fasta ; Flatfile ; HTML ; XML
+PAT 	Patent records 	Fasta ; Flatfile ; HTML ; XML
+TSA 	Transcriptome Shotgun Assembly 	Fasta ; Flatfile ; HTML ; XML
+EMBL-CDS 	Annotated coding region derived from STD, WGS, HTC, HTG, CON, PAT, TPA dataclasses 	Fasta ; Flatfile ; HTML ; XML
+MGA 	Mass genome annotation, typically CAGE tag data 	 

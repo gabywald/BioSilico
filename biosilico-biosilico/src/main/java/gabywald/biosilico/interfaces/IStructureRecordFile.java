@@ -16,4 +16,6 @@ public interface IStructureRecordFile {
 	public void setChamps(int index, String line);
 	/** To remove a line. */
 	public void removeChamps(int i);
+	/** To delete file. */
+	public void deleteFile();
 }

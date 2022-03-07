@@ -22,8 +22,7 @@ import gabywald.biosilico.model.environment.World2DCase;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class OrganismInWorldCaseEmitterReceptorsTests {
 
@@ -66,8 +65,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(0, test.getChemicals().getVariable( StateType.AGING.getIndex() ) );
 		
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -139,8 +137,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -220,8 +217,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -319,8 +315,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		
@@ -422,8 +417,7 @@ class OrganismInWorldCaseEmitterReceptorsTests {
 		Assertions.assertEquals(3, test.getGenome().get(0).length());
 
 		// ***** test with a World and WorldCase
-		
-		World2D w			= new World2D(1, 1);
+		World2D w		= new World2D(1, 1);
 		World2DCase wc	= w.getWorldCase(0,  0);
 		Assertions.assertNotNull( wc );
 		

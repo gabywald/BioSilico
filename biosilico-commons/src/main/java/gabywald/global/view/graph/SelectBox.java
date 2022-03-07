@@ -77,7 +77,7 @@ public class SelectBox extends JComboBox<String> {
 	 * @return (int)
 	 * @see JComboBox#getSelectedIndex()
 	 */
-	public int getSelected() { return this.getSelectedIndex(); }
+	public int getSelectedIndex() { return super.getSelectedIndex(); }
 	
 	/**
 	 * To set the selection without event generation (temporarily stock ActionListeners). 

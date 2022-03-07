@@ -19,7 +19,7 @@ public class Directory extends java.io.File {
 	 * Constructor (no checking about name). 
 	 * @param pathName (String)
 	 */
-	public Directory (String pathName) { 
+	public Directory(String pathName) { 
 		super((pathName != null) ? pathName : "." );
 		this.pathName = pathName; 
 	}

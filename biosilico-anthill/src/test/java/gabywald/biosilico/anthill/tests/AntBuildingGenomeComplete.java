@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.anthill.Ant;
-import gabywald.biosilico.anthill.AntReceptionChemicals;
-import gabywald.biosilico.anthill.launcher.BuildingGenomeHelper;
+import gabywald.biosilico.anthill.GeneratorReceptionChemicals;
+import gabywald.biosilico.anthill.helpers.AntHillExampleHelper;
+import gabywald.biosilico.anthill.helpers.BuildingGenomeHelper;
 import gabywald.biosilico.genetics.builders.BiochemicalReactionBuilder;
-import gabywald.biosilico.genetics.builders.BrainGeneBuilder;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 import gabywald.biosilico.genetics.builders.EmitterReceptorBuilder;
 import gabywald.biosilico.genetics.builders.InitialConcentrationBuilder;
@@ -34,9 +34,12 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 class AntBuildingGenomeComplete {
+	
+	public static final String SRC_TEST_RSC			= AntHillExampleHelper.BASE_EXPORT_TEST_DIR;
+	public static final String SRC_MAIN_RSC_ANTHILL	= AntHillExampleHelper.BASE_EXPORT_MAIN_DIR_ANTHILL;
 
 	@Test
 	void testAntCompleteGenome() {
@@ -57,7 +60,6 @@ class AntBuildingGenomeComplete {
 															SomeChemicals.PHEROMONE_04, SomeChemicals.PHEROMONE_05, SomeChemicals.PHEROMONE_06, 
 															SomeChemicals.PHEROMONE_07, SomeChemicals.PHEROMONE_08, SomeChemicals.PHEROMONE_09 );
 		
-		BrainGeneBuilder bgb				= new BrainGeneBuilder();
 		BrainLobeGeneBuilder blgb			= new BrainLobeGeneBuilder();
 		EmitterReceptorBuilder erb			= new EmitterReceptorBuilder();
 		InitialConcentrationBuilder icb		= new InitialConcentrationBuilder();
@@ -68,13 +70,8 @@ class AntBuildingGenomeComplete {
 		// ***** ***** ***** ***** ***** 
 		// ***** Building Brain and BrainLobe Genes
 		chrBrain.setName( "Brain and Connections" );
-		// *** "Basic" Brain ... 
-		chrBrain.addGene( bgb.heigth( 100 ).width( 100 ).depth( 1 ).more( 0 )
-			.name( "Brain Gene 100*100*1*0" )
-			.mutate( true ).duplicate( true ).delete( true ).activ( true )
-			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
-			.build() );
-		// *** Input neurons : one group of 27 neurons => pheromones_00 directions ! (9 used for new)
+		chrBrain.addGene( AntBuildingGenomeDataHelper.buildBasicBrainGene() );
+		// *** Input neurons : one group of 27 neurons => pheromones_00 directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )
@@ -85,7 +82,7 @@ class AntBuildingGenomeComplete {
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 			.build() );
-		// *** Input neurons : one group of 27 neurons => pheromones_01 directions ! (9 used for new)
+		// *** Input neurons : one group of 27 neurons => pheromones_01 directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )
@@ -96,7 +93,7 @@ class AntBuildingGenomeComplete {
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 			.build() );
-		// *** Input neurons : one group of 27 neurons => FOOD directions ! (9 used for new)
+		// *** Input neurons : one group of 27 neurons => FOOD directions ! (9 used for now)
 		chrBrain.addGene( blgb 
 				.rest( 0 ).threshold( 10 ).desc( 5 )
 				.dmin( 0 ).dmax( 0 ).prox( 0 )
@@ -151,7 +148,8 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 20 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( selectedDirs.size() + 3 ).posx( 90 ).posy( 0 )
+				.heigth( 1 ).width( selectedDirs.size() + AntBuildingGenomeDataHelper.BRAIN_LOBE_OUTPUT )
+				.posx( 89 ).posy( 0 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 1 : directions + MOVE_AWAY + GET(FOOD) + DROP(FOOD) + EAT(FOOD) + DEATH" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -162,7 +160,8 @@ class AntBuildingGenomeComplete {
 				.rest( 0 ).threshold( 50 ).desc( 10 )
 				.dmin( 5 ).dmax( 9 ).prox( 2 )
 				.repr( false ).repy( 0 ).wta( true )
-				.heigth( 1 ).width( 10 ).posx( 90 ).posy( 50 )
+				.heigth( 1 ).width( AntBuildingGenomeDataHelper.BRAIN_LOBE_OUTPUT )
+				.posx( 89 ).posy( 50 )
 				.replace( false )
 			.name( "Brain Lobe Gene Data Output 2 : other decisions / Decision Lobe" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -174,7 +173,7 @@ class AntBuildingGenomeComplete {
 		// *** EmitterReceptor Input => to first line (inputs) of Brain !! (Ph_00 & direction)
 		String nameFirstPartERinput	= "ER receptor input ";
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 0 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -186,7 +185,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		// *** EmitterReceptor Input => to second line (inputs) of Brain !! (Ph_01 & direction)
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_01 );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_01 );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 1 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -198,7 +197,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		// *** EmitterReceptor Input => to third line (inputs) of Brain !! (FOOD & direction)
 		for (DirectionWorld dw : selectedDirs) {
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, ObjectType.FOOD );
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, ObjectType.FOOD );
 			chrEmitReceiv.addGene( erb
 					.variable( arc.getIndex() ).threshold( 5 ).ioput( 20 )
 					.posx( 2 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
@@ -210,7 +209,7 @@ class AntBuildingGenomeComplete {
 		} // END "for (DirectionWorld dw : selectedDirs)"
 		
 		// *** *** *** StimulusDecision : more impact if PHEROMONE_01 if HIGH
-		AntReceptionChemicals arcCurrentPh01 = AntReceptionChemicals.getFrom( DirectionWorld.CURRENT, SomeChemicals.PHEROMONE_01 );
+		GeneratorReceptionChemicals arcCurrentPh01 = GeneratorReceptionChemicals.getFrom( DirectionWorld.CURRENT, SomeChemicals.PHEROMONE_01 );
 		chrEmitReceiv.addGene( erb
 				.variable( arcCurrentPh01.getIndex() ).threshold(  99 ).ioput( 100 )
 				.posx( 1 ).posy( 1 )
@@ -257,7 +256,7 @@ class AntBuildingGenomeComplete {
 			// AntEmissionChemicals aec = AntEmissionChemicals.getFrom( dw, SomeChemicals.PHEROMONE_00 );
 			chrEmitReceiv.addGene( erb
 					.variable( dw.getIndex() ).threshold( 5 ).ioput( 20 )
-					.posx( 90 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
+					.posx( 89 ).posy( dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection )
 					.receptor( false ).internal( true )
 				.name( nameFirstPartERoutput + dw.getName() )
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -269,7 +268,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYMOVEAWAY = selectedDirs.size() + 0;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.MOVE_AWAY.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYMOVEAWAY )
+				.posx( 89 ).posy( outputPosYMOVEAWAY )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.MOVE_AWAY.getName() )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -279,7 +278,7 @@ class AntBuildingGenomeComplete {
 		final int outputPosYGETFOOD = selectedDirs.size() + 1;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.GET.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYGETFOOD )
+				.posx( 89 ).posy( outputPosYGETFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.GET.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -289,17 +288,17 @@ class AntBuildingGenomeComplete {
 		final int outputPosYDROPFOOD = selectedDirs.size() + 2;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.DROP.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYDROPFOOD )
+				.posx( 89 ).posy( outputPosYDROPFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.DROP.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
 			.build() );
-		// ER DROP FOOD ... 
+		// ER EAT FOOD ... 
 		final int outputPosYEATFOOD = selectedDirs.size() + 3;
 		chrEmitReceiv.addGene( erb
 				.variable( DecisionType.EAT.getIndex() ).threshold( 10 ).ioput( 10 )
-				.posx( 90 ).posy( outputPosYEATFOOD )
+				.posx( 89 ).posy( outputPosYEATFOOD )
 				.receptor( false ).internal( true )
 			.name( nameFirstPartERoutput + DecisionType.EAT.getName() + " FOOD" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
@@ -321,10 +320,10 @@ class AntBuildingGenomeComplete {
 				int neuronYIndex = dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection;
 				chrInstinct.addGene( igb
 					.inputPosX( i ).inputPosY( neuronYIndex )
-					.outputPosX( 90 ).outputPosY( neuronYIndex )
+					.outputPosX( 89 ).outputPosY( neuronYIndex )
 					.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 					.threshold( 5 ).check( false ).positiv( true )
-					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (90, " + neuronYIndex + ") " 
+					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (89, " + neuronYIndex + ") " 
 								+ dw.getName() + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 						.mutate( true ).duplicate( true ).delete( true ).activ( true )
 						.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -334,10 +333,10 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for MOVE_AWAY
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( SomeChemicals.PHEROMONE_00.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone )
-				.outputPosX( 90 ).outputPosY( outputPosYMOVEAWAY )
+				.outputPosX( 89 ).outputPosY( outputPosYMOVEAWAY )
 				.weight(  5 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 0 + ", " + 0 + ") to (90, " + outputPosYMOVEAWAY + ") " 
+				.name( "Instinct (" + 0 + ", " + 0 + ") to (89, " + outputPosYMOVEAWAY + ") " 
 							+ "INT PHER01 => MOVE_AWAY" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -348,10 +347,10 @@ class AntBuildingGenomeComplete {
 				int neuronYIndex = dw.getIndex() - BuildingGenomeHelper.indexLessRemoveDirection;
 				chrInstinct.addGene( igb
 					.inputPosX( i ).inputPosY( neuronYIndex )
-					.outputPosX( 90 ).outputPosY( outputPosYMOVEAWAY )
+					.outputPosX( 89 ).outputPosY( outputPosYMOVEAWAY )
 					.weight( 1 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 					.threshold( 5 ).check( false ).positiv( false )
-					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (90, " + outputPosYMOVEAWAY + ") " 
+					.name( "Instinct (" + i + ", " + neuronYIndex + ") to (89, " + outputPosYMOVEAWAY + ") " 
 								+ dw.getName() + " => MOVE_AWAY [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 						.mutate( true ).duplicate( true ).delete( true ).activ( true )
 						.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -361,10 +360,10 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for GET(FOOD) : if FOOD in CURRENT
 		chrInstinct.addGene( igb
 				.inputPosX( 0 ).inputPosY( 0 )
-				.outputPosX( 90 ).outputPosY( outputPosYGETFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYGETFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 0 + ", " + 0 + ") to (90, " + outputPosYGETFOOD + ") " 
+				.name( "Instinct (" + 0 + ", " + 0 + ") to (89, " + outputPosYGETFOOD + ") " 
 							+ "GET(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -372,20 +371,20 @@ class AntBuildingGenomeComplete {
 		// Linked instinct for DROP(FOOD) : HAS(FOOD) + if PHEROMONE_01 is detected enough
 		chrInstinct.addGene( igb
 				.inputPosX( 1 ).inputPosY( 1 )
-				.outputPosX( 90 ).outputPosY( outputPosYDROPFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYDROPFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 1 + ", " + 1 + ") to (90, " + outputPosYDROPFOOD + ") " 
+				.name( "Instinct (" + 1 + ", " + 1 + ") to (89, " + outputPosYDROPFOOD + ") " 
 							+ "LLL PHER01 => DROP(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 					.build() );
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone )
-				.outputPosX( 90 ).outputPosY( outputPosYDROPFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYDROPFOOD )
 				.weight( 10 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( true )
-				.name( "Instinct (" + 3 + ", " + (SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone) + ") to (90, " + outputPosYDROPFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (SomeChemicals.PHEROMONE_01.getIndex() - BuildingGenomeHelper.indexLessRemovePheromone) + ") to (89, " + outputPosYDROPFOOD + ") " 
 							+ "INT PHER01 => HAS(FOOD)" + " [" + SomeChemicals.GLUCOSE.getName() + "]")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -393,20 +392,20 @@ class AntBuildingGenomeComplete {
 		
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( allPheromones.size() + 0 )
-				.outputPosX( 90 ).outputPosY( outputPosYEATFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYEATFOOD )
 				.weight( 1 ).variable( SomeChemicals.GLUCOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( false )
-				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 0) + ") to (90, " + outputPosYEATFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 0) + ") to (89, " + outputPosYEATFOOD + ") " 
 							+ SomeChemicals.GLUCOSE.getName() + " => EAT(FOOD) [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
 					.build() );
 		chrInstinct.addGene( igb
 				.inputPosX( 3 ).inputPosY( allPheromones.size() + 1 )
-				.outputPosX( 90 ).outputPosY( outputPosYEATFOOD )
+				.outputPosX( 89 ).outputPosY( outputPosYEATFOOD )
 				.weight( 1 ).variable( SomeChemicals.FRUCTOSE.getIndex() )
 				.threshold( 5 ).check( false ).positiv( false )
-				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 1) + ") to (90, " + outputPosYEATFOOD + ") " 
+				.name( "Instinct (" + 3 + ", " + (allPheromones.size() + 1) + ") to (89, " + outputPosYEATFOOD + ") " 
 							+ SomeChemicals.FRUCTOSE.getName() + " => EAT(FOOD) [" + SomeChemicals.GLUCOSE.getName() + "] (negative)")
 					.mutate( true ).duplicate( true ).delete( true ).activ( true )
 					.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 )
@@ -422,8 +421,8 @@ class AntBuildingGenomeComplete {
 					.indicator( dw.getIndex() ) 				// to be detected
 					.threshold( 10 )							// detection
 					.attribute( dw.getIndex() ) 				// where to go !
-					.varia( 0 ).value( 0 )		// varia && value are irrelevant here !
-					.script( DecisionType.MOVE_TO.getIndex() )	// What to do !
+					.varia( 0 ).value( 0 )								// varia && value are irrelevant here !
+					.script( DecisionType.MOVE_TO.getIndex() )			// What to do !
 				.name( "StimulusDecisionGene_MOVETO_" + dw.getName() )
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
 				.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
@@ -433,8 +432,8 @@ class AntBuildingGenomeComplete {
 		// Decision MOVE_AWAY
 		chrSDdecision.addGene( sdgb.perception( false ).object( true ) 
 				.indicator( DecisionType.MOVE_AWAY.getIndex() ) // to be detected
-				.threshold( 0 ).attribute( 0 ).varia( 0 ).value( 0 )			// attribute && varia && value are irrelevant here !
-				.script( DecisionType.MOVE_AWAY.getIndex() )	// What to do !
+				.threshold( 0 ).attribute( 0 ).varia( 0 ).value( 0 )		// attribute && varia && value are irrelevant here !
+				.script( DecisionType.MOVE_AWAY.getIndex() )				// What to do !
 			.name( "StimulusDecisionGene_MOVEAWAY" )
 			.mutate( true ).duplicate( true ).delete( true ).activ( true )
 			.agemin( 0 ).agemax( 999 ).sex( 0 ).mutation( 5 )
@@ -533,7 +532,7 @@ class AntBuildingGenomeComplete {
 			for (SomeChemicals scPHE : someChems) {
 				// ***** Detect Pheromone_0X at WorldCase with threshold 10, change variable 70X set to 5
 				// basicChromosome.setName( scPHE.getName() + " detection !" );
-				AntReceptionChemicals arc = AntReceptionChemicals.getFrom( dw, scPHE );
+				GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom( dw, scPHE );
 				chrSDdetection.addGene( sdgb.perception( true ).object( false ) 
 						.indicator( scPHE.getIndex() ).threshold( 10 )
 						.attribute( dw.getIndex() )
@@ -546,7 +545,7 @@ class AntBuildingGenomeComplete {
 			} // END "for (SomeChemicals scPHE : someChems)"
 			
 			// ***** FOOD Detection !!
-			AntReceptionChemicals arc = AntReceptionChemicals.getFrom(dw, ObjectType.FOOD);
+			GeneratorReceptionChemicals arc = GeneratorReceptionChemicals.getFrom(dw, ObjectType.FOOD);
 			chrSDdetection.addGene( sdgb.perception( true ).object( true ) 
 					.indicator( ObjectType.FOOD.getIndex() ).threshold( 0 )
 					.attribute( dw.getIndex() )
@@ -621,6 +620,24 @@ class AntBuildingGenomeComplete {
 				.name( "InitConc WATER 25" )
 				.mutate( true ).duplicate( true ).delete( true ).activ( true )
 				.agemin( 0 ).agemax( 0 ).sex( 0 ).mutation( 5 ).build() );
+		
+		chrInitialConcentrations.addGene( sdgb		
+				.perception( false ).object( false )
+				.indicator( 800 ).threshold( 350 )
+				.attribute( SomeChemicals.DIOXYGEN.getIndex() ).varia( SomeChemicals.DIOXYGEN.getIndex() )
+				.value( 30 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT DIOXYGEN (added)").build() );
+		
+		chrInitialConcentrations.addGene( sdgb	
+				.perception( false ).object( false )
+				.indicator( 800 ).threshold( 500 )
+				.attribute( SomeChemicals.ENERGY_HEAT.getIndex() ).varia( SomeChemicals.ENERGY_HEAT.getIndex() )
+				.value( 100 ).script( DecisionType.EMIT.getIndex() )
+			.mutate( true )	.duplicate( true )	.delete( true )	.activ( true )
+			.agemin( 0 )	.agemax( 999 )		.sex( 0 )		.mutation( 5 )
+			.name("StimulusDecision EMIT ENERGY_HEAT (added)").build() );
 		
 		// EMISSION / RECEPTION ***** Use Heat NRJ, Oxygen !
 		chrInitialConcentrations.addGene(	sdgb.perception( false ).object( false ) 
@@ -751,15 +768,15 @@ class AntBuildingGenomeComplete {
 		Assertions.assertEquals( 61, testAnt.getGenome().get( 2 ).length());
 		Assertions.assertEquals( 18, testAnt.getGenome().get( 3 ).length()); 
 		Assertions.assertEquals( 29, testAnt.getGenome().get( 4 ).length());
-		Assertions.assertEquals( 11, testAnt.getGenome().get( 5 ).length());
+		Assertions.assertEquals( 13, testAnt.getGenome().get( 5 ).length());
 		Assertions.assertEquals(  7, testAnt.getGenome().get( 6 ).length());
 		
 		Integer genesNumber = ReproductionHelper.sizeOfGenome( testAnt );
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, genesNumber.toString());
-		Assertions.assertEquals(188, genesNumber.intValue() );
+		Assertions.assertEquals(190, genesNumber.intValue() );
 		
 		List<Integer> listLengthGenomes = testAnt.getGenome().stream().map( Chromosome::length ).collect(Collectors.toList());
-		Assertions.assertEquals(188, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
+		Assertions.assertEquals(190, listLengthGenomes.stream().reduce(0, Integer::sum).intValue());
 		
 		testAnt.setRank("Rank Test");
 		testAnt.setNameCommon("Test Starting Ant");
@@ -787,10 +804,15 @@ class AntBuildingGenomeComplete {
 		// ***** Export Ant as a TXT file !
 		BuildingGenomeHelper.exportAsTXTfile("TestAntCompleteGenome.txt", testAnt);
 		
-		BuildingGenomeHelper.exportGenome("GenomeAntCompleteGenome.txt", testAnt);
+		BuildingGenomeHelper.exportGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt", testAnt);
 		
-		BuildingGenomeHelper.copyMoveGenome("GenomeAntCompleteGenome.txt", "baseGenomeAnt.txt");
-		BuildingGenomeHelper.removeACGTsequence( "baseGenomeAnt.txt" );
+		BuildingGenomeHelper.copyMoveGenome(AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt", 
+											AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt");
+		BuildingGenomeHelper.removeACGTsequence( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt" );
+		
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "TestAntCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_TEST_RSC + "GenomeAntCompleteGenome.txt" );
+		DataExporterAndViewAnalysis.testFileExists( AntBuildingGenomeComplete.SRC_MAIN_RSC_ANTHILL + "baseGenomeAnt.txt" );
 	}
 
 }

@@ -22,10 +22,13 @@ import gabywald.global.structures.StringCouple;
 
 /**
  * 
- *  @author Gabriel Chandesris (2010, 2020)
+ *  @author Gabriel Chandesris (2010, 2020, 2022)
  */
 @SuppressWarnings("serial")
 public class FileOrganism extends FileBiological {
+	
+	public static final String DEFAULT_EXTENSION = ".gatorg";
+	
 	/** Date Formatter (ddmmyyyy hh:mm:ss). */
 	private static final SimpleDateFormat GENERIC_FORMATER = new SimpleDateFormat("dd-MM-yyyy    HH:mm:ss");
 	/** Current instance of Organism */
@@ -190,8 +193,8 @@ public class FileOrganism extends FileBiological {
 	 * @param fileName (String)
 	 * @param orga (Organism)
 	 */
-	public FileOrganism(String fileName,Organism orga) { 
-		super("Organism "+fileName,fileName+".gatorg");
+	public FileOrganism(String fileName, Organism orga) { 
+		super("Organism " + fileName, fileName + FileOrganism.DEFAULT_EXTENSION);
 		this.init();this.loadFrom(orga);
 	}
 
@@ -233,7 +236,7 @@ public class FileOrganism extends FileBiological {
 				this.geneListe.add(	new Sequence(chromosome.getGene(j).getName(),
 									chromosome.getGene(j).reverseTranslation(true)));
 			}
-			this.geneListe.add(	new Sequence("chromosome "+i+"separator",
+			this.geneListe.add(	new Sequence("chromosome " + i + "separator",
 								StringUtils.repeat("-", 50)));
 		}
 

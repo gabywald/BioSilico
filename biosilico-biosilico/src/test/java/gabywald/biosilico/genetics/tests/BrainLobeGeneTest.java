@@ -4,8 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.biosilico.genetics.BrainLobeGene;
+import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.genetics.builders.BrainLobeGeneBuilder;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020)
+ */
 class BrainLobeGeneTest {
 
 	@Test
@@ -579,5 +584,29 @@ class BrainLobeGeneTest {
 
 	}
 	
+	@Test
+	void testCloneEquals() {
+		BrainLobeGene blGene = new BrainLobeGene(	false, false, false, false, 
+													0, 999, 0, 50,
+													0, 0, 0, 0, 0, 
+													0, false, 0, false, 
+													0, 0, 0, 0, false);
+
+		Gene bGeneClone = blGene.clone();
+		Assertions.assertNotNull( bGeneClone );
+		BrainLobeGene bbGeneClone = (BrainLobeGene) bGeneClone;
+		Assertions.assertNotNull( bbGeneClone );
+		
+		Assertions.assertTrue( blGene.equals( bGeneClone ) );
+		Assertions.assertTrue( blGene.equals( bbGeneClone ) );
+		
+		BrainLobeGene blGeneOther = new BrainLobeGene(	false, false, false, false, 
+														0, 999, 0, 50,
+														0, 0, 0, 0, 0, 
+														0, false, 0, false, 
+														0, 0, 0, 0, true);
+		
+		Assertions.assertFalse( blGene.equals( blGeneOther ) );
+	}
 
 }
