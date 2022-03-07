@@ -4,18 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import gabywald.biosilico.interfaces.IChemicals;
 import gabywald.biosilico.model.Organism;
 import gabywald.biosilico.model.chemicals.ChemicalsHelper;
 import gabywald.biosilico.model.enums.StateType;
+import gabywald.global.structures.StringCouple;
 import gabywald.global.view.graph.GridBagJPanel;
 
 /**
@@ -29,13 +35,15 @@ public class AntHillGraphicalChemicalsJPanel extends GridBagJPanel implements Ob
 
 	private JPanel wholeChemicalView				= new JPanel();
 	/** Chemicals 331 to 336 */
-	private ChemicalPanel partialChemicalViewCreatureBase = null;
+	private ChemicalPanel partialChemicalViewCreatureBase	= null;
 	/** Chemicals 351 to 360 */
-	private ChemicalPanel partialChemicalViewPheromones = null;
+	private ChemicalPanel partialChemicalViewPheromones		= null;
 	/** Chemicals 371 to 380 */
-	private ChemicalPanel partialChemicalViewHormones = null;
+	private ChemicalPanel partialChemicalViewHormones		= null;
 	/** Chemicals 391 to 396 */
-	private ChemicalPanel partialChemicalViewEnergies = null;
+	private ChemicalPanel partialChemicalViewEnergies		= null;
+	
+	private JTable tableChemical							= null;
 
 	public AntHillGraphicalChemicalsJPanel(Organism orga) {
 		this.localOrga		= orga;
@@ -47,6 +55,7 @@ public class AntHillGraphicalChemicalsJPanel extends GridBagJPanel implements Ob
 		} else {
 			// IChemicals localChemicals = this.localOrga.getChemicals();
 			// ***** Organism HAS Chemicals !!
+			this.setLayout(new GridBagLayout());
 
 			this.wholeChemicalView = new ChemicalPanel("Global Chemical", 	0, ChemicalsHelper.CHEMICAL_LENGTH , this.localOrga);
 
@@ -67,6 +76,25 @@ public class AntHillGraphicalChemicalsJPanel extends GridBagJPanel implements Ob
 			this.addBagComponent(this.partialChemicalViewEnergies, 								1, 7);
 
 			this.localOrga.addObserver( this );
+			
+			List<StringCouple> spChemicals	= ChemicalsHelper.getChemicalListe();
+			IChemicals chList				= this.localOrga.getChemicals();
+			String[][] dataChemical			= new String[spChemicals.size()][];
+			// spChemicals.stream().forEach( sp -> { });
+			String[] columnNamesChemical	= { "Index", "Name", "Value"};
+			for (int i = 0 ; i < spChemicals.size() ; i++) 
+				{ dataChemical[i] = new String[]{ "" + i, spChemicals.get(i).getValueB(), chList.getVariable(i) + "" }; }
+			
+			DefaultTableModel tableModelChemical	= new DefaultTableModel(dataChemical, columnNamesChemical);
+			this.tableChemical					= new JTable( tableModelChemical );
+			// tableChemical.setPreferredScrollableViewportSize(new Dimension(500, 70));
+			// tableChemical.setFillsViewportHeight(true);
+			this.tableChemical.setSize(this.wholeChemicalView.getWidth() * 5, this.wholeChemicalView.getHeight());
+			// tableChemical.addMouseListener(new TableMouseListener(tableChemical));
+			JScrollPane chemicalsSP			= new JScrollPane(	this.tableChemical, 
+																JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+																JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			this.addBagComponent(chemicalsSP, 2, 0, 1, 9);
 		}
 	}
 
@@ -81,6 +109,8 @@ public class AntHillGraphicalChemicalsJPanel extends GridBagJPanel implements Ob
 			AntHillGraphicalChemicalsJPanel.partialUpdate(i, 350, 361, this.partialChemicalViewPheromones, localChemicals);
 			AntHillGraphicalChemicalsJPanel.partialUpdate(i, 370, 381, this.partialChemicalViewHormones, localChemicals);
 			AntHillGraphicalChemicalsJPanel.partialUpdate(i, 390, 396, this.partialChemicalViewEnergies, localChemicals);
+			
+			this.tableChemical.getModel().setValueAt(localChemicals.getVariable(i) + "", i, 2);
 		}
 	}
 
