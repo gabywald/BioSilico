@@ -156,12 +156,10 @@ Notes 20211116
     * Design Pattern : Visitor (or similar : Strategy / Command) to filter on some criteria
     * Criteria to be defined : what is exactly attempted ?
     * ... 
-
   * Ideas of Criterias : 
     * Number of cycles for "life" ; 
     * Significant (?) metabolic changes (from step to step or among a defined number of steps) ; 
     * ... 
-
   * Ranking / notations : 
     * Criteria give an amount of score / notation ; 
     * Eliminatory Criteria ? (very bad note ?! Annotation ?!)
@@ -170,7 +168,14 @@ Notes 20211116
     * Group / All / Some Random ? ; 
     * Double Processing (or more ?) ; 
     * ... 
-   * TEST WITH : 'Witness Indicators' (hard-coded features which correspond to the attempted behaviour) 
+  * TEST WITH : 'Witness Indicators' (hard-coded features which correspond to the attempted behaviour) 
+   
+Notes 20220307
+  * To go further : use Graphical Interface done in Java Swing ; 
+  * Preparing indicators ; 
+  * Preparing other examples (Procedural Generation and Computer Ecosystem) ; 
+  * Others Agent Modelling Systems ? ; 
+  * ... 
 
 ... 
 
