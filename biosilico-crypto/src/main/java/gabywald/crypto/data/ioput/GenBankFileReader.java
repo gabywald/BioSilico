@@ -4,7 +4,7 @@ import java.util.List;
 
 import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.FeaturesListe;
-import gabywald.global.data.Utils;
+import gabywald.global.data.StringUtils;
 
 /**
  * 
@@ -26,7 +26,7 @@ public class GenBankFileReader {
 		this.decodedPath	= new String("");
 		this.decodedContent	= new String("");
 		if (!content.equals("")) { 
-			String separator = "\n"+Utils.repeat("=", 80)+"\n";
+			String separator = "\n"+StringUtils.repeat("=", 80)+"\n";
 			this.genBank = GenBankFormat.fromString(content);
 			for (int i = 0 ; i < this.genBank.size() ; i++) {
 				GenBankFormat currentGB	= this.genBank.get(i);

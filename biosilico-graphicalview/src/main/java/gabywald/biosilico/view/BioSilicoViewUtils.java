@@ -6,6 +6,7 @@ import gabywald.biosilico.data.FileBiological;
 import gabywald.biosilico.data.FileOrganism;
 import gabywald.biosilico.data.FilterBioSilico;
 import gabywald.biosilico.model.enums.AgentType;
+import gabywald.global.data.filters.FilterUtils;
 import gabywald.global.view.graph.GenericJScroll;
 
 /**
@@ -52,7 +53,7 @@ public abstract class BioSilicoViewUtils {
 		int returnVal = chooser.showOpenDialog(parent);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			String completeFilePath = chooser.getSelectedFile().getAbsolutePath();
-			String extension = FilterBioSilico.getExtension(completeFilePath);
+			String extension = FilterUtils.getExtension(completeFilePath);
 			if (extension.equals(FilterBioSilico.gatorg)) {
 				FileOrganism toLoad = new FileOrganism(completeFilePath);
 				return toLoad;

@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gabywald.global.data.samples.TextualInfoFile;
+import gabywald.global.data.TextualInfoFile;
 
 /**
  * South (bottom) part of the main Frame / Window. 

@@ -1,6 +1,6 @@
 package gabywald.crypto.model;
 
-import gabywald.global.data.Utils;
+import gabywald.global.data.StringUtils;
 
 /**
  * 
@@ -268,7 +268,7 @@ public class EncodingNode {
 	
 	public static String treeView(EncodingNode root) {
 		StringBuilder toResult = new StringBuilder();
-		toResult.append( Utils.repeat("\t", root.getLevel()))
+		toResult.append( StringUtils.repeat("\t", root.getLevel()))
 				.append(root.toString()).append("\n" );
 		EncodingNode[] rootChilds = root.getChilds();
 		for (int i = 0 ; i < rootChilds.length ; i++) 

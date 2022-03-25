@@ -1,9 +1,12 @@
 package gabywald.global.data.samples;
 
+import gabywald.global.data.DataFile;
+
 /**
  * 
- * @author Gabriel Chandesris (2012)
+ * @author Gabriel Chandesris (2012, 2022)
  */
+@SuppressWarnings("serial")
 public class FrameworkDataFile extends DataFile {
 	private static final String DEFAULT_DIRECTORY	= "dataFrameWork/";
 	private static final String[] FILENAMES_SET		= {

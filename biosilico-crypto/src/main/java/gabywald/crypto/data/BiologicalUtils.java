@@ -1,5 +1,6 @@
 package gabywald.crypto.data;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +8,16 @@ import gabywald.crypto.model.EncodingNode;
 import gabywald.crypto.model.EncodingNodeBuilder;
 import gabywald.crypto.model.EncodingNodeException;
 import gabywald.crypto.model.GeneticTranslator;
-import gabywald.global.data.Fichier;
-import gabywald.global.data.Utils;
+import gabywald.global.data.StringUtils;
 import gabywald.global.data.samples.GenericDataFile;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * This abstract class is a repository for some informations (tables, arrays....). 
  * @author Gabriel Chandesris (2011)
  */
-public abstract class BiologicalUtils extends Utils {
+public abstract class BiologicalUtils extends StringUtils {
 
 	/** IUPAC nomenclature : Nucleic Acids { one-letter-code, name / description }. */
 	public static final String[][] IUPAC_NUCLEIC_ACID_CODES = {
@@ -191,8 +193,8 @@ public abstract class BiologicalUtils extends Utils {
 	public static String getRandomDate() {
 		String toReturn = new String("");
 		
-		int year	= 1870+Utils.randomValue(150)+Utils.randomValue(150);
-		int month	= Utils.randomValue(BiologicalUtils.MONTHES.length);
+		int year	= 1870+StringUtils.randomValue(150)+StringUtils.randomValue(150);
+		int month	= StringUtils.randomValue(BiologicalUtils.MONTHES.length);
 		int day		= 30;
 		if ( ( (month <= 6) && (month%2 == 0) ) 
 				|| ( (month >= 7) && (month%2 != 0) ) ) 
@@ -200,7 +202,7 @@ public abstract class BiologicalUtils extends Utils {
 		if (month == 1) 
 			{ day = ( (year%4 == 0) && ( (year%100 != 0) 
 						&& (year%400 == 0) ) )?29:28; }
-		day = Utils.randomValue(day);
+		day = StringUtils.randomValue(day);
 		
 		toReturn = (day+1)+"-"+BiologicalUtils.MONTHES[month][1]+"-"+(year+1);
 		
@@ -212,17 +214,17 @@ public abstract class BiologicalUtils extends Utils {
 		String alphabet = "AZERTYUIOPQSDFGHJKLMWXCVBN";
 		String numerics = "0123456789";
 		
-		int numberOfChars = Utils.randomValue(5)+1;
+		int numberOfChars = StringUtils.randomValue(5)+1;
 		for (int i = 0 ; i < numberOfChars ; i++) 
-			{ toReturn += alphabet.charAt(Utils.
+			{ toReturn += alphabet.charAt(StringUtils.
 					randomValue(alphabet.length())); }
 		
-		boolean underScore = (Utils.randomValue(100)%2 == 0);
+		boolean underScore = (StringUtils.randomValue(100)%2 == 0);
 		toReturn += (underScore)?"_":"";
 		
-		int numberOfNumbs = Utils.randomValue(5)+7;
+		int numberOfNumbs = StringUtils.randomValue(5)+7;
 		for (int i = 0 ; i < numberOfNumbs ; i++) 
-		{ toReturn += numerics.charAt(Utils.
+		{ toReturn += numerics.charAt(StringUtils.
 				randomValue(numerics.length())); }
 		
 		return toReturn;
@@ -235,7 +237,7 @@ public abstract class BiologicalUtils extends Utils {
 		toReturn += "LOC";
 		
 		for (int i = 0 ; i < 9 ; i++) 
-		{ toReturn += numerics.charAt(Utils.
+		{ toReturn += numerics.charAt(StringUtils.
 				randomValue(numerics.length())); }
 		
 		return toReturn;
@@ -243,10 +245,16 @@ public abstract class BiologicalUtils extends Utils {
 	
 	public static GeneticTranslator getGenericCrypto(int file) {
 		/** String fileName = (file == 0)?"genericCryptoASCIIJavaCPlus.txt":"genericCryptoAlphanumeric.txt"; */
-		Fichier genericCryptoFile	= (file == 0)?GenericDataFile.getCryptoASCIIJavaCPlus()
-												 :GenericDataFile.getCryptoAlphaNumeric();
-		
-		int sizeOfCodes					= genericCryptoFile.getNbLines()-1;
+		GenericDataFile genericCryptoFile	= (file == 0)?	GenericDataFile.getCryptoASCIIJavaCPlus()
+															:
+															GenericDataFile.getCryptoAlphaNumeric();
+		try {
+			genericCryptoFile.load();
+		} catch (IOException e1) {
+			Logger.printlnLog(LoggerLevel.LL_ERROR, "BiologicalUtils :: getGenericCrypto[" + file + "]");
+			return null;
+		}
+		int sizeOfCodes					= genericCryptoFile.nbLines()-1;
 		
 		char[] bases					= null;
 		String[] codes					= new String[sizeOfCodes];
@@ -254,7 +262,7 @@ public abstract class BiologicalUtils extends Utils {
 		List<Integer> starters			= new ArrayList<Integer>();
 		List<Integer> stoppers			= new ArrayList<Integer>();
 		
-		String code	= genericCryptoFile.getLine(0);
+		String code	= genericCryptoFile.getChamp(0);
 		
 		bases		= code.substring(11, code.length()-1).toCharArray();
 		
@@ -287,9 +295,9 @@ public abstract class BiologicalUtils extends Utils {
 		}
 		
 		for (int i = 1 ; (i < codes.length+1) 
-				&& (i < genericCryptoFile.getNbLines()) ; i++) {
-			String line = (i < genericCryptoFile.getNbLines())?
-							genericCryptoFile.getLine(i):"*****";
+				&& (i < genericCryptoFile.nbLines()) ; i++) {
+			String line = (i < genericCryptoFile.nbLines())?
+							genericCryptoFile.getChamp(i):"*****";
 			int index = i-1;
 			/** System.out.println("\t"+i+"\t'"+line+"'"); */
 			if (line.matches("^(.*?)\t[M\\*]$")) {

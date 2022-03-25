@@ -3,17 +3,27 @@ package gabywald.crypto.controller;
 import gabywald.crypto.model.GenBankFileCreator;
 import gabywald.crypto.model.GenBankFileReader;
 import gabywald.crypto.view.CryptoFrame;
-import gabywald.global.data.Fichier;
-import gabywald.global.data.Repertoire;
-import gabywald.global.data.Utils;
+import gabywald.global.data.Directory;
+import gabywald.global.data.File;
+import gabywald.global.data.StringUtils;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
 
+/**
+ * 
+ * TODO Changes according to new classes of replacement 'File' and 'Directory' !
+ * 
+ * 
+ * @author Gabriel Chandesris (2011, 2022)
+ */
 public class ActionButtonsListener implements ActionListener {
 	private int type;
 	private GenBankFileCreator gbfc;
@@ -31,16 +41,19 @@ public class ActionButtonsListener implements ActionListener {
 			chooseFile.setDialogType(JFileChooser.OPEN_DIALOG);
 			int returnVal01 = chooseFile.showOpenDialog(cfInstance);
 			if (returnVal01 == JFileChooser.APPROVE_OPTION) {
-				File file	= chooseFile.getSelectedFile();
+				java.io.File file	= chooseFile.getSelectedFile();
 				String path	= file.getAbsolutePath();
 				/** String name = file.getName(); */
 				cfInstance.setFileNamePath(path);
 				
-				Fichier toLoad = new Fichier(path);
-				String content = new String("");
-				for (int i = 0 ; i < toLoad.getNbLines() ; i++) 
-					{ content += toLoad.getLine(i)+"\n"; }
-				cfInstance.setClearContent(content);
+				File toLoad = new File(path);
+				try {
+					toLoad.load();
+					cfInstance.setClearContent(toLoad.getChampsToString());
+				} catch (IOException e) {
+					Logger.printlnLog(LoggerLevel.LL_ERROR, "File {" + path + "} not found !");
+				}
+				
 			}
 			break;
 		case(1): /** 'Select a directory. ' */
@@ -48,7 +61,7 @@ public class ActionButtonsListener implements ActionListener {
 			chooseFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); /** !! */
 			int returnVal02 = chooseFile.showOpenDialog(CryptoFrame.getInstance());
 			if (returnVal02 == JFileChooser.APPROVE_OPTION) {
-				File file	= chooseFile.getSelectedFile();
+				java.io.File file	= chooseFile.getSelectedFile();
 				String path	= file.getAbsolutePath();
 				/** String name = file.getName(); */
 				cfInstance.setFileNamePath(path);
@@ -77,7 +90,7 @@ public class ActionButtonsListener implements ActionListener {
 			} else {
 				/** File or directory treatment... */
 				pathOfFile			= pathOfFile.replaceAll("\\\\", "/"); /** !! */
-				String current		= Utils.getExtension(new File(pathOfFile));
+				String current		= StringUtils.getExtension(new java.io.File(pathOfFile));
 				if (current != null) {
 					// ***** File treatment. 
 					this.gbfc.setPathAndContent(pathOfFile, toEncrypt);
@@ -85,7 +98,7 @@ public class ActionButtonsListener implements ActionListener {
 					// ***** Directory(ies) treament. 
 					String[] pathes = toEncrypt.split("\n");
 					for (int i = 0 ; i <  pathes.length ; i++) {
-						File tmp			= new File(pathes[i]);
+						java.io.File tmp			= new java.io.File(pathes[i]);
 						String pathOfDir	= pathes[i].replaceAll("\\\\", "/"); /** !! */
 						
 						if ( (tmp.exists()) && (tmp.isDirectory()) ) {
@@ -111,7 +124,7 @@ public class ActionButtonsListener implements ActionListener {
 			String toDecrypt		= cfInstance.getClearContent();
 			this.gbfr				= new GenBankFileReader(toDecrypt);
 			
-			cfInstance.setCryptContent(this.gbfr.getPath()+Utils.repeat("\t**\n", 5)+this.gbfr.getContent());
+			cfInstance.setCryptContent(this.gbfr.getPath()+StringUtils.repeat("\t**\n", 5)+this.gbfr.getContent());
 			// TODO ...
 			break;
 		case(4): /** 'Record ENcryption. ' */
@@ -126,15 +139,15 @@ public class ActionButtonsListener implements ActionListener {
 	}
 	
 	private static void getAwareDirectoriesContent(String path, List<String> filesAndDirs) {
-		Repertoire repDir		= new Repertoire(path);
-		String[] listOfFiles	= repDir.listContent();
+		Directory repDir		= new Directory(path);
+		String[] listOfFiles	= repDir.list();
 		for (int i = 0 ; i < listOfFiles.length ; i++) {
 			String shortPath			= path.substring(path.lastIndexOf("\\")+1);
 			String currentStampShort	= shortPath+"/"+listOfFiles[i];
 			String currentStampLong		= path+"/"+listOfFiles[i];
-			File tmp = new File(currentStampLong);
+			java.io.File tmp = new java.io.File(currentStampLong);
 			
-			String extension  = Utils.getExtension(tmp);
+			String extension  = StringUtils.getExtension(tmp);
 			if ( ( (extension != null) 
 					&& (ActionButtonsListener.isAccepted(extension)) ) 
 						|| (tmp.isDirectory()) )

@@ -7,15 +7,11 @@ import java.util.regex.Pattern;
 
 import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.GenBankFormat;
-import gabywald.crypto.data.composition.Author;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
-import gabywald.crypto.data.composition.Organism;
-import gabywald.crypto.data.composition.Reference;
 import gabywald.crypto.data.composition.Sequence;
-import gabywald.global.data.Utils;
-import gabywald.global.data.samples.BioDataFile;
-import gabywald.global.data.samples.UplinkDataFile;
+import gabywald.crypto.data.ioput.BiologicalFileCreatorHelper;
+import gabywald.global.data.StringUtils;
 
 /**
  * Aim of this class is to generate a GenBank file with encrypted data. 
@@ -26,24 +22,6 @@ import gabywald.global.data.samples.UplinkDataFile;
 public class GenBankFileCreator {
 	private static final GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 	private static final GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
-	/** Primary Types of sequences [DNA|mRNA|genomicDNA|precursorRNA|cDNA[rRNA|tRNA|snRNA|snRNA]... */
-	private static final String[] PRIMARY_TYPE = 
-		{ "DNA" , "mRNA" , "DNA" , "mRNA" , "DNA" , "mRNA"
-			, "DNA" , "mRNA" , "DNA" , "mRNA" , "DNA" , "mRNA"
-			, "DNA" , "mRNA" , "DNA" , "mRNA" , "DNA" , "mRNA"
-			, "DNA" , "mRNA" , "genomic DNA" , "precursor RNA"
-			, "mRNA (cDNA)" , "ribosomal RNA" , "transfer RNA"
-			, "small nuclear RNA" , "small cytoplasmic RNA" };
-	
-	/** Secondary Types of sequences [circular|linear|]... */
-	private static final String[] SECONDARY_TYPE = 
-		{ "" , "circular" , "linear" , "linear" , "linear" , "linear" };
-	
-	/** Type of publication. */
-	private static final String[] PUBLICATION_TYPE = 
-		{ /** "", 				"",				"", 			"", 			"", */
-		  "Publications", 	"Publications",	"Publications", "Publications", "Publications", 
-		  "Journal",		"Magazine", 	"Gazette", 		"Fanzine", 		"HackZine"};
 	
 	private GenBankFormat genBank;
 	private List<String> encodedPath;
@@ -76,11 +54,11 @@ public class GenBankFileCreator {
 			{ basePairNumber += this.encodedContent.get(i).length(); }
 		this.genBank.setBasePairNumber(""+basePairNumber);
 		
-		String primaryType = GenBankFileCreator.PRIMARY_TYPE
-			[BiologicalUtils.randomValue(GenBankFileCreator.PRIMARY_TYPE.length)];
+		String primaryType = BiologicalFileCreatorHelper.PRIMARY_TYPE
+			[BiologicalUtils.randomValue(BiologicalFileCreatorHelper.PRIMARY_TYPE.length)];
 		this.genBank.setPrimaryType(primaryType);
-		this.genBank.setSecondaryType(GenBankFileCreator.SECONDARY_TYPE
-				[BiologicalUtils.randomValue(GenBankFileCreator.SECONDARY_TYPE.length)]);
+		this.genBank.setSecondaryType(BiologicalFileCreatorHelper.SECONDARY_TYPE
+				[BiologicalUtils.randomValue(BiologicalFileCreatorHelper.SECONDARY_TYPE.length)]);
 		String[][] divisions = BiologicalUtils.GENEBANK_DIVISIONS; 
 			// BioDataFile.getDivisionClass().getTable().split("\\s+|\\s+")[1];
 		this.genBank.setDivision(divisions[BiologicalUtils.randomValue(divisions.length)][0]);
@@ -93,7 +71,7 @@ public class GenBankFileCreator {
 		int year			= Integer.parseInt(yearToReUse);
 		
 		/** Taxonomy and Organism PART. */
-		this.genBank.setOrganism(GenBankFileCreator.createOrganism());
+		this.genBank.setOrganism(BiologicalFileCreatorHelper.createOrganism());
 		
 		/** Some datas... */
 		String location = BiologicalUtils.generateLocationOfSequence();
@@ -101,18 +79,18 @@ public class GenBankFileCreator {
 		this.genBank.setDefinition(this.genBank.getOrganism().getSourceName() 
 									+ " (" + location + "), " + primaryType + ".");
 		this.genBank.setAccession(identification);
-		this.genBank.setVersion(identification+"."+Utils.randomValue(5));
+		this.genBank.setVersion(identification+"."+StringUtils.randomValue(5));
 		
 		/** References PART. */
-		int numberOfRefs = Utils.randomValue(10)+1;
+		int numberOfRefs = StringUtils.randomValue(10)+1;
 		for (int i = 0 ; (i < numberOfRefs) && (this.encodedContent.size() > 0) ; i++) {
-			int selectCont	= Utils.randomValue(this.encodedContent.size());
+			int selectCont	= StringUtils.randomValue(this.encodedContent.size());
 			int start		= 0;
 			int stopp		= this.encodedContent.get(selectCont).length();
 			for (int j = 0 ; j < selectCont ; j++) 
 				{ start += this.encodedContent.get(j).length(); }
 			
-			this.genBank.addReference(GenBankFileCreator.createReference(i, year, start, stopp));
+			this.genBank.addReference(BiologicalFileCreatorHelper.createReference(i, year, start, stopp));
 		}
 		
 		/** Sequence and Features PART. */
@@ -167,98 +145,6 @@ public class GenBankFileCreator {
 			if (!counted) { basesCounts[basesCounts.length-1]++; }
 		}
 		this.genBank.setBasesCountsAndNames(basesCounts, basesNames);
-	}
-	
-	public static Organism createOrganism() {
-		String[] orgaNames	= BioDataFile.getTableOfOrganism().getTable();
-		int whichOrga		= Utils.randomValue(orgaNames.length);
-		String[] organism	= orgaNames[whichOrga].split("\t");
-		
-		String organismName = organism[0];
-		int directTaxonNum	= Integer.parseInt(organism[3].split("==")[0]);
-		
-		String[] taxxaNames	= BioDataFile.getTableOfTaxonomy().getTable();
-		String[][] taxaTabl	= new String[taxxaNames.length][3];
-		for (int i = 0 ; i < taxaTabl.length ; i++) 
-			{ taxaTabl[i] = taxxaNames[i].split("\t"); }
-		
-		List<Integer> taxa	= new ArrayList<Integer>();
-		taxa.add(new Integer(directTaxonNum));
-		int taxaFatherID = directTaxonNum;
-		while (taxaFatherID != -1) {
-			boolean found = false;
-			for (int i = 0 ; (i < taxaTabl.length) && (!found) ; i++) {
-				/** Searching current ID... */
-				int currentID = Integer.parseInt(taxaTabl[i][1]);
-				if (currentID == taxaFatherID) {
-					taxa.add(new Integer(currentID));
-					/** ... to gain father's ID. */
-					taxaFatherID = Integer.parseInt(taxaTabl[i][2]);
-				}
-			}
-		}
-		
-		Organism orga = new Organism(organismName);
-		orga.setOrganism(organismName);
-		for (int i = taxa.size()-1 ; i >= 0 ; i--) {
-			int currentID = taxa.get(i).intValue();
-			if (currentID != -1) 
-				{ orga.addLineage(taxaTabl[currentID][0]); }
-		}
-		
-		return orga;
-	}
-	
-	/**
-	 * 
-	 * @param n (int) Number of the reference. 
-	 * @param year
-	 * @param start
-	 * @param stopp
-	 * @return (Reference)
-	 */
-	public static Reference createReference(int n, int year, int start, int stopp) {
-		Reference tmpRef = new Reference(n+1, start + 1, start + 1 + stopp);
-		tmpRef.setTitle(GenBankFileCreator.createTitle() + " " + (n+1) ); /** XXX !! */
-		
-		String[] companya 	= UplinkDataFile.getCompanyAMore().getTable();
-		String[] companyb 	= UplinkDataFile.getCompanyBMore().getTable();
-		
-		String journal		= companya[Utils.randomValue(companya.length)]+" "+companyb[Utils.randomValue(companyb.length)];
-		String journalType	= GenBankFileCreator.PUBLICATION_TYPE[Utils.randomValue(GenBankFileCreator.PUBLICATION_TYPE.length)];
-		journal				+= (journalType.length() > 0)?" "+journalType:"";
-		journal				+= ". "+Utils.randomValue(Utils.randomValue(10000));
-		if (Utils.randomValue(10000)%2 == 0) 
-			{ journal		+= " ("+Utils.randomValue(Utils.randomValue(100))+")"; }
-		journal				+= ", ";
-		int startPage		= Utils.randomValue(10000);
-		int stoppPage		= startPage+Utils.randomValue(Utils.randomValue(30));
-		journal				+= startPage+"-"+stoppPage+" ("+(year-Utils.randomValue(Utils.randomValue(150)))+")";
-		
-		tmpRef.setJournal(journal);
-		String[] surnames = UplinkDataFile.getSurNames().getTable();
-		String[] fornames = UplinkDataFile.getForNamesMore().getTable();
-		int numberOfAuthors = Utils.randomValue(10)+Utils.randomValue(10)+1;
-		for (int j = 0 ; j < numberOfAuthors ; j++) {
-			String name = surnames[Utils.randomValue(surnames.length)];
-			String firstnames = fornames[Utils.randomValue(fornames.length)];
-			Author tmpAut = new Author(name, firstnames);
-			tmpRef.addAuthor(tmpAut);
-		}
-		
-		if (Utils.randomValue(10000)%5 == 0) 
-			{ tmpRef.setRemark("REVIEW"); }
-		
-		return tmpRef;
-	}
-	
-	public static String createTitle() {
-		String toReturn = new String("");
-		
-		/** TODO ... */
-		toReturn = "title of the reference";
-		
-		return toReturn;
 	}
 	
 	public String getFullEncryption() {

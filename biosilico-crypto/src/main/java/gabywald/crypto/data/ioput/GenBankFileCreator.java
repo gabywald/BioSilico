@@ -10,7 +10,7 @@ import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
 import gabywald.crypto.data.composition.Sequence;
-import gabywald.global.data.Utils;
+import gabywald.global.data.StringUtils;
 
 /**
  * Aim of this class is to generate a GenBank file with encrypted data. 
@@ -76,12 +76,12 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		this.bioFormat.setDefinition(this.bioFormat.getOrganism().getSourceName() 
 									+ " (" + location + "), " + primaryType + ".");
 		this.bioFormat.setAccession(identification);
-		this.bioFormat.setVersion(identification+"."+Utils.randomValue(5));
+		this.bioFormat.setVersion(identification+"."+StringUtils.randomValue(5));
 		
 		/** References PART. */
-		int numberOfRefs = Utils.randomValue(10)+1;
+		int numberOfRefs = StringUtils.randomValue(10)+1;
 		for (int i = 0 ; (i < numberOfRefs) && (this.encodedContent.size() > 0) ; i++) {
-			int selectCont	= Utils.randomValue(this.encodedContent.size());
+			int selectCont	= StringUtils.randomValue(this.encodedContent.size());
 			int start		= 0;
 			int stopp		= this.encodedContent.get(selectCont).length();
 			for (int j = 0 ; j < selectCont ; j++) 
