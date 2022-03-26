@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import gabywald.global.data.samples.TextualInfoFile;
+import gabywald.global.data.TextualInfoFile;
 
 /**
  * This class defines the North Panel of the Frame (title, help...). 

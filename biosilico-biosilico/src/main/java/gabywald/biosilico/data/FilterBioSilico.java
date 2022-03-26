@@ -1,12 +1,13 @@
 package gabywald.biosilico.data;
 
-import gabywald.global.data.FilterUtils;
+import gabywald.global.data.filters.FilterUtils.FilterGroupType;
+import gabywald.global.data.filters.GenericFileFilter;
 
 /**
  * This class defines filters for BioSilico Files (Gattaca and Phase II)
  * @author Gabriel Chandesris (2010, 2020, 2022)
  */
-public class FilterBioSilico extends FilterUtils {
+public class FilterBioSilico extends GenericFileFilter {
 	/** BioSilico Phase II files extension. '.ph2' */
 	public final static String ph2 = FilePhaseTwo.DEFAULT_EXTENSION;
 	/** BioSilico Gattaca files extension. '.gat' */
@@ -34,9 +35,23 @@ public class FilterBioSilico extends FilterUtils {
 	 * @param extensions (String[]) extensions. 
 	 */
 	public FilterBioSilico(String name, String... extensions) {
-		super(FilterGroupType.NONE, name);
+		super(FilterGroupType.NONE.extensions());
 		for (int i = 0 ; i < extensions.length ; i++) 
 			{ this.addExtension( extensions[i]); }
 	}
+	
+	/**
+	 * To get a GenericFileFilter for alignments. 
+	 * @return (GenericFileFilter)
+	 */
+	public static GenericFileFilter getAlignmentsFilter()
+		{ return new GenericFileFilter(FilterGroupType.ALIGNMENTS.extensions()); }
+	
+	/**
+	 * To get a GenericFileFilter for sequences. 
+	 * @return (GenericFileFilter)
+	 */
+	public static GenericFileFilter getSequencesFilter()
+		{ return new GenericFileFilter(FilterGroupType.SEQUENCES.extensions()); }
 	
 }

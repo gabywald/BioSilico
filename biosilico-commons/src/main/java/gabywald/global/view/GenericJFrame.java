@@ -3,7 +3,7 @@ package gabywald.global.view;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
-import gabywald.global.data.samples.TextualInfoFile;
+import gabywald.global.data.TextualInfoFile;
 
 /**
  * Generic abstract class to define generic JFrame. 

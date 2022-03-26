@@ -3,6 +3,8 @@ package gabywald.biosilico.anthill.launcher;
 import gabywald.biosilico.anthill.data.AntHillGraphicalModel;
 import gabywald.biosilico.anthill.data.AntHillGraphicalModelBuilder;
 import gabywald.biosilico.anthill.view.AntHillGraphicalFrame;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * Launcher of AntHill (Graphical) View. 
@@ -38,6 +40,9 @@ public class AntHillGraphicalLauncher {
 	 * @param args (String[]) not used.
 	 */
 	public static void main(String[] args) {
+		
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		AntHillGraphicalLauncher controller	= AntHillGraphicalLauncher.getInstance();
 		// AntHillGraphicalModelBase model	= AntHillGraphicalModelBase.getInstance();
 		AntHillGraphicalModelBuilder ahgmb = new AntHillGraphicalModelBuilder();

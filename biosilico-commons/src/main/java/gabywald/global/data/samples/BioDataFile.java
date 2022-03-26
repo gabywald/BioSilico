@@ -1,9 +1,12 @@
 package gabywald.global.data.samples;
 
+import gabywald.global.data.DataFile;
+
 /**
  * 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2022)
  */
+@SuppressWarnings("serial")
 public class BioDataFile extends DataFile {
 	private static final String DEFAULT_DIRECTORY	= "dataBioBio/";
 	private static final String[] FILENAMES_SET		= {
@@ -13,7 +16,7 @@ public class BioDataFile extends DataFile {
 	};
 
 	private BioDataFile(String name) 
-		{ super(BioDataFile.DEFAULT_DIRECTORY+name); }
+		{ super(BioDataFile.DEFAULT_DIRECTORY + name); }
 	
 	@Override
 	public String getDefaultDirectory() 

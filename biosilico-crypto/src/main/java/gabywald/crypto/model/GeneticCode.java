@@ -1,9 +1,11 @@
 package gabywald.crypto.model;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import gabywald.global.data.Fichier;
 import gabywald.global.data.samples.BioDataFile;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 public class GeneticCode {
 	/** private static final String DIRECTORY_DATAS = 
@@ -180,10 +182,10 @@ public class GeneticCode {
 	 * @return (GeneticCode[]) set of the possible Genetic Codes. 
 	 */
 	public static GeneticCode[] readFromNCBIG01() {
-		GeneticCode[] gcTable	= new GeneticCode[0];
+		GeneticCode[] gcTable		= new GeneticCode[0];
 		/** String pathToFile		= GeneticCode.DIRECTORY_DATAS+"gc.prt"; */
 		/** FichierV0001 gcFile		= new FichierV0001(pathToFile); */
-		Fichier gcFile			= BioDataFile.getGeneticCodesPRT();
+		BioDataFile gcFile			= BioDataFile.getGeneticCodesPRT();
 		
 		Pattern name = Pattern.compile("  name \"(.*)\" ,");
 		Pattern iden = Pattern.compile("  id ([0-9]+) ,");
@@ -193,9 +195,15 @@ public class GeneticCode {
 		
 		boolean startedDefinitions	= false;
 		GeneticCode code			= null;
+		
+		try {
+			gcFile.load();
+		} catch (IOException e) {
+			Logger.printlnLog(LoggerLevel.LL_ERROR, "readFromNCBIG01 gcFile.load() failed !");
+			return gcTable;
+		}
 
-		for (int i = 0 ; i < gcFile.getNbLines() ; i++) {
-			String line = gcFile.getLine(i);
+		for (String line : gcFile.getChampsAsTable()) {
 			if (!startedDefinitions) {
 				if (line.matches("(.*)Genetic-code-table(.*)")) 
 					{ startedDefinitions = true; }
@@ -241,7 +249,7 @@ public class GeneticCode {
 		GeneticCode[] gcTable	= new GeneticCode[0];
 		/** String pathToFile		= GeneticCode.DIRECTORY_DATAS+"featuresExtract.txt"; */
 		/** FichierV0001 gcFile		= new FichierV0001(pathToFile); */
-		Fichier gcFile			= BioDataFile.getFeatureExtracts();
+		BioDataFile gcFile			= BioDataFile.getFeatureExtracts();
 		
 		Pattern name = Pattern.compile("  (.*( \\(transl_table=[0-9]+\\))?)\\s*");
 		Pattern iden = Pattern.compile("  Genetic Code \\[([0-9]+)\\]\\s*");
@@ -250,9 +258,15 @@ public class GeneticCode {
 		Pattern base = Pattern.compile("  Base([0-9])  = (.*)");
 		
 		GeneticCode code			= null;
+		
+		try {
+			gcFile.load();
+		} catch (IOException e) {
+			Logger.printlnLog(LoggerLevel.LL_ERROR, "readFromNCBIG02 gcFile.load() failed !");
+			return gcTable;
+		}
 
-		for (int i = 0 ; i < gcFile.getNbLines() ; i++) {
-			String line = gcFile.getLine(i);
+		for (String line : gcFile.getChampsAsTable()) {
 			Matcher mName = name.matcher(line);
 			Matcher mIden = iden.matcher(line);
 			Matcher mNcbi = ncbi.matcher(line);

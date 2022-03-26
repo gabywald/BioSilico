@@ -1,9 +1,12 @@
 package gabywald.global.data.samples;
 
+import gabywald.global.data.DataFile;
+
 /**
  * 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2022)
  */
+@SuppressWarnings("serial")
 public class GenericDataFile extends DataFile {
 	
 	private static final String DEFAULT_DIRECTORY	= "dataGeneric/";
