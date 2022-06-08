@@ -2,14 +2,14 @@ package gabywald.javabio.data.composition.tests;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.composition.BibTeX;
-import junit.framework.TestCase;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2020)
+ * @author Gabriel Chandesris (2011, 2020, 2022)
  */
 public class BibTeXTests {
 
@@ -20,7 +20,7 @@ public class BibTeXTests {
 
 		System.out.println(tmp.get(0).toStringEverything());
 
-		TestCase.assertEquals(1, tmp.size());
+		Assertions.assertEquals(1, tmp.size());
 	}
 
 }

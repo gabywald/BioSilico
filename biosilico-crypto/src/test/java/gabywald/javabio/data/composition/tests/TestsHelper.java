@@ -8,11 +8,11 @@ import org.apache.commons.io.IOUtils;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2022)
  */
 public class TestsHelper {
 
-	public static String getDataFromFile(ClassLoader cl, String path) {
+	static String getDataFromFile(ClassLoader cl, String path) {
 		try (InputStream inputStream = cl.getResourceAsStream( path )) {
 			String result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
 			System.out.println(result);

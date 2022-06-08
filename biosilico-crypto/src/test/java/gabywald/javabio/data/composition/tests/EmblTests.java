@@ -2,14 +2,14 @@ package gabywald.javabio.data.composition.tests;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.EmblFormat;
-import junit.framework.TestCase;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2020)
+ * @author Gabriel Chandesris (2011, 2020, 2022)
  */
 class EmblTests {
 
@@ -19,7 +19,7 @@ class EmblTests {
 		
 		System.out.println(tmp.get(0).toString());
 		
-		TestCase.assertEquals(1, tmp.size());
+		Assertions.assertEquals(1, tmp.size());
 	}
 	
 	@Test
@@ -28,7 +28,7 @@ class EmblTests {
 		
 		System.out.println(tmp.get(0).toString());
 		
-		TestCase.assertEquals(1, tmp.size());
+		Assertions.assertEquals(1, tmp.size());
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ class EmblTests {
 		
 		System.out.println(tmp.get(0).toString());
 		
-		TestCase.assertEquals(1, tmp.size());
+		Assertions.assertEquals(1, tmp.size());
 	}
 	
 }

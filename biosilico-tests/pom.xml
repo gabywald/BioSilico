@@ -15,13 +15,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>gabywald</groupId>
 			<artifactId>biosilico-creatures</artifactId>
 			<version>${project.version}</version>

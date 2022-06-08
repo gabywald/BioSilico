@@ -3,15 +3,15 @@ package gabywald.javabio.data.composition.tests;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.composition.Author;
 import gabywald.crypto.data.composition.ComposUtils;
-import junit.framework.TestCase;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2020)
+ * @author Gabriel Chandesris (2011, 2020, 2022)
  */
 class AuthorTests {
 	private static final String DATA01 = "Mougey,R.";
@@ -58,7 +58,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA01, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(1, table.size());
+		Assertions.assertEquals(1, table.size());
 	}
 	
 	@Test
@@ -66,7 +66,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA02, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(8, table.size());
+		Assertions.assertEquals(8, table.size());
 	}
 	
 	@Test
@@ -74,7 +74,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA03, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(23, table.size());
+		Assertions.assertEquals(23, table.size());
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA04, true);
 		// for (int i = 0 ; i < table.size() ; i++)
 		// 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(2, table.size());
+		Assertions.assertEquals(2, table.size());
 	}
 	
 	private static String processAuthors(List<Author> authors) {
@@ -166,7 +166,7 @@ class AuthorTests {
 			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
 		}
 		
-		TestCase.assertTrue(test);
+		Assertions.assertTrue(test);
 	}
 	
 	@Test
@@ -185,7 +185,7 @@ class AuthorTests {
 			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
 		}
 		
-		TestCase.assertTrue(test);
+		Assertions.assertTrue(test);
 	}
 	
 	@Test
@@ -204,7 +204,7 @@ class AuthorTests {
 			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
 		}
 		
-		TestCase.assertTrue(test);
+		Assertions.assertTrue(test);
 	}
 	
 	@Test
@@ -223,7 +223,7 @@ class AuthorTests {
 			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
 		}
 		
-		TestCase.assertTrue(test);
+		Assertions.assertTrue(test);
 	}
 	
 	@Test
@@ -231,7 +231,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA11, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(1, table.size());
+		Assertions.assertEquals(1, table.size());
 	}
 	
 	@Test
@@ -239,7 +239,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA12, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(8, table.size());
+		Assertions.assertEquals(8, table.size());
 	}
 	
 	@Test
@@ -247,7 +247,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA13, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(23, table.size());
+		Assertions.assertEquals(23, table.size());
 	}
 	
 	@Test
@@ -255,7 +255,7 @@ class AuthorTests {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA14, false);
 		 for (int i = 0 ; i < table.size() ; i++)
 		 	{ System.out.println(table.get(i).toString()); }
-		TestCase.assertEquals(2, table.size());
+		Assertions.assertEquals(2, table.size());
 	}
 	
 	
