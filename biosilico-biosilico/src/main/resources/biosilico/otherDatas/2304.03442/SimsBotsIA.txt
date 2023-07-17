@@ -1,0 +1,100 @@
+
+20230717
+
+https://intelligence-artificielle.developpez.com/actu/343454/Des-chercheurs-ont-cree-un-monde-virtuel-similaire-aux-Sims-ou-des-bots-IA-vivaient-de-maniere-independante-Ils-se-sont-comportes-comme-des-humains/
+
+
+Des chercheurs ont créé un monde virtuel similaire aux Sims où des bots IA vivaient de manière indépendante.
+Ils se sont comportés comme des humains
+Le 12 avril 2023 à 16:14, par Stéphane le calme1 commentaire
+
+1PARTAGES	
+[Voter pour] 8  	[Voter contre] 0 
+Les chatbots comme LaMDA de Google ou ChatGPT d'OpenAI ne sont ni sensibles ni intelligents. Néanmoins, les chercheurs pensent qu'ils peuvent utiliser ces grands modèles de langage pour simuler le comportement humain inspiré par l'un des premiers jeux informatiques les plus populaires au monde et certains codes d'IA. Le dernier effort dans ce sens vient de six informaticiens (cinq de l'Université de Stanford et un de Google Research, notamment Joon Sung Park, Joseph O'Brien, Carrie Cai, Meredith Ringel Morris, Percy Liang et Michael Bernstein). Le projet ressemble beaucoup à un hommage au jeu classique Les Sims, qui a fait ses débuts en 2000 et se poursuit chez EA dans diverses suites.
+
+Un groupe de chercheurs de l'Université de Stanford et de Google Research ont créé un monde virtuel miniature de style RPG similaire aux Sims, où 25 personnages, contrôlés par ChatGPT et un code personnalisé, vivent leur vie de manière indépendante avec un degré élevé de comportement réaliste. Ils ont publié un article sur leur expérience.
+
+Ci-dessous le résumé de leur article :
+
+Des proxys crédibles du comportement humain peuvent permettre des applications interactives allant des environnements immersifs aux espaces de répétition pour la communication interpersonnelle en passant par les outils de prototypage.
+
+Dans cet article, nous introduisons des agents génératifs, des agents logiciels informatiques qui simulent un comportement humain crédible. Les agents génératifs se réveillent, préparent le petit-déjeuner et se rendent au travail ; les artistes peignent, tandis que les auteurs écrivent ; ils forment des opinions, se remarquent et engagent des conversations ; ils se souviennent et réfléchissent aux jours passés alors qu'ils planifient le lendemain.
+
+Pour activer les agents génératifs, nous décrivons une architecture qui étend un grand modèle de langage pour stocker un enregistrement complet des expériences de l'agent en utilisant le langage naturel, synthétiser ces souvenirs au fil du temps en réflexions de niveau supérieur et les récupérer dynamiquement pour planifier le comportement. Nous instancions des agents génératifs pour remplir un environnement bac à sable interactif inspiré des Sims, où les utilisateurs finaux peuvent interagir avec une petite ville de vingt-cinq agents en utilisant le langage naturel.
+
+Lors d'une évaluation, ces agents générateurs produisent des comportements sociaux émergents et individuels crédibles : par exemple, en partant d'une seule notion spécifiée par l'utilisateur selon laquelle un agent veut organiser une fête pour la Saint-Valentin, les agents diffusent de manière autonome des invitations à la fête au cours des deux prochaines jours, font de nouvelles connaissances, demandent des rencards pour la fête et se coordonnent pour aller ensemble à la fête au bon moment.
+
+Nous démontrons par ablation que les composants de notre architecture d'agents - observation, planification et réflexion - contribuent chacun de manière critique à la crédibilité du comportement des agents. En fusionnant de grands modèles de langage avec des agents informatiques interactifs, ce travail introduit des modèles architecturaux et d'interaction pour permettre des simulations crédibles du comportement humain.
+
+Les agents génératifs créent des simulacres crédibles du comportement humain pour des applications interactives. Dans ce travail, les chercheurs ont mis sur scène des agents génératifs en remplissant un environnement de bac à sable, rappelant Les Sims, avec vingt-cinq agents. Les utilisateurs peuvent observer et intervenir en tant qu'agents, ils planifient leurs journées, partagent des nouvelles, nouent des relations et coordonnent des activités de groupe.
+
+Comme décrit dans leur article intitulé Generative Agents : Interactive Simulacra of Human Behavior (Agents génératifs : simulacres interactifs du comportement humain), les chercheurs ont développé une architecture logicielle qui « stocke, synthétise et applique des souvenirs pertinents pour générer un comportement crédible à l'aide d'un grand modèle de langage ».
+
+Ou plus succinctement, ils ont intégré la mémoire, la réflexion (inférence à partir des souvenirs) et le code de planification à ChatGPT pour créer des agents génératifs - des personnalités simulées qui interagissent et poursuivent leurs propres objectifs en utilisant la communication textuelle dans une tentative de langage naturel.
+
+Les jeux vidéo incluent des personnages contrôlés par ordinateur depuis les années 1970, mais jamais auparavant ils n'avaient été en mesure de simuler un environnement social avec la complexité du langage naturel qui pourrait maintenant être possible grâce à des modèles d'IA génératifs comme ChatGPT. Bien que la recherche du groupe ne soit pas nécessairement un « jeu », elle pourrait être le prototype d'un avenir où des personnages de RPG dynamiques interagissent de manière complexe et inattendue.
+
+« Imaginez tuer un PNJ et revenir en ville et assister à des funérailles pour lui », a plaisanté un utilisateur de Twitter nommé Dennis Hansen en répondant à un fil de discussion sur les implications émergentes du journal. À en juger par cette recherche, ce n'est peut-être pas un scénario farfelu.
+
+[TWITTER]<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Imagine killing an NPC and coming back to the city and seeing a funeral for them &#128553;</p>&mdash; Dennis Hansen (@dennizor) <a href="https://twitter.com/dennizor/status/1645511465544155147?ref_src=twsrc%5Etfw">April 10, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> [/TWITTER]
+
+La vie à Smallville
+
+Pour étudier le groupe d'agents de l'IA, les chercheurs ont créé une ville virtuelle appelée "Smallville", qui comprend des maisons, un café, un parc et une épicerie. À des fins d'interaction humaine, le monde est représenté à l'écran à partir d'une vue aérienne à l'aide de graphiques en pixels de style rétro rappelant un RPG japonais 16 bits classique.
+
+Smallville abrite une communauté de 25 individus distincts, chacun représenté par un avatar de sprite de base. Pour capturer l'identité de chaque agent et ses liens avec les autres membres de la communauté, les chercheurs ont créé un paragraphe de description en langage naturel comme mémoire germe. Ces descriptions incluent des détails sur la profession de chaque agent et ses relations avec d'autres agents. Par exemple, voici un extrait d'une de ces mémoires de départ fournies dans l'article :
+
+John Lin est un commerçant de pharmacie au Willow Market and Pharmacy qui aime aider les gens. Il est toujours à la recherche de moyens de faciliter le processus d'obtention de médicaments pour ses clients. John Lin vit avec sa femme, Mei Lin, qui est professeur d'université, et son fils, Eddy Lin, qui étudie la théorie musicale. John Lin aime beaucoup sa famille.
+En tant qu'environnement virtuel, Smallville est divisé en zones et en objets. Les utilisateurs humains peuvent entrer dans le monde en tant qu'agent existant ou nouveau, et les utilisateurs et les agents peuvent influencer l'état des objets par des actions. Les utilisateurs humains peuvent également interagir avec des agents d'IA par le biais d'une conversation ou en émettant des directives en tant que « voix intérieure ». Les utilisateurs communiquent en langage naturel, en spécifiant un personnage que l'agent les perçoit comme, ou peuvent utiliser la voix intérieure pour influencer les actions de l'agent.
+
+
+L'architecture d'agent génératif. Les agents perçoivent leur environnement et toutes les perceptions sont conservées dans un enregistrement complet des expériences de l'agent appelé flux de mémoire. Sur la base de leurs perceptions, l'architecture récupère les souvenirs pertinents, puis utilise ces actions récupérées pour déterminer une action. Ces souvenirs récupérés sont également utilisés pour former des plans à plus long terme et pour créer des réflexions de niveau supérieur, qui sont toutes deux entrées dans le flux de mémoire pour une utilisation future.
+
+Dans le développement du monde virtuel, un défi particulier est venu de la « mémoire » limitée des LLM. Cette mémoire se présente sous la forme d'une « fenêtre contextuelle », qui correspond au nombre de jetons (ensemble de mots) que ChatGPT peut traiter à la fois. Pour contourner ces limitations, les chercheurs ont conçu un système où « les ensembles les plus pertinents de la mémoire de l'agent » sont récupérés et synthétisés en cas de besoin.
+
+Vous pouvez visiter le monde de démo fonctionnant sur une instance Heroku, construit avec le framework de jeu Web Phaser. Les visiteurs peuvent interagir avec une relecture de session précalculée pendant que ces agents logiciels vivent leur vie.
+
+La démo, centrée sur un agent nommé Isabelle et sa tentative de planifier une fête de la Saint-Valentin, permet aux visiteurs d'examiner les données d'état des personnalités simulées. C'est-à-dire que vous pouvez cliquer dessus et voir leurs mémoires de texte et d'autres informations à leur sujet.
+
+Par exemple, l'agent génératif Rajiv Patel avait la mémoire suivante au 2023-02-13 20:04:40 :
+
+« Hailey Johnson discute de Rajiv Patel et Hailey Johnson discutent de collaborations potentielles impliquant les mathématiques, la poésie et l'art, assistent à des discussions sur les élections municipales et à des réunions publiques pour créer des opportunités d'emploi pour les jeunes de leur communauté, assistent à des cours d'improvisation et à des événements de mixologie, et le plan de Hailey pour lancer un podcast où Rajiv sera un invité partageant plus d'informations sur son parcours de guitariste ; et ils ont également discuté de collaborations potentielles avec Carmen Ortiz sur la promotion de l'art dans les communautés à faible revenu afin de créer plus d'opportunités d'emploi pour les jeunes ».
+
+Comportements émergents plutôt que préprogrammés
+
+Dans l'article, les chercheurs énumèrent trois comportements émergents inattendus résultant de la simulation. Aucun de ceux-ci n'était préprogrammé mais résultait plutôt des interactions entre les agents.
+
+Celles-ci comprenaient la « diffusion de l'information » (les agents se communiquant des informations et les diffusant socialement dans la ville), la « mémoire relationnelle » (mémoire des interactions passées entre les agents et mentionnant ces événements antérieurs plus tard) et la « coordination » (planification et participation à un Fête de la Saint-Valentin avec d'autres agents).
+
+Les personnages étaient invités à générer des actions en fonction du moment et des circonstances. Par exemple, lorsque les chercheurs indiquent qu’il est 7 heures du matin, John Lin va aller se brosser les dents.
+
+Tout au long de la fausse journée de Smalville, ces échanges d’informations à chaque interaction sont gardés en mémoire par chaque IA et produisent des comportements adaptés. Par exemple, quand un personnage apprend la candidature de tel autre personnage au poste de maire, il est amené à en parler avec un troisième protagoniste en simulant ce que l’on pourrait dire sur un tel sujet :
+
+    Isabella : Je pèse toujours mes options, mais j'ai discuté de l'élection avec Sam Moore. Quelles sont vos pensées sur lui?
+    Tom : Pour être honnête, je n'aime pas Sam Moore. Je pense qu'il est déconnecté de la communauté et n'a pas nos meilleurs intérêts à cœur.
+
+
+Au cours de l'expérience de la Saint-Valentin, un agent d'intelligence artificielle nommé Isabella Rodriguez a organisé une fête de la Saint-Valentin au "Hobbs Cafe" et a invité des amis et des clients. Elle a décoré le café avec l'aide de son amie Maria, qui a invité son béguin Klaus à la fête.
+
+
+Le chemin de diffusion de la fête de la Saint-Valentin d'Isabella Rodriguez. Au total, 12 agents ont entendu parler de la fête à Hobbs Café à la fin de la simulation
+
+« En partant d'une seule notion spécifiée par l'utilisateur selon laquelle un agent veut organiser une fête pour la Saint-Valentin », écrivent les chercheurs, « les agents ont diffusé de manière autonome des invitations à la fête au cours des deux prochains jours, se sont fait de nouvelles connaissances, se sont invités à sortir rendez-vous à la fête et coordonnez-vous pour vous présenter ensemble à la fête au bon moment ».
+
+Alors que 12 agents ont entendu parler de la fête par d'autres, seuls cinq agents (dont Klaus et Maria) étaient présents. Trois ont dit qu'ils étaient trop occupés et quatre agents n'y sont tout simplement pas allés. L'expérience était un exemple amusant de situations inattendues qui peuvent émerger d'interactions sociales complexes dans le monde virtuel.
+
+Limites
+
+Dans le même temps, les chercheurs ont concédé que leur approche n'est pas sans difficultés.
+
+Le comportement est devenu plus imprévisible au fil du temps à mesure que la taille de la mémoire augmentait au point que la recherche des données les plus pertinentes devenait problématique. Il y avait aussi un comportement erratique lorsque le langage naturel utilisé pour les souvenirs et les interactions ne contenait pas d'informations sociales saillantes.
+
+« Par exemple, le dortoir du collège a une salle de bain qui ne peut être occupée que par une seule personne malgré son nom, mais certains agents ont supposé que la salle de bain était pour plus d'une personne parce que les salles de bain du dortoir ont tendance à accueillir plus d'une personne simultanément et choisissent d'entrer quand il y a une autre personne à l'intérieur », ont expliqué les auteurs.
+
+De même, les agents génératifs n'ont pas toujours reconnu qu'ils ne pouvaient pas entrer dans les magasins après leur fermeture à 17h00 heure locale - clairement une erreur. De tels problèmes, disent les chercheurs, peuvent être traités par des descriptions plus explicites, telles que la description de la salle de bain du dortoir comme une « salle de bain pour une personne » au lieu d'une « salle de bain du dortoir » et l'ajout d'heures d'ouverture normatives aux descriptions de magasin.
+
+Les chercheurs notent également que leur approche était coûteuse – coûtant des milliers de dollars en jetons ChatGPT pour simuler deux jours – et que des travaux supplémentaires doivent être effectués pour remédier aux biais, aux données de modèle inadéquates et à la sécurité.
+
+Les agents générateurs, observent-ils, « peuvent être vulnérables au piratage de requête, au piratage de la mémoire - où une conversation soigneusement conçue pourrait convaincre un agent de l'existence d'un événement passé qui ne s'est jamais produit - et aux hallucinations, entre autres ».
+
+Source : recherche https://arxiv.org/pdf/2304.03442.pdf
