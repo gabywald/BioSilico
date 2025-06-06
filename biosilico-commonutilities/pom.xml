@@ -3,22 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<parent>
 		<groupId>gabywald</groupId>
 		<artifactId>BioSilico</artifactId>
 		<version>0.4.0-SNAPSHOT</version>
 	</parent>
-
-	<artifactId>biosilico-biosilico</artifactId>
-
+	
+	<artifactId>biosilico-commonutilities</artifactId>
+	
 	<dependencies>
-
-		<dependency>
-			<groupId>gabywald</groupId>
-			<artifactId>biosilico-commons</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 		
 		<!-- junit 5, unit test -->
 		<dependency>
@@ -35,7 +29,7 @@
 		</dependency>
 
 	</dependencies>
-
+	
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
@@ -50,5 +44,5 @@
 			</testResource>
 		</testResources>
 	</build>
-
+	
 </project>
