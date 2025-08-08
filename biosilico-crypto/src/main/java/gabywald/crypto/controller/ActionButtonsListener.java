@@ -95,7 +95,7 @@ public class ActionButtonsListener implements ActionListener {
 					// ***** File treatment. 
 					this.gbfc.setPathAndContent(pathOfFile, toEncrypt);
 				} else {
-					// ***** Directory(ies) treament. 
+					// ***** Directory(ies) treatment. 
 					String[] pathes = toEncrypt.split("\n");
 					for (int i = 0 ; i <  pathes.length ; i++) {
 						java.io.File tmp			= new java.io.File(pathes[i]);

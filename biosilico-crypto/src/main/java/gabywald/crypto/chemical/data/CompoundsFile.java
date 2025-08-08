@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import gabywald.global.data.Fichier;
+import gabywald.global.data.File;
+import gabywald.global.exceptions.DataException;
 
 /**
  * This class defines a File and loading for Compounds. 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2025)
  */
-public class CompoundsFile extends Fichier {
+@SuppressWarnings("serial")
+public class CompoundsFile extends File {
 	/** '  6  6  0  0  0  0  0  0  0  0  1 V2000' */
 	/** ' 12 11  0     1  0  0  0  0  0999 V2000' */
 	private static final Pattern PATTERN_GENERAL_INFO = 
@@ -51,13 +53,13 @@ public class CompoundsFile extends Fichier {
 		String compoundName				= null;
 		String compoundComm				= null;
 		
-		if ( (this.getNbLines() == 0) 
-				|| (this.getLine(0).matches("ERROR(.*)")) ) { 
+		if ( (this.nbLines() == 0) 
+				|| (this.line(0).matches("ERROR(.*)")) ) { 
 			/** System.out.println(this.getLine(0)); */
 			/** System.out.println("Not available !!!"); */
 		} else {
-			for (int i = 0 ; i < this.getNbLines() ; i++) {
-				String line = this.getLine(i);
+			for (int i = 0 ; i < this.lengthFile() ; i++) {
+				String line = this.line(i);
 				if (compoundName == null)		{ compoundName = line; }
 				else if (compoundComm == null)	{ compoundComm = line; }
 				else {
@@ -100,10 +102,10 @@ public class CompoundsFile extends Fichier {
 					} else if (moreInfoMatch.matches()) { 
 						String infoName = moreInfoMatch.group(1);
 						String infoMore	= new String("");
-						String infoCont = this.getLine(++i);
+						String infoCont = this.line(++i);
 						do { /** !! If annotation counts more than one line !! */
 							infoMore += infoCont+"\n";
-							infoCont = this.getLine(++i);
+							infoCont = this.line(++i);
 							// System.out.println(infoCont);
 						} while (!infoCont.equals(""));
 						if (infoMore.charAt(infoMore.length()-1) == '\n') 
@@ -144,7 +146,7 @@ public class CompoundsFile extends Fichier {
 	}
 	
 	public boolean hasError() {
-		if (super.hasError())			{ return true; }
+		if (this.hasError())									{ return true; }
 		if (CompoundsFile.hasErrorCompounds(this.compounds))	{ return true; }
 		return false;
 	}
@@ -164,12 +166,10 @@ public class CompoundsFile extends Fichier {
 	public void setCompounds(List<Molecule> comps)
 		{ this.compounds = comps; }
 	
-	public void write() {
+	public void write() throws DataException {
 		this.empty();
-		/** System.out.println(this.toString()+"!! (1)"); */
-		this.addString(this.compounds.toString());
-		super.write();
-		/** System.out.println(this.toString()+"!! (2)"); */
+		this.addToChamps(this.compounds.toString());
+		this.printFile();
 	}
 	
 	public CompoundsFile clone() {
