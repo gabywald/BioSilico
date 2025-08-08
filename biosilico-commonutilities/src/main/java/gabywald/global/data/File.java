@@ -156,6 +156,12 @@ public class File extends Directory {
 	
 	public void removeChamps(int i) 
 		{ this.champs.remove(i); }
+	
+	public int nbLines()		{ return this.champs.size(); }
+	public String line(int i)	{ return this.champs.get( i ); }
+	
+	public void empty() 
+		{ this.champs = new ArrayList<String>(0); }
 
 	// public String getDir() 					{ return this.getDirName(); }
 	// public void setDir(String dir)			{ this.directory = new Directory(dir); }
@@ -286,22 +292,17 @@ public class File extends Directory {
 	public void deleteFile() throws DataException {
 		Logger.printlnLog(LoggerLevel.LL_WARNING, this.delete() + ""); 
 		try { Files.delete(Paths.get(this.pathName + this.fileName)); }
-		catch (IOException e) { 
-			e.printStackTrace();
-		}
+		catch (IOException e) { e.printStackTrace(); }
 		// NOTE to delete complete dir of path, use superclass : 
 		// Directory.deleteDirComplete(new File( this.pathName + this.fileName ));
 	}
 	
-	public int nbLines()		{ return this.champs.size(); }
-	public String line(int i)	{ return this.champs.get( i ); }
-	
-//	public boolean hasError() {
-//		if (this.getLine(0).matches("ERROR(.*)")) {
-//			System.out.println(this.getLine(0));
-//			return true;
-//		}
-//		return false;
-//	}
+	public boolean hasError() {
+		if (this.line(0).matches("ERROR(.*)")) {
+			System.out.println(this.line(0));
+			return true;
+		}
+		return false;
+	}
 	
 }
