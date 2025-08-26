@@ -4,7 +4,7 @@ import java.util.Vector;
 
 /**
  * Aim of this class is to ensure a Genetic Encryption according to a selected code. 
- * @author Gabriel Chandesris (2011, 2022)
+ * @author Gabriel Chandesris (2011, 2022, 2025)
  */
 public class GeneticTranslator {
 	/** Genetic code selected. */
@@ -56,7 +56,7 @@ public class GeneticTranslator {
 	 * @param sequence (String)
 	 * @param start (int) start point
 	 * @param frame (int) which 'modificator' / reading frame. 
-	 * @return (String)
+	 * @return (String) decoded
 	 */
 	public String decode(String sequence, int start, int frame) {
 		int codonLength	= this.genCode.getCodonLength();
@@ -132,6 +132,7 @@ public class GeneticTranslator {
 		}
 		
 		/** Searching a START / STOPPER and add one of each. */
+		// ***** List the possible start and stop codons. 
 		Vector<EncodingNode> starters = new Vector<EncodingNode>();
 		Vector<EncodingNode> stoppers = new Vector<EncodingNode>();
 		EncodingNode[] leaves = this.root.getLeaves();
@@ -139,7 +140,7 @@ public class GeneticTranslator {
 			if (leaves[i].isStart())	{ starters.add(leaves[i]); }
 			if (leaves[i].isStop())		{ stoppers.add(leaves[i]); }
 		}
-		
+		// ***** Choose randomly start and stop codons. 
 		if ( (starters.size() != 0) && (stoppers.size() != 0) ) {
 			int selectedStart = (int)Math.rint(Math.random() * starters.size());
 			while (selectedStart == starters.size()) 
@@ -153,7 +154,7 @@ public class GeneticTranslator {
 						stoppers.get(selectedStopp).getCurrentCode();
 		}
 		
-		/** Adding random characters before and after the encoded sequence. */
+		/** TODO Adding random characters before and after the encoded sequence. */
 		if ( (gtr != null) && (gtr.addRandomBases()) ) {
 //			char[] alphabet = gtr.getAlphabet(); // this.genCode.getAlphabet();
 //			gtr.getBefore();
@@ -190,7 +191,7 @@ public class GeneticTranslator {
 				}
 			}
 			if (inWork.length() == len) 
-				{ return result; /** return "!! !! !! !! \n\n"+result+"\n\n"+inWork; */ }
+				{ return result; }
 		}
 		return result;
 	}
@@ -208,24 +209,15 @@ public class GeneticTranslator {
 		while (inWork.length() > 0) {
 			int len = inWork.length();
 			for (int i = 0 ; i < valuesList.length ; i++) {
-//				if ( (inWork.startsWith("\n")) || (inWork.startsWith("\r")))
-//					{ System.out.println("'!!'"); }
-//				if ( (valuesList[i].equals("\\n")) || (valuesList[i].equals("\\r")) )
-//					{ System.out.println("'zz'\t"+valuesList[i].length()); }
 				/** 'aagg' et 'aatc' */
 				if (inWork.startsWith(valuesList[i])) {
-					/** System.out.println("'"+this.root.getLeaves()[i].getCurrentValue()
-								 +"' => '"+this.root.getLeaves()[i].getCurrentCode()
-								 +"' => '"+this.root.getLeaves()[i]
-							.getValue(this.root.getLeaves()[i].getCurrentCode()) + "'"); */
 					result += this.root.getLeaves()[i].getCurrentCode();
 					inWork = inWork.substring(valuesList[i].length());
 					/** break; */ /** !! */
 				}
 			}
-			/** System.out.println("\t\"" + result + "\""); */
 			if (inWork.length() == len) 
-				{ return result; /** return "!! !! !! !! \n\n"+result+"\n\n"+inWork; */ }
+				{ return result; }
 		}
 		return result;
 	}

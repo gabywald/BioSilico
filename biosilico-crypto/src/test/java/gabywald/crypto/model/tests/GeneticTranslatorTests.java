@@ -8,7 +8,7 @@ import gabywald.crypto.model.GeneticTranslator;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2025)
  */
 class GeneticTranslatorTests {
 	
@@ -20,7 +20,64 @@ class GeneticTranslatorTests {
 	}
 	
 	@Test
-	void testGeneticTranslatorMoreTests01() {
+	void testGeneticTranslatorMoreTestsEncodeSimple() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
+		System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test test2 test3";
+		String encodedFileContent = forFileContent.encode(toEncrypt);
+		System.out.println("[" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
+	
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeMore() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
+		System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test test2 test3";
+		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
+		System.out.println("[" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
+	
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeRand() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
+		System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test test2 test3";
+		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
+		System.out.println("[" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
+	
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeFile() {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 		System.out.println(forFileContent.toString());
@@ -47,7 +104,7 @@ class GeneticTranslatorTests {
 	}
 	
 	@Test
-	void testGeneticTranslatorMoreTests02() {
+	void testGeneticTranslatorMoreTestsEncodePath() {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
 		System.out.println(forPathDirName.toString());
