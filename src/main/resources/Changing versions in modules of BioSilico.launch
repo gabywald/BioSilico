@@ -2,7 +2,7 @@
 <!-- https://stackoverflow.com/questions/5726291/updating-version-numbers-of-modules-in-a-multi-module-maven-project#5726599 -->
 <launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
 <booleanAttribute key="M2_DEBUG_OUTPUT" value="false"/>
-<stringAttribute key="M2_GOALS" value="versions:set -DnewVersion=0.2.0-SNAPSHOT -DprocessAllModules -DgenerateBackupPoms"/>
+<stringAttribute key="M2_GOALS" value="versions:set -DnewVersion=0.4.0-SNAPSHOT -DprocessAllModules -DgenerateBackupPoms"/>
 <booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
 <booleanAttribute key="M2_OFFLINE" value="true"/>
 <stringAttribute key="M2_PROFILES" value=""/>

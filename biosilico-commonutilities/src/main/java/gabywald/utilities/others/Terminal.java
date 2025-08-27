@@ -1,4 +1,4 @@
-package gabywald.global.view.text;
+package gabywald.utilities.others;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,8 +9,9 @@ import java.io.InputStreamReader;
  * <br/>N'est pas faire pour etre instanciee toutes les methodes sont statiques. 
  * <br/>Merci au CNAM : http://deptinfo.cnam.fr/Enseignement/CycleA/APA/
  * @author Gabriel Chandesris (2007)
+ * @deprecated Use an alternative class to show some data !
  */
-public abstract class Terminal {  
+public abstract class Terminal {
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
 	/**
@@ -155,7 +156,7 @@ public abstract class Terminal {
 	 * Afficher un saut de ligne (passage a la ligne)
 	 */
 	public static void sautDeLigne() {
-		try{ System.out.println(); }
+		try { System.out.println(); }
 		catch(Exception ex) { Terminal.exceptionHandler(ex); }
 	}
 	
@@ -184,7 +185,7 @@ public abstract class Terminal {
 @SuppressWarnings("serial")
 class TerminalException extends RuntimeException{
 	Exception ex;
-	TerminalException(Exception e){ ex = e; }
+	TerminalException(Exception e) { ex = e; }
 	/** To avoid Warning. */
 	// static final long serialVersionUID = 123456789;
 }

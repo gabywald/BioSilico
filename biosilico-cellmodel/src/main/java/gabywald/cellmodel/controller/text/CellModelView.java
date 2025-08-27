@@ -2,7 +2,7 @@ package gabywald.cellmodel.controller.text;
 
 import gabywald.cellmodel.model.Cellule;
 import gabywald.global.structures.ObservableObject;
-import gabywald.global.view.text.Terminal;
+import gabywald.utilities.others.Terminal;
 
 import java.util.Observable;
 import java.util.Observer;
