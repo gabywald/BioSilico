@@ -1,4 +1,4 @@
-package gabywald.crypto.chemical.data;
+package gabywald.crypto.data.ioput;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import gabywald.crypto.data.chemical.Atom;
+import gabywald.crypto.data.chemical.Bond;
+import gabywald.crypto.data.chemical.Molecule;
 import gabywald.global.data.File;
 import gabywald.global.exceptions.DataException;
 

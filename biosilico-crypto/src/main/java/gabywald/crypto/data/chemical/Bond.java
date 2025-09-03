@@ -1,4 +1,4 @@
-package gabywald.crypto.chemical.data;
+package gabywald.crypto.data.chemical;
 
 /**
  * This class defines Bond's representation. 

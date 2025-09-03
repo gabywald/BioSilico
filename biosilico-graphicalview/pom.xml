@@ -31,6 +31,12 @@
 			<artifactId>biosilico-anthill</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>gabywald</groupId>
+			<artifactId>biosilico-crypto</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 	</dependencies>
 </project>

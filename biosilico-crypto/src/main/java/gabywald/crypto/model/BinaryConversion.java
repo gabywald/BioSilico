@@ -1,4 +1,4 @@
-package gabywald.crypto.more;
+package gabywald.crypto.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

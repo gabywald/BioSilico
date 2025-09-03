@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.crypto.more.BinaryConversion;
+import gabywald.crypto.model.BinaryConversion;
 
 /**
  * 
