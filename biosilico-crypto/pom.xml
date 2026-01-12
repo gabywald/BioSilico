@@ -28,9 +28,17 @@
 		
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.19.0</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.19.0</version>
+		</dependency>
+		
+		<!-- Source: https://mvnrepository.com/artifact/info.picocli/picocli -->
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.7.7</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- junit 5, unit test -->
@@ -62,6 +70,44 @@
 				<directory>src/test/resources</directory>
 			</testResource>
 		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+			   		<archive>
+						<manifest>
+							<mainClass>gabywald.crypto.launcher.CryptoLauncher</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>  
+				<groupId>org.apache.maven.plugins</groupId>  
+				<artifactId>maven-assembly-plugin</artifactId>  
+				<version>3.6.0</version>  
+				<configuration>  
+					<archive>  
+						<manifest>  
+							<mainClass>gabywald.crypto.launcher.CryptoLauncher</mainClass> <!-- Your main class -->  
+						</manifest>  
+					</archive>  
+					<descriptorRefs>  
+						<descriptorRef>jar-with-dependencies</descriptorRef> <!-- Bundles all dependencies -->  
+					</descriptorRefs>  
+				</configuration>  
+				<executions>  
+					<execution>  
+						<id>make-assembly</id>  
+						<phase>package</phase>  
+						<goals>  
+							<goal>single</goal>  
+						</goals>  
+					</execution>  
+				</executions>  
+	  		</plugin>  
+		</plugins>
 	</build>
 	
 </project>
