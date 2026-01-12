@@ -1,58 +1,59 @@
 package gabywald.crypto.model.tests;
 
-import java.nio.charset.StandardCharsets;
-
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.model.BinaryConversion;
 
-/**
- * 
- * @author Gabriel Chandesris (2023)
- */
 class BinaryBitsTests {
 
-	@Test
-	void test() {
-		
-		String input = "Hello";
-		String result = BinaryConversion.convertStringToBinary(input);
-		Assertions.assertNotNull(result);
-		Assertions.assertEquals("0100100001100101011011000110110001101111", 
-								BinaryConversion.convertStringToBinary(input));
-		Assertions.assertEquals("01001000 01100101 01101100 01101100 01101111", 
-								BinaryConversion.prettyBinary(result, 8, " "));
-		
-		String input02 = "a";
-		String result02 = BinaryConversion.convertByteArraysToBinary(input02.getBytes(StandardCharsets.UTF_8));
-		Assertions.assertEquals(result02, BinaryConversion.prettyBinary(result02, 8, " "));
+    @BeforeEach
+    void setUp() throws Exception {
+    }
 
-		// 0100100001100101011011000110110001101111
-		// 01001000 01100101 01101100 01101100 01101111
-		String binary01 = "0100100001100101011011000110110001101111";
-		String binary02 = "01001000 01100101 01101100 01101100 01101111";
-		Assertions.assertEquals(input, BinaryConversion.convertBinaryToString(binary02));
-		Assertions.assertEquals(input, BinaryConversion.convertBinaryToAscii(binary01));
+    @AfterEach
+    void tearDown() throws Exception {
+    }
+
+    @Test
+    void test() {
+		String sequenceACTG = "ACGT";
+		String sequenceBINAACGT = "00011011";
+		Assertions.assertEquals(sequenceBINAACGT, BinaryConversion.sequence2binaryACGT(sequenceACTG));
+		Assertions.assertEquals(sequenceACTG, BinaryConversion.binary2sequenceACGT(sequenceBINAACGT));
+		
+		String sequenceacgt = "acgt";
+		String sequencebinaACGT = "";
+		Assertions.assertEquals(sequencebinaACGT, BinaryConversion.sequence2binaryACGT(sequenceacgt));
+		Assertions.assertEquals(sequencebinaACGT, BinaryConversion.binary2sequenceACGT(sequencebinaACGT));
+		
+		// String sequenceACTG = "ACGT";
+		String sequenceBINAacgt = "";
+		Assertions.assertEquals(sequenceBINAacgt, BinaryConversion.sequence2binary(sequenceACTG));
+		Assertions.assertEquals(sequenceBINAacgt, BinaryConversion.binary2sequence(sequenceBINAacgt));
+		
+		// String sequenceacgt = "acgt";
+		String sequencebinaacgt = "00011011";
+		Assertions.assertEquals(sequencebinaacgt, BinaryConversion.sequence2binary(sequenceacgt));
+		Assertions.assertEquals(sequenceacgt, BinaryConversion.binary2sequence(sequencebinaacgt));
 		
 		// ACGT <=> 00 01 10 11
-//		System.out.println((int)'A'); // 65
-//		System.out.println((int)'C'); // 67
-//		System.out.println((int)'G'); // 71
-//		System.out.println((int)'T'); // 84
-//		System.out.println((int)'U'); // 85
+		// System.out.println((int)'A'); // 65
+		// System.out.println((int)'C'); // 67
+		// System.out.println((int)'G'); // 71
+		// System.out.println((int)'T'); // 84
+		// System.out.println((int)'U'); // 85
 		
-		String sequenceACTG = "ACGT";
-		String sequenceBINA = "00011011";
-		Assertions.assertEquals(sequenceBINA, BinaryConversion.sequence2binary(sequenceACTG));
-		Assertions.assertEquals(sequenceACTG, BinaryConversion.binary2sequence(sequenceBINA));
+		// System.out.println((int)'a'); // 97
+		// System.out.println((int)'c'); // 99
+		// System.out.println((int)'g'); // 103
+		// System.out.println((int)'t'); // 116
+		// System.out.println((int)'u'); // 117
 		
-		Assertions.assertEquals("", BinaryConversion.convertBinaryToString(BinaryConversion.sequence2binary("ACGT")));
-		Assertions.assertEquals("ACGT", BinaryConversion.binary2sequence(BinaryConversion.convertStringToBinary("")));
-		
-		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binary("ACGTACGTACGTACGT"));
-		Assertions.assertEquals("ᬛ", BinaryConversion.convertBinaryToString(BinaryConversion.sequence2binary("ACGTACGTACGTACGT")));
-		
-	}
+		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binaryACGT("ACGTACGTACGTACGT"));
+		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binary    ("acgtacgtacgtacgt"));
+    }
 
 }

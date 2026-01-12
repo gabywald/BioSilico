@@ -11,7 +11,7 @@ import gabywald.crypto.model.EncodingNodeException;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2025-2026)
  */
 class EncodingNodeTests {
 

@@ -1,16 +1,33 @@
 package gabywald.crypto.model.tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.BiologicalUtils;
+import gabywald.crypto.model.BinaryConversion;
 import gabywald.crypto.model.GeneticTranslator;
 
 /**
  * 
- * @author Gabriel Chandesris (2020, 2025-2026)
+ * @author Gabriel Chandesris (2026)
  */
-class GeneticTranslatorTests {
+class BBandENTests {
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+//	@Test
+//	void test() {
+//		// TODO make global tests combining EncodingNodes and BinaryBits
+//		fail("Not yet implemented");
+//	}
 	
 	@Test
 	void testGeneticTranslatorSomeTests() {
@@ -33,7 +50,17 @@ class GeneticTranslatorTests {
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
-		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
+		System.out.println("[" + binaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
+		
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
+		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
@@ -53,7 +80,17 @@ class GeneticTranslatorTests {
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
-		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
+		System.out.println("[" + binaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
+		
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
+		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
@@ -73,7 +110,17 @@ class GeneticTranslatorTests {
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
-		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
+		System.out.println("[" + binaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
+		
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
+		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
@@ -92,72 +139,18 @@ class GeneticTranslatorTests {
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		
-		String isDecrypted = forFileContent.decodeWithStartStopCodons(encodedFileContent, 0, 0);
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
+		System.out.println("[" + binaryEncodedFileContent + "]");
+		// Assertions.assertEquals("111110010111010001100101011100110111010000100000011101000110010101110011011101000011001000100000011101000110010101110011011101000011001111111111", binaryEncodedFileContent);
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
+		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decodeWithStartStopCodons(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
 		System.out.println();
 	}
 	
-	@Test
-	void testGeneticTranslatorMoreTestsEncodePath() {
-		// TODO 'DP builder' for Genetic Translator
-		GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
-		Assertions.assertNotNull( forPathDirName );
-		System.out.println(forPathDirName.toString());
-		String toEncrypt = "/home/user/file.txt";
-		String encodedFilePath = forPathDirName.encode(toEncrypt, 1);
-		System.out.println("[" + encodedFilePath + "]" + "\n");
-
-		// Assertions.assertEquals("PWCHDEHTIINMTHTRTYCMCNHHICNSPHTMWACPDLHPYY", encodedFilePath);
-		
-		// Assertions.assertEquals("PWCHDEHTIINMTHTRTYCMCNHHICNSPHTMWACPDLHPYY", forPathDirName.encode("/home/user/file.txt", 0));
-		// Assertions.assertEquals("PWCHDEHTIINMTHTRTYCMCNHHICNSPHTMWACPDLHPYY", forPathDirName.encode("/home/user/file.txt", 1));
-		
-		// String isDecrypted00 = forPathDirName.decode(encodedFilePath.substring(3, encodedFilePath.length()-3), 0, 0);
-		String isDecrypted01 = forPathDirName.decodeWithStartStopCodons(encodedFilePath, 0, 0); // Use specific decoder !!
-		System.out.println("[" + isDecrypted01 + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted01, toEncrypt);
-	
-		System.out.println();
-	}
-
-	// TODO complete these tests !! GeneticTranslatorTests
-
-//	void testGeneticTranslatorIntBoolean() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testGeneticTranslatorGeneticCode() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testGeneticTranslatorEncodingNode() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testDecode() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testDecodeWithStartStopCodons() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testEncodeStringIntBoolean() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testEncodeString() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testEncodeMore() {
-//		fail("Not yet implemented");
-//	}
-//
-//	void testEncodeRand() {
-//		fail("Not yet implemented");
-//	}
-
 }

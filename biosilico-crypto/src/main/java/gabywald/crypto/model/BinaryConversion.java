@@ -7,15 +7,42 @@ import java.util.stream.Collectors;
 
 /**
  * 
- * @author Gabriel Chandesris (2023)
+ * @author Gabriel Chandesris (2023, 2026)
  */
 public class BinaryConversion {
 
-	public static String sequence2binary(String input) {
-		// input.chars().map( c -> ((c == 65)?"00":((c == 67)?"01":((c == 71)?"10":((c == 84)?"11":""))))).forEach(System.out::println); // .collect(Collectors.joining());
+	/**
+	 * If use of 'ACGT' in input. 
+	 * @param input
+	 * @return
+	 */
+	public static String sequence2binaryACGT(String input) {
 		StringBuilder result = new StringBuilder();
 		for (char c : input.toCharArray()) {
 			result.append(((c == 65)?"00":((c == 67)?"01":((c == 71)?"10":((c == 84)?"11":"")))));
+		}
+		return result.toString();
+	}
+	
+	public static String binary2sequenceACGT(String input) {
+		StringBuilder output = new StringBuilder();
+		for (int i = 0 ; i <= input.length() - 2 ; i += 2) {
+			String b = input.substring(i, i + 2);
+			int k = ((b.equals("00"))?65:((b.equals("01"))?67:((b.equals("10"))?71:((b.equals("11"))?84:85))));
+			output.append((char) k);
+		}
+		return output.toString();
+	}
+	
+	/**
+	 * If use of 'acgt' in input. 
+	 * @param input
+	 * @return
+	 */
+	public static String sequence2binary(String input) {
+		StringBuilder result = new StringBuilder();
+		for (char c : input.toCharArray()) {
+			result.append(((c == 97)?"00":((c == 99)?"01":((c == 103)?"10":((c == 116)?"11":"")))));
 		}
 		return result.toString();
 	}
@@ -24,7 +51,7 @@ public class BinaryConversion {
 		StringBuilder output = new StringBuilder();
 		for (int i = 0 ; i <= input.length() - 2 ; i += 2) {
 			String b = input.substring(i, i + 2);
-			int k = ((b.equals("00"))?65:((b.equals("01"))?67:((b.equals("10"))?71:((b.equals("11"))?84:85))));
+			int k = ((b.equals("00"))?97:((b.equals("01"))?99:((b.equals("10"))?103:((b.equals("11"))?116:117))));
 			output.append((char) k);
 		}
 		return output.toString();
@@ -46,7 +73,7 @@ public class BinaryConversion {
 		for (byte b : input) {
 			int val = b;
 			for (int i = 0; i < 8; i++) {
-				result.append((val & 128) == 0 ? 0 : 1);	  // 128 = 1000 0000
+				result.append((val & 128) == 0 ? 0 : 1);	// 128 = 1000 0000
 				val <<= 1;
 			}
 		}
