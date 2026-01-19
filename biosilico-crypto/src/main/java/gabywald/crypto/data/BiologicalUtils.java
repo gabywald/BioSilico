@@ -248,6 +248,9 @@ public abstract class BiologicalUtils extends StringUtils {
 		GenericDataFile genericCryptoFile	= (file == 0)?	GenericDataFile.getCryptoASCIIJavaCPlus()
 															:
 															GenericDataFile.getCryptoAlphaNumeric();
+		if (file > 1) { genericCryptoFile = GenericDataFile.getCryptoFileDefinition(file); }
+		// NOTE for above : could be reduced as just "genericCryptoFile = GenericDataFile.getCryptoFileDefinition(file);"
+		
 		try {
 			genericCryptoFile.load();
 		} catch (IOException e1) {
@@ -307,6 +310,8 @@ public abstract class BiologicalUtils extends StringUtils {
 				if (table[1].equals("*")) { stoppers.add(new Integer(index)); }
 			} else { codes[index] = line; }
 			
+			// NOTE here is "special encoding of some characters" !! 
+			// (space, tabulation, linefeed ('line feed') and carriagereturn ('carriage return')
 			if (codes[index].equals("SP")) { codes[index] = " "; }
 			if (codes[index].equals("HT")) { codes[index] = "\t"; }
 			if (codes[index].equals("LF")) { codes[index] = "\n"; }
