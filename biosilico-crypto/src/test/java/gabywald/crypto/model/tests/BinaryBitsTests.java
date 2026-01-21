@@ -20,24 +20,15 @@ class BinaryBitsTests {
     @Test
     void test() {
 		String sequenceACTG = "ACGT";
-		String sequenceBINAACGT = "00011011";
-		Assertions.assertEquals(sequenceBINAACGT, BinaryConversion.sequence2binaryACGT(sequenceACTG));
-		Assertions.assertEquals(sequenceACTG, BinaryConversion.binary2sequenceACGT(sequenceBINAACGT));
-		
 		String sequenceacgt = "acgt";
-		String sequencebinaACGT = "";
-		Assertions.assertEquals(sequencebinaACGT, BinaryConversion.sequence2binaryACGT(sequenceacgt));
-		Assertions.assertEquals(sequencebinaACGT, BinaryConversion.binary2sequenceACGT(sequencebinaACGT));
-		
-		// String sequenceACTG = "ACGT";
-		String sequenceBINAacgt = "";
-		Assertions.assertEquals(sequenceBINAacgt, BinaryConversion.sequence2binary(sequenceACTG));
-		Assertions.assertEquals(sequenceBINAacgt, BinaryConversion.binary2sequence(sequenceBINAacgt));
-		
-		// String sequenceacgt = "acgt";
-		String sequencebinaacgt = "00011011";
-		Assertions.assertEquals(sequencebinaacgt, BinaryConversion.sequence2binary(sequenceacgt));
-		Assertions.assertEquals(sequenceacgt, BinaryConversion.binary2sequence(sequencebinaacgt));
+		String sequenceZION = "00011011";
+		Assertions.assertEquals(sequenceZION, BinaryConversion.sequence2binary(sequenceACTG));
+		Assertions.assertEquals(sequenceacgt, BinaryConversion.binary2sequence(sequenceZION));
+		Assertions.assertEquals(sequenceZION, BinaryConversion.sequence2binary(sequenceacgt));
+		Assertions.assertEquals(sequenceacgt, BinaryConversion.binary2sequence(sequenceZION));
+		Assertions.assertEquals(sequenceZION, BinaryConversion.sequence2binary(sequenceacgt));
+		Assertions.assertEquals("", BinaryConversion.binary2sequence(""));
+		Assertions.assertEquals("", BinaryConversion.sequence2binary(""));
 		
 		// ACGT <=> 00 01 10 11
 		// System.out.println((int)'A'); // 65
@@ -46,17 +37,25 @@ class BinaryBitsTests {
 		// System.out.println((int)'T'); // 84
 		// System.out.println((int)'U'); // 85
 		
+		// acgt <=> 00 01 10 11
 		// System.out.println((int)'a'); // 97
 		// System.out.println((int)'c'); // 99
 		// System.out.println((int)'g'); // 103
 		// System.out.println((int)'t'); // 116
 		// System.out.println((int)'u'); // 117
 		
-		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binaryACGT("ACGTACGTACGTACGT"));
-		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binary    ("acgtacgtacgtacgt"));
+		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binary("ACGTACGTACGTACGT"));
+		Assertions.assertEquals("00011011000110110001101100011011", BinaryConversion.sequence2binary("acgtacgtacgtacgt"));
+		Assertions.assertEquals("acgtacgtacgtacgt", BinaryConversion.binary2sequence("00011011000110110001101100011011"));
 		
-		Assertions.assertEquals("ACGTACGTACGTACGT", BinaryConversion.binary2sequenceACGT("00011011000110110001101100011011"));
-		Assertions.assertEquals("acgtacgtacgtacgt", BinaryConversion.binary2sequence    ("00011011000110110001101100011011"));
+		Assertions.assertEquals("0000000000", BinaryConversion.sequence2binary("aaaaa"));
+		Assertions.assertEquals("0101010101", BinaryConversion.sequence2binary("ccccc"));
+		Assertions.assertEquals("1010101010", BinaryConversion.sequence2binary("ggggg"));
+		Assertions.assertEquals("1111111111", BinaryConversion.sequence2binary("ttttt"));
+		Assertions.assertEquals("aaaaa", BinaryConversion.binary2sequence("0000000000"));
+		Assertions.assertEquals("ccccc", BinaryConversion.binary2sequence("0101010101"));
+		Assertions.assertEquals("ggggg", BinaryConversion.binary2sequence("1010101010"));
+		Assertions.assertEquals("ttttt", BinaryConversion.binary2sequence("1111111111"));
 		
 		Assertions.assertEquals("", BinaryConversion.convertBinaryToAscii("00011011000110110001101100011011"));
 		Assertions.assertEquals("ᬛ", BinaryConversion.convertBinaryToString("00011011000110110001101100011011"));

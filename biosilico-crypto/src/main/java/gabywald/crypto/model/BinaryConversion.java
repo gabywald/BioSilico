@@ -10,52 +10,81 @@ import java.util.stream.Collectors;
  * @author Gabriel Chandesris (2023, 2026)
  */
 public class BinaryConversion {
+	
+	/** 'A', 'C', 'G', 'T', 'U' */
+	// private static char[] upperACGT = new char[]{ 65, 67, 71, 84, 85 };
+	/** 'a', 'c', 'g', 't', 'u' */
+	private static char[] lowerACGT = new char[]{ 97, 99, 103, 116, 117 };
+	/** "00", "01", "10", "11", "" */
+	private static String[] binaryTargets = new String[] { "00", "01", "10", "11", "" };
+	
+	private static int[][] changeIndexes = new int[][] {
+		{ 0, 1, 2, 3, 4 }, 
+		{ 1, 2, 3, 4, 0 }, 
+		{ 2, 3, 4, 0, 1 }, 
+		{ 3, 4, 0, 1, 2 }, 
+		{ 4, 0, 1, 2, 3 }, 
+		{ 4, 3, 2, 1, 0 },
+		{ 3, 2, 1, 0, 4 },
+		{ 2, 1, 0, 4, 3 },
+		{ 1, 0, 4, 3, 2 },
+		{ 0, 4, 3, 2, 1 }
+		// TODO add more combinations here !
+	};
+	
+	/**
+	 * Convert from "ACGT" or "acgt" sequences to binary strings. 
+	 * @param input "ACGT" or "acgt" sequence (make lowercase). 
+	 * @param decalage Index in {@link BinaryConversion#changeIndexes}
+	 * @return Succession of '0' and '1'. 
+	 */
+	public static String sequence2binary(String input, int decalage) {
+		if ( (decalage < 0) || (decalage >= BinaryConversion.changeIndexes.length ) ) 
+			{ return ""; } // TODO throw exception here ??
+		StringBuilder result = new StringBuilder();
+		for (char c : input.toLowerCase().toCharArray()) {
+			int index = 0;
+			for ( ; index < BinaryConversion.lowerACGT.length ; index++) {
+				if (c == BinaryConversion.lowerACGT[index]) { 
+					result.append( BinaryConversion.binaryTargets
+							[ BinaryConversion.changeIndexes[decalage][index] ] );
+					break; 
+				}
+			}
+		}
+		return result.toString();
+	}
+	
+	/**
+	 * Same as {@link BinaryConversion#sequence2binaryGeneric(String, int)}, but with decalage at 0. 
+	 * @param input "ACGT" or "acgt" sequence (make lowercase). 
+	 * @return Succession of '0' and '1'. 
+	 */
+	public static String sequence2binary(String input) 
+		{ return BinaryConversion.sequence2binary(input, 0); }
+	
+	public static String binary2sequence(String input, int decalage) {
+		if ( (decalage < 0) || (decalage >= BinaryConversion.changeIndexes.length ) ) 
+			{ return ""; } // TODO throw exception here ??
+		StringBuilder output = new StringBuilder();
+		for (int i = 0 ; i <= input.length() - 2 ; i += 2) {
+			String b = input.substring(i, i + 2);
+			int index = 0;
+			for ( ; index < BinaryConversion.binaryTargets.length ; index++) {
+				if ( b.equals( BinaryConversion.binaryTargets[index] ) ) { 
+					output.append( (char) BinaryConversion.lowerACGT[ BinaryConversion.changeIndexes[decalage][index] ] );
+					break; 
+				}
+			}
+		}
+		return output.toString();
+	}
+	
+	public static String binary2sequence(String input) 
+		{ return BinaryConversion.binary2sequence(input, 0); }
 
-	/**
-	 * If use of 'ACGT' in input. 
-	 * @param input
-	 * @return
-	 */
-	public static String sequence2binaryACGT(String input) {
-		StringBuilder result = new StringBuilder();
-		for (char c : input.toCharArray()) {
-			result.append(((c == 65)?"00":((c == 67)?"01":((c == 71)?"10":((c == 84)?"11":"")))));
-		}
-		return result.toString();
-	}
 	
-	public static String binary2sequenceACGT(String input) {
-		StringBuilder output = new StringBuilder();
-		for (int i = 0 ; i <= input.length() - 2 ; i += 2) {
-			String b = input.substring(i, i + 2);
-			int k = ((b.equals("00"))?65:((b.equals("01"))?67:((b.equals("10"))?71:((b.equals("11"))?84:85))));
-			output.append((char) k);
-		}
-		return output.toString();
-	}
-	
-	/**
-	 * If use of 'acgt' in input. 
-	 * @param input
-	 * @return
-	 */
-	public static String sequence2binary(String input) {
-		StringBuilder result = new StringBuilder();
-		for (char c : input.toCharArray()) {
-			result.append(((c == 97)?"00":((c == 99)?"01":((c == 103)?"10":((c == 116)?"11":"")))));
-		}
-		return result.toString();
-	}
-	
-	public static String binary2sequence(String input) {
-		StringBuilder output = new StringBuilder();
-		for (int i = 0 ; i <= input.length() - 2 ; i += 2) {
-			String b = input.substring(i, i + 2);
-			int k = ((b.equals("00"))?97:((b.equals("01"))?99:((b.equals("10"))?103:((b.equals("11"))?116:117))));
-			output.append((char) k);
-		}
-		return output.toString();
-	}
+	/* ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** */
 
 	public static String convertStringToBinary(String input) {
 		StringBuilder result = new StringBuilder();
