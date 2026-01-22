@@ -5,7 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.ioput.EmblFileCreator;
 import gabywald.global.data.StringUtils;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020, 2026)
+ */
 class EmblFileCreatorTests {
 
 	@Test
@@ -16,9 +22,8 @@ class EmblFileCreatorTests {
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());
 		
-		System.out.println( ffc.toString() );
-		
-		System.out.println( ffc.getFullEncryption() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, ffc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, ffc.getFullEncryption() );
 	}
 	
 	@Test
@@ -29,9 +34,8 @@ class EmblFileCreatorTests {
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());
 		
-		System.out.println( ffc.toString() );
-		
-		System.out.println( ffc.getFullEncryption() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, ffc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, ffc.getFullEncryption() );
 	}
 
 }

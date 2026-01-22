@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.composition.Author;
 import gabywald.crypto.data.composition.ComposUtils;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2020, 2022)
+ * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
 class AuthorTests {
 	private static final String DATA01 = "Mougey,R.";
@@ -57,7 +59,7 @@ class AuthorTests {
 	void testParseAuthors01() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA01, true);
 		// for (int i = 0 ; i < table.size() ; i++)
-		// 	{ System.out.println(table.get(i).toString()); }
+		// 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(1, table.size());
 	}
 	
@@ -65,7 +67,7 @@ class AuthorTests {
 	void testParseAuthors02() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA02, true);
 		// for (int i = 0 ; i < table.size() ; i++)
-		// 	{ System.out.println(table.get(i).toString()); }
+		// 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(8, table.size());
 	}
 	
@@ -73,7 +75,7 @@ class AuthorTests {
 	void testParseAuthors03() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA03, true);
 		// for (int i = 0 ; i < table.size() ; i++)
-		// 	{ System.out.println(table.get(i).toString()); }
+		// 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(23, table.size());
 	}
 	
@@ -81,7 +83,7 @@ class AuthorTests {
 	void testParseAuthors04() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA04, true);
 		// for (int i = 0 ; i < table.size() ; i++)
-		// 	{ System.out.println(table.get(i).toString()); }
+		// 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(2, table.size());
 	}
 	
@@ -123,14 +125,14 @@ class AuthorTests {
 //						int indexLast01 = append01.length()-1;
 //						if (append01.charAt(indexLast01) == ' ') 
 //							{ append01 = append01.substring(0, indexLast01); } 
-						// System.out.println("'"+append01+"'\t"+append01.length()+" / "+cutter);
+						// Logger.printlnLog(LoggerLevel.LL_NONE, "'"+append01+"'\t"+append01.length()+" / "+cutter);
 						if (append01.length() <= cutter) { append02 = ""; } 
 						else {
 							for (int i = prevMax ; i < max-1 ; i++) 
 								{ append02 += preprocTable[i]+separator; }
 							max--;
 						}
-						// System.out.println("'"+append02+"'\t"+append02.length()+" / "+cutter);
+						// Logger.printlnLog(LoggerLevel.LL_NONE, "'"+append02+"'\t"+append02.length()+" / "+cutter);
 					}
 					
 					String toAdd	= ((append02.equals(""))?append01:append02);
@@ -158,12 +160,12 @@ class AuthorTests {
 		String[] compRES = AuthorTests.RESU01.split("\n");
 		String[] COMPres = result.split("\n");
 		boolean test	 = (compRES.length == COMPres.length);
-		if (!test) { System.out.println("\tFailed on LEN"); }
+		if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on LEN"); }
 		for (int i = 0 ; (i < compRES.length) && (test) ; i++ ) {
-			System.out.println("expected : '"+compRES[i]+"'");
-			System.out.println("produced : '"+COMPres[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "expected : '"+compRES[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "produced : '"+COMPres[i]+"'");
 			test = compRES[i].equals(COMPres[i]);
-			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
+			if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on line ("+i+")"); }
 		}
 		
 		Assertions.assertTrue(test);
@@ -177,12 +179,12 @@ class AuthorTests {
 		String[] compRES = AuthorTests.RESU02.split("\n");
 		String[] COMPres = result.split("\n");
 		boolean test	 = (compRES.length == COMPres.length);
-		if (!test) { System.out.println("\tFailed on LEN"); }
+		if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on LEN"); }
 		for (int i = 0 ; (i < compRES.length) && (test) ; i++ ) {
-			System.out.println("expected : '"+compRES[i]+"'");
-			System.out.println("produced : '"+COMPres[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "expected : '"+compRES[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "produced : '"+COMPres[i]+"'");
 			test = compRES[i].equals(COMPres[i]);
-			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
+			if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on line ("+i+")"); }
 		}
 		
 		Assertions.assertTrue(test);
@@ -196,12 +198,12 @@ class AuthorTests {
 		String[] compRES = AuthorTests.RESU03.split("\n");
 		String[] COMPres = result.split("\n");
 		boolean test	 = (compRES.length == COMPres.length);
-		if (!test) { System.out.println("\tFailed on LEN"); }
+		if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on LEN"); }
 		for (int i = 0 ; (i < compRES.length) && (test) ; i++ ) {
-			System.out.println("expected : '"+compRES[i]+"'");
-			System.out.println("produced : '"+COMPres[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "expected : '"+compRES[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "produced : '"+COMPres[i]+"'");
 			test = compRES[i].equals(COMPres[i]);
-			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
+			if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on line ("+i+")"); }
 		}
 		
 		Assertions.assertTrue(test);
@@ -215,12 +217,12 @@ class AuthorTests {
 		String[] compRES = AuthorTests.RESU04.split("\n");
 		String[] COMPres = result.split("\n");
 		boolean test	 = (compRES.length == COMPres.length);
-		if (!test) { System.out.println("\tFailed on LEN"); }
+		if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on LEN"); }
 		for (int i = 0 ; (i < compRES.length) && (test) ; i++ ) {
-			System.out.println("expected : '"+compRES[i]+"'");
-			System.out.println("produced : '"+COMPres[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "expected : '"+compRES[i]+"'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "produced : '"+COMPres[i]+"'");
 			test = compRES[i].equals(COMPres[i]);
-			if (!test) { System.out.println("\tFailed on line ("+i+")"); }
+			if (!test) { Logger.printlnLog(LoggerLevel.LL_NONE, "\tFailed on line ("+i+")"); }
 		}
 		
 		Assertions.assertTrue(test);
@@ -230,7 +232,7 @@ class AuthorTests {
 	void testParseAuthors11() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA11, false);
 		 for (int i = 0 ; i < table.size() ; i++)
-		 	{ System.out.println(table.get(i).toString()); }
+		 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(1, table.size());
 	}
 	
@@ -238,7 +240,7 @@ class AuthorTests {
 	void testParseAuthors12() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA12, false);
 		 for (int i = 0 ; i < table.size() ; i++)
-		 	{ System.out.println(table.get(i).toString()); }
+		 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(8, table.size());
 	}
 	
@@ -246,7 +248,7 @@ class AuthorTests {
 	void testParseAuthors13() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA13, false);
 		 for (int i = 0 ; i < table.size() ; i++)
-		 	{ System.out.println(table.get(i).toString()); }
+		 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(23, table.size());
 	}
 	
@@ -254,7 +256,7 @@ class AuthorTests {
 	void testParseAuthors14() {
 		List<Author> table = Author.parseAuthors(AuthorTests.DATA14, false);
 		 for (int i = 0 ; i < table.size() ; i++)
-		 	{ System.out.println(table.get(i).toString()); }
+		 	{ Logger.printlnLog(LoggerLevel.LL_NONE, table.get(i).toString()); }
 		Assertions.assertEquals(2, table.size());
 	}
 	

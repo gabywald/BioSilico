@@ -4,7 +4,7 @@ import gabywald.global.data.StringUtils;
 
 /**
  * 
- * @author Gabriel Chandesris (2012, 2020)
+ * @author Gabriel Chandesris (2012, 2020, 2026)
  */
 public class EncodingNode {
 	/** Level of the node into the tree. */
@@ -92,7 +92,7 @@ public class EncodingNode {
 		this.bases		= c.length;
 		this.father		= father;
 		this.character	= c[this.numbe];
-		/** System.out.println(Utils.multiple("\t", this.level)
+		/** Logger.printlnLog(LoggerLevel.LL_NONE, Utils.multiple("\t", this.level)
 				+this.level+":"+this.bases+":"+this.numbe+" -> "+this.getNumber()
 				+((this.level < 3)?" ("+this.getNumber()*this.bases+")":"") ); */
 		this.value		= val[this.getNumber()];
@@ -242,7 +242,7 @@ public class EncodingNode {
 			number	+= tmp.getNumber() * tmp.bases;
 			tmp		= tmp.father;
 		}
-		// System.out.println(Utils.multiple("\t", this.level)+" => "+number);
+		// Logger.printlnLog(LoggerLevel.LL_NONE, Utils.multiple("\t", this.level)+" => "+number);
 		return number;
 	}
 	

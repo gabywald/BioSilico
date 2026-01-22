@@ -13,6 +13,8 @@ import gabywald.crypto.data.composition.Organism;
 import gabywald.crypto.data.composition.Primary;
 import gabywald.crypto.data.composition.Reference;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 
 /**
@@ -305,7 +307,7 @@ public class GenBankFormat extends BiologicalFormat {
 				Pattern genericBlank = Pattern.compile("^\\s+(.*?)$");
 				Matcher matcherBlank = genericBlank.matcher(cont[i]);
 				if (!matcherBlank.matches()) 
-					{ System.out.println("--");marker = -1; }
+					{ Logger.printlnLog(LoggerLevel.LL_NONE, "--");marker = -1; }
 				switch(marker) {
 				case(6): /** ORGANISM : taxonomy */
 					String taxonomy		= matcherBlank.group(1);
@@ -370,7 +372,7 @@ public class GenBankFormat extends BiologicalFormat {
 									i++;
 									matcherBlank			= genericBlank.matcher(cont[i]);
 									if (!matcherBlank.matches()) 
-										{ System.out.println("--"); }
+										{ Logger.printlnLog(LoggerLevel.LL_NONE, "--"); }
 									else {
 										moreContent			= matcherBlank.group(1);
 										translationContent	+= moreContent;
@@ -390,8 +392,8 @@ public class GenBankFormat extends BiologicalFormat {
 					Matcher sequenceRecognMatch = sequenceRecognition.matcher(cont[i]);
 					if (sequenceRecognMatch.matches()) {
 						/** for (int j = 0 ; j < sequenceRecognMatch.groupCount() ; j++) 
-							{ System.out.print("\t"+j+"-'"+sequenceRecognMatch.group(j)+"'"); }
-						System.out.println(); */
+							{ Logger.printlnLog(LoggerLevel.LL_NONE, "\t"+j+"-'"+sequenceRecognMatch.group(j)+"'"); }
+						Logger.printlnLog(LoggerLevel.LL_NONE, ""); */
 						String part01	= sequenceRecognMatch.group(3);
 						String part02	= sequenceRecognMatch.group(5);
 						String part03	= sequenceRecognMatch.group(7);
@@ -406,7 +408,7 @@ public class GenBankFormat extends BiologicalFormat {
 										  +((part05 != null)?part05:"")
 										  +((part06 != null)?part06:"");
 						
-						/** System.out.println(whole); */
+						/** Logger.printlnLog(LoggerLevel.LL_NONE, (whole); */
 						data.origin.addInSequence(whole);
 					}
 					break;
@@ -415,9 +417,9 @@ public class GenBankFormat extends BiologicalFormat {
 					break;
 				// case(16): /** (PRIMARY) */
 				// case(17): /** (PRIMARY DATA) */
-				// 	System.out.println("\t*****\t'"+matchTo+"'\t'"+marker+"'");
+				// 	Logger.printlnLog(LoggerLevel.LL_NONE, "\t*****\t'"+matchTo+"'\t'"+marker+"'");
 				// 	break;
-				default:System.out.println("\t'"+marker+"'\t'"+cont[i]+"'");
+				default:Logger.printlnLog(LoggerLevel.LL_NONE, "\t'"+marker+"'\t'"+cont[i]+"'");
 				}
 			}
 		}

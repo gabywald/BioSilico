@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.ioput.GenBankFileCreator;
 import gabywald.global.data.StringUtils;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class GenBankFileCreatorTests {
 
@@ -20,10 +22,8 @@ class GenBankFileCreatorTests {
 		Assertions.assertEquals(0, gbfc.getEncodedCont().size());
 		Assertions.assertEquals(0, gbfc.getEncodedPath().size());
 		
-		System.out.println( gbfc.toString() );
-		
-		System.out.println( gbfc.getFullEncryption() );
-		
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.getFullEncryption() );
 	}
 
 	@Test
@@ -34,10 +34,8 @@ class GenBankFileCreatorTests {
 		Assertions.assertEquals(1, gbfc.getEncodedCont().size());
 		Assertions.assertEquals(0, gbfc.getEncodedPath().size());
 		
-		System.out.println( gbfc.toString() );
-		
-		System.out.println( gbfc.getFullEncryption() );
-		
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.getFullEncryption() );
 	}
 
 	@Test
@@ -49,9 +47,8 @@ class GenBankFileCreatorTests {
 		Assertions.assertEquals(1, gbfc.getEncodedCont().size());
 		Assertions.assertEquals(1, gbfc.getEncodedPath().size());
 		
-		System.out.println( gbfc.toString() );
-		
-		System.out.println( gbfc.getFullEncryption() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.getFullEncryption() );
 		
 	}
 	
@@ -64,10 +61,8 @@ class GenBankFileCreatorTests {
 		Assertions.assertEquals(1, gbfc.getEncodedCont().size());
 		Assertions.assertEquals(1, gbfc.getEncodedPath().size());
 		
-		System.out.println( gbfc.toString() );
-		
-		System.out.println( gbfc.getFullEncryption() );
-		
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.getFullEncryption() );
 	}
 	
 	@Test
@@ -79,10 +74,8 @@ class GenBankFileCreatorTests {
 		Assertions.assertEquals(1, gbfc.getEncodedCont().size());
 		Assertions.assertEquals(1, gbfc.getEncodedPath().size());
 		
-		System.out.println( gbfc.toString() );
-		
-		System.out.println( gbfc.getFullEncryption() );
-		
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.toString() );
+		Logger.printlnLog(LoggerLevel.LL_NONE, gbfc.getFullEncryption() );
 	}
 	
 	// TODO complete these tests !! GenBankFileCreatorTests

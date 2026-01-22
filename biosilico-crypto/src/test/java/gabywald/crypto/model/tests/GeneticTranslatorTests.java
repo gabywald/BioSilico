@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.model.GeneticTranslator;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
@@ -17,7 +19,7 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator gt01REF = new GeneticTranslator(1, true);
 		Assertions.assertNotNull( gt01REF );
-		System.out.println(gt01REF.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, gt01REF.toString());
 	}
 	
 	@Test
@@ -25,19 +27,19 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 		Assertions.assertNotNull( forFileContent );
-		System.out.println(forFileContent.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
-		System.out.println("[" + encodedFileContent + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFileContent + "]");
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
-		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
-		System.out.println();
+		Logger.printlnLog(LoggerLevel.LL_NONE, "");
 	}
 	
 	@Test
@@ -45,19 +47,19 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 		Assertions.assertNotNull( forFileContent );
-		System.out.println(forFileContent.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
-		System.out.println("[" + encodedFileContent + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFileContent + "]");
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
-		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
-		System.out.println();
+		Logger.printlnLog(LoggerLevel.LL_NONE, "");
 	}
 	
 	@Test
@@ -65,19 +67,19 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 		Assertions.assertNotNull( forFileContent );
-		System.out.println(forFileContent.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
-		System.out.println("[" + encodedFileContent + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFileContent + "]");
 		
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String isDecrypted = forFileContent.decode(encodedFileContent, 0, 0);
-		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
-		System.out.println();
+		Logger.printlnLog(LoggerLevel.LL_NONE, "");
 	}
 	
 	@Test
@@ -85,18 +87,18 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
 		Assertions.assertNotNull( forFileContent );
-		System.out.println(forFileContent.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
-		System.out.println("[" + encodedFileContent + "]");
-		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFileContent + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		
 		String isDecrypted = forFileContent.decodeWithStartStopCodons(encodedFileContent, 0, 0);
-		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + isDecrypted + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted, toEncrypt);
 		
-		System.out.println();
+		Logger.printlnLog(LoggerLevel.LL_NONE, "");
 	}
 	
 	@Test
@@ -104,10 +106,10 @@ class GeneticTranslatorTests {
 		// TODO 'DP builder' for Genetic Translator
 		GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
 		Assertions.assertNotNull( forPathDirName );
-		System.out.println(forPathDirName.toString());
+		Logger.printlnLog(LoggerLevel.LL_NONE, forPathDirName.toString());
 		String toEncrypt = "/home/user/file.txt";
 		String encodedFilePath = forPathDirName.encode(toEncrypt, 1);
-		System.out.println("[" + encodedFilePath + "]" + "\n");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + encodedFilePath + "]" + "\n");
 
 		// Assertions.assertEquals("PWCHDEHTIINMTHTRTYCMCNHHICNSPHTMWACPDLHPYY", encodedFilePath);
 		
@@ -116,10 +118,10 @@ class GeneticTranslatorTests {
 		
 		// String isDecrypted00 = forPathDirName.decode(encodedFilePath.substring(3, encodedFilePath.length()-3), 0, 0);
 		String isDecrypted01 = forPathDirName.decodeWithStartStopCodons(encodedFilePath, 0, 0); // Use specific decoder !!
-		System.out.println("[" + isDecrypted01 + "] <= [" + toEncrypt + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "[" + isDecrypted01 + "] <= [" + toEncrypt + "]");
 		Assertions.assertEquals(isDecrypted01, toEncrypt);
 	
-		System.out.println();
+		Logger.printlnLog(LoggerLevel.LL_NONE, "");
 	}
 
 	// TODO complete these tests !! GeneticTranslatorTests

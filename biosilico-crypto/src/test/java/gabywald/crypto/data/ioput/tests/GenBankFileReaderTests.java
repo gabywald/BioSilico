@@ -8,10 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.ioput.GenBankFileReader;
 import gabywald.global.data.File;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class GenBankFileReaderTests {
 
@@ -35,14 +37,14 @@ class GenBankFileReaderTests {
 		Assertions.assertNotNull( content01 );
 		String[] content2read = content01.split("\\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \\*\\*\\*\\*\\* \n");
 		
-		System.out.println( content2read.length );
+		Logger.printlnLog(LoggerLevel.LL_NONE, "'" + content2read.length + "'" );
 		Assertions.assertEquals(10, content2read.length);
 		
 //		for (String data : content2read) {
-//			System.out.println( data );
+//			Logger.printlnLog(LoggerLevel.LL_NONE, data );
 //			GenBankFileReader gbfrTMP = new GenBankFileReader( data );
-//			System.out.println( gbfrTMP.getPath() + "*****");
-//			System.out.println( gbfrTMP.getContent() + "*****");
+//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getPath() + "*****");
+//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getContent() + "*****");
 //		}
 		
 		GenBankFileReader gbfr00 = new GenBankFileReader( content2read[0] );
@@ -106,7 +108,6 @@ class GenBankFileReaderTests {
 		Assertions.assertEquals("some content\n" + 
 				"================================================================================\n" + 
 				"", gbfr09.getContent());
-		
 		
 	}
 

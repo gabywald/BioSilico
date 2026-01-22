@@ -9,7 +9,7 @@ import gabywald.crypto.data.ioput.BiologicalFileCreatorHelper;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class BiologicalFileCreatorHelperTests {
 
@@ -17,7 +17,7 @@ class BiologicalFileCreatorHelperTests {
 	void testCreateOrganism() {
 		Organism testOrganism = BiologicalFileCreatorHelper.createOrganism();
 		
-		System.out.println( testOrganism );
+		// System.out.println( testOrganism );
 		
 		Assertions.assertNotNull( testOrganism );
 		Assertions.assertNotNull( testOrganism.toStringEMBL() );
@@ -30,12 +30,11 @@ class BiologicalFileCreatorHelperTests {
 	void testCreateReference() {
 		Reference testReference = BiologicalFileCreatorHelper.createReference(0, 2020, 1, 42);
 		
-		System.out.println( testReference );
+		// System.out.println( testReference );
 		
 		Assertions.assertNotNull( testReference );
 		Assertions.assertNotNull( testReference.toStringEMBL() );
 		Assertions.assertNotNull( testReference.toStringGeneBank() );
-		
 	}
 
 //	@Test
