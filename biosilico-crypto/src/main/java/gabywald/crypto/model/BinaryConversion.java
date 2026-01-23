@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
 /**
  * 
  * @author Gabriel Chandesris (2023, 2026)
@@ -16,19 +19,23 @@ public class BinaryConversion {
 	/** 'a', 'c', 'g', 't', 'u' */
 	private static char[] lowerACGT = new char[]{ 97, 99, 103, 116, 117 };
 	/** "00", "01", "10", "11", "" */
-	private static String[] binaryTargets = new String[] { "00", "01", "10", "11", "" };
+	private static String[] binaryTargets = new String[] { "00", "01", "10", "11", "\t\t" };
 	
+	/**
+	 * Index Changer. 
+	 * <br/>NOTE : index 1 is complementary reverse of index 3
+	 */
 	private static int[][] changeIndexes = new int[][] {
 		{ 0, 1, 2, 3, 4 }, 
-		{ 1, 2, 3, 4, 0 }, 
-		{ 2, 3, 4, 0, 1 }, 
-		{ 3, 4, 0, 1, 2 }, 
-		{ 4, 0, 1, 2, 3 }, 
-		{ 4, 3, 2, 1, 0 },
+		{ 1, 2, 3, 0, 4 }, 
+		{ 2, 3, 0, 1, 4 }, 
+		{ 3, 0, 1, 2, 4 }, 
+		/* ***** ***** */
 		{ 3, 2, 1, 0, 4 },
-		{ 2, 1, 0, 4, 3 },
-		{ 1, 0, 4, 3, 2 },
-		{ 0, 4, 3, 2, 1 }
+		{ 2, 1, 0, 3, 4 },
+		{ 1, 0, 3, 2, 4 },
+		{ 0, 3, 2, 1, 4 }
+		/* ***** ***** */
 		// TODO add more combinations here !
 	};
 	
@@ -46,6 +53,7 @@ public class BinaryConversion {
 			int index = 0;
 			for ( ; index < BinaryConversion.lowerACGT.length ; index++) {
 				if (c == BinaryConversion.lowerACGT[index]) { 
+					Logger.printlnLog(LoggerLevel.LL_NONE, "'" + BinaryConversion.lowerACGT[index] + "' => '" + BinaryConversion.binaryTargets[ BinaryConversion.changeIndexes[decalage][index] ] + "' (" + BinaryConversion.changeIndexes[decalage][index] + ")");
 					result.append( BinaryConversion.binaryTargets
 							[ BinaryConversion.changeIndexes[decalage][index] ] );
 					break; 
@@ -63,6 +71,12 @@ public class BinaryConversion {
 	public static String sequence2binary(String input) 
 		{ return BinaryConversion.sequence2binary(input, 0); }
 	
+	/**
+	 * Sequence of '0' and '1' to 'acgt' sequence. 
+	 * @param input sequence of '0' and '1'. 
+	 * @param decalage Index in {@link BinaryConversion#changeIndexes}
+	 * @return Succession of 'acgt' characters. 
+	 */
 	public static String binary2sequence(String input, int decalage) {
 		if ( (decalage < 0) || (decalage >= BinaryConversion.changeIndexes.length ) ) 
 			{ return ""; } // TODO throw exception here ??
@@ -72,6 +86,7 @@ public class BinaryConversion {
 			int index = 0;
 			for ( ; index < BinaryConversion.binaryTargets.length ; index++) {
 				if ( b.equals( BinaryConversion.binaryTargets[index] ) ) { 
+					Logger.printlnLog(LoggerLevel.LL_NONE, "'" + BinaryConversion.binaryTargets[index] + "' => '" + BinaryConversion.lowerACGT[ BinaryConversion.changeIndexes[decalage][index] ] + "' (" + BinaryConversion.changeIndexes[decalage][index] + ")");
 					output.append( (char) BinaryConversion.lowerACGT[ BinaryConversion.changeIndexes[decalage][index] ] );
 					break; 
 				}
@@ -80,6 +95,11 @@ public class BinaryConversion {
 		return output.toString();
 	}
 	
+	/**
+	 * Same as {@link BinaryConversion#binary2sequence(String, int)}, but with decalage at 1. 
+	 * @param input input sequence of '0' and '1'. 
+	 * @return Succession of 'acgt' characters. 
+	 */
 	public static String binary2sequence(String input) 
 		{ return BinaryConversion.binary2sequence(input, 0); }
 
@@ -127,6 +147,7 @@ public class BinaryConversion {
 	}
 
 	public static String prettyBinary(String binary, int blockSize, String separator) {
+		if (blockSize <= 0) { return ""; } // TODO BinaryException ?!
 		List<String> result = new ArrayList<>();
 		int index = 0;
 		while (index < binary.length()) {

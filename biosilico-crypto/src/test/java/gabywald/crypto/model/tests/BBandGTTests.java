@@ -88,10 +88,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("test1 test2 test3", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -131,10 +131,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("gvhg8 gvhg7 gvhg6", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -174,10 +174,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		Assertions.assertEquals("àïáà±àïáà°àïáà¯", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
 		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
@@ -195,129 +195,128 @@ class BBandGTTests {
 		System.out.println();
 	}
 	
-	// TODO study further and resolve these test (mis-retro-translation ?)
-//	@Test
-//	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto01() {
-//		// TODO 'DP builder' for Genetic Translator
-//		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
-//		Assertions.assertNotNull( forFileContent );
-//		// System.out.println(forFileContent.toString());
-//		
-//		String toEncrypt = "test1 test2 test3";
-//		String encodedFileContent = forFileContent.encode(toEncrypt);
-//		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-//		
-//		Assertions.assertEquals("ctcacgccctatctcaatacagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
-//		
-//		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
-//		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-//		Assertions.assertEquals("10100110111010100110100101011001110101101001101110101001101001010111011101011010011011101010011010010101", binaryEncodedFileContent);
-//		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
-//		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
-//		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
-//		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
-//		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
-//		Assertions.assertEquals("¦êiYÖ©¥wZn¦", binary2txtEncodedFileContent01); // ??
-//		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
-//		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
-//		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
-//		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
-//		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 1);
-//		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
-//		
-//		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
-//		
-//		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
-//		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-//		Assertions.assertEquals(isDecrypted, toEncrypt);
-//		
-//		System.out.println();
-//	}
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto01() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
+		Assertions.assertNotNull( forFileContent );
+		// System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test1 test2 test3";
+		String encodedFileContent = forFileContent.encode(toEncrypt);
+		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("ctcacgccctatctcaatacagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
+		
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
+		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		Assertions.assertEquals("1000100110111010100001001000100101000110011101011000100110111010100001001000100101000111011101011000100110111010100001001000100101000100", binaryEncodedFileContent);
+		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
+		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
+		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
+		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
+		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
+		Assertions.assertEquals("ºFuºGuºD", binary2txtEncodedFileContent01); // ??
+		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
+		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
+		System.out.println( "prettyBinary begin: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
+		System.out.println( "prettyBinary end--: [" + BinaryConversion.prettyBinary(txt2binaryEncodedFileContent, 8, " ") + "]");
+		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
+		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 3);
+		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
 	
-	// TODO study further and resolve these test (length of binary not multiple of 8)
-//	@Test
-//	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto21() {
-//		// TODO 'DP builder' for Genetic Translator
-//		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(2); // NOTE '2' here !!
-//		Assertions.assertNotNull( forFileContent );
-//		// System.out.println(forFileContent.toString());
-//		
-//		String toEncrypt = "test1 test2 test3";
-//		String encodedFileContent = forFileContent.encode(toEncrypt);
-//		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-//		
-//		Assertions.assertEquals("cgctctcgcggacgctatgaagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
-//		
-//		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
-//		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-//		Assertions.assertEquals("10111010101110111101101110011101011101011011101010111011110110111001100111010110111010101110111101101110011011", binaryEncodedFileContent);
-//		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
-//		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
-//		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
-//		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
-//		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
-//		Assertions.assertEquals("º»Ûuº»ÛÖêïn", binary2txtEncodedFileContent01); // ??
-//		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
-//		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
-//		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
-//		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
-//		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 1);
-//		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
-//		
-//		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
-//		
-//		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
-//		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-//		Assertions.assertEquals(isDecrypted, toEncrypt);
-//		
-//		System.out.println();
-//	}
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto21() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(2); // NOTE '2' here !!
+		Assertions.assertNotNull( forFileContent );
+		// System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test1 test2 test3";
+		String encodedFileContent = forFileContent.encode(toEncrypt);
+		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("cgctctcgcggacgctatgaagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
+		
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
+		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		Assertions.assertEquals("1011100010001011101111011011100001001101011101011011100010001011101111011011100001001000011101011011100010001011101111011011100001001011", binaryEncodedFileContent);
+		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
+		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
+		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
+		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
+		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
+		Assertions.assertEquals("¸½¸Mu¸½¸Hu¸½¸K", binary2txtEncodedFileContent01); // ??
+		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
+		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
+		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
+		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 3);
+		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
 	
-	// TODO study further and resolve these test (length of binary not multiple of 8)
-//	@Test
-//	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto31() {
-//		// TODO 'DP builder' for Genetic Translator
-//		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(3); // NOTE '3' here !!
-//		Assertions.assertNotNull( forFileContent );
-//		// System.out.println(forFileContent.toString());
-//		
-//		String toEncrypt = "test1 test2 test3";
-//		String encodedFileContent = forFileContent.encode(toEncrypt);
-//		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-//		
-//		Assertions.assertEquals("tgaatgtttgactgaagtacgcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
-//		
-//		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
-//		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-//		Assertions.assertEquals("11010111110110110101110110111011101101011111011011010111010111101110110101111101101101011111", binaryEncodedFileContent);
-//		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
-//		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
-//		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
-//		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
-//		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-//		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
-//		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
-//		Assertions.assertEquals("×Û]»µö×^í}µ", binary2txtEncodedFileContent01); // ??
-//		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
-//		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
-//		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
-//		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
-//		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 1);
-//		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
-//		
-//		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
-//		
-//		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
-//		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-//		Assertions.assertEquals(isDecrypted, toEncrypt);
-//		
-//		System.out.println();
-//	}
+	@Test
+	void testGeneticTranslatorMoreTestsEncodeSimple2txtCrypto31() {
+		// TODO 'DP builder' for Genetic Translator
+		GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(3); // NOTE '3' here !!
+		Assertions.assertNotNull( forFileContent );
+		// System.out.println(forFileContent.toString());
+		
+		String toEncrypt = "test1 test2 test3";
+		String encodedFileContent = forFileContent.encode(toEncrypt);
+		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
+		
+		Assertions.assertEquals("tgaatgtttgactgaagtacgcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
+		
+		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
+		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		Assertions.assertEquals("0011010100110000001101100011010111000110111011100011010100110000001101100011010111000101111011100011010100110000001101100011010111110000", binaryEncodedFileContent);
+		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
+		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
+		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
+		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
+		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
+		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
+		Assertions.assertEquals("5065Æî5065Åî5065ð", binary2txtEncodedFileContent01); // ??
+		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
+		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
+		Assertions.assertEquals(binaryEncodedFileContent.length(), txt2binaryEncodedFileContent.length());
+		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
+		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent, 3);
+		System.out.println("decodedBinaryEncodedFileContent: [" + decodedBinaryEncodedFileContent + "]");
+		
+		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
+		
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
+		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
+		Assertions.assertEquals(isDecrypted, toEncrypt);
+		
+		System.out.println();
+	}
 	
 	@Test
 	void testGeneticTranslatorMoreTestsEncodeMore() {
@@ -370,10 +369,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("test test2 test3", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -413,10 +412,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("gvhg gvhg7 gvhg6", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -456,10 +455,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("àïáààïáà°àïáà¯", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -529,10 +528,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("test test2 test3", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -572,10 +571,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("gvhg gvhg7 gvhg6", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -615,10 +614,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("àïáààïáà°àïáà¯", binary2txtEncodedFileContent01); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -681,10 +680,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("test test2 test3", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -720,10 +719,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("gvhg gvhg7 gvhg6", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
@@ -759,10 +758,10 @@ class BBandGTTests {
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
 		String binary2txtEncodedFileContent00 = BinaryConversion.convertBinaryToString( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent00 + "]");
+		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent00 + "]");
 		String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii (binaryEncodedFileContent);
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
-		System.out.println("binary2txtEncodedFileContent00: [" + binary2txtEncodedFileContent01 + "]");
+		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
 		Assertions.assertEquals("àïáààïáà°àïáà¯", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
