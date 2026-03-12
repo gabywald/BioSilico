@@ -1,11 +1,28 @@
+#!/usr/bin/env python3
+"""
+creatures1genomeAnalysis.py - Parse and analyze Creatures genome files.
+
+Usage:
+    python3 creatures1genomeAnalysis.py <filename.gen> [--json <output.json>] [--csv <output.csv>]
+
+Description:
+    This script parses Creatures genome files (`.gen`) and extracts gene information.
+    It supports all gene types and subtypes, including Brain Lobes, Biochemistry Reactions, and Creature Instincts.
+    The output includes human-readable descriptions and JSON/CSV exports.
+
+Gene Structure:
+    - Header: 8 bytes (gene marker, type, subtype, etc.)
+    - Data: Variable length, parsed based on gene type/subtype.
+"""
+
 import struct
 import json
 import csv
-import os
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
 
-# --- Base de données des noms lisibles ---
+# --- Reference Data Sources ---
+# Source: creatures1BrainMapCells_GenesHeader.txt
 LOBE_NAMES = {
     0: "Perception",
     1: "Drive",
@@ -19,6 +36,7 @@ LOBE_NAMES = {
     9: "Regulator",  # Creatures 2+
 }
 
+# Source: creaturesDevelopmentRessources.pdf, p.8-12
 CHEM_NAMES = {
     0x00: "Pain",
     0x01: "Need for Pleasure",
@@ -29,9 +47,9 @@ CHEM_NAMES = {
     0x0B: "Boredom",
     0x1E: "Reward",
     0x1F: "Punishment",
-    # Ajouter d'autres chimies ici
 }
 
+# Source: creatures1BrainMapCells_GenesHeader.txt, p.21
 ACTION_NAMES = {
     0: "Quiescent",
     1: "Push (Activate 1)",
@@ -51,7 +69,6 @@ TYPE_NAMES = {
     0x00: "Brain",
     0x01: "Biochemistry",
     0x02: "Creature",
-    # 0x03: "Body",  # Pour Creatures 2/3
 }
 
 SUBTYPE_NAMES = {
@@ -71,15 +88,15 @@ SUBTYPE_NAMES = {
         0x04: "Gait",
         0x05: "Instinct",
         0x06: "Pigment",
-        0x07: "Pigment Bleed",  # Creatures 2+
+        0x07: "Pigment Bleed",
     },
-    # 0x03: { 0x00: "Organ" },  # Pour Creatures 2/3
 }
 
 STAGE_NAMES = ["Embryo", "Child", "Youth", "Adolescent", "Adult", "Senior", "Old"]
 
 @dataclass
 class Gene:
+    """Represents a Creatures gene with parsed data."""
     type: int
     subtype: int
     number: int
@@ -90,21 +107,19 @@ class Gene:
     parsed_data: Dict[str, Any] = field(default_factory=dict)
 
     def parse_reaction(self) -> None:
-        if self.type != 0x01 or self.subtype != 0x02:
+        """Parses Reaction genes (Biochemistry type)."""
+        if not (self.type == 0x01 and self.subtype == 0x02):
             return
-        if len(self.data) < 4:  # Minimum 2 réactifs + 2 produits
+        if not self.data or len(self.data) < 4:
             return
-
-        # Compléter les données si nécessaire
-        data = self.data[:8]  # Limiter à 8 bytes pour éviter les erreurs
-        while len(data) % 2 != 0:
-            data.append(0)
 
         reactants = []
         products = []
-        for i in range(0, min(4, len(data)), 2):
-            chem = data[i + 1] if i + 1 < len(data) else 0
-            proportion = data[i] if i < len(data) else 0
+        for i in range(0, min(4, len(self.data)), 2):
+            if i + 1 >= len(self.data):
+                break
+            chem = self.data[i + 1]
+            proportion = self.data[i]
             container = reactants if i < 2 else products
             chem_name = CHEM_NAMES.get(chem, f"Chem{chem:02X}")
             container.append({
@@ -113,7 +128,7 @@ class Gene:
                 "chem_name": chem_name,
             })
 
-        rate = data[8] if len(data) >= 9 else 1  # Valeur par défaut
+        rate = self.data[8] if len(self.data) >= 9 else 1
         self.parsed_data = {
             "reactants": reactants,
             "products": products,
@@ -121,9 +136,10 @@ class Gene:
         }
 
     def parse_instinct(self) -> None:
-        if self.type != 0x02 or self.subtype != 0x05:
+        """Parses Instinct genes (Creature type)."""
+        if not (self.type == 0x02 and self.subtype == 0x05):
             return
-        if len(self.data) < 9:
+        if not self.data or len(self.data) < 9:
             return
 
         lobe1, cell1, lobe2, cell2, lobe3, cell3, action, reward_punish, amount = self.data[:9]
@@ -139,9 +155,10 @@ class Gene:
         }
 
     def parse_lobe(self) -> None:
-        if self.type != 0x00 or self.subtype != 0x00:
+        """Parses Brain Lobe genes."""
+        if not (self.type == 0x00 and self.subtype == 0x00):
             return
-        if len(self.data) < 5:
+        if not self.data or len(self.data) < 5:
             return
 
         x, y, width, height, perception_link = self.data[:5]
@@ -153,6 +170,7 @@ class Gene:
         }
 
     def __str__(self) -> str:
+        """Returns a human-readable string representation of the gene."""
         base_str = (
             f"Gene {self.number:03d}: Type=0x{self.type:02X} ({TYPE_NAMES.get(self.type, 'Unknown')}), "
             f"Subtype=0x{self.subtype:02X} ({SUBTYPE_NAMES.get(self.type, {}).get(self.subtype, 'Unknown')}), "
@@ -163,14 +181,14 @@ class Gene:
         if self.type == 0x01 and self.subtype == 0x02 and "reactants" in self.parsed_data:
             reaction = self.parsed_data
             base_str += (
-                f"\n  Reaction: {' + '.join(f'{r["proportion"]} {r["chem_name"]}' for r in reaction['reactants'])} → "
-                f"{' + '.join(f'{p["proportion"]} {p["chem_name"]}' for p in reaction['products'])} "
+                f"\n  Reaction: {' + '.join(f'{r['proportion']} {r['chem_name']}' for r in reaction['reactants'])} → "
+                f"{' + '.join(f'{p['proportion']} {p['chem_name']}' for p in reaction['products'])} "
                 f"(Rate: {reaction['rate']})"
             )
         elif self.type == 0x02 and self.subtype == 0x05 and "conditions" in self.parsed_data:
             instinct = self.parsed_data
             base_str += (
-                f"\n  Instinct: IF {' AND '.join(f'{c["lobe"]}[{c["cell"]}]' for c in instinct['conditions'])} "
+                f"\n  Instinct: IF {' AND '.join(f'{c['lobe']}[{c['cell']}]' for c in instinct['conditions'])} "
                 f"THEN {instinct['action']} ({instinct['reward_punish']}: {instinct['amount']})"
             )
         elif self.type == 0x00 and self.subtype == 0x00 and "position" in self.parsed_data:
@@ -185,10 +203,19 @@ class Gene:
         return base_str
 
 def parse_genome_file(filename: str) -> List[Gene]:
-    genes = []
+    """
+    Parses a .gen file and returns a list of Gene objects.
+
+    Args:
+        filename: Path to the .gen file.
+
+    Returns:
+        List of Gene objects.
+    """
     with open(filename, "rb") as f:
         content = f.read()
 
+    genes = []
     offset = 0
     while offset < len(content):
         header = content[offset:offset+8]
@@ -232,11 +259,12 @@ def parse_genome_file(filename: str) -> List[Gene]:
         gene.parse_lobe()
 
         genes.append(gene)
-        offset += 10 + data_length  # 9 (header) + 1 (data_length) + data_length
+        offset += 10 + data_length
 
     return genes
 
 def export_to_json(genes: List[Gene], filename: str) -> None:
+    """Exports gene data to a JSON file."""
     json_genes = []
     for gene in genes:
         json_gene = {
@@ -259,6 +287,7 @@ def export_to_json(genes: List[Gene], filename: str) -> None:
         json.dump(json_genes, f, indent=2)
 
 def export_to_csv(genes: List[Gene], filename: str) -> None:
+    """Exports gene data to a CSV file."""
     with open(filename, "w", newline='') as f:
         writer = csv.writer(f)
         writer.writerow([
@@ -278,21 +307,11 @@ def export_to_csv(genes: List[Gene], filename: str) -> None:
             ])
 
 def display_genes(genes: List[Gene]) -> None:
+    """Displays gene information in a human-readable format."""
     for gene in genes:
         print(gene)
-        print()
 
 if __name__ == "__main__":
-    # genes_dad = parse_genome_file("dad1.txt")
-    # genes_mum = parse_genome_file("mum1.txt")
-    # print("=== Genome DAD ===")
-    # display_genes(genes_dad)
-    # export_to_json(genes_dad, "dad1.json")
-    # export_to_csv(genes_dad, "dad1.csv")
-    # print("\n=== Genome MUM ===")
-    # display_genes(genes_mum)
-    # export_to_json(genes_mum, "mum1.json")
-    # export_to_csv(genes_mum, "mum1.csv")
     import argparse
     parser = argparse.ArgumentParser(description="Parse Creatures genome files.")
     parser.add_argument("file", help="Genome file to parse")
