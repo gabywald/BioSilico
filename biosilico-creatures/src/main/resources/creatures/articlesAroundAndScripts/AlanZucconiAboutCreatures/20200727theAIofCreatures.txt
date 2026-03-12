@@ -1,0 +1,563 @@
+https://www.alanzucconi.com/2020/07/27/the-ai-of-creatures/
+alanzucconi.com
+The AI of Creatures
+Alan Zucconi
+28–35 minutes
+
+This is the complementary article to the short documentary titled “The AI of Creatures“, which provides links, references and resources for you to delve further into the world of Creatures.
+
+Join me as we travel back in time to revisit this old classic that literally made the history of Artificial Intelligence AND Artificial Life.
+
+Back in 1997, my father brought home one issue of “Le Science”, the Italian edition of the popular magazine “Scientific American”. Leafing through the pages, one article in particular caught my attention. It talked about a videogame which dared to do what no other game had done before. I was 11, and little I knew that article was going to change my life.
+
+Creatures is often described as an Artificial Life Simulator. In the game, you have to look after small furry creatures called Norns. Hatching and raising them, until they are self-sufficient. A glorified Tamagotchi on steroids, if that makes sense. But, unlike a Tamagotchi, Norns were alive. Or at least, as close as you could get with an Intel Pentium in 1996. Behind their furry look, the actions of each creature were controlled by a primitive, yet sophisticated neural network. Norns might not have been alive, but they were definitely intelligent.
+
+Ok …perhaps they were neither of those two things. But they could learn. From experience… from each other… and, most importantly, from us. Creatures was designed around the very concepts of empathy and nurturing. Making it the closest experience possible to having a pet. To this date it was, and it still is, an experience unmatched by any other computer game.
+
+But how could, a game that is almost 25 years old, succeed where even modern games are struggling? Please, join me on this journey to discover the AI of Creatures.
+
+🔍 Small Furry Creatures
+
+“Small Furry Creatures” was one of the proposed titles for Creatures. The name was chosen in place of “Little Computer Ewoks“, which felt too derivative. The title originally appeared on an article written by Steve Grand in 1993: Small Furry Creatures: The Mythography.
+
+The Game
+
+The World of Albia
+
+Creature’s secret lies hidden in the complex and interactive ecosystem that it models,
+
+which provides the perfect ground for emergent behaviours. Norns live on Albia, a disk-shaped planet which features a variety of different environments. Caves, Mountains, Islands, Beaches. And the remnants of an ancient civilization which is nowhere to be found.
+
+With a size of 8352×1200 pixels, Albia was about 10 screens wide and 2 screens tall. Below, you can see the full background used in the original Creatures. You can use the mouse to zoom on it. The map also shows features that are normally hidden in the game.
+
+The Agents
+
+Albia is actually static, being little more than a fancy background, but it is filled with dozens of agents: objects that the Norns can interact with for things like food, entertainment and transportation. Each object is a small program in itself, written in an assembly-like language called Creatures Agent Object Script—CAOS, for short.
+
+Creatures is, effectively, an interpreter that executes CAOS code. Which allowed players to customise virtually every aspect of the game.
+
+🔍 CAOS
+
+The CAOS language was very low-level, and seemingly impossible to decypher. This is because the code uses a log of magic numbers, constants which have a specific meaning, but no symbolic representation.
+
+The following CAOS command, for instance, injects the selected creatures with the progesterone (a chemical substance which helps to progress pregnancies):
+
+Plain text
+
+Copy to clipboard
+
+Open code in new window
+
+EnlighterJS 3 Syntax Highlighter
+
+stim writ norn 10 255 0 0 66 255 0 0 0 0 0 0
+
+stim writ norn 10 255 0 0 66 255 0 0 0 0 0 0
+
+stim writ norn 10 255 0 0 66 255 0 0 0 0 0 0
+
+In here, 66 is the magic number that represents progesterone, and the 255 next to it indicates the amount that has to be injected in the creature. The remaining zeros are used to indicate that no other substance should be injected, since the stim writ command injects four chemicals at a time.
+
+The full list of chemical IDs can be found here, but this obviously makes for a rather obscure language.
+
+Below, you can see a proper script that injects in the world a toy Norns can interact with. This script is taken from the Creatures Development Network website, which also provides comments line-by-line.
+
+Plain text
+
+Copy to clipboard
+
+Open code in new window
+
+EnlighterJS 3 Syntax Highlighter
+
+***create the Meerk Toy
+
+inst
+
+*create one under the Norn garden
+
+new: simp 2 21 1000 "Meerk" 0 0 5000
+
+attr 199
+
+clac 0
+
+bhvr 43
+
+accg 3
+
+elas 0
+
+fric 100
+
+pose 59
+
+puhl -1 40 30
+
+mvto 1850 950
+
+cmrt 0
+
+**activate 1 event
+
+scrp 2 21 1000 1
+
+clac 1
+
+stim writ from 97 1
+
+anim [94 95 96 97 98 98 97 96 95 94 255]
+
+sndc "mb_2"
+
+wait 130
+
+pose 59
+
+endm
+
+**activate 2 event
+
+scrp 2 21 1000 2
+
+stim writ from 97 1
+
+anim [22 23 24 25 26 27 28 29 30 31 32 33 59]
+
+setv vely -15
+
+sndc "ct_1"
+
+clac 0
+
+endm
+
+**hit event
+
+scrp 2 21 1000 3
+
+stim writ from 97 1
+
+sndc "hit_"
+
+anim [70 71 72 73 74 75 76 77 78]
+
+over
+
+wait 10
+
+pose 59
+
+endm
+
+**pickup event
+
+scrp 2 21 1000 4
+
+pose 0
+
+endm
+
+**drop event
+
+scrp 2 21 1000 5
+
+pose 59
+
+endm
+
+****REMOVAL
+
+rscr
+
+enum 2 21 1000
+
+kill targ
+
+next
+
+scrx 2 21 1000 1
+
+scrx 2 21 1000 2
+
+scrx 2 21 1000 3
+
+scrx 2 21 1000 4
+
+scrx 2 21 1000 5
+
+***create the Meerk Toy inst *create one under the Norn garden new: simp 2 21 1000 "Meerk" 0 0 5000 attr 199 clac 0 bhvr 43 accg 3 elas 0 fric 100 pose 59 puhl -1 40 30 mvto 1850 950 cmrt 0 **activate 1 event scrp 2 21 1000 1 clac 1 stim writ from 97 1 anim [94 95 96 97 98 98 97 96 95 94 255] sndc "mb_2" wait 130 pose 59 endm **activate 2 event scrp 2 21 1000 2 stim writ from 97 1 anim [22 23 24 25 26 27 28 29 30 31 32 33 59] setv vely -15 sndc "ct_1" clac 0 endm **hit event scrp 2 21 1000 3 stim writ from 97 1 sndc "hit_" anim [70 71 72 73 74 75 76 77 78] over wait 10 pose 59 endm **pickup event scrp 2 21 1000 4 pose 0 endm **drop event scrp 2 21 1000 5 pose 59 endm ****REMOVAL rscr enum 2 21 1000 kill targ next scrx 2 21 1000 1 scrx 2 21 1000 2 scrx 2 21 1000 3 scrx 2 21 1000 4 scrx 2 21 1000 5
+
+***create the Meerk Toy
+inst
+*create one under the Norn garden
+new: simp 2 21 1000 "Meerk" 0 0 5000
+attr 199
+
+clac 0
+
+bhvr 43
+accg 3
+elas 0
+fric 100
+pose 59
+
+puhl -1 40 30
+
+
+mvto 1850 950
+cmrt 0
+
+
+**activate 1 event
+scrp 2 21 1000 1
+    clac 1
+    stim writ from 97 1
+    anim [94 95 96 97 98 98 97 96 95 94 255]
+    sndc "mb_2"
+    wait 130
+    pose 59
+endm
+**activate 2 event
+scrp 2 21 1000 2
+    stim writ from 97 1
+    anim [22 23 24 25 26 27 28 29 30 31 32 33 59]
+    setv vely -15
+    sndc "ct_1"
+    clac 0
+endm
+**hit event
+scrp 2 21 1000 3
+        stim writ from 97 1
+    sndc "hit_"
+    anim [70 71 72 73 74 75 76 77 78]
+    over
+    wait 10
+    pose 59
+endm
+**pickup event
+scrp 2 21 1000 4
+    pose 0
+endm
+**drop event
+scrp 2 21 1000 5
+    pose 59
+endm
+
+
+****REMOVAL
+rscr
+enum 2 21 1000
+    kill targ
+next
+scrx 2 21 1000 1
+scrx 2 21 1000 2
+scrx 2 21 1000 3
+scrx 2 21 1000 4
+scrx 2 21 1000 5
+
+Creatures Caves is currently one of the few places still available where you can learn how to code in the CAOS language.
+The Creatures
+
+The world of Albia is also inhabited by two main species of creatures: the furry Norns and the vicious Grendels. The game gives life to these creatures by simulating three of the most fundamental processes that keep us alive.
+
+The vital signs of each creature are controlled by a complex network of chemical reactions, which simulate processes like breathing, eating, and everything in between.
+
+Within the game, the “Biochemistry” tab of the “Science Kit” offers a chance to peek inside a creature’s bloodstream.
+
+Every action a creature does is decided by a self-organising neural network,
+which is constantly rewiring itself based on the rewards—and punishments—that are being received.
+
+And all of this, is constructed from a series of instructions, which serve as a digital equivalent of our DNA. Norns can mate with each other, transmitting their physical, biochemical and behavioural traits to their offspring. This is ultimately what allows for real evolution to take place in the small, simulated world of Albia.
+
+The original Creatures shipped with three breeds of Norns.
+The Player
+
+Finally, the last entity that plays a role in Creatures is the player. Your hand does more than just interacting with the creatures. Your direct actions can promote—or discourage—Norns from doing certain actions, effectively training their neural networks to follow your rules.
+The Brain
+
+Creatures was so technically advanced that you could literally talk to your Norns, and they could talk back to you. But how could, a game developed in 1996, achieve so much …with so little computational power available?
+
+First-generation Norns are controlled by what we would call today a four-layer neural network, consisting of 952 neurons and around 5000 connections between them.
+These neurons are organised in 9 functionally distinct groups, which Creatures called “lobes”, to mirror the terminology used to study and classify actual brains (below).
+
+You can have a closer look at a creature’s brain using this spreadsheet: Brain Structure.
+
+In the game, each creature can perform 11 actions such as moving left, moving right, stopping, sleeping and speaking. All of the others (like pushing and pulling) require an object instead. The behaviour of every creature is then defined by two pieces of information: which action to perform, and which object to perform it onto.
+
+This is reflected in their brain structure, which has two lobes called “Decision” and “Attention”. Respectively, they choose which action to take, and which object the creature has focused their attention onto.
+
+The Decision lobe has a neuron associated with each action that can be performed.
+At any given time, a creature is performing the action associated with the neuron that has the highest value. This behaviour is called “Winner Takes All”, since only the strongest neuron in the lobe is the one that will ultimately determine which action the creature is doing.
+
+🔍 Actions
+#	Actions	Description
+0	Quiescent	
+1	Push / Activate 1	push food: eat push norn: sex push vehicle: go left push lift: go up
+2	Pull / Activate 2	push norn: sex push vehicle: go right push lift: go down
+3	Stop / Deactivate	
+4	Come	Approach the target
+5	Run	Retreat from the target
+6	Get	
+7	Drop	
+8	Think / Say	Speaks
+9	Sleep	
+10	Left	
+11	Right	
+12	unused	
+13	unused	
+14	unused	
+15	unused	
+
+The Attention lobe, instead, has 40 neurons, enough to represent the 26 categories of objects in the game. The neuron with the highest value determines which object the creature will be focused on.
+
+🔍 Object classes
+#	Object classes	Description
+0	Current Norn	
+1	Hand	
+2	Call button	
+3	Water	
+4	Plant	
+5	Egg	Creature eggs
+6	Food	
+7	Drink	
+8	Vendor	
+9	Music / Instrument	
+10	Animal	
+11	Fire	
+12	Shower / Shooting	
+13	Toy	Small toys that can be carried around
+14	Big toy	Large toys that cannot be carried around
+15	Weed	
+16	Incubator	
+17	unused	
+18	unused	
+19	unused	
+20	unused	
+21	unused	
+22	unused	
+23	unused	
+24	unused	
+25	unused	
+26	Mover / Vehicle	
+27	Lift	
+28	Computer	
+29	Fun	The A/V projector
+30	Bang	Guns and cannons
+31	unused	
+32	unused	
+33	unused	
+34	unused	
+35	unused	
+36	Norn	
+37	Grendel	
+38	Ettin	
+39	Shee	Unused in the original Creatures Sometimes referred to as “Geat”
+
+For instance, if the decision is “push” and the attention is on “food”, the creature will eat the closest piece of food. Yes, pushing food in Creatures is how you eat it.
+
+Deciding which object the creature is interested in is relatively easy to calculate. Each neuron in the “Attention” lobe (and, consequently, each class of object the creature can interact with) is connected to the “Stimulus Source” and the “Noun” lobes.
+
+Like the “Attention” lobe, they both have 40 neurons each, which maps again onto the types of objects available in the game. Neurons in the “Stimulus Source” lobe fire up based on which objects are being seen by the creature. If a creature sees a toy, the neuron associated with the concept of “toy” will increase its activity. And if the toy is making a sound, its neuron will be even more active.
+
+Neurons in the “Noun” lobe, instead, activate when the player is typing the name of an object. Typing “push toy”, for instance, will cause the neuron associated with “toy” in the “Noun” lobe to fire up.
+
+This allows some control over which object a creature will act upon, regardless of how interesting it is. Both the “Stimulus Source” and the “Noun” lobes operate on a “Winner Takes All” policy. Meaning that at any given time, only the most attractive object and the most recent spoken word are being considered.
+
+The “Attention” lobe sums up the results from the “Stimulus Source” and “Noun” lobes (below).
+The neuron with the highest response will determine which class of object the creature is looking at.
+
+In the same way the “Attention” lobe determines what class of object a creature is looking at, the “Decision” lobe determines which actions to take. Each neuron corresponds to an action the creature can perform, such as going left, going right, speaking, pushing, pulling, and so on. Every second or so, the neuron with the highest value determines which action the creature performs.
+
+Each neuron has 256 connections, from as many neurons in the “Concept” lobe (below). You can imagine neurons in the concept lobe as “situations” the creature can be in. Out of the 256 connections each “Decision” neuron can receive, 128 of these will contribute positively towards the action it represents, suggesting it is the right thing to do.
+
+The other 128 will contribute negatively, discouraging the creature from performing a certain action in the situation they represent. The “Concept” Lobe is not only the biggest lobe, but also the most complex. Each neuron receives inputs from one to three other neurons in the “Perception” lobe.
+
+Intuitively, its neurons fire up when certain situations occur. For instance, a specific neuron could represent the condition “I am hungry and food is near me”. The concept lobe is, essentially, a collection of “perceptible things”.
+
+Each neuron is in fact connected to the “Perception” lobe, which contains all of the inputs (“the perceptions”) that a creature can use for their decision making.
+
+In reality, the perception lobe is nothing more than a container for the “Drive”, the “Verb”, the “General Sense” and the “Attention” lobes. This was necessary because, due to technical limitations, a lobe could only be connected to two other lobes. Copying the values of four lobes into a new one, allowed to overcome this limitation and to connect all of them to the “Concept” lobe.
+
+The “Drive” lobe has 16 neurons, 13 of which are used to indicate the physical and emotional state of a creature. Its neurons map drives such as “pain”, “hotness”, “coldness”, “hunger”, “fear” and so on, which mirrors the creature’s chemical reactions in their body.
+
+🔍 Drive Neurons
+#	Drive	Description
+0	Pain	
+1	Need for Pleasure	Boredom
+2	Hunger	
+3	Coldness	
+4	Hotness	
+5	Tiredness	
+6	Sleepiness	
+7	Loneliness	
+8	Overcrowdedness	
+9	Fear	
+10	Boredom	
+11	Anger	
+12	Sexdrive	
+13	unused	
+14	unused	
+15	unused	
+
+Similarly, the “General Sense” lobe is used for specific events such as being patted, being slapped and bumping into a wall. Some neurons also activate based on properties of the object the creature is interested on (whether is active or not, for instance) and, if they are watching another creature, they can also tell if it is of the same species and whether or not it is their parent, child or sibling.
+
+🔍 General Sense Neurons
+#	General Sense	Description
+0	I’ve been patted	
+1	I’ve been slapped	
+2	I’ve bumped into a wall	
+3	I am near a wall	
+4	I am in a vehicle	
+5	User has spoken	
+6	Creature has spoken	
+7	Own kind has spoken	
+8	Audible event	
+9	Visible event	
+10	It is approaching	Referred to current target
+11	It is retreating	Referred to current target
+12	It is near me	Referred to current target
+13	It is active	Referred to current target
+14	It is an object	Referred to current target
+15	It is a creature	Referred to current target
+16	It is my sibling	Referred to current target, if creature
+17	It is my parent	Referred to current target, if creature
+18	It is my child	Referred to current target, if creature
+19	It is opposite sex	Referred to current target, if creature
+20	unused	
+21	unused	
+22	unused	
+23	unused	
+24	unused	
+25	unused	
+26	unused	
+27	unused	
+28	unused	
+29	unused	
+30	unused	
+31	unused	
+
+The “Verb” lobe works in the exact same way the “Noun” lobe does, activating when the user is typing certain verbs. This is once again done so that the player can have some influence over the decision-making process of the creature.
+
+Interestingly, the “Attention” lobe is used both as output and input. Because its values are calculated using the “Stimulus Source” and “Noun” lobes, the “Perception” lobe effectively summarises all of the information a creature receives—both from their surrounding and their body.
+
+It should now be clear why the neurons in the concept lobe represent “situations” the creature can find themself in. For instance, if we connect the “Hunger” neuron from the Drive lobe, the “Food” neuron from the Attention lobe, and the “It is near me” neuron from the “General Sense” lobe, we can represent a scenario in which the creature is hungry and is looking at a piece of food that is within reaching distance (below).
+
+In a well-trained brain, this neuron should strongly contribute to the “push” action
+since “pushing food” is how creatures eat food, in case you forgot!
+
+The original genome also poses some constraints on how connections from the perception to the “Concept” lobe can form. For instance, out of the three connections, only one drive and one verb can be used. You cannot have a single “Concept” neuron indicating that the creature is both “hungry” and “bored”.
+
+This is likely because Creatures models feelings such as “hotness” and “coldness” as two separate drives. And ensuring that only one drive could be linked to each “Concept” neuron avoids a lot of situations that would otherwise be impossible to occur.
+
+🔍 The Genetics Kit
+
+In its first release, the genome of a creature could only be changed through natural evolution. Cyberlife, the company that published the game, later released an external software that allowed full control over a creature’s genome. This included the possibility of editing the brain structure, since that is encoded directly in each Norn’s DNA.
+
+The Genetics Kit is currently available thanks to the Wayback Machine, on an archived page of the now-defunct Creatures Development Network website. You can download the Genetics Kit here, and activating it using Gameware as the username and
+100-4492O-1234U-WI as the licence key. Similar versions are available for Creatures 2 and Creatures 3/Docking Station.
+The Learning
+
+It is undeniable that the idea of arranging the lobes in the shape of a human brain was rather unfortunate. If we rearrange them “properly”, it is much easier to understand not only how a Norn’s brain works, but also how closely it resembles a modern neural network (below).
+
+With everything that has been said so far, it should be clear that the “intelligence” of a creature really depends on how their perception, concept and decision lobes are wired.
+
+Yet, when a creature is born, those connections are initialised randomly, leaving up to them to learn the best way to form memories and to use them to their advantage.
+Not only was Creatures the first popular game to heavily feature Artificial Life and Artificial Intelligence; it was also the first to rely on Machine Learning.
+
+If any Machine Learning practitioner were to recreate a Norn’s brain with today’s knowledge and technology, it would make sense to have the lobes fully connected with each other. That means that each neuron in the “Decision” lobe, for instance, wouldn’t be connected to just 256 other neurons from the “Concept” lobe. It would be connected to all of them.
+
+Even something as small as a Norn’s brain, with its 952 neurons, would require over a million connections. While that may sound a large number, it is a fairly small amount for today’s neural networks. For comparison, that could be the number of connections that you would need to classify hand-written digits from the MNIST dataset using the most vanilla approach possible.
+
+Yet, that was an impossibly large number back in 1996.
+
+Steve Grand, the creator of Creatures (pictured below), wrote in one of his papers that “the total number of cells that would be required to represent all possible sensory permutations of up to four inputs is unfeasibly large.”
+
+Out of those one million potential connections, Creatures could only afford 5000. Steve Grand found a way to ensure that only the most relevant 5000 connections would actually be stored in a creature’s brain.
+
+To do so, he designed a system based on three mechanisms: reinforcement, atrophy and migration. Each connection has a “strength”, that represents how useful that connection has been. Every time a creature does something good, they get rewarded and this strengthens the connection.
+
+For instance, if the creature is eating food while hungry, the connections that led to such an action will get stronger, as the “hunger” drive has been satisfied. On the contrary, if an action puts the creature in danger, the connections responsible will get weakened over time.
+For instance, if a Norn is scared and decides to approach a grendel, their “fear” drive will worsen, weakening the connections that have caused such a poor decision.
+
+Over time, that connection will get so weak that it will detach itself and reattach to another neuron. This leads to the formation of neural circuits that are relevant to the creature’s survival skill in their current environment.
+
+While not ideal, this solution is clever, is efficient, and it encourages the network to actually store only the memories that are relevant to survive. In modern terms, we would say that these limitations force the network to learn a “sparse representation” of the world.
+The Instincts
+
+There is one final, missing piece that we need, to really understand how a Norn’s brain works. The learning mechanism relies on rewards and punishments that need to be administered after every action. Without those constant inputs, it might not be obvious if an action was “good” or “bad”. Yet, expecting the player to manually reward or punish a creature after every action would make for a rather tedious game.
+
+Creatures solved this problem by introducing “instincts”. They are specific genes designed to trigger rewards or punishments when specific conditions are met.
+
+First-generation Norns are genetically engineered to have 19 basic instincts.
+11 are used to reward them when they perform the action requested by the player,
+2 are used to encourage courtship and mating—literally pushing and pulling—
+and the rest are used to eat when hungry to avoid overcrowded spaces, to sleep when tired and finally, to push, pull and wander around when bored. These provide a basic, yet sufficient set of skills to survive. Creatures 2 will further expand the list, from 19 to 44.
+
+🔍 Instinct List
+#	Instinct	Description
+1	verb act1	Pushing when the player says “push”
+2	verb act2	Pulling when the player says “pull”
+3	verb come	Approaching when the player says “come”
+4	Move when bored	
+5	Rest when tired	
+6	Act1 when bored	Pushing objects when bored
+7	Act2 when bored	Pulling objects when bored
+8	Mating instinct (M)	Male Norns push female Norns to mate
+9	Mating instinct (M)	Male Norns pull female Norns to court
+10	verb deac	Stopping when the player says “stop”
+11	verb run	Running away when the player says “run”
+12	verb get	Getting an object when the player says “get”
+13	verb drop	Dropping an object when the player says “drop”
+14	verb how?	Speaking when the player says “think”
+15	verb rest	Resting when the player says “rest”
+16	verb west	Going left when the player says “left”
+17	verb east	Going right when the player says “right”
+18	avoid overcrowding	Running from overcrowded spaces
+19	eat food	Eating food when hungry
+
+🔍 Instincts
+
+The image below shows the “verb come” instinct, as seen from the Genetics Kit. The purpose of this instinct is to encourage creatures to approach the object they are looking at, when the player is saying the word “come”.
+
+Instincts are effects (typically rewards and punishments) that happen when a combination of neurons are active, and the creature is performing a certain action. In the example below, the “Approach it” neuron of the Verb lobe must be active (meaning that the player has spoken the word “come”), and the creature is performing the action of approaching the target they are looking at.
+
+Technically speaking, instincts can inject into the creature any chemical. But typically, only “Reward” and “Punish” (the two chemicals involved in the learning process) are used.
+
+Conversely to what the name suggests, instincts do not directly reward or punish creatures when an action is performed. They are processed while creatures sleep. This is supposed to strengthen the “right” connections, and to weaken the “wrong” ones.
+
+And on top of that, each neuron does more than simply relaying input signals. Its internal state is computed via a genetically defined function called a “State-Variable Rule”. These rules decide how neurons process inputs, and precede a damping mechanism that simulates how electric signals propagate through real neurons.
+
+🔍 State-Variable Rules
+
+The State-Variable Rules, often shortened as SV-Rules, are a simple language used by Creatures to define how neurons are updated.
+
+In the original Creatures, Neurons can have receive connections from two lobes at most. These were referred to as class 0 (D0) and class 1 (D1), where the “D” stands for dendrites. The SV-Rules indicate how data from the D0 and D1 connections is used.
+
+A very simple example can be seen in the Concept lobe, which received input from the Perception lobe only. As such, only D0 connections are available. The SV-Rule used is anded 0:, which means that each Concept neuron gets activated only if all of its connected neurons are activated as well (anded stands for AND operator).
+
+The Decision lobe is connected to the Perception lobe twice. This means that each Decision neuron can receive a number of D0 and D1 connections. Typically, each neuron has 128 connection of each type. The SV-Rule calculates the state of each Decision neuron as the total of all the inputs received from the D0 connections, minus the total of all the inputs received from the D1 connections: state:PLUS:type 0:MINUS:type 1:. The SV-Rule also includes state, which adds the current state of the neuron as well. This leads to more temporally consistent behaviours.
+
+There is so much more to say about the AI of Creatures, that a single video is simply not enough. Steve Grand, the creator of Creatures, introduced the game to the scientific community at the “First International Conference on Autonomous Agents” in 1997.
+That paper, titled Creatures: Artificial Life Autonomous Software Agents for Home Entertainment, is a good starting point if you want to know how hard Creatures really tries not just to simulate life but to create life itself.
+
+But even with the hundreds of articles that have been written about the game, a lot of knowledge on how Creatures works has been lost, and is slowly being rediscovered by its community, piece by piece.
+The End
+
+During the 5 years that followed its original release, Norns were re-designed and re-engineered several times. Dozens of new species were created and sold online. And hundreds more were selectively bred or even genetically engineered by the most committed players.
+
+By late 1998, tens of millions of Norns were estimated to be born, in what was likely the largest, international Artificial Life experiment. And even so, many have been sceptical about such an achievement. Back in 1998, Richard Dawkins said that “while the Norns interact with human beings in an interesting way, they are more a cunning illusion than living beings.”
+
+Perhaps Norns were never really alive. But they were nonetheless real. And real were the stories and emotions that they gave us.
+
+“In the end, it doesn’t matter—wrote the magazine Next Generation in 1997—Some will doubtless find the appeal elusive, but Creatures still offers one of the most obsessive and entertaining experiences anyone can have in front of the computer.“
+
+So what happened to them? What happened to all of those Norns around the world?
+
+Between 1996 and 2001, the Creatures series had three major releases, one expansion and two children’s games. “Docking Station”, the latest addition to be released, connected all players’ worlds via portals. Portals that the creatures themselves could use freely, travelling from world to world, across the Internet.
+
+Around March 2003 Creature Labs, the company that had developed Creatures, was shut down. And a few years later, even the server that allowed creatures to warp between players followed the same fate.
+
+Dozens, perhaps hundreds of millions of Norns have born, grown up and died. And, like the Norn themselves, the community of people playing Creatures managed to evolve and to somehow survive beyond the end of the franchise. In the end, Creatures’ biggest achievement was not creating artificial life—which undoubtedly it didn’t—it was inspiring an entire generation of young minds who have turned to science because they played Creatures.
+
+What is certain, is that since its original release, no other game has even dared to get as close to Artificial Life as Creatures did. And almost 25 years later, there is still a very active online community that keeps looking after those small, furry creatures called Norns.
