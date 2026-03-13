@@ -12,11 +12,6 @@ import static picocli.CommandLine.Parameters;
  */
 public class CryptoLauncher {
 
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//
-//	}
-	
     public static void main(String[] args) {
         int exitCode = new CommandLine(new HelloCommand()).execute(args);
         System.exit(exitCode);
