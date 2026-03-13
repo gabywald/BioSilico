@@ -47,12 +47,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
@@ -77,12 +79,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaatacagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("0111010001100101011100110111010000110001001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -120,12 +124,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("cgctctcgcggacgctatgaagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("0110011101110110011010000110011100111000001000000110011101110110011010000110011100110111001000000110011101110110011010000110011100110110", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -163,12 +169,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("tgaatgtttgactgaagtacgcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("1110000011101111111000011110000010110001100110011110000011101111111000011110000010110000100110011110000011101111111000011110000010101111", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -205,11 +213,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaatacagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("1000100110111010100001001000100101000110011101011000100110111010100001001000100101000111011101011000100110111010100001001000100101000100", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
@@ -247,11 +258,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("cgctctcgcggacgctatgaagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("1011100010001011101111011011100001001101011101011011100010001011101111011011100001001000011101011011100010001011101111011011100001001011", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
@@ -287,11 +301,14 @@ class BBandGTTests {
 		String toEncrypt = "test1 test2 test3";
 		String encodedFileContent = forFileContent.encode(toEncrypt);
 		System.out.println("encodedFileContent: [" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("tgaatgtttgactgaagtacgcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent, 1);
 		System.out.println("binaryEncodedFileContent: [" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("0011010100110000001101100011010111000110111011100011010100110000001101100011010111000101111011100011010100110000001101100011010111110000", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
@@ -328,12 +345,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
@@ -358,12 +377,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -401,12 +422,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("cgctctcgcggacgctagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01100111011101100110100001100111001000000110011101110110011010000110011100110111001000000110011101110110011010000110011100110110", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -444,12 +467,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeMore(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("tgaatgtttgactgaagcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("11100000111011111110000111100000100110011110000011101111111000011110000010110000100110011110000011101111111000011110000010101111", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -487,12 +512,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
@@ -517,12 +544,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("ctcacgccctatctcaagaactcacgccctatctcaatagagaactcacgccctatctcaatat", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -560,12 +589,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("cgctctcgcggacgctagaacgctctcgcggacgctatctagaacgctctcgcggacgctatcg", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("01100111011101100110100001100111001000000110011101110110011010000110011100110111001000000110011101110110011010000110011100110110", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -603,12 +634,14 @@ class BBandGTTests {
 		String toEncrypt = "test test2 test3";
 		String encodedFileContent = forFileContent.encodeRand(toEncrypt);
 		System.out.println("[" + encodedFileContent + "]");
-		
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		Assertions.assertEquals("tgaatgtttgactgaagcgctgaatgtttgactgaagtaagcgctgaatgtttgactgaaggtt", encodedFileContent);
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
-		
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		Assertions.assertEquals("11100000111011111110000111100000100110011110000011101111111000011110000010110000100110011110000011101111111000011110000010101111", binaryEncodedFileContent);
 		
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
@@ -647,9 +680,13 @@ class BBandGTTests {
 		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		// Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		// Assertions.assertEquals("111110010111010001100101011100110111010000100000011101000110010101110011011101000011001000100000011101000110010101110011011101000011001111111111", binaryEncodedFileContent);
 		String decodedBinaryEncodedFileContent = BinaryConversion.binary2sequence(binaryEncodedFileContent);
 		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
@@ -673,9 +710,13 @@ class BBandGTTests {
 		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		// Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		// Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
@@ -712,9 +753,13 @@ class BBandGTTests {
 		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		// Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		// Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
@@ -751,9 +796,13 @@ class BBandGTTests {
 		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
+		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
+		// Assertions.assertEquals(toEncrypt.length() * 4, encodedFileContent.length()); // because 4-uplets
 		
 		String binaryEncodedFileContent = BinaryConversion.sequence2binary(encodedFileContent);
 		System.out.println("[" + binaryEncodedFileContent + "]");
+		System.out.println("[" + binaryEncodedFileContent.length()+ "] ; [" + encodedFileContent.length() + "]");
+		Assertions.assertEquals(encodedFileContent.length() * 2, binaryEncodedFileContent.length());
 		// Assertions.assertEquals("01110100011001010111001101110100001000000111010001100101011100110111010000110010001000000111010001100101011100110111010000110011", binaryEncodedFileContent);
 		System.out.println( "prettyBinary: [" + BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") + "]" );
 		// String binary2txtEncodedFileContent = BinaryConversion.convertBinaryToString(binaryEncodedFileContent);
