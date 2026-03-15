@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -23,8 +24,7 @@ import java.util.regex.Pattern;
 /**
  * This class to ensure a generic file format use.
  * <br>Overload of original {@linkplain java.io.File} to ensure a "real file" Object. 
- * @author St&eacute;fan Engelen (2006)
- * @author Gabriel Chandesris (2008-2010)
+ * @author Gabriel Chandesris (2008-2010, 2026)
  * @see Directory
  */
 @SuppressWarnings("serial")
@@ -238,7 +238,19 @@ public class File extends Directory {
 		this.champs = new ArrayList<String>();
 		BufferedReader br 	= null;
 		try {
-			br = new BufferedReader(new InputStreamReader( PropertiesLoader.openResource( this.getDirName() + this.fileName )));
+			InputStream in = PropertiesLoader.openResource( this.getDirName() + this.fileName );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "FILE TO LOAD: {" + this.getDirName() + this.fileName + "}");
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "INPUT STREAM IS '" + in + "'");
+			if (in == null) {
+				Logger.printlnLog(LoggerLevel.LL_ERROR, "FILE TO LOAD: {" + this.getDirName() + this.fileName + "}");
+				Logger.printlnLog(LoggerLevel.LL_ERROR, "INPUT STREAM IS '" + in + "'");
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getName() );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getResource("").toString() );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, "PATH: " + this.getClass().getClassLoader().getResource(".").getPath() );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, "RSCS: " + this.getClass().getClassLoader().getResource(".").toString() );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG, "[" + DataFileHelper.isInIDEorNot() + "]" );
+			}
+			br = new BufferedReader(new InputStreamReader( in ));
 			String line = "";
 			while ( (line = br.readLine()) != null )
 				{ this.addToChamps(line); }

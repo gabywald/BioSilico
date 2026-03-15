@@ -4,7 +4,7 @@ import gabywald.global.data.DataFile;
 
 /**
  * 
- * @author Gabriel Chandesris (2012, 2022)
+ * @author Gabriel Chandesris (2012, 2022, 2026)
  */
 @SuppressWarnings("serial")
 public class GeneratorDataFile extends DataFile {
@@ -16,7 +16,7 @@ public class GeneratorDataFile extends DataFile {
 	};
 	
 	public GeneratorDataFile(String name) 
-		{ super(GeneratorDataFile.DEFAULT_DIRECTORY + name); }
+		{ super("GENERATOR_DATA_TYPE", GeneratorDataFile.DEFAULT_DIRECTORY + name); }
 
 	@Override
 	public String getDefaultDirectory() 

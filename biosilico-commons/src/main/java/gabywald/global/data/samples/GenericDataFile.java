@@ -17,7 +17,8 @@ public class GenericDataFile extends DataFile {
 	};
 
 	private GenericDataFile(String name) 
-		{ super(GenericDataFile.DEFAULT_DIRECTORY + name); }
+		{ super("GENERIC_DATA_TYPE", GenericDataFile.DEFAULT_DIRECTORY + name); }
+	
 	
 	@Override
 	public String getDefaultDirectory() 

@@ -11,11 +11,11 @@ Some parts where done in Java 1.4 (before the Generics of Java 1.5) ! Some revie
 More review were also done to get an "AntHill Example" (Ants and Plant in a small environment) in July to September 2020. [note at September 1st, 2020] On this part and topic, more developments and tests done from September 2021 to [February 2022]. 
 
 ## NOTE For Dev Configuration
-  - Eclipse 2020
+  - Eclipse (2020, 2025...)
   - Java 8
   - Maven 3
  
-OS used : Ubuntu 20.04
+OS used : Ubuntu 24.04
 For elements in python, version used is 3.8
 For elements in Perl, version used is 5.30.0 
 
@@ -281,9 +281,11 @@ Some exploration of Creatures Game series
 
 ...
 
-### 'biosilico-commons' : Common resources. 
+### 'biosilico-commons' & 'biosilico-commonsutilities' : Common resources. 
 
 Some utils. Data (File, Directory, Filter), Structures, View... 
+
+NOTE : parts to be reviewed and some parts to be externalized !!
 
 ### 'biosilico-crypto' : Ciphering ideas and some ressources. 
 

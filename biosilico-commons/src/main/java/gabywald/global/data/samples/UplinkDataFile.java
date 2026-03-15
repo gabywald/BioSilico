@@ -4,7 +4,7 @@ import gabywald.global.data.DataFile;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2022)
+ * @author Gabriel Chandesris (2011, 2022, 2026)
  */
 @SuppressWarnings("serial")
 public class UplinkDataFile extends DataFile {
@@ -18,7 +18,7 @@ public class UplinkDataFile extends DataFile {
 	};
 
 	private UplinkDataFile(String name) 
-		{ super(UplinkDataFile.DEFAULT_DIRECTORY+name); }
+		{ super("UPLINK_DATA_TYPE", UplinkDataFile.DEFAULT_DIRECTORY+name); }
 	
 	@Override
 	public String getDefaultDirectory() 

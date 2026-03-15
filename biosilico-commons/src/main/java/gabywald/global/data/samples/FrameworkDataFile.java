@@ -4,7 +4,7 @@ import gabywald.global.data.DataFile;
 
 /**
  * 
- * @author Gabriel Chandesris (2012, 2022)
+ * @author Gabriel Chandesris (2012, 2022, 2026)
  */
 @SuppressWarnings("serial")
 public class FrameworkDataFile extends DataFile {
@@ -14,7 +14,7 @@ public class FrameworkDataFile extends DataFile {
 	};
 
 	public FrameworkDataFile(String name) 
-		{ super(FrameworkDataFile.DEFAULT_DIRECTORY+name); }
+		{ super("FRAMEWORK_DATA_TYPE", FrameworkDataFile.DEFAULT_DIRECTORY+name); }
 	
 	@Override
 	public String getDefaultDirectory() 

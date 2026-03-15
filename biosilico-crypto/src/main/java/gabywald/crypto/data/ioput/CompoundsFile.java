@@ -14,7 +14,7 @@ import gabywald.global.exceptions.DataException;
 
 /**
  * This class defines a File and loading for Compounds. 
- * @author Gabriel Chandesris (2011, 2025)
+ * @author Gabriel Chandesris (2011, 2025, 2026)
  */
 @SuppressWarnings("serial")
 public class CompoundsFile extends File {
@@ -35,7 +35,7 @@ public class CompoundsFile extends File {
 	private List<Molecule> compounds;
 	
 	private CompoundsFile() {
-		super("");
+		super("COUMPOUND_FILE", "");
 		this.compounds = new ArrayList<Molecule>();
 	}
 	
