@@ -19,8 +19,12 @@ public class DecodeCommand implements Runnable {
 	@Override
 	public void run() {
     	System.out.println( "DECODE !" );
-        System.out.printf("SubCommand1: content=%s, filePath=%s, directoryPath=%s%n",
-        		mainCommand.getContent(), mainCommand.getFilePath(), mainCommand.getDirectoryPath());
+        System.out.printf(	"DEcodeCommand:%n%t%tcontent=%s, filePath=%s, directoryPath=%s%n"
+							+ "dataToTranscript=%s%n%t%t"
+							+ "methodSimple=%s, methodMore=%s, methodRand=%s%n",
+					mainCommand.codLevel.isContent(), mainCommand.codLevel.isFilePath(), mainCommand.codLevel.isDirectoryPath(), 
+					mainCommand.getDataToTranscript(), 
+					mainCommand.codMethod.isSimple(), mainCommand.codMethod.isMore(), mainCommand.codMethod.isRandom());
         // TODO add GT
     	// TODO add encryption type
 	}

@@ -19,8 +19,12 @@ public class EncodeCommand implements Runnable {
 	@Override
 	public void run() {
     	System.out.println( "ENCODE !" );
-        System.out.printf("SubCommand1: content=%s, filePath=%s, directoryPath=%s%n",
-        		mainCommand.getContent(), mainCommand.getFilePath(), mainCommand.getDirectoryPath());
+        System.out.printf(	"ENcodeCommand:%n\tcontent=%s, filePath=%s, directoryPath=%s%n\t"
+							+ "dataToTranscript=%s%n\t"
+							+ "methodSimple=%s, methodMore=%s, methodRand=%s%n",
+					mainCommand.codLevel.isContent(), mainCommand.codLevel.isFilePath(), mainCommand.codLevel.isDirectoryPath(), 
+					mainCommand.getDataToTranscript(), 
+					mainCommand.codMethod.isSimple(), mainCommand.codMethod.isMore(), mainCommand.codMethod.isRandom());
         // TODO add GT
     	// TODO add encryption type
 	}

@@ -4,7 +4,7 @@ import picocli.CommandLine;
 
 /**
  * 
- * @author Gabriel Chandesris (2025, 2026)
+ * @author Gabriel Chandesris (2026)
  */
 public class CryptoLauncher {
 
@@ -16,15 +16,4 @@ public class CryptoLauncher {
         System.exit(exitCode);
     }
     
-    // **** Part nelow to detect if launch in IDE or in jar...
-    
-    public static String prefix = (CryptoLauncher.getInstance().getClass().getResource("").toString().startsWith("file:")?"":"/");
-    
-    private static CryptoLauncher instance;
-    private static CryptoLauncher getInstance() {
-		if (CryptoLauncher.instance == null) 
-			{ CryptoLauncher.instance = new CryptoLauncher(); }
-		return CryptoLauncher.instance;
-	}
-
 }
