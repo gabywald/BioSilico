@@ -6,6 +6,7 @@ import picocli.CommandLine.Mixin;
 /**
  * 
  * @author Gabriel Chandesris (2026)
+ * @deprecated Unite With MainCommand {@codeBioSilicoCryptoCommand}
  */
 @Command(
 		name = "encode", 
@@ -25,8 +26,6 @@ public class EncodeCommand implements Runnable {
 					mainCommand.codLevel.isContent(), mainCommand.codLevel.isFilePath(), mainCommand.codLevel.isDirectoryPath(), 
 					mainCommand.getDataToTranscript(), 
 					mainCommand.codMethod.isSimple(), mainCommand.codMethod.isMore(), mainCommand.codMethod.isRandom());
-        // TODO add GT
-    	// TODO add encryption type
 	}
 
 }

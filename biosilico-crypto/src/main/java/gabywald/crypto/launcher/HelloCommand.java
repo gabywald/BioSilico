@@ -8,6 +8,7 @@ import picocli.CommandLine.Parameters;
  * Basic example for picocli use. 
  * <BR/>See {@link https://www.baeldung.com/java-picocli-create-command-line-program }
  * @author Gabriel Chandesris (2026)
+ * @deprecated Example Picocli Command. 
  */
 @Command(name = "hello", description = "Prints hello to somebody")
 class HelloCommand implements Runnable {

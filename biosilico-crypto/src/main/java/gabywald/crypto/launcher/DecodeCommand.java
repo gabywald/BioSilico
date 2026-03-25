@@ -6,6 +6,7 @@ import picocli.CommandLine.Mixin;
 /**
  * 
  * @author Gabriel Chandesris (2026)
+ * @deprecated Unite With MainCommand {@codeBioSilicoCryptoCommand}
  */
 @Command(
 		name = "decode", 
@@ -19,14 +20,12 @@ public class DecodeCommand implements Runnable {
 	@Override
 	public void run() {
     	System.out.println( "DECODE !" );
-        System.out.printf(	"DEcodeCommand:%n%t%tcontent=%s, filePath=%s, directoryPath=%s%n"
-							+ "dataToTranscript=%s%n%t%t"
+        System.out.printf(	"DEcodeCommand:%n\tcontent=%s, filePath=%s, directoryPath=%s%n\t"
+							+ "dataToTranscript=%s%n\t"
 							+ "methodSimple=%s, methodMore=%s, methodRand=%s%n",
 					mainCommand.codLevel.isContent(), mainCommand.codLevel.isFilePath(), mainCommand.codLevel.isDirectoryPath(), 
 					mainCommand.getDataToTranscript(), 
 					mainCommand.codMethod.isSimple(), mainCommand.codMethod.isMore(), mainCommand.codMethod.isRandom());
-        // TODO add GT
-    	// TODO add encryption type
 	}
 
 }
