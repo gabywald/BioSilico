@@ -10,7 +10,6 @@ public class CryptoLauncher {
 
 	public static void main(String[] args) {
 		int exitCode = new CommandLine(new BioSilicoCryptoCommand())
-		// .addSubcommand("decode", new DecodeCommand()).addSubcommand("encode", new EncodeCommand())
 		.execute(args);
 		// System.exit(exitCode);
 		System.out.println( exitCode );

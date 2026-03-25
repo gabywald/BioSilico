@@ -83,7 +83,7 @@ public class File extends Directory {
 	public File(String type, String fileName, String[] champs) {
 		super(File.buildDir(fileName));
 		
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, "fileName: {" + fileName + "} of type {" + type + "}");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "fileName: {" + fileName + "} of type {" + type + "}");
 		
 		this.datatype = type;
 		this.fileName = File.removeDirFromName(fileName);
@@ -239,8 +239,8 @@ public class File extends Directory {
 		BufferedReader br 	= null;
 		try {
 			InputStream in = PropertiesLoader.openResource( this.getDirName() + this.fileName );
-			Logger.printlnLog(LoggerLevel.LL_DEBUG, "FILE TO LOAD: {" + this.getDirName() + this.fileName + "}");
-			Logger.printlnLog(LoggerLevel.LL_DEBUG, "INPUT STREAM IS '" + in + "'");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "FILE TO LOAD: {" + this.getDirName() + this.fileName + "}");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "INPUT STREAM IS '" + in + "'");
 			if (in == null) {
 				Logger.printlnLog(LoggerLevel.LL_ERROR, "FILE TO LOAD: {" + this.getDirName() + this.fileName + "}");
 				Logger.printlnLog(LoggerLevel.LL_ERROR, "INPUT STREAM IS '" + in + "'");

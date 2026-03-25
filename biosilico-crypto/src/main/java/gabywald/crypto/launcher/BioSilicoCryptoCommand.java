@@ -1,5 +1,8 @@
 package gabywald.crypto.launcher;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.model.GeneticTranslator;
 import gabywald.utilities.logger.Logger;
@@ -20,9 +23,33 @@ import picocli.CommandLine.Option;
 		mixinStandardHelpOptions = true)
 public class BioSilicoCryptoCommand implements Runnable {
 	
-	@Option(names = {"-v", "--verbose"},
-			description = "Active verbose mode.")
-	private boolean verbose;
+	private static Map<CodeCommand.TheEnum, IStrategyCommand> strategies = new HashMap<>();
+	static {
+		BioSilicoCryptoCommand.strategies.put(CodeCommand.TheEnum.encode, new EncodeStrategyCommand());
+		BioSilicoCryptoCommand.strategies.put(CodeCommand.TheEnum.decode, new DecodeStrategyCommand());
+	}
+	
+	/**
+	 * Code Command. 
+	 */
+	static class CodeCommand {
+		enum TheEnum { encode, decode }
+
+		TheEnum actualValue = TheEnum.encode;
+
+		@Option(names = {"-e", "--encode"}, 
+				description = "Encode Command.")
+		void setEncode(boolean b) { this.actualValue = TheEnum.encode; }
+
+		@Option(names = {"-x", "--decode"}, 
+				description = "Decode Command. ")
+		void setDecode(boolean b) { this.actualValue = TheEnum.decode; }
+
+		boolean isEncode()	{ return (this.actualValue == TheEnum.encode); }
+		boolean isDecode()	{ return (this.actualValue == TheEnum.decode); }
+	}
+	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
+	CodeCommand codCommand = new CodeCommand();
 	
 	/**
 	 * To define Code Level (i.e. if on single string, a file and its oath or a directory and all files inside). 
@@ -78,7 +105,7 @@ public class BioSilicoCryptoCommand implements Runnable {
 	LogLevel logLevel = new LogLevel();
 	
 	/**
-	 * Code Method to use. 
+	 * Code Method to use (simple, more, random). 
 	 */
 	static class CodeMethod {
 		enum TheEnum { simple, more, random }
@@ -104,25 +131,6 @@ public class BioSilicoCryptoCommand implements Runnable {
 	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
 	CodeMethod codMethod = new CodeMethod();
 	
-	static class CodeCommand {
-		enum TheEnum { encode, decode }
-
-		TheEnum actualValue = TheEnum.encode;
-
-		@Option(names = {"-e", "--encode"}, 
-				description = "Encode Command.")
-		void setEncode(boolean b) { this.actualValue = TheEnum.encode; }
-
-		@Option(names = {"-x", "--decode"}, 
-				description = "Decode Command. ")
-		void setDecode(boolean b) { this.actualValue = TheEnum.decode; }
-
-		boolean isEncode()	{ return (this.actualValue == TheEnum.encode); }
-		boolean isDecode()	{ return (this.actualValue == TheEnum.decode); }
-	}
-	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
-	CodeCommand codCommand = new CodeCommand();
-	
 	@Option(names = {"-y", "--cryptofileindex"}, 
 			description = "Crypto File Index", 
 			defaultValue = "0", 
@@ -137,7 +145,6 @@ public class BioSilicoCryptoCommand implements Runnable {
 	@Override
 	public void run() {
 		Logger.printlnLog(LoggerLevel.LL_NONE, this.toString());
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "verbose: " + this.verbose);
 		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codLevel: " + this.codLevel.actualValue);
 		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codMethod: " + this.codMethod.actualValue);
 		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "logLevel: " + this.logLevel.actualValue);
@@ -154,11 +161,10 @@ public class BioSilicoCryptoCommand implements Runnable {
 					this.getDataToTranscript(), 
 					this.codMethod.isSimple(), this.codMethod.isMore(), this.codMethod.isRandom());
 		
-//		switch(this.codCommand.actualValue) {
-//		case decode : Logger.printlnLog(LoggerLevel.LL_ERROR, "decode STRATEGY");break;
-//		case encode : Logger.printlnLog(LoggerLevel.LL_ERROR, "encode STRATEGY");break;
-//		default : Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STRATEGY");
-//		}
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + "");
+		if (strategies.containsKey(this.codCommand.actualValue)) 
+			{ strategies.get(this.codCommand.actualValue).execute(this.dataTotranscript, this.codLevel, this.codMethod, this.logLevel, this.gt); }
+		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STARTEGY / COMMAND !!"); }
 	}
 	
 	private void loadGeneticTranslator() {
@@ -169,8 +175,6 @@ public class BioSilicoCryptoCommand implements Runnable {
 			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "BAD CRYPTO FILE INDEX {" + this.cryptoFileIndex + "} !!"); }
 		if (this.gt == null) { Logger.printlnLog(LoggerLevel.LL_ERROR, "GT NOT DEFINED !!"); }
 	}
-	
-	public boolean isVerbose() { return verbose; }
 	
 	public LogLevel getLogLevel() { return this.logLevel; }
 	
