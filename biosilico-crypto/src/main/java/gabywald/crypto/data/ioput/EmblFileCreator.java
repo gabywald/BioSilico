@@ -38,8 +38,8 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		this.bioFormat.setIdentification(identification);
 		
 		int basePairNumber = 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) 
-			{ basePairNumber += this.encodedContent.get(i).length(); }
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 
+			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
 		
 		String primaryType = BiologicalFileCreatorHelper.PRIMARY_TYPE
@@ -71,12 +71,12 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		
 		/** References PART. */
 		int numberOfRefs = StringUtils.randomValue(10)+1;
-		for (int i = 0 ; (i < numberOfRefs) && (this.encodedContent.size() > 0) ; i++) {
-			int selectCont	= StringUtils.randomValue(this.encodedContent.size());
+		for (int i = 0 ; (i < numberOfRefs) && (this.getEncodedCont().size() > 0) ; i++) {
+			int selectCont	= StringUtils.randomValue(this.getEncodedCont().size());
 			int start		= 0;
-			int stopp		= this.encodedContent.get(selectCont).length();
+			int stopp		= this.getEncodedCont().get(selectCont).length();
 			for (int j = 0 ; j < selectCont ; j++) 
-				{ start += this.encodedContent.get(j).length(); }
+				{ start += this.getEncodedCont().get(j).length(); }
 			
 			this.bioFormat.addReference(BiologicalFileCreatorHelper.createReference(i, year, start, stopp));
 		}
@@ -84,11 +84,11 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		/** Sequence and Features PART. */
 		String sequenceToRecord	= new String("");
 		int start				= 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) { 
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
 			/** Append... */
-			sequenceToRecord += this.encodedContent.get(i);
+			sequenceToRecord += this.getEncodedCont().get(i);
 		
-			int length	= this.encodedContent.get(i).length();
+			int length	= this.getEncodedCont().get(i).length();
 			String pos	= (start + 1)+".."+( start + 1 + length );
 //			if (this.encodedPath.size() > 0) {
 //				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");

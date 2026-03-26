@@ -1,14 +1,12 @@
 package gabywald.crypto.launcher;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import gabywald.crypto.data.ioput.GenBankFileCreator;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeLevel;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeMethod;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.LogLevel;
-import gabywald.crypto.model.GenBankFileCreator;
 import gabywald.crypto.model.GeneticTranslator;
 import gabywald.global.data.Directory;
 import gabywald.global.data.File;
@@ -34,12 +32,10 @@ public class EncodeStrategyCommand implements IStrategyCommand {
 			break;
 		case directoryPath: 
 			
-			List<String> filesListe = new ArrayList<String>();
-			
+			// List<String> filesListe = new ArrayList<String>();
 			String shortPath		= data.substring(data.lastIndexOf("\\")+1);
 			Directory repDir		= new Directory( shortPath );
-			String[] listOfFiles	= repDir.list();
-			
+			// String[] listOfFiles	= repDir.list();
 			System.out.println("DATA: '" + data + "' / '" + shortPath + "'");
 			Arrays.asList( repDir.list() ).stream().forEach( System.out::println );
 			// Arrays.asList( repDir.list() ).stream().map( str -> shortPath + str ).forEach( System.out::println );

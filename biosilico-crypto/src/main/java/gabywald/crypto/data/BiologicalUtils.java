@@ -245,6 +245,7 @@ public abstract class BiologicalUtils extends StringUtils {
 	
 	public static GeneticTranslator getGenericCrypto(int file) {
 		/** String fileName = (file == 0)?"genericCryptoASCIIJavaCPlus.txt":"genericCryptoAlphanumeric.txt"; */
+		if (file < 0) { throw new ArrayIndexOutOfBoundsException("Negative Index !"); }
 		GenericDataFile genericCryptoFile	= (file == 0)?	GenericDataFile.getCryptoASCIIJavaCPlus()
 															:
 															GenericDataFile.getCryptoAlphaNumeric();

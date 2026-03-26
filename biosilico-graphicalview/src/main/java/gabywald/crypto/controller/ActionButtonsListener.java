@@ -1,7 +1,7 @@
 package gabywald.crypto.controller;
 
-import gabywald.crypto.model.GenBankFileCreator;
-import gabywald.crypto.model.GenBankFileReader;
+import gabywald.crypto.data.ioput.GenBankFileCreator;
+import gabywald.crypto.data.ioput.GenBankFileReader;
 import gabywald.crypto.view.CryptoFrame;
 import gabywald.global.data.Directory;
 import gabywald.global.data.File;

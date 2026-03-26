@@ -2,19 +2,25 @@ package gabywald.crypto.data.ioput;
 
 import java.util.List;
 
+import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.FeaturesListe;
+import gabywald.crypto.model.GeneticTranslator;
 import gabywald.global.data.StringUtils;
 
 /**
- * 
- * @author Gabriel Chandesris (2011, 2020)
+ * Aim of this class is to generate a GenBank file with encrypted data, from a file to read. 
+ * <br>Data is encrypted when included (content and path of file, respectively as proteomic and nucleotidic data). 
+ * <br>Encryption according to current "genetic encryption". 
+ * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
 public class GenBankFileReader {
+	private static final GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
+	private static final GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
+	
 	private List<GenBankFormat> genBank;
 	private String decodedPath;
 	private String decodedContent;
-	
 	
 	public GenBankFileReader() 
 		{ this.setContent(""); }
@@ -33,13 +39,13 @@ public class GenBankFileReader {
 				FeaturesListe fl 	= currentGB.getFeatures().getFeaturesWith("CDS");
 				for (int j = 0 ; j < fl.size() ; j++) {
 					String encodedPath	= fl.get(i).get("translation");
-					this.decodedPath	+= BiologicalFileCreatorHelper.forPathDirName
+					this.decodedPath	+= GenBankFileReader.forPathDirName
 											.decodeWithStartStopCodons(encodedPath, 0, 0)+separator;
 				}
 				
 				String encodedContent	= currentGB.getOrigin().getContent();
 				
-				this.decodedContent		+= BiologicalFileCreatorHelper.forFileContent
+				this.decodedContent		+= GenBankFileReader.forFileContent
 											.decodeWithStartStopCodons(encodedContent, 0, 0)+separator;
 			}
 		}

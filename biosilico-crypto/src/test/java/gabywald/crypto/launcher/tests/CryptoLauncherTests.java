@@ -77,106 +77,296 @@ class CryptoLauncherTests {
 	
 
 	@Test
-	void testMain() {
-		
-		// Assertions.assertNotNull(CryptoLauncher.main(new String[]{}));
-		
+	void testMain01() {
 		Logger.setLogLevel(LoggerLevel.LL_WARNING);
-		
+		// Assertions.assertNotNull(CryptoLauncher.main(new String[]{}));
 		CryptoLauncher.main(new String[]{});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertEquals(attemptedErrors[0], bosERR.toString().split("\n")[0]);
 		this.flushBOSes();
-		
+	}
+	
+	@Test
+	void testMain02a() {
 		CryptoLauncher.main(new String[]{"--DATA=toto"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
-		Assertions.assertTrue(this.attemptedErrorXorE(bosERR.toString().split("\n")[0]));
+		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain02b() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-s"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
-		Assertions.assertTrue(this.attemptedErrorXorE(bosERR.toString().split("\n")[0]));
+		Assertions.assertTrue(this.attemptedErrorCFD(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain02c() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorXorE(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain02d() {
 		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-s", "-c"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorXorE(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain02e() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-y=3"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorXorE(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
 		
+	@Test
+	void testMain03a() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-x"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03b() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03c() {
 		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-x", "-c"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03d() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-y=3"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
-		
+	}
+	
+	@Test
+	void testMain03e() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-s", "-y=3"});
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03f() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-r", "-y=3"});
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=false, methodRand=true\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03g() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-m", "-y=3"});
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=true, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03h() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-y=42"});
+		Assertions.assertEquals("2\n", bosOUT.toString());
+		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
+		Assertions.assertTrue(this.attemptedErrorMRS(bosERR.toString().split("\n")[0]));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03i() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-s", "-y=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03j() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-r", "-y=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=false, methodRand=true\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03k() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-m", "-y=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=true, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03l() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-s", "-y=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03m() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-r", "-y=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=false, methodRand=true\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03n() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-c", "-m", "-y=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=true, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain04a() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-s"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[3], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorCFD(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain04b() {
 		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-x", "-s"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[3], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorCFD(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain04c() {
 		CryptoLauncher.main(new String[]{"--DATA=toto", "-x", "-s", "-y=3"});
 		Assertions.assertEquals("2\n", bosOUT.toString());
 		// Assertions.assertEquals(attemptedErrors[3], bosERR.toString().split("\n")[0]);
 		Assertions.assertTrue(this.attemptedErrorCFD(bosERR.toString().split("\n")[0]));
 		this.flushBOSes();
 		
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-x"});
-		Assertions.assertEquals("XXcodeCommand:\n"
-				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
-				+ "dataToTranscript=toto\n"
-				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
-				+ "0\n", bosOUT.toString());
-		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
-		this.flushBOSes();
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-e"});
-		Assertions.assertEquals("XXcodeCommand:\n"
-				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
-				+ "dataToTranscript=toto\n"
-				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
-				+ "0\n", bosOUT.toString());
-		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
-		this.flushBOSes();
-		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-s", "-c", "-e"});
-		Assertions.assertEquals("XXcodeCommand:\n"
-				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
-				+ "dataToTranscript=\"toto\"\n"
-				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
-				+ "0\n", bosOUT.toString());
-		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
-		this.flushBOSes();
-		
-		// TODO continue tests here !!
 	}
+	
+	@Test
+	void testMain05a() {
+		
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-x"});
+//		Assertions.assertEquals("XXcodeCommand:\n"
+//				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
+//				+ "dataToTranscript=toto\n"
+//				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
+//				+ "0\n", bosOUT.toString());
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain05b() {
+		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-e"});
+//		Assertions.assertEquals("XXcodeCommand:\n"
+//				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
+//				+ "dataToTranscript=toto\n"
+//				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
+//				+ "0\n", bosOUT.toString());
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=toto,subcommand=encode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain05c() {
+		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-s", "-c", "-e"});
+//		Assertions.assertEquals("XXcodeCommand:\n"
+//				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
+//				+ "dataToTranscript=\"toto\"\n"
+//				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"
+//				+ "0\n", bosOUT.toString());
+		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=\"toto\",subcommand=encode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	// TODO continue tests here !!
 
 }

@@ -30,14 +30,14 @@ public class FastaFileCreator extends BiologicalFileCreator {
 		this.bioFormat.setAccession(identification);
 		
 		int basePairNumber = 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) 
-			{ basePairNumber += this.encodedContent.get(i).length(); }
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 
+			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
 		
 		String sequenceToRecord	= new String("");
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) { 
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
 			/** Append... */
-			sequenceToRecord += this.encodedContent.get(i);
+			sequenceToRecord += this.getEncodedCont().get(i);
 		}
 		this.bioFormat.setSequence(new Sequence("", sequenceToRecord));
 
