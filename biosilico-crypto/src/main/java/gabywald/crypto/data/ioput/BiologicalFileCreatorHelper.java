@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.composition.Author;
 import gabywald.crypto.data.composition.Organism;
 import gabywald.crypto.data.composition.Reference;
-import gabywald.crypto.model.GeneticTranslator;
 import gabywald.global.data.StringUtils;
 import gabywald.global.data.samples.BioDataFile;
 import gabywald.global.data.samples.UplinkDataFile;
@@ -17,12 +15,9 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public abstract class BiologicalFileCreatorHelper {
-	
-	public static final GeneticTranslator forFileContent = BiologicalUtils.getGenericCrypto(0);
-	public static final GeneticTranslator forPathDirName = BiologicalUtils.getGenericCrypto(1);
 	
 	/** Primary Types of sequences [DNA|mRNA|genomicDNA|precursorRNA|cDNA[rRNA|tRNA|snRNA|snRNA]... */
 	public static final String[] PRIMARY_TYPE = { 

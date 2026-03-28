@@ -10,6 +10,7 @@ import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator;
 import gabywald.global.data.StringUtils;
 
 /**
@@ -27,11 +28,24 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		{ this("", content); }
 
 	public GenBankFileCreator(String path, String content) { 
-		super(path, content);
+		super();
+		this.addPathAndContent(path, content);
 		this.bioFormat = new GenBankFormat();
 	}
 	
+	/**
+	 * 
+	 * @param bioencoder4file
+	 * @param bioencoder4path
+	 * @param which
+	 */
+	public GenBankFileCreator(int bioencoder4file, int bioencoder4path, ITranslator.TranslatorEnum which) {
+		super(bioencoder4file, bioencoder4path, which);
+		this.bioFormat = new GenBankFormat();
+	}
+
 	protected void initialize() {
+		this.bioFormat			= new GenBankFormat();
 		String identification	= BiologicalUtils.generateIdentifier();
 		
 		/** LOCUS PART. */
@@ -134,7 +148,7 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		}
 		this.bioFormat.setBasesCountsAndNames(basesCounts, basesNames);
 	}
-	
+
 	public String getFullEncryption() {
 		this.initialize();
 		// this.bioFormat.setSequence(new Sequence("", this.encodedContent));

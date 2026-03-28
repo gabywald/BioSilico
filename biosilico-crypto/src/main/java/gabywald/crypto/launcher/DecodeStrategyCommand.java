@@ -12,7 +12,7 @@ public class DecodeStrategyCommand implements IStrategyCommand {
 	@Override
 	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, LogLevel logLevel, GeneticTranslator gt) {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getName());
-		
+		// TODO !!
 		return 0;
 	}
 

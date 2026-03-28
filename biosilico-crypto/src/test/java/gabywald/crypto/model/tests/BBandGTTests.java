@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.data.BiologicalUtils;
+import gabywald.crypto.model.ITranslator;
 import gabywald.crypto.model.BinaryConversion;
 import gabywald.crypto.model.GeneticTranslator;
 
@@ -64,7 +65,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -109,7 +110,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -154,7 +155,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -198,7 +199,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -243,7 +244,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -286,7 +287,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -330,7 +331,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -362,7 +363,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -407,7 +408,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -452,7 +453,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -497,7 +498,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -529,7 +530,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -574,7 +575,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -619,7 +620,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -664,7 +665,7 @@ class BBandGTTests {
 		
 		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -677,7 +678,7 @@ class BBandGTTests {
 		// System.out.println(forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
-		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
+		String encodedFileContent = forFileContent.encode(toEncrypt, ITranslator.TranslatorEnum.simple);
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
@@ -692,9 +693,9 @@ class BBandGTTests {
 		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
 		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
 		
-		String isDecrypted = forFileContent.decodeWithStartStopCodons(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -707,7 +708,7 @@ class BBandGTTests {
 		// System.out.println(forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
-		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
+		String encodedFileContent = forFileContent.encode(toEncrypt, ITranslator.TranslatorEnum.simple);
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
@@ -726,7 +727,7 @@ class BBandGTTests {
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
 		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
-		Assertions.assertEquals("test test2 test3", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
+		Assertions.assertEquals("test test2 test3", binary2txtEncodedFileContent01);
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
 		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
 		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
@@ -735,9 +736,9 @@ class BBandGTTests {
 		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
 		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
 		
-		String isDecrypted = forFileContent.decodeWithStartStopCodons(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -750,7 +751,7 @@ class BBandGTTests {
 		// System.out.println(forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
-		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
+		String encodedFileContent = forFileContent.encode(toEncrypt, ITranslator.TranslatorEnum.simple);
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
@@ -769,7 +770,7 @@ class BBandGTTests {
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
 		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
-		Assertions.assertEquals("gvhg gvhg7 gvhg6", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
+		Assertions.assertEquals("gvhg gvhg7 gvhg6", binary2txtEncodedFileContent01);
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
 		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
 		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
@@ -778,9 +779,9 @@ class BBandGTTests {
 		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
 		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
 		
-		String isDecrypted = forFileContent.decodeWithStartStopCodons(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}
@@ -793,7 +794,7 @@ class BBandGTTests {
 		// System.out.println(forFileContent.toString());
 		
 		String toEncrypt = "test test2 test3";
-		String encodedFileContent = forFileContent.encode(toEncrypt, 0); // NOTE second argument here !! (multiple starts / stops are possibles)
+		String encodedFileContent = forFileContent.encode(toEncrypt, ITranslator.TranslatorEnum.simple);
 		System.out.println("[" + encodedFileContent + "]");
 		System.out.println("[" + encodedFileContent.substring(3, encodedFileContent.length()-3) + "]");
 		System.out.println("[" + encodedFileContent.length()+ "] ; [" + toEncrypt.length() + "]");
@@ -812,7 +813,7 @@ class BBandGTTests {
 		// String binary2txtEncodedFileContent01 = BinaryConversion.convertBinaryToAscii ( BinaryConversion.prettyBinary(binaryEncodedFileContent, 8, " ") );
 		System.out.println("binary2txtEncodedFileContent01: [" + binary2txtEncodedFileContent01 + "]");
 		// NOTE : 'border effect here due to similarity and simple use of "ASCII" : change if alphabet is different !!
-		Assertions.assertEquals("àïáààïáà°àïáà¯", binary2txtEncodedFileContent01.substring(1, binary2txtEncodedFileContent01.length() - 1)); // ??
+		Assertions.assertEquals("àïáààïáà°àïáà¯", binary2txtEncodedFileContent01);
 		String txt2binaryEncodedFileContent = BinaryConversion.convertStringToBinary(binary2txtEncodedFileContent01);
 		System.out.println("txt2binaryEncodedFileContent: [" + txt2binaryEncodedFileContent + "]");
 		Assertions.assertEquals(binaryEncodedFileContent, txt2binaryEncodedFileContent);
@@ -821,9 +822,9 @@ class BBandGTTests {
 		System.out.println("[" + decodedBinaryEncodedFileContent + "]");
 		Assertions.assertEquals(decodedBinaryEncodedFileContent, encodedFileContent);
 		
-		String isDecrypted = forFileContent.decodeWithStartStopCodons(decodedBinaryEncodedFileContent, 0, 0); // Use specific decoder !!
+		String isDecrypted = forFileContent.decode(decodedBinaryEncodedFileContent, 0, 0);
 		System.out.println("[" + isDecrypted + "] <= [" + toEncrypt + "]");
-		Assertions.assertEquals(isDecrypted, toEncrypt);
+		Assertions.assertEquals(toEncrypt, isDecrypted);
 		
 		System.out.println();
 	}

@@ -19,8 +19,8 @@ class GenBankFileCreatorTests {
 		GenBankFileCreator gbfc = new GenBankFileCreator();
 		Assertions.assertNotNull( gbfc );
 		
-		Assertions.assertEquals(1, gbfc.getEncodedCont().size());
-		Assertions.assertEquals(1, gbfc.getEncodedPath().size());
+		Assertions.assertEquals(0, gbfc.getEncodedCont().size());
+		Assertions.assertEquals(0, gbfc.getEncodedPath().size());
 		
 		gbfc.emptyPathAndContent();
 		

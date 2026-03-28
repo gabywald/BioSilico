@@ -26,7 +26,8 @@ public class EmblFileCreator extends BiologicalFileCreator {
 	 * @param content Content of a file. 
 	 */
 	public EmblFileCreator(String path, String content) {
-		super(path, content);
+		super();
+		this.addPathAndContent(path, content);
 		this.bioFormat		= new EmblFormat();
 	}
 

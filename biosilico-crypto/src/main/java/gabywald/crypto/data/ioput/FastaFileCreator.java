@@ -8,7 +8,7 @@ import gabywald.crypto.data.composition.Sequence;
  * Aim of this class is to generate a Fasta file with encrypted data. 
  * <br>Data is encrypted when included (content and path of file, respectively as nucleotidic and proteomic data). 
  * <br>Encryption according to current "genetic encryption". 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class FastaFileCreator extends BiologicalFileCreator {
 
@@ -18,7 +18,8 @@ public class FastaFileCreator extends BiologicalFileCreator {
 	 * @param content Content of a file. 
 	 */
 	public FastaFileCreator(String path, String content) {
-		super(path, content);
+		super();
+		this.addPathAndContent(path, content);
 		this.bioFormat		= new FastaFormat();
 	}
 
@@ -34,12 +35,9 @@ public class FastaFileCreator extends BiologicalFileCreator {
 			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
 		
-		String sequenceToRecord	= new String("");
-		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
-			/** Append... */
-			sequenceToRecord += this.getEncodedCont().get(i);
-		}
-		this.bioFormat.setSequence(new Sequence("", sequenceToRecord));
+		StringBuilder sbSequenceToRecord	= new StringBuilder();
+		this.getEncodedCont().stream().forEach( str -> sbSequenceToRecord.append(str));
+		this.bioFormat.setSequence(new Sequence("", sbSequenceToRecord.toString()));
 
 	}
 

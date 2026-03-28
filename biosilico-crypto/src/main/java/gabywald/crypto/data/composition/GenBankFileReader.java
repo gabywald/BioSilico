@@ -40,13 +40,13 @@ public class GenBankFileReader {
 				for (int j = 0 ; j < fl.size() ; j++) {
 					String encodedPath	= fl.get(i).get("translation");
 					this.decodedPath	+= GenBankFileReader.forPathDirName
-											.decodeWithStartStopCodons(encodedPath, 0, 0)+separator;
+											.decode(encodedPath, 0, 0)+separator;
 				}
 				
 				String encodedContent	= currentGB.getOrigin().getContent();
 				
 				this.decodedContent		+= GenBankFileReader.forFileContent
-											.decodeWithStartStopCodons(encodedContent, 0, 0)+separator;
+											.decode(encodedContent, 0, 0)+separator;
 			}
 		}
 	}

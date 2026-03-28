@@ -18,7 +18,7 @@ public class GeneticCode {
 	
 	/** Default constructor with 3 levels of 'encoding'. */
 	public GeneticCode() 
-		{ this.init(0, new String[7+0]); }
+		{ this(0); }
 	
 	/** 
 	 * Constructor with more than 3 levels of 'encoding'. 
