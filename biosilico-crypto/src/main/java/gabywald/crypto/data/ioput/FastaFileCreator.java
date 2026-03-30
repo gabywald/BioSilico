@@ -11,6 +11,9 @@ import gabywald.crypto.data.composition.Sequence;
  * @author Gabriel Chandesris (2020, 2026)
  */
 public class FastaFileCreator extends BiologicalFileCreator {
+	
+	public FastaFileCreator() 
+		{ this("", ""); }
 
 	/**
 	 * Constructor with given path and content. 
@@ -34,6 +37,11 @@ public class FastaFileCreator extends BiologicalFileCreator {
 		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 
 			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
+		
+		// TODO path ?
+		StringBuilder sbCommentToRecord	= new StringBuilder();
+		this.getEncodedPath().stream().forEach( str -> sbCommentToRecord.append(str));
+		this.bioFormat.setComment(sbCommentToRecord.toString());
 		
 		StringBuilder sbSequenceToRecord	= new StringBuilder();
 		this.getEncodedCont().stream().forEach( str -> sbSequenceToRecord.append(str));

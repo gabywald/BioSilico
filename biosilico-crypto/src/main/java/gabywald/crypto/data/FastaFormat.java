@@ -7,7 +7,7 @@ import java.util.List;
  * 
  * <br>See <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA FOrmat (Wikipedia EN)</a>. 
  * <br>See also <a href="http://www.ebi.ac.uk/2can/tutorials/formats.html#fasta">Fasta Format (EBI)</a>
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2026)
  */
 public class FastaFormat extends BiologicalFormat {
 	// TODO Fasta : precise content on first line at '>'
@@ -39,16 +39,19 @@ frn 	FASTA non-coding RNA 	Contains non-coding RNA regions for a genome, in DNA 
 	public FastaFormat() { super(); }
 	
 	public String toString() {
-		String toReturn = new String("");
+		StringBuilder toReturn = new StringBuilder();
 		/**
 		Term 	Entry Name 	Molecule Type 	Gene Name 	Sequence Length
 		e.g. 	FOSB_MOUSE 	Protein 		fosB 		338 bp
 		 */
-		toReturn += ">"+this.someDatas[1]+"|"+this.someDatas[0]
-		           +"|"+this.locusData[0]+"|"+
-		           ((this.locusData[1] != null)?this.locusData[1]+" bp":"");
-		toReturn += this.origin.toStringFasta();
-		return toReturn;
+		toReturn.append(">").append(this.someDatas[1])
+				.append("|").append(this.someDatas[0])
+				.append("|").append(this.locusData[0])
+				.append("|").append(
+		           ((this.locusData[1] != null)?this.locusData[1]+" bp":"") )
+				.append("|").append(this.someDatas[4]);
+		toReturn.append("\n").append(this.origin.toStringFasta());
+		return toReturn.toString();
 	}
 	
 	public static List<FastaFormat> fromString(String content) {

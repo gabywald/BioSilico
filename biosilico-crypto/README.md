@@ -18,15 +18,47 @@ Compile with Maven : "mvn clean package" on root of project (as usual).
 java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar ...
 ```
 
-Three (3) commands : 
-  - encode
-  - decode
-
 General arguments : 
-  - 'content'
-  - 'file'
-  - 'directory'
-  - 'output'
+ - (encode | decode)
+ - 'content' | 'file' | 'directory'
+ - 'simple' | 'more' | 'random'
+ - 'fasta' | 'embl' | 'genbank' (later)
+ - 'outputFILE' (optional !) (later)
+ 
+```
+Usage: biosilico-crypto [-hV] -D=<dataTotranscript> (-x | -e) (-d | -c | -f)
+                        (-r | -s | -m) [-t | -a | -l | -k] [--info | --debug |
+                        --warn | --none | --error]
+Application CLI with picocli.
+  -D, --DATA=<dataTotranscript>
+                    Data to transcript (content, path to file or path to
+                      directory).
+  -h, --help        Show this help message and exit.
+  -V, --version     Print version information and exit.
+Code Method Options
+  -e, --encode      Encode Command.
+  -x, --decode      Decode Command.
+Code Transcription Options
+  -c, --content     Content (if only direct content)
+  -d, --directory   Directory Path (if only direct content), all files contents
+                      and pathes
+  -f, --file        File Path (if only direct content), file content and path
+Code Method Options
+  -m, --more        More code Method.
+  -r, --random      Random code Method.
+  -s, --simple      Simple code Method.
+Output Type Options
+  -a, --fasta       FASTA Output Type.
+  -k, --genbank     GENBANK Output Type.
+  -l, --embl        EMBL Output Type.
+  -t, --direct      Direct Output Type.
+Log Level Options
+      --debug       Sets log level to DEBUG.
+      --error       Sets log level to ERROR.
+      --info        Sets log level to INFO.
+      --none        Sets log level to NONE.
+      --warn        Sets log level to WARN.
+```
 
 ### Debug the Jar
 

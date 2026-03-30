@@ -80,7 +80,7 @@ public class Feature {
 		String[] keySet = this.qualifiers.keySet().toArray(new String[0]);
 		for (int i = 0 ; i < keySet.length ; i++) {
 			if (keySet[i].equals("translation")) {
-				int firstCut		= 44; /** Those two (2) to make 80-chars line. */
+				int firstCut		= Math.min(44, this.qualifiers.get(keySet[i]).length()); /** Those two (2) to make 80-chars line. */
 				int lengthToTake	= 80 - startLine.length() - 1;
 				String translationContent = this.qualifiers.get(keySet[i]);
 				toReturn += startLine+"/"+keySet[i]

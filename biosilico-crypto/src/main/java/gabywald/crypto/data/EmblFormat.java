@@ -15,6 +15,7 @@ import gabywald.crypto.data.composition.Organism;
 import gabywald.crypto.data.composition.Primary;
 import gabywald.crypto.data.composition.Reference;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.data.ioput.BiologicalFileCreatorHelper;
 
 /**
  * 
@@ -195,6 +196,7 @@ A complete and definitive description of the feature table is given here [https:
 		} /** '.' */
 		
 		/** OS ++ OC part... */
+		if (this.organism == null) { this.organism = BiologicalFileCreatorHelper.createOrganism(); }
 		toReturn += this.organism.toStringEMBL();
 		toReturn += "XX\n";
 		

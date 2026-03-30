@@ -3,6 +3,7 @@ package gabywald.crypto.launcher;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeLevel;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeMethod;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.LogLevel;
+import gabywald.crypto.launcher.BioSilicoCryptoCommand.OutputType;
 import gabywald.crypto.model.GeneticTranslator;
 
 /**
@@ -10,5 +11,5 @@ import gabywald.crypto.model.GeneticTranslator;
  * @author Gabriel Chandesris (2020)
  */
 public interface IStrategyCommand {
-	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, LogLevel logLevel, GeneticTranslator gt);
+	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gt);
 }

@@ -24,9 +24,11 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 	public GenBankFileCreator() 
 		{ this("", ""); }
 	
-	public GenBankFileCreator(String content) 
-		{ this("", content); }
-
+	/**
+	 * Constructor with given path and content. 
+	 * @param path Path to a file. 
+	 * @param content Content of a file. 
+	 */
 	public GenBankFileCreator(String path, String content) { 
 		super();
 		this.addPathAndContent(path, content);
@@ -96,11 +98,10 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		}
 		
 		/** Sequence and Features PART. */
-		String sequenceToRecord	= new String("");
+		StringBuilder sbSequenceToRecord	= new StringBuilder();
 		int start				= 0;
 		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
-			/** Append... */
-			sequenceToRecord += this.getEncodedCont().get(i);
+			sbSequenceToRecord.append(this.getEncodedCont().get(i));
 		
 			int length	= this.getEncodedCont().get(i).length();
 			String pos	= (start + 1)+".."+( start + 1 + length );
@@ -126,20 +127,20 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 			geneToAdd.addQualifier("note", "***** part [" + (i+1) + "] *****"); /** XXX !! */
 			this.bioFormat.addFeature(geneToAdd);
 		}
-		this.bioFormat.setSequence(new Sequence("", sequenceToRecord));
+		this.bioFormat.setSequence(new Sequence("", sbSequenceToRecord.toString()));
 		
 		/** Base Counting Part !! */
 		List<String> bases = new ArrayList<String>();
-		for (int i = 0 ; i < sequenceToRecord.length() ; i++) {
-			String element = sequenceToRecord.charAt(i) + "";
+		for (int i = 0 ; i < sbSequenceToRecord.length() ; i++) {
+			String element = sbSequenceToRecord.charAt(i) + "";
 			if (!bases.contains(element) )	{ bases.add(element); }
 		}
 		bases.add("other");
 		int[] basesCounts	= new int[bases.size()];
 		String[] basesNames	= bases.toArray(new String[0]);
-		for (int i = 0 ; i < sequenceToRecord.length() ; i++) {
+		for (int i = 0 ; i < sbSequenceToRecord.length() ; i++) {
 			boolean counted	= false;/** 'other' counted separately */
-			char toTest		= sequenceToRecord.charAt(i);
+			char toTest		= sbSequenceToRecord.charAt(i);
 			for (int j = 0 ; (j < basesCounts.length - 1) 
 					&& (!counted) ; j++) 
 				{ if (toTest == basesNames[j].charAt(0)) 
@@ -149,10 +150,4 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		this.bioFormat.setBasesCountsAndNames(basesCounts, basesNames);
 	}
 
-	public String getFullEncryption() {
-		this.initialize();
-		// this.bioFormat.setSequence(new Sequence("", this.encodedContent));
-		return this.bioFormat.toString();
-	}
-	
 }

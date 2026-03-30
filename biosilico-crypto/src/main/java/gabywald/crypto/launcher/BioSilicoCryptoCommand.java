@@ -77,6 +77,62 @@ public class BioSilicoCryptoCommand implements Runnable {
 	}
 	@ArgGroup(exclusive = true, heading = "Code Transcription Options%n", multiplicity = "1")
 	CodeLevel codLevel = new CodeLevel();
+	
+	/**
+	 * Code Method to use (simple, more, random). 
+	 */
+	static class CodeMethod {
+		enum TheEnum { simple, more, random }
+
+		TheEnum actualValue = TheEnum.simple;
+
+		@Option(names = {"-s", "--simple"}, 
+				description = "Simple code Method.")
+		void setSimple(boolean b)	{ this.actualValue = TheEnum.simple; }
+
+		@Option(names = {"-m", "--more"}, 
+				description = "More code Method. ")
+		void setMore(boolean b)		{ this.actualValue = TheEnum.more; }
+
+		@Option(names = {"-r", "--random"}, 
+				description = "Random code Method. ")
+		void setRand(boolean b)		{ this.actualValue = TheEnum.random; }
+		
+		boolean isSimple()	{ return (this.actualValue == TheEnum.simple); }
+		boolean isMore()	{ return (this.actualValue == TheEnum.more); }
+		boolean isRandom()	{ return (this.actualValue == TheEnum.random); }
+	}
+	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
+	CodeMethod codMethod = new CodeMethod();
+	
+	static class OutputType {
+		enum TheEnum { direct, fasta, embl, genbank }
+
+		TheEnum actualValue = TheEnum.direct;
+
+		@Option(names = {"-t", "--direct"}, 
+				description = "Direct Output Type.")
+		void setDirect(boolean b)	{ this.actualValue = TheEnum.direct; }
+		
+		@Option(names = {"-a", "--fasta"}, 
+				description = "FASTA Output Type. ")
+		void setFasta(boolean b)	{ this.actualValue = TheEnum.fasta; }
+
+		@Option(names = {"-l", "--embl"}, 
+				description = "EMBL Output Type. ")
+		void setEMBL(boolean b)		{ this.actualValue = TheEnum.embl; }
+
+		@Option(names = {"-k", "--genbank"}, 
+				description = "GENBANK Output Type. ")
+		void setGenBank(boolean b)	{ this.actualValue = TheEnum.genbank; }
+		
+		boolean isDirect()	{ return (this.actualValue == TheEnum.direct); }
+		boolean isFasta()	{ return (this.actualValue == TheEnum.fasta); }
+		boolean isEMBL()	{ return (this.actualValue == TheEnum.embl); }
+		boolean isGenBank()	{ return (this.actualValue == TheEnum.genbank); }
+	}
+	@ArgGroup(exclusive = true, heading = "Output Type Options%n", multiplicity = "0..1")
+	OutputType outputType = new OutputType();
 
 	/**
 	 * Log Level. 
@@ -104,34 +160,7 @@ public class BioSilicoCryptoCommand implements Runnable {
 	@ArgGroup(exclusive = true, heading = "Log Level Options%n", multiplicity = "0..1")
 	LogLevel logLevel = new LogLevel();
 	
-	/**
-	 * Code Method to use (simple, more, random). 
-	 */
-	static class CodeMethod {
-		enum TheEnum { simple, more, random }
-
-		TheEnum actualValue = TheEnum.simple;
-
-		@Option(names = {"-s", "--simple"}, 
-				description = "Simple code Method.")
-		void setSimple(boolean b)	{ this.actualValue = TheEnum.simple; }
-
-		@Option(names = {"-m", "--more"}, 
-				description = "More code Method. ")
-		void setMore(boolean b)		{ this.actualValue = TheEnum.more; }
-
-		@Option(names = {"-r", "--random"}, 
-				description = "Random code Method")
-		void setRand(boolean b)		{ this.actualValue = TheEnum.random; }
-		
-		boolean isSimple()	{ return (this.actualValue == TheEnum.simple); }
-		boolean isMore()	{ return (this.actualValue == TheEnum.more); }
-		boolean isRandom()	{ return (this.actualValue == TheEnum.random); }
-	}
-	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
-	CodeMethod codMethod = new CodeMethod();
-	
-	@Option(names = {"-y", "--cryptofileindex"}, 
+	@Option(names = {"-i", "--cryptofileindex"}, 
 			description = "Crypto File Index", 
 			defaultValue = "0", 
 			hidden = true)
@@ -139,7 +168,7 @@ public class BioSilicoCryptoCommand implements Runnable {
 	GeneticTranslator gt = null;
 	
 	@Option(names = {"-D", "--DATA"}, arity = "1", required = true, 
-			description = "Data to transcript (content, path to file or directory. ")
+			description = "Data to transcript (content, path to file or path to directory). ")
 	String dataTotranscript;
 	
 	@Override
@@ -163,7 +192,8 @@ public class BioSilicoCryptoCommand implements Runnable {
 		
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + "");
 		if (strategies.containsKey(this.codCommand.actualValue)) 
-			{ strategies.get(this.codCommand.actualValue).execute(this.dataTotranscript, this.codLevel, this.codMethod, this.logLevel, this.gt); }
+			{ strategies.get(this.codCommand.actualValue).execute
+			(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gt); }
 		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STARTEGY / COMMAND !!"); }
 	}
 	

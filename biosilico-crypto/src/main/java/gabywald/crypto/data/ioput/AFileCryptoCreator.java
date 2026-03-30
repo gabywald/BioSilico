@@ -38,15 +38,12 @@ public abstract class AFileCryptoCreator implements IFileCryptoCreator {
 		if ( (path == null) && (content == null)) { return; }
 		if ( (path.length() == 0) && (content.length() == 0)) { return; }
 		// all other cases. 
-		this.encodedPath.add( path.equals("") ? "" : this.forPathDirName.encode(path, this.whichTR) );
-		this.encodedContent.add( content.equals("") ? "" : this.forFileContent.encode(content, this.whichTR));
+		this.encodedPath.add( (path == null) || (path.equals("")) ? "" : this.forPathDirName.encode(path, this.whichTR) );
+		this.encodedContent.add( (content == null) || (content.equals("")) ? "" : this.forFileContent.encode(content, this.whichTR));
 	}
 
 	@Override
 	public void setPathAndContent(String path, String content) {
-		// Do nothing if both {path,content} are empty. 
-		if ( (path == null) && (content == null)) { return; }
-		if ( (path.length() == 0) && (content.length() == 0)) { return; }
 		// all other cases. 
 		this.emptyPathAndContent();
 		this.addPathAndContent(path, content);

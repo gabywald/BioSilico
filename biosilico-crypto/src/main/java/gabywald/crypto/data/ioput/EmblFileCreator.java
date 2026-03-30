@@ -16,9 +16,12 @@ import gabywald.global.data.StringUtils;
  * Aim of this class is to generate a EMBL file with encrypted data. 
  * <br>Data is encrypted when included (content and path of file, respectively as nucleotidic and proteomic data). 
  * <br>Encryption according to current "genetic encryption". 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class EmblFileCreator extends BiologicalFileCreator {
+	
+	public EmblFileCreator() 
+		{ this("", ""); }
 
 	/**
 	 * Constructor with given path and content. 
@@ -91,16 +94,16 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		
 			int length	= this.getEncodedCont().get(i).length();
 			String pos	= (start + 1)+".."+( start + 1 + length );
-//			if (this.encodedPath.size() > 0) {
-//				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");
-//				Feature featToAdd		= new Feature(cds, pos);
-//				featToAdd.addQualifier("codon_start", (start + 1)+"");
-//				featToAdd.addQualifier("gene", location);
-//				featToAdd.addQualifier("product", "*****"); /** XXX !! */
-//				if (this.encodedPath.get(i).length() != 0)
-//					{ featToAdd.addQualifier("translation", this.encodedPath.get(i)); }
-//				this.bioFormat.addFeature(featToAdd);
-//			} // END "if (this.encodedPath.size() > 0)"
+			if (this.getEncodedPath().size() > 0) {
+				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");
+				Feature featToAdd		= new Feature(cds, pos);
+				featToAdd.addQualifier("codon_start", (start + 1)+"");
+				featToAdd.addQualifier("gene", location);
+				featToAdd.addQualifier("product", "*****"); /** XXX !! */
+				if (this.getEncodedPath().get(i).length() != 0)
+					{ featToAdd.addQualifier("translation", this.getEncodedPath().get(i)); }
+				this.bioFormat.addFeature(featToAdd);
+			} // END "if (this.getEncodedPath().size() > 0)"
 			start += length;
 			FeatureDefinition src	= FeatureDefinition.getFromFactory("source");
 			Feature srcToAdd		= new Feature(src, pos);

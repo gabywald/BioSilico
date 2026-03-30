@@ -37,20 +37,11 @@ public abstract class BiologicalFileCreator extends AFileCryptoCreator {
 	 * 
 	 * @return (String) Full encryptued and obsfuscated sequence(s). 
 	 * @see {@link BiologicalFileCreator#initialize()}
-	 * @see {@link BiologicalFileCreator#bioencoder_forFileContent}
-	 * @see {@link BiologicalFileCreator#bioencoder_forPathDirName}
+	 * @see {@link BiologicalFormat#toString()}
 	 */
 	public String getFullEncryption() {
 		this.initialize();
 		return this.bioFormat.toString();
 	}
 
-//	public GeneticTranslator getBioencoderForFileContent() 
-//		{ return (this.getBioencoderForFileContent() instanceof GeneticTranslator) ? 
-//				(GeneticTranslator)this.getBioencoderForFileContent() : null; }
-//
-//	public GeneticTranslator getBioencoderForPathDirName() 
-//		{ return (this.getBioencoderForPathDirName() instanceof GeneticTranslator) ? 
-//				(GeneticTranslator)this.getBioencoderForPathDirName() : null; }
-	
 }

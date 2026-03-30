@@ -3,10 +3,16 @@ package gabywald.crypto.launcher;
 import java.io.IOException;
 import java.util.Arrays;
 
+import gabywald.crypto.data.ioput.BiologicalFileCreator;
+import gabywald.crypto.data.ioput.DirectFileCreator;
+import gabywald.crypto.data.ioput.EmblFileCreator;
+import gabywald.crypto.data.ioput.FastaFileCreator;
 import gabywald.crypto.data.ioput.GenBankFileCreator;
+import gabywald.crypto.data.ioput.IFileCryptoCreator;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeLevel;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.CodeMethod;
 import gabywald.crypto.launcher.BioSilicoCryptoCommand.LogLevel;
+import gabywald.crypto.launcher.BioSilicoCryptoCommand.OutputType;
 import gabywald.crypto.model.GeneticTranslator;
 import gabywald.global.data.Directory;
 import gabywald.global.data.File;
@@ -20,15 +26,30 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class EncodeStrategyCommand implements IStrategyCommand {
 
 	@Override
-	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, LogLevel logLevel, GeneticTranslator gt) {
+	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gt) {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getName());
 		
-		GenBankFileCreator gbfc = new GenBankFileCreator();
+		BiologicalFileCreator ifcc = 
+				(output.actualValue == OutputType.TheEnum.direct) ? new DirectFileCreator() : 
+				(output.actualValue == OutputType.TheEnum.fasta) ? new FastaFileCreator() : 
+				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileCreator() : 
+				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileCreator() : 
+					new DirectFileCreator();
+//		switch(output.actualValue) {
+//		case direct: new DirectFileCreator();break;
+//		case fasta: new FastaFileCreator();break;
+//		case embl:new EmblFileCreator();break;
+//		case genbank:new GenBankFileCreator();break;
+//		default:new DirectFileCreator();
+//		};
+		
+		// if (ifcc == null) { return 1; }
+		
 		// GenBankFileReader gbfr;
 		switch(codLevel.actualValue) {
-		case content: gbfc.addPathAndContent("", data);break;
+		case content: ifcc.addPathAndContent("", data);break;
 		case filePath: 
-			EncodeStrategyCommand.apply4aFile(data, gbfc);
+			EncodeStrategyCommand.apply4aFile(data, ifcc);
 			break;
 		case directoryPath: 
 			
@@ -42,7 +63,7 @@ public class EncodeStrategyCommand implements IStrategyCommand {
 			
 			Arrays.asList( repDir.list() ).stream().map( str -> shortPath + str ).forEach( str -> {
 				System.out.println( str );
-				EncodeStrategyCommand.apply4aFile(str, gbfc);
+				EncodeStrategyCommand.apply4aFile(str, ifcc);
 			});
 			
 			// StringBuilder sbContent = new StringBuilder();
@@ -55,20 +76,20 @@ public class EncodeStrategyCommand implements IStrategyCommand {
 		}
 		
 		System.out.println("PATHES: ");
-		gbfc.getEncodedPath().stream().map(str -> "\t"+str ).forEach(System.out::println);
+		ifcc.getEncodedPath().stream().map(str -> "\t"+str ).forEach(System.out::println);
 		System.out.println("CONTENTS: ");
-		gbfc.getEncodedCont().stream().map(str -> "\t"+str ).forEach(System.out::println);
+		ifcc.getEncodedCont().stream().map(str -> "\t"+str ).forEach(System.out::println);
 		System.out.println("FULL ENCRYPTION: ");
-		System.out.println(gbfc.getFullEncryption());
+		System.out.println(ifcc.getFullEncryption());
 		return 0;
 	}
 	
-	public static void apply4aFile(String path, GenBankFileCreator gbfc) {
+	public static void apply4aFile(String path, IFileCryptoCreator ifcc) {
 		File toLoad = new File( path );
 		try { toLoad.load(); } 
 		catch (IOException e) { Logger.printlnLog(LoggerLevel.LL_ERROR, "File {" + toLoad.getName() + "} not found !"); }
 		System.out.println("DATA: '" + path + "' (" + toLoad.getChampsToString().length() + ")");
-		gbfc.addPathAndContent(path, toLoad.getChampsToString());
+		ifcc.addPathAndContent(path, toLoad.getChampsToString());
 	}
 
 }

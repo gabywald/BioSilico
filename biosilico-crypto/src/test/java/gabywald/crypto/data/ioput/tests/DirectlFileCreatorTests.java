@@ -3,20 +3,20 @@ package gabywald.crypto.data.ioput.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.crypto.data.ioput.GenBankFileCreator;
+import gabywald.crypto.data.ioput.DirectFileCreator;
 import gabywald.global.data.StringUtils;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020, 2026)
+ * @author Gabriel Chandesris (2026)
  */
-class GenBankFileCreatorTests {
-
+class DirectlFileCreatorTests {
+	
 	@Test
-	void testGenBankFileCreatorNullNull() {
-		GenBankFileCreator ffc = new GenBankFileCreator(null, null);
+	void testDirectFileCreatorNullNull() {
+		DirectFileCreator ffc = new DirectFileCreator(null, null);
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(0, ffc.getEncodedCont().size());
@@ -27,8 +27,8 @@ class GenBankFileCreatorTests {
 	}
 	
 	@Test
-	void testGenBankFileCreatorEmptyEmpty() {
-		GenBankFileCreator ffc = new GenBankFileCreator("", "");
+	void testDirectFileCreatorEmptyEmpty() {
+		DirectFileCreator ffc = new DirectFileCreator("", "");
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(0, ffc.getEncodedCont().size());
@@ -39,8 +39,8 @@ class GenBankFileCreatorTests {
 	}
 	
 	@Test
-	void testGenBankFileCreatorDataPath() {
-		GenBankFileCreator ffc = new GenBankFileCreator("//path/to/data", "");
+	void testDirectFileCreatorDataPath() {
+		DirectFileCreator ffc = new DirectFileCreator("//path/to/data", "");
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
@@ -54,8 +54,8 @@ class GenBankFileCreatorTests {
 	}
 	
 	@Test
-	void testGenBankFileCreatorDataContent() {
-		GenBankFileCreator ffc = new GenBankFileCreator("", "some content");
+	void testDirectFileCreatorDataContent() {
+		DirectFileCreator ffc = new DirectFileCreator("", "some content");
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
@@ -69,8 +69,8 @@ class GenBankFileCreatorTests {
 	}
 
 	@Test
-	void testGenBankFileCreator01() {
-		GenBankFileCreator ffc = new GenBankFileCreator("//path/to/data", "some content");
+	void testDirectFileCreator01() {
+		DirectFileCreator ffc = new DirectFileCreator("//path/to/data", "some content");
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
@@ -84,8 +84,8 @@ class GenBankFileCreatorTests {
 	}
 	
 	@Test
-	void testGenBankFileCreator02() {
-		GenBankFileCreator ffc = new GenBankFileCreator("//path/to/data", "some content" + StringUtils.repeat("acgt", 200));
+	void testDirectFileCreator02() {
+		DirectFileCreator ffc = new DirectFileCreator("//path/to/data", "some content" + StringUtils.repeat("acgt", 200));
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());

@@ -151,7 +151,7 @@ public class GeneticTranslator implements ITranslator {
 		}
 		switch(which) {
 		case simple :
-			Logger.printlnLog(LoggerLevel.LL_DEBUG, "CASE START / STOP for 'more' !");
+			Logger.printlnLog(LoggerLevel.LL_NONE, "CASE START / STOP for 'simple' !");
 			/* NO START STOP HERE !! */;break;
 		case more 	:
 			Logger.printlnLog(LoggerLevel.LL_DEBUG, "ADDING START / STOP for 'more' !");
