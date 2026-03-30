@@ -8,6 +8,10 @@ import gabywald.crypto.model.GeneticTranslator;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * Decode a content, file of directory. 
+ * @author Gabriel Chandesris (2026)
+ */
 public class DecodeStrategyCommand implements IStrategyCommand {
 
 	@Override

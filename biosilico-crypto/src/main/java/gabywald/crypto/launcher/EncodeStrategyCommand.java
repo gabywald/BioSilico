@@ -35,51 +35,31 @@ public class EncodeStrategyCommand implements IStrategyCommand {
 				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileCreator() : 
 				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileCreator() : 
 					new DirectFileCreator();
-//		switch(output.actualValue) {
-//		case direct: new DirectFileCreator();break;
-//		case fasta: new FastaFileCreator();break;
-//		case embl:new EmblFileCreator();break;
-//		case genbank:new GenBankFileCreator();break;
-//		default:new DirectFileCreator();
-//		};
 		
-		// if (ifcc == null) { return 1; }
-		
-		// GenBankFileReader gbfr;
 		switch(codLevel.actualValue) {
 		case content: ifcc.addPathAndContent("", data);break;
-		case filePath: 
-			EncodeStrategyCommand.apply4aFile(data, ifcc);
-			break;
+		case filePath: EncodeStrategyCommand.apply4aFile(data, ifcc);break;
 		case directoryPath: 
-			
-			// List<String> filesListe = new ArrayList<String>();
 			String shortPath		= data.substring(data.lastIndexOf("\\")+1);
 			Directory repDir		= new Directory( shortPath );
-			// String[] listOfFiles	= repDir.list();
 			System.out.println("DATA: '" + data + "' / '" + shortPath + "'");
 			Arrays.asList( repDir.list() ).stream().forEach( System.out::println );
-			// Arrays.asList( repDir.list() ).stream().map( str -> shortPath + str ).forEach( System.out::println );
-			
 			Arrays.asList( repDir.list() ).stream().map( str -> shortPath + str ).forEach( str -> {
 				System.out.println( str );
 				EncodeStrategyCommand.apply4aFile(str, ifcc);
 			});
-			
-			// StringBuilder sbContent = new StringBuilder();
-			// filesListe.stream().forEach(str -> sbContent.append(str));
-			
-			// gbfc.addPathAndContent(data, sbContent.toString());
-			
 			break;
-		default: Logger.printlnLog(LoggerLevel.LL_ERROR, "CODELEVEL !!");
+		default: Logger.printlnLog(LoggerLevel.LL_ERROR, "CODELEVEL INCORRECT!!");
 		}
 		
-		System.out.println("PATHES: ");
-		ifcc.getEncodedPath().stream().map(str -> "\t"+str ).forEach(System.out::println);
-		System.out.println("CONTENTS: ");
-		ifcc.getEncodedCont().stream().map(str -> "\t"+str ).forEach(System.out::println);
-		System.out.println("FULL ENCRYPTION: ");
+		if (Logger.isLogLevelAccurate(LoggerLevel.LL_DEBUG)) {
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "PATHES: ");
+			ifcc.getEncodedPath().stream().map(str -> "\t"+str ).forEach(System.out::println);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "CONTENTS: ");
+			ifcc.getEncodedCont().stream().map(str -> "\t"+str ).forEach(System.out::println);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "FULL ENCRYPTION: ");
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, ifcc.getFullEncryption());
+		}
 		System.out.println(ifcc.getFullEncryption());
 		return 0;
 	}

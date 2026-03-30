@@ -1,5 +1,7 @@
 package gabywald.crypto.launcher;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 import picocli.CommandLine;
 
 /**
@@ -9,10 +11,9 @@ import picocli.CommandLine;
 public class CryptoLauncher {
 
 	public static void main(String[] args) {
-		int exitCode = new CommandLine(new BioSilicoCryptoCommand())
-		.execute(args);
+		int exitCode = new CommandLine(new BioSilicoCryptoCommand()).execute(args);
 		// System.exit(exitCode);
-		System.out.println( exitCode );
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, exitCode + "" );
 	}
 	
 }

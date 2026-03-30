@@ -191,9 +191,9 @@ public class BioSilicoCryptoCommand implements Runnable {
 					this.codMethod.isSimple(), this.codMethod.isMore(), this.codMethod.isRandom());
 		
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + "");
-		if (strategies.containsKey(this.codCommand.actualValue)) 
-			{ strategies.get(this.codCommand.actualValue).execute
-			(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gt); }
+		if (BioSilicoCryptoCommand.strategies.containsKey(this.codCommand.actualValue)) 
+			{ BioSilicoCryptoCommand.strategies.get(this.codCommand.actualValue).execute
+				(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gt); }
 		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STARTEGY / COMMAND !!"); }
 	}
 	
