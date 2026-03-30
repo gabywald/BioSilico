@@ -173,6 +173,10 @@ public class BioSilicoCryptoCommand implements Runnable {
 	
 	@Override
 	public void run() {
+		
+		if ( (this.dataTotranscript.startsWith("\"")) && (this.dataTotranscript.endsWith("\"")) )
+				{ this.dataTotranscript = this.dataTotranscript.substring(1, this.dataTotranscript.length() - 1); }
+		
 		Logger.printlnLog(LoggerLevel.LL_NONE, this.toString());
 		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codLevel: " + this.codLevel.actualValue);
 		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codMethod: " + this.codMethod.actualValue);

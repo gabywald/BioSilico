@@ -12,8 +12,8 @@ import gabywald.crypto.model.ITranslator;
  * <br>Encryption according to current "genetic encryption". 
  * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
-public class GenBankFileReader {
-	private List<GenBankFormat> genBank;
+public class GenBankFileReader extends AFileCryptoReader {
+	private List<GenBankFormat>  bankOfData;
 	private StringBuilder sbDecodedPath;
 	private StringBuilder sbDecodedContent;
 	
@@ -42,27 +42,26 @@ public class GenBankFileReader {
 		this.sbDecodedPath		= new StringBuilder();
 		this.sbDecodedContent	= new StringBuilder();
 		if ( ! fileContent.equals("")) { 
-			this.genBank = GenBankFormat.fromString(fileContent);
-			for (int i = 0 ; i < this.genBank.size() ; i++) {
-				GenBankFormat currentGB	= this.genBank.get(i);
-				FeaturesListe fl 	= currentGB.getFeatures().getFeaturesWith("CDS");
+			this.bankOfData = GenBankFormat.fromString(fileContent);
+			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
+				GenBankFormat current	= this.bankOfData.get(i);
+				FeaturesListe fl 	= current.getFeatures().getFeaturesWith("CDS");
 				for (int j = 0 ; j < fl.size() ; j++) {
 					this.sbDecodedPath.append(this.companion.getForPathDirName() // <= PATH !!
 							.decode(fl.get(i).get("translation"), 0, 0));
 				}
 				this.sbDecodedContent.append(this.companion.getForFileContent() // <= CONTENT !!
-						.decode(currentGB.getOrigin().getContent(), 0, 0));
+						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}
 	
-	// String separator = "\n"+StringUtils.repeat("=", 80)+"\n";
+	@Override
 	public String getPath()		{ return this.sbDecodedPath.toString(); }
+	@Override
 	public String getContent()	{ return this.sbDecodedContent.toString(); }
-
-	public GenBankFileCreator getCompanion() 
-		{ return this.companion; }
-	
-	
+	@Override
+	public IFileCryptoCreator getCompanion() { return this.companion; }
+//	public GenBankFileCreator getCompanion() { return this.companion; }
 
 }

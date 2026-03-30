@@ -1,8 +1,10 @@
 package gabywald.crypto.data.ioput;
 
 import gabywald.crypto.data.BiologicalUtils;
+import gabywald.crypto.data.DirectFormat;
 import gabywald.crypto.data.FastaFormat;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator.TranslatorEnum;
 
 /**
  * Aim of this class is to generate a Fasta file with encrypted data. 
@@ -24,6 +26,17 @@ public class FastaFileCreator extends BiologicalFileCreator {
 		super();
 		this.addPathAndContent(path, content);
 		this.bioFormat		= new FastaFormat();
+	}
+	
+	/**
+	 * 
+	 * @param bioencoder4file
+	 * @param bioencoder4path
+	 * @param which
+	 */
+	public FastaFileCreator(int bioencoder4file, int bioencoder4path, TranslatorEnum which) {
+		super(bioencoder4file, bioencoder4path, which);
+		this.bioFormat = new DirectFormat();
 	}
 
 	@Override
