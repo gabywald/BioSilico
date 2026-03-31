@@ -25,7 +25,8 @@ public class DirectFormat extends BiologicalFormat {
 	}
 	
 	public static List<DirectFormat> fromString(String content) {
-		String[] cont			= content.split( DirectFormat.MAJOR_CUTTER );
+		String[] cont = content.split( DirectFormat.MAJOR_CUTTER );
+		
 		List<DirectFormat> toReturn	= new ArrayList<DirectFormat>();
 		
 		for (int i = 0 ; i < cont.length ; i += 2) {

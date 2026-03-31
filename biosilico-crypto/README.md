@@ -60,6 +60,33 @@ Log Level Options
       --warn        Sets log level to WARN.
 ```
 
+Some examples : 
+
+```bash
+## ENCODE !!
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -c -s --DATA=toto 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/notesPicocli.txt
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -d -s --DATA=biosilico-crypto/src/test/resources/sample/
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -c -s --DATA=toto --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/notesPicocli.txt --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -d -s --DATA=biosilico-crypto/src/test/resources/sample/ --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -c -s --DATA=toto --embl
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/notesPicocli.txt --embl
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -d -s --DATA=biosilico-crypto/src/test/resources/sample/ --embl
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -c -s --DATA=toto --fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/notesPicocli.txt --fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -d -s --DATA=biosilico-crypto/src/test/resources/sample/ --fasta
+
+## DECODE !!
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -c -s --DATA=":@@@@@ctcacgttctcacgtt:" 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -c -s --DATA=":@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:"!!
+
+## ... 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar ... 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar ... 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar ... 
+```
+
 ### Debug the Jar
 
 ```bash

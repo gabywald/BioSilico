@@ -26,6 +26,7 @@ class CryptoLauncherTests {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		Logger.setLogLevel(LoggerLevel.LL_DEBUG);
 		System.setOut(new PrintStream(this.bosOUT));
 		System.setErr(new PrintStream(this.bosERR));
 	}
@@ -345,7 +346,6 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain05a() {
-		
 		CryptoLauncher.main(new String[]{"--DATA=:" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:", "-s", "-c", "-x"});
 //		Assertions.assertEquals("XXcodeCommand:\n"

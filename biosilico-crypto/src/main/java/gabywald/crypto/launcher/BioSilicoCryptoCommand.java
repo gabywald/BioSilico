@@ -186,14 +186,14 @@ public class BioSilicoCryptoCommand implements Runnable {
 
 		this.loadGeneticTranslator();
 		
-		Logger.printlnLog(LoggerLevel.LL_NONE,  this.codCommand.isDecode()?"DECODE !":this.codCommand.isEncode()?"ENCODE !":"UNKNOWN COMMAND !" );
-		System.out.printf(	"XXcodeCommand:%n\t\tcontent=%s, filePath=%s, directoryPath=%s, %n"
+		Logger.printlnLog(LoggerLevel.LL_NONE, this.codCommand.isDecode()?"DECODE !":this.codCommand.isEncode()?"ENCODE !":"UNKNOWN COMMAND !" );
+		String formatted = String.format( "XXcodeCommand:%n\t\tcontent=%s, filePath=%s, directoryPath=%s, %n"
 							+ "\t\tdataToTranscript=%s,subcommand=%s, %n"
 							+ "\t\tmethodSimple=%s, methodMore=%s, methodRand=%s%n",
 					this.codLevel.isContent(), this.codLevel.isFilePath(), this.codLevel.isDirectoryPath(), 
 					this.getDataToTranscript(), this.codCommand.actualValue, 
 					this.codMethod.isSimple(), this.codMethod.isMore(), this.codMethod.isRandom());
-		
+		Logger.printlnLog(LoggerLevel.LL_FORUSER, formatted );
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + "");
 		if (BioSilicoCryptoCommand.strategies.containsKey(this.codCommand.actualValue)) 
 			{ BioSilicoCryptoCommand.strategies.get(this.codCommand.actualValue).execute
