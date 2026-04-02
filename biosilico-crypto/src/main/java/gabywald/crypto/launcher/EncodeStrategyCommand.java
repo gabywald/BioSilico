@@ -55,7 +55,8 @@ public class EncodeStrategyCommand implements IStrategyCommand {
 		default: Logger.printlnLog(LoggerLevel.LL_ERROR, "CODELEVEL INCORRECT!!");
 		}
 		
-		if (Logger.isLogLevelAccurate(LoggerLevel.LL_DEBUG)) {
+		if ( (logLevel.actualValue.ordinal() <= BioSilicoCryptoCommand.LogLevel.TheEnum.info.ordinal()) 
+				&& (Logger.isLogLevelAccurate(LoggerLevel.LL_DEBUG)) ) {
 			Logger.printlnLog(LoggerLevel.LL_DEBUG, "PATHES: ");
 			ifcc.getEncodedPath().stream().map(str -> "\t"+str ).forEach(System.out::println);
 			Logger.printlnLog(LoggerLevel.LL_DEBUG, "CONTENTS: ");

@@ -41,10 +41,13 @@ public class DecodeStrategyCommand implements IStrategyCommand {
 		case directoryPath: 
 			String shortPath		= data.substring(data.lastIndexOf("\\")+1);
 			Directory repDir		= new Directory( shortPath );
-			System.out.println("DATA: '" + data + "' / '" + shortPath + "'");
-			Arrays.asList( repDir.list() ).stream().forEach( System.out::println );
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "DATA: '" + data + "' / '" + shortPath + "'");
+			if (Logger.isLogLevelAccurate(LoggerLevel.LL_DEBUG)) {
+				Arrays.asList( repDir.list() ).stream()
+				.forEach( str -> Logger.printlnLog(LoggerLevel.LL_DEBUG, str) );
+			}
 			Arrays.asList( repDir.list() ).stream().map( str -> shortPath + str ).forEach( str -> {
-				System.out.println( str );
+				Logger.printlnLog(LoggerLevel.LL_DEBUG,  str );
 				DecodeStrategyCommand.apply4aFile(data, ifcr);
 			});
 			break;
@@ -53,8 +56,6 @@ public class DecodeStrategyCommand implements IStrategyCommand {
 		
 		System.out.println(ifcr.getPath());
 		System.out.println(ifcr.getContent());
-		
-		// TODO !!
 		return 0;
 	}
 	
@@ -63,7 +64,7 @@ public class DecodeStrategyCommand implements IStrategyCommand {
 		File toLoad = new File( path );
 		try { toLoad.load(); } 
 		catch (IOException e) { Logger.printlnLog(LoggerLevel.LL_ERROR, "File {" + toLoad.getName() + "} not found !"); }
-		System.out.println("DATA: '" + path + "' (" + toLoad.getChampsToString().length() + ")");
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "DATA: '" + path + "' (" + toLoad.getChampsToString().length() + ")");
 		ifcr.setFileContent(toLoad.getChampsToString());
 	}
 

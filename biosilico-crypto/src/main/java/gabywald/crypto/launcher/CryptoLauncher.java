@@ -11,9 +11,11 @@ import picocli.CommandLine;
 public class CryptoLauncher {
 
 	public static void main(String[] args) {
-		int exitCode = new CommandLine(new BioSilicoCryptoCommand()).execute(args);
+		BioSilicoCryptoCommand bscc = new BioSilicoCryptoCommand();
+		int exitCode = new CommandLine(bscc).execute(args);
 		// System.exit(exitCode);
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, exitCode + "" );
+		if (bscc.isLogEnabled(BioSilicoCryptoCommand.LogLevel.TheEnum.info)) 
+					{ Logger.printlnLog(LoggerLevel.LL_FORUSER, exitCode + "" ); }
 	}
 	
 }

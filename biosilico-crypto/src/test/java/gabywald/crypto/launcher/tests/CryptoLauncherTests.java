@@ -90,7 +90,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain02a() {
-		CryptoLauncher.main(new String[]{"--DATA=toto"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
@@ -100,7 +100,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain02b() {
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto", "-s"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
@@ -110,7 +110,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain02c() {
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto", "-s", "-c"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
@@ -120,7 +120,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain02d() {
-		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-s", "-c"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\"toto\"", "-s", "-c"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
@@ -130,7 +130,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain02e() {
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-i=3"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto", "-s", "-c", "-i=3"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[1], bosERR.toString().split("\n")[0]);
@@ -140,7 +140,7 @@ class CryptoLauncherTests {
 		
 	@Test
 	void testMain03a() {
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-x"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto", "-x"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
@@ -150,7 +150,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03b() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
@@ -161,7 +161,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03c() {
-		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-x", "-c"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\"toto\"", "-x", "-c"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[2], bosERR.toString().split("\n")[0]);
@@ -171,7 +171,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03d() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-i=3"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
@@ -182,7 +182,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03e() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-i=3"});
 		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
@@ -194,7 +194,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03f() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-i=3"});
 		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
@@ -206,7 +206,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03g() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-i=3"});
 		Assertions.assertTrue(bosOUT.toString().startsWith("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
@@ -218,7 +218,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03h() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-i=42"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
@@ -229,7 +229,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03i() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -243,7 +243,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03j() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -257,7 +257,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03k() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -271,7 +271,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03l() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -285,7 +285,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03m() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -299,7 +299,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain03n() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
@@ -313,7 +313,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain04a() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-s"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
@@ -324,7 +324,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain04b() {
-		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-x", "-s"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\"toto\"", "-x", "-s"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
 		// Assertions.assertEquals(attemptedErrors[3], bosERR.toString().split("\n")[0]);
@@ -334,7 +334,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain04c() {
-		CryptoLauncher.main(new String[]{"--DATA=\":" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-s", "-i=3"});
 		// Assertions.assertEquals("2\n", bosOUT.toString());
 		Assertions.assertTrue(bosOUT.toString().endsWith("2\n"));
@@ -346,7 +346,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain05a() {
-		CryptoLauncher.main(new String[]{"--DATA=:" + "@@@@@"
+		CryptoLauncher.main(new String[]{"--info", "--DATA=:" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:", "-s", "-c", "-x"});
 //		Assertions.assertEquals("XXcodeCommand:\n"
 //				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
@@ -364,7 +364,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain05b() {
-		CryptoLauncher.main(new String[]{"--DATA=toto", "-s", "-c", "-e"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=toto", "-s", "-c", "-e"});
 //		Assertions.assertEquals("XXcodeCommand:\n"
 //				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
 //				+ "dataToTranscript=toto\n"
@@ -381,7 +381,7 @@ class CryptoLauncherTests {
 	
 	@Test
 	void testMain05c() {
-		CryptoLauncher.main(new String[]{"--DATA=\"toto\"", "-s", "-c", "-e"});
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\"toto\"", "-s", "-c", "-e"});
 //		Assertions.assertEquals("XXcodeCommand:\n"
 //				+ "\t\tcontent=true, filePath=false, directoryPath=false\n"
 //				+ "dataToTranscript=\"toto\"\n"

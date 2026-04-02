@@ -137,8 +137,9 @@ public class BioSilicoCryptoCommand implements Runnable {
 	/**
 	 * Log Level. 
 	 */
-	static class LogLevel {
-		enum TheEnum { debug, info, warn, error, none }
+	public static class LogLevel {
+		// public enum TheEnum { none, error, warn, info, debug, trace }
+		public enum TheEnum { trace, debug, info, warn, error, none }
 
 		TheEnum actualValue = TheEnum.none;
 
@@ -154,11 +155,25 @@ public class BioSilicoCryptoCommand implements Runnable {
 		@Option(names = "--error", description = "Sets log level to ERROR.")
 		void setError(boolean b)	{ this.actualValue = TheEnum.error; }
 		
+		@Option(names = "--trace", description = "Sets log level to NONE.")
+		void setTrace(boolean b)	{ this.actualValue = TheEnum.trace; }
+		
 		@Option(names = "--none", description = "Sets log level to NONE.")
 		void setNone(boolean b)		{ this.actualValue = TheEnum.none; }
+		
 	}
 	@ArgGroup(exclusive = true, heading = "Log Level Options%n", multiplicity = "0..1")
 	LogLevel logLevel = new LogLevel();
+	
+	public boolean isLogEnabled(LogLevel.TheEnum checkValue) {
+		return checkValue.ordinal() >= logLevel.actualValue.ordinal();
+	}
+	
+	public LogLevel.TheEnum setLogLevel(LogLevel.TheEnum nextValue) { 
+		LogLevel.TheEnum prevValue = this.logLevel.actualValue;
+		this.logLevel.actualValue = nextValue;
+		return prevValue;
+	}
 	
 	@Option(names = {"-i", "--cryptofileindex"}, 
 			description = "Crypto File Index", 
@@ -173,32 +188,44 @@ public class BioSilicoCryptoCommand implements Runnable {
 	
 	@Override
 	public void run() {
+		if (this.isLogEnabled(LogLevel.TheEnum.debug)) { Logger.setLogLevel(LoggerLevel.LL_DEBUG); }
+		if (this.isLogEnabled(LogLevel.TheEnum.info)) { Logger.setLogLevel(LoggerLevel.LL_INFO); }
+		if (this.isLogEnabled(LogLevel.TheEnum.warn)) { Logger.setLogLevel(LoggerLevel.LL_WARNING); }
+		if (this.isLogEnabled(LogLevel.TheEnum.error)) { Logger.setLogLevel(LoggerLevel.LL_ERROR); }
+		if (this.isLogEnabled(LogLevel.TheEnum.none)) { Logger.setLogLevel(LoggerLevel.LL_ERROR); }
 		
 		if ( (this.dataTotranscript.startsWith("\"")) && (this.dataTotranscript.endsWith("\"")) )
 				{ this.dataTotranscript = this.dataTotranscript.substring(1, this.dataTotranscript.length() - 1); }
 		
-		Logger.printlnLog(LoggerLevel.LL_NONE, this.toString());
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codLevel: " + this.codLevel.actualValue);
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "codMethod: " + this.codMethod.actualValue);
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "logLevel: " + this.logLevel.actualValue);
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "data: " + this.dataTotranscript);
-		Logger.printlnLog(LoggerLevel.LL_NONE, "\t" + "cryptoFileIndex: " + this.cryptoFileIndex);
+		if (this.isLogEnabled(LogLevel.TheEnum.debug)) {
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, this.toString());
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t" + "codLevel: " + this.codLevel.actualValue);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t" + "codMethod: " + this.codMethod.actualValue);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t" + "logLevel: " + this.logLevel.actualValue);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t" + "data: " + this.dataTotranscript);
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t" + "cryptoFileIndex: " + this.cryptoFileIndex);
+			
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.isDecode()?"DECODE !":this.codCommand.isEncode()?"ENCODE !":"UNKNOWN COMMAND !" );
+		}
 
 		this.loadGeneticTranslator();
 		
-		Logger.printlnLog(LoggerLevel.LL_NONE, this.codCommand.isDecode()?"DECODE !":this.codCommand.isEncode()?"ENCODE !":"UNKNOWN COMMAND !" );
-		String formatted = String.format( "XXcodeCommand:%n\t\tcontent=%s, filePath=%s, directoryPath=%s, %n"
-							+ "\t\tdataToTranscript=%s,subcommand=%s, %n"
-							+ "\t\tmethodSimple=%s, methodMore=%s, methodRand=%s%n",
-					this.codLevel.isContent(), this.codLevel.isFilePath(), this.codLevel.isDirectoryPath(), 
-					this.getDataToTranscript(), this.codCommand.actualValue, 
-					this.codMethod.isSimple(), this.codMethod.isMore(), this.codMethod.isRandom());
-		Logger.printlnLog(LoggerLevel.LL_FORUSER, formatted );
-		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + "");
+		if (this.isLogEnabled(LogLevel.TheEnum.info)) {
+			String formatted = String.format( "XXcodeCommand:%n\t\tcontent=%s, filePath=%s, directoryPath=%s, %n"
+								+ "\t\tdataToTranscript=%s,subcommand=%s, %n"
+								+ "\t\tmethodSimple=%s, methodMore=%s, methodRand=%s%n",
+						this.codLevel.isContent(), this.codLevel.isFilePath(), this.codLevel.isDirectoryPath(), 
+						this.getDataToTranscript(), this.codCommand.actualValue, 
+						this.codMethod.isSimple(), this.codMethod.isMore(), this.codMethod.isRandom());
+			Logger.printlnLog(LoggerLevel.LL_FORUSER, formatted );
+		}
+		if (this.isLogEnabled(LogLevel.TheEnum.debug)) 
+			{ Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.actualValue + ""); }
+		
 		if (BioSilicoCryptoCommand.strategies.containsKey(this.codCommand.actualValue)) 
 			{ BioSilicoCryptoCommand.strategies.get(this.codCommand.actualValue).execute
 				(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gt); }
-		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STARTEGY / COMMAND !!"); }
+		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STRATEGY / COMMAND !!"); }
 	}
 	
 	private void loadGeneticTranslator() {

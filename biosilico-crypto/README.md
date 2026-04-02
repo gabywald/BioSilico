@@ -79,7 +79,7 @@ java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-depen
 
 ## DECODE !!
 java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -c -s --DATA=":@@@@@ctcacgttctcacgtt:" 
-java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -c -s --DATA=":@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:"!!
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -c -s --DATA=":@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:"
 
 ## ... 
 java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar ... 
