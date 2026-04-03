@@ -25,15 +25,15 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class DecodeStrategyCommand implements IStrategyCommand {
 
 	@Override
-	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gt) {
+	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gtFile, GeneticTranslator gtPath) {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getName());
 		
 		IFileCryptoReader ifcr = 
-				(output.actualValue == OutputType.TheEnum.direct) ? new DirectFileReader() : 
-				(output.actualValue == OutputType.TheEnum.fasta) ? new FastaFileReader() : 
-				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileReader() : 
-				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileReader() : 
-					new DirectFileReader();
+				(output.actualValue == OutputType.TheEnum.direct) ? new DirectFileReader(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.fasta) ? new FastaFileReader(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileReader(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileReader(gtFile, gtPath, codMethod.actualValue) : 
+					new DirectFileReader(gtFile, gtPath, codMethod.actualValue);
 		
 		switch(codLevel.actualValue) {
 		case content: ifcr.setFileContent(data);break;
@@ -54,11 +54,10 @@ public class DecodeStrategyCommand implements IStrategyCommand {
 		default: Logger.printlnLog(LoggerLevel.LL_ERROR, "CODELEVEL INCORRECT!!");
 		}
 		
-		System.out.println(ifcr.getPath());
-		System.out.println(ifcr.getContent());
+		System.out.println(ifcr.getDecodedPath());
+		System.out.println(ifcr.getDecodedContent());
 		return 0;
 	}
-	
 	
 	public static void apply4aFile(String path, IFileCryptoReader ifcr) {
 		File toLoad = new File( path );

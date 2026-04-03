@@ -9,19 +9,20 @@ import gabywald.crypto.model.ITranslator;
  * 
  * @author Gabriel Chandesris (2026)
  */
-public class DirectFileReader implements IFileCryptoReader {
+public class DirectFileReader extends BiologicalFileReader {
 	
 	private List<DirectFormat> bankOfData;
 	private StringBuilder sbDecodedPath;
 	private StringBuilder sbDecodedContent;
 	
-	private DirectFileCreator companion = null;
-	
-	public DirectFileReader() { this(""); }
-	
-	public DirectFileReader(String fileContent) { 
-		this.companion = new DirectFileCreator(0, 1, ITranslator.TranslatorEnum.simple);
-		this.setFileContent(fileContent);
+	/**
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
+	 */
+	public DirectFileReader(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super( new DirectFileCreator(forFiles, forPathes, which) );
 	}
 
 	@Override
@@ -32,17 +33,10 @@ public class DirectFileReader implements IFileCryptoReader {
 			this.bankOfData = DirectFormat.fromString(fileContent);
 			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
 				DirectFormat current	= this.bankOfData.get(i);
-				this.sbDecodedPath.append(this.companion.getForPathDirName().decode(current.getComment(), 0, 0));
-				this.sbDecodedContent.append(this.companion.getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
+				this.sbDecodedPath.append(this.getCompanion().getForPathDirName().decode(current.getComment(), 0, 0));
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}
-
-	@Override
-	public String getPath()		{ return this.sbDecodedPath.toString(); }
-	@Override
-	public String getContent()	{ return this.sbDecodedContent.toString(); }
-	@Override
-	public IFileCryptoCreator getCompanion() { return this.companion; }
 
 }

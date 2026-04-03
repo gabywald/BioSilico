@@ -3,20 +3,22 @@ package gabywald.crypto.data.ioput.tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import gabywald.crypto.data.ioput.EmblFileCreator;
+import gabywald.crypto.data.BiologicalUtils;
+import gabywald.crypto.data.ioput.DirectFileCreator;
+import gabywald.crypto.model.ITranslator;
 import gabywald.global.data.StringUtils;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020, 2026)
+ * @author Gabriel Chandesris (2026)
  */
 class EmblFileCreatorTests {
 	
 	@Test
-	void testEmblFileCreatorNullNull() {
-		EmblFileCreator ffc = new EmblFileCreator(null, null);
+	void testDirectFileCreatorNullNull() {
+		DirectFileCreator ffc = new DirectFileCreator( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple );
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(0, ffc.getEncodedCont().size());
@@ -27,8 +29,8 @@ class EmblFileCreatorTests {
 	}
 	
 	@Test
-	void testEmblFileCreatorEmptyEmpty() {
-		EmblFileCreator ffc = new EmblFileCreator("", "");
+	void testDirectFileCreatorEmptyEmpty() {
+		DirectFileCreator ffc = new DirectFileCreator(BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple);
 		Assertions.assertNotNull( ffc );
 		
 		Assertions.assertEquals(0, ffc.getEncodedCont().size());
@@ -39,9 +41,10 @@ class EmblFileCreatorTests {
 	}
 	
 	@Test
-	void testEmblFileCreatorDataPath() {
-		EmblFileCreator ffc = new EmblFileCreator("//path/to/data", "");
+	void testDirectFileCreatorDataPath() {
+		DirectFileCreator ffc = new DirectFileCreator(BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple);
 		Assertions.assertNotNull( ffc );
+		ffc.addPathAndContent("//path/to/data", "");
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());
@@ -54,9 +57,10 @@ class EmblFileCreatorTests {
 	}
 	
 	@Test
-	void testEmblFileCreatorDataContent() {
-		EmblFileCreator ffc = new EmblFileCreator("", "some content");
+	void testDirectFileCreatorDataContent() {
+		DirectFileCreator ffc = new DirectFileCreator(BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple);
 		Assertions.assertNotNull( ffc );
+		ffc.addPathAndContent("", "some content");
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());
@@ -69,9 +73,10 @@ class EmblFileCreatorTests {
 	}
 
 	@Test
-	void testEmblFileCreator01() {
-		EmblFileCreator ffc = new EmblFileCreator("//path/to/data", "some content");
+	void testDirectFileCreator01() {
+		DirectFileCreator ffc = new DirectFileCreator(BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple);
 		Assertions.assertNotNull( ffc );
+		ffc.addPathAndContent("//path/to/data", "some content");
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());
@@ -84,9 +89,10 @@ class EmblFileCreatorTests {
 	}
 	
 	@Test
-	void testEmblFileCreator02() {
-		EmblFileCreator ffc = new EmblFileCreator("//path/to/data", "some content" + StringUtils.repeat("acgt", 200));
+	void testDirectFileCreator02() {
+		DirectFileCreator ffc = new DirectFileCreator(BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple);
 		Assertions.assertNotNull( ffc );
+		ffc.addPathAndContent("//path/to/data", "some content" + StringUtils.repeat("acgt", 200));
 		
 		Assertions.assertEquals(1, ffc.getEncodedCont().size());
 		Assertions.assertEquals(1, ffc.getEncodedPath().size());

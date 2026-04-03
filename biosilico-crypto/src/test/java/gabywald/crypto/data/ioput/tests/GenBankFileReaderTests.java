@@ -6,7 +6,9 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.ioput.GenBankFileReader;
+import gabywald.crypto.model.ITranslator;
 import gabywald.global.data.File;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -19,10 +21,15 @@ class GenBankFileReaderTests {
 
 	@Test
 	void testGenBankFileReader01() {
-		GenBankFileReader gbfr = new GenBankFileReader();
+		GenBankFileReader gbfr = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple );
 		
-		Assertions.assertEquals("", gbfr.getPath());
-		Assertions.assertEquals("", gbfr.getContent());
+		Assertions.assertEquals(null, gbfr.getDecodedPath());
+		Assertions.assertEquals(null, gbfr.getDecodedContent());
+		
+		gbfr.setFileContent("");
+		
+		Assertions.assertEquals("", gbfr.getDecodedPath());
+		Assertions.assertEquals("", gbfr.getDecodedContent());
 
 		// ***** ***** ***** ***** ***** 
 		
@@ -44,11 +51,12 @@ class GenBankFileReaderTests {
 //		for (String data : content2read) {
 //			Logger.printlnLog(LoggerLevel.LL_NONE, data );
 //			GenBankFileReader gbfrTMP = new GenBankFileReader( data );
-//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getPath() + "*****");
-//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getContent() + "*****");
+//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getDecodedPath() + "*****");
+//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getDecodedContent() + "*****");
 //		}
 		
-		GenBankFileReader gbfrBASE = new GenBankFileReader( "" );
+		GenBankFileReader gbfrBASE = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfrBASE.setFileContent( "" );
 		Assertions.assertNotNull(gbfrBASE);
 		Assertions.assertNotNull(gbfrBASE.getCompanion());
 		Assertions.assertNotNull(gbfrBASE.getCompanion().getForFileContent());
@@ -56,63 +64,74 @@ class GenBankFileReaderTests {
 		Logger.printlnLog(LoggerLevel.LL_NONE, gbfrBASE.getCompanion().getForFileContent().toString() );
 		Logger.printlnLog(LoggerLevel.LL_NONE, gbfrBASE.getCompanion().getForPathDirName().toString() );
 		
-		GenBankFileReader gbfr00 = new GenBankFileReader( content2read[0] );
+		GenBankFileReader gbfr00 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr00.setFileContent( content2read[0] );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getPath());
-		Assertions.assertEquals("some content", gbfr00.getContent());
+		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 		
-		GenBankFileReader gbfr01 = new GenBankFileReader( content2read[1] );
+		GenBankFileReader gbfr01 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr01.setFileContent( content2read[1] );
 		Assertions.assertNotNull(gbfr01);
-		Assertions.assertEquals("", gbfr01.getPath());
-		Assertions.assertEquals("some content", gbfr01.getContent());
+		Assertions.assertEquals("", gbfr01.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr01.getDecodedContent());
 		
-		GenBankFileReader gbfr02 = new GenBankFileReader( content2read[2] );
+		GenBankFileReader gbfr02 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr02.setFileContent( content2read[2] );
 		Assertions.assertNotNull(gbfr02);
-		Assertions.assertEquals("", gbfr02.getPath());
+		Assertions.assertEquals("", gbfr02.getDecodedPath());
 		Assertions.assertEquals("some content\n" + 
-				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr02.getContent());
+				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr02.getDecodedContent());
 		
-		GenBankFileReader gbfr03 = new GenBankFileReader( content2read[3] );
+		GenBankFileReader gbfr03 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr03.setFileContent( content2read[3] );
 		Assertions.assertNotNull(gbfrBASE);
-		Assertions.assertEquals("", gbfr03.getPath());
-		Assertions.assertEquals("someTXT", gbfr03.getContent());
+		Assertions.assertEquals("", gbfr03.getDecodedPath());
+		Assertions.assertEquals("someTXT", gbfr03.getDecodedContent());
 		
-		GenBankFileReader gbfr04 = new GenBankFileReader( content2read[4] );
+		GenBankFileReader gbfr04 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr04.setFileContent( content2read[4] );
 		Assertions.assertNotNull(gbfr04);
-		Assertions.assertEquals("", gbfr04.getPath());
-		Assertions.assertEquals("", gbfr04.getContent());
+		Assertions.assertEquals("", gbfr04.getDecodedPath());
+		Assertions.assertEquals("", gbfr04.getDecodedContent());
 		
-		GenBankFileReader gbfr05 = new GenBankFileReader( content2read[5] );
+		GenBankFileReader gbfr05 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr05.setFileContent( content2read[5] );
 		Assertions.assertNotNull(gbfrBASE);
-		Assertions.assertEquals("", gbfr05.getPath());
-		Assertions.assertEquals("some content", gbfr05.getContent());
+		Assertions.assertEquals("", gbfr05.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr05.getDecodedContent());
 		
-		GenBankFileReader gbfr06 = new GenBankFileReader( content2read[6] );
+		GenBankFileReader gbfr06 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr06.setFileContent( content2read[6] );
 		Assertions.assertNotNull(gbfr06);
-		Assertions.assertEquals("", gbfr06.getPath());
+		Assertions.assertEquals("", gbfr06.getDecodedPath());
 		Assertions.assertEquals("some content\n" + 
-				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr06.getContent());
+				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr06.getDecodedContent());
 		
-		GenBankFileReader gbfr07 = new GenBankFileReader( content2read[7] );
+		GenBankFileReader gbfr07 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr07.setFileContent( content2read[7] );
 		Assertions.assertNotNull(gbfr07);
-		Assertions.assertEquals("", gbfr07.getPath());
-		Assertions.assertEquals("someTXT", gbfr07.getContent());
+		Assertions.assertEquals("", gbfr07.getDecodedPath());
+		Assertions.assertEquals("someTXT", gbfr07.getDecodedContent());
 		
-		GenBankFileReader gbfr08 = new GenBankFileReader( content2read[8] );
+		GenBankFileReader gbfr08 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr08.setFileContent( content2read[8] );
 		Assertions.assertNotNull(gbfr08);
-		Assertions.assertEquals("", gbfr08.getPath());
-		Assertions.assertEquals("", gbfr08.getContent());
+		Assertions.assertEquals("", gbfr08.getDecodedPath());
+		Assertions.assertEquals("", gbfr08.getDecodedContent());
 		
-		GenBankFileReader gbfr09 = new GenBankFileReader( content2read[9] );
+		GenBankFileReader gbfr09 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr09.setFileContent( content2read[9] );
 		Assertions.assertNotNull(gbfr09);
-		Assertions.assertEquals("", gbfr09.getPath());
-		Assertions.assertEquals("some content", gbfr09.getContent());
+		Assertions.assertEquals("", gbfr09.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr09.getDecodedContent());
 		
 	}
 	
 	@Test
 	void testGenBankFileReaderGBFRbase() {
-		GenBankFileReader gbfr00 = new GenBankFileReader( 
+		GenBankFileReader gbfr00 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr00.setFileContent( 
 				"LOCUS       DVS_3971646124         56 bp     DNA    linear   HTC 14-NOV-2055\n"
 				+ "DEFINITION  Salmo salar (LOC662698378), DNA.\n"
 				+ "ACCESSION   DVS_3971646124\n"
@@ -135,13 +154,14 @@ class GenBankFileReaderTests {
 				+ "        1 tttactatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttg\n"
 				+ "//" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getPath());
-		Assertions.assertEquals("some content", gbfr00.getContent());
+		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 	
 	@Test
 	void testGenBankFileReaderGBFR00() {
-		GenBankFileReader gbfr00 = new GenBankFileReader( 
+		GenBankFileReader gbfr00 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
+		gbfr00.setFileContent( 
 				"LOCUS       DVS_3971646124         56 bp     DNA    linear   HTC 14-NOV-2055\n"
 				+ "DEFINITION  Salmo salar (LOC662698378), DNA.\n"
 				+ "ACCESSION   DVS_3971646124\n"
@@ -232,8 +252,8 @@ class GenBankFileReaderTests {
 				+ "        1 tttactatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttg\n"
 				+ "//" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getPath());
-		Assertions.assertEquals("some content", gbfr00.getContent());
+		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 
 }

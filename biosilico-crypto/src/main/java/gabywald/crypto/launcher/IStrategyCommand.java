@@ -11,5 +11,18 @@ import gabywald.crypto.model.GeneticTranslator;
  * @author Gabriel Chandesris (2020)
  */
 public interface IStrategyCommand {
-	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gt);
+	/**
+	 * 
+	 * @param data
+	 * @param codLevel
+	 * @param codMethod
+	 * @param output
+	 * @param logLevel
+	 * @param gtFile
+	 * @param gtPath
+	 * @return (exit code)
+	 */
+	public int execute(	String data, CodeLevel codLevel, CodeMethod codMethod, 
+						OutputType output, LogLevel logLevel, 
+						GeneticTranslator gtFile, GeneticTranslator gtPath);
 }

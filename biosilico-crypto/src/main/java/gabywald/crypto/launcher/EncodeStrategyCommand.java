@@ -26,15 +26,15 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class EncodeStrategyCommand implements IStrategyCommand {
 
 	@Override
-	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gt) {
+	public int execute(String data, CodeLevel codLevel, CodeMethod codMethod, OutputType output, LogLevel logLevel, GeneticTranslator gtFile, GeneticTranslator gtPath) {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, this.getClass().getName());
 		
 		BiologicalFileCreator ifcc = 
-				(output.actualValue == OutputType.TheEnum.direct) ? new DirectFileCreator() : 
-				(output.actualValue == OutputType.TheEnum.fasta) ? new FastaFileCreator() : 
-				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileCreator() : 
-				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileCreator() : 
-					new DirectFileCreator();
+				(output.actualValue == OutputType.TheEnum.direct) ? new DirectFileCreator(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.fasta) ? new FastaFileCreator(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.embl) ? new EmblFileCreator(gtFile, gtPath, codMethod.actualValue) : 
+				(output.actualValue == OutputType.TheEnum.genbank) ? new GenBankFileCreator(gtFile, gtPath, codMethod.actualValue) : 
+					new DirectFileCreator(gtFile, gtPath, codMethod.actualValue);
 		
 		switch(codLevel.actualValue) {
 		case content: ifcc.addPathAndContent("", data);break;

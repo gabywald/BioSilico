@@ -1,9 +1,9 @@
 package gabywald.crypto.data.ioput;
 
 import gabywald.crypto.data.BiologicalUtils;
-import gabywald.crypto.data.DirectFormat;
 import gabywald.crypto.data.FastaFormat;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator;
 import gabywald.crypto.model.ITranslator.TranslatorEnum;
 
 /**
@@ -14,18 +14,15 @@ import gabywald.crypto.model.ITranslator.TranslatorEnum;
  */
 public class FastaFileCreator extends BiologicalFileCreator {
 	
-	public FastaFileCreator() 
-		{ this("", ""); }
-
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
 	 */
-	public FastaFileCreator(String path, String content) {
-		super();
-		this.addPathAndContent(path, content);
-		this.bioFormat		= new FastaFormat();
+	public FastaFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
+		this.bioFormat = new FastaFormat();
 	}
 	
 	/**
@@ -36,7 +33,7 @@ public class FastaFileCreator extends BiologicalFileCreator {
 	 */
 	public FastaFileCreator(int bioencoder4file, int bioencoder4path, TranslatorEnum which) {
 		super(bioencoder4file, bioencoder4path, which);
-		this.bioFormat = new DirectFormat();
+		this.bioFormat = new FastaFormat();
 	}
 
 	@Override

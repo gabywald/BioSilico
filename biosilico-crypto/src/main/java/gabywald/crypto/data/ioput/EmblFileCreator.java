@@ -6,11 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gabywald.crypto.data.BiologicalUtils;
-import gabywald.crypto.data.DirectFormat;
 import gabywald.crypto.data.EmblFormat;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator;
 import gabywald.crypto.model.ITranslator.TranslatorEnum;
 import gabywald.global.data.StringUtils;
 
@@ -22,18 +22,15 @@ import gabywald.global.data.StringUtils;
  */
 public class EmblFileCreator extends BiologicalFileCreator {
 	
-	public EmblFileCreator() 
-		{ this("", ""); }
-
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
 	 */
-	public EmblFileCreator(String path, String content) {
-		super();
-		this.addPathAndContent(path, content);
-		this.bioFormat		= new EmblFormat();
+	public EmblFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
+		this.bioFormat = new EmblFormat();
 	}
 
 	/**
@@ -44,7 +41,7 @@ public class EmblFileCreator extends BiologicalFileCreator {
 	 */
 	public EmblFileCreator(int bioencoder4file, int bioencoder4path, TranslatorEnum which) {
 		super(bioencoder4file, bioencoder4path, which);
-		this.bioFormat = new DirectFormat();
+		this.bioFormat = new EmblFormat();
 	}
 
 	@Override

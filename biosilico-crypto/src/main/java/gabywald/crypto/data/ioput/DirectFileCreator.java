@@ -3,22 +3,19 @@ package gabywald.crypto.data.ioput;
 import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.DirectFormat;
 import gabywald.crypto.data.composition.Sequence;
-import gabywald.crypto.model.ITranslator.TranslatorEnum;
+import gabywald.crypto.model.ITranslator;
 
 public class DirectFileCreator extends BiologicalFileCreator {
 
-	public DirectFileCreator() 
-		{ this("", ""); }
-	
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
 	 */
-	public DirectFileCreator(String path, String content) {
-		super();
-		this.addPathAndContent(path, content);
-		this.bioFormat		= new DirectFormat();
+	public DirectFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
+		this.bioFormat = new DirectFormat();
 	}
 	
 	/**
@@ -27,7 +24,7 @@ public class DirectFileCreator extends BiologicalFileCreator {
 	 * @param bioencoder4path
 	 * @param which
 	 */
-	public DirectFileCreator(int bioencoder4file, int bioencoder4path, TranslatorEnum which) {
+	public DirectFileCreator(int bioencoder4file, int bioencoder4path, ITranslator.TranslatorEnum which) {
 		super(bioencoder4file, bioencoder4path, which);
 		this.bioFormat = new DirectFormat();
 	}

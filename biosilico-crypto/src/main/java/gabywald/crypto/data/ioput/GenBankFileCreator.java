@@ -21,17 +21,14 @@ import gabywald.global.data.StringUtils;
  */
 public class GenBankFileCreator extends BiologicalFileCreator {
 	
-	public GenBankFileCreator() 
-		{ this("", ""); }
-	
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
 	 */
-	public GenBankFileCreator(String path, String content) { 
-		super();
-		this.addPathAndContent(path, content);
+	public GenBankFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
 		this.bioFormat = new GenBankFormat();
 	}
 	

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.model.GeneticTranslator;
+import gabywald.crypto.model.ITranslator;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 import picocli.CommandLine.ArgGroup;
@@ -82,25 +83,24 @@ public class BioSilicoCryptoCommand implements Runnable {
 	 * Code Method to use (simple, more, random). 
 	 */
 	static class CodeMethod {
-		enum TheEnum { simple, more, random }
 
-		TheEnum actualValue = TheEnum.simple;
+		ITranslator.TranslatorEnum actualValue = ITranslator.TranslatorEnum.simple;
 
 		@Option(names = {"-s", "--simple"}, 
 				description = "Simple code Method.")
-		void setSimple(boolean b)	{ this.actualValue = TheEnum.simple; }
+		void setSimple(boolean b)	{ this.actualValue = ITranslator.TranslatorEnum.simple; }
 
 		@Option(names = {"-m", "--more"}, 
 				description = "More code Method. ")
-		void setMore(boolean b)		{ this.actualValue = TheEnum.more; }
+		void setMore(boolean b)		{ this.actualValue = ITranslator.TranslatorEnum.more; }
 
 		@Option(names = {"-r", "--random"}, 
 				description = "Random code Method. ")
-		void setRand(boolean b)		{ this.actualValue = TheEnum.random; }
+		void setRand(boolean b)		{ this.actualValue = ITranslator.TranslatorEnum.random; }
 		
-		boolean isSimple()	{ return (this.actualValue == TheEnum.simple); }
-		boolean isMore()	{ return (this.actualValue == TheEnum.more); }
-		boolean isRandom()	{ return (this.actualValue == TheEnum.random); }
+		boolean isSimple()	{ return (this.actualValue == ITranslator.TranslatorEnum.simple); }
+		boolean isMore()	{ return (this.actualValue == ITranslator.TranslatorEnum.more); }
+		boolean isRandom()	{ return (this.actualValue == ITranslator.TranslatorEnum.random); }
 	}
 	@ArgGroup(exclusive = true, heading = "Code Method Options%n", multiplicity = "1")
 	CodeMethod codMethod = new CodeMethod();
@@ -180,7 +180,14 @@ public class BioSilicoCryptoCommand implements Runnable {
 			defaultValue = "0", 
 			hidden = true)
 	private int cryptoFileIndex;
-	GeneticTranslator gt = null;
+	GeneticTranslator gtFile = null;
+	
+	@Option(names = {"-j", "--cryptopathindex"}, 
+			description = "Crypto Path Index", 
+			defaultValue = "0", 
+			hidden = true)
+	private int cryptoPathIndex;
+	GeneticTranslator gtPath = null;
 	
 	@Option(names = {"-D", "--DATA"}, arity = "1", required = true, 
 			description = "Data to transcript (content, path to file or path to directory). ")
@@ -208,7 +215,7 @@ public class BioSilicoCryptoCommand implements Runnable {
 			Logger.printlnLog(LoggerLevel.LL_DEBUG, this.codCommand.isDecode()?"DECODE !":this.codCommand.isEncode()?"ENCODE !":"UNKNOWN COMMAND !" );
 		}
 
-		this.loadGeneticTranslator();
+		this.loadGeneticTranslators();
 		
 		if (this.isLogEnabled(LogLevel.TheEnum.info)) {
 			String formatted = String.format( "XXcodeCommand:%n\t\tcontent=%s, filePath=%s, directoryPath=%s, %n"
@@ -224,17 +231,24 @@ public class BioSilicoCryptoCommand implements Runnable {
 		
 		if (BioSilicoCryptoCommand.strategies.containsKey(this.codCommand.actualValue)) 
 			{ BioSilicoCryptoCommand.strategies.get(this.codCommand.actualValue).execute
-				(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gt); }
+				(this.dataTotranscript, this.codLevel, this.codMethod, this.outputType, this.logLevel, this.gtFile, this.gtPath); }
 		else { Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN STRATEGY / COMMAND !!"); }
 	}
 	
-	private void loadGeneticTranslator() {
-		try { this.gt = BiologicalUtils.getGenericCrypto(this.cryptoFileIndex); }
+	private void loadGeneticTranslators() {
+		this.gtFile = BioSilicoCryptoCommand.loadGT(this.cryptoFileIndex, true);
+		this.gtPath = BioSilicoCryptoCommand.loadGT(this.cryptoPathIndex, false);
+	}
+	
+	private static GeneticTranslator loadGT(int index, boolean fileORpath) {
+		GeneticTranslator gtToReturn = null;
+		try { gtToReturn = BiologicalUtils.getGenericCrypto( index ); }
 		catch (NullPointerException npe) 
-			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "BAD CRYPTO FILE LOAD {" + this.cryptoFileIndex + "} !!"); }
+			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "BAD CRYPTO " + (fileORpath?"FILE":"PATH") + " LOAD {" + index + "} !!"); }
 		catch (ArrayIndexOutOfBoundsException aioobe) 
-			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "BAD CRYPTO FILE INDEX {" + this.cryptoFileIndex + "} !!"); }
-		if (this.gt == null) { Logger.printlnLog(LoggerLevel.LL_ERROR, "GT NOT DEFINED !!"); }
+			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "BAD CRYPTO " + (fileORpath?"FILE":"PATH") + " INDEX {" + index + "} !!"); }
+		if (gtToReturn == null) { Logger.printlnLog(LoggerLevel.LL_ERROR, "GT" + (fileORpath?"FILE":"PATH") + " NOT DEFINED !!"); }
+		return gtToReturn;
 	}
 	
 	public LogLevel getLogLevel() { return this.logLevel; }
@@ -247,6 +261,8 @@ public class BioSilicoCryptoCommand implements Runnable {
 
 	public String getDataToTranscript() { return this.dataTotranscript; }
 
-	public GeneticTranslator getGeneticTranslator() { this.loadGeneticTranslator();return this.gt; }
+	public GeneticTranslator getGTFile() { return this.gtFile; }
+	
+	public GeneticTranslator getGTPath() { return this.gtPath; }
 
 }

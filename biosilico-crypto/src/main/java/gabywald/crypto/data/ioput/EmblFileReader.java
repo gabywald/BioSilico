@@ -9,19 +9,18 @@ import gabywald.crypto.model.ITranslator;
  * 
  * @author Gabriel Chandesris (2026)
  */
-public class EmblFileReader implements IFileCryptoReader {
+public class EmblFileReader extends BiologicalFileReader {
 
 	private List<EmblFormat> bankOfData;
-	private StringBuilder sbDecodedPath;
-	private StringBuilder sbDecodedContent;
 	
-	private EmblFileCreator companion = null;
-	
-	public EmblFileReader() { this(""); }
-	
-	public EmblFileReader(String fileContent) { 
-		this.companion = new EmblFileCreator(0, 1, ITranslator.TranslatorEnum.simple);
-		this.setFileContent(fileContent);
+	/**
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
+	 */
+	public EmblFileReader(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super( new EmblFileCreator(forFiles, forPathes, which) );
 	}
 
 	@Override
@@ -29,12 +28,5 @@ public class EmblFileReader implements IFileCryptoReader {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public String getPath()		{ return this.sbDecodedPath.toString(); }
-	@Override
-	public String getContent()	{ return this.sbDecodedContent.toString(); }
-	@Override
-	public IFileCryptoCreator getCompanion() { return this.companion; }
 
 }

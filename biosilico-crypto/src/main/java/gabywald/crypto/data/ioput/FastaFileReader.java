@@ -9,19 +9,12 @@ import gabywald.crypto.model.ITranslator;
  * 
  * @author Gabriel Chandesris (2026)
  */
-public class FastaFileReader implements IFileCryptoReader {
+public class FastaFileReader extends BiologicalFileReader {
 
 	private List<FastaFormat> bankOfData;
-	private StringBuilder sbDecodedPath;
-	private StringBuilder sbDecodedContent;
 	
-	private FastaFileCreator companion = null;
-	
-	public FastaFileReader() { this(""); }
-	
-	public FastaFileReader(String fileContent) { 
-		this.companion = new FastaFileCreator(0, 1, ITranslator.TranslatorEnum.simple);
-		this.setFileContent(fileContent);
+	public FastaFileReader(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) { 
+		super( new FastaFileCreator(forFiles, forPathes, which) );
 	}
 
 	@Override
@@ -29,12 +22,5 @@ public class FastaFileReader implements IFileCryptoReader {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public String getPath()		{ return this.sbDecodedPath.toString(); }
-	@Override
-	public String getContent()	{ return this.sbDecodedContent.toString(); }
-	@Override
-	public IFileCryptoCreator getCompanion() { return this.companion; }
 
 }

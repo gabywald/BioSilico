@@ -12,30 +12,12 @@ import gabywald.crypto.model.ITranslator;
  * <br>Encryption according to current "genetic encryption". 
  * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
-public class GenBankFileReader extends AFileCryptoReader {
+public class GenBankFileReader extends BiologicalFileReader {
+	
 	private List<GenBankFormat>  bankOfData;
-	private StringBuilder sbDecodedPath;
-	private StringBuilder sbDecodedContent;
 	
-	private GenBankFileCreator companion = null;
-	
-	public GenBankFileReader() { this(""); }
-	
-	public GenBankFileReader(String fileContent) { 
-		this.companion = new GenBankFileCreator(0, 1, ITranslator.TranslatorEnum.simple);
-		this.setFileContent(fileContent);
-	}
-	
-	/**
-	 * 
-	 * @param bioencoder4file
-	 * @param bioencoder4path
-	 * @param which
-	 * @param content
-	 */
-	public GenBankFileReader(int bioencoder4file, int bioencoder4path, ITranslator.TranslatorEnum which, String fileContent) { 
-		this.companion = new GenBankFileCreator(0, 1, ITranslator.TranslatorEnum.simple);
-		this.setFileContent(fileContent);
+	public GenBankFileReader(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) { 
+		super( new GenBankFileCreator(forFiles, forPathes, which) );
 	}
 	
 	public void setFileContent(String fileContent) {
@@ -47,21 +29,13 @@ public class GenBankFileReader extends AFileCryptoReader {
 				GenBankFormat current	= this.bankOfData.get(i);
 				FeaturesListe fl 	= current.getFeatures().getFeaturesWith("CDS");
 				for (int j = 0 ; j < fl.size() ; j++) {
-					this.sbDecodedPath.append(this.companion.getForPathDirName() // <= PATH !!
+					this.sbDecodedPath.append(this.getCompanion().getForPathDirName() // <= PATH !!
 							.decode(fl.get(i).get("translation"), 0, 0));
 				}
-				this.sbDecodedContent.append(this.companion.getForFileContent() // <= CONTENT !!
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent() // <= CONTENT !!
 						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}
 	
-	@Override
-	public String getPath()		{ return this.sbDecodedPath.toString(); }
-	@Override
-	public String getContent()	{ return this.sbDecodedContent.toString(); }
-	@Override
-	public IFileCryptoCreator getCompanion() { return this.companion; }
-//	public GenBankFileCreator getCompanion() { return this.companion; }
-
 }

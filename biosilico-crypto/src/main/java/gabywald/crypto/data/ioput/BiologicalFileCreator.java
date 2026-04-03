@@ -18,17 +18,14 @@ public abstract class BiologicalFileCreator extends AFileCryptoCreator {
 	
 	protected BiologicalFormat bioFormat;
 	
-	protected BiologicalFileCreator() 
-		{ this( 0 , 1, ITranslator.TranslatorEnum.simple ); }
-	
-	protected BiologicalFileCreator(ITranslator.TranslatorEnum which) 
-		{ this( 0 , 1, which ); }
-	
 	protected BiologicalFileCreator(int bioencoder4file, int bioencoder4path, ITranslator.TranslatorEnum which) { 
 		super(	BiologicalUtils.getGenericCrypto( bioencoder4file ), 
 				BiologicalUtils.getGenericCrypto( bioencoder4path ), 
-				which);
+				which );
 	}
+	
+	protected BiologicalFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) 
+		{ super( forFiles, forPathes, which ); }
 	
 	/** Encryption takes place here ! */
 	protected abstract void initialize();

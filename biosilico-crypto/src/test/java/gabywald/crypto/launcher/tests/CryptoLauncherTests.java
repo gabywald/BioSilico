@@ -232,7 +232,7 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
@@ -246,7 +246,7 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
@@ -260,7 +260,7 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-i=42"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {42} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
@@ -274,7 +274,7 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
@@ -288,7 +288,7 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
@@ -302,7 +302,91 @@ class CryptoLauncherTests {
 		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
 				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-i=-1"});
 		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO FILE INDEX {-1} !!\n"));
-		Assertions.assertTrue(bosOUT.toString().contains("ERROR GT NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTFILE NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=true, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03o() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-j=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03p() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-j=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=false, methodRand=true\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03q() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-j=42"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {42} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=true, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03r() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-s", "-j=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03s() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-r", "-j=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
+				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
+				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
+				+ "\t\tmethodSimple=false, methodMore=false, methodRand=true\n"));
+		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testMain03t() {
+		CryptoLauncher.main(new String[]{"--info", "--DATA=\":" + "@@@@@"
+				+ "cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:\"", "-x", "-c", "-m", "-j=-1"});
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR BAD CRYPTO PATH INDEX {-1} !!\n"));
+		Assertions.assertTrue(bosOUT.toString().contains("ERROR GTPATH NOT DEFINED !!\n"));
 		Assertions.assertTrue(bosOUT.toString().contains("XXcodeCommand:\n"
 				+ "\t\tcontent=true, filePath=false, directoryPath=false, \n"
 				+ "\t\tdataToTranscript=:@@@@@cgatctcacgatcgaccgatcgctctcactcacgatctcacgatcgaccgatcgctctcactca:,subcommand=decode, \n"
