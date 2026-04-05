@@ -12,8 +12,6 @@ import gabywald.crypto.model.ITranslator;
 public class DirectFileReader extends BiologicalFileReader {
 	
 	private List<DirectFormat> bankOfData;
-	private StringBuilder sbDecodedPath;
-	private StringBuilder sbDecodedContent;
 	
 	/**
 	 * 

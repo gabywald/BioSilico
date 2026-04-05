@@ -14,7 +14,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
  * 
  * @author Gabriel Chandesris (2026)
  */
-class DirectlFileCreatorTests {
+class DirectFileCreatorTests {
 	
 	@Test
 	void testDirectFileCreatorNullNull() {

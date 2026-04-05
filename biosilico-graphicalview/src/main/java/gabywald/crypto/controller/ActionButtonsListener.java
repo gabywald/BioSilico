@@ -1,7 +1,9 @@
 package gabywald.crypto.controller;
 
+import gabywald.crypto.data.BiologicalUtils;
 import gabywald.crypto.data.ioput.GenBankFileCreator;
 import gabywald.crypto.data.ioput.GenBankFileReader;
+import gabywald.crypto.model.ITranslator;
 import gabywald.crypto.view.CryptoFrame;
 import gabywald.global.data.Directory;
 import gabywald.global.data.File;
@@ -30,7 +32,7 @@ public class ActionButtonsListener implements ActionListener {
 	private GenBankFileReader gbfr;
 	
 	public ActionButtonsListener(int type) 
-		{ this.type = type;this.gbfc = new GenBankFileCreator(); }
+		{ this.type = type;this.gbfc = new GenBankFileCreator( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -122,9 +124,10 @@ public class ActionButtonsListener implements ActionListener {
 			break;
 		case(3): /** 'Decrypt the file(s). ' */
 			String toDecrypt		= cfInstance.getClearContent();
-			this.gbfr				= new GenBankFileReader(toDecrypt);
+			this.gbfr				= new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple );
+			this.gbfr.setFileContent( toDecrypt);
 			
-			cfInstance.setCryptContent(this.gbfr.getPath()+StringUtils.repeat("\t**\n", 5)+this.gbfr.getContent());
+			cfInstance.setCryptContent(this.gbfr.getDecodedPath()+StringUtils.repeat("\t**\n", 5)+this.gbfr.getDecodedContent());
 			// TODO ...
 			break;
 		case(4): /** 'Record ENcryption. ' */

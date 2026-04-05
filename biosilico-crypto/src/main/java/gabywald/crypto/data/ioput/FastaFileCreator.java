@@ -38,7 +38,6 @@ public class FastaFileCreator extends BiologicalFileCreator {
 
 	@Override
 	protected void initialize() {
-		
 		String identification = BiologicalUtils.generateIdentifier();
 		this.bioFormat.setIdentification(identification);
 		this.bioFormat.setAccession(identification);

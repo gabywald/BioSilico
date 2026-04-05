@@ -72,6 +72,7 @@ public class GeneticTranslator implements ITranslator {
 	 * @return (String) decoded*
 	 */
 	protected String decodeNO(String sequence, int start, int frame) {
+		if (sequence == null) { return ""; }
 		int codonLength	= this.genCode.getCodonLength();
 		if ( (frame < 0) || (frame > codonLength-1) ) 
 			{ return new String(""); }
@@ -93,6 +94,7 @@ public class GeneticTranslator implements ITranslator {
 	 * @return (String)
 	 */
 	protected String decodeWithStartStopCodons(String sequence, int start, int frame) {
+		if (sequence == null) { return ""; }
 		boolean started	= false;
 		int codonLength	= this.genCode.getCodonLength();
 		if ( (frame < 0) || (frame > codonLength-1) ) 
@@ -131,6 +133,7 @@ public class GeneticTranslator implements ITranslator {
 	 * TODO avoid "no encoding" when a character is not in 'AA' list"...
 	 */
 	public String encode(String sequence, TranslatorEnum which, GeneticTranslatorRandomizer gtr) {
+		if (sequence == null) { return ""; }
 		String toReturn = new String("");
 		
 		switch(which) {

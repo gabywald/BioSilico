@@ -1,8 +1,6 @@
 package gabywald.crypto.launcher.tests;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.launcher.BioSilicoCryptoCommand;
@@ -13,14 +11,6 @@ import gabywald.crypto.launcher.BioSilicoCryptoCommand.LogLevel;
  * @author Gabriel Chandesris (2026)
  */
 class BioSilicoCryptoCommandTests {
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
 
 	@Test
 	void test() {

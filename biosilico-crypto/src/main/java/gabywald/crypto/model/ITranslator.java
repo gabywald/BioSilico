@@ -8,8 +8,21 @@ public interface ITranslator {
 	
 	public enum TranslatorEnum { simple, more, random }
 	
+	/**
+	 * 
+	 * @param sequence
+	 * @param which
+	 * @return
+	 */
 	public String encode(String sequence, TranslatorEnum which);
 	
+	/**
+	 * 
+	 * @param sequence
+	 * @param start
+	 * @param frame
+	 * @return
+	 */
 	public String decode(String sequence, int start, int frame);
 
 }

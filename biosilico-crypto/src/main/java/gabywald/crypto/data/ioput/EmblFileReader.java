@@ -25,8 +25,16 @@ public class EmblFileReader extends BiologicalFileReader {
 
 	@Override
 	public void setFileContent(String fileContent) {
-		// TODO Auto-generated method stub
-
+		this.sbDecodedPath		= new StringBuilder();
+		this.sbDecodedContent	= new StringBuilder();
+		if ( ! fileContent.equals("")) { 
+			this.bankOfData = EmblFormat.fromString(fileContent);
+			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
+				EmblFormat current	= this.bankOfData.get(i);
+				this.sbDecodedPath.append(this.getCompanion().getForPathDirName().decode(current.getComment(), 0, 0));
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
+			}
+		}
 	}
 
 }

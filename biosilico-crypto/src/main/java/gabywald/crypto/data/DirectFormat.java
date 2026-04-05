@@ -6,7 +6,7 @@ import java.util.List;
 import gabywald.crypto.data.composition.Sequence;
 
 /**
- * ID:protein:nucletoid
+ * protein:@@@@@nucletoid:
 * @author Gabriel Chandesris (2026)
 */
 public class DirectFormat extends BiologicalFormat {
@@ -17,7 +17,8 @@ public class DirectFormat extends BiologicalFormat {
 	public String toString() {
 		StringBuilder toReturn = new StringBuilder();
 		
-		toReturn.append(this.someDatas[4])
+		toReturn// .append(this.getIdentification())
+				.append(this.someDatas[4])
 				.append( DirectFormat.MAJOR_CUTTER )
 				.append(this.origin).append("\n");
 
@@ -35,6 +36,7 @@ public class DirectFormat extends BiologicalFormat {
 			int max = Math.max(pathes.length, contes.length);
 			for (int j = 0 ; j < max ; j++) {
 				DirectFormat df = new DirectFormat();
+				// df.setIdentification(BiologicalUtils.generateIdentifier());
 				df.setComment((j >= pathes.length)?"":pathes[j]);
 				df.setSequence(new Sequence("", (j >= contes.length)?"":contes[j]));
 				toReturn.add(df);

@@ -70,6 +70,4 @@ public abstract class AFileCryptoCreator implements IFileCryptoCreator {
 	@Override
 	public ITranslator.TranslatorEnum getWhichTR() { return this.whichTR; }
 	
-	
-	
 }

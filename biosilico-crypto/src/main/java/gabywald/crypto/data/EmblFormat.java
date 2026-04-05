@@ -266,6 +266,7 @@ A complete and definitive description of the feature table is given here [https:
 		String[] cont		= content.split("\n");
 		List<EmblFormat> toReturn	= new ArrayList<EmblFormat>();
 		EmblFormat data			= new EmblFormat();
+		data.origin = new Sequence();
 		/** For multilines reading... */
 		int marker				= -1;
 		for (int i = 0 ; i < cont.length ; i++) {
@@ -553,6 +554,7 @@ A complete and definitive description of the feature table is given here [https:
 				/** BiologicalFormat.showDefault(matchers, matchTo); */
 				toReturn.add(data);
 				data = new EmblFormat();
+				data.origin = new Sequence();
 				break;
 			default:System.out.println("\t'"+marker+"'\t'"+cont[i]+"'");
 			}

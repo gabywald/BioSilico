@@ -3,6 +3,8 @@ package gabywald.crypto.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.crypto.data.composition.Sequence;
+
 /**
  * 
  * <br>See <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA FOrmat (Wikipedia EN)</a>. 
@@ -64,7 +66,8 @@ frn 	FASTA non-coding RNA 	Contains non-coding RNA regions for a genome, in DNA 
 			if (cont[i].startsWith(">")) {
 				if (i != 0)	{ toReturn.add(data); }
 				data = new FastaFormat();
-				String[] contItable = cont[i].split("[ |]");
+				toReturn.add(data);
+				String[] contItable = cont[i].substring(1).split("[ |]");
 				data.someDatas[1]	= contItable[0];
 				data.someDatas[0]	= contItable[1];
 				data.locusData[0]	= contItable[2];
@@ -72,8 +75,10 @@ frn 	FASTA non-coding RNA 	Contains non-coding RNA regions for a genome, in DNA 
 					data.locusData[1]	= (contItable[3].endsWith("bp")?
 							contItable[3].split(" ")[0]:contItable[3]);
 				}
-			} else 
-				{ data.origin.addInSequence(cont[i].replace("\n", "")); }
+				data.origin = new Sequence("", "");
+			} else { 
+				data.origin.addInSequence(cont[i].replace("\n", ""));
+			}
 		}
 	
 		return toReturn;

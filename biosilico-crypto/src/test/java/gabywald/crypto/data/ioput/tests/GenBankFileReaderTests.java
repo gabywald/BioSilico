@@ -33,7 +33,7 @@ class GenBankFileReaderTests {
 
 		// ***** ***** ***** ***** ***** 
 		
-		String testDataFile = "GeneFileCreatorReaderTests.txt";
+		String testDataFile = "encodeDecode/GeneBankFileCreatorReaderTests.txt";
 		// File toread = new File( testDataFile );
 		String content01 = null;
 		try {
@@ -47,13 +47,6 @@ class GenBankFileReaderTests {
 		
 		Logger.printlnLog(LoggerLevel.LL_NONE, "'" + content2read.length + "'" );
 		Assertions.assertEquals(10, content2read.length);
-		
-//		for (String data : content2read) {
-//			Logger.printlnLog(LoggerLevel.LL_NONE, data );
-//			GenBankFileReader gbfrTMP = new GenBankFileReader( data );
-//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getDecodedPath() + "*****");
-//			Logger.printlnLog(LoggerLevel.LL_NONE, gbfrTMP.getDecodedContent() + "*****");
-//		}
 		
 		GenBankFileReader gbfrBASE = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfrBASE.setFileContent( "" );

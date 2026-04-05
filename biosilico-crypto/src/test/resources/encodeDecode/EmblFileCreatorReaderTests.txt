@@ -1,0 +1,304 @@
+ID   VSXGR2977644023; SV VSXGR2977644023.2; linear; DNA; MUS; 0 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   Perognathus parvus
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Sciurognathi;
+OC   Heteromyidae; Perognathinae; Perognathus; Perognathus.
+XX
+XX
+//
+***** ***** ***** ***** ***** 
+ID   EITP679784288; SV EITP679784288.3; linear; mRNA; VRT; 0 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   Rabbit hemorrhagic disease virus (strain V-351)
+OC   Viruses; ssRNA positive-strand viruses, no DNA stage; Caliciviridae;
+OC   Lagovirus; Lagovirus.
+XX
+RN   [1]
+RC   REVIEW
+RA   Matile Filbert, Harris Jarvis, Widley Duke, Wuyts Jackson,
+RA   Hornibrook Cecil, Chislohm George, Green Corey, Cadwell Hubert,;
+RA   King Gerald, Thomas Gabe;
+RT   title of the reference 1;
+XX
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   CDS             1..1
+FT                   /codon_start="1"
+FT                   /product="*****"
+FT                   /gene="LOC835215573"
+FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK
+"
+FT   source          1..1
+FT                   /organism="Rabbit hemorrhagic disease virus (strain V-351)"
+FT                   /mol_type="mRNA"
+FT   gene            1..1
+FT                   /note="***** part [1] *****"
+FT                   /gene="LOC835215573"
+XX
+//
+***** ***** ***** ***** ***** 
+ID   CY729272284; SV CY729272284.3; linear; DNA; PRO; 48 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   Methanocella paludicola (strain DSM 17711 / JCM 13418 / NBRC 101707 / SANAE)
+OC   Archaea; Euryarchaeota; Methanomicrobia; Methanocellales;
+OC   Methanocellaceae; Methanocella; Methanocella.
+XX
+RN   [1]
+RC   REVIEW
+RP   1-48
+RA   Green Freddy, Fairbairn Alvin, Gilmour Henry, Keevil Tim,
+RA   Waterhouse Howell, Evans Warren, Thomson Rocky;
+RT   title of the reference 1;
+XX
+RN   [2]
+RP   1-48
+RA   Woollven Zack, Piddock Scott, Almond Ward, Wuyts Todd, Holdaway Keene;
+RT   title of the reference 2;
+XX
+RN   [3]
+RP   1-48
+RA   Grant Dick, Leversedge Wayne, Forrest Gabe, Blake Christopher,
+RA   Clegg Trent, Gaskin Otto, Tapper Alberto, White Gerald, Young Bradley;
+RT   title of the reference 3;
+XX
+RN   [4]
+RP   1-48
+RA   Brown Cody, Young Corey, Burgess Hart, Simpson Rob, Balthazor Jason,
+RA   Rowe Shawn, Moon Gerald, Griffin Tim, Fairbairn Simon, Thomas Samuel,;
+RA   White Thomas, Young Sam;
+RT   title of the reference 4;
+XX
+RN   [5]
+RP   1-48
+RA   Crease Bernie, Chislett-Trim Lobo, Redman Heuy, Dayner Romeo,
+RA   Hancock Osmond, Tothill Larry, Dayner Tommy, Russell Dick, Lacey Allen,;
+RA   Holt Lucas, Platten Alvin;
+RT   title of the reference 5;
+XX
+RN   [6]
+RP   1-48
+RA   Comrie Ernie, Darley Darwin;
+RT   title of the reference 6;
+XX
+RN   [7]
+RP   1-48
+RA   Harris Rayyan, Olberechts Jefferson, Rowe Vick, Scales Jarvis, Marples Bailey
+RT   title of the reference 7;
+XX
+RN   [8]
+RP   1-48
+RA   Smyth Zack, Lovegrove Axel, Doyle Lucas, Beck-Slatter Gareth,
+RA   Chappell Ryan, Hill William, Pidgeon Garret;
+RT   title of the reference 8;
+XX
+RN   [9]
+RP   1-48
+RA   Chafer Herbert, Nowbati David, Hail Jacob, Malone Hart, Donelly Carlo,
+RA   Hornik Leo, Pritchard Kamil, Doyle Matt, Austin Ted, Fairbairn Chad;
+RT   title of the reference 9;
+XX
+RN   [10]
+RP   1-48
+RA   Hoar Hamlet, Bailey Yogi, Tapper Tycho, Hancock Murray, Pratt Jared,
+RA   Brown Elton, Taylor Garfield, Fletcher Stephen;
+RT   title of the reference 10;
+XX
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   CDS             1..49
+FT                   /codon_start="1"
+FT                   /product="*****"
+FT                   /gene="LOC834752400"
+FT   source          1..49
+FT                   /organism="Methanocella paludicola (strain DSM 17711 / JCM 13418 / NBRC 101707 / SANAE)"
+FT                   /mol_type="DNA"
+FT   gene            1..49
+FT                   /note="***** part [1] *****"
+FT                   /gene="LOC834752400"
+XX
+SQ   Sequence 48 BP; 18 c; 12 t; 7 a; 11 g; 0 other;
+     ctatcgttcg tccgccagaa cgatcgttcg tgctcacgcc cgtgctca                     48
+//
+***** ***** ***** ***** ***** 
+ID   NOIK421408112; SV NOIK421408112.3; linear; mRNA; MAM; 0 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   White clover cryptic virus 1 (isolate Boccardo/2004)
+OC   Viruses; dsRNA viruses; Partitiviridae; Alphacryptovirus; Alphacryptovirus.
+XX
+XX
+//
+***** ***** ***** ***** ***** 
+ID   YM962084522; SV YM962084522.1; linear; precursor RNA; FUN; 48 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   Paris tetraphylla
+OC   Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
+OC   Spermatophyta; Magnoliophyta; Liliopsida; Liliales; Melanthiaceae; Paris; Paris.
+XX
+RN   [1]
+RC   REVIEW
+RP   1-48
+RA   Smyth Richard, Bolton Vick, Steel Fraiser, Lacey Jason, Venni Kevin,
+RA   Boyer Frank, Sexton Thomas;
+RT   title of the reference 1;
+XX
+RN   [2]
+RP   1-48
+RA   Rennie Bran, Stonelake Keith, Tothill Sam, Beckwith Reeves, Gaskin Stan,
+RA   Batty Manuel, Burgess Dale, Nightingale Madison, Eades Ian, Grant Jon,;
+RA   Levers Chris, Merwood Matt;
+RT   title of the reference 2;
+XX
+RN   [3]
+RP   1-48
+RA   Merwood Todd, Morgan William, Osborne Marlo, Venning Willis,
+RA   Pidgeon Samuel, Boyer Alberto, Smyth Lane, Mathwani Gregory, Taylor William;
+RT   title of the reference 3;
+XX
+RN   [4]
+RP   1-48
+RA   Sadler Corey, Chappell Val, Frost Allen, Lock Murray, Crease Manuel;
+RT   title of the reference 4;
+XX
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   CDS             1..49
+FT                   /codon_start="1"
+FT                   /product="*****"
+FT                   /gene="LOC752919355"
+FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK"
+FT   source          1..49
+FT                   /organism="Paris tetraphylla"
+FT                   /mol_type="precursor RNA"
+FT   gene            1..49
+FT                   /note="***** part [1] *****"
+FT                   /gene="LOC752919355"
+XX
+SQ   Sequence 48 BP; 18 c; 12 t; 7 a; 11 g; 0 other;
+     ctatcgttcg tccgccagaa cgatcgttcg tgctcacgcc cgtgctca                     48
+//
+***** ***** ***** ***** ***** 
+ID   RB900352551; SV RB900352551.1; linear; DNA; MAM; 3248 BP.
+XX
+AC   
+XX
+KW   
+XX
+OS   Clostridium difficile (strain CD196)
+OC   Bacteria; Firmicutes; Clostridia; Clostridiales; Clostridiaceae;
+OC   Clostridium; Clostridium.
+XX
+RN   [1]
+RP   1-3248
+RA   Bailey Gerry, Rowe Archie, Crease Gareth, Stacey Simon, Eades Benjamin,
+RA   Godwin Mario, Moon Walter, Totham Flynn, Widley Tommy, Baker Homer,;
+RA   Stoneman Bill, Trish Vick;
+RT   title of the reference 1;
+XX
+RN   [2]
+RP   1-3248
+RA   Harris Richard, Stoneman Jim, Timms Hubert, Marples Gerry, Burgess Andrew,
+RA   Pidgeon John;
+RT   title of the reference 2;
+XX
+RN   [3]
+RP   1-3248
+RA   Lawrence Cody, Blake Trent, Willson Archie, Lindsay Brad, Nightingale Daniel
+RT   title of the reference 3;
+XX
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   CDS             1..3249
+FT                   /codon_start="1"
+FT                   /product="*****"
+FT                   /gene="LOC465911086"
+FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK
+"
+FT   source          1..3249
+FT                   /organism="Clostridium difficile (strain CD196)"
+FT                   /mol_type="DNA"
+FT   gene            1..3249
+FT                   /note="***** part [1] *****"
+FT                   /gene="LOC465911086"
+XX
+SQ   Sequence 3248 BP; 1418 c; 612 t; 607 a; 611 g; 0 other;
+     ctatcgttcg tccgccagaa cgatcgttcg tgctcacgcc cgtgctcacg accgatcgct        60
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat       120
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac       180
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca       240
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct       300
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat       360
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac       420
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca       480
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct       540
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat       600
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac       660
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca       720
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct       780
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat       840
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac       900
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca       960
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      1020
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      1080
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      1140
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      1200
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      1260
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      1320
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      1380
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      1440
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      1500
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      1560
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      1620
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      1680
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      1740
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      1800
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      1860
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      1920
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      1980
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      2040
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      2100
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      2160
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      2220
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      2280
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      2340
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      2400
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      2460
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      2520
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      2580
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      2640
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      2700
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      2760
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      2820
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      2880
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      2940
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      3000
+     cgctctcacg accgatcgct ctcacgaccg atcgctctca cgaccgatcg ctctcacgac      3060
+     cgatcgctct cacgaccgat cgctctcacg accgatcgct ctcacgaccg atcgctctca      3120
+     cgaccgatcg ctctcacgac cgatcgctct cacgaccgat cgctctcacg accgatcgct      3180
+     ctcacgaccg atcgctctca cgaccgatcg ctctcacgac cgatcgctct cacgaccgat      3240
+     cgctctca                                                               3248
+//
