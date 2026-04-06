@@ -184,7 +184,7 @@ public class BioSilicoCryptoCommand implements Runnable {
 	
 	@Option(names = {"-j", "--cryptopathindex"}, 
 			description = "Crypto Path Index", 
-			defaultValue = "0", 
+			defaultValue = "1", 
 			hidden = true)
 	private int cryptoPathIndex;
 	GeneticTranslator gtPath = null;
