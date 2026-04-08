@@ -50,6 +50,7 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		
 		/** LOCUS PART. */
 		this.bioFormat.setIdentification(identification);
+		this.bioFormat.setAccession(identification);
 		
 		int basePairNumber = 0;
 		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 

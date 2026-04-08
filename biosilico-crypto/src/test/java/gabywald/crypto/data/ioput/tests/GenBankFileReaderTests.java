@@ -60,26 +60,26 @@ class GenBankFileReaderTests {
 		GenBankFileReader gbfr00 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr00.setFileContent( content2read[0] );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr00.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 		
 		GenBankFileReader gbfr01 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr01.setFileContent( content2read[1] );
 		Assertions.assertNotNull(gbfr01);
-		Assertions.assertEquals("", gbfr01.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr01.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr01.getDecodedContent());
 		
 		GenBankFileReader gbfr02 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr02.setFileContent( content2read[2] );
 		Assertions.assertNotNull(gbfr02);
-		Assertions.assertEquals("", gbfr02.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr02.getDecodedPath());
 		Assertions.assertEquals("some content\n" + 
 				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr02.getDecodedContent());
 		
 		GenBankFileReader gbfr03 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr03.setFileContent( content2read[3] );
 		Assertions.assertNotNull(gbfrBASE);
-		Assertions.assertEquals("", gbfr03.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr03.getDecodedPath());
 		Assertions.assertEquals("someTXT", gbfr03.getDecodedContent());
 		
 		GenBankFileReader gbfr04 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
@@ -97,14 +97,14 @@ class GenBankFileReaderTests {
 		GenBankFileReader gbfr06 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr06.setFileContent( content2read[6] );
 		Assertions.assertNotNull(gbfr06);
-		Assertions.assertEquals("", gbfr06.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr06.getDecodedPath());
 		Assertions.assertEquals("some content\n" + 
 				"acgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacg", gbfr06.getDecodedContent());
 		
 		GenBankFileReader gbfr07 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr07.setFileContent( content2read[7] );
 		Assertions.assertNotNull(gbfr07);
-		Assertions.assertEquals("", gbfr07.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr07.getDecodedPath());
 		Assertions.assertEquals("someTXT", gbfr07.getDecodedContent());
 		
 		GenBankFileReader gbfr08 = new GenBankFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
@@ -245,7 +245,7 @@ class GenBankFileReaderTests {
 				+ "        1 tttactatcg ttcgtccgcc agaacgatcg ttcgtgctca cgcccgtgct catttg\n"
 				+ "//" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr00.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 

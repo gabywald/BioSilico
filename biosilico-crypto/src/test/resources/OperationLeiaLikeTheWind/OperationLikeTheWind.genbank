@@ -1,90 +1,58 @@
-LOCUS       PQXYZ433415574      18984 bp     DNA    linear   PAT 11-FEB-2029
-DEFINITION  Daubentonia madagascariensis (LOC356322667), DNA.
-ACCESSION   PQXYZ433415574
-VERSION     PQXYZ433415574.3
+LOCUS       HPCRH9223002872     18984 bp     DNA    linear   PHG 10-MAR-2053
+DEFINITION  Chlorobium limicola (LOC509546688), DNA.
+ACCESSION   HPCRH9223002872
+VERSION     HPCRH9223002872.0
 KEYWORDS    .
-SOURCE      Daubentonia madagascariensis
-  ORGANISM  Daubentonia madagascariensis
-            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-            Mammalia; Eutheria; Euarchontoglires; Primates; Strepsirrhini;
-            Chiromyiformes; Daubentoniidae; Daubentonia; Daubentonia.
+SOURCE      Chlorobium limicola
+  ORGANISM  Chlorobium limicola
+            Bacteria; Chlorobi; Chlorobia; Chlorobiales; Chlorobiaceae;
+            Chlorobium/Pelodictyon group; Chlorobium; Chlorobium.
 REFERENCE   1  (bases 1 to 18984)
-  AUTHORS   Chislohm,Ernie, Chislett-Trim,John, Thomson,Jarvis, Wilders,Ernest,
-            Davies,Toby, Shore,Galen, Pratt,Baxter, Curtis,Paul, Underwood,Pablo and Chislett-Trim,Way
+  AUTHORS   Kates,Jason, Ward,Murray, Rogers,Murray, Howell,Jimmy,
+            Forrest,Gareth, Gilmour,Mario, Hurdley,Hugo, Stonelake,Wayne and Chappell,Ru
   TITLE     title of the reference 1
-  JOURNAL   AOL Communications Journal. 3129 (15), 5510-5513 (1942)
+  JOURNAL   Toaplan High School Journal. 1587 (49), 841-843 (2046)
 REFERENCE   2  (bases 1 to 18984)
-  AUTHORS   Pidgeon,Marc, King,Harrison, Lutheran,Jason, Shore,Harrison,
-            Beteridge,Hart, Holt,Fraiser, Piddock,Joey, France,Dave,
-            Crouch,Ryan, Pratt,Chris, Hail,Paulo, Harvey,Greg, Jay,Alex,
-            Morgan,Rich, Waterhouse,Oscar, Maconachie,Scott, Roach,Stew and Woollven,Hube
+  AUTHORS   Daymond,Richard, Lovegrove,Stephen, Ranger,Steve, Gulliford,Freddy,
+            Wood,Trey, Miller,Trent, Joines,Edward, Tapper,Leo,
+            Leversedge,Gary, Ellison,Pablo, Hoar,Nick, Godwin,Margo,
+            Okwechime,Adam, Godwin,Fraiser, Crouch,Richard and Roach,Hube
   TITLE     title of the reference 2
-  JOURNAL   Panasonic Industries Publications. 676, 4255-4263 (2017)
+  JOURNAL   Pepsi Foundation HackZine. 5408 (0), 31-40 (2047)
 REFERENCE   3  (bases 1 to 18984)
-  AUTHORS   Gulliford,Sebastian, Okwechime,Sean, Daymond,Baxter, Baly,Ian,
-            Wood,Lucas, Frost,Leroy, Lutheran,Jackson, Martin,Tad,
-            Broomfield,Garson, Jay,Wayne and Porter,Osgo
+  AUTHORS   Gilmour,George, Beswick,Toby, Mackenzie,Craig, Boyes,Kamil,
+            Trish,Archie, Cowell,Patrick, Dillon,Eric, Hackett,Halen, Osborne,Jon and Turner,De
   TITLE     title of the reference 3
-  JOURNAL   Adobe Systems Magazine. 835, 5142-5145 (1998)
+  JOURNAL   HighSpeed Foundation Fanzine. 1162, 1965-1968 (1973)
 REFERENCE   4  (bases 1 to 18984)
-  AUTHORS   Moss,Taffy, Welch,Trent, Stubbs,Garret, Merwood,Joe,
-            Lovegrove,Lewis, Griffin,Stan, Eaton,John, Bailey,Sebastian,
-            Olberechts,Romeo, Lovegrove,Ernie, Langdon,Waldo and Burgess,Osgo
+  AUTHORS   Slater,Oscar, Baly,Lee, Colley,Patrick, Pearce,Ryan, Chafer,Carlo,
+            Barnard,Peter, Palmer,Lewis, Gaskin,Trent, Mitchell,Barney,
+            Jayant,Michael, Rogers,Nick, Beswick,Rich, Griffin,Dennis and Edwards,Grego
   TITLE     title of the reference 4
-  JOURNAL   Lobster Plc Publications. 306 (7), 4897-4898 (2026)
+  JOURNAL   Worldwide Corporation Publications. 993 (5), 2765-2777 (2045)
   REMARK    REVIEW
 REFERENCE   5  (bases 1 to 18984)
-  AUTHORS   Thomas,Scott, Underwood,Reeves, Wyatt,Keene, Leversedge,Ken,
-            Pratt,David, Chislohm,Elton, Wagstaff,Murray, Simpson,Romeo,
-            Barnard,Ryan, Rowe,Eric, Nightingale,Alvin, Young,Kami,
-            Merwood,Patrick, Venning,Emanuel and Cadwallader,K
+  AUTHORS   Redman,Greg, Buckwell,Halen, Kenway,Scott, Thomas,Waldo,
+            Wood,Madison, Cantlow,Andrew, Davies,Gary, Blake,Ian,
+            Hackett,Fernado, Jones,Jim, Swatton,Darwin, Jackson,Paul,
+            Headland,Melvin, Evans,Romeo and Lee,Samu
   TITLE     title of the reference 5
-  JOURNAL   Proxim Laboratories HackZine. 1740, 2944-2947 (1915)
-REFERENCE   6  (bases 1 to 18984)
-  AUTHORS   Mead,Ryan, Hare,Gerald, Richardson,Ted, Featherstone,Ernest,
-            Bird,Todd, Barsby,Rocky and Clegg,Wal
-  TITLE     title of the reference 6
-  JOURNAL   HighSpeed Developments HackZine. 251, 9128-9143 (2012)
-REFERENCE   7  (bases 1 to 18984)
-  AUTHORS   Bray,Romeo, Dillon,Jackie, Chislohm,Cyrus, Ashby,Wilfred,
-            Eaton,Larry, Evans,Kami, Ellison,Larry, Sadler,Vick, Marples,Jason,
-            Sadler,Tyrone and Wood,Grego
-  TITLE     title of the reference 7
-  JOURNAL   AMD Software Publications. 2129 (4), 6100-6118 (1984)
-  REMARK    REVIEW
-REFERENCE   8  (bases 1 to 18984)
-  AUTHORS   Platter,Glenn, Olberechts,Taffy, Gilmour,Benjamin, Piddock,Garson,
-            Brindley,Madison, Maconachie,Rich, Pidgeon,Adam, Holt,Alex and Trish,R
-  TITLE     title of the reference 8
-  JOURNAL   iD Inc Publications. 6218 (76), 9141-9148 (2017)
-  REMARK    REVIEW
-REFERENCE   9  (bases 1 to 18984)
-  AUTHORS   Stonelake,Archie, Morgan,Wayne, Stevenson,Randy, Hill,Caleb,
-            White,Frank, Steel,Arthur, Cantopher,Larry and Brindley,Herbe
-  TITLE     title of the reference 9
-  JOURNAL   Strategic Developments Publications. 2568, 7272-7279 (1890)
-REFERENCE   10 (bases 1 to 18984)
-  AUTHORS   Smith,Samuel, Pratt,Calvine, Roach,Fernado, Knight,Michael,
-            Hughes,Mark, Rogers,Earl, Gulliford,Chuck, Bolton,Earl,
-            Ingham,Earl, Malone,Nellie, Boughton,Matthew and Pettit,Denn
-  TITLE     title of the reference 10
-  JOURNAL   Sierra Communications Journal. 1873 (26), 5396-5405 (2028)
+  JOURNAL   Intraware College Publications. 2327, 3715-3717 (2002)
   REMARK    REVIEW
 FEATURES             Location/Qualifiers
      CDS             1..18985
                      /codon_start="1"
                      /product="*****"
-                     /gene="LOC356322667"
-                     /translation="DPCSCTCYCSDHCSDMCTDRDMCNCQCVCPCTCHCYCNDMCHCP
-                     CMCYCPCHCNCMCYCTCRCNDMCMCYCHAKCVCMCNCKCPCSCTDQAWCMCSCKAWCS
-                     DGCMAFDECMCACSDQDACHAPCSCYDMCTCRCNCYAACRANCMDQCKCPAWCMCSCK
-                     AKCNDDCKDQCKEACPDLCP"
+                     /gene="LOC509546688"
+                     /translation="CYCNDMCHCPCMCYCPCHCNCMCYCTCRCNDMCMCYCHAKCVCM
+                     CNCKCPCSCTDQAWCMCSCKAWCSDGCMAFDECMCACSDQDACHAPCSCYDMCTCRCN
+                     CYAACRANCMDQCKCPAWCMCSCKAKCNDDCKDQCKEACPDLCP"
      source          1..18985
-                     /organism="Daubentonia madagascariensis"
+                     /organism="Chlorobium limicola"
                      /mol_type="DNA"
      gene            1..18985
                      /note="***** part [1] *****"
-                     /gene="LOC356322667"
+                     /gene="LOC509546688"
 BASE COUNT     4457 a   4440 g   6702 c   3385 t      0 other
 ORIGIN      
         1 agggagggca cacggcctat cgatcgttct ccctagctat agaacgcacg ccagaaccat

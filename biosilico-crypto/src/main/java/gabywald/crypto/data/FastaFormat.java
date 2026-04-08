@@ -74,6 +74,7 @@ frn 	FASTA non-coding RNA 	Contains non-coding RNA regions for a genome, in DNA 
 				if (contItable.length > 3) {
 					data.locusData[1]	= (contItable[3].endsWith("bp")?
 							contItable[3].split(" ")[0]:contItable[3]);
+					if (contItable.length > 5) { data.someDatas[4]	= contItable[5]; }
 				}
 				data.origin = new Sequence("", "");
 			} else { 

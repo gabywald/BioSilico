@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.launcher.CryptoLauncher;
+import gabywald.global.data.File;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -436,6 +437,122 @@ class CryptoLauncherTests {
 				+ "\t\tdataToTranscript=toto,subcommand=encode, \n"
 				+ "\t\tmethodSimple=true, methodMore=false, methodRand=false\n"));
 		Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindDirectEncode() {
+		CryptoLauncher.main(new String[]{"-e", "-f", "-s", "--DATA=src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String toReadContent = File.readFile("src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.direct");
+			Assertions.assertEquals(toReadContent, bosOUT.toString());
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindFASTAEncode() {
+		CryptoLauncher.main(new String[]{"-e", "-f", "-s", "--fasta", "--DATA=src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String toReadContent = File.readFile("src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.fasta");
+			int trcIndex = toReadContent.indexOf( "|18984 bp|" );
+			int bosIndex = bosOUT.toString().indexOf( "|18984 bp|" );
+			Assertions.assertEquals(toReadContent.substring(trcIndex), bosOUT.toString().substring(bosIndex));
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindEMBLEncode() {
+		CryptoLauncher.main(new String[]{"-e", "-f", "-s", "--embl", "--DATA=src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String toReadContent = File.readFile("src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.embl");
+			// Assertions.assertEquals(toReadContent, bosOUT.toString());
+			int trcIndex = toReadContent.indexOf( "SQ   Sequence " );
+			int bosIndex = bosOUT.toString().indexOf( "SQ   Sequence " );
+			Assertions.assertEquals(toReadContent.substring(trcIndex), bosOUT.toString().substring(bosIndex));
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e);  }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindGENBANKEncode() {
+		CryptoLauncher.main(new String[]{"-e", "-f", "-s", "--genbank", "--DATA=src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String toReadContent = File.readFile("src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.genbank");
+			// Assertions.assertEquals(toReadContent, bosOUT.toString());
+			int trcIndex = toReadContent.indexOf( "BASE COUNT" );
+			int bosIndex = bosOUT.toString().indexOf( "BASE COUNT" );
+			Assertions.assertEquals(toReadContent.substring(trcIndex), bosOUT.toString().substring(bosIndex));
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindDirectDecode() {
+		CryptoLauncher.main(new String[]{"-x", "-f", "-s", "--DATA=src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.direct"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String originalPath = "src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt";
+			String toReadContent = originalPath + "\n" 
+					+ File.readFile("src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt")
+					+ "\n" ;
+			Assertions.assertEquals(toReadContent, bosOUT.toString());
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindFASTADecode() {
+		CryptoLauncher.main(new String[]{"-x", "-f", "-s", "--fasta", "--DATA=src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.fasta"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String originalPath = "src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt";
+			String toReadContent = originalPath + "\n" 
+					+ File.readFile("src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt")
+					+ "\n" ;
+			Assertions.assertEquals(toReadContent, bosOUT.toString());
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindEMBLDecode() {
+		CryptoLauncher.main(new String[]{"-x", "-f", "-s", "--embl", "--DATA=src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.embl"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String originalPath = "src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt";
+			String toReadContent = originalPath + "\n" 
+					+ File.readFile("src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt")
+					+ "\n" ;
+			Assertions.assertEquals(toReadContent, bosOUT.toString());
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
+		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
+		this.flushBOSes();
+	}
+	
+	@Test
+	void testOperationLikeTheWindGENBANKDecode() {
+		CryptoLauncher.main(new String[]{"-x", "-f", "-s", "--genbank", "--DATA=src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.genbank"});
+		// Assertions.assertTrue(bosOUT.toString().endsWith("0\n"));
+		try {
+			String originalPath = "src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt";
+			String toReadContent = originalPath + "\n" 
+					+ File.readFile("src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt")
+					+ "\n" ;
+			Assertions.assertEquals(toReadContent, bosOUT.toString());
+		} catch (IOException e) { e.printStackTrace();Assertions.fail(e); }
 		Assertions.assertEquals("", bosERR.toString().split("\n")[0]);
 		this.flushBOSes();
 	}

@@ -1,25 +1,56 @@
-ID   TWRXF899556669; SV TWRXF899556669.1; linear; DNA; PHG; 18984 BP.
+ID   FRXF420543839; SV FRXF420543839.1; linear; DNA; MUS; 18984 BP.
 XX
-AC   
+AC   ABCDEFGHIJKLMNOPQRSTUVWXYZ
 XX
 KW   
 XX
-OS   Haliotis kamtschatkana
-OC   Eukaryota; Metazoa; Mollusca; Gastropoda; Vetigastropoda; Haliotoidea;
-OC   Haliotidae; Haliotis; Haliotis.
+OS   Saccharomyces cerevisiae (strain FostersO)
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Saccharomycotina; Saccharomycetes;
+OC   Saccharomycetales; Saccharomycetaceae; Saccharomyces; Saccharomyces.
 XX
 RN   [1]
 RP   1-18984
-RA   Wilders Gates, Hey Hart, White Adam, Jayant Nick, Swatton Curtis,
-RA   Kates Glenn, Jones Pete, Boyes Flynn;
+RA   Stevenson Gabe, Venning Josh, Hurford Matt, White Keith, Barnard Ward,
+RA   Wallace Melvin, Ansley Carlo, Green Bran, Lovegrove Elvin, Hughes Elvin,;
+RA   Beckwith Zack, Clegg Jackie, Lovegrove Zed, Platter Corey, Jay Ryan;
 RT   title of the reference 1;
 XX
 RN   [2]
 RP   1-18984
-RA   Jay Jack, Hill Manuel, Paton Ion, Forrest Richard, Stacey Melvin,
-RA   Cadwell Thron, Doyle Sebastian, Martin Thomas, Cliefe Gregory, Welch Hugo,;
-RA   Daymond Hubert, Barnard Stephen;
+RA   Waterhouse Sean, Cantlow Hamlet, Bailey Homer, Barry Tyrone, Dillon Luigi,
+RA   Porter Samuel, Gulliford Garson, Chafer Garfield, Trise Marc, Kenway Dan,;
+RA   Mackenzie David, Macauley Ronald, Chafer Rich, Stoneman Ronald,;
+RA   Widley Dennis, Gullidge Bailey, Simpson Val;
 RT   title of the reference 2;
+XX
+RN   [3]
+RP   1-18984
+RA   Burgess Dick, Godwin Ed, Corner Alberto, Gullidge Davin, Tothill Michael,
+RA   Levers Jerrick, Dummer Duke, Cocks Earl, Jayant Stanley, Turner Hubert,;
+RA   Turner Phil, Slater Dean, Hill Kamil;
+RT   title of the reference 3;
+XX
+RN   [4]
+RC   REVIEW
+RP   1-18984
+RA   Nowbati Derek, Green Paul, Moss Jason, Cadwallader Rich, Venning Ted,
+RA   Gullidge Brad, Dennington Sebastian, Thomas Jack, Eaton Graham,;
+RA   Wuyts Adam, Western Harrison, Beteridge Ernest;
+RT   title of the reference 4;
+XX
+RN   [5]
+RC   REVIEW
+RP   1-18984
+RA   Olberechts Glenn, Macauley Lewis, Dillon Bailey, Marples Sean, Busby Brett;
+RT   title of the reference 5;
+XX
+RN   [6]
+RP   1-18984
+RA   Wood Gaby, Grant Bart, Parkin Eric, King Kamil, Burgess Allen,
+RA   Gulliford Tom, Baly Trent, Doyle Keith, Crouch Willis, Rowe Nellie,;
+RA   Trise Flynn, Baker Gary, Eaton Carter, Wuyts Dennis, Tapper Eddie,;
+RA   Eaton Umberto, Evans Harold, Doney Gaby, Clark Glenn;
+RT   title of the reference 6;
 XX
 XX
 FH   Key             Location/Qualifiers
@@ -27,17 +58,16 @@ FH
 FT   CDS             1..18985
 FT                   /codon_start="1"
 FT                   /product="*****"
-FT                   /gene="LOC387414317"
-FT                   /translation="DPCSCTCYCSDHCSDMCTDRDMCNCQCVCPCTCHCYCNDMCHCP
-FT                   CMCYCPCHCNCMCYCTCRCNDMCMCYCHAKCVCMCNCKCPCSCTDQAWCMCSCKAWCS
-FT                   DGCMAFDECMCACSDQDACHAPCSCYDMCTCRCNCYAACRANCMDQCKCPAWCMCSCK
-FT                   AKCNDDCKDQCKEACPDLCP"
+FT                   /gene="LOC264333177"
+FT                   /translation="CYCNDMCHCPCMCYCPCHCNCMCYCTCRCNDMCMCYCHAKCVCM
+FT                   CNCKCPCSCTDQAWCMCSCKAWCSDGCMAFDECMCACSDQDACHAPCSCYDMCTCRCN
+FT                   CYAACRANCMDQCKCPAWCMCSCKAKCNDDCKDQCKEACPDLCP"
 FT   source          1..18985
-FT                   /organism="Haliotis kamtschatkana"
+FT                   /organism="Saccharomyces cerevisiae (strain FostersO)"
 FT                   /mol_type="DNA"
 FT   gene            1..18985
 FT                   /note="***** part [1] *****"
-FT                   /gene="LOC387414317"
+FT                   /gene="LOC264333177"
 XX
 SQ   Sequence 18984 BP; 4457 a; 4440 g; 6702 c; 3385 t; 0 other;
      agggagggca cacggcctat cgatcgttct ccctagctat agaacgcacg ccagaaccat        60

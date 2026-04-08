@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2026)
  */
 @SuppressWarnings("serial")
 public class FeaturesListe extends ArrayList<Feature> {
@@ -20,7 +20,7 @@ public class FeaturesListe extends ArrayList<Feature> {
 		FeaturesListe toReturn = new FeaturesListe();
 		for (int i = 0 ; i < this.size() ; i++) {
 			Feature current = this.get(i);
-			if (current.hasDefinition(fd)) 
+			if (current.hasDefinitionFeatureKey(fd)) 
 				{ toReturn.add(current); }
 		}
 		

@@ -16,12 +16,14 @@ import gabywald.crypto.data.composition.Primary;
 import gabywald.crypto.data.composition.Reference;
 import gabywald.crypto.data.composition.Sequence;
 import gabywald.crypto.data.ioput.BiologicalFileCreatorHelper;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
  * <br>See in <a href="http://www.ebi.ac.uk/2can/tutorials/formats.html">Help about sequence formats (EBI 2can)</a>
  * <br>See also <a href="http://www.ebi.ac.uk/embl/Documentation/User_manual/usrman.html">EMBL - User Manual</a>
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2026)
  */
 public class EmblFormat extends BiologicalFormat {
 	// TODO Embl reading / writing
@@ -58,35 +60,37 @@ A complete and definitive description of the feature table is given here [https:
 			+"((CON|PAT|EST|GSS|HTC|HTG|MGA|WGS|TSA|STS|STD); )?"
 			+"(PHG|ENV|FUN|HUM|INV|MAM|VRT|MUS|PLN|PRO|ROD|SYN|TGN|UNC|VRL); "
 			+"([0-9]+) BP.$" }, 
-		{ "AC", "^AC   (([A-Z]+[0-9]+(\\-[A-Z]+[0-9]+)?; ?)+)$", 			"(>=1 per entry)" }, // ''
-		{ "PR", "^PR   (.*?)$", 				"(0 or 1 per entry)" }, 
-		{ "DT", "^DT   ([0-9]{2})\\-([A-Z]{3})\\-([0-9]{4}) \\(Rel\\. ([0-9]+), Created\\)$" }, /** 2 Date by Entry !! */
-		{ "DT", "^DT   ([0-9]{2})\\-([A-Z]{3})\\-([0-9]{4}) \\(Rel\\. ([0-9]+), Last updated, Version ([0-4]+)\\)$", 			"(2 per entry)" }, /** 2 Date by Entry !! */
-	/** 5*/	{ "DE", "^DE   (.*?)$", 			"(>=1 per entry)" }, 
-		{ "KW", "^KW   (.*)\\.?$", 				"(>=1 per entry)" }, 
-		{ "OS", "^OS   (.*?)$", 				"(>=1 per entry)" }, 
-		{ "OC", "^OC   (.*?)$", 				"(>=1 per entry)" }, 
-		{ "OG", "^OG   (.*?)$", 				"(0 or 1 per entry)" }, 
-	/**10*/	{ "RN", "^RN   \\[([0-9]+)\\]$", 	"(>=1 per entry)" }, 
-		{ "RC", "^RC   (.*?)$", 				"(>=0 per entry)" }, 
+		{ "AC", "^AC   (([A-Z]+[0-9]+(\\-[A-Z]+[0-9]+)?; ?)+)$", 								"(>=1 per entry)" }, // ''
+		{ "PR", "^PR   (.*?)$", 																"(0 or 1 per entry)" }, 
+		{ "DT", "^DT   ([0-9]{2})\\-([A-Z]{3})\\-([0-9]{4}) \\(Rel\\. ([0-9]+), Created\\)$", 	"(2 per entry)" }, /** 2 Date by Entry !! */
+		{ "DT", "^DT   ([0-9]{2})\\-([A-Z]{3})\\-([0-9]{4}) \\(Rel\\. ([0-9]+), Last updated, Version ([0-4]+)\\)$", "(2 per entry)" }, /** 2 Date by Entry !! */
+	/** 5*/	{ "DE", "^DE   (.*?)$", 				"(>=1 per entry)" }, 
+		{ "KW", "^KW   (.*)\\.?$", 					"(>=1 per entry)" }, 
+		{ "OS", "^OS   (.*?)$", 					"(>=1 per entry)" }, 
+		{ "OC", "^OC   (.*?)$", 					"(>=1 per entry)" }, 
+		{ "OG", "^OG   (.*?)$", 					"(0 or 1 per entry)" }, 
+	/**10*/	{ "RN", "^RN   \\[([0-9]+)\\]$", 		"(>=1 per entry)" }, 
+		{ "RC", "^RC   (.*?)$", 					"(>=0 per entry)" }, 
 		{ "RP", "^RP   ([0-9]+)\\-([0-9]+)(.*?)$", 	"(>=1 per entry)" }, 
-		{ "RX", "^RX   (.*?); (.*?)\\.$", 		"(>=0 per entry)" }, 
-		{ "RG", "^RG   (.*?)$", 				"(>=0 per entry)" }, 
-	/**15*/	{ "RA", "^RA   (.*?)$", 			"(>=0 per entry)" }, 
-		{ "RT", "^RT   (.*?);?$", 				"(>=1 per entry)" }, 
-		{ "RL", "^RL   (.*?)$", 				"(>=1 per entry)" }, 
-		{ "DR", "^DR   (.*?); (.*?); (.*?).$", 	"(>=0 per entry)" }, 
-		{ "CC", "^CC\\s*(.*?)$", 				"(>=0 per entry)" }, 
-	/**20*/	{ "AH", "^AH   (.*?)$", 			"(0 or 1 per entry)" }, 
+		{ "RX", "^RX   (.*?); (.*?)\\.$", 			"(>=0 per entry)" }, 
+		{ "RG", "^RG   (.*?)$", 					"(>=0 per entry)" }, 
+	/**15*/	{ "RA", "^RA   (.*?)$", 				"(>=0 per entry)" }, 
+		{ "RT", "^RT   (.*?);?$", 					"(>=1 per entry)" }, 
+		{ "RL", "^RL   (.*?)$", 					"(>=1 per entry)" }, 
+		{ "DR", "^DR   (.*?); (.*?); (.*?).$", 		"(>=0 per entry)" }, 
+		{ "CC", "^CC\\s*(.*?)$", 					"(>=0 per entry)" }, 
+	/**20*/	{ "AH", "^AH   (.*?)$", 				"(0 or 1 per entry)" }, 
 	/** 'AH   LOCAL_SPAN     PRIMARY_IDENTIFIER     PRIMARY_SPAN     COMP ' */
-		{ "AS", "^AS   ([0-9]+)\\-([0-9]+)\\s+([A-Z]{2}[0-9]{6}.[0-9])\\s+([0-9]+)\\-([0-9]+)(\\s+(.*?)\\s*)?$", 				"(0 or >=1 per entry)" }, 
-		{ "FH", "^FH(   (.*?))?$", 				"(2 per entry)" }, 
-		{ "FT", "^FT   (.*?)\\s+(.*?)$", 		"(>=2 per entry)" }, 
-		{ "SQ", "^SQ   Sequence ([0-9]+) BP; ([0-9]+) (A); ([0-9]+) (C); ([0-9]+) (G); ([0-9]+) (T); ([0-9]+) (other);$", 				"(1 per entry)" }, 
-	/**25*/	{ "CO", "^CO   (.*?)$", 			"(0 or >=1 per entry)" }, 
+		{ "AS", "^AS   ([0-9]+)\\-([0-9]+)\\s+([A-Z]{2}[0-9]{6}.[0-9])\\s+([0-9]+)\\-([0-9]+)(\\s+(.*?)\\s*)?$", 			"(0 or >=1 per entry)" }, 
+		{ "FH", "^FH(   (.*?))?$", 					"(2 per entry)" }, 
+		{ "FT", "^FT   (.*?)\\s+(.*?)$", 			"(>=2 per entry)" }, 
+		{ "SQ", "^SQ   Sequence ([0-9]+) BP; ([0-9]+) (A); ([0-9]+) (C); ([0-9]+) (G); ([0-9]+) (T); ([0-9]+) (other);$", 	"(1 per entry)" }, 
+	/**25*/	{ "CO", "^CO   (.*?)$", 				"(0 or >=1 per entry)" }, 
 		{ "  ", "^     (([acgt]+) ?)(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?\\s+([0-9]+)$", 	"(>=1 per entry)" }, 
-		{ "XX", "^XX(.*?)$", 					"(many per entry)" }, 
-		{ "//", "^//(.*?)$", 					"(>=1 per entry)" }
+		{ "XX", "^XX(.*?)$", 						"(many per entry)" }, 
+		{ "//", "^//(.*?)$", 						"(>=1 per entry)" }, 
+		{ "SQ", "^SQ   Sequence ([0-9]+) BP; ([0-9]+) (c); ([0-9]+) (t); ([0-9]+) (a); ([0-9]+) (g); ([0-9]+) (other);$", 	"(1 per entry)"  }, 
+	/**30*/	{ "AC", "^AC +(.*?)$", 					"(>=1 per entry)" }
 	};
 	
 	public static final Pattern[] EMBL_DATA_PATTERNS = {
@@ -169,8 +173,11 @@ A complete and definitive description of the feature table is given here [https:
 		
 		/** AC / Accession... XXX ?! multiline */
 		toReturn += "AC   ";
-		for (int i = 0 ; i < this.accessions.size() ; i++) 
-			{ toReturn += ((i > 0)?" ":"")+this.accessions.get(i)+";"; }
+		if (this.accessions.size() == 0) { toReturn += this.getIdentification(); }
+		else {
+			for (int i = 0 ; i < this.accessions.size() ; i++) 
+				{ toReturn += ((i > 0)?" ":"")+this.accessions.get(i)+";"; }
+		}
 		toReturn += "\nXX\n";
 		
 		/** PR / project... */
@@ -253,11 +260,8 @@ A complete and definitive description of the feature table is given here [https:
 				toReturn += this.origin.toStringEMBL();
 			}
 			
-			
 			toReturn += "//\n";
 		}
-		
-		
 		
 		return toReturn;
 	}
@@ -273,10 +277,8 @@ A complete and definitive description of the feature table is given here [https:
 			Matcher[] matchers 	= 
 					new Matcher[EmblFormat.EMBL_DATA_PATTERNS.length];
 			int matchTo			= -1;
-			for (int j = 0 ; (j < matchers.length) 
-					&& (matchTo == -1) ; j++) { 
-				matchers[j] = EmblFormat.EMBL_DATA_PATTERNS[j]
-				                  .matcher(cont[i]);
+			for (int j = 0 ; (j < matchers.length) && (matchTo == -1) ; j++) { 
+				matchers[j] = EmblFormat.EMBL_DATA_PATTERNS[j].matcher(cont[i]);
 				if (matchers[j].matches())	{ matchTo = j; } 
 			}
 			if (matchTo != -1) { marker = -1; }
@@ -501,7 +503,7 @@ A complete and definitive description of the feature table is given here [https:
 								i++;
 								tmpFollow		= translationFollow.matcher(cont[i]);
 								if (!tmpFollow.matches()) 
-									{ System.out.println("--"); }
+									{ Logger.printlnLog(LoggerLevel.LL_ERROR, "--"); }
 								else {
 									moreContent			= tmpFollow.group(1);
 									translationContent	+= moreContent;
@@ -511,7 +513,7 @@ A complete and definitive description of the feature table is given here [https:
 							tmpFea.addQualifier(featContRecognMatch.group(1), 
 												translationContent);
 						}
-
+						data.features.add(tmpFea);
 					}
 				}/** END 'if (data.references.size() > 0)' */
 				break;
@@ -556,12 +558,25 @@ A complete and definitive description of the feature table is given here [https:
 				data = new EmblFormat();
 				data.origin = new Sequence();
 				break;
-			default:System.out.println("\t'"+marker+"'\t'"+cont[i]+"'");
+			case(29): /** 'SQ' */
+				/** BiologicalFormat.showDefault(matchers, matchTo); */
+				for (int j = 1 ; j < matchers[matchTo].groupCount() ; j++) {
+					/** System.out.println("\t'"+j+" ("+(j%2)+"-"+(j/2)+") "
+							+"'\t'"+matchers[matchTo].group(j+1)+"'"); */
+					if (j%2 != 0) /** 'Base count' else 'Base name'. */
+						{ data.basesCounts[(j-1)/2] = 
+							Integer.parseInt(matchers[matchTo].group(j+1)); }
+					else { data.basesNames[(j-1)/2] = matchers[matchTo].group(j+1); }
+				}
+				break;
+			case(30): /** 'AC' */
+				/** BiologicalFormat.showDefault(matchers, matchTo); */
+				/** Nothing happend here !! */
+				break;
+			default:Logger.printlnLog(LoggerLevel.LL_ERROR, "\t'"+marker+"'\t'"+cont[i]+"' (default) (" + i + ") {" + cont[i] + "}" );
 			}
 			
-			
 		}
-		
 		
 		return toReturn;
 	}

@@ -66,19 +66,19 @@ class FastaFileReaderTests {
 		FastaFileReader gbfr01 = new FastaFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr01.setFileContent( content2read[1] );
 		Assertions.assertNotNull(gbfr01);
-		Assertions.assertEquals("", gbfr01.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr01.getDecodedPath());
 		Assertions.assertEquals("", gbfr01.getDecodedContent());
 		
 		FastaFileReader gbfr02 = new FastaFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr02.setFileContent( content2read[2] );
 		Assertions.assertNotNull(gbfr02);
-		Assertions.assertEquals("", gbfr02.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr02.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr02.getDecodedContent());
 		
 		FastaFileReader gbfr03 = new FastaFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr03.setFileContent( content2read[3] );
 		Assertions.assertNotNull(gbfrBASE);
-		Assertions.assertEquals("", gbfr03.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr03.getDecodedPath());
 		Assertions.assertEquals("some contentacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgt", gbfr03.getDecodedContent());
 		
 		FastaFileReader gbfr04 = new FastaFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
@@ -113,7 +113,7 @@ class FastaFileReaderTests {
 				">HIW_738886847|null|HIW_738886847|48 bp|CHCHCVCKCPDECHCPCTCHDACKCPCK\n"
 				+ "ctatcgttcgtccgccagaacgatcgttcgtgctcacgcccgtgctca" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr00.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 
