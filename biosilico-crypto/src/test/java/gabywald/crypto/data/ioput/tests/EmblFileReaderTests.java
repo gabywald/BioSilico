@@ -66,7 +66,7 @@ class EmblFileReaderTests {
 		EmblFileReader gbfr01 = new EmblFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr01.setFileContent( content2read[1] );
 		Assertions.assertNotNull(gbfr01);
-		Assertions.assertEquals("", gbfr01.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr01.getDecodedPath());
 		Assertions.assertEquals("", gbfr01.getDecodedContent());
 		
 		EmblFileReader gbfr02 = new EmblFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
@@ -84,13 +84,13 @@ class EmblFileReaderTests {
 		EmblFileReader gbfr04 = new EmblFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr04.setFileContent( content2read[4] );
 		Assertions.assertNotNull(gbfr04);
-		Assertions.assertEquals("", gbfr04.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr04.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr04.getDecodedContent());
 		
 		EmblFileReader gbfr05 = new EmblFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
 		gbfr05.setFileContent( content2read[5] );
 		Assertions.assertNotNull(gbfrBASE);
-		Assertions.assertEquals("", gbfr05.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr05.getDecodedPath());
 		Assertions.assertEquals("some contentacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgtacgt", gbfr05.getDecodedContent());
 		
 	}
@@ -183,7 +183,7 @@ class EmblFileReaderTests {
 						+ "     ctatcgttcg tccgccagaa cgatcgttcg tgctcacgcc cgtgctca                     48\n"
 						+ "//" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr00.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 

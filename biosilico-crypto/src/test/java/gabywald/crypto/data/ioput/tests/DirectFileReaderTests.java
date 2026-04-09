@@ -133,9 +133,9 @@ class DirectFileReaderTests {
 	@Test
 	void testDirectFileReaderGBFR00() {
 		DirectFileReader gbfr00 = new DirectFileReader( BiologicalUtils.getGenericCrypto( 0 ), BiologicalUtils.getGenericCrypto( 1 ), ITranslator.TranslatorEnum.simple ); 
-		gbfr00.setFileContent( ":@@@@@tttactatcgttcgtccgccagaacgatcgttcgtgctcacgcccgtgctcatttg:" );
+		gbfr00.setFileContent( "PYCHCICVHKHPIENHNPNTTHVACKCPHKRW:@@@@@tttactatcgttcgtccgccagaacgatcgttcgtgctcacgcccgtgctcatttg:" );
 		Assertions.assertNotNull(gbfr00);
-		Assertions.assertEquals("", gbfr00.getDecodedPath());
+		Assertions.assertEquals("//path/to/data", gbfr00.getDecodedPath());
 		Assertions.assertEquals("some content", gbfr00.getDecodedContent());
 	}
 

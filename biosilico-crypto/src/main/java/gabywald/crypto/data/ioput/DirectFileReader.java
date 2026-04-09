@@ -31,8 +31,10 @@ public class DirectFileReader extends BiologicalFileReader {
 			this.bankOfData = DirectFormat.fromString(fileContent);
 			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
 				DirectFormat current	= this.bankOfData.get(i);
-				this.sbDecodedPath.append(this.getCompanion().getForPathDirName().decode(current.getComment(), 0, 0));
-				this.sbDecodedContent.append(this.getCompanion().getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
+				this.sbDecodedPath.append(this.getCompanion().getForPathDirName() // <= PATH !!
+						.decode(current.getComment(), 0, 0));
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent() // <= CONTENT !!
+						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}

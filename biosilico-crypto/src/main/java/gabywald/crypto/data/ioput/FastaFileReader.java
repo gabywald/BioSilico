@@ -25,8 +25,10 @@ public class FastaFileReader extends BiologicalFileReader {
 			this.bankOfData = FastaFormat.fromString(fileContent);
 			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
 				FastaFormat current	= this.bankOfData.get(i);
-				this.sbDecodedPath.append(this.getCompanion().getForPathDirName().decode(current.getComment(), 0, 0));
-				this.sbDecodedContent.append(this.getCompanion().getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
+				this.sbDecodedPath.append(this.getCompanion().getForPathDirName() // <= PATH !!
+						.decode(current.getComment(), 0, 0));
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent() // <= CONTENT !!
+						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}

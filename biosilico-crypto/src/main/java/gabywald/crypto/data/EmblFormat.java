@@ -89,8 +89,8 @@ A complete and definitive description of the feature table is given here [https:
 		{ "  ", "^     (([acgt]+) ?)(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?(([acgt]+) ?)?\\s+([0-9]+)$", 	"(>=1 per entry)" }, 
 		{ "XX", "^XX(.*?)$", 						"(many per entry)" }, 
 		{ "//", "^//(.*?)$", 						"(>=1 per entry)" }, 
-		{ "SQ", "^SQ   Sequence ([0-9]+) BP; ([0-9]+) (c); ([0-9]+) (t); ([0-9]+) (a); ([0-9]+) (g); ([0-9]+) (other);$", 	"(1 per entry)"  }, 
-	/**30*/	{ "AC", "^AC +(.*?)$", 					"(>=1 per entry)" }
+		{ "SQ", "^SQ   Sequence ([0-9]+) BP; ([0-9]+) (.); ([0-9]+) (.); ([0-9]+) (.); ([0-9]+) (.); ([0-9]+) (.*?);$", 	"(1 per entry)"  }, 
+	/**30*/	{ "AC", "^AC +(.*?)?$", 					"(>=1 per entry)" }
 	};
 	
 	public static final Pattern[] EMBL_DATA_PATTERNS = {
@@ -123,6 +123,8 @@ A complete and definitive description of the feature table is given here [https:
 		Pattern.compile(EmblFormat.EMBL_DATA_KEYS_PATTERNS[26][1]),
 		Pattern.compile(EmblFormat.EMBL_DATA_KEYS_PATTERNS[27][1]),
 		Pattern.compile(EmblFormat.EMBL_DATA_KEYS_PATTERNS[28][1]),
+		Pattern.compile(EmblFormat.EMBL_DATA_KEYS_PATTERNS[29][1]),
+		Pattern.compile(EmblFormat.EMBL_DATA_KEYS_PATTERNS[30][1]),
 	};
 	
 	/** Sequence Part recognition Pattern for EMBL Format. */
@@ -495,33 +497,34 @@ A complete and definitive description of the feature table is given here [https:
 						else {
 							/** translation... */
 							String translationContent	= featContRecognMatch.group(2);
-							String moreContent			= new String("");
-							Pattern translationFollow	= Pattern.compile("^FT\\s+(.*?)$");
-							Matcher tmpFollow			= translationFollow.matcher(cont[i]);
-							// '                   '
-							do {
-								i++;
-								tmpFollow		= translationFollow.matcher(cont[i]);
-								if (!tmpFollow.matches()) 
-									{ Logger.printlnLog(LoggerLevel.LL_ERROR, "--"); }
-								else {
-									moreContent			= tmpFollow.group(1);
-									translationContent	+= moreContent;
-								}
-							} while( (!moreContent.endsWith("\""))
-											&& (tmpFollow.matches()) );
+							if ( ! translationContent.endsWith("\"")) {
+								// If sequence getted is not finisqhed
+								String moreContent			= new String("");
+								Pattern translationFollow	= Pattern.compile("^FT\\s+(.*?)$");
+								Matcher tmpFollow			= translationFollow.matcher(cont[i]);
+								// '                   '
+								do {
+									i++;
+									tmpFollow		= translationFollow.matcher(cont[i]);
+									if (!tmpFollow.matches()) 
+										{ Logger.printlnLog(LoggerLevel.LL_ERROR, "--"); }
+									else {
+										moreContent			= tmpFollow.group(1);
+										translationContent	+= moreContent;
+									}
+								} while( (!moreContent.endsWith("\""))
+												&& (tmpFollow.matches()) );
+							} // END "if ( ! translationContent.endsWith("\""))"
 							tmpFea.addQualifier(featContRecognMatch.group(1), 
 												translationContent);
 						}
-						data.features.add(tmpFea);
-					}
-				}/** END 'if (data.references.size() > 0)' */
+						// data.features.add(tmpFea);
+					} /** END "if (featContRecognMatch.matches())" */
+				} /** END 'if (data.references.size() > 0)' */
 				break;
 			case(24): /** 'SQ' */
 				/** BiologicalFormat.showDefault(matchers, matchTo); */
 				for (int j = 1 ; j < matchers[matchTo].groupCount() ; j++) {
-					/** System.out.println("\t'"+j+" ("+(j%2)+"-"+(j/2)+") "
-							+"'\t'"+matchers[matchTo].group(j+1)+"'"); */
 					if (j%2 != 0) /** 'Base count' else 'Base name'. */
 						{ data.basesCounts[(j-1)/2] = 
 							Integer.parseInt(matchers[matchTo].group(j+1)); }
@@ -546,7 +549,6 @@ A complete and definitive description of the feature table is given here [https:
 						&& (matchers[matchTo].group(j) != null) ; j += 2) 
 					{ whole += matchers[matchTo].group(j); }
 				data.origin.addInSequence(whole);
-				// System.out.println(whole);
 				break;
 			case(27): /** 'XX' */
 				/** BiologicalFormat.showDefault(matchers, matchTo); */
@@ -561,19 +563,19 @@ A complete and definitive description of the feature table is given here [https:
 			case(29): /** 'SQ' */
 				/** BiologicalFormat.showDefault(matchers, matchTo); */
 				for (int j = 1 ; j < matchers[matchTo].groupCount() ; j++) {
-					/** System.out.println("\t'"+j+" ("+(j%2)+"-"+(j/2)+") "
-							+"'\t'"+matchers[matchTo].group(j+1)+"'"); */
 					if (j%2 != 0) /** 'Base count' else 'Base name'. */
 						{ data.basesCounts[(j-1)/2] = 
 							Integer.parseInt(matchers[matchTo].group(j+1)); }
 					else { data.basesNames[(j-1)/2] = matchers[matchTo].group(j+1); }
 				}
+				Logger.printlnLog(LoggerLevel.LL_NONE, "\t'"+marker+"'\t'"+cont[i]+"' (default) (" + i + ") alternate SQ");
 				break;
 			case(30): /** 'AC' */
 				/** BiologicalFormat.showDefault(matchers, matchTo); */
 				/** Nothing happend here !! */
+				Logger.printlnLog(LoggerLevel.LL_NONE, "\t'"+marker+"'\t'"+cont[i]+"' (default) (" + i + ") empty AC");
 				break;
-			default:Logger.printlnLog(LoggerLevel.LL_ERROR, "\t'"+marker+"'\t'"+cont[i]+"' (default) (" + i + ") {" + cont[i] + "}" );
+			default:Logger.printlnLog(LoggerLevel.LL_ERROR, "\t'"+marker+"'\t'"+cont[i]+"' (default) (" + i + ")*****" );
 			}
 			
 		}

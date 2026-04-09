@@ -36,8 +36,7 @@ FT   CDS             1..1
 FT                   /codon_start="1"
 FT                   /product="*****"
 FT                   /gene="LOC835215573"
-FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK
-"
+FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK"
 FT   source          1..1
 FT                   /organism="Rabbit hemorrhagic disease virus (strain V-351)"
 FT                   /mol_type="mRNA"
@@ -236,8 +235,7 @@ FT   CDS             1..3249
 FT                   /codon_start="1"
 FT                   /product="*****"
 FT                   /gene="LOC465911086"
-FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK
-"
+FT                   /translation="CHCHCVCKCPDECHCPCTCHDACKCPCK"
 FT   source          1..3249
 FT                   /organism="Clostridium difficile (strain CD196)"
 FT                   /mol_type="DNA"

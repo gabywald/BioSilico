@@ -23,7 +23,6 @@ public class FeaturesListe extends ArrayList<Feature> {
 			if (current.hasDefinitionFeatureKey(fd)) 
 				{ toReturn.add(current); }
 		}
-		
 		return toReturn;
 	}
 }

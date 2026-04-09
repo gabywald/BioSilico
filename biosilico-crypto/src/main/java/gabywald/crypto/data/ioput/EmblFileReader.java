@@ -3,6 +3,7 @@ package gabywald.crypto.data.ioput;
 import java.util.List;
 
 import gabywald.crypto.data.EmblFormat;
+import gabywald.crypto.data.composition.FeaturesListe;
 import gabywald.crypto.model.ITranslator;
 
 /**
@@ -31,8 +32,13 @@ public class EmblFileReader extends BiologicalFileReader {
 			this.bankOfData = EmblFormat.fromString(fileContent);
 			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
 				EmblFormat current	= this.bankOfData.get(i);
-				this.sbDecodedPath.append(this.getCompanion().getForPathDirName().decode(current.getComment(), 0, 0));
-				this.sbDecodedContent.append(this.getCompanion().getForFileContent().decode(current.getOrigin().getContent(), 0, 0));
+				FeaturesListe fl 	= current.getFeatures().getFeaturesWith("CDS");
+				for (int j = 0 ; j < fl.size() ; j++) {
+					this.sbDecodedPath.append(this.getCompanion().getForPathDirName() // <= PATH !!
+							.decode(fl.get(i).get("translation"), 0, 0));
+				}
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent() // <= CONTENT !!
+						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}
