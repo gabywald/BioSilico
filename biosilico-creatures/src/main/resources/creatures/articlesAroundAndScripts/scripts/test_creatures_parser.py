@@ -4,7 +4,7 @@ from creatures1genomeAnalysis import parse_genome_file, export_to_json
 
 class TestCreaturesParser(unittest.TestCase):
     def setUp(self):
-        self.test_dir = "test_genomes"
+        self.test_dir = "test_genomes_scripts"
         self.valid_files = ["valid_genome1.gen", "valid_genome2.gen", "minimal_genome.gen"]
         self.corrupted_files = ["corrupted_header.gen", "corrupted_data.gen"]
         self.empty_file = "empty.gen"

@@ -6,7 +6,7 @@ use File::Basename;
 
 require_ok('./creatures1genomeAnalysis.pl');
 
-my $test_dir = "test_genomes";
+my $test_dir = "test_genomes_scripts";
 my @valid_files = ("valid_genome1.gen", "valid_genome2.gen", "minimal_genome.gen");
 my @corrupted_files = ("corrupted_header.gen", "corrupted_data.gen");
 my $empty_file = "empty.gen";

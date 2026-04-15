@@ -237,6 +237,7 @@ sub to_string {
             ", Neurons: " . ($lobe->{neurons} || 0) .
             ", Perception Link: " . ($lobe->{perception_link} || "No");
     }
+    # TODO add for emitter, receptor, initconc
 
     return $str;
 }

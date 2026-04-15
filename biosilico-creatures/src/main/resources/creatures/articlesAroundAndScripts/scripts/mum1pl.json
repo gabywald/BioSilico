@@ -1,0 +1,5998 @@
+[
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "subtype_name" : "Genus",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x01",
+      "number" : 1
+   },
+   {
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         56,
+         88,
+         144
+      ],
+      "subtype_name" : "Half-Lives",
+      "subtype" : "0x03",
+      "number" : 1,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Gait",
+      "data" : [],
+      "number" : 1,
+      "subtype" : "0x04",
+      "switch_on" : 0
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x03"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 2,
+      "subtype" : "0x03"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 3,
+      "switch_on" : 0
+   },
+   {
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 4,
+      "subtype" : "0x03",
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 5,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Appearance",
+      "data" : [
+         0
+      ],
+      "number" : 1,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 6,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 7,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x03",
+      "number" : 8,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 9,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 10,
+      "switch_on" : 0
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 11
+   },
+   {
+      "switch_on" : 0,
+      "number" : 12,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x06",
+      "number" : 11,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pigment",
+      "data" : [
+         200,
+         103,
+         101,
+         110,
+         101,
+         2,
+         3
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 14,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "Mutable",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 15,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "number" : 16,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "Mutable"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 17,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "mutability" : "Mutable",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 18,
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 19,
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 20,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 21,
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "Mutable"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 22,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 23,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 24,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 25,
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 26,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "number" : 27,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Appearance",
+      "data" : [
+         0
+      ],
+      "number" : 2,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 28,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "number" : 29,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 40,
+      "switch_on" : 0
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 30,
+      "switch_on" : 0
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 31,
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 32,
+      "subtype" : "0x03"
+   },
+   {
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 33,
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 34,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "type" : "0x02",
+      "number" : 35,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 36,
+      "subtype" : "0x03",
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 37,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x00",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         0,
+         1,
+         0,
+         0,
+         255,
+         0
+      ],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "data" : [
+         5,
+         1,
+         2,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 2,
+      "subtype" : "0x00"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         2,
+         3,
+         0,
+         0,
+         255,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 3,
+      "subtype" : "0x00"
+   },
+   {
+      "subtype" : "0x00",
+      "number" : 4,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         3,
+         4,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "type" : "0x01",
+      "subtype" : "0x00",
+      "number" : 5,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         4,
+         5,
+         0,
+         0,
+         255,
+         0
+      ]
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 6,
+      "subtype" : "0x00",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         5,
+         6,
+         0,
+         0,
+         255,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         6,
+         7,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "subtype" : "0x00",
+      "number" : 7,
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x00",
+      "number" : 8,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         7,
+         8,
+         0,
+         0,
+         255,
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "data" : [
+         5,
+         8,
+         9,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 9
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x00",
+      "number" : 10,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         9,
+         10,
+         0,
+         0,
+         255,
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {}
+   },
+   {
+      "number" : 11,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         10,
+         11,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 12,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         11,
+         12,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 13,
+      "subtype" : "0x00",
+      "subtype_name" : "Receptor",
+      "data" : [
+         5,
+         12,
+         13,
+         0,
+         0,
+         255,
+         0
+      ],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 1,
+      "subtype_name" : "Reaction",
+      "data" : [
+         17,
+         1,
+         0,
+         1,
+         1,
+         1,
+         50
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "proportion" : 0,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 1,
+               "proportion" : 1,
+               "chem_name" : "Need for Pleasure"
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 17
+            },
+            {
+               "chem" : 0,
+               "chem_name" : "Pain",
+               "proportion" : 1
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 2,
+      "subtype_name" : "Reaction",
+      "data" : [
+         18,
+         1,
+         0,
+         1,
+         2,
+         1,
+         50
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0
+            },
+            {
+               "chem_name" : "Hunger",
+               "proportion" : 1,
+               "chem" : 2
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 18,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem_name" : "Pain",
+               "proportion" : 1,
+               "chem" : 0
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 3,
+      "data" : [
+         19,
+         1,
+         0,
+         1,
+         3,
+         1,
+         50
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "proportion" : 19,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 0,
+               "proportion" : 1,
+               "chem_name" : "Pain"
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "proportion" : 0,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem" : 3,
+               "proportion" : 1,
+               "chem_name" : "Coldness"
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry"
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "products" : [
+            {
+               "proportion" : 0,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 4,
+               "chem_name" : "Hotness",
+               "proportion" : 1
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 20,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 0,
+               "chem_name" : "Pain",
+               "proportion" : 1
+            }
+         ],
+         "rate" : 1
+      },
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         20,
+         1,
+         0,
+         1,
+         4,
+         1,
+         50
+      ],
+      "number" : 4,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "subtype_name" : "Reaction",
+      "data" : [
+         21,
+         1,
+         0,
+         1,
+         5,
+         1,
+         50
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 5,
+      "subtype" : "0x02",
+      "mutability" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0,
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem05",
+               "proportion" : 1,
+               "chem" : 5
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 21,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem_name" : "Pain",
+               "proportion" : 1,
+               "chem" : 0
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0,
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem06",
+               "chem" : 6
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 22,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem" : 0,
+               "proportion" : 1,
+               "chem_name" : "Pain"
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 6,
+      "subtype" : "0x02",
+      "data" : [
+         22,
+         1,
+         0,
+         1,
+         6,
+         1,
+         50
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 6,
+      "subtype_name" : "Pigment",
+      "data" : [
+         60,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "number" : 8,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         24,
+         1,
+         0,
+         1,
+         8,
+         1,
+         50
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem" : 1,
+               "proportion" : 0,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem" : 8,
+               "proportion" : 1,
+               "chem_name" : "Chem08"
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 24,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Pain",
+               "proportion" : 1,
+               "chem" : 0
+            }
+         ],
+         "rate" : 1
+      }
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x02",
+      "number" : 9,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         25,
+         1,
+         0,
+         1,
+         9,
+         1,
+         50
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 25
+            },
+            {
+               "chem" : 0,
+               "chem_name" : "Pain",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "proportion" : 0,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem09",
+               "chem" : 9
+            }
+         ]
+      }
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 10,
+      "data" : [
+         26,
+         1,
+         0,
+         1,
+         10,
+         1,
+         50
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Fear",
+               "chem" : 10
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 26,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Pain",
+               "chem" : 0
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None"
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0
+            },
+            {
+               "chem" : 11,
+               "chem_name" : "Boredom",
+               "proportion" : 1
+            }
+         ],
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 27,
+               "chem" : 1
+            },
+            {
+               "chem" : 0,
+               "proportion" : 1,
+               "chem_name" : "Pain"
+            }
+         ],
+         "rate" : 1
+      },
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         27,
+         1,
+         0,
+         1,
+         11,
+         1,
+         50
+      ],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 11,
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 28,
+               "chem" : 1
+            },
+            {
+               "chem" : 0,
+               "proportion" : 1,
+               "chem_name" : "Pain"
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0
+            },
+            {
+               "chem" : 12,
+               "proportion" : 1,
+               "chem_name" : "Chem0C"
+            }
+         ]
+      },
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         28,
+         1,
+         0,
+         1,
+         12,
+         1,
+         50
+      ],
+      "number" : 12,
+      "subtype" : "0x02",
+      "switch_on" : 0
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 32,
+      "subtype_name" : "Reaction",
+      "data" : [
+         29,
+         1,
+         0,
+         1,
+         13,
+         1,
+         50
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0,
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem0D",
+               "chem" : 13
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 29,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Pain",
+               "chem" : 0
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None"
+   },
+   {
+      "number" : 13,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         33,
+         1,
+         1,
+         1,
+         49,
+         1,
+         0
+      ],
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 33,
+               "chem" : 1
+            },
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 1,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem31",
+               "chem" : 49
+            }
+         ]
+      },
+      "mutability" : "None"
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 34,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem" : 2,
+               "proportion" : 1,
+               "chem_name" : "Hunger"
+            }
+         ],
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 2,
+               "chem" : 1
+            },
+            {
+               "chem" : 49,
+               "proportion" : 1,
+               "chem_name" : "Chem31"
+            }
+         ]
+      },
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         34,
+         1,
+         2,
+         1,
+         49,
+         1,
+         0
+      ],
+      "subtype" : "0x02",
+      "number" : 14,
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "proportion" : 3,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 49,
+               "chem_name" : "Chem31",
+               "proportion" : 1
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 35,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Coldness",
+               "chem" : 3
+            }
+         ]
+      },
+      "type" : "0x01",
+      "number" : 15,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         35,
+         1,
+         3,
+         1,
+         49,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 36
+            },
+            {
+               "chem" : 4,
+               "chem_name" : "Hotness",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 4,
+               "chem" : 1
+            },
+            {
+               "chem" : 49,
+               "proportion" : 1,
+               "chem_name" : "Chem31"
+            }
+         ],
+         "rate" : 1
+      },
+      "type" : "0x01",
+      "subtype" : "0x02",
+      "number" : 16,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         36,
+         1,
+         4,
+         1,
+         49,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 37,
+               "chem" : 1
+            },
+            {
+               "chem" : 5,
+               "proportion" : 1,
+               "chem_name" : "Chem05"
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 5,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem31",
+               "proportion" : 1,
+               "chem" : 49
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 17,
+      "subtype" : "0x02",
+      "subtype_name" : "Reaction",
+      "data" : [
+         37,
+         1,
+         5,
+         1,
+         49,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 38
+            },
+            {
+               "chem" : 6,
+               "proportion" : 1,
+               "chem_name" : "Chem06"
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 6,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 49,
+               "proportion" : 1,
+               "chem_name" : "Chem31"
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Reaction",
+      "data" : [
+         38,
+         1,
+         6,
+         1,
+         49,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 18,
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x02",
+      "number" : 3,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Appearance",
+      "data" : [
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x02",
+      "number" : 19,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         39,
+         1,
+         7,
+         1,
+         49,
+         1,
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 39,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem" : 7,
+               "chem_name" : "Chem07",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 7,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem31",
+               "proportion" : 1,
+               "chem" : 49
+            }
+         ]
+      }
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 8,
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem31",
+               "proportion" : 1,
+               "chem" : 49
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 40,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "chem_name" : "Chem08",
+               "proportion" : 1,
+               "chem" : 8
+            }
+         ]
+      },
+      "mutability" : "None",
+      "subtype" : "0x02",
+      "number" : 20,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         40,
+         1,
+         8,
+         1,
+         49,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 41,
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem09",
+               "proportion" : 1,
+               "chem" : 9
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 9,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem31",
+               "chem" : 49
+            }
+         ],
+         "rate" : 1
+      },
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         41,
+         1,
+         9,
+         1,
+         49,
+         1,
+         0
+      ],
+      "number" : 21,
+      "subtype" : "0x02",
+      "switch_on" : 0
+   },
+   {
+      "type" : "0x02",
+      "subtype_name" : "Pigment",
+      "data" : [
+         86,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 8,
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "subtype_name" : "Pigment",
+      "data" : [
+         196,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 7,
+      "subtype" : "0x06"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem" : 1,
+               "proportion" : 12,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem31",
+               "chem" : 49
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 44,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 12,
+               "proportion" : 1,
+               "chem_name" : "Chem0C"
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 24,
+      "subtype_name" : "Reaction",
+      "data" : [
+         44,
+         1,
+         12,
+         1,
+         49,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 45,
+               "chem" : 1
+            },
+            {
+               "chem" : 13,
+               "proportion" : 1,
+               "chem_name" : "Chem0D"
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 13
+            },
+            {
+               "chem" : 49,
+               "chem_name" : "Chem31",
+               "proportion" : 1
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 33,
+      "data" : [
+         45,
+         1,
+         13,
+         1,
+         49,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 9,
+      "data" : [
+         41,
+         103,
+         101,
+         110,
+         101,
+         1,
+         0
+      ],
+      "subtype_name" : "Pigment",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "data" : [
+         6,
+         14,
+         50,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 15,
+      "subtype" : "0x00",
+      "type" : "0x01",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x00",
+      "number" : 1,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         32
+      ],
+      "subtype_name" : "Stimulus",
+      "number" : 2,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         80
+      ],
+      "subtype_name" : "Stimulus",
+      "number" : 3,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 4,
+      "subtype" : "0x00",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         32
+      ],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "subtype" : "0x00",
+      "number" : 5,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         128
+      ],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "subtype_name" : "Stimulus",
+      "data" : [
+         82
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 6,
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x00",
+      "number" : 7,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         36
+      ],
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 8,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 9,
+      "subtype_name" : "Stimulus",
+      "data" : [
+         255
+      ],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         16
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 10,
+      "subtype" : "0x00",
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         16
+      ],
+      "number" : 11,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 12,
+      "subtype" : "0x00",
+      "data" : [
+         16
+      ],
+      "subtype_name" : "Stimulus",
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 13,
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 14,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 15,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus"
+   },
+   {
+      "type" : "0x02",
+      "number" : 16,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "number" : 17,
+      "subtype" : "0x00",
+      "switch_on" : 0
+   },
+   {
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 18,
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 19,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "type" : "0x02"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 20,
+      "type" : "0x02"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 21,
+      "subtype" : "0x00",
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         49,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction",
+      "number" : 25,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "subtype_name" : "Reaction",
+      "data" : [
+         50,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 26,
+      "type" : "0x01",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Brain",
+      "type" : "0x00",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x00",
+      "data" : [],
+      "subtype_name" : "Lobe",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "type" : "0x00",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Lobe",
+      "number" : 2,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Brain",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Lobe",
+      "data" : [],
+      "number" : 3,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "type" : "0x00",
+      "type_name" : "Brain",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [
+         44,
+         103,
+         101,
+         110,
+         101,
+         0,
+         0
+      ],
+      "subtype_name" : "Pigment",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 12,
+      "type" : "0x02"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Brain",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 8,
+      "subtype_name" : "Lobe",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x00"
+   },
+   {
+      "type" : "0x00",
+      "number" : 9,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Lobe",
+      "data" : [],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Brain",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Brain",
+      "sex_dep" : "None",
+      "type" : "0x00",
+      "data" : [
+         15,
+         1,
+         16
+      ],
+      "subtype_name" : "Lobe",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 5
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Brain",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Lobe",
+      "data" : [
+         30,
+         5,
+         8
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 6,
+      "subtype" : "0x00",
+      "type" : "0x00"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Brain",
+      "parsed_data" : {},
+      "type" : "0x00",
+      "subtype" : "0x00",
+      "number" : 7,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Lobe",
+      "data" : [
+         6
+      ]
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "subtype_name" : "Emitter",
+      "data" : [
+         8,
+         1,
+         52,
+         0,
+         1,
+         255,
+         1
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         6,
+         1,
+         53,
+         0,
+         1,
+         255,
+         1
+      ],
+      "subtype_name" : "Emitter",
+      "subtype" : "0x01",
+      "number" : 2,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [
+         6,
+         2,
+         70,
+         0,
+         1,
+         255,
+         1
+      ],
+      "subtype_name" : "Emitter",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 3,
+      "subtype" : "0x01",
+      "type" : "0x01"
+   },
+   {
+      "data" : [
+         8,
+         14,
+         52,
+         0,
+         4,
+         255,
+         1
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 16,
+      "type" : "0x01",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x00",
+      "number" : 17,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         6,
+         15,
+         53,
+         0,
+         16,
+         255,
+         1
+      ],
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "data" : [
+         6,
+         16,
+         70,
+         0,
+         16,
+         255,
+         1
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 43,
+      "subtype" : "0x00",
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 18,
+      "data" : [
+         8,
+         13,
+         51,
+         0,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 4,
+      "subtype" : "0x01",
+      "data" : [
+         4,
+         1,
+         11,
+         0,
+         25,
+         8,
+         6
+      ],
+      "subtype_name" : "Emitter",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [
+         1,
+         0,
+         0,
+         0,
+         0,
+         1,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x05",
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "data" : [
+         2,
+         0,
+         0,
+         0,
+         0,
+         2,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x05",
+      "number" : 2,
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None"
+   },
+   {
+      "subtype" : "0x05",
+      "number" : 3,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         0,
+         0,
+         0,
+         0,
+         4,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Instinct",
+      "data" : [
+         10,
+         0,
+         0,
+         0,
+         0,
+         0,
+         50
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 4,
+      "subtype" : "0x05",
+      "type" : "0x02"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x05",
+      "number" : 5,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         0,
+         0,
+         0,
+         0,
+         9,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x01",
+      "subtype_name" : "Emitter",
+      "data" : [
+         4,
+         1,
+         2,
+         0,
+         64,
+         10,
+         6
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 5,
+      "subtype" : "0x01",
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 6,
+      "subtype" : "0x01",
+      "data" : [
+         4,
+         3,
+         5,
+         0,
+         24,
+         49,
+         0
+      ],
+      "subtype_name" : "Emitter",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         2,
+         4,
+         0,
+         24,
+         50,
+         0
+      ],
+      "subtype_name" : "Emitter",
+      "number" : 7,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "subtype_name" : "Emitter",
+      "data" : [
+         4,
+         4,
+         7,
+         0,
+         114,
+         8,
+         4
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x01",
+      "number" : 8,
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Emitter",
+      "data" : [
+         4,
+         5,
+         8,
+         0,
+         18,
+         5,
+         4
+      ],
+      "subtype" : "0x01",
+      "number" : 9,
+      "switch_on" : 0
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         5,
+         9,
+         0,
+         75,
+         51,
+         0
+      ],
+      "subtype_name" : "Emitter",
+      "number" : 10,
+      "subtype" : "0x01",
+      "switch_on" : 0
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         57,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 27,
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x01",
+      "number" : 11,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Emitter",
+      "data" : [
+         0,
+         0,
+         61
+      ],
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 28,
+      "subtype" : "0x02",
+      "subtype_name" : "Reaction",
+      "data" : [
+         58,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "subtype_name" : "Reaction",
+      "data" : [
+         59,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 29
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         58,
+         2,
+         61
+      ],
+      "subtype_name" : "Reaction",
+      "number" : 30,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 1,
+      "subtype" : "0x04",
+      "data" : [
+         122,
+         103,
+         101
+      ],
+      "subtype_name" : "Initial Concentration",
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "subtype" : "0x04",
+      "number" : 3,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         74,
+         103,
+         101,
+         110,
+         101,
+         2,
+         5
+      ],
+      "subtype_name" : "Initial Concentration",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x05",
+      "number" : 7,
+      "subtype_name" : "Instinct",
+      "data" : [
+         10,
+         0,
+         0,
+         0,
+         0,
+         2,
+         49
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         2,
+         0,
+         63,
+         0,
+         17,
+         6,
+         6,
+         103,
+         101,
+         110,
+         101,
+         1,
+         0,
+         20,
+         0,
+         2,
+         23,
+         1,
+         2,
+         0,
+         63,
+         0,
+         0
+      ],
+      "subtype_name" : "Emitter",
+      "subtype" : "0x01",
+      "number" : 12,
+      "switch_on" : 0,
+      "mutability" : "Duplicable",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "Duplicable",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "type" : "0x01",
+      "number" : 14,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         2,
+         0,
+         13,
+         0,
+         20,
+         7,
+         2,
+         103,
+         101,
+         110,
+         101,
+         1,
+         0,
+         21,
+         0,
+         2,
+         23,
+         1,
+         2,
+         1,
+         13,
+         0,
+         44
+      ],
+      "subtype_name" : "Emitter"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "Duplicable",
+      "data" : [
+         2,
+         1,
+         65,
+         0,
+         40,
+         64,
+         2,
+         103,
+         101,
+         110,
+         101,
+         1,
+         1,
+         17,
+         0,
+         2,
+         23,
+         1,
+         2,
+         1,
+         66,
+         0,
+         13
+      ],
+      "subtype_name" : "Emitter",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x01",
+      "number" : 16,
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "Duplicable",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem" : 2,
+               "chem_name" : "Hunger",
+               "proportion" : 65
+            },
+            {
+               "chem" : 63,
+               "chem_name" : "Chem3F",
+               "proportion" : 2
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 63,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem_name" : "Chem41",
+               "proportion" : 1,
+               "chem" : 65
+            }
+         ],
+         "rate" : 103
+      },
+      "type" : "0x01",
+      "subtype" : "0x02",
+      "number" : 31,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         65,
+         2,
+         63,
+         1,
+         65,
+         1,
+         0,
+         40,
+         103,
+         101,
+         110,
+         101,
+         1,
+         0,
+         22,
+         0,
+         2,
+         23,
+         1,
+         4,
+         1,
+         66,
+         200
+      ]
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Duplicable",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         0,
+         64,
+         0,
+         19,
+         6,
+         2,
+         103,
+         101,
+         110,
+         101,
+         1,
+         1,
+         15,
+         0
+      ],
+      "subtype_name" : "Emitter",
+      "subtype" : "0x01",
+      "number" : 13,
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Duplicable",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         2,
+         0,
+         64,
+         0,
+         0,
+         255,
+         0,
+         103,
+         101,
+         110,
+         101,
+         2,
+         5,
+         8,
+         0
+      ],
+      "number" : 23,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {
+         "conditions" : [
+            {
+               "lobe" : "Lobe0C",
+               "cell" : 5
+            },
+            {
+               "cell" : 0,
+               "lobe" : "Lobe13"
+            },
+            {
+               "lobe" : "Perception",
+               "cell" : 2
+            }
+         ],
+         "reward_punish" : "Punish",
+         "amount" : 103,
+         "action" : "Action31"
+      },
+      "sex_dep" : "None",
+      "mutability" : "Duplicable",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Instinct",
+      "data" : [
+         12,
+         5,
+         19,
+         0,
+         0,
+         2,
+         49,
+         112,
+         103,
+         101,
+         110,
+         101,
+         1,
+         0,
+         24
+      ],
+      "subtype" : "0x05",
+      "number" : 9,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "subtype" : "0x00",
+      "number" : 25,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [],
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "Mutable"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 26,
+      "subtype_name" : "Receptor",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "mutability" : "Duplicable"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 27,
+      "subtype" : "0x00",
+      "subtype_name" : "Receptor",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "Mutable,Duplicable",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "mutability" : "Deletable",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Receptor",
+      "subtype" : "0x00",
+      "number" : 28,
+      "switch_on" : 0
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "Mutable,Deletable",
+      "number" : 29,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Receptor",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Initial Concentration",
+      "data" : [],
+      "subtype" : "0x04",
+      "number" : 4,
+      "switch_on" : 0
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 38,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "type" : "0x01",
+      "number" : 30,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : []
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 34,
+      "subtype" : "0x02",
+      "data" : [
+         67,
+         2,
+         59,
+         2,
+         17,
+         2,
+         23
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 2,
+               "chem_name" : "Hunger",
+               "proportion" : 67
+            },
+            {
+               "chem_name" : "Chem3B",
+               "proportion" : 2,
+               "chem" : 59
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 59,
+               "chem_name" : "Hunger",
+               "chem" : 2
+            },
+            {
+               "proportion" : 2,
+               "chem_name" : "Chem11",
+               "chem" : 17
+            }
+         ]
+      },
+      "type_name" : "Biochemistry"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 39,
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 41,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 42,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "subtype" : "0x03",
+      "number" : 43,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "number" : 44,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Gait",
+      "subtype" : "0x04",
+      "number" : 2,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 45,
+      "switch_on" : 0
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 46
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 47,
+      "subtype" : "0x03",
+      "switch_on" : 0
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 48,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Gait",
+      "data" : [],
+      "subtype" : "0x04",
+      "number" : 3,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 4,
+      "subtype" : "0x04",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Gait",
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 49,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "type" : "0x02",
+      "number" : 50,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 51,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "switch_on" : 0,
+      "number" : 52,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "subtype_name" : "Gait",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 5,
+      "subtype" : "0x04",
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None"
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 10,
+      "data" : [
+         110,
+         103,
+         101,
+         110,
+         101,
+         2,
+         3
+      ],
+      "subtype_name" : "Pigment",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 54,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 55,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "type" : "0x02",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 56,
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Gait",
+      "subtype" : "0x04",
+      "number" : 6,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 57,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "number" : 58,
+      "subtype" : "0x03",
+      "switch_on" : 0
+   },
+   {
+      "number" : 59,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 60,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 61,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "type" : "0x02"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 62,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 63,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "number" : 64,
+      "subtype" : "0x03",
+      "switch_on" : 0
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 65,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "number" : 66,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 67,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 68,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 69,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : []
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 70,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 71,
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 72,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "type" : "0x02",
+      "number" : 73,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 74,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 75,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 76,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "number" : 77,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Initial Concentration",
+      "data" : [
+         130,
+         103,
+         101,
+         110,
+         101,
+         1,
+         4
+      ],
+      "number" : 5,
+      "subtype" : "0x04",
+      "switch_on" : 0
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Appearance",
+      "number" : 4,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 5,
+      "subtype" : "0x06",
+      "subtype_name" : "Pigment",
+      "data" : [
+         106,
+         103,
+         101,
+         110,
+         101,
+         1,
+         4
+      ],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [
+         130,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2
+      ],
+      "subtype_name" : "Initial Concentration",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x04",
+      "number" : 8,
+      "type" : "0x01"
+   },
+   {
+      "switch_on" : 0,
+      "number" : 36,
+      "subtype" : "0x02",
+      "data" : [
+         249,
+         4,
+         58,
+         1,
+         241,
+         1,
+         5
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem_name" : "Hotness",
+               "proportion" : 249,
+               "chem" : 4
+            },
+            {
+               "chem_name" : "Chem3A",
+               "proportion" : 4,
+               "chem" : 58
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 58
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "ChemF1",
+               "chem" : 241
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Pigment",
+      "data" : [
+         225,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2
+      ],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x06",
+      "number" : 13,
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         251,
+         4,
+         58,
+         1,
+         243,
+         1,
+         5
+      ],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 38,
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem" : 4,
+               "chem_name" : "Hotness",
+               "proportion" : 251
+            },
+            {
+               "chem" : 58,
+               "chem_name" : "Chem3A",
+               "proportion" : 4
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 58
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "ChemF3",
+               "chem" : 243
+            }
+         ],
+         "rate" : 1
+      },
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x02",
+      "number" : 39,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         252,
+         4,
+         58,
+         1,
+         244,
+         1,
+         5
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "proportion" : 252,
+               "chem_name" : "Hotness",
+               "chem" : 4
+            },
+            {
+               "chem" : 58,
+               "chem_name" : "Chem3A",
+               "proportion" : 4
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 58,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem_name" : "ChemF4",
+               "proportion" : 1,
+               "chem" : 244
+            }
+         ],
+         "rate" : 1
+      }
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 253
+            },
+            {
+               "chem" : 58,
+               "chem_name" : "Chem3A",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 58,
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "ChemF5",
+               "chem" : 245
+            }
+         ],
+         "rate" : 1
+      },
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         253,
+         1,
+         58,
+         1,
+         245,
+         1,
+         5
+      ],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 40,
+      "switch_on" : 0
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "proportion" : 254,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 58,
+               "chem_name" : "Chem3A",
+               "proportion" : 1
+            }
+         ],
+         "products" : [
+            {
+               "proportion" : 58,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 246,
+               "chem_name" : "ChemF6",
+               "proportion" : 1
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 41,
+      "subtype_name" : "Reaction",
+      "data" : [
+         254,
+         1,
+         58,
+         1,
+         246,
+         1,
+         5
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 58
+            },
+            {
+               "chem" : 247,
+               "chem_name" : "ChemF7",
+               "proportion" : 1
+            }
+         ],
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 255,
+               "chem" : 1
+            },
+            {
+               "chem" : 58,
+               "proportion" : 1,
+               "chem_name" : "Chem3A"
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "data" : [
+         255,
+         1,
+         58,
+         1,
+         247,
+         1,
+         5
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 42,
+      "subtype" : "0x02"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         0,
+         17,
+         65,
+         0,
+         255,
+         2
+      ],
+      "subtype_name" : "Receptor",
+      "number" : 19,
+      "subtype" : "0x00",
+      "switch_on" : 0
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "subtype" : "0x00",
+      "number" : 31,
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         2,
+         232,
+         58,
+         0,
+         255,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         3,
+         233,
+         42,
+         0,
+         255,
+         0
+      ],
+      "number" : 33,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "subtype" : "0x00",
+      "number" : 32,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         4,
+         4,
+         141,
+         0,
+         255,
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {}
+   },
+   {
+      "data" : [
+         235,
+         1,
+         0,
+         2,
+         5,
+         1,
+         61
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 43,
+      "subtype" : "0x02",
+      "type" : "0x01",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem_name" : "Hunger",
+               "proportion" : 0,
+               "chem" : 2
+            },
+            {
+               "chem_name" : "Chem05",
+               "proportion" : 2,
+               "chem" : 5
+            }
+         ],
+         "reactants" : [
+            {
+               "proportion" : 235,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 0,
+               "chem_name" : "Pain",
+               "proportion" : 1
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "number" : 44,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         234,
+         1,
+         0,
+         2,
+         7,
+         1,
+         6
+      ],
+      "subtype_name" : "Reaction",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "products" : [
+            {
+               "chem_name" : "Hunger",
+               "proportion" : 0,
+               "chem" : 2
+            },
+            {
+               "proportion" : 2,
+               "chem_name" : "Chem07",
+               "chem" : 7
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "proportion" : 234,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Pain",
+               "chem" : 0
+            }
+         ]
+      }
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 78,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 79,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0,
+         255,
+         0,
+         0,
+         1,
+         190,
+         6,
+         160,
+         7,
+         112,
+         61,
+         32,
+         103,
+         101,
+         110,
+         101,
+         2
+      ],
+      "subtype_name" : "Stimulus",
+      "subtype" : "0x00",
+      "number" : 22,
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Duplicable"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus",
+      "subtype" : "0x00",
+      "number" : 24,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x00",
+      "number" : 25,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Stimulus",
+      "data" : [
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "subtype_name" : "Gait",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x04",
+      "number" : 7,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 34,
+      "subtype" : "0x00",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         9,
+         1,
+         48,
+         0,
+         239,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "mutability" : "Mutable",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         11,
+         10,
+         144,
+         0,
+         239,
+         0
+      ],
+      "number" : 35,
+      "subtype" : "0x00",
+      "switch_on" : 0
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "Mutable",
+      "number" : 36,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         12,
+         12,
+         128,
+         0,
+         239,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 37,
+      "subtype" : "0x00",
+      "data" : [
+         4,
+         13,
+         7,
+         180,
+         0,
+         255,
+         0
+      ],
+      "subtype_name" : "Receptor",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "Mutable",
+      "subtype" : "0x00",
+      "number" : 38,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         14,
+         6,
+         174,
+         0,
+         255,
+         0
+      ],
+      "type" : "0x01"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 39,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         4,
+         10,
+         59,
+         0,
+         35,
+         255,
+         1
+      ],
+      "subtype_name" : "Receptor",
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 80,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "subtype" : "0x03",
+      "number" : 81,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 82,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "number" : 83,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 84,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "None",
+      "switch_on" : 0,
+      "number" : 85,
+      "subtype" : "0x03",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 86,
+      "subtype" : "0x03",
+      "mutability" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 87,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 88,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x03",
+      "number" : 89,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on" : 0,
+      "number" : 90,
+      "subtype" : "0x03",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature"
+   },
+   {
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 91,
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "subtype" : "0x03",
+      "number" : 92,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {}
+   },
+   {
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 93,
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "Mutable,Deletable"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "Mutable,Deletable",
+      "subtype" : "0x03",
+      "number" : 94,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "subtype" : "0x03",
+      "number" : 95,
+      "switch_on" : 0,
+      "mutability" : "Mutable,Deletable",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "subtype" : "0x03",
+      "number" : 96,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "Mutable,Deletable"
+   },
+   {
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Mutable,Deletable",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 97,
+      "switch_on" : 0,
+      "type" : "0x02"
+   },
+   {
+      "mutability" : "Mutable,Deletable",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x03",
+      "number" : 98
+   },
+   {
+      "mutability" : "Mutable,Deletable",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 99,
+      "subtype" : "0x03"
+   },
+   {
+      "mutability" : "Mutable,Deletable",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "subtype" : "0x03",
+      "number" : 100,
+      "switch_on" : 0
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         15,
+         68,
+         106,
+         0,
+         255,
+         0
+      ],
+      "subtype" : "0x00",
+      "number" : 40,
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Pose",
+      "number" : 101,
+      "subtype" : "0x03",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "subtype" : "0x03",
+      "number" : 102,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "subtype_name" : "Pose",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 103,
+      "subtype" : "0x03",
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "subtype" : "0x03",
+      "number" : 104,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pose",
+      "data" : [],
+      "type" : "0x02"
+   },
+   {
+      "subtype_name" : "Gait",
+      "data" : [],
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 8,
+      "subtype" : "0x04",
+      "type" : "0x02",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "data" : [
+         68,
+         1,
+         0,
+         2,
+         12,
+         1,
+         7,
+         64,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2,
+         46
+      ],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 45,
+      "subtype" : "0x02",
+      "mutability" : "Duplicable",
+      "parsed_data" : {
+         "rate" : 103,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 68
+            },
+            {
+               "chem" : 0,
+               "proportion" : 1,
+               "chem_name" : "Pain"
+            }
+         ],
+         "products" : [
+            {
+               "chem_name" : "Hunger",
+               "proportion" : 0,
+               "chem" : 2
+            },
+            {
+               "proportion" : 2,
+               "chem_name" : "Chem0C",
+               "chem" : 12
+            }
+         ]
+      },
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None"
+   },
+   {
+      "subtype" : "0x01",
+      "number" : 18,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         0,
+         69,
+         183,
+         18,
+         10,
+         2
+      ],
+      "subtype_name" : "Emitter",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Emitter",
+      "data" : [
+         5,
+         2,
+         69,
+         203,
+         21,
+         8,
+         2
+      ],
+      "number" : 19,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 20,
+      "subtype" : "0x01",
+      "data" : [
+         5,
+         7,
+         69,
+         193,
+         26,
+         14,
+         3
+      ],
+      "subtype_name" : "Emitter",
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 21,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         8,
+         69,
+         181,
+         16,
+         16,
+         2
+      ],
+      "subtype_name" : "Emitter",
+      "type" : "0x01"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "type" : "0x01",
+      "number" : 22,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         5,
+         9,
+         69,
+         180,
+         9,
+         26,
+         3
+      ],
+      "subtype_name" : "Emitter"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 23,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Emitter",
+      "data" : [
+         5,
+         10,
+         69,
+         232,
+         25,
+         7,
+         0
+      ],
+      "type" : "0x01"
+   },
+   {
+      "type" : "0x01",
+      "switch_on" : 0,
+      "subtype" : "0x01",
+      "number" : 24,
+      "subtype_name" : "Emitter",
+      "data" : [
+         5,
+         11,
+         69,
+         164,
+         11,
+         33,
+         0
+      ],
+      "switch_on_name" : "Embryo",
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "parsed_data" : {
+         "products" : [
+            {
+               "chem" : 1,
+               "proportion" : 58,
+               "chem_name" : "Need for Pleasure"
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Pain",
+               "chem" : 0
+            }
+         ],
+         "reactants" : [
+            {
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 69,
+               "chem" : 1
+            },
+            {
+               "proportion" : 1,
+               "chem_name" : "Chem3A",
+               "chem" : 58
+            }
+         ],
+         "rate" : 1
+      },
+      "type_name" : "Biochemistry",
+      "type" : "0x01",
+      "switch_on" : 0,
+      "number" : 47,
+      "subtype" : "0x02",
+      "subtype_name" : "Reaction",
+      "data" : [
+         69,
+         1,
+         58,
+         1,
+         0,
+         1,
+         0
+      ],
+      "switch_on_name" : "Embryo"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 103,
+         "products" : [
+            {
+               "proportion" : 64,
+               "chem_name" : "Need for Pleasure",
+               "chem" : 1
+            },
+            {
+               "chem" : 45,
+               "proportion" : 1,
+               "chem_name" : "Chem2D"
+            }
+         ],
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 69
+            },
+            {
+               "chem_name" : "Chem40",
+               "proportion" : 1,
+               "chem" : 64
+            }
+         ]
+      },
+      "mutability" : "Duplicable",
+      "subtype" : "0x02",
+      "number" : 48,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         69,
+         1,
+         64,
+         1,
+         45,
+         1,
+         0,
+         72,
+         103,
+         101,
+         110,
+         101,
+         1,
+         2,
+         49
+      ],
+      "type" : "0x01"
+   },
+   {
+      "number" : 50,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         69,
+         1,
+         0,
+         1,
+         0,
+         1,
+         0
+      ],
+      "subtype_name" : "Reaction",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {
+         "rate" : 1,
+         "reactants" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 69
+            },
+            {
+               "chem_name" : "Pain",
+               "proportion" : 1,
+               "chem" : 0
+            }
+         ],
+         "products" : [
+            {
+               "chem" : 1,
+               "chem_name" : "Need for Pleasure",
+               "proportion" : 0
+            },
+            {
+               "chem" : 0,
+               "chem_name" : "Pain",
+               "proportion" : 1
+            }
+         ]
+      },
+      "mutability" : "Duplicable"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "Mutable",
+      "switch_on" : 0,
+      "number" : 10,
+      "subtype" : "0x05",
+      "data" : [
+         3,
+         0,
+         0,
+         0,
+         0,
+         3,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "subtype" : "0x06",
+      "number" : 1,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pigment",
+      "data" : [
+         174,
+         103,
+         101,
+         110,
+         101,
+         2,
+         5
+      ],
+      "type" : "0x02",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Instinct",
+      "data" : [
+         6,
+         0,
+         0,
+         0,
+         0,
+         6,
+         49
+      ],
+      "subtype" : "0x05",
+      "number" : 12,
+      "switch_on" : 0,
+      "mutability" : "Mutable",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         76,
+         103,
+         101,
+         110,
+         101,
+         2,
+         5
+      ],
+      "subtype_name" : "Pigment",
+      "number" : 2,
+      "subtype" : "0x06",
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "Mutable",
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "type" : "0x02",
+      "subtype" : "0x05",
+      "number" : 14,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Instinct",
+      "data" : [
+         8,
+         0,
+         0,
+         0,
+         0,
+         8,
+         49
+      ]
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Pigment",
+      "data" : [
+         198,
+         103,
+         101,
+         110,
+         101,
+         2,
+         5
+      ],
+      "number" : 3,
+      "subtype" : "0x06",
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "sex_dep" : "None",
+      "parsed_data" : {},
+      "type_name" : "Creature",
+      "mutability" : "Mutable",
+      "switch_on" : 0,
+      "subtype" : "0x05",
+      "number" : 16,
+      "subtype_name" : "Instinct",
+      "data" : [
+         10,
+         0,
+         0,
+         0,
+         0,
+         10,
+         49
+      ],
+      "switch_on_name" : "Embryo",
+      "type" : "0x02"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [
+         11,
+         0,
+         0,
+         0,
+         0,
+         11,
+         49
+      ],
+      "subtype_name" : "Instinct",
+      "number" : 17,
+      "subtype" : "0x05",
+      "switch_on" : 0,
+      "type" : "0x02",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Mutable"
+   },
+   {
+      "type" : "0x02",
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Instinct",
+      "data" : [
+         8,
+         5,
+         15,
+         0,
+         0,
+         5,
+         49
+      ],
+      "subtype" : "0x05",
+      "number" : 18,
+      "switch_on" : 0,
+      "mutability" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "sex_dep" : "None"
+   },
+   {
+      "type" : "0x01",
+      "number" : 41,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Receptor",
+      "data" : [
+         4,
+         5,
+         7,
+         230,
+         0,
+         255,
+         0
+      ],
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {}
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 42,
+      "subtype" : "0x00",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Receptor",
+      "type" : "0x01"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "None",
+      "number" : 19,
+      "subtype" : "0x05",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Instinct",
+      "data" : [],
+      "type" : "0x02"
+   },
+   {
+      "subtype" : "0x02",
+      "number" : 51,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [
+         35
+      ],
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "Mutable,Deletable",
+      "switch_on_name" : "Embryo",
+      "data" : [
+         2,
+         0,
+         0,
+         0,
+         82,
+         5,
+         6,
+         103,
+         101,
+         110,
+         101,
+         1,
+         1,
+         26,
+         0,
+         5,
+         15,
+         1,
+         4,
+         0,
+         64,
+         0,
+         49
+      ],
+      "subtype_name" : "Emitter",
+      "number" : 25,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "type" : "0x01"
+   },
+   {
+      "sex_dep" : "None",
+      "type_name" : "Creature",
+      "parsed_data" : {},
+      "mutability" : "Mutable,Deletable",
+      "subtype" : "0x00",
+      "number" : 26,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [
+         0
+      ],
+      "subtype_name" : "Stimulus",
+      "type" : "0x02"
+   },
+   {
+      "number" : 27,
+      "subtype" : "0x01",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Emitter",
+      "data" : [
+         4,
+         1,
+         11,
+         0,
+         47,
+         8,
+         4
+      ],
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "Mutable,Duplicable"
+   },
+   {
+      "mutability" : "None",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "type" : "0x01",
+      "number" : 52,
+      "subtype" : "0x02",
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Reaction"
+   },
+   {
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 53,
+      "switch_on" : 0,
+      "type" : "0x01",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "subtype" : "0x02",
+      "number" : 54,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "subtype" : "0x02",
+      "number" : 55,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "mutability" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "sex_dep" : "None",
+      "type" : "0x01",
+      "switch_on_name" : "Embryo",
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "subtype" : "0x02",
+      "number" : 56,
+      "switch_on" : 0
+   },
+   {
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "subtype" : "0x02",
+      "number" : 57,
+      "type" : "0x01",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   },
+   {
+      "subtype" : "0x02",
+      "number" : 58,
+      "switch_on" : 0,
+      "switch_on_name" : "Embryo",
+      "subtype_name" : "Reaction",
+      "data" : [],
+      "type" : "0x01",
+      "sex_dep" : "None",
+      "type_name" : "Biochemistry",
+      "parsed_data" : {},
+      "mutability" : "None"
+   },
+   {
+      "data" : [],
+      "subtype_name" : "Reaction",
+      "switch_on_name" : "Embryo",
+      "switch_on" : 0,
+      "number" : 59,
+      "subtype" : "0x02",
+      "type" : "0x01",
+      "parsed_data" : {},
+      "type_name" : "Biochemistry",
+      "sex_dep" : "None",
+      "mutability" : "None"
+   }
+]

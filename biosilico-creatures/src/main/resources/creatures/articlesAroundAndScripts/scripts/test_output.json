@@ -1,0 +1,16 @@
+[
+  {
+    "type": "0x02",
+    "type_name": "Creature",
+    "subtype": "0x01",
+    "subtype_name": "Genus",
+    "number": 1,
+    "switch_on": 0,
+    "switch_on_name": "Embryo",
+    "sex_dep": "Male",
+    "mutability": "Duplicable",
+    "data": [
+      2
+    ]
+  }
+]

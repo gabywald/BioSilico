@@ -168,6 +168,7 @@ class Gene:
             "perception_link": "Yes" if perception_link else "No",
             "neurons": width * height,
         }
+    # TODO add for emitter, receptor, initconc
 
     def __str__(self) -> str:
         """Returns a human-readable string representation of the gene."""
@@ -257,6 +258,7 @@ def parse_genome_file(filename: str) -> List[Gene]:
         gene.parse_reaction()
         gene.parse_instinct()
         gene.parse_lobe()
+        # TODO add for emitter, receptor, initconc
 
         genes.append(gene)
         offset += 10 + data_length
