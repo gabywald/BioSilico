@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Some useful enumerations for genetic analysis of Creatures' genomes. 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class CreaturesEnums {
 	
@@ -52,7 +52,7 @@ public class CreaturesEnums {
 	private static List<CreaturesChemical> C3_CHEM = null;
 
 	private static List<String> getEnumFrom(String property) {
-		String propertyContent = Creatures1GenomeParser.PROPERTIES.getProperty( property );
+		String propertyContent = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( property );
 		return Arrays.asList( propertyContent.split(", ") );
 	}
 	

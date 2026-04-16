@@ -13,11 +13,11 @@ import gabywald.utilities.others.PropertiesLoader;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class Creatures1GenomeParser {
 	
-	public static final PropertiesLoader PROPERTIES = new PropertiesLoader( "configuration.properties" );
+	public static final PropertiesLoader PROPERTIES_BS_CREATURES = new PropertiesLoader( "configurationBioSilicoCreatures.properties" );
 
 	public static CreaturesGenome parseGenome(String filePath)  
 			throws ParserException {

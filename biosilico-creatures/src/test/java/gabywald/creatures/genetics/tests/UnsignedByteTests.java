@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.model.UnsignedByte;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2010, 2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2010, 2020, 2026)
+ * TODO review and replace "Logger.printlnLog(LoggerLevel.LL_NONE, " with "Logger.printlnLog(LoggerLevel.LL_NONE, "
  */
 public class UnsignedByteTests {
 	
@@ -43,7 +45,7 @@ public class UnsignedByteTests {
 	public void testUB001() {
 		int value = 0;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -51,7 +53,7 @@ public class UnsignedByteTests {
 	public void testUB002() {
 		int value = 1;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -59,7 +61,7 @@ public class UnsignedByteTests {
 	public void testUB003() {
 		int value = -1;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -67,7 +69,7 @@ public class UnsignedByteTests {
 	public void testUB004() {
 		int value = -127;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -75,7 +77,7 @@ public class UnsignedByteTests {
 	public void testUB005() {
 		int value = 100;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -83,7 +85,7 @@ public class UnsignedByteTests {
 	public void testUB006() {
 		int value = 128;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -91,7 +93,7 @@ public class UnsignedByteTests {
 	public void testUB007() {
 		int value = 127;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -99,7 +101,7 @@ public class UnsignedByteTests {
 	public void testUB008() {
 		int value = -256;int expected = 0;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -107,7 +109,7 @@ public class UnsignedByteTests {
 	public void testUB009() {
 		int value = 253;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 
@@ -115,7 +117,7 @@ public class UnsignedByteTests {
 	public void testUB010() {
 		int value = 254;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -123,7 +125,7 @@ public class UnsignedByteTests {
 	public void testUB011() {
 		int value = 255;int expected = value;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -131,7 +133,7 @@ public class UnsignedByteTests {
 	public void testUB012() {
 		int value = 256;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -139,7 +141,7 @@ public class UnsignedByteTests {
 	public void testUB013() {
 		int value = 257;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	
@@ -147,7 +149,7 @@ public class UnsignedByteTests {
 	public void testUB014() {
 		int value = 258;int expected = 255;
 		UnsignedByte ub = new UnsignedByte(value);
-		System.out.println("\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
+		Logger.printlnLog(LoggerLevel.LL_NONE, "\t[" + value + "] => [" + ub.getShort() + " / " + ub.getValue() + "] ?==? [" + expected + "]");
 		Assertions.assertEquals(expected, ub.getValue());
 	}
 	

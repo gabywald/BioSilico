@@ -18,8 +18,7 @@ import org.junit.jupiter.api.Assertions;
 
 /**
  * 
- * @author Gabriel Chandesris (2010, 2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2010, 2020, 2026)
  */
 public class VariableReadingTests {
 	

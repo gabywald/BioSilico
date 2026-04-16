@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * @author Gabriel Chandesris (2013, 2020)
+ * @author Gabriel Chandesris (2013, 2020, 2026)
  */
 public class GeneticFileContent {
 	private String fileName;
@@ -135,6 +135,5 @@ public class GeneticFileContent {
 		Matcher matcher = pattern.matcher(elt + "");
 		return matcher.matches();
 	}
-	
 	
 }

@@ -14,12 +14,13 @@ import gabywald.creatures.genetics.simple.CreaturesVersion;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class CreaturesEnumsTests {
 
 	private static List<String> getEnumFrom(String property) {
-		String propertyContent = Creatures1GenomeParser.PROPERTIES.getProperty( property );
+		String propertyContent = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( property );
+		Assertions.assertNotNull( propertyContent );
 		return Arrays.asList( propertyContent.split(", ") );
 	}
 	
@@ -117,6 +118,7 @@ class CreaturesEnumsTests {
 											List<CreaturesChemical> ccsObtain, 
 											int size) {
 		Assertions.assertNotNull( ccsExpected );
+		Assertions.assertNotNull( ccsObtain );
 		Assertions.assertEquals(size, ccsExpected.size());
 		IntStream.range(0, size).forEach(i -> 
 			{ Assertions.assertEquals(ccsExpected.get( i ), ccsObtain.get( i )); });
@@ -128,6 +130,8 @@ class CreaturesEnumsTests {
 	void testGetCreaturesChemicalsV1() {
 		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES1);
 		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC1Chemicals();
+		Assertions.assertNotNull( ccs );
+		Assertions.assertNotNull( ccsEnum );
 		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum, 256);
 	}
 	
@@ -135,6 +139,8 @@ class CreaturesEnumsTests {
 	void testGetCreaturesChemicalsV2() {
 		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES2);
 		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC2Chemicals();
+		Assertions.assertNotNull( ccs );
+		Assertions.assertNotNull( ccsEnum );
 		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum, 256);
 	}
 	
@@ -142,6 +148,8 @@ class CreaturesEnumsTests {
 	void testGetCreaturesChemicalsV3() {
 		List<CreaturesChemical> ccs		= CreaturesChemical.getCreaturesChemicals(CreaturesVersion.CREATURES3);
 		List<CreaturesChemical> ccsEnum	= CreaturesEnums.getC3Chemicals();
+		Assertions.assertNotNull( ccs );
+		Assertions.assertNotNull( ccsEnum );
 		CreaturesEnumsTests.compareChemicals(ccs, ccsEnum,   0);
 	}
 
