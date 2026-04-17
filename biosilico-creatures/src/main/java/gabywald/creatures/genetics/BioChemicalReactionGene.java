@@ -1,46 +1,41 @@
 package gabywald.creatures.genetics;
 
-import gabywald.creatures.model.UnsignedByte;
-
 import java.util.ArrayList;
-import java.util.List;
+
+import gabywald.creatures.model.UnsignedByte;
 
 /**
  * These genes govern the reactions, which occur within the Biochemical Sea of the creature. The only type of reaction which is explicitly prevented is a "Nothing -> Something" reaction. 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class BioChemicalReactionGene extends CreatureGene {
 	/**
 	 * Old variant of the constructor. 
-	 * @param qnt1 (int)
-	 * @param react1 (int)
-	 * @param qnt2 (int)
-	 * @param react2 (int)
-	 * @param qnt3 (int)
-	 * @param react3 (int)
-	 * @param qnt4 (int)
-	 * @param react4 (int)
-	 * @param rate (int)
-	 * @deprecated Use {@link BioChemicalReactionGene#ChemicalReactionGene(List)} instead !
+	 * @param qnt1 (UnsignedByte)
+	 * @param react1 (UnsignedByte)
+	 * @param qnt2 (UnsignedByte)
+	 * @param react2 (UnsignedByte)
+	 * @param qnt3 (UnsignedByte)
+	 * @param react3 (UnsignedByte)
+	 * @param qnt4 (UnsignedByte)
+	 * @param react4 (UnsignedByte)
+	 * @param rate (UnsignedByte)
 	 */
-	private BioChemicalReactionGene(int qnt1, int react1, int qnt2, int react2, 
-									int qnt3, int react3, int qnt4, int react4, 
-									int rate) {
+	public BioChemicalReactionGene(UnsignedByte qnt1, UnsignedByte react1, UnsignedByte qnt2, UnsignedByte react2, 
+									UnsignedByte qnt3, UnsignedByte react3, UnsignedByte qnt4, UnsignedByte react4, 
+									UnsignedByte rate) {
 		super(1, 2);
 		this.data = new ArrayList<UnsignedByte>(9);
-		this.data.add(new UnsignedByte(qnt1));
-		this.data.add(new UnsignedByte(react1));
-		this.data.add(new UnsignedByte(qnt2));
-		this.data.add(new UnsignedByte(react2));
-		this.data.add(new UnsignedByte(qnt3));
-		this.data.add(new UnsignedByte(react3));
-		this.data.add(new UnsignedByte(qnt4));
-		this.data.add(new UnsignedByte(react4));
-		this.data.add(new UnsignedByte(rate));
+		this.data.add(qnt1);
+		this.data.add(react1);
+		this.data.add(qnt2);
+		this.data.add(react2);
+		this.data.add(qnt3);
+		this.data.add(react3);
+		this.data.add(qnt4);
+		this.data.add(react4);
+		this.data.add(rate);
 	}
-	
-	public BioChemicalReactionGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(1, 2, datas, 9); /* size expected is 9 ! */ }
 	
 	public int getQuantity1()		{ return this.data.get(0).getValue(); }
 	public int getQuantity2()		{ return this.data.get(2).getValue(); }

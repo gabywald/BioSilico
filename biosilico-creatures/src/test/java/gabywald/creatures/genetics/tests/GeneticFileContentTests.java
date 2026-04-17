@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
-import gabywald.creatures.genetics.CreatureGene;
-import gabywald.creatures.genetics.CreatureGeneFactory;
+import gabywald.creatures.genetics.builds.CreatureGeneFactory;
+import gabywald.creatures.genetics.builds.ICreatureGene;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -18,42 +18,48 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class GeneticFileContentTests {
 	
 	@Test
-	public void testGFCbasic() {
+	public void testGFCbasicDAD() {
 		GeneticFileContent gfcDad1 = new GeneticFileContent("creatures/creaturesOriginals/dad1.gen");
 		Assertions.assertNotNull(gfcDad1);
 		Assertions.assertEquals(true, gfcDad1.isReadable());
-		
+	}
+	
+	@Test
+	public void testGFCbasicMUM() {
 		GeneticFileContent gfcMum1 = new GeneticFileContent("creatures/creaturesOriginals/mum1.gen");
 		Assertions.assertNotNull(gfcMum1);
 		Assertions.assertEquals(true, gfcMum1.isReadable());
-		
+	}
+	
+	@Test
+	public void testGFCbasicGREN() {
 		GeneticFileContent gfcGren = new GeneticFileContent("creatures/creaturesOriginals/Gren.gen");
 		Assertions.assertNotNull(gfcGren);
 		Assertions.assertEquals(true, gfcGren.isReadable());
 	}
 	
 	@Test
-	public void testGFCdad1Readings() {
+	public void testGFCreadingDAD1() {
 		String genomeFileDAD = "creatures/creaturesOriginals/dad1.gen";
-		List<CreatureGene> genomeDAD = CreatureGeneFactory.readGenome(genomeFileDAD);
+		List<ICreatureGene> genomeDAD = CreatureGeneFactory.readGenome(genomeFileDAD);
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFileDAD + "] -- {" + genomeDAD.size() + " genes}");
 		Assertions.assertEquals(true, (genomeDAD.size() > 0) );
 	}
 
 	@Test
-	public void testGFCmum1Readings() {
+	public void testGFCreadingMUM1() {
 		String genomeFileMUM = "creatures/creaturesOriginals/mum1.gen";
-		List<CreatureGene> genomeMUM = CreatureGeneFactory.readGenome(genomeFileMUM);
+		List<ICreatureGene> genomeMUM = CreatureGeneFactory.readGenome(genomeFileMUM);
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFileMUM + "] -- {" + genomeMUM.size() + " genes}");
 		Assertions.assertEquals(true, (genomeMUM.size() > 0) );
 	}
 	
 	@Test
-	public void testGFCGrenReading() {
+	public void testGFCreadingGREN() {
 		String genomeFile = "creatures/creaturesOriginals/Gren.gen";
-		List<CreatureGene> genome = CreatureGeneFactory.readGenome(genomeFile);
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFile + "] -- {" + genome.size() + " genes}");
-		Assertions.assertEquals(true, (genome.size() > 0) );
+		List<ICreatureGene> genomeGREN = CreatureGeneFactory.readGenome(genomeFile);
+		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + genomeFile + "] -- {" + genomeGREN.size() + " genes}");
+		Assertions.assertEquals(true, (genomeGREN.size() > 0) );
 	}
 }
 

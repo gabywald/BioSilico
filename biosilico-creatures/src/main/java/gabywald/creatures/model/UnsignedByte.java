@@ -26,6 +26,9 @@ public class UnsignedByte {
 		{ return this.value; }
 	
 	public String toString() 
+		{ return "" + (this.getValue() < 100?"0":"")  + (this.getValue() < 10?"0":"") + this.getValue(); }
+	
+	public String toSimpleString() 
 		{ return "" + this.getValue(); }
 	
 	@Override

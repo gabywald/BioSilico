@@ -1,11 +1,11 @@
-package gabywald.creatures.genetics;
+package gabywald.creatures.exceptions;
 
 import gabywald.creatures.genetics.simple.GeneTypeSubType;
 import gabywald.global.exceptions.MessageException;
 
 /**
  * 
- * @author Gabriel Chandesris (2013, 2020)
+ * @author Gabriel Chandesris (2013, 2020, 2026)
  */
 @SuppressWarnings("serial")
 public class CreatureGeneException extends MessageException {

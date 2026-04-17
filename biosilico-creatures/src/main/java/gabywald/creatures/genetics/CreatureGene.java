@@ -3,13 +3,15 @@ package gabywald.creatures.genetics;
 import java.util.ArrayList;
 import java.util.List;
 
+import gabywald.creatures.exceptions.CreatureGeneException;
+import gabywald.creatures.genetics.builds.ICreatureGene;
 import gabywald.creatures.model.UnsignedByte;
 
 /**
  * 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
-public abstract class CreatureGene {
+public abstract class CreatureGene implements ICreatureGene {
 	/**
 	 * Creatures 1 : 
 		00 - Brain Genes	
@@ -126,13 +128,16 @@ In summary:
 	 * @see CreatureGene#run() */
 	protected boolean hasAlreadyRun;
 	
+	private CreatureGene(UnsignedByte type, UnsignedByte subtype, List<UnsignedByte> datas)
+		{ this.type = type;this.subtype = subtype;this.data = datas;this.hasAlreadyRun = false; }
+	
 	/**
 	 * 
 	 * @param type (UnsignedByte)
 	 * @param subtype (UnsignedByte)
 	 */
 	protected CreatureGene(UnsignedByte type, UnsignedByte subtype)
-		{ this.init(type, subtype, new ArrayList<UnsignedByte>(0)); }
+		{ this(type, subtype, new ArrayList<UnsignedByte>(0)); }
 	
 	/**
 	 * 
@@ -140,7 +145,7 @@ In summary:
 	 * @param subtype (int)
 	 */
 	protected CreatureGene(int type, int subtype)
-		{ this.init(new UnsignedByte(type), new UnsignedByte(subtype), new ArrayList<UnsignedByte>(0)); }
+		{ this(new UnsignedByte(type), new UnsignedByte(subtype), new ArrayList<UnsignedByte>(0)); }
 	
 	/**
 	 * 
@@ -154,13 +159,12 @@ In summary:
 							List<UnsignedByte> datas, 
 							int expectedSize) 
 			throws CreatureGeneException {
+		this(new UnsignedByte(type), new UnsignedByte(subtype), datas);
 		if (datas.size() != expectedSize) 
 			{ throw new CreatureGeneException(type, subtype, "Bad number of datas e:" + expectedSize + " [" + datas.size() + "]"); }
-		this.init(new UnsignedByte(type), new UnsignedByte(subtype), datas);
 	}
 	
-	private void init(UnsignedByte type, UnsignedByte subtype, List<UnsignedByte> datas)
-		{ this.type = type;this.subtype = subtype;this.data = datas;this.hasAlreadyRun = false; }
+
 	
 	/**
 	 * Insert a String into data. 

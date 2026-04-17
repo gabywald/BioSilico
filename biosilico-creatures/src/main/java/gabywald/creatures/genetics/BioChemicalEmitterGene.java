@@ -1,45 +1,40 @@
 package gabywald.creatures.genetics;
 
-import gabywald.creatures.model.UnsignedByte;
-
 import java.util.ArrayList;
-import java.util.List;
+
+import gabywald.creatures.model.UnsignedByte;
 
 /**
  * Emitters tie to loci as do receptors. They read the value of the locus, and emit chemicals based on their input states.
  * <br>{ Organ ; Tissue ; Locus ; Chemical ; Threshold ; Rate ; Gain ; Flags } 
  * <br>The Emitter flags can be: 1: Clear input signal after reading or 2: Invert Input Signal.
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class BioChemicalEmitterGene extends CreatureGene {
 	/**
 	 * Old variant of the constructor. 
-	 * @param orga (int)
-	 * @param tissue (int)
-	 * @param locus (int)
-	 * @param chemical (int)
-	 * @param threshold (int)
-	 * @param nominal (int)
-	 * @param gain (int)
-	 * @param flags (int)
-	 * @deprecated Use {@link BioChemicalEmitterGene#EmitterGene(List)} instead !
+	 * @param orga (UnsignedByte)
+	 * @param tissue (UnsignedByte)
+	 * @param locus (UnsignedByte)
+	 * @param chemical (UnsignedByte)
+	 * @param threshold (UnsignedByte)
+	 * @param nominal (UnsignedByte)
+	 * @param gain (UnsignedByte)
+	 * @param flags (UnsignedByte)
 	 */
-	private BioChemicalEmitterGene(	int orga, int tissue, int locus, int chemical, 
-									int threshold, int nominal, int gain, int flags) {
+	public BioChemicalEmitterGene(	UnsignedByte orga, UnsignedByte tissue, UnsignedByte locus, UnsignedByte chemical, 
+									UnsignedByte threshold, UnsignedByte nominal, UnsignedByte gain, UnsignedByte flags) {
 		super(1, 1);
 		this.data = new ArrayList<UnsignedByte>(8);
-		this.data.add(new UnsignedByte(orga));
-		this.data.add(new UnsignedByte(tissue));
-		this.data.add(new UnsignedByte(locus));
-		this.data.add(new UnsignedByte(chemical));
-		this.data.add(new UnsignedByte(threshold));
-		this.data.add(new UnsignedByte(nominal));
-		this.data.add(new UnsignedByte(gain));
-		this.data.add(new UnsignedByte(flags));
+		this.data.add(orga);
+		this.data.add(tissue);
+		this.data.add(locus);
+		this.data.add(chemical);
+		this.data.add(threshold);
+		this.data.add(nominal);
+		this.data.add(gain);
+		this.data.add(flags);
 	}
-	
-	public BioChemicalEmitterGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(1, 1, datas, 8); /* size expected is 8 ! */ }
 	
 	public int getOrgan()		{ return this.data.get(0).getValue(); }
 	public int getTissue()		{ return this.data.get(1).getValue(); }

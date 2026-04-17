@@ -1,5 +1,6 @@
 package gabywald.creatures.genetics;
 
+import gabywald.creatures.exceptions.CreatureGeneException;
 import gabywald.creatures.model.UnsignedByte;
 
 import java.util.List;
@@ -8,11 +9,16 @@ import java.util.List;
  * The Brain organ (of which there should be only one in any genetics file) specifies the properties of the brain organ expressed in the creature. It has the same internal format as the other organs, but a different type identifier.
  * <br><i>C2-specific</i>
  * <br><i>C3-specific</i>   
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  *
  */
 public class BrainOrganGene extends CreatureGene {
 
+	/**
+	 * @deprecated ... 
+	 * @param datas
+	 * @throws CreatureGeneException
+	 */
 	public BrainOrganGene(List<UnsignedByte> datas) throws CreatureGeneException 
 		{ super(0, 1, datas, 5); /* size expected is 5 ! */ }
 

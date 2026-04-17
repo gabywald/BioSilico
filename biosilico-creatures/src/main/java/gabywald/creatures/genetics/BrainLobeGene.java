@@ -1,5 +1,6 @@
 package gabywald.creatures.genetics;
 
+import gabywald.creatures.exceptions.CreatureGeneException;
 import gabywald.creatures.model.UnsignedByte;
 
 import java.util.List;
@@ -25,15 +26,17 @@ import java.util.List;
  * Lobes 1-4, 8, 9 - no mutability. 
  * Lobe 7 - mutable. 
  * Lobes 5 and 6 - mutable, duplicable. 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class BrainLobeGene extends CreatureGene {
-	/**
 
+	/**
+	 * 
+	 * @param datas
+	 * @throws CreatureGeneException
 	 */
-	
-	public BrainLobeGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(0, 0, datas, 5 + 13 + 10 + 37 + 10 + 37); /* size expected is 5 + 13 + 10 + 37 + 10 + 37 ! */ }
+	public BrainLobeGene(List<UnsignedByte> datas) 
+		{ super(0, 0);this.data.addAll(datas); }
 	
 	public int getXXstartPosition()		{ return this.data.get( 0).getValue(); }
 	public int getYYstartPosition()		{ return this.data.get( 1).getValue(); }

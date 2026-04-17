@@ -1,9 +1,8 @@
 package gabywald.creatures.genetics;
 
-import gabywald.creatures.model.UnsignedByte;
-
 import java.util.ArrayList;
-import java.util.List;
+
+import gabywald.creatures.model.UnsignedByte;
 
 /**
  * This is the genetically specified result of a specific stimulus being applied to the creature. For example, releasing pain into the drive 1 when hit.
@@ -29,51 +28,47 @@ import java.util.List;
 	    02 -           Add offset (unused)
 	    04 -                       Detected
  
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class StimulusGene extends CreatureGene {
 	/**
 	 * Old variant of the constructor. 
-	 * @param stiNum (int)
-	 * @param signi (int)
-	 * @param neuSen (int)
-	 * @param intensity (int)
-	 * @param feats (int)
-	 * @param dri1 (int)
-	 * @param qnt1 (int)
-	 * @param dri2 (int)
-	 * @param qnt2 (int)
-	 * @param dri3 (int)
-	 * @param qnt3 (int)
-	 * @param dri4 (int)
-	 * @param qnt4 (int)
-	 * @deprecated Use {@link StimulusGene#StimulusGene(List)} instead !
+	 * @param stiNum (UnsignedByte)
+	 * @param signi (UnsignedByte)
+	 * @param neuSen (UnsignedByte)
+	 * @param intensity (UnsignedByte)
+	 * @param feats (UnsignedByte)
+	 * @param dri1 (UnsignedByte)
+	 * @param qnt1 (UnsignedByte)
+	 * @param dri2 (UnsignedByte)
+	 * @param qnt2 (UnsignedByte)
+	 * @param dri3 (UnsignedByte)
+	 * @param qnt3 (UnsignedByte)
+	 * @param dri4 (UnsignedByte)
+	 * @param qnt4 (UnsignedByte)
 	 */
-	private StimulusGene(	int stiNum, int signi, int neuSen, int intensity, 
-							int feats, 
-							int dri1, int qnt1, 
-							int dri2, int qnt2, 
-							int dri3, int qnt3, 
-							int dri4, int qnt4) {
+	public StimulusGene(	UnsignedByte stiNum, UnsignedByte signi, UnsignedByte neuSen, UnsignedByte intensity, 
+							UnsignedByte feats, 
+							UnsignedByte dri1, UnsignedByte qnt1, 
+							UnsignedByte dri2, UnsignedByte qnt2, 
+							UnsignedByte dri3, UnsignedByte qnt3, 
+							UnsignedByte dri4, UnsignedByte qnt4) {
 		super(2, 0);
 		this.data = new ArrayList<UnsignedByte>(13);
-		this.data.add(new UnsignedByte(stiNum));
-		this.data.add(new UnsignedByte(signi));
-		this.data.add(new UnsignedByte(neuSen));
-		this.data.add(new UnsignedByte(intensity));
-		this.data.add(new UnsignedByte(feats));
-		this.data.add(new UnsignedByte(dri1));
-		this.data.add(new UnsignedByte(qnt1));
-		this.data.add(new UnsignedByte(dri2));
-		this.data.add(new UnsignedByte(qnt2));
-		this.data.add(new UnsignedByte(dri3));
-		this.data.add(new UnsignedByte(qnt3));
-		this.data.add(new UnsignedByte(dri4));
-		this.data.add(new UnsignedByte(qnt4));
+		this.data.add(stiNum);
+		this.data.add(signi);
+		this.data.add(neuSen);
+		this.data.add(intensity);
+		this.data.add(feats);
+		this.data.add(dri1);
+		this.data.add(qnt1);
+		this.data.add(dri2);
+		this.data.add(qnt2);
+		this.data.add(dri3);
+		this.data.add(qnt3);
+		this.data.add(dri4);
+		this.data.add(qnt4);
 	}
-	
-	public StimulusGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(2, 0, datas, 13); /* size expected is 13 ! */ }
 	
 	public int getStimulusNumber()	{ return this.data.get(0).getValue(); }
 	public int getSignificance()	{ return this.data.get(1).getValue(); }
