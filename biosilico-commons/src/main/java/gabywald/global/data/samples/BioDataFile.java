@@ -4,7 +4,7 @@ import gabywald.global.data.DataFile;
 
 /**
  * 
- * @author Gabriel Chandesris (2011, 2022)
+ * @author Gabriel Chandesris (2011, 2022, 2026)
  */
 @SuppressWarnings("serial")
 public class BioDataFile extends DataFile {
@@ -16,7 +16,7 @@ public class BioDataFile extends DataFile {
 	};
 
 	private BioDataFile(String name) 
-		{ super(BioDataFile.DEFAULT_DIRECTORY + name); }
+		{ super("BIO_DATA_TYPE", BioDataFile.DEFAULT_DIRECTORY + name); }
 	
 	@Override
 	public String getDefaultDirectory() 

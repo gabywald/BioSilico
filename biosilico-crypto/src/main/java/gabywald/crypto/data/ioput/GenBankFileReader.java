@@ -4,49 +4,38 @@ import java.util.List;
 
 import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.FeaturesListe;
-import gabywald.global.data.StringUtils;
+import gabywald.crypto.model.ITranslator;
 
 /**
- * 
- * @author Gabriel Chandesris (2011, 2020)
+ * Aim of this class is to generate a GenBank file with encrypted data, from a file to read. 
+ * <br>Data is encrypted when included (content and path of file, respectively as proteomic and nucleotidic data). 
+ * <br>Encryption according to current "genetic encryption". 
+ * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
-public class GenBankFileReader {
-	private List<GenBankFormat> genBank;
-	private String decodedPath;
-	private String decodedContent;
+public class GenBankFileReader extends BiologicalFileReader {
 	
+	private List<GenBankFormat>  bankOfData;
 	
-	public GenBankFileReader() 
-		{ this.setContent(""); }
+	public GenBankFileReader(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) { 
+		super( new GenBankFileCreator(forFiles, forPathes, which) );
+	}
 	
-	public GenBankFileReader(String content) 
-		{ this.setContent(content); }
-	
-	public void setContent(String content) {
-		this.decodedPath	= new String("");
-		this.decodedContent	= new String("");
-		if (!content.equals("")) { 
-			String separator = "\n"+StringUtils.repeat("=", 80)+"\n";
-			this.genBank = GenBankFormat.fromString(content);
-			for (int i = 0 ; i < this.genBank.size() ; i++) {
-				GenBankFormat currentGB	= this.genBank.get(i);
-				FeaturesListe fl 	= currentGB.getFeatures().getFeaturesWith("CDS");
+	public void setFileContent(String fileContent) {
+		this.sbDecodedPath		= new StringBuilder();
+		this.sbDecodedContent	= new StringBuilder();
+		if ( ! fileContent.equals("")) { 
+			this.bankOfData = GenBankFormat.fromString(fileContent);
+			for (int i = 0 ; i < this.bankOfData.size() ; i++) {
+				GenBankFormat current	= this.bankOfData.get(i);
+				FeaturesListe fl 	= current.getFeatures().getFeaturesWith("CDS");
 				for (int j = 0 ; j < fl.size() ; j++) {
-					String encodedPath	= fl.get(i).get("translation");
-					this.decodedPath	+= BiologicalFileCreatorHelper.forPathDirName
-											.decodeWithStartStopCodons(encodedPath, 0, 0)+separator;
+					this.sbDecodedPath.append(this.getCompanion().getForPathDirName() // <= PATH !!
+							.decode(fl.get(i).get("translation"), 0, 0));
 				}
-				
-				String encodedContent	= currentGB.getOrigin().getContent();
-				
-				this.decodedContent		+= BiologicalFileCreatorHelper.forFileContent
-											.decodeWithStartStopCodons(encodedContent, 0, 0)+separator;
+				this.sbDecodedContent.append(this.getCompanion().getForFileContent() // <= CONTENT !!
+						.decode(current.getOrigin().getContent(), 0, 0));
 			}
 		}
 	}
 	
-	public String getPath()		{ return this.decodedPath; }
-	public String getContent()	{ return this.decodedContent; }
-
-
 }

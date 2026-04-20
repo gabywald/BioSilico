@@ -10,24 +10,38 @@ import gabywald.crypto.data.EmblFormat;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator;
+import gabywald.crypto.model.ITranslator.TranslatorEnum;
 import gabywald.global.data.StringUtils;
 
 /**
  * Aim of this class is to generate a EMBL file with encrypted data. 
  * <br>Data is encrypted when included (content and path of file, respectively as nucleotidic and proteomic data). 
  * <br>Encryption according to current "genetic encryption". 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class EmblFileCreator extends BiologicalFileCreator {
+	
+	/**
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
+	 */
+	public EmblFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
+		this.bioFormat = new EmblFormat();
+	}
 
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param bioencoder4file
+	 * @param bioencoder4path
+	 * @param which
 	 */
-	public EmblFileCreator(String path, String content) {
-		super(path, content);
-		this.bioFormat		= new EmblFormat();
+	public EmblFileCreator(int bioencoder4file, int bioencoder4path, TranslatorEnum which) {
+		super(bioencoder4file, bioencoder4path, which);
+		this.bioFormat = new EmblFormat();
 	}
 
 	@Override
@@ -36,10 +50,11 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		
 		/** LOCUS PART. */
 		this.bioFormat.setIdentification(identification);
+		this.bioFormat.setAccession(identification);
 		
 		int basePairNumber = 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) 
-			{ basePairNumber += this.encodedContent.get(i).length(); }
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 
+			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
 		
 		String primaryType = BiologicalFileCreatorHelper.PRIMARY_TYPE
@@ -71,12 +86,12 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		
 		/** References PART. */
 		int numberOfRefs = StringUtils.randomValue(10)+1;
-		for (int i = 0 ; (i < numberOfRefs) && (this.encodedContent.size() > 0) ; i++) {
-			int selectCont	= StringUtils.randomValue(this.encodedContent.size());
+		for (int i = 0 ; (i < numberOfRefs) && (this.getEncodedCont().size() > 0) ; i++) {
+			int selectCont	= StringUtils.randomValue(this.getEncodedCont().size());
 			int start		= 0;
-			int stopp		= this.encodedContent.get(selectCont).length();
+			int stopp		= this.getEncodedCont().get(selectCont).length();
 			for (int j = 0 ; j < selectCont ; j++) 
-				{ start += this.encodedContent.get(j).length(); }
+				{ start += this.getEncodedCont().get(j).length(); }
 			
 			this.bioFormat.addReference(BiologicalFileCreatorHelper.createReference(i, year, start, stopp));
 		}
@@ -84,22 +99,22 @@ public class EmblFileCreator extends BiologicalFileCreator {
 		/** Sequence and Features PART. */
 		String sequenceToRecord	= new String("");
 		int start				= 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) { 
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
 			/** Append... */
-			sequenceToRecord += this.encodedContent.get(i);
+			sequenceToRecord += this.getEncodedCont().get(i);
 		
-			int length	= this.encodedContent.get(i).length();
+			int length	= this.getEncodedCont().get(i).length();
 			String pos	= (start + 1)+".."+( start + 1 + length );
-//			if (this.encodedPath.size() > 0) {
-//				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");
-//				Feature featToAdd		= new Feature(cds, pos);
-//				featToAdd.addQualifier("codon_start", (start + 1)+"");
-//				featToAdd.addQualifier("gene", location);
-//				featToAdd.addQualifier("product", "*****"); /** XXX !! */
-//				if (this.encodedPath.get(i).length() != 0)
-//					{ featToAdd.addQualifier("translation", this.encodedPath.get(i)); }
-//				this.bioFormat.addFeature(featToAdd);
-//			} // END "if (this.encodedPath.size() > 0)"
+			if (this.getEncodedPath().size() > 0) {
+				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");
+				Feature featToAdd		= new Feature(cds, pos);
+				featToAdd.addQualifier("codon_start", (start + 1)+"");
+				featToAdd.addQualifier("gene", location);
+				featToAdd.addQualifier("product", "*****"); /** XXX !! */
+				if (this.getEncodedPath().get(i).length() != 0)
+					{ featToAdd.addQualifier("translation", this.getEncodedPath().get(i)); }
+				this.bioFormat.addFeature(featToAdd);
+			} // END "if (this.getEncodedPath().size() > 0)"
 			start += length;
 			FeatureDefinition src	= FeatureDefinition.getFromFactory("source");
 			Feature srcToAdd		= new Feature(src, pos);

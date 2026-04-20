@@ -2,7 +2,7 @@ package gabywald.cellmodel.controller.graph;
 
 import gabywald.cellmodel.model.Cellule;
 import gabywald.cellmodel.view.graph.CellGraphicalView;
-import gabywald.global.view.text.Terminal;
+import gabywald.utilities.others.Terminal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

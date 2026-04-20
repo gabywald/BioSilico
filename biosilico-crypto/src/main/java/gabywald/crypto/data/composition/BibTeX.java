@@ -6,6 +6,16 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+
+/**
+ * 
+ * @author Gabriel Chandesris (2011, 2026)
+ * @see gabywald.crypto.data.GenBankFormat
+ * @see gabywald.crypto.data.EmblFormat
+ * @see Author
+ */
 public class BibTeX {
 	public static final String[][] AVAILABLE_FIELDS = {
 		{ "address", "Publisher's address (usually just the city, but can be the full address for lesser-known publishers)" }, 
@@ -285,7 +295,7 @@ public class BibTeX {
 				bibRef.content.put(fieldType, fieldCont);
 			} else if ( (con1Match.matches()) && (currentField != null) ) {
 				/** New SMALL field detected, and previous is NOT parsed. */
-				System.out.println("\tERROR (a) ON '"+currentField+"' not finished !!");
+				Logger.printlnLog(LoggerLevel.LL_ERROR, "\tERROR (a) ON '"+currentField+"' not finished !!");
 				currentField		= null;
 				String fieldType	= con1Match.group(1);
 				String fieldCont	= con1Match.group(2);
@@ -300,7 +310,7 @@ public class BibTeX {
 			} 
 			else if ( (con2Match.matches()) && (currentField != null) ) {
 				/** New LARGE field detected, and previous is NOT parsed. */
-				System.out.println("\tERROR (b) ON '"+currentField+"' not finished !!");
+				Logger.printlnLog(LoggerLevel.LL_ERROR, "\tERROR (b) ON '"+currentField+"' not finished !!");
 				currentField		= null;
 				String fieldType	= con2Match.group(1);
 				String fieldCont	= con2Match.group(2);
@@ -321,14 +331,13 @@ public class BibTeX {
 			}  
 			else if (cont[i].matches("^\\}$")) {
 				toReturn.add(bibRef);
-				System.out.println(bibRef+"***"+toReturn.size()+"***");
+				Logger.printlnLog(LoggerLevel.LL_NONE, bibRef+"***"+toReturn.size()+"***");
 				bibRef = null;
 			} 
-			else { System.out.println(cont[i]+"\t'"+currentField+"'"); }
+			else { Logger.printlnLog(LoggerLevel.LL_NONE, cont[i]+"\t'"+currentField+"'"); }
 		}
 		
-		
-		System.out.println(toReturn.size());
+		Logger.printlnLog(LoggerLevel.LL_NONE, "'" + toReturn.size() + "'");
 		
 		return toReturn;
 	}
@@ -352,7 +361,7 @@ public class BibTeX {
 //		if (selectedType == -1 ) {
 //			choosenType		= "misc";
 //			selectedType	= 9;
-//			System.out.println("\tBibTeX misc : '"+publicationType+"'");
+//			Logger.printlnLog(LoggerLevel.LL_NONE, "\tBibTeX misc : '"+publicationType+"'");
 //		} else 
 //			{ choosenType	= BibTeX.MAIN_TYPE_FIELDS[selectedType][0]; }
 //		
@@ -427,7 +436,7 @@ public class BibTeX {
 //				{ return (mandatory?"":null); }
 //			else { analysis = pmelt.getDateOfPublication(); }
 //			if (analysis.length() < 5) { return "noMonth"; }
-//			// else { System.out.println("\t'"+analysis.substring(5, 8)+"'"); }
+//			// else { Logger.printlnLog(LoggerLevel.LL_NONE, "\t'"+analysis.substring(5, 8)+"'"); }
 //			if (analysis.substring(5, 8).equals("Jan")) { return "January"; }
 //			if (analysis.substring(5, 8).equals("Feb")) { return "February"; }
 //			if (analysis.substring(5, 8).equals("Mar")) { return "March"; }

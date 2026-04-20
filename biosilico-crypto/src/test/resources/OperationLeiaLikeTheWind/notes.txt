@@ -1,0 +1,72 @@
+
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --embl
+
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.direct 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.fasta --fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.genbank --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.embl --embl
+
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.direct
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --fasta > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --embl > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.embl
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --genbank > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.genbank
+
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.direct
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --fasta > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --embl > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.embl
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -e -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/DiscoursAuSenatLeiaOrgana.txt --genbank > biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.genbank
+
+
+https://www.baeldung.com/linux/convert-text-to-pdf
+## pandoc -o OperationLikeTheWindFASTA.pdf OperationLikeTheWind.fasta --write=pdf
+## pandoc -o OperationLikeTheWindGenBank.pdf OperationLikeTheWind.genbank --write=pdf
+## pandoc -o OperationLikeTheWindEMBL.pdf OperationLikeTheWind.embl --write=pdf
+## convert TEXT:/file.txt /file.pdf
+convert TEXT:OperationLikeTheWind.fasta OperationLikeTheWindFASTA.pdf
+convert TEXT:OperationLikeTheWind.embl OperationLikeTheWindEMBL.pdf
+convert TEXT:OperationLikeTheWind.genbank OperationLikeTheWindGenBank.pdf
+
+
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.direct 
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.fasta --fasta
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.genbank --genbank
+java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar -x -f -s --DATA=biosilico-crypto/src/test/resources/OperationLeiaLikeTheWind/OperationLikeTheWind.embl --embl
+
+
+Une (petite) énigme (partie 1/3) pour les Geeks et Nerds par ici ! Indices à venir (?)
+#OperationLikeTheWind #Chiffrement #Steganographie #BioInfo #FASTA ...
+https://www.linkedin.com/posts/gabriel-chandesris_operation-like-the-wind-fasta-ugcPost-7446983716146421760-h0AK
+
+Une (petite) énigme (partie 2/3) pour les Geeks et Nerds par ici ! Indices à venir (?)
+#OperationLikeTheWind #Chiffrement #Steganographie #BioInfo #EMBL ...
+https://www.linkedin.com/posts/gabriel-chandesris_operation-like-the-wind-embl-ugcPost-7446984180594356224-Hd9r
+
+Une (petite) énigme (partie 3/3) pour les Geeks et Nerds par ici ! Indices à venir (?)
+#OperationLikeTheWind #Chiffrement #Steganographie #BioInfo #GenBank ...
+https://www.linkedin.com/posts/gabriel-chandesris_operation-like-the-wind-genbank-ugcPost-7446984482294763520-R2Z7
+
+Quelques indices pour "Operation Like The Wind". Si vous n'avez pas vu passer les documents, rendez-vous en commentaire !
+#OperationLikeTheWind #Chiffrement #Steganographie #BioInfo #StarWars ...
+https://www.linkedin.com/posts/gabriel-chandesris_operationlikethewind-chiffrement-steganographie-ugcPost-7446994255119683584-p14b/
+
+
+Voici quatre illustrations générées pour accompagner le discours de la Princesse Leia devant le Sénat Impérial. Chaque image capture une dimension différente de son allocution et de l’atmosphère qu’elle évoque :
+
+Leia s’adressant au Sénat Impérial :
+
+Une scène grandiose et cinématique, où Leia incarne la détermination face à une assemblée divisée.
+
+Le vent comme métaphore de la liberté :
+
+Une représentation symbolique du vent, force invisible qui inspire et divise les sénateurs.
+
+Les sénateurs sous l’effet du discours :
+
+Un moment intime et tendu, où les expressions des sénateurs trahissent leurs émotions et leurs dilemmes.
+
+La chute de la tyrannie et l’espoir :
+
+Une vision épique de la fin de l’oppression et de la renaissance de l’espoir, portée par le vent de la rébellion.

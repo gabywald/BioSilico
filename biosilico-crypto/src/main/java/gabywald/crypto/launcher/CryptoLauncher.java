@@ -1,15 +1,21 @@
 package gabywald.crypto.launcher;
 
-import gabywald.crypto.view.CryptoFrame;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
+import picocli.CommandLine;
 
 /**
- * Specific launcher for the SDF Graphical Interface. 
- * @author Gabriel Chandesris (2011)
+ * 
+ * @author Gabriel Chandesris (2026)
  */
 public class CryptoLauncher {
-	
-	public static void main(String[] args) { 
-		CryptoFrame.getInstance(); 
-	} 
+
+	public static void main(String[] args) {
+		BioSilicoCryptoCommand bscc = new BioSilicoCryptoCommand();
+		int exitCode = new CommandLine(bscc).execute(args);
+		// System.exit(exitCode);
+		if (bscc.isLogEnabled(BioSilicoCryptoCommand.LogLevel.TheEnum.info)) 
+					{ Logger.printlnLog(LoggerLevel.LL_FORUSER, exitCode + "" ); }
+	}
 	
 }

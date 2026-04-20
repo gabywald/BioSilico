@@ -1,12 +1,17 @@
 package gabywald.crypto.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
+
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * Aim of this class is to ensure a Genetic Encryption according to a selected code. 
- * @author Gabriel Chandesris (2011, 2022)
+ * @author Gabriel Chandesris (2011, 2022, 2025, 2026)
  */
-public class GeneticTranslator {
+public class GeneticTranslator implements ITranslator {
 	/** Genetic code selected. */
 	private GeneticCode genCode;
 	/** Encoding tree selected. */
@@ -50,24 +55,31 @@ public class GeneticTranslator {
 		this.genCode	= GeneticCode.fromEncodingNode(this.root);
 	}
 	
+
+	
+	@Override
+	public String decode(String sequence, int start, int frame) {
+		String firstTry = this.decodeWithStartStopCodons(sequence, start, frame);
+		return (firstTry.length() != 0) ? firstTry : this.decodeNO(sequence, start, frame);
+	}
+	
 	/**
 	 * To decode a sequence. 
 	 * <br><i>start</i> and <i>frame</i> both to 0 if decode from beginning. 
 	 * @param sequence (String)
 	 * @param start (int) start point
 	 * @param frame (int) which 'modificator' / reading frame. 
-	 * @return (String)
+	 * @return (String) decoded*
 	 */
-	public String decode(String sequence, int start, int frame) {
+	protected String decodeNO(String sequence, int start, int frame) {
+		if (sequence == null) { return ""; }
 		int codonLength	= this.genCode.getCodonLength();
 		if ( (frame < 0) || (frame > codonLength-1) ) 
 			{ return new String(""); }
 		int index		= start + frame;
 		String result	= new String("");
 		for (int i = index ; i <= (sequence.length() - codonLength) ; i += codonLength) {
-			String codon = new String("");
-			for (int j = 0 ; j < codonLength ; j++) 
-				{ codon += sequence.charAt(j+i); }
+			String codon = sequence.substring(i, i+codonLength);
 			result += ((codon.equals(""))?"-":this.root.getValue(codon));
 		}
 		return result;
@@ -81,35 +93,34 @@ public class GeneticTranslator {
 	 * @param frame (int) which 'modificator' / reading frame. 
 	 * @return (String)
 	 */
-	public String decodeWithStartStopCodons(String sequence, int start, int frame) {
+	protected String decodeWithStartStopCodons(String sequence, int start, int frame) {
+		if (sequence == null) { return ""; }
 		boolean started	= false;
 		int codonLength	= this.genCode.getCodonLength();
 		if ( (frame < 0) || (frame > codonLength-1) ) 
-			{ return new String(""); }
+			{ return new String(""); } // NOTE ?? TODO throws exception ??
 		int index		= start + frame;
-		String result	= new String("");
+		StringBuilder sbToReturn	= new StringBuilder("");
 		for (int i = index ; i <= (sequence.length() - codonLength) ; i += codonLength) {
-			String codon = new String("");
-			for (int j = 0 ; j < codonLength ; j++) 
-				{ codon += sequence.charAt(j+i); }
+			String codon = sequence.substring(i, i+codonLength);
 			if (started) {
 				started = (!this.root.getNode(codon).isStop());
 				if (this.root.getNode(codon).isStop()) 
-					{ return result; }
-				result += ((codon.equals(""))?"-":this.root.getValue(codon));
+					{ return sbToReturn.toString(); }
+				sbToReturn.append(((codon.equals(""))?"-":this.root.getValue(codon)));
 			} else { started = this.root.getNode(codon).isStart(); }
 		}
-		return result;
+		return sbToReturn.toString();
 	}
 
 	/**
 	 * Encoding given sequence and add a 'start' and an 'stop' n-uplet / codon. 
-	 * <br>If asked, add randomly generated chars from Genetic Code. 
 	 * @param sequence (String) whet to encode. 
 	 * @param which (int) 0 : simple encoding ; 1 : More encoding ; 2 (default) : random encoding. 
 	 * @return (String)
 	 */
-	public String encode(String sequence, int which) 
+	@Override
+	public String encode(String sequence, TranslatorEnum which) 
 		{ return this.encode(sequence, which, null); }
 	
 	/**
@@ -121,39 +132,56 @@ public class GeneticTranslator {
 	 * @return (String)
 	 * TODO avoid "no encoding" when a character is not in 'AA' list"...
 	 */
-	public String encode(String sequence, int which, GeneticTranslatorRandomizer gtr) {
+	public String encode(String sequence, TranslatorEnum which, GeneticTranslatorRandomizer gtr) {
+		if (sequence == null) { return ""; }
 		String toReturn = new String("");
 		
 		switch(which) {
-		case(0):toReturn = this.encode(sequence);break;
-		case(1):toReturn = this.encodeMore(sequence);break;
-		case(2):/** toReturn = this.encodeRand(sequence);break; */
-		default:toReturn = this.encodeRand(sequence);break;
+		case simple :toReturn = this.encode(sequence);break;
+		case more 	:toReturn = this.encodeMore(sequence);break;
+		case random :toReturn = this.encodeRand(sequence);break;
+		default:Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN TranslatorEnum ?");break;
 		}
 		
 		/** Searching a START / STOPPER and add one of each. */
-		Vector<EncodingNode> starters = new Vector<EncodingNode>();
-		Vector<EncodingNode> stoppers = new Vector<EncodingNode>();
+		// ***** List the possible start and stop codons. 
+		List<EncodingNode> starters = new ArrayList<EncodingNode>();
+		List<EncodingNode> stoppers = new ArrayList<EncodingNode>();
 		EncodingNode[] leaves = this.root.getLeaves();
 		for (int i = 0 ; i < leaves.length ; i++) {
 			if (leaves[i].isStart())	{ starters.add(leaves[i]); }
 			if (leaves[i].isStop())		{ stoppers.add(leaves[i]); }
 		}
-		
-		if ( (starters.size() != 0) && (stoppers.size() != 0) ) {
-			int selectedStart = (int)Math.rint(Math.random() * starters.size());
-			while (selectedStart == starters.size()) 
-				{ selectedStart	= (int)Math.rint(Math.random() * starters.size()); }
-			int selectedStopp = (int)Math.rint(Math.random() * stoppers.size());
-			while (selectedStopp == stoppers.size()) 
-				{ selectedStopp	= (int)Math.rint(Math.random() * stoppers.size()); }
-			
-			toReturn = starters.get(selectedStart).getCurrentCode()
-						+ toReturn + 
-						stoppers.get(selectedStopp).getCurrentCode();
+		switch(which) {
+		case simple :
+			Logger.printlnLog(LoggerLevel.LL_NONE, "CASE START / STOP for 'simple' !");
+			/* NO START STOP HERE !! */;break;
+		case more 	:
+			Logger.printlnLog(LoggerLevel.LL_DEBUG, "ADDING START / STOP for 'more' !");
+			toReturn = starters.get(0).getCurrentCode()
+			+ toReturn + 
+			stoppers.get(0).getCurrentCode();
+			break;
+	case random :
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "ADDING START / STOP for 'rendom' !");
+			// ***** Choose randomly start and stop codons. 
+			if ( (starters.size() != 0) && (stoppers.size() != 0) ) {
+				int selectedStart = (int)Math.rint(Math.random() * starters.size());
+				while (selectedStart == starters.size()) 
+					{ selectedStart	= (int)Math.rint(Math.random() * starters.size()); }
+				int selectedStopp = (int)Math.rint(Math.random() * stoppers.size());
+				while (selectedStopp == stoppers.size()) 
+					{ selectedStopp	= (int)Math.rint(Math.random() * stoppers.size()); }
+				
+				toReturn = starters.get(selectedStart).getCurrentCode()
+							+ toReturn + 
+							stoppers.get(selectedStopp).getCurrentCode();
+			}
+			break;
+		default:Logger.printlnLog(LoggerLevel.LL_ERROR, "UNKNOWN TranslatorEnum ?");break;
 		}
 		
-		/** Adding random characters before and after the encoded sequence. */
+		/** TODO Adding random characters before and after the encoded sequence. */
 		if ( (gtr != null) && (gtr.addRandomBases()) ) {
 //			char[] alphabet = gtr.getAlphabet(); // this.genCode.getAlphabet();
 //			gtr.getBefore();
@@ -190,7 +218,7 @@ public class GeneticTranslator {
 				}
 			}
 			if (inWork.length() == len) 
-				{ return result; /** return "!! !! !! !! \n\n"+result+"\n\n"+inWork; */ }
+				{ return result; }
 		}
 		return result;
 	}
@@ -208,24 +236,15 @@ public class GeneticTranslator {
 		while (inWork.length() > 0) {
 			int len = inWork.length();
 			for (int i = 0 ; i < valuesList.length ; i++) {
-//				if ( (inWork.startsWith("\n")) || (inWork.startsWith("\r")))
-//					{ System.out.println("'!!'"); }
-//				if ( (valuesList[i].equals("\\n")) || (valuesList[i].equals("\\r")) )
-//					{ System.out.println("'zz'\t"+valuesList[i].length()); }
 				/** 'aagg' et 'aatc' */
 				if (inWork.startsWith(valuesList[i])) {
-					/** System.out.println("'"+this.root.getLeaves()[i].getCurrentValue()
-								 +"' => '"+this.root.getLeaves()[i].getCurrentCode()
-								 +"' => '"+this.root.getLeaves()[i]
-							.getValue(this.root.getLeaves()[i].getCurrentCode()) + "'"); */
 					result += this.root.getLeaves()[i].getCurrentCode();
 					inWork = inWork.substring(valuesList[i].length());
 					/** break; */ /** !! */
 				}
 			}
-			/** System.out.println("\t\"" + result + "\""); */
 			if (inWork.length() == len) 
-				{ return result; /** return "!! !! !! !! \n\n"+result+"\n\n"+inWork; */ }
+				{ return result; }
 		}
 		return result;
 	}

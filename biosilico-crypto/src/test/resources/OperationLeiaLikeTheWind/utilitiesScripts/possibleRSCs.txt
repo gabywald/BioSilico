@@ -1,0 +1,15 @@
+https://github.com/crlsalmeida/Pairwise_Alignment
+
+https://github.com/ahishsujay/Sequence_Alignment
+
+https://www.geeksforgeeks.org/python/dna-protein-python-3/
+
+https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi?chapter=tgencodes 
+
+https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi?chapter=cgencodes
+
+https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/gc.prt
+
+https://www.bioinformatics.org/sms2/translate.html
+
+https://web.expasy.org/translate/

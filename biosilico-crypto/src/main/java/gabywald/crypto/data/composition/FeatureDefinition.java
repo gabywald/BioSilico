@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * 
  * <br><i>Multiton ("multiple singleton")</i>
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2026)
  */
 public class FeatureDefinition {
 	/** Data Tag 0. */
@@ -150,125 +150,68 @@ public class FeatureDefinition {
 	}
 	
 	public static FeatureDefinition getFromFactory(String nameOfFD) {
-		if (nameOfFD.equals("attenuator"))
-			{ return FeatureDefinition.getAttenuatorFD(); }
-		if (nameOfFD.equals("C_region"))
-			{ return FeatureDefinition.getCregionFD(); }
-		if (nameOfFD.equals("CAAT_signal"))
-			{ return FeatureDefinition.getCAATsignalFD(); }
-		if (nameOfFD.equals("CDS"))
-			{ return FeatureDefinition.getCDSFD(); }
-		if (nameOfFD.equals("D-loop"))
-			{ return FeatureDefinition.getDloopFD(); }
-		if (nameOfFD.equals("D_segment"))
-			{ return FeatureDefinition.getDsegmentFD(); }
-		if (nameOfFD.equals("enhancer"))
-			{ return FeatureDefinition.getEnhancerFD(); }
-		if (nameOfFD.equals("exon"))
-			{ return FeatureDefinition.getExonFD(); }
-		if (nameOfFD.equals("gap"))
-			{ return FeatureDefinition.getGapFD(); }
-		if (nameOfFD.equals("GC_signal"))
-			{ return FeatureDefinition.getGCsignalFD(); }
-		if (nameOfFD.equals("gene"))
-			{ return FeatureDefinition.getGeneFD(); }
-		if (nameOfFD.equals("iDNA"))
-			{ return FeatureDefinition.getIDNAFD(); }
-		if (nameOfFD.equals("intron"))
-			{ return FeatureDefinition.getIntronFD(); }
-		if (nameOfFD.equals("J_segment"))
-			{ return FeatureDefinition.getJsegmentFD(); }
-		if (nameOfFD.equals("LTR"))
-			{ return FeatureDefinition.getLTRFD(); }
-		if (nameOfFD.equals("mat_peptide"))
-			{ return FeatureDefinition.getMatpeptideFD(); }
-		if (nameOfFD.equals("misc_binding"))
-			{ return FeatureDefinition.getMiscbindingFD(); }
-		if (nameOfFD.equals("misc_difference"))
-			{ return FeatureDefinition.getMiscdifferenceFD(); }
-		if (nameOfFD.equals("misc_feature"))
-			{ return FeatureDefinition.getMiscfeatureFD(); }
-		if (nameOfFD.equals("misc_recomb"))
-			{ return FeatureDefinition.getMiscrecombFD(); }
-		if (nameOfFD.equals("misc_RNA"))
-			{ return FeatureDefinition.getMiscRNAFD(); }
-		if (nameOfFD.equals("misc_signal"))
-			{ return FeatureDefinition.getMiscsignalFD(); }
-		if (nameOfFD.equals("misc_structure"))
-			{ return FeatureDefinition.getMiscstructureFD(); }
-		if (nameOfFD.equals("mobile_element"))
-			{ return FeatureDefinition.getMobileelementFD(); }
-		if (nameOfFD.equals("modified_base"))
-			{ return FeatureDefinition.getModifiedbaseFD(); }
-		if (nameOfFD.equals("mRNA"))
-			{ return FeatureDefinition.getMRNAFD(); }
-		if (nameOfFD.equals("ncRNA"))
-			{ return FeatureDefinition.getNcRNAFD(); }
-		if (nameOfFD.equals("N_region"))
-			{ return FeatureDefinition.getNregionFD(); }
-		if (nameOfFD.equals("old_sequence"))
-			{ return FeatureDefinition.getOldsequenceFD(); }
-		if (nameOfFD.equals("operon"))
-			{ return FeatureDefinition.getOperonFD(); }
-		if (nameOfFD.equals("oriT"))
-			{ return FeatureDefinition.getOriTFD(); }
-		if (nameOfFD.equals("polyA_signal"))
-			{ return FeatureDefinition.getPolyAsignalFD(); }
-		if (nameOfFD.equals("polyA_site"))
-			{ return FeatureDefinition.getPolyAsiteFD(); }
-		if (nameOfFD.equals("precursor_RNA"))
-			{ return FeatureDefinition.getPrecursorRNAFD(); }
-		if (nameOfFD.equals("prim_transcript"))
-			{ return FeatureDefinition.getPrimtranscriptFD(); }
-		if (nameOfFD.equals("primer_bind"))
-			{ return FeatureDefinition.getPrimerbindFD(); }
-		if (nameOfFD.equals("promoter"))
-			{ return FeatureDefinition.getPromoterFD(); }
-		if (nameOfFD.equals("protein_bind"))
-			{ return FeatureDefinition.getProteinbindFD(); }
-		if (nameOfFD.equals("RBS"))
-			{ return FeatureDefinition.getRBSFD(); }
-		if (nameOfFD.equals("repeat_region"))
-			{ return FeatureDefinition.getRepeatregionFD(); }
-		if (nameOfFD.equals("rep_origin"))
-			{ return FeatureDefinition.getReporiginFD(); }
-		if (nameOfFD.equals("rRNA"))
-			{ return FeatureDefinition.getRRNAFD(); }
-		if (nameOfFD.equals("S_region"))
-			{ return FeatureDefinition.getSregionFD(); }
-		if (nameOfFD.equals("sig_peptide"))
-			{ return FeatureDefinition.getSigpeptideFD(); }
-		if (nameOfFD.equals("source"))
-			{ return FeatureDefinition.getSourceFD(); }
-		if (nameOfFD.equals("stem_loop"))
-			{ return FeatureDefinition.getStemloopFD(); }
-		if (nameOfFD.equals("STS"))
-			{ return FeatureDefinition.getSTSFD(); }
-		if (nameOfFD.equals("TATA_signal"))
-			{ return FeatureDefinition.getTATAsignalFD(); }
-		if (nameOfFD.equals("terminator"))
-			{ return FeatureDefinition.getTerminatorFD(); }
-		if (nameOfFD.equals("tmRNA"))
-			{ return FeatureDefinition.getTmRNAFD(); }
-		if (nameOfFD.equals("transit_peptide"))
-			{ return FeatureDefinition.getTransitpeptideFD(); }
-		if (nameOfFD.equals("tRNA"))
-			{ return FeatureDefinition.getTRNAFD(); }
-		if (nameOfFD.equals("unsure"))
-			{ return FeatureDefinition.getUnsureFD(); }
-		if (nameOfFD.equals("V_region"))
-			{ return FeatureDefinition.getVregionFD(); }
-		if (nameOfFD.equals("V_segment"))
-			{ return FeatureDefinition.getVsegmentFD(); }
-		if (nameOfFD.equals("variation"))
-			{ return FeatureDefinition.getVariationFD(); }
-		if (nameOfFD.equals("3'UTR"))
-			{ return FeatureDefinition.get3UTRFD(); }
-		if (nameOfFD.equals("5'UTR"))
-			{ return FeatureDefinition.get5UTRFD(); }
-		if (nameOfFD.equals("-10_signal"))
-			{ return FeatureDefinition.get10signalFD(); }
-		return null;
+		switch(nameOfFD) {
+		case "attenuator": 	return FeatureDefinition.getAttenuatorFD(); 
+		case "C_region": 	return FeatureDefinition.getCregionFD(); 
+		case "CAAT_signal": return FeatureDefinition.getCAATsignalFD(); 
+		case "CDS": 		return FeatureDefinition.getCDSFD(); 
+		case "D-loop": 		return FeatureDefinition.getDloopFD(); 
+		case "D_segment": 	return FeatureDefinition.getDsegmentFD(); 
+		case "enhancer": 	return FeatureDefinition.getEnhancerFD(); 
+		case "exon": 		return FeatureDefinition.getExonFD(); 
+		case "gap": 		return FeatureDefinition.getGapFD(); 
+		case "GC_signal": 	return FeatureDefinition.getGCsignalFD(); 
+		case "gene": 		return FeatureDefinition.getGeneFD(); 
+		case "iDNA": 		return FeatureDefinition.getIDNAFD(); 
+		case "intron": 		return FeatureDefinition.getIntronFD(); 
+		case "J_segment": 	return FeatureDefinition.getJsegmentFD(); 
+		case "LTR": 		return FeatureDefinition.getLTRFD(); 
+		case "mat_peptide": return FeatureDefinition.getMatpeptideFD(); 
+		case "misc_binding": 	return FeatureDefinition.getMiscbindingFD(); 
+		case "misc_difference": return FeatureDefinition.getMiscdifferenceFD(); 
+		case "misc_feature": 	return FeatureDefinition.getMiscfeatureFD(); 
+		case "misc_recomb": return FeatureDefinition.getMiscrecombFD(); 
+		case "misc_RNA": 	return FeatureDefinition.getMiscRNAFD(); 
+		case "misc_signal": return FeatureDefinition.getMiscsignalFD(); 
+		case "misc_structure": 	return FeatureDefinition.getMiscstructureFD(); 
+		case "mobile_element": 	return FeatureDefinition.getMobileelementFD();
+		case "modified_base": 	return FeatureDefinition.getModifiedbaseFD(); 
+		case "mRNA": 		return FeatureDefinition.getMRNAFD(); 
+		case "ncRNA": 		return FeatureDefinition.getNcRNAFD(); 
+		case "N_region": 	return FeatureDefinition.getNregionFD(); 
+		case "old_sequence": 	return FeatureDefinition.getOldsequenceFD(); 
+		case "operon": 		return FeatureDefinition.getOperonFD(); 
+		case "oriT": 		return FeatureDefinition.getOriTFD(); 
+		case "polyA_signal": 	return FeatureDefinition.getPolyAsignalFD(); 
+		case "polyA_site": 		return FeatureDefinition.getPolyAsiteFD(); 
+		case "precursor_RNA": 	return FeatureDefinition.getPrecursorRNAFD(); 
+		case "prim_transcript": return FeatureDefinition.getPrimtranscriptFD(); 
+		case "primer_bind": return FeatureDefinition.getPrimerbindFD(); 
+		case "promoter": 	return FeatureDefinition.getPromoterFD(); 
+		case "protein_bind": 	return FeatureDefinition.getProteinbindFD(); 
+		case "RBS": 		return FeatureDefinition.getRBSFD(); 
+		case "repeat_region": 	return FeatureDefinition.getRepeatregionFD(); 
+		case "rep_origin": 	return FeatureDefinition.getReporiginFD(); 
+		case "rRNA": 		return FeatureDefinition.getRRNAFD(); 
+		case "S_region": 	return FeatureDefinition.getSregionFD(); 
+		case "sig_peptide": return FeatureDefinition.getSigpeptideFD(); 
+		case "source": 		return FeatureDefinition.getSourceFD(); 
+		case "stem_loop": 	return FeatureDefinition.getStemloopFD(); 
+		case "STS": 		return FeatureDefinition.getSTSFD(); 
+		case "TATA_signal": return FeatureDefinition.getTATAsignalFD(); 
+		case "terminator": 	return FeatureDefinition.getTerminatorFD(); 
+		case "tmRNA": 		return FeatureDefinition.getTmRNAFD(); 
+		case "transit_peptide": return FeatureDefinition.getTransitpeptideFD(); 
+		case "tRNA": 		return FeatureDefinition.getTRNAFD(); 
+		case "unsure": 		return FeatureDefinition.getUnsureFD(); 
+		case "V_region": 	return FeatureDefinition.getVregionFD(); 
+		case "V_segment": 	return FeatureDefinition.getVsegmentFD(); 
+		case "variation": 	return FeatureDefinition.getVariationFD(); 
+		case "3'UTR": 		return FeatureDefinition.get3UTRFD(); 
+		case "5'UTR": 		return FeatureDefinition.get5UTRFD(); 
+		case "-10_signal": 	return FeatureDefinition.get10signalFD(); 
+		default: 			return null;
+		}
 	}
 	
 	private static FeatureDefinition getAttenuatorFD() {

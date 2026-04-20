@@ -1,0 +1,567 @@
+
+https://picocli.info/
+	https://github.com/remkop/picocli
+	https://clig.dev/#guidelines
+
+Source : https://www.baeldung.com/java-picocli-create-command-line-program
+
+ baeldung.com
+Create a Java Command Line Program with Picocli | Baeldung
+15–19 minutes
+1. Introduction
+
+In this tutorial, we'll approach the picocli library, which allows us to easily create command line programs in Java.
+
+We'll first get started by creating a Hello World command. We'll then take a deep dive into the key features of the library by reproducing, partially, the git command.
+
+2. Hello World Command
+
+Let's begin with something easy: a Hello World command!
+
+First things first, we need to add the dependency to the picocli project:
+
+<dependency>
+    <groupId>info.picocli</groupId>
+    <artifactId>picocli</artifactId>
+    <version>4.7.0</version>
+</dependency>
+
+As we can see, we'll use the 4.7.0 version of the library.
+
+Now that the dependency is set up, let's create our Hello World command. In order to do that, we'll use the @Command annotation from the library:
+
+@Command(
+  name = "hello",
+  description = "Says hello"
+)
+public class HelloWorldCommand {
+}
+
+As we can see, the annotation can take parameters. We're only using two of them here. Their purpose is to provide information about the current command and text for the automatic help message.
+
+At the moment, there's not much we can do with this command. To make it do something, we need to add a main method calling the convenience CommandLine.run(Runnable, String[]) method. This takes two parameters: an instance of our command, which thus has to implement the Runnable interface, and a String array representing the command arguments (options, parameters, and subcommands):
+
+public class HelloWorldCommand implements Runnable {
+    public static void main(String[] args) {
+        CommandLine.run(new HelloWorldCommand(), args);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Hello World!");
+    }
+}
+
+Now, when we run the main method, we'll see that the console outputs “Hello World!”
+
+When packaged to a jar, we can run our Hello World command using the java command:
+
+java -cp "pathToPicocliJar;pathToCommandJar" com.baeldung.picoli.helloworld.HelloWorldCommand
+
+With no surprise, that also outputs the “Hello World!” string to the console.
+
+3. A Concrete Use Case
+
+Now that we've seen the basics, we'll deep dive into the picocli library. In order to do that, we're going to reproduce, partially, a popular command: git.
+
+Of course, the purpose won't be to implement the git command behavior but to reproduce the possibilities of the git command — which subcommands exist and which options are available for a peculiar subcommand.
+
+First, we have to create a GitCommand class as we did for our Hello World command:
+
+@Command
+public class GitCommand implements Runnable {
+    public static void main(String[] args) {
+        CommandLine.run(new GitCommand(), args);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("The popular git command");
+    }
+}
+
+4. Adding Subcommands
+
+The git command offers a lot of subcommands — add, commit, remote, and many more. We'll focus here on add and commit.
+
+So, our goal here will be to declare those two subcommands to the main command. Picocli offers three ways to achieve this.
+
+4.1. Using the @Command Annotation on Classes
+
+The @Command annotation offers the possibility to register subcommands through the subcommands parameter:
+
+@Command(
+  subcommands = {
+      GitAddCommand.class,
+      GitCommitCommand.class
+  }
+)
+
+In our case, we add two new classes: GitAddCommand and GitCommitCommand. Both are annotated with @Command and implement Runnable. It's important to give them a name, as the names will be used by picocli to recognize which subcommand(s) to execute:
+
+@Command(
+  name = "add"
+)
+public class GitAddCommand implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Adding some files to the staging area");
+    }
+}
+
+@Command(
+  name = "commit"
+)
+public class GitCommitCommand implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Committing files in the staging area, how wonderful?");
+    }
+}
+
+Thus, if we run our main command with add as an argument, the console will output “Adding some files to the staging area”.
+
+4.2. Using the @Command Annotation on Methods
+
+Another way to declare subcommands is to create @Command-annotated methods representing those commands in the GitCommand class:
+
+@Command(name = "add")
+public void addCommand() {
+    System.out.println("Adding some files to the staging area");
+}
+
+@Command(name = "commit")
+public void commitCommand() {
+    System.out.println("Committing files in the staging area, how wonderful?");
+}
+
+That way, we can directly implement our business logic into the methods and not create separate classes to handle it.
+
+4.3. Adding Subcommands Programmatically
+
+Finally, picocli offers us the possibility to register our subcommands programmatically. This one's a bit trickier, as we have to create a CommandLine object wrapping our command and then add the subcommands to it:
+
+CommandLine commandLine = new CommandLine(new GitCommand());
+commandLine.addSubcommand("add", new GitAddCommand());
+commandLine.addSubcommand("commit", new GitCommitCommand());
+
+After that, we still have to run our command, but we can't make use of the CommandLine.run() method anymore. Now, we have to call the parseWithHandler() method on our newly created CommandLine object:
+
+commandLine.parseWithHandler(new RunLast(), args);
+
+We should note the use of the RunLast class, which tells picocli to run the most specific subcommand. There are two other command handlers provided by picocli: RunFirst and RunAll. The former runs the topmost command, while the latter runs all of them.
+
+When using the convenience method CommandLine.run(), the RunLast handler is used by default.
+
+5. Managing Options Using the @Option Annotation
+
+5.1. Option with No Argument
+
+Let's now see how to add some options to our commands. Indeed, we would like to tell our add command that it should add all modified files. To achieve that, we'll add a field annotated with the @Option annotation to our GitAddCommand class:
+
+@Option(names = {"-A", "--all"})
+private boolean allFiles;
+
+@Override
+public void run() {
+    if (allFiles) {
+        System.out.println("Adding all files to the staging area");
+    } else {
+        System.out.println("Adding some files to the staging area");
+    }
+}
+
+As we can see, the annotation takes a names parameter, which gives the different names of the option. Therefore, calling the add command with either -A or –all will set the allFiles field to true. So, if we run the command with the option, the console will show “Adding all files to the staging area”.
+
+5.2. Option with an Argument
+
+As we just saw, for options without arguments, their presence or absence is always evaluated to a boolean value.
+
+However, it's possible to register options that take arguments. We can do this simply by declaring our field to be of a different type. Let's add a message option to our commit command:
+
+@Option(names = {"-m", "--message"})
+private String message;
+
+@Override
+public void run() {
+    System.out.println("Committing files in the staging area, how wonderful?");
+    if (message != null) {
+        System.out.println("The commit message is " + message);
+    }
+}
+
+Unsurprisingly, when given the message option, the command will show the commit message on the console. Later in the article, we'll cover which types are handled by the library and how to handle other types.
+
+5.3. Option with Multiple Arguments
+
+But now, what if we want our command to take multiple messages, as is done with the real git commit command? No worries, let's make our field be an array or a Collection, and we're pretty much done:
+
+@Option(names = {"-m", "--message"})
+private String[] messages;
+
+@Override
+public void run() {
+    System.out.println("Committing files in the staging area, how wonderful?");
+    if (messages != null) {
+        System.out.println("The commit message is");
+        for (String message : messages) {
+            System.out.println(message);
+        }
+    }
+}
+
+Now, we can use the message option multiple times:
+
+commit -m "My commit is great" -m "My commit is beautiful"
+
+However, we might also want to give the option only once and separate the different parameters by a regex delimiter. Hence, we can use the split parameter of the @Option annotation:
+
+@Option(names = {"-m", "--message"}, split = ",")
+private String[] messages;
+
+Now, we can pass -m “My commit is great”,”My commit is beautiful” to achieve the same result as above.
+
+5.4. Required Option
+
+Sometimes, we might have an option that is required. The required argument, which defaults to false, allows us to do that:
+
+@Option(names = {"-m", "--message"}, required = true)
+private String[] messages;
+
+Now it's impossible to call the commit command without specifying the message option. If we try to do that, picocli will print an error:
+
+Missing required option '--message=<messages>'
+Usage: git commit -m=<messages> [-m=<messages>]...
+  -m, --message=<messages>
+
+6. Managing Positional Parameters
+6.1. Capture Positional Parameters
+
+Now, let's focus on our add command because it's not very powerful yet. We can only decide to add all files, but what if we wanted to add specific files?
+
+We could use another option to do that, but a better choice here would be to use positional parameters. Indeed, positional parameters are meant to capture command arguments that occupy specific positions and are neither subcommands nor options.
+
+In our example, this would enable us to do something like:
+
+add file1 file2
+
+In order to capture positional parameters, we'll make use of the @Parameters annotation:
+
+@Parameters
+private List<Path> files;
+
+@Override
+public void run() {
+    if (allFiles) {
+        System.out.println("Adding all files to the staging area");
+    }
+
+    if (files != null) {
+        files.forEach(path -> System.out.println("Adding " + path + " to the staging area"));
+    }
+}
+
+Now, our command from earlier would print:
+
+Adding file1 to the staging area
+Adding file2 to the staging area
+
+6.2. Capture a Subset of Positional Parameters
+
+It's possible to be more fine-grained about which positional parameters to capture, thanks to the index parameter of the annotation. The index is zero-based. Thus, if we define:
+
+@Parameters(index="2..*")
+
+This would capture arguments that don't match options or subcommands, from the third one to the end.
+
+The index can be either a range or a single number, representing a single position.
+
+7. A Word About Type Conversion
+
+As we've seen earlier in this tutorial, picocli handles some type conversion by itself. For example, it maps multiple values to arrays or Collections, but it can also map arguments to specific types like when we use the Path class for the add command.
+
+As a matter of fact, picocli comes with a bunch of pre-handled types. This means we can use those types directly without having to think about converting them ourselves.
+
+However, we might need to map our command arguments to types other than those that are already handled. Fortunately for us, this is possible thanks to the ITypeConverter interface and the CommandLine#registerConverter method, which associates a type to a converter.
+
+Let's imagine we want to add the config subcommand to our git command, but we don't want users to change a configuration element that doesn't exist. So, we decide to map those elements to an enum:
+
+public enum ConfigElement {
+    USERNAME("user.name"),
+    EMAIL("user.email");
+
+    private final String value;
+
+    ConfigElement(String value) {
+        this.value = value;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static ConfigElement from(String value) {
+        return Arrays.stream(values())
+          .filter(element -> element.value.equals(value))
+          .findFirst()
+          .orElseThrow(() -> new IllegalArgumentException("The argument " 
+          + value + " doesn't match any ConfigElement"));
+    }
+}
+
+Plus, in our newly created GitConfigCommand class, let's add two positional parameters:
+
+@Parameters(index = "0")
+private ConfigElement element;
+
+@Parameters(index = "1")
+private String value;
+
+@Override
+public void run() {
+    System.out.println("Setting " + element.value() + " to " + value);
+}
+
+This way, we make sure that users won't be able to change non-existent configuration elements.
+
+Finally, we have to register our converter. What's beautiful is that, if using Java 8 or higher, we don't even have to create a class implementing the ITypeConverter interface. We can just pass a lambda or method reference to the registerConverter() method:
+
+CommandLine commandLine = new CommandLine(new GitCommand());
+commandLine.registerConverter(ConfigElement.class, ConfigElement::from);
+
+commandLine.parseWithHandler(new RunLast(), args);
+
+This happens in the GitCommand main() method. Note that we had to let go of the convenience CommandLine.run() method.
+
+When used with an unhandled configuration element, the command would show the help message plus a piece of information telling us that it wasn't possible to convert the parameter to a ConfigElement:
+
+Invalid value for positional parameter at index 0 (<element>): 
+cannot convert 'user.phone' to ConfigElement 
+(java.lang.IllegalArgumentException: The argument user.phone doesn't match any ConfigElement)
+Usage: git config <element> <value>
+      <element>
+      <value>
+
+8. Integrating with Spring Boot
+
+Finally, let's see how to Springify all that!
+
+Indeed, we might be working within a Spring Boot environment and want to benefit from it in our command-line program. In order to do that, we must create a SpringBootApplication implementing the CommandLineRunner interface:
+
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+    }
+}
+
+Plus, let's annotate all our commands and subcommands with the Spring @Component annotation and autowire all that in our Application:
+
+private GitCommand gitCommand;
+private GitAddCommand addCommand;
+private GitCommitCommand commitCommand;
+private GitConfigCommand configCommand;
+
+public Application(GitCommand gitCommand, GitAddCommand addCommand, 
+  GitCommitCommand commitCommand, GitConfigCommand configCommand) {
+    this.gitCommand = gitCommand;
+    this.addCommand = addCommand;
+    this.commitCommand = commitCommand;
+    this.configCommand = configCommand;
+}
+
+Note that we had to autowire every subcommand. Unfortunately, this is because, for now, picocli is not yet able to retrieve subcommands from the Spring context when declared declaratively (with annotations). Thus, we'll have to do that wiring ourselves, in a programmatic way:
+
+@Override
+public void run(String... args) {
+    CommandLine commandLine = new CommandLine(gitCommand);
+    commandLine.addSubcommand("add", addCommand);
+    commandLine.addSubcommand("commit", commitCommand);
+    commandLine.addSubcommand("config", configCommand);
+
+    commandLine.parseWithHandler(new CommandLine.RunLast(), args);
+}
+
+And now, our command line program works like a charm with Spring components. Therefore, we could create some service classes and use them in our commands, and let Spring take care of the dependency injection.
+9. Conclusion
+
+In this article, we've seen some key features of the picocli library. We've learned how to create a new command and add some subcommands to it. We've seen many ways to deal with options and positional parameters. Plus, we've learned how to implement our own type converters to make our commands strongly typed. Finally, we've seen how to bring Spring Boot into our commands.
+
+Of course, there are many things more to discover about it. The library provides complete documentation.
+
+**************************************************
+**************************************************
+**************************************************
+https://medium.com/@rostyslav.ivankiv/build-a-simple-java-cli-app-in-minutes-with-picocli-e606f8a2bce1
+
+medium.com
+Build a simple Java CLI app in minutes with Picocli
+Rostyslav Ivankiv
+5–7 minutes
+
+Rostyslav Ivankiv
+
+3 min read
+
+Mar 21, 2023
+
+Introduction
+
+The command-line interface (CLI) is a powerful and flexible way to interact with computer programs. Java was not considered as the best choice to write some CLI tool so far. The reason is long time for the application to start. But with new technologies it seems not to be a problem anymore.
+
+In this article, we'll introduce you to Picocli, a lightweight and easy-to-use Java framework for building CLI applications. We'll guide you through the process of building a simple Java CLI app using Picocli[1] and creating native image using GraalVM[2].
+
+Press enter or click to view image in full size
+
+Picture 1 — Logo
+Code
+
+The example consist of 2 simple files: pom.xml and Main.java.
+
+The maven configuration contains picocli, apache-commpons-lang3 dependencies and maven-shade-plugin.
+
+Get Rostyslav Ivankiv's stories in your inbox
+
+Join Medium for free to get updates from this writer.
+
+See pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>picocli-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>hello</finalName>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.example.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+See Main.java
+
+package com.example;
+
+import org.apache.commons.lang3.StringUtils;
+import picocli.CommandLine;
+import static picocli.CommandLine.Command;
+import static picocli.CommandLine.Option;
+import static picocli.CommandLine.Parameters;
+
+public class Main {
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new HelloCommand()).execute(args);
+        System.exit(exitCode);
+    }
+
+    @Command(name = "hello", description = "Prints hello to somebody")
+    static class HelloCommand implements Runnable {
+        @Parameters(index = "0", defaultValue = "stranger", description = "The name for greeting")
+        private String name;
+
+        @Option(names = {"-c", "--capitalize"}, defaultValue = "false", description = "Capitalize the name")
+        private boolean isCapitalizeEnabled;
+
+        @Override
+        public void run() {
+            System.out.println("Hello, " + (isCapitalizeEnabled ? StringUtils.capitalize(name) : name));
+        }
+    }
+}
+
+To build our fat jar with all dependencies we need to execute
+
+mvn clean package
+
+Press enter or click to view image in full size
+
+Picture 2 — Output of maven packaging command
+
+And we may run
+
+java -jar target/hello.jar jeff
+
+Press enter or click to view image in full size
+Picture 3 — Running java JAR from CLI
+
+Since JVM boot time is not the best the the java app loading may take some time. So it is recommended to build native-image if possible.
+
+native-image -jar target/hello.jar -H:Path=target -H:Name=hello
+
+And now we may run
+
+./target/hello jeff
+
+Press enter or click to view image in full size
+Picture 4 — Running java native image from CLI
+Conclusion
+
+Today we've seen how Picocli can be used to build simple and powerful command-line applications in Java. Picocli's lightweight and easy-to-use framework allows developers to quickly create CLI apps that can integrate with other tools and automate tasks.
+
+Additionally, we've explored how to use GraalVM to compile your Java CLI app into a standalone native binary executable. This allows your app to run faster.
+
+Overall, Picocli and GraalVM offer a powerful combination for building command-line applications in Java. With these tools, you can create efficient and portable apps that can automate tasks, integrate with other tools, and provide a more efficient user experience.
+References
+
+    https://picocli.info/
+    https://www.graalvm.org/
+
+
+LAUNCH : 
+java -jar /home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar
+java -cp '/home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar:/home/gabywald/.m2/repository/info/picocli/picocli/4.7.7/picocli-4.7.7.jar' -jar /home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar
+java -cp "/home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar:/home/gabywald/.m2/repository/info/picocli/picocli/4.7.7/picocli-4.7.7.jar" -jar /home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar
+java -cp "/home/gabywald/.m2/repository/info/picocli/picocli/4.7.7/picocli-4.7.7.jar:/home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar" -jar /home/gabywald/git/BioSilico/biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT.jar
+
+En incluant dépendances dans le JAR : 
+	java -jar target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar
+	java -jar target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar toto
+	java -jar target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar toto -C

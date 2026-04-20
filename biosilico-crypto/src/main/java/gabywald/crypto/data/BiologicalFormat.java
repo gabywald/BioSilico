@@ -111,7 +111,7 @@ public abstract class BiologicalFormat {
 	public void setSecondaryType(String sety)	{ this.locusData[3] = sety; }
 	public void setDivision(String divi)		{ this.locusData[4] = divi; }
 	public void setDate(String date)			{ this.locusData[5] = date; }
-	public void setClass(String clas)			{ this.locusData[6] = clas; }
+	public void setBFClass(String clas)			{ this.locusData[6] = clas; }
 	
 	public void setBasesCountsAndNames(int[] counts, String[] names) {
 		if (counts.length <= names.length) {
@@ -129,5 +129,19 @@ public abstract class BiologicalFormat {
 	public String[] getLocusData()			{ return this.locusData; }
 	public int[] getBasesCounts()			{ return this.basesCounts; }
 	public String[] getBasesNames()			{ return this.basesNames; }
+	
+	public String getDefinition()		{ return this.someDatas[0]; }
+	public String getAccession()		{ return this.someDatas[1]; }
+	public String getVersion()			{ return this.someDatas[2]; }
+	public String getKeywords()			{ return this.someDatas[3]; }
+	public String getComment()			{ return this.someDatas[4]; }
+	
+	public String getIdentification()	{ return this.locusData[0]; }
+	public String getBasePairNumber()	{ return this.locusData[1]; }
+	public String getPrimaryType()		{ return this.locusData[2]; }
+	public String getSecondaryType()	{ return this.locusData[3]; }
+	public String getDivision()			{ return this.locusData[4]; }
+	public String getDate()				{ return this.locusData[5]; }
+	public String getBFClass()			{ return this.locusData[6]; }
 
 }

@@ -8,7 +8,7 @@ import gabywald.biosilico.genetics.InitialConcentration;
 import gabywald.biosilico.model.Chromosome;
 import gabywald.biosilico.model.Neuron;
 import gabywald.biosilico.model.Organism;
-import gabywald.global.view.text.Terminal;
+import gabywald.utilities.others.Terminal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

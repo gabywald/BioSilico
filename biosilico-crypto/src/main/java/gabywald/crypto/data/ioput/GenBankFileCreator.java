@@ -10,45 +10,50 @@ import gabywald.crypto.data.GenBankFormat;
 import gabywald.crypto.data.composition.Feature;
 import gabywald.crypto.data.composition.FeatureDefinition;
 import gabywald.crypto.data.composition.Sequence;
+import gabywald.crypto.model.ITranslator;
 import gabywald.global.data.StringUtils;
 
 /**
  * Aim of this class is to generate a GenBank file with encrypted data. 
- * <br>Data is encrypted when included (content and path of file, respectively as nucleotidic and proteomic data). 
+ * <br>Data is encrypted when included (content and path of file, respectively as proteomic and nucleotidic data). 
  * <br>Encryption according to current "genetic encryption". 
- * @author Gabriel Chandesris (2011, 2020)
+ * @author Gabriel Chandesris (2011, 2020, 2022, 2026)
  */
 public class GenBankFileCreator extends BiologicalFileCreator {
 	
-	public GenBankFileCreator() {
-		this("", "");
-	}
-	
-	public GenBankFileCreator(String string) {
-		this("", string);
+	/**
+	 * 
+	 * @param forFiles
+	 * @param forPathes
+	 * @param which
+	 */
+	public GenBankFileCreator(ITranslator forFiles, ITranslator forPathes, ITranslator.TranslatorEnum which) {
+		super(forFiles, forPathes, which);
+		this.bioFormat = new GenBankFormat();
 	}
 	
 	/**
-	 * Constructor with given path and content. 
-	 * @param path Path to a file. 
-	 * @param content Content of a file. 
+	 * 
+	 * @param bioencoder4file
+	 * @param bioencoder4path
+	 * @param which
 	 */
-	public GenBankFileCreator(String path, String content) {
-		super(path, content);
-		this.bioFormat		= new GenBankFormat();
+	public GenBankFileCreator(int bioencoder4file, int bioencoder4path, ITranslator.TranslatorEnum which) {
+		super(bioencoder4file, bioencoder4path, which);
+		this.bioFormat = new GenBankFormat();
 	}
 
-	@Override
 	protected void initialize() {
-		
+		this.bioFormat			= new GenBankFormat();
 		String identification	= BiologicalUtils.generateIdentifier();
 		
 		/** LOCUS PART. */
 		this.bioFormat.setIdentification(identification);
+		this.bioFormat.setAccession(identification);
 		
 		int basePairNumber = 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) 
-			{ basePairNumber += this.encodedContent.get(i).length(); }
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) 
+			{ basePairNumber += this.getEncodedCont().get(i).length(); }
 		this.bioFormat.setBasePairNumber(""+basePairNumber);
 		
 		String primaryType = BiologicalFileCreatorHelper.PRIMARY_TYPE
@@ -80,35 +85,34 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		
 		/** References PART. */
 		int numberOfRefs = StringUtils.randomValue(10)+1;
-		for (int i = 0 ; (i < numberOfRefs) && (this.encodedContent.size() > 0) ; i++) {
-			int selectCont	= StringUtils.randomValue(this.encodedContent.size());
+		for (int i = 0 ; (i < numberOfRefs) && (this.getEncodedCont().size() > 0) ; i++) {
+			int selectCont	= StringUtils.randomValue(this.getEncodedCont().size());
 			int start		= 0;
-			int stopp		= this.encodedContent.get(selectCont).length();
+			int stopp		= this.getEncodedCont().get(selectCont).length();
 			for (int j = 0 ; j < selectCont ; j++) 
-				{ start += this.encodedContent.get(j).length(); }
+				{ start += this.getEncodedCont().get(j).length(); }
 			
 			this.bioFormat.addReference(BiologicalFileCreatorHelper.createReference(i, year, start, stopp));
 		}
 		
 		/** Sequence and Features PART. */
-		String sequenceToRecord	= new String("");
+		StringBuilder sbSequenceToRecord	= new StringBuilder();
 		int start				= 0;
-		for (int i = 0 ; i < this.encodedContent.size() ; i++) { 
-			/** Append... */
-			sequenceToRecord += this.encodedContent.get(i);
+		for (int i = 0 ; i < this.getEncodedCont().size() ; i++) { 
+			sbSequenceToRecord.append(this.getEncodedCont().get(i));
 		
-			int length	= this.encodedContent.get(i).length();
+			int length	= this.getEncodedCont().get(i).length();
 			String pos	= (start + 1)+".."+( start + 1 + length );
-			if (this.encodedPath.size() > 0) {
+			if (this.getEncodedPath().size() > 0) {
 				FeatureDefinition cds	= FeatureDefinition.getFromFactory("CDS");
 				Feature featToAdd		= new Feature(cds, pos);
 				featToAdd.addQualifier("codon_start", (start + 1)+"");
 				featToAdd.addQualifier("gene", location);
 				featToAdd.addQualifier("product", "*****"); /** XXX !! */
-				if (this.encodedPath.get(i).length() != 0)
-					{ featToAdd.addQualifier("translation", this.encodedPath.get(i)); }
+				if (this.getEncodedPath().get(i).length() != 0)
+					{ featToAdd.addQualifier("translation", this.getEncodedPath().get(i)); }
 				this.bioFormat.addFeature(featToAdd);
-			} // END "if (this.encodedPath.size() > 0)"
+			} // END "if (this.getEncodedPath().size() > 0)"
 			start += length;
 			FeatureDefinition src	= FeatureDefinition.getFromFactory("source");
 			Feature srcToAdd		= new Feature(src, pos);
@@ -121,20 +125,20 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 			geneToAdd.addQualifier("note", "***** part [" + (i+1) + "] *****"); /** XXX !! */
 			this.bioFormat.addFeature(geneToAdd);
 		}
-		this.bioFormat.setSequence(new Sequence("", sequenceToRecord));
+		this.bioFormat.setSequence(new Sequence("", sbSequenceToRecord.toString()));
 		
 		/** Base Counting Part !! */
 		List<String> bases = new ArrayList<String>();
-		for (int i = 0 ; i < sequenceToRecord.length() ; i++) {
-			String element = sequenceToRecord.charAt(i) + "";
+		for (int i = 0 ; i < sbSequenceToRecord.length() ; i++) {
+			String element = sbSequenceToRecord.charAt(i) + "";
 			if (!bases.contains(element) )	{ bases.add(element); }
 		}
 		bases.add("other");
 		int[] basesCounts	= new int[bases.size()];
 		String[] basesNames	= bases.toArray(new String[0]);
-		for (int i = 0 ; i < sequenceToRecord.length() ; i++) {
+		for (int i = 0 ; i < sbSequenceToRecord.length() ; i++) {
 			boolean counted	= false;/** 'other' counted separately */
-			char toTest		= sequenceToRecord.charAt(i);
+			char toTest		= sbSequenceToRecord.charAt(i);
 			for (int j = 0 ; (j < basesCounts.length - 1) 
 					&& (!counted) ; j++) 
 				{ if (toTest == basesNames[j].charAt(0)) 
@@ -143,5 +147,5 @@ public class GenBankFileCreator extends BiologicalFileCreator {
 		}
 		this.bioFormat.setBasesCountsAndNames(basesCounts, basesNames);
 	}
-	
+
 }

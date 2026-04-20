@@ -2,7 +2,7 @@ package gabywald.crypto.data.composition;
 
 /**
  * 
- * @author Gabriel Chandesris (2011)
+ * @author Gabriel Chandesris (2011, 2026)
  * @see gabywald.crypto.data.GenBankFormat
  * @see gabywald.crypto.data.EmblFormat
  */
@@ -52,7 +52,7 @@ public class Sequence {
 	}
 	
 	public String toStringEMBL() {
-		String toReturn = new String("");
+		StringBuilder sbToReturn = new StringBuilder("");
 		
 		int division		= 10;	/** Ten (10) chars by segment. */
 		int segmentsGroup	= 6;	/** Six (6) segments by lines. */
@@ -70,7 +70,7 @@ public class Sequence {
 				int lineIndex	= (i * division );
 				String index	= Sequence.completeDataWith(lineIndex, ' ', true, 10); 
 				String newLine	= "     "+tempSeq.substring(0, tempSeq.length()-1)+index;
-				toReturn		+= newLine+"\n";
+				sbToReturn.append(newLine).append("\n");
 				/** System.out.println("\t'"+i+"'\t'"+index+"'\t'"+tempSeq+"'"); */
 				/** System.out.println("\t\t'"+newLine+"'"); */
 				tempSeq = new String("");
@@ -79,19 +79,19 @@ public class Sequence {
 			tempSeq += segmentation[i]+" ";
 			
 			/** For the last line -- if incomplete : most cases !! */
-			if (i == (segmentsNumber-1) ) {
+			if ( (i == (segmentsNumber-1) ) && (segmentation[i] != null) ) {
 				// while (i%segmentsGroup != 0) { i++; }
 				int lineIndex	= (i * division);
 				int more		= tempSeq.replace(" ", "").length()%10;
 				lineIndex 		+= more;
-				int toComplete	= 10 + (56 - (tempSeq.length()%10) );
+				int toComplete	= 10 + (66 - (tempSeq.length()) );
 				String index	= Sequence.completeDataWith(lineIndex, ' ', true, toComplete); 
 				String newLine	= "     "+tempSeq.substring(0, tempSeq.length()-1)+index;
-				toReturn		+= newLine+"\n";
+				sbToReturn.append(newLine).append("\n");
 			}
 		}
 		
-		return toReturn;
+		return sbToReturn.toString();
 	}
 	
 	/**

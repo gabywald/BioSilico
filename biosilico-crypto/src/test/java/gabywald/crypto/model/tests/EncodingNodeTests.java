@@ -1,17 +1,17 @@
 package gabywald.crypto.model.tests;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import gabywald.crypto.model.EncodingNode;
 import gabywald.crypto.model.EncodingNodeBuilder;
 import gabywald.crypto.model.EncodingNodeException;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2025-2026)
  */
 class EncodingNodeTests {
 
@@ -24,7 +24,7 @@ class EncodingNodeTests {
 //		
 //		Arrays.asList(en.getCodons()).stream().forEach(System.out::println);
 //		
-//		System.out.println(EncodingNode.treeView(en));
+//		Logger.printlnLog(LoggerLevel.LL_NONE, EncodingNode.treeView(en));
 //	}
 	
 	@Test
@@ -40,9 +40,8 @@ class EncodingNodeTests {
 		
 		Assertions.assertNotNull( en );
 		
-		Arrays.asList(en.getCodons()).stream().forEach(System.out::println);
-		
-		System.out.println(EncodingNode.treeView(en));
+		// Arrays.asList(en.getCodons()).stream().forEach(System.out::println);
+		Logger.printlnLog(LoggerLevel.LL_NONE, EncodingNode.treeView(en));
 	}
 	
 	@Test
