@@ -8,7 +8,7 @@ L'objectif ici est de reprendre travaux de rétro-analyse des fichiers 'généti
 
 Langages de programmation utilisés : 
   - Perl, Python (pour première approche) ; 
-  - Java (dans un second temps) ; 
+  - Java (déjà existant, revoir / revu également) ; 
   - à voir et préciser pour **Rust** (et d'autres ?) ; 
 
 Formats de fichiers utilisés (en sortie) : 

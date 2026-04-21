@@ -104,15 +104,15 @@ class Gene:
     sex_dep: str
     mutability: str
     data: List[int]
+    data_length: int
     parsed_data: Dict[str, Any] = field(default_factory=dict)
 
     def parse_reaction(self) -> None:
         """Parses Reaction genes (Biochemistry type)."""
         if not (self.type == 0x01 and self.subtype == 0x02):
             return
-        if not self.data or len(self.data) < 4:
+        if len(self.data) < 4:
             return
-
         reactants = []
         products = []
         for i in range(0, min(4, len(self.data)), 2):
@@ -121,18 +121,16 @@ class Gene:
             chem = self.data[i + 1]
             proportion = self.data[i]
             container = reactants if i < 2 else products
-            chem_name = CHEM_NAMES.get(chem, f"Chem{chem:02X}")
             container.append({
-                "chem": chem,
                 "proportion": proportion,
-                "chem_name": chem_name,
+                "chem": chem,
+                "chem_name": CHEM_NAMES.get(chem, f"Chem{chem:02X}")
             })
-
         rate = self.data[8] if len(self.data) >= 9 else 1
         self.parsed_data = {
             "reactants": reactants,
             "products": products,
-            "rate": rate,
+            "rate": rate
         }
 
     def parse_instinct(self) -> None:
@@ -141,7 +139,6 @@ class Gene:
             return
         if not self.data or len(self.data) < 9:
             return
-
         lobe1, cell1, lobe2, cell2, lobe3, cell3, action, reward_punish, amount = self.data[:9]
         self.parsed_data = {
             "conditions": [
@@ -160,7 +157,6 @@ class Gene:
             return
         if not self.data or len(self.data) < 5:
             return
-
         x, y, width, height, perception_link = self.data[:5]
         self.parsed_data = {
             "position": {"x": x, "y": y},
@@ -168,7 +164,47 @@ class Gene:
             "perception_link": "Yes" if perception_link else "No",
             "neurons": width * height,
         }
-    # TODO add for emitter, receptor, initconc
+    
+    def parse_receptor(self):
+        """Parses Receptor genes (Biochemistry type)."""
+        if not (self.type == 0x01 and self.subtype == 0x00):
+            return
+        if len(self.data) < 7:
+            return
+        self.parsed_data = {
+            "locus": self.data[:3],
+            "chemical": CHEM_NAMES.get(self.data[3], f"Chem{self.data[3]:02X}"),
+            "threshold": self.data[4], 
+            "nominal": self.data[5], 
+            "gain": self.data[6]
+            # output ?
+        }
+
+    def parse_emitter(self):
+        """Parses Emitter genes (Biochemistry type)."""
+        if not (self.type == 0x01 and self.subtype == 0x01):
+            return
+        if len(self.data) < 7:
+            return
+        self.parsed_data = {
+            "locus": self.data[:3],
+            "chemical": CHEM_NAMES.get(self.data[3], f"Chem{self.data[3]:02X}"),
+            "threshold": self.data[4], 
+            "samplerate": self.data[5], 
+            "gain": self.data[6]
+            # type ?
+        }
+    
+    def parse_half_lives(self):
+        half_lives = {}
+        for i in range(0, len(self.data), 2):
+            if i + 1 >= len(self.data):
+                break
+            chem = self.data[i]
+            half_lives[CHEM_NAMES.get(chem, f"Chem{chem:02X}")] = self.data[i + 1]
+        self.parsed_data = {"half_lives": half_lives}
+    
+    # TODO add for initconc ??        
 
     def __str__(self) -> str:
         """Returns a human-readable string representation of the gene."""
@@ -185,6 +221,18 @@ class Gene:
                 f"\n  Reaction: {' + '.join(f'{r['proportion']} {r['chem_name']}' for r in reaction['reactants'])} → "
                 f"{' + '.join(f'{p['proportion']} {p['chem_name']}' for p in reaction['products'])} "
                 f"(Rate: {reaction['rate']})"
+            )
+        elif self.type == 0x01 and self.subtype == 0x00 and "chemical" in self.parsed_data:
+            receptor = self.parsed_data
+            base_str += (
+                f"\n  Receptor: LOC({' ; '.join(f'{r}' for r in receptor['locus'])}) → "
+                f"(Chemical: {receptor['chemical']})"
+            )
+        elif self.type == 0x01 and self.subtype == 0x01 and "chemical" in self.parsed_data:
+            emitter = self.parsed_data
+            base_str += (
+                f"\n  Emitter: LOC({' ; '.join(f'{r}' for r in emitter['locus'])}) → "
+                f"(Chemical: {emitter['chemical']})"
             )
         elif self.type == 0x02 and self.subtype == 0x05 and "conditions" in self.parsed_data:
             instinct = self.parsed_data
@@ -253,12 +301,25 @@ def parse_genome_file(filename: str) -> List[Gene]:
             sex_dep=sex_dep,
             mutability=mutability_str,
             data=data,
+            data_length=data_length,
         )
 
-        gene.parse_reaction()
-        gene.parse_instinct()
-        gene.parse_lobe()
-        # TODO add for emitter, receptor, initconc
+        ## print(f"GeneType: {gene.type} ; GeneSubType: {gene.subtype} ; data_length {data_length} ; ...")
+        if gene.type == 0x00 and gene.subtype == 0x00:
+            gene.parse_lobe()
+        elif gene.type == 0x01:
+            if gene.subtype == 0x00:
+                gene.parse_receptor()
+            elif gene.subtype == 0x01:
+                gene.parse_emitter()
+            elif gene.subtype == 0x02:
+                gene.parse_reaction()
+            elif gene.subtype == 0x03:
+                gene.parse_half_lives()
+        elif gene.type == 0x02 and gene.subtype == 0x05:
+            gene.parse_instinct()
+        
+        # TODO add for initconc ?? (and others)
 
         genes.append(gene)
         offset += 10 + data_length
@@ -312,6 +373,7 @@ def display_genes(genes: List[Gene]) -> None:
     """Displays gene information in a human-readable format."""
     for gene in genes:
         print(gene)
+    print(len(genes))
 
 if __name__ == "__main__":
     import argparse

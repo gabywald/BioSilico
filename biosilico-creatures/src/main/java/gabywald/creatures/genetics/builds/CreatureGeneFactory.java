@@ -82,7 +82,7 @@ public abstract class CreatureGeneFactory {
 		// System.out.println("\t[" + varia + "]" );
 		
 		/** For log... */
-		String toTest			= new String("");
+		StringBuilder toTestLog	= new StringBuilder("");
 		
 		ICreatureGene toReturn	= null;
 		StringBuilder sbToShow	= new StringBuilder();
@@ -228,9 +228,10 @@ public abstract class CreatureGeneFactory {
 				switch(subt) {
 				case(0):Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t Organ Gene");		
 					Logger.printlnLog(LoggerLevel.LL_DEBUG, "\t\t(" + content.length() + ") - (" + index + ")");
+					toTestLog.append("\t\t");
 					for (int j = index ; j < content.length() ; j++) 
-						{ toTest += "[" + (int)content.charAt(j) + "]\t"; }
-					Logger.printlnLog(LoggerLevel.LL_DEBUG,  "\t\t" + toTest );
+						{ toTestLog.append("[").append((int)content.charAt(j)).append("]\t"); }
+					Logger.printlnLog(LoggerLevel.LL_DEBUG,  toTestLog.toString() );
 					break;
 				default:Logger.printlnLog(LoggerLevel.LL_WARNING, "\t UNKNOWN TYPE ! [" + type + "]\t[" + subt + "]");
 				} /** END "switch(subt)" */
@@ -270,7 +271,7 @@ public abstract class CreatureGeneFactory {
 						else { toReturn.add(toRecord); }
 					} else 
 						{ Logger.printlnLog(LoggerLevel.LL_WARNING, "-- {" + nextNext + "}"); }
-				}
+				} /** END "if ( (nextNext.endsWith("gene")) || (nextNext.endsWith("gend")) )" */
 			} // else { Logger.printlnLog(LoggerLevel.LL_WARNING, "not a char ?"); }
 		} /** END "while (gtc.isReadable()))" */
 		
