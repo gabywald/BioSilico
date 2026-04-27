@@ -72,25 +72,25 @@ public class Gene {
 		this.mutability = mutability;
 		this.data = data;
 		this.parsedData = new HashMap<>();
-		parseData(); // Parse data based on type/subtype
+		this.parseData(); // Parse data based on type/subtype
 	}
 
 	private void parseData() {
 		switch (type) {
 			case 0x00: // Brain
-				if (subtype == 0x00) parseLobe();
+				if (subtype == 0x00) { this.parseLobe(); }
 				break;
 			case 0x01: // Biochemistry
 				switch (subtype) {
-					case 0x00: parseReceptor(); break;
-					case 0x01: parseEmitter(); break;
-					case 0x02: parseReaction(); break;
-					case 0x03: parseHalfLives(); break;
-					case 0x04: parseInitialConcentration(); break;
+					case 0x00: this.parseReceptor(); break;
+					case 0x01: this.parseEmitter(); break;
+					case 0x02: this.parseReaction(); break;
+					case 0x03: this.parseHalfLives(); break;
+					case 0x04: this.parseInitialConcentration(); break;
 				}
 				break;
 			case 0x02: // Creature
-				if (subtype == 0x05) parseInstinct();
+				if (subtype == 0x05) this.parseInstinct();
 				break;
 			// Add cases for other types/subtypes
 		}
@@ -200,5 +200,12 @@ public class Gene {
 		);
 	}
 
+	public int getType()	{ return this.type; }
+
+	public int getSubtype()	{ return this.subtype; }
+
+	public int getNumber()	{ return this.number; }
+
 	// Additional getters and setters
+	
 }

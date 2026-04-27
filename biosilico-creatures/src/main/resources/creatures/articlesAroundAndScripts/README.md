@@ -4,6 +4,8 @@ Mars-Avril-Mai 2026
 
 L'objectif ici est de reprendre travaux de rétro-analyse des fichiers 'génétiques' des différentes versions du jeu vidéo 'Creatures'. 
 
+=> BioSilico/biosilico-creatures/src/main/resources/creatures/articlesAroundAndScripts/scripts
+
 ## Langages de programmation et ressources programmatiques
 
 Langages de programmation utilisés : 
@@ -29,5 +31,15 @@ Utilisation IA Générative (Mistral AI) pour assister à faire developpement pl
  - Scripts pour analyser génomes et exporter données de façon lisible (pour humain et autres codes) ; 
  - Scripts de comparaison de génomes (à partir scripts et données extraites) ; 
  - Comparaison des résultats obtenus selon scripts ; 
+ 
+ - autres idées : générer image pour "cartographie cérérable" à partir des fichiers GEN (et enseuite fichgiers EXP !). 
+
+## "Cartographie Cérébrale"
+
+... BioSilico/biosilico-creatures/src/main/resources/creatures/articlesAroundAndScripts/scripts
+
+perl brain_map_generator.pl --input ./../creaturesOriginals/dad1.gen
+
+python3 brain_map_generator.py --input ./../creaturesOriginals/dad1.gen
 
 ...
