@@ -196,6 +196,7 @@ class Gene:
         }
     
     def parse_half_lives(self):
+        """Parses Half-lives genes (Biochemistry type)."""
         half_lives = {}
         for i in range(0, len(self.data), 2):
             if i + 1 >= len(self.data):
@@ -234,6 +235,10 @@ class Gene:
                 f"\n  Emitter: LOC({' ; '.join(f'{r}' for r in emitter['locus'])}) → "
                 f"(Chemical: {emitter['chemical']})"
             )
+        elif self.type == 0x01 and self.subtype == 0x03 and "half_lives" in self.parsed_data:
+            half_lives = self.parsed_data["half_lives"]
+            half_lives_list = [f"{chem}={value}" for chem, value in half_lives.items()]
+            base_str += f"\n  Half-Lives: {', '.join(half_lives_list)}"
         elif self.type == 0x02 and self.subtype == 0x05 and "conditions" in self.parsed_data:
             instinct = self.parsed_data
             base_str += (
@@ -318,6 +323,8 @@ def parse_genome_file(filename: str) -> List[Gene]:
                 gene.parse_half_lives()
         elif gene.type == 0x02 and gene.subtype == 0x05:
             gene.parse_instinct()
+        else:
+            print(f"GeneType: {gene.type} ; GeneSubType: {gene.subtype} ; data_length {data_length} ; TODO ...")
         
         # TODO add for initconc ?? (and others)
 

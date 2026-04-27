@@ -146,6 +146,57 @@ sub parse_reaction {
     };
 }
 
+=head2 parse_receptor()
+Parses Receptor genes (Biochemistry type).
+
+=cut
+sub parse_receptor {
+    my ($self) = @_;
+    return unless $self->{type} == 0x01 && $self->{subtype} == 0x00;
+    return unless @{$self->{data}} >= 7;
+
+    $self->{parsed_data} = {
+        locus => [@{$self->{data}}[0..2]],
+        chemical => $CHEM_NAMES{$self->{data}[3]} // sprintf("Chem%02X", $self->{data}[3]),
+        threshold => $self->{data}[4],
+        nominal => $self->{data}[5],
+        gain => $self->{data}[6]
+    };
+}
+
+=head2 parse_emitter()
+Parses Emitter genes (Biochemistry type).
+
+=cut
+sub parse_emitter {
+    my ($self) = @_;
+    return unless $self->{type} == 0x01 && $self->{subtype} == 0x01;
+    return unless @{$self->{data}} >= 7;
+
+    $self->{parsed_data} = {
+        locus => [@{$self->{data}}[0..2]],
+        chemical => $CHEM_NAMES{$self->{data}[3]} // sprintf("Chem%02X", $self->{data}[3]),
+        threshold => $self->{data}[4],
+        samplerate => $self->{data}[5],
+        gain => $self->{data}[6]
+    };
+}
+
+=head2 parse_half_lives()
+Parses HafLivesves genes (Biochemistry type).
+
+=cut
+sub parse_half_lives {
+    my ($self) = @_;
+    my %half_lives;
+    for (my $i = 0; $i < @{$self->{data}}; $i += 2) {
+        last if $i + 1 >= @{$self->{data}};
+        my $chem = $self->{data}[$i];
+        $half_lives{$CHEM_NAMES{$chem} // sprintf("Chem%02X", $chem)} = $self->{data}[$i + 1];
+    }
+    $self->{parsed_data} = { half_lives => \%half_lives };
+}
+
 =head2 parse_instinct()
 Parses Instinct genes (Creature type).
 
@@ -216,6 +267,25 @@ sub to_string {
             join(" + ", map { ($_->{proportion} || 0) . " " . ($_->{chem_name} || "Unknown") } @{$reaction->{products}}) .
             " (Rate: " . ($reaction->{rate} || 1) . ")";
     }
+    elsif ($self->{type} == 0x01 && $self->{subtype} == 0x00 && exists $self->{parsed_data}{chemical}) {
+	    my $receptor = $self->{parsed_data};
+	    $str .= "\n  Receptor: LOC(" . join(" ; ", map { $_ } @{$receptor->{locus}}) . ") → " .
+	           "(Chemical: " . $receptor->{chemical} . ")";
+	}
+	elsif ($self->{type} == 0x01 && $self->{subtype} == 0x01 && exists $self->{parsed_data}{chemical}) {
+	    my $emitter = $self->{parsed_data};
+	    $str .= "\n  Emitter: LOC(" . join(" ; ", map { $_ } @{$emitter->{locus}}) . ") → " .
+	           "(Chemical: " . $emitter->{chemical} . ")";
+	}
+	elsif ($self->{type} == 0x01 && $self->{subtype} == 0x03 && exists $self->{parsed_data}{half_lives}) {
+	    my $half_lives = $self->{parsed_data}{half_lives};
+	    $str .= "\n  Half-Lives: ";
+	    my @half_lives_list;
+	    while (my ($chem, $value) = each %$half_lives) {
+	        push @half_lives_list, "$chem=$value";
+	    }
+	    $str .= join(", ", @half_lives_list);
+	}
     # Add details for Instinct genes
     elsif (defined $self->{type} && $self->{type} == 0x02 &&
            defined $self->{subtype} && $self->{subtype} == 0x05 &&
@@ -237,7 +307,7 @@ sub to_string {
             ", Neurons: " . ($lobe->{neurons} || 0) .
             ", Perception Link: " . ($lobe->{perception_link} || "No");
     }
-    # TODO add for emitter, receptor, initconc
+    # TODO add for emitter, receptor, initconc ... 
 
     return $str;
 }
@@ -340,9 +410,32 @@ sub parse_genome_file {
             data        => $data,
         );
 
-        eval { $gene->parse_reaction() };
-        eval { $gene->parse_instinct() };
-        eval { $gene->parse_lobe() };
+		# print "GeneType: " . sprintf("0x%02X", $gene->{type}) . " ; GeneSubType: " . sprintf("0x%02X", $gene->{subtype}) . " ; data_length " . ($data_length // 0) . " ; TODO ...";
+		if ($gene->{type} == 0x00 && $gene->{subtype} == 0x00) {
+		    $gene->parse_lobe();
+		}
+		elsif ($gene->{type} == 0x01) {
+		    if ($gene->{subtype} == 0x00) {
+		        $gene->parse_receptor();
+		    }
+		    elsif ($gene->{subtype} == 0x01) {
+		        $gene->parse_emitter();
+		    }
+		    elsif ($gene->{subtype} == 0x02) {
+		        $gene->parse_reaction();
+		    }
+		    elsif ($gene->{subtype} == 0x03) {
+		        $gene->parse_half_lives();
+		    }
+		}
+		elsif ($gene->{type} == 0x02 && $gene->{subtype} == 0x05) {
+		    $gene->parse_instinct();
+		}
+		else {
+		    print "GeneType: " . sprintf("0x%02X", $gene->{type}) . " ; GeneSubType: " . sprintf("0x%02X", $gene->{subtype}) . " ; data_length " . ($data_length // 0) . " ; TODO ...\n";
+		}
+		
+		# TODO add for initconc ?? (and others)
 
         push @genes, $gene;
         $offset += 10 + $data_length;
