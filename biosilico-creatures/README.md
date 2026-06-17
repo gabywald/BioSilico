@@ -46,7 +46,6 @@ Some examples :
 java -jar biosilico-creatures/target/biosilico-creatures-0.4.0-SNAPSHOT-jar-with-dependencies.jar -g=biosilico-creatures/src/main/resources/creatures/creaturesOriginals/dad1.gen
 java -jar biosilico-creatures/target/biosilico-creatures-0.4.0-SNAPSHOT-jar-with-dependencies.jar -g=biosilico-creatures/src/main/resources/creatures/creaturesOriginals/mum1.gen
 java -jar biosilico-creatures/target/biosilico-creatures-0.4.0-SNAPSHOT-jar-with-dependencies.jar -g=biosilico-creatures/src/main/resources/creatures/creaturesOriginals/Gren.gen
-
 ```
 
 ### Debug the Jar
