@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Parses Creatures genome files.
+ * @author Gabriel Chandesris (2026)
+ * @deprecated (tests of reimplementation)
  */
 public class GenomeParser {
 	public static List<Gene> parseGenomeFile(String filename) throws IOException {

@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 /**
  * Represents a Creatures gene with all attributes and parsed data.
+ * @author Gabriel Chandesris (2026)
+ * @deprecated (tests of reimplementation)
  */
 public class Gene {
 	// Basic attributes

@@ -12,6 +12,7 @@ import java.util.Map;
  * Generate a brain map from Creatures genome files.
  * <br/>Call with: <genome_file.gen> [output_file.svg]
  * @author Gabriel Chandesris (2026)
+ * @deprecated (tests of reimplementation)
  */
 public class BrainMapGenerator {
 

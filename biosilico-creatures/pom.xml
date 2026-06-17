@@ -20,6 +20,22 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.19.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Source: https://mvnrepository.com/artifact/info.picocli/picocli -->
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.7.7</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- junit 5, unit test -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -35,20 +51,68 @@
 		</dependency>
 
 	</dependencies>
-	
+
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
 			</resource>
 		</resources>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
 			</testResource>
 		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>gabywald.creatures.launcher.CreaturesLauncher</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<!-- Your main class -->
+							<mainClass>gabywald.creatures.launcher.CreaturesLauncher</mainClass>
+							<!-- ClassPath / CP -->
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<!--Bundles all dependencies -->
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>

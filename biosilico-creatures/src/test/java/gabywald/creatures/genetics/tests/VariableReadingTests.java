@@ -23,6 +23,8 @@ import org.junit.jupiter.api.Assertions;
 public class VariableReadingTests {
 	
 	public void testGTC001() {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		String variableFile = "creatures/creaturesArchivesResources/geNorNics/creatures1chemicals.txt";
 		
 		List<VariableDefinition> variableDefinitions = new ArrayList<VariableDefinition>();
@@ -48,7 +50,7 @@ public class VariableReadingTests {
 		catch (FileNotFoundException e)	{ Logger.printlnLog(LoggerLevel.LL_ERROR, "File Not Found !"); }
 		catch (IOException e)			{ Logger.printlnLog(LoggerLevel.LL_ERROR, "IOException !"); }
 		
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + variableFile + "] -- {" + variableDefinitions.size() + " variables}");
+		Logger.printlnLog(LoggerLevel.LL_DEBUG, "[" + variableFile + "] -- {" + variableDefinitions.size() + " variables}");
 		
 		Assertions.assertEquals(true, (variableDefinitions.size() > 0) );
 	}
