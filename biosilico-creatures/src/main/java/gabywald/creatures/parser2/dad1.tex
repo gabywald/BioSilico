@@ -1,0 +1,165 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\title{Brain Map of Norn}
+\author{Creatures Genome Analyzer}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{Brain Map}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\end{tikzpicture}
+\end{center}
+
+\section*{Dendrites Legend}
+
+\begin{longtable}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+{\bf Source} & {\bf Target} & {\bf Strength} & {\bf Type} \\ \hline
+\end{longtable}
+
+\section*{Instincts Legend}
+
+\begin{longtable}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline
+{\bf Action} & {\bf Reward/Punish} & {\bf Amount} & {\bf Conditions} \\ \hline
+Pull (Activate 2) & Punish & 112 & Drive[12], General Sense[19], Perception[0] \\ \hline
+\end{longtable}
+
+\section*{Receptors}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+{\bf Locus} & {\bf Chemical} & {\bf Threshold} & {\bf Nominal} & {\bf Gain} \\ \hline
+(1,5,0) & Need for Pleasure & 0 & 0 & 239 \\ \hline
+(1,5,1) & Hunger & 0 & 0 & 239 \\ \hline
+(1,5,2) & Coldness & 0 & 0 & 239 \\ \hline
+(1,5,3) & Hotness & 0 & 0 & 239 \\ \hline
+(1,5,4) & Chem05 & 0 & 0 & 239 \\ \hline
+(1,5,5) & Chem06 & 0 & 0 & 239 \\ \hline
+(1,5,6) & Chem07 & 0 & 0 & 239 \\ \hline
+(1,5,7) & Chem08 & 0 & 0 & 239 \\ \hline
+(1,5,8) & Chem09 & 0 & 0 & 239 \\ \hline
+(1,5,9) & Fear & 0 & 0 & 239 \\ \hline
+(1,5,10) & Boredom & 0 & 0 & 239 \\ \hline
+(1,5,11) & Chem0C & 0 & 0 & 239 \\ \hline
+(1,5,12) & Chem0D & 0 & 0 & 239 \\ \hline
+(0,6,14) & Chem32 & 0 & 0 & 239 \\ \hline
+(0,8,14) & Chem34 & 0 & 4 & 239 \\ \hline
+(0,6,15) & Chem35 & 0 & 16 & 239 \\ \hline
+(0,6,16) & Chem46 & 0 & 16 & 239 \\ \hline
+(0,8,13) & Chem33 & 0 & 0 & 239 \\ \hline
+(1,2,0) & Chem40 & 0 & 0 & 239 \\ \hline
+(1,4,0) & Chem11 & 65 & 0 & 239 \\ \hline
+(1,4,2) & ChemEF & 191 & 189 & 58 \\ \hline
+(1,4,3) & ChemEF & 191 & 189 & 42 \\ \hline
+(1,4,4) & Hotness & 239 & 191 & 189 \\ \hline
+(1,4,9) & Need for Pleasure & 48 & 0 & 239 \\ \hline
+(1,4,11) & Fear & 239 & 191 & 189 \\ \hline
+(1,4,12) & Chem0C & 239 & 191 & 189 \\ \hline
+(1,4,13) & Chem07 & 239 & 191 & 189 \\ \hline
+(1,4,14) & Chem06 & 239 & 191 & 189 \\ \hline
+(1,4,10) & Chem3B & 0 & 35 & 239 \\ \hline
+(1,4,15) & Chem44 & 106 & 0 & 239 \\ \hline
+(1,4,5) & Chem07 & 239 & 191 & 189 \\ \hline
+\end{longtable}
+
+\section*{Emitters}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+{\bf Locus} & {\bf Chemical} & {\bf Threshold} & {\bf Sample Rate} & {\bf Gain} \\ \hline
+(0,8,1) & Chem34 & 0 & 1 & 239 \\ \hline
+(0,6,1) & Chem35 & 0 & 1 & 239 \\ \hline
+(0,6,2) & Chem46 & 0 & 1 & 239 \\ \hline
+(1,4,1) & Boredom & 0 & 25 & 8 \\ \hline
+(1,4,1) & Hunger & 0 & 64 & 10 \\ \hline
+(1,4,3) & Chem05 & 0 & 24 & 49 \\ \hline
+(1,4,2) & Hotness & 0 & 24 & 50 \\ \hline
+(1,4,4) & Chem07 & 0 & 114 & 8 \\ \hline
+(1,4,5) & Chem08 & 0 & 18 & 5 \\ \hline
+(1,4,5) & Chem09 & 0 & 75 & 51 \\ \hline
+(1,2,0) & Chem3F & 0 & 17 & 6 \\ \hline
+(1,2,0) & Chem0D & 0 & 20 & 7 \\ \hline
+(1,2,1) & Chem41 & 0 & 40 & 64 \\ \hline
+(1,4,0) & Chem40 & 0 & 19 & 6 \\ \hline
+(1,5,0) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,2) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,7) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,8) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,9) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,10) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,5,11) & Chem45 & 239 & 191 & 189 \\ \hline
+(1,2,0) & Pain & 0 & 82 & 5 \\ \hline
+(1,4,1) & Boredom & 0 & 47 & 8 \\ \hline
+\end{longtable}
+
+\section*{Stimuli}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{4cm}|}
+\hline
+{\bf Type} & {\bf Intensity} & {\bf Locus} \\ \hline
+\end{longtable}
+
+\section*{Chemical Reactions}
+
+\begin{longtable}{|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+{\bf Reactants} & {\bf Products} & {\bf Rate} \\ \hline
+1 Chem11 & 1 Pain & 1 \\ \hline
+1 Chem12 & 1 Pain & 1 \\ \hline
+1 Chem13 & 1 Pain & 1 \\ \hline
+1 Chem14 & 1 Pain & 1 \\ \hline
+1 Chem15 & 1 Pain & 1 \\ \hline
+1 Chem16 & 1 Pain & 1 \\ \hline
+1 Chem18 & 1 Pain & 1 \\ \hline
+1 Chem19 & 1 Pain & 1 \\ \hline
+1 Chem1A & 1 Pain & 1 \\ \hline
+1 Chem1B & 1 Pain & 1 \\ \hline
+1 Chem1C & 1 Pain & 1 \\ \hline
+1 Chem1D & 1 Pain & 1 \\ \hline
+1 Chem21 & 1 Need for Pleasure & 1 \\ \hline
+1 Chem22 & 1 Hunger & 1 \\ \hline
+1 Chem23 & 1 Coldness & 1 \\ \hline
+1 Chem24 & 1 Hotness & 1 \\ \hline
+1 Chem25 & 1 Chem05 & 1 \\ \hline
+1 Chem26 & 1 Chem06 & 1 \\ \hline
+1 Chem27 & 1 Chem07 & 1 \\ \hline
+1 Chem28 & 1 Chem08 & 1 \\ \hline
+1 Chem29 & 1 Chem09 & 1 \\ \hline
+1 Chem2C & 1 Chem0C & 1 \\ \hline
+1 Chem2D & 1 Chem0D & 1 \\ \hline
+1 Chem41 & 2 Chem3F & 40 \\ \hline
+1 Chem43 & 2 Chem3B & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+4 ChemEF & 191 ChemBD & 1 \\ \hline
+2 ChemEF & 191 ChemBD & 1 \\ \hline
+1 Chem44 & 1 Pain & 64 \\ \hline
+4 Chem45 & 1 Chem3A & 1 \\ \hline
+1 Chem45 & 1 Chem40 & 72 \\ \hline
+1 Chem45 & 1 Pain & 1 \\ \hline
+\end{longtable}
+
+\section*{Chemical Half-Lives}
+
+\begin{longtable}{|p{4cm}|p{4cm}|}
+\hline
+{\bf Chemical} & {\bf Half-Life} \\ \hline
+Chem78 & 56 \\ \hline
+\end{longtable}
+
+\end{document}
