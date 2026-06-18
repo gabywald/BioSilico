@@ -31,6 +31,10 @@ public class BioSilicoCreaturesCommand implements Runnable {
 			description = "Creatures Genetic (.gen) file to analyse.  ")
 	String creaturesGENfile;
 	
+	@Option(names = {"-c", "--compare2file"}, arity = "1", required = false, 
+			description = "Creatures Genetic (.gen) file to analyse and compare with first.  ")
+	String creaturesGENfile2compare;
+	
 	/**
 	 * Log Level. 
 	 */
@@ -76,17 +80,29 @@ public class BioSilicoCreaturesCommand implements Runnable {
 	public void run() {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "{" + this.creaturesGENfile + "}");
 		
-		File testIFexists = new File( this.creaturesGENfile );
+		List<ICreatureGene> cGENread1 = BioSilicoCreaturesCommand.analyseFile(this.creaturesGENfile);
+		
+		// ***** if second file : comparison !
+		if (this.creaturesGENfile2compare != null) {
+			List<ICreatureGene> cGENread2 = BioSilicoCreaturesCommand.analyseFile(this.creaturesGENfile2compare);
+		}
+	}
+	
+	public String getCreaturesGENfile()			{ return this.creaturesGENfile; }
+	public String getCreaturesGENfile2compare()	{ return this.creaturesGENfile2compare; }
+	
+	public static List<ICreatureGene> analyseFile(String cGENfile) {
+		File testIFexists = new File( cGENfile );
 		if ( ! testIFexists.fileExists()) { 
-			Logger.printlnLog(LoggerLevel.LL_FORUSER, "File {" + creaturesGENfile + "} does not exists !");
+			Logger.printlnLog(LoggerLevel.LL_FORUSER, "File {" + cGENfile + "} does not exists !");
 			System.exit(1);
 		}
 		
-		GeneticFileContent gfc = new GeneticFileContent( this.creaturesGENfile );
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- {" + gfc.getFileName() + " }");
+		GeneticFileContent gfc = new GeneticFileContent( cGENfile );
+		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- {" + gfc.getFileName() + " }");
 		
-		List<ICreatureGene> genomeREAD = CreatureGeneFactory.readGenome( this.creaturesGENfile );
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- {" + genomeREAD.size() + " genes}");
+		List<ICreatureGene> genomeREAD = CreatureGeneFactory.readGenome( cGENfile );
+		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- {" + genomeREAD.size() + " genes}");
 		
 		// DONE a function to count a type / subtype of genes
 		for (GeneDenomination gd : GeneDenomination.values()) {
@@ -96,8 +112,8 @@ public class BioSilicoCreaturesCommand implements Runnable {
 		int sumup = Arrays.asList(GeneDenomination.values()).stream()
 				.map( gd -> CreatureGeneListHelper.getCountOf(genomeREAD, gd.getType(), gd.getSubt()) )
 				.reduce(0, Integer::sum).intValue();
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- {" + sumup + " SumUp genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- " + ((genomeREAD.size() == sumup)?"OK all. ":"!! Missing or More ?? ") );
+		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- {" + sumup + " SumUp genes}");
+		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- " + ((genomeREAD.size() == sumup)?"OK all. ":"!! Missing or More ?? ") );
 		
 		// TODO graphical representation of Brain / Brain Lobes
 		
@@ -108,8 +124,8 @@ public class BioSilicoCreaturesCommand implements Runnable {
 		// TODO exports of genome
 		
 		// TODO to modify genomes (?)
+		
+		return genomeREAD;
 	}
-	
-	public String getCreaturesGENfile() { return this.creaturesGENfile; }
 	
 }
