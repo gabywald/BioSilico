@@ -1,11 +1,13 @@
 package gabywald.creatures.launcher;
 
+import java.util.Arrays;
 import java.util.List;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
 import gabywald.creatures.genetics.builds.CreatureGeneFactory;
 import gabywald.creatures.genetics.builds.CreatureGeneListHelper;
 import gabywald.creatures.genetics.builds.ICreatureGene;
+import gabywald.creatures.launcher.CreaturesLauncher.GeneDenomination;
 import gabywald.global.data.File;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -86,50 +88,28 @@ public class BioSilicoCreaturesCommand implements Runnable {
 		List<ICreatureGene> genomeREAD = CreatureGeneFactory.readGenome( this.creaturesGENfile );
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- {" + genomeREAD.size() + " genes}");
 		
-		// TODO a function to count a type / subtype of genes
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 0, 0) + " Brain Lobe genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 0, 1) + " Brain Organ genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 0, 2) + " Brain Tract genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 1, 0) + " Receptor genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 1, 1) + " Emitter genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 1, 2) + " Ch. Reaction genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 1, 3) + " Half-Lives genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 1, 4) + " Init Conc. genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 0) + " Stimulus genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 1) + " Genus genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 2) + " Appearance genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 3) + " Pose genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 4) + " Gait genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 5) + " Instinct genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 6) + " Pigment genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 2, 7) + " Pigment bl. genes}");
-		Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, 3, 0) + " Organ genes}");
-		// Logger.printlnLog(LoggerLevel.LL_INFO, "\t" + CreatureGeneListHelper.getCountOf(genomeREAD, 3, 0) + " ... genes}");
-		// TODO Sum up / comparison of size results ?! Reporting ? (foreach lopp with different Int Range loops ?)
-		int sumup = CreatureGeneListHelper.getCountOf(genomeREAD, 0, 0) 
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 0, 1)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 0, 2)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 1, 0)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 1, 1)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 1, 2)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 1, 3)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 1, 4)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 0)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 1)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 2)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 3)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 4)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 5)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 6)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 2, 7)
-					+ CreatureGeneListHelper.getCountOf(genomeREAD, 3, 0);
+		// DONE a function to count a type / subtype of genes
+		for (GeneDenomination gd : GeneDenomination.values()) {
+			Logger.printlnLog(LoggerLevel.LL_INFO, "\t{" + CreatureGeneListHelper.getCountOf(genomeREAD, gd.getType(), gd.getSubt()) + " " + gd.getName() + " genes}");
+		}
+		// DONE Sum up / comparison of size results ?! Reporting ? 
+		int sumup = Arrays.asList(GeneDenomination.values()).stream()
+				.map( gd -> CreatureGeneListHelper.getCountOf(genomeREAD, gd.getType(), gd.getSubt()) )
+				.reduce(0, Integer::sum).intValue();
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- {" + sumup + " SumUp genes}");
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + this.creaturesGENfile + "] -- " + ((genomeREAD.size() == sumup)?"OK all. ":"!! Missing or More ?? ") );
 		
+		// TODO graphical representation of Brain / Brain Lobes
+		
+		// TODO graphical representation of Instincts
+		
+		// TODO graphical representation of Stimulus
+		
 		// TODO exports of genome
+		
 		// TODO to modify genomes (?)
 	}
 	
-	public String getCwreaturesGENfile() { return this.creaturesGENfile; }
-
+	public String getCreaturesGENfile() { return this.creaturesGENfile; }
+	
 }

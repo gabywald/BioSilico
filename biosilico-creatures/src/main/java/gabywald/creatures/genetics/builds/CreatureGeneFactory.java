@@ -238,7 +238,7 @@ public abstract class CreatureGeneFactory {
 				break;
 			default:Logger.printlnLog(LoggerLevel.LL_WARNING, "\t UNKNOWN TYPE ! [" + type + "]\t[" + subt + "]");
 			} /** END "switch(type)" */
-			Logger.printlnLog(LoggerLevel.LL_DEBUG, sbToShow.toString() );
+			Logger.printlnLog(LoggerLevel.LL_NONE, sbToShow.toString() );
 		} catch (CreatureGeneException cge) { 
 			Logger.printlnLog(LoggerLevel.LL_ERROR, "\t EXCEPTION [" + cge.toString() + "]");
 			// cge.printStackTrace();
