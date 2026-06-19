@@ -2,8 +2,17 @@ package gabywald.creatures.launcher;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
+import gabywald.creatures.genetics.BioChemicalEmitterGene;
+import gabywald.creatures.genetics.BioChemicalReactionGene;
+import gabywald.creatures.genetics.BioChemicalReceptorGene;
+import gabywald.creatures.genetics.BrainLobeGene;
+import gabywald.creatures.genetics.HalfLivesGene;
+import gabywald.creatures.genetics.InstinctGene;
+import gabywald.creatures.genetics.StimulusGene;
 import gabywald.creatures.genetics.builds.CreatureGeneFactory;
 import gabywald.creatures.genetics.builds.CreatureGeneListHelper;
 import gabywald.creatures.genetics.builds.ICreatureGene;
@@ -81,6 +90,19 @@ public class BioSilicoCreaturesCommand implements Runnable {
 		Logger.printlnLog(LoggerLevel.LL_DEBUG, "{" + this.creaturesGENfile + "}");
 		
 		List<ICreatureGene> cGENread1 = BioSilicoCreaturesCommand.analyseFile(this.creaturesGENfile);
+		
+    	String latexOutput = this.creaturesGENfile.replaceFirst("[.][^.]+$", ".tex");
+        LatexExporter.exportBrainMapLatex(
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.BRAIN_LOBE_GENE).stream().map( blg -> (blg instanceof BrainLobeGene)?(BrainLobeGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()), 
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.INSTINCT_GENE).stream().map( blg -> (blg instanceof InstinctGene)?(InstinctGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()), 
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.RECEPTOR_GENE).stream().map( blg -> (blg instanceof BioChemicalReceptorGene)?(BioChemicalReceptorGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()),
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.EMITTER_GENE).stream().map( blg -> (blg instanceof BioChemicalEmitterGene)?(BioChemicalEmitterGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()),
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.STIMULUS_GENE).stream().map( blg -> (blg instanceof StimulusGene)?(StimulusGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()),
+        		// dendrites, 
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.CHEMICAL_REACTION_GENE).stream().map( blg -> (blg instanceof BioChemicalReactionGene)?(BioChemicalReactionGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()),
+        		CreatureGeneListHelper.getSubListOf(cGENread1, CreaturesLauncher.GeneDenomination.HALF_LIVES_GENE).stream().map( blg -> (blg instanceof HalfLivesGene)?(HalfLivesGene)blg:null).filter( elt -> (elt != null)).collect(Collectors.toList()),
+        		latexOutput);
+        System.out.println("Brain map LaTeX generated: " + latexOutput);
 		
 		// ***** if second file : comparison !
 		if (this.creaturesGENfile2compare != null) {

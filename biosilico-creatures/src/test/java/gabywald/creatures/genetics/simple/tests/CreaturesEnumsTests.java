@@ -25,6 +25,15 @@ class CreaturesEnumsTests {
 	}
 	
 	@Test
+	void testGetLobesNames() {
+		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.lobesnames"), 
+				CreaturesEnums.getLobesNames());
+
+		Assertions.assertEquals(	Arrays.asList(new String[] { "Perception", "Drive", "Stimulus Source", "Verb", "Noun", "General Sense", "Decision", "Attention", "Concept", "Regulator" }), 
+				CreaturesEnums.getLobesNames());
+	}
+	
+	@Test
 	void testGetLobeFlags() {
 		Assertions.assertEquals(	CreaturesEnumsTests.getEnumFrom( "data.enum.creatures1.brain.lobeflags"), 
 				CreaturesEnums.getLobeFlags());

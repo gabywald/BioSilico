@@ -14,13 +14,16 @@ public class Gene {
 	public static final int TYPE_BIOCHEMISTRY = 0x01;
 	public static final int TYPE_CREATURE = 0x02;
 
-	// Sous-types de gènes
+	// Sous-types de gènes (regroupoés par types)
+	// TODO à compléter !
 	public static final int SUBTYPE_LOBE = 0x00;
+	
 	public static final int SUBTYPE_RECEPTOR = 0x00;
 	public static final int SUBTYPE_EMITTER = 0x01;
 	public static final int SUBTYPE_REACTION = 0x02;
 	public static final int SUBTYPE_HALF_LIVES = 0x03;
 	public static final int SUBTYPE_INITIAL_CONCENTRATION = 0x04;
+	
 	public static final int SUBTYPE_STIMULUS = 0x00;
 	public static final int SUBTYPE_INSTINCT = 0x05;
 
@@ -104,11 +107,15 @@ public class Gene {
 					case SUBTYPE_REACTION: parseReaction(); break;
 					case SUBTYPE_HALF_LIVES: parseHalfLives(); break;
 					case SUBTYPE_INITIAL_CONCENTRATION: parseInitialConcentration(); break;
-					// TODO case SUBTYPE_STIMULUS: parseStimulus(); break;
+					// TODO completion here !
 				}
 				break;
 			case TYPE_CREATURE:
-				if (subtype == SUBTYPE_INSTINCT) parseInstinct();
+				switch (subtype) {
+					case SUBTYPE_STIMULUS: parseStimulus(); break;
+					case SUBTYPE_INSTINCT: parseInstinct(); break;
+					// TODO completion here !
+				}
 				break;
 		}
 	}
@@ -212,17 +219,17 @@ public class Gene {
 		parsedData.put("stimulus", stimulusData);
 	}
 
-	private void parseDendrite() {
-		if (data.size() < 6) return;
-		Map<String, Object> dendriteData = new HashMap<>();
-		dendriteData.put("source_lobe", data.get(0));
-		dendriteData.put("source_cell", data.get(1));
-		dendriteData.put("target_lobe", data.get(2));
-		dendriteData.put("target_cell", data.get(3));
-		dendriteData.put("strength", data.get(4));
-		dendriteData.put("type", data.get(5)); // 0 = D0, 1 = D1
-		parsedData.put("dendrite", dendriteData);
-	}
+//	private void parseDendrite() {
+//		if (data.size() < 6) return;
+//		Map<String, Object> dendriteData = new HashMap<>();
+//		dendriteData.put("source_lobe", data.get(0));
+//		dendriteData.put("source_cell", data.get(1));
+//		dendriteData.put("target_lobe", data.get(2));
+//		dendriteData.put("target_cell", data.get(3));
+//		dendriteData.put("strength", data.get(4));
+//		dendriteData.put("type", data.get(5)); // 0 = D0, 1 = D1
+//		parsedData.put("dendrite", dendriteData);
+//	}
 
 	// Getters
 	public String getTypeName() {
@@ -246,12 +253,12 @@ public class Gene {
 					case SUBTYPE_REACTION: return "Reaction";
 					case SUBTYPE_HALF_LIVES: return "Half-Lives";
 					case SUBTYPE_INITIAL_CONCENTRATION: return "Initial Concentration";
-					// TODO case SUBTYPE_STIMULUS: return "Stimulus";
+					
 				}
 				break;
 			case TYPE_CREATURE:
 				switch (subtype) {
-					// TODO case SUBTYPE_STIMULUS: return "Stimulus";
+					case SUBTYPE_STIMULUS: return "Stimulus";
 					case SUBTYPE_INSTINCT: return "Instinct";
 				}
 				break;

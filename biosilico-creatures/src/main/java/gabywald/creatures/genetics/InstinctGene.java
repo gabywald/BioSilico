@@ -1,7 +1,10 @@
 package gabywald.creatures.genetics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import gabywald.biosilico.genetics.builders.Pair;
 import gabywald.creatures.model.UnsignedByte;
 
 /**
@@ -48,6 +51,12 @@ public class InstinctGene extends CreatureGene {
 	public int getNeurone1()	{ return this.data.get(1).getValue(); }
 	public int getNeurone2()	{ return this.data.get(3).getValue(); }
 	public int getNeurone3()	{ return this.data.get(5).getValue(); }
+	
+	public List<Pair<UnsignedByte, UnsignedByte> > getConditions() {
+		return Arrays.asList( Pair.of(this.data.get(0), this.data.get(1)), 
+							  Pair.of(this.data.get(2), this.data.get(3)), 
+							  Pair.of(this.data.get(4), this.data.get(5)) );
+	}
 	
 	public int getAction()				{ return this.data.get(6).getValue(); }
 	public int getReinforcementDrive()	{ return this.data.get(7).getValue(); }

@@ -1,8 +1,8 @@
 package gabywald.creatures.genetics;
 
-import gabywald.creatures.exceptions.CreatureGeneException;
 import gabywald.creatures.model.UnsignedByte;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,9 +12,8 @@ import java.util.List;
 public class HalfLivesGene extends CreatureGene {
 	
 	/**
-	 * 
-	 * @param datas
-	 * @throws CreatureGeneException
+	 * Old variant of constructor. 
+	 * @param datas (List<UnsignedByte>)
 	 */
 	public HalfLivesGene(List<UnsignedByte> datas)
 		{ super(1, 3);this.data.addAll(datas); }
@@ -29,5 +28,9 @@ public class HalfLivesGene extends CreatureGene {
 		if ( (i < 0) || (i >= this.data.size()) ) 
 			{ return 0; }
 		return this.data.get(i).getValue();
+	}
+	
+	public List<UnsignedByte> getDatas() {
+		return Collections.unmodifiableList( this.data );
 	}
 }
