@@ -81,7 +81,7 @@
 ;"5B";91;"Sensorimotor?";"activase";"FF";255
 ;"5C";92;"Sensorimotor?";"turnase";"FF";255
 ;"5D";93;"Sensorimotor?";"collapsase";"FF";255
-;5,00E-063;"94-99";"Unused";"unused";"FF";255
+;5E-63;"94-99";"Unused";"unused";"FF";255
 ;64;100;"IV chemicals";"energy";"F8";248
 ;65;101;;"adrenaline";"FF";255
 ;66;102;;"pain killer";"FF";255

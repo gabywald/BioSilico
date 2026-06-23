@@ -2,7 +2,6 @@ package gabywald.creatures.launcher;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
@@ -122,6 +121,8 @@ public class BioSilicoCreaturesCommand implements Runnable {
 		
 		GeneticFileContent gfc = new GeneticFileContent( cGENfile );
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- {" + gfc.getFileName() + " }");
+		
+		// TODO if read EXP files : add part about "non-genome" and files defintion here !!
 		
 		List<ICreatureGene> genomeREAD = CreatureGeneFactory.readGenome( cGENfile );
 		Logger.printlnLog(LoggerLevel.LL_INFO, "[" + cGENfile + "] -- {" + genomeREAD.size() + " genes}");

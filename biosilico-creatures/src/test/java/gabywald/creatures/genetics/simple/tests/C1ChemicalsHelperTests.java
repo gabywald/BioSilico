@@ -24,13 +24,18 @@ class C1ChemicalsHelperTests {
 
 	@Test
 	void testGetInstance() {
-		// fail("Not yet implemented");
 		Assertions.assertNotNull(C1ChemicalsHelper.getInstance());
 	}
 
+//	@Test
+//	void testGetChemicalNameBy() {
+//		Assertions.fail("Not yet implemented");
+//	}
+	
 	@Test
-	void testGetChemicalNameBy() {
-		// fail("Not yet implemented");
+	void testgetC1Chemicals() {
+		Assertions.assertNotNull(C1ChemicalsHelper.getInstance());
+		Assertions.assertEquals(256, C1ChemicalsHelper.getInstance().getC1Chemicals().size());
 	}
-
+	
 }

@@ -20,9 +20,9 @@ public class CreaturesLauncher {
 	}
 	
 	public enum GeneDenomination {
-		BRAIN_LOBE_GENE	("Brain Lobe", 0, 0),
-		BRAIN_ORGAN_GENE("Brain Organ", 0, 1),
-		BRAIN_TRACT_GENE("Brain Tract", 0, 2),
+		BRAIN_LOBE_GENE			("Brain Lobe", 0, 0),
+		BRAIN_ORGAN_GENE		("Brain Organ", 0, 1),
+		BRAIN_TRACT_GENE		("Brain Tract", 0, 2),
 		RECEPTOR_GENE			("Receptor", 1, 0),
 		EMITTER_GENE			("Emitter", 1, 1),
 		CHEMICAL_REACTION_GENE	("Ch. Reaction", 1, 2),
@@ -36,7 +36,7 @@ public class CreaturesLauncher {
 		INSTINCT_GENE			("Instinct", 2, 5),
 		PIGMENT_GENE			("Pigment", 2, 6),
 		PIGMENT_BLEED_GENE		("Pigment bl.", 2, 7),
-		ORGAN_GENE		("Organ", 3, 0);
+		ORGAN_GENE				("Organ", 3, 0);
 
 		GeneDenomination(String name, int type, int subt) {
 			this.name = name;

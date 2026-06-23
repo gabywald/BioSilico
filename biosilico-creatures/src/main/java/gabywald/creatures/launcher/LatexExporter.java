@@ -14,6 +14,7 @@ import gabywald.creatures.genetics.HalfLivesGene;
 import gabywald.creatures.genetics.InstinctGene;
 import gabywald.creatures.genetics.StimulusGene;
 import gabywald.creatures.genetics.builds.CreatureGeneListHelper;
+import gabywald.creatures.genetics.simple.C1Chemical;
 import gabywald.creatures.genetics.simple.C1ChemicalsHelper;
 import gabywald.creatures.genetics.simple.CreaturesEnums;
 import gabywald.creatures.model.UnsignedByte;
@@ -57,7 +58,8 @@ public class LatexExporter {
 		latex.append("\\usepackage[utf8]{inputenc}\n");
 		latex.append("\\usepackage{tikz}\n");
 		latex.append("\\usepackage{geometry}\n");
-		latex.append("\\geometry{a4paper, margin=1in}\n");
+		latex.append("\\geometry{a4paper, margin=1.5cm}\n");
+		// latex.append("\\usepackage[top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}\n");
 		latex.append("\\usepackage{longtable}\n");
 		latex.append("\\usepackage{array}\n");
 		latex.append("\\usepackage{graphicx}\n");
@@ -78,12 +80,14 @@ public class LatexExporter {
 			String color = getLatexColor(lobes.indexOf(lobe));
 			latex.append(String.format(
 				"\\filldraw[%s!70] (%d,%d) rectangle (%d,%d);\n",
-				color, lobe.getXXstartPosition(), lobe.getYYstartPosition(), lobe.getXXstartPosition() + lobe.getWidth(), lobe.getYYstartPosition() + lobe.getHeight()
+				color, 
+				lobe.getXXstartPosition(), lobe.getYYstartPosition(), 
+				lobe.getXXstartPosition() + lobe.getWidth(), lobe.getYYstartPosition() + lobe.getHeight()
 			));
 			latex.append(String.format(
 				"\\node at (%d,%d) {\\tiny %s};\n",
 				lobe.getXXstartPosition() + lobe.getWidth() / 2, lobe.getYYstartPosition() + lobe.getHeight() / 2, 
-					lobe.getSequenceNumber() + CreaturesEnums.getLobesNames().get(lobe.getSequenceNumber().getValue())
+					lobe.getSequenceNumber() + " " + CreaturesEnums.getLobesNames().get(lobe.getSequenceNumber().getValue())
 			));
 		}
 
@@ -110,26 +114,76 @@ public class LatexExporter {
 
 		// Dessiner les instincts (cercles)
 		for (InstinctGene instinct : instincts) {
+			int prevlobeXXpos = 0, prevlobeYYpos = 0;
 			for (Pair<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
 				// BrainLobe lobe = GenomeParser.findLobeByName(lobes, lobeName);
 				BrainLobeGene lobe = CreatureGeneListHelper.getBrainLobeGene(lobes, condition.first.getValue());
 				int cell = condition.second.getValue();
+				// Logger.printlnLog(LoggerLevel.LL_INFO, condition.toString());
 				if (lobe != null) {
+					boolean rewardORpunish = (instinct.getReinforcementDrive() == 49);
 					latex.append(String.format(
-						"\\filldraw[black] (%d,%d) circle (0.2);\n",
-						lobe.getXXstartPosition() + lobe.getWidth() / 2, lobe.getYYstartPosition() + lobe.getHeight() / 2
+						"\\filldraw[%s] (%d,%d) circle (0.2);\n",
+						// lobe.getXXstartPosition() + lobe.getWidth() / 2, lobe.getYYstartPosition() + lobe.getHeight() / 2
+						rewardORpunish?"cyan":"magenta", lobe.getXXstartPosition(), lobe.getYYstartPosition() + cell
 					));
 					latex.append(String.format(
 						"\\node at (%d,%d) [above, font=\\tiny] {%d};\n",
-						lobe.getXXstartPosition() + lobe.getWidth() / 2, lobe.getYYstartPosition() + lobe.getHeight() / 2, cell
+						// lobe.getXXstartPosition() + lobe.getWidth() / 2, lobe.getYYstartPosition() + lobe.getHeight() / 2, cell
+						lobe.getXXstartPosition(), lobe.getYYstartPosition() + cell, cell
 					));
+					
+					if (prevlobeXXpos != 0 && prevlobeYYpos != 0) {
+						latex.append(String.format(
+							"\\draw[thick, black] (%d,%d) -- (%d,%d) ;\n",
+							lobe.getXXstartPosition(), lobe.getYYstartPosition() + cell, prevlobeXXpos, prevlobeYYpos
+						));
+					}
+					prevlobeXXpos = lobe.getXXstartPosition();
+					prevlobeYYpos = lobe.getYYstartPosition() + cell;
 				}
 			}
-			
 		}
+		
+		latex.append(String.format(
+			"\\node at (%d,%d) [above] {%s};\n",
+			5, 50, "Biochemistry Table"
+		));
+		
+		latex.append(String.format(
+			"\\node at (%d,%d) [above] {%s};\n",
+			5, 38, "Strictly Brain Map"
+		));
+		
+		// Dessiner "Table BioCH"
+		int basesQ = 64;
+		int basesN = 42;
+		int cumulx = 0;
+		int cumuly = 0;
+		for (C1Chemical c1c : C1ChemicalsHelper.getInstance().getC1Chemicals()) {
+			latex.append(String.format(
+				"\\filldraw[%s] (%d,%d) circle (0.2);\n",
+				"green", cumulx, basesN + cumuly
+			));
+			latex.append(String.format(
+				"\\node at (%d,%d) [above, font=\\tiny] {%s};\n",
+				cumulx, basesN + cumuly, ((cumulx == 0) || (cumulx == basesQ-1) )?c1c.getNumHEX():"" // c1c.getNumlDECasINT()
+			));
+			cumulx++;
+			if (cumulx >= basesQ) { cumulx = 0; cumuly += 2; }
+			// Logger.printlnLog(LoggerLevel.LL_INFO, String.format( "(%d,%d,%d)", c1c.getNumlDECasINT(), cumulx, basesN + cumuly ));
+		}
+		
+		// Dessiner Receptors
+		// TODO Receptors
+		
+		// Dessiner Emitters
+		// TODO Emitters 
 
 		latex.append("\\end{tikzpicture}\n");
 		latex.append("\\end{center}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 //		// Légende des dendrites
 //		latex.append("\\section*{Dendrites Legend}\n\n");
@@ -150,57 +204,77 @@ public class LatexExporter {
 //		latex.append("\\end{longtable}\n\n");
 
 		// Section : Légende des Instincts
-		latex.append("\\section*{Instincts Legend}\n\n");
-		latex.append("\\begin{longtable}{|p{3cm}|p{3cm}|p{3cm}|p{5cm}|}\n");
+		latex.append("\\section*{Instincts}\n\n");
+		latex.append("Number :").append(instincts.size()).append("\n\n");
+		latex.append("\\begin{longtable}{|p{3cm}|p{3cm}|p{3cm}|p{8cm}|}\n");
 		latex.append("\\hline\n");
-		latex.append("{\\bf Action} & {\\bf Reward/Punish} & {\\bf Amount} & {\\bf Conditions} \\\\ \\hline\n");
+		latex.append("{\\bf Action} & {\\bf Reinforcement Drive} & {\\bf Reinforcement Level} & {\\bf Conditions} \\\\ \\hline\n");
 		for (InstinctGene instinct : instincts) {
-			String conditions = "";
+			StringBuilder conditions = new StringBuilder();
 			for (Pair<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
-				// BrainLobe lobe = GenomeParser.findLobeByName(lobes, lobeName);
-				// BrainLobeGene lobe = CreatureGeneListHelper.getBrainLobeGene(lobes, condition.first.getValue());
 				String lobename = CreaturesEnums.getLobesNames().get(condition.first.getValue());
-				int cell = condition.second.getValue();
-				conditions += String.format("%s[%d]~\\newline ", lobename + " (" + condition.first.getValue() + ")", cell);
+				Pair<String, String> lobeANDCell = BrainLobeGene.getLobeAndInputCell(condition.first.getValue(), condition.second.getValue());
+				if (lobeANDCell != null) {
+					String cellSTR = lobeANDCell.second;
+					int cellNUM = condition.second.getValue();
+					conditions.append( String.format("%s[%d/%s]~\\newline ", lobename + " (" + condition.first.getValue() + ")", cellNUM, cellSTR) );
+				}
 			}
 			latex.append(String.format(
 				"%s & %s & %d & %s \\\\ \\hline\n",
-				instinct.getAction(), instinct.getReinforcementDrive(), instinct.getReinforcementLevel(), conditions
+				BrainLobeGene.C1_ACTIONS[instinct.getAction()], 
+				// instinct.getReinforcementDrive(),
+				instinct.getReinforcementDrive() == 49 ? "Reward" : "Punish", 
+				instinct.getReinforcementLevel(), 
+				conditions.toString()
 			));
 		}
 		latex.append("\\end{longtable}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 		// Section : Récepteurs
 		latex.append("\\section*{Receptors}\n\n");
-		latex.append("\\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}\n");
+		latex.append("Number :").append(receptors.size()).append("\n\n");
+		latex.append("\\begin{longtable}{|p{7cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}\n");
 		latex.append("\\hline\n");
 		latex.append("{\\bf Locus} & {\\bf Chemical} & {\\bf Threshold} & {\\bf Nominal} & {\\bf Gain} \\\\ \\hline\n");
 		for (BioChemicalReceptorGene receptor : receptors) {
+			List<String> localData = BioChemicalReceptorGene.getReceptorOrgan(receptor.getOrgan(), receptor.getTissue(), receptor.getLocus());
 			latex.append(String.format(
-				"(%d,%d,%d) & %s & %d & %d & %d \\\\ \\hline\n",
-				receptor.getOrgan(), receptor.getTissue(), receptor.getLocus(),
-				receptor.getChemical(), receptor.getTheshold(), receptor.getNominal(), receptor.getGain()
+				"(%s, %s, %s) & %s & %d & %d & %d \\\\ \\hline\n", localData.get(0), localData.get(1), localData.get(2), 
+				// "(%d, %d, %d) & %s & %d & %d & %d \\\\ \\hline\n", receptor.getOrgan(), receptor.getTissue(), receptor.getLocus(),
+				C1ChemicalsHelper.getInstance().getChemicalNameBy(receptor.getChemical()), // receptor.getChemical(), 
+				receptor.getTheshold(), receptor.getNominal(), receptor.getGain()
 			));
 		}
 		latex.append("\\end{longtable}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 		// Section : Émetteurs
 		latex.append("\\section*{Emitters}\n\n");
-		latex.append("\\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}\n");
+		latex.append("Number :").append(emitters.size()).append("\n\n");
+		latex.append("\\begin{longtable}{|p{7cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}\n");
 		latex.append("\\hline\n");
 		latex.append("{\\bf Locus} & {\\bf Chemical} & {\\bf Threshold} & {\\bf Sample Rate} & {\\bf Gain} \\\\ \\hline\n");
 		for (BioChemicalEmitterGene emitter : emitters) {
+			List<String> localData = BioChemicalEmitterGene.getEmitterOrgan(emitter.getOrgan(), emitter.getTissue(), emitter.getLocus());
 			latex.append(String.format(
-				"(%d,%d,%d) & %s & %d & %d & %d \\\\ \\hline\n",
-				emitter.getOrgan(), emitter.getTissue(), emitter.getLocus(),
-				emitter.getChemical(), emitter.getTheshold(), emitter.getRate(), emitter.getGain()
+				"(%s, %s, %s) & %s & %d & %d & %d \\\\ \\hline\n", localData.get(0), localData.get(1), localData.get(2), 
+				// "(%d, %d, %d) & %s & %d & %d & %d \\\\ \\hline\n", emitter.getOrgan(), emitter.getTissue(), emitter.getLocus(),
+				C1ChemicalsHelper.getInstance().getChemicalNameBy(emitter.getChemical()), // emitter.getChemical(), 
+				emitter.getTheshold(), emitter.getRate(), emitter.getGain()
 			));
 		}
 		latex.append("\\end{longtable}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 		// Section : Stimulus
 		latex.append("\\section*{Stimuli}\n\n");
-		latex.append("\\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}\n");
+		latex.append("Number :").append(stimuli.size()).append("\n\n");
+		latex.append("\\begin{longtable}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1.50cm}|p{1.50cm}|p{1.50cm}|p{1.50cm}|}\n");
 		latex.append("\\hline\n");
 		latex.append("{\\bf SeqNum} & {\\bf Significance} & {\\bf SensoryNeu} & {\\bf Intensity} & {\\bf Locus 1} & {\\bf Locus 2} & {\\bf Locus 3} & {\\bf Locus 4} \\\\ \\hline\n");
 		for (StimulusGene stimulus : stimuli) {
@@ -215,10 +289,13 @@ public class LatexExporter {
 			));
 		}
 		latex.append("\\end{longtable}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 		// Section : Réactions Chimiques
 		latex.append("\\section*{Chemical Reactions}\n\n");
-		latex.append("\\begin{longtable}{|p{5cm}|p{5cm}|p{2cm}|}\n");
+		latex.append("Number :").append(reactions.size()).append("\n\n");
+		latex.append("\\begin{longtable}{|p{7cm}|p{7cm}|p{2cm}|}\n");
 		latex.append("\\hline\n");
 		latex.append("{\\bf Reactants} & {\\bf Products} & {\\bf Rate} \\\\ \\hline\n");
 		// C1ChemicalsHelper.getInstance().getChemicalNameBy(0)
@@ -226,8 +303,8 @@ public class LatexExporter {
 			StringBuilder reactants = new StringBuilder();
 			reactants.append(reaction.getQuantity1())
 					 .append("*")
-					 .append(C1ChemicalsHelper.getInstance().getChemicalNameBy(reaction.getReactant1()))
-					 .append(" + ")
+					 .append(C1ChemicalsHelper.getInstance().getChemicalNameBy(reaction.getReactant1()));
+			reactants.append(" + ")
 					 .append(reaction.getQuantity2())
 					 .append("*")
 					 .append(C1ChemicalsHelper.getInstance().getChemicalNameBy(reaction.getReactant2()));
@@ -245,9 +322,12 @@ public class LatexExporter {
 			));
 		}
 		latex.append("\\end{longtable}\n\n");
+		
+		latex.append("\\newpage\n\n");
 
 		// Section : Demi-Vies
 		latex.append("\\section*{Chemical Half-Lives}\n\n");
+		latex.append("Number :").append(halfLives.size()).append("\n\n");
 		latex.append("\\begin{longtable}{|p{4cm}|p{4cm}|}\n");
 		latex.append("\\hline\n");
 		latex.append("{\\bf Chemical} & {\\bf Half-Life} \\\\ \\hline\n");

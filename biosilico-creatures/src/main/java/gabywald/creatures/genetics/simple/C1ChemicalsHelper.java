@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import gabywald.global.data.File;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
+import gabywald.utilities.others.IntegerToHexa;
 
 /**
  * 
@@ -18,7 +19,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 public class C1ChemicalsHelper {
 	private static C1ChemicalsHelper instance = null;
 	
-	private static Pattern pINTERVAL = Pattern.compile("([0-9]+)-([0-9]+)");
+	private static Pattern pINTERVAL = Pattern.compile(".([0-9]+)-([0-9]+).");
 	
 	private List<C1Chemical> c1chemicals = null;
 	
@@ -47,14 +48,25 @@ public class C1ChemicalsHelper {
 				if (line.startsWith("##")) { continue; } // ignore commented lines
 				String[] cute	= line.split(";");
 				// ## ;"Number Hex";"Number Dec";"Class";"Name";"Half-Life Hex";"Half-Life Dec"
+				String hexaIndexValue = cute[1].replaceAll("\"", "");
+				// String deciIndexValue = cute[2].replaceAll("\"", "");
 				if (cute[2].matches("[0-9]+")) {
-					c1chemicals2return.add(new C1Chemical(cute[1], cute[2], cute[3], cute[4], cute[5], cute[6]));
+					c1chemicals2return.add(new C1Chemical(hexaIndexValue, cute[2], cute[3], cute[4], cute[5], cute[6]));
+					Logger.printlnLog(LoggerLevel.LL_NONE, String.format( "C1 Chemicals (%s,%s)", cute[1], cute[2] ));
 				} else if (cute[2].matches(pINTERVAL.pattern())) {
-					Matcher match = pINTERVAL.matcher(cute[6]);
-					int start = Integer.parseInt(match.group(0));
-					int stopp = Integer.parseInt(match.group(1));
-					for (int j = start ; j < stopp ; j++) 
-						{ c1chemicals2return.add(new C1Chemical(cute[1], j + "", cute[3], cute[4], cute[5], cute[6])); }
+					Matcher match = pINTERVAL.matcher(cute[2]);
+					if (match.matches()) {
+						int start = Integer.parseInt(match.group(1));
+						int stopp = Integer.parseInt(match.group(2));
+						Logger.printlnLog(LoggerLevel.LL_NONE, String.format( "Completion C1 Chemicals (%d,%d)", start, stopp ));
+						// TODO convert cute[1] to hexadecimal
+						for (int j = start ; j <= stopp ; j++) 
+							{ c1chemicals2return.add(new C1Chemical(IntegerToHexa.decimal2hexadecimal(j), j + "", cute[3], cute[4], cute[5], cute[6])); }
+					} else {
+						Logger.printlnLog(LoggerLevel.LL_WARNING, String.format( "C1 Chemicals UNKNOWN2 (%s,%s)", cute[1], cute[2] ));
+					}
+				} else {
+					Logger.printlnLog(LoggerLevel.LL_WARNING, String.format( "C1 Chemicals UNKNOWN1 (%s,%s)", cute[1], cute[2] ));	
 				}
 				
 			}
@@ -70,4 +82,9 @@ public class C1ChemicalsHelper {
 		}
 		return null;
 	}
+	
+	public List<C1Chemical> getC1Chemicals() {
+		return this.c1chemicals; // TODO return immutable list / array
+	}
+	
 }

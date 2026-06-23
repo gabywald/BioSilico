@@ -291,7 +291,7 @@ public abstract class CreatureGeneFactory {
 											List<UnsignedByte> datas, 
 											int expectedSize) throws CreatureGeneException {
 		if (datas.size() != expectedSize) 
-		 	{ throw new CreatureGeneException(type, subtype, "Bad number of datas e:" + expectedSize + " [" + datas.size() + "]"); }
+		 	{ throw new CreatureGeneException(type, subtype, "Bad number of datas e:[" + expectedSize + "] [" + datas.size() + "]"); }
 		return (datas.size() == expectedSize);
 	}
 	
