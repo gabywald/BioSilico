@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Some useful enumerations for genetic analysis of Creatures' genomes. 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class CreaturesEnums {
 	
@@ -14,6 +14,7 @@ public class CreaturesEnums {
 	 * @author Gabriel Chandesris (2020)
 	 */
 	private enum CreaturesEnumsProperties {
+		LOBES_NAMES				( "data.enum.creatures1.brain.lobesnames" ), 
 		LOBE_FLAGS				( "data.enum.creatures1.brain.lobeflags" ), 
 		PERCEPTION_LINK_FLAGS	( "data.enum.creatures1.brain.perceptionlobelink" ), 
 		SPREAD					( "data.enum.creatures1.brain.spread" ), 
@@ -52,7 +53,7 @@ public class CreaturesEnums {
 	private static List<CreaturesChemical> C3_CHEM = null;
 
 	private static List<String> getEnumFrom(String property) {
-		String propertyContent = Creatures1GenomeParser.PROPERTIES.getProperty( property );
+		String propertyContent = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( property );
 		return Arrays.asList( propertyContent.split(", ") );
 	}
 	
@@ -65,6 +66,10 @@ public class CreaturesEnums {
 		if (list == null) { list = CreaturesChemical.getCreaturesChemicals( version ); }
 		return list;
 	}
+	
+	public static List<String> getLobesNames() 
+		{ return CreaturesEnums.checkReturnEnum(	
+			CreaturesEnums.LOBE_FLAGS, CreaturesEnumsProperties.LOBES_NAMES); }
 	
 	public static List<String> getLobeFlags() 
 		{ return CreaturesEnums.checkReturnEnum(	

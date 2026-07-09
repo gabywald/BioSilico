@@ -1,6 +1,8 @@
 package gabywald.creatures.genetics.tests;
 
 import gabywald.creatures.geneticReader.GeneticFileContent;
+import gabywald.utilities.logger.Logger;
+import gabywald.utilities.logger.Logger.LoggerLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +12,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 
- * @author Gabriel Chandesris (2010, 2020)
- * TODO review and replace "System.out.println(" with "Logger.printlnLog(LoggerLevel.LL_NONE, "
+ * @author Gabriel Chandesris (2010, 2020, 2026)
  */
 public class PosesReading {
 	
@@ -20,19 +21,21 @@ public class PosesReading {
 		// final String dir = System.getProperty("user.dir");
         // System.out.println("current dir = " + dir);
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/PoseName.bin");
+		Assertions.assertNotNull(gfc);
 		Assertions.assertEquals(true, gfc.isReadable());
 	}
 	
 	@Test
 	public void testgfc002() {
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/PoseName.bin");
+		Assertions.assertNotNull(gfc);
 		if (gfc.isReadable()) {
 			while (gfc.isReadable()) {
 				char charAsCC = gfc.nextChar();
 				// int charAsInt = GeneticFileContent.charToNum(charAsCC);
 				if (GeneticFileContent.isAlphaNumeric( charAsCC )) // if (Character.isLetterOrDigit(charAsInt)) 
-					{ System.out.print(charAsCC); }
-				else { System.out.print("."); }
+					{ Logger.printlnLog(LoggerLevel.LL_DEBUG, "" + charAsCC); }
+				else { Logger.printlnLog(LoggerLevel.LL_DEBUG, "."); }
 			} // END "while (gfc.isReadable())" 
 			System.out.println();
 		} // END "if (gfc.isReadable())" 
@@ -42,14 +45,15 @@ public class PosesReading {
 	@Test
 	public void testgfc003() {
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/PoseName.bin");
+		Assertions.assertNotNull(gfc);
 		if (gfc.isReadable()) {
 			while (gfc.isReadable()) {
 				// Logger.printlnLog(LoggerLevel.LL_INFO, "[" + i + "]");
 				char charAsCC = gfc.nextChar();
 				int charAsInt = GeneticFileContent.charToNum(charAsCC);
 				if (GeneticFileContent.isAlphaNumeric( charAsCC )) // if (Character.isLetterOrDigit(charAsInt)) 
-					{ System.out.print(charAsCC); }
-				else { System.out.print("[" + charAsInt + "]"); }
+					{ Logger.printlnLog(LoggerLevel.LL_DEBUG, "" + charAsCC); }
+				else { Logger.printlnLog(LoggerLevel.LL_DEBUG, "[" + charAsInt + "]"); }
 			} // END "while (gfc.isReadable())" 
 			System.out.println();
 		} // END "if (gfc.isReadable())" 
@@ -59,6 +63,7 @@ public class PosesReading {
 	@Test
 	public void testgfc004() {
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/PoseName.bin");
+		Assertions.assertNotNull(gfc);
 		if (gfc.isReadable()) {
 			boolean isDuetto		= false;
 			char[] duetto			= new char[2];
@@ -72,7 +77,7 @@ public class PosesReading {
 				if (GeneticFileContent.isAlphaNumeric( charAsCC )) { 
 					toAppend += charAsCC;
 				} else { 
-					// System.out.print("[" + charAsInt + "]");
+					// Logger.printlnLog(LoggerLevel.LL_DEBUG, "[" + charAsInt + "]");
 					if (charAsInt != 46) {
 						if ( ! toAppend.equals("")) {
 							chNames.add(toAppend);
@@ -93,6 +98,7 @@ public class PosesReading {
 	@Test
 	public void testgfc005() {
 		GeneticFileContent gfc = new GeneticFileContent("creatures/creaturesOriginals/PoseName.bin");
+		Assertions.assertNotNull(gfc);
 		if (gfc.isReadable()) {
 			boolean isDuetto		= false;
 			char[] duetto			= new char[2];
@@ -106,7 +112,7 @@ public class PosesReading {
 				if (GeneticFileContent.isAlphaNumeric( charAsCC )) 
 					{ toAppend += charAsCC; }
 				else { 
-					// System.out.print("[" + charAsInt + "]");
+					// Logger.printlnLog(LoggerLevel.LL_DEBUG, "[" + charAsInt + "]");
 					if (charAsInt != 46) {
 						if ( ! toAppend.equals("")) {
 							chNames.add(toAppend);
@@ -120,7 +126,7 @@ public class PosesReading {
 			} /** END "while (gfc.isReadable())" */
 			
 			for (int i = 0 ; i < 100 ; i++) 
-				{ System.out.print(chNames.get(i) + ((i != 257)?";":"") ); }
+				{ Logger.printlnLog(LoggerLevel.LL_DEBUG, chNames.get(i) + ((i != 257)?";":"") ); }
 			System.out.println();
 			for (int i = 100 ; i < chNames.size() ; i++) 
 				{ System.out.println(chNames.get(i)); }

@@ -12,7 +12,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 /**
  * This class represents the Gene's definitions. 
  * This class could be defined as an enum from a resource / configuration file. 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class GeneTypeSubType {
 	
@@ -34,7 +34,7 @@ public class GeneTypeSubType {
 		Map<String, GeneTypeSubType> toReturn = new HashMap<String, GeneTypeSubType>();
 		
 		try {
-			String path2geneTST = Creatures1GenomeParser.PROPERTIES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
+			String path2geneTST = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
 			File geneDefinitions = File.loadFile( path2geneTST );
 			for (int i = 0 ; (i < geneDefinitions.lengthFile()) ; i++) {
 				String line			= geneDefinitions.getChamp(i);

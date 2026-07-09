@@ -1,29 +1,34 @@
 package gabywald.creatures.genetics;
 
-import java.util.List;
-
 import gabywald.creatures.model.UnsignedByte;
 
 /**
  * This specifies the appearance of the parts of the creature's body. 
  * <br>{ BodyPart ; Variant [C3: ; GenusOfDonor] }
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class AppearanceGene extends CreatureGene {
 	/**
 	 * Old variant of constructor. 
 	 * @param bodyArea (int) Which part of body is concerned.
 	 * @param partsIden (int) [spriteIden] Which sprite / graphical it is using. 
-	 * @deprecated Use {@link AppearanceGene#AppearanceGene(List)} instead !
 	 */
-	private AppearanceGene(int bodyArea, int partsIden) {
+	public AppearanceGene(int bodyArea, int partsIden) {
 		super(2, 3);
 		this.data.add(new UnsignedByte(bodyArea));
 		this.data.add(new UnsignedByte(partsIden));
 	}
 	
-	public AppearanceGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(2, 3, datas, 2); /* size expected is 2 ! */ }
+	/**
+	 * New variant of constructor. 
+	 * @param bodyArea (int) Which part of body is concerned.
+	 * @param partsIden (int) [spriteIden] Which sprite / graphical it is using. 
+	 */
+	public AppearanceGene(UnsignedByte bodyArea, UnsignedByte partsIden) {
+		super(2, 3);
+		this.data.add(bodyArea);
+		this.data.add(partsIden);
+	}
 	
 	public int getBodyPart()	{ return this.data.get(0).getValue(); }
 	public int getSpriteIden()	{ return this.data.get(1).getValue(); }

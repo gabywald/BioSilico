@@ -14,7 +14,7 @@ import gabywald.utilities.logger.Logger.LoggerLevel;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class GeneTypeSubTypeTests {
 	
@@ -35,12 +35,15 @@ class GeneTypeSubTypeTests {
 		
 		Assertions.assertNotNull( map );
 		
-		String path2geneTST = Creatures1GenomeParser.PROPERTIES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
+		String path2geneTST = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( "data.enum.creatures1.geneTypesSubTypes.creatures1and2" );
 		File geneDefinitionsFile = null;
 		try {
 			// NOTE : here file in base of ressources !
 			geneDefinitionsFile = File.loadFile( path2geneTST );
-		} catch (IOException e) { e.printStackTrace(); }
+		} catch (IOException e) { 
+			// e.printStackTrace();
+			Assertions.fail(e.getMessage());
+		}
 		Assertions.assertNotNull( geneDefinitionsFile );
 		for (int i = 0 ; (i < geneDefinitionsFile.lengthFile()) ; i++) {
 			String line			= geneDefinitionsFile.getChamp(i);

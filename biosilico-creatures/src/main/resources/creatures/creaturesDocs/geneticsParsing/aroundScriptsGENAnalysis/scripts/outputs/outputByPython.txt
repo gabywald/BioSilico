@@ -1,0 +1,323 @@
+=== Genome Comparison Report ===
+File 1: dad1.gen
+File 2: mum1.gen
+
+=== Added Genes (0) ===
+
+=== Removed Genes (0) ===
+
+=== Modified Genes (102) ===
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 20:
+  Old: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 21:
+  Old: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 22:
+  Old: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 23:
+  Old: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 24:
+  Old: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 40:
+  Old: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 31:
+  Old: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 32:
+  Old: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 33:
+  Old: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 35:
+  Old: Gene 035: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 035: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 36:
+  Old: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 37:
+  Old: Gene 037: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 037: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 13:
+  Old: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 32:
+  Old: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 13:
+  Old: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 20:
+  Old: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 21:
+  Old: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 24:
+  Old: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 33:
+  Old: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 13:
+  Old: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 20:
+  Old: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 21:
+  Old: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 43:
+  Old: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 31:
+  Old: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 13:
+  Old: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 23:
+  Old: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 38:
+  Old: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 39:
+  Old: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 41:
+  Old: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 43:
+  Old: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 44:
+  Old: Gene 044: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 044: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 59:
+  Old: Gene 059: Type=0x02, Subtype=0x03, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 059: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 5:
+  Old: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 005: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 36:
+  Old: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 13:
+  Old: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 013: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 38:
+  Old: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 39:
+  Old: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 40:
+  Old: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 41:
+  Old: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 31:
+  Old: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 031: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 33:
+  Old: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 033: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 32:
+  Old: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 032: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 43:
+  Old: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 043: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 44:
+  Old: Gene 044: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 044: Type=0x01, Subtype=0x02, SwitchOn=0, SexDep=None, Mutability=None
+Gene 22:
+  Old: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 23:
+  Old: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 24:
+  Old: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 35:
+  Old: Gene 035: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 035: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 36:
+  Old: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 036: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 37:
+  Old: Gene 037: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 037: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 38:
+  Old: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+  New: Gene 038: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+Gene 39:
+  Old: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 039: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 40:
+  Old: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 040: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+Gene 20:
+  Old: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 020: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 21:
+  Old: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 021: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 22:
+  Old: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 022: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 23:
+  Old: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 023: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 24:
+  Old: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 024: Type=0x01, Subtype=0x01, SwitchOn=0, SexDep=None, Mutability=None
+Gene 1:
+  Old: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 001: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 2:
+  Old: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 002: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 3:
+  Old: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 003: Type=0x02, Subtype=0x06, SwitchOn=0, SexDep=None, Mutability=None
+Gene 41:
+  Old: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+  New: Gene 041: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=None
+
+=== Summary ===
+Total genes in File 1: 294
+Total genes in File 2: 294
+Added: 0
+Removed: 0
+Modified: 102
+Unchanged: 192

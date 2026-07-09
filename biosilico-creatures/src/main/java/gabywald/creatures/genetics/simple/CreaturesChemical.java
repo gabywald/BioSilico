@@ -9,7 +9,7 @@ import gabywald.global.data.File;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class CreaturesChemical {
 	private UnsignedByte number;
@@ -72,10 +72,10 @@ public class CreaturesChemical {
 		String path2file	= null;
 		switch(v) {
 		case CREATURES1:
-			path2file = Creatures1GenomeParser.PROPERTIES.getProperty( propertyV1 );
+			path2file = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( propertyV1 );
 			break;
 		case CREATURES2:
-			path2file = Creatures1GenomeParser.PROPERTIES.getProperty( propertyV1.replace("1", "2") );
+			path2file = Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( propertyV1.replace("1", "2") );
 			break;
 		case CREATURES3:
 			// XXX NOTE no C3 chemicals !

@@ -1,3 +1,5 @@
 /target/
 /resources/
 /outputBrainLobes.txt
+
+__pycache__

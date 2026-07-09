@@ -1,0 +1,5 @@
+*.aux
+*.log
+*.pdf
+*.txt.txt
+scripts/test_output.json

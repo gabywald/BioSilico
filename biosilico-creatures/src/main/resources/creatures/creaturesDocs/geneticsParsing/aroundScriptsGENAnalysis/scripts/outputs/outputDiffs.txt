@@ -1,0 +1,22 @@
+9c9
+< === Modified Genes (105) ===
+---
+> === Modified Genes (102) ===
+64,66d63
+< Gene 34:
+<   Old: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+<   New: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+202,204d198
+< Gene 34:
+<   Old: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+<   New: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+277,279d270
+< Gene 34:
+<   Old: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+<   New: Gene 034: Type=0x01, Subtype=0x00, SwitchOn=0, SexDep=None, Mutability=Mutable
+331,332c322,323
+< Modified: 105
+< Unchanged: 189
+---
+> Modified: 102
+> Unchanged: 192

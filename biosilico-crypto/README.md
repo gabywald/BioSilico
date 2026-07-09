@@ -1,12 +1,14 @@
 # 'biosilico-crypto' 
 
+Main purpose of this module is to encrypt / decrypt (text) files or group of (text) files in a "DNAcrypt" way, i.e. output of encrypoted data is nucleic-like or proteic-like sequences.  
+
 ## Use this module 
 
 ### Use the code
 
 See Licence in BioSilico. 
 
-See opart cocnerning code in some parts below. 
+See part concerning code in some parts below. 
 
 ### Use the Jar 
 
@@ -93,7 +95,7 @@ java -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-depen
 java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000 -jar biosilico-crypto/target/biosilico-crypto-0.4.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-Puis connecter avec debugger (typiquement via IDE Eclipse) : new Debug Configuration, Remote, ... et inclure les "Lookup Path..." !
+Then connect with debugger (tipically EclipseIDE ) : new Debug Configuration, Remote, ... and includes "Lookup Path..." !
 
 ## Java Code Part
 

@@ -8,6 +8,10 @@ import gabywald.creatures.genetics.simple.Creatures1GenomeParser;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2020, 2026)
+ */
 public class GeneCreaturesDecoderSuite {
 
 	public static List<IGeneCreaturesDecoder> getCreatures1Suite() {
@@ -16,8 +20,8 @@ public class GeneCreaturesDecoderSuite {
 	
 	private static List<IGeneCreaturesDecoder> getSuite(String classesProperty) {
 		List<IGeneCreaturesDecoder> toReturn = new ArrayList<IGeneCreaturesDecoder>();
-		String packagePath		= Creatures1GenomeParser.PROPERTIES.getProperty( "configuration.GeneCreaturesDecoderSuite.package" );
-		List<String> classes	= Arrays.asList( Creatures1GenomeParser.PROPERTIES.getProperty( classesProperty ).split( ";" ) );
+		String packagePath		= Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( "configuration.GeneCreaturesDecoderSuite.package" );
+		List<String> classes	= Arrays.asList( Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( classesProperty ).split( ";" ) );
 		
 		for (String classe : classes) {
 			String completeClass = packagePath + "." + classe;

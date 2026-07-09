@@ -23,15 +23,18 @@ import gabywald.creatures.genetics.simple.Creatures1GenomeParser;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 class Creatures1GenomeParserTests {
 	
 	@Test
 	void testParseGenomeNOFILE() {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		Assertions.assertThrows(ParserException.class, 
 				() -> Creatures1GenomeParser.parseGenome( "" ), 
 				"File Path is empty !");
+		
 		Assertions.assertThrows(ParserException.class, 
 				() -> Creatures1GenomeParser.parseGenome( null ), 
 				"File Path is null !");
@@ -39,6 +42,8 @@ class Creatures1GenomeParserTests {
 
 	@Test
 	void testParseGenomeMUM1() throws ParserException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		String path2test = "creatures/creaturesOriginals/mum1.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );;
@@ -49,6 +54,8 @@ class Creatures1GenomeParserTests {
 	
 	@Test
 	void testParseGenomeDAD1() throws ParserException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		String path2test = "creatures/creaturesOriginals/dad1.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
@@ -59,6 +66,8 @@ class Creatures1GenomeParserTests {
 	
 	@Test
 	void testParseGenomeGREN() throws ParserException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		String path2test = "creatures/creaturesOriginals/Gren.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
@@ -70,6 +79,9 @@ class Creatures1GenomeParserTests {
 	// This test is for DEBUG Purposes, inactivated !
 	// @Test
 	void testParseGenomeGRENtoDecode() throws ParserException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
+		
 		String path2test = "creatures/creaturesOriginals/Gren.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
@@ -88,6 +100,8 @@ class Creatures1GenomeParserTests {
 	// This test is for DEBUG Purposes, inactivated !
 	// @Test
 	void testParseGenomeDAD1toDecode() throws ParserException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
+		
 		String path2test = "creatures/creaturesOriginals/dad1.gen";
 		CreaturesGenome c1g = Creatures1GenomeParser.parseGenome( path2test );
 		Assertions.assertNotNull( c1g );
@@ -106,6 +120,7 @@ class Creatures1GenomeParserTests {
 	// This test is for DEBUG Purposes, inactivated !
 	// @Test
 	void testExportGenomes() throws ParserException, IOException {
+		Logger.setLogLevel(LoggerLevel.LL_WARNING);
 		
 		FilenameFilter genFilter = new FilenameFilter() {
 			@Override
@@ -160,7 +175,6 @@ class Creatures1GenomeParserTests {
 		
 		fosBrainLobes.flush();
 		fosBrainLobes.close();
-		
 	}
 
 }

@@ -1,0 +1,685 @@
+https://creatures.wiki/MFC_serialized_data
+
+
+creatures.wiki
+MFC serialized data - Creatures Wiki
+17–22 minutes
+
+MFC serialized data is used in Creatures 1 and Creatures 2 for saved worlds (.sfc files) and creatures (.exp files). Similar to CreaturesArchive data, it contains serialized objects from the game engine, essentially an on-disk representation of the internal game state. Objects are serialized using the built-in Windows MFC serialization routines.
+
+Although the format is not fully understood, openc2e is capable of extracting enough data from SFC files to enable default worlds (or any without creatures present) to be loaded almost entirely. Its source code contains a Python script for doing this, as well as the C++ code used by the engine itself.
+
+    1 SFC files
+    2 EXP files
+    3 Common structures
+        3.1 CArchive object header
+        3.2 strings
+        3.3 Creatures 1 Object
+        3.4 Creatures 1 Entity
+        3.5 Creatures 1 CGallery
+    4 SFC structures
+        4.1 Creatures 1 SFC file
+        4.2 Creatures 1 MapData
+        4.3 Creatures 1 Macro
+        4.4 Creatures 1 Scenery
+        4.5 Creatures 1 SimpleObject
+        4.6 Creatures 1 PointerTool
+        4.7 Creatures 1 Bubble
+        4.8 Creatures 1 CallButton
+        4.9 Creatures 1 CompoundObject
+        4.10 Creatures 1 Vehicle
+        4.11 Creatures 1 Lift
+        4.12 Creatures 1 Blackboard
+        4.13 Creatures 1 Creature
+    5 EXP structures
+        5.1 Creatures 1 EXP file
+        5.2 Creatures 1 Creature
+        5.3 Creatures 1 BodyPart
+        5.4 Creatures 1 Body
+        5.5 Creatures 1 Limb
+        5.6 Creatures 1 CBrain
+        5.7 Creatures 1 CBiochemistry
+        5.8 Creatures 1 CInstinct
+        5.9 Creatures 1 CGenome
+    6 External links
+
+SFC files[edit]
+
+SFC files (.sfc) are the world save format for Creatures 1 and Creatures 2. They contain all modifiable information about worlds - such as rooms, agents and creatures.
+
+The default world - which the Emergency Kit and World Switcher use to reset or make a new world - is stored in Eden.sfc, and the current world in World.sfc - although you can also use different files if you're using cheats or the World Switcher. Third-party worlds come with their own SFC files.
+EXP files[edit]
+
+EXP files (.exp) are files for exported creatures in Creatures 1 and Creatures 2. EXP files include a snapshot of the chemical condition of the norn, the genetic D-DNA, the state of the norn brain and information about pregnancies. A common trick for preserving the original exp file in Creatures 1 was to open its properties and check 'read-only'. The game would not then delete the original file upon importing the creature, although it made the game hang a bit.
+Common structures[edit]
+
+MFC serialized data is a dump of binary engine data, with most objects serialized with a CArchive header.
+[edit]
+
+Objects serialized through CArchive start with a header which specifies whether the object is:
+type 	description
+uint16 	persistent id
+uint32 	32-bit persistent id (only if 16-bit persistent id == 0x7FFF)
+
+If the persistent id is 0, this is a NULL object.
+
+If the persistent id is -1 (0xFFFF), then this is a new object using a new class, specified by the following:
+
+If the persistent id is not -1 and persistent_id & 0x8000 is not empty, then this is a new object using an already-seen class at persistent_id & ~0x8000.
+type 	description
+uint16 	schema number
+uint16 	class name length
+... 	class name in ASCII
+
+If the persistent id is anything else, then it is a reference to an already-seen object.
+
+New persistent ids are assigned whenever a new class is seen, and whenever a new object is seen (if both, then the new class is assigned an id first).
+strings[edit]
+type 	description
+uint8 	length
+uint16 	length (only if 8-bit length == 255)
+uint32 	length (only if 16-bit length == 65535)
+char[length] 	string
+Creatures 1 Object[edit]
+
+Parent class of other objects, and appears as the first part of their data. CArchive serialized:
+type 	description
+uint8 	unused portion of classifier (e.g. eventno, which makes no sense here)
+uint8 	species
+uint8 	genus
+uint8 	family
+uint8 	movement status (0 = autonomous, 1 = mousedriven, 2 = floating, 3 = invehicle, 4 = carried)
+uint8 	ATTR
+uint32 	limit_left
+uint32 	limit_top
+uint32 	limit_right
+uint32 	limit_bottom
+Object 	carrier
+uint8 	ACTV
+CGallery 	sprite
+uint32 	tick value
+uint32 	ticks since last tick event fired
+Object 	OBJP
+char[4] 	current sound name
+uint32 	OBV0
+uint32 	OBV1
+uint32 	OBV2
+uint32 	number of scripts
+Script[number of scripts] 	scripts
+
+Script
+
+Not CArchive serialized.
+type 	description
+uint8 	eventno
+uint8 	species
+uint8 	genus
+uint8 	family
+string 	text
+Creatures 1 Entity[edit]
+
+An object part, CArchive serialized:
+type 	description
+CGallery 	
+uint8 	sprite_pose_plus_base // e.g. ADDV BASE POSE (the actual index into the CGallery)
+uint8 	sprite_base // e.g. BASE
+uint32 	z-order (maybe a signed integer)
+uint32 	x
+uint32 	y
+uint8 	has animation
+uint8 	animation frame (only if has animation)
+char[32] 	animation string (null-terminated) (only if has animation)
+Creatures 1 CGallery[edit]
+
+CArchive serialized:
+type 	description
+uint32 	number of images
+char[4] 	filename
+uint32 	first sprite
+uint32 	refcount
+Image[number of images] 	images
+
+Image
+
+Not CArchive serialized:
+type 	description
+CGallery 	parent
+uint8 	status (bitfield: 1 = incache, 2 = ownmem, 4 = locked)
+uint32 	width
+uint32 	height
+uint32 	offset
+SFC structures[edit]
+Creatures 1 SFC file[edit]
+
+All CArchive objects in a Creatures 1 SFC file have a schema number of 1.
+type 	description
+MapData 	world map
+uint32 	number of objects
+Object[number of objects] 	objects
+uint32 	number of sceneries
+Scenery[number of sceneries] 	sceneries
+uint32 	number of scripts
+Script[number of scripts] 	scripts
+uint32 	scrollx
+uint32 	scrolly
+Creature 	current norn
+FavoritePlace[6] 	favorite places
+uint16 	size of speech history
+string[size of speech history] 	speech history
+uint32 	number of macros
+Macro[number of macros] 	macros
+uint32 	number of death row objects
+Object[number of death row objects] 	death row objects
+uint32 	number of event objects
+Object[number of event objects] 	event objects
+uint32 	current score
+uint32 	current health
+uint32 	hatchery eggs
+uint32 	natural eggs
+uint32 	dead norns
+uint32 	live norns
+uint32 	breeders score
+uint32 	sys tick
+uint32 	number of stuffed norns
+Creature[number of stuffed norns] 	stuffed norns
+
+Script
+
+Not CArchive serialized.
+type 	description
+uint8 	eventno
+uint8 	species
+uint8 	genus
+uint8 	family
+string 	text
+
+FavoritePlace
+
+Not CArchive serialized.
+type 	description
+string 	name
+uint16 	x
+uint16 	y
+Creatures 1 MapData[edit]
+
+CArchive serialized:
+type 	description
+uint32 	unknown, always zero
+uint32 	time of day
+CGallery 	background sprite
+uint32 	number of rooms
+Room[number of rooms] 	rooms
+uint32[261] 	groundlevel
+Bacterium[100] 	bacteria
+
+Room
+
+Not CArchive serialized:
+type 	description
+uint32 	left
+uint32 	top
+uint32 	right
+uint32 	bottom
+uint32 	type (0=Indoors, 1=Surface, 2=Undersea)
+
+Bacterium
+
+Not CArchive serialized:
+type 	description
+uint8 	state (0 = Not present, 1 = Dormant, 2 = Active)
+uint8 	antigen
+uint8 	fatal_level
+uint8 	infect_level
+uint8 	toxin1
+uint8 	toxin2
+uint8 	toxin3
+uint8 	toxin4
+Creatures 1 Macro[edit]
+
+Currently running scripts, CArchive serialized:
+type 	description
+uint32 	destroy object afterwards
+uint32 	INST
+uint32 	text length plus six
+string 	script
+uint32 	instruction pointer
+uint32[20] 	stack
+uint32 	stack pointer
+uint32[10] 	vars
+Object 	OWNR
+Object 	FROM
+Object 	EXEC
+Object 	TARG
+Object 	_IT_
+uint32 	PART
+char[4] 	label of most recently visited subroutine
+uint32 	address of most recently visited subroutine
+uint32 	WAIT
+Creatures 1 Scenery[edit]
+
+Subclass of Object:
+type 	description
+Entity 	part
+Creatures 1 SimpleObject[edit]
+
+Subclass of Object:
+type 	description
+Entity 	part
+uint32 	z-order (should match the part's z-order)
+uint8[3] 	click bhvr
+uint8 	touch bhvr
+Creatures 1 PointerTool[edit]
+
+Subclass of SimpleObject:
+type 	description
+int32 	relx
+int32 	rely
+Bubble 	speech bubble
+char[25] 	text (null-terminated)
+Creatures 1 Bubble[edit]
+
+Subclass of SimpleObject:
+type 	description
+uint8 	life
+Object 	creator
+char[25] 	text (null-terminated)
+Creatures 1 CallButton[edit]
+
+Subclass of SimpleObject:
+type 	description
+Lift 	associated lift
+uint8 	floor id
+Creatures 1 CompoundObject[edit]
+
+Subclass of Object:
+type 	description
+uint32 	number of parts
+CompoundPart[number of parts] 	parts
+Hotspot[6] 	hotspots (as created with the CAOS command SPOT)
+uint32[6] 	activation function (creature act1, act2, deact; pointer act1, act2, deact) to hotspot mapping (as set with the CAOS command KNOB)
+
+CompoundPart
+
+Not CArchive serialized:
+type 	description
+Entity 	entity
+int32 	relx
+int32 	rely
+
+relx and rely are always relative to the first CompoundPart's Entity's position. The first CompoundPart always has relx = 0 and rely = 0.
+
+Hotspot
+
+Not CArchive serialized:
+type 	description
+int32 	left
+int32 	top
+int32 	right
+int32 	bottom
+Creatures 1 Vehicle[edit]
+
+Subclass of CompoundObject:
+type 	description
+int32 	xvel (fixed-point 24.8)
+int32 	yvel (fixed-point 24.8)
+int32 	xpos (fixed-point 24.8)
+int32 	ypos (fixed-point 24.8)
+uint32 	cabin left
+uint32 	cabin top
+uint32 	cabin right
+uint32 	cabin bottom
+uint32 	bump
+
+Vehicles store their velocity and an extra position variable (besides the normal Object position) as fixed-point 24.8 fractional numbers, which have a 24-bit integer part and an 8-bit fractional part. These can be truncated to integers via value >> 8, or converted to floating-point numbers via value / 256.0. They can be created from integers via ivalue << 8.
+
+These are used in the following situations:
+
+    Every tick, vehicles update their fixed-point position based on their velocity. If the new position doesn't collide with anything, then the Object integer position is set to the truncated fixed-point position.
+    On valid Activate1, Active2, or Deactivate events, the fixed-point position is reset to be equal to the Object integer position.
+
+Creatures 1 Lift[edit]
+
+Subclass of Vehicle:
+type 	description
+uint32 	number of floors
+uint32 	next or current floor
+int32 	current call button
+uint8 	delay counter
+{uint32, CallButton}[8] 	y-position for floor i, and arbitrary activated callbutton slot i.
+
+This is very silly. Here's what's going on with the last field: there are up to 8 floors, and thus also up to 8 activated callbuttons. Unfortunately these do not share the same order but are paired together for serialization. lift_data_items[i].floor_y is simple, it's the y-position for floor #i. However, lift_data_items[i].activated_callbutton_slot is unrelated to floor #i. The lift treats these as an arbitrary set of activated callbuttons that it can scan through to find its next floor (finding the callbutton's floor indirectly by looking at its floor id and then reindexing back into the lift's own data).
+Creatures 1 Blackboard[edit]
+
+Subclass of CompoundObject:
+type 	description
+uint8 	background color
+uint8 	chalk color
+uint8 	aliascolor
+uint8 	text x position
+uint8 	text y position
+BlackboardWord[16] 	words
+
+BlackboardWord
+
+Not CArchive serialized:
+type 	description
+uint32 	value
+char[11] 	text (null-terminated)
+Creatures 1 Creature[edit]
+
+Subclass of Object. Same as in EXP files.
+EXP structures[edit]
+Creatures 1 EXP file[edit]
+
+All CArchive objects in a Creatures 1 EXP file have a schema number of 1.
+type 	description
+Creature 	exported creature
+CGenome 	genome
+CGenome 	child genome (e.g. the zygote) (only if pregnant)
+Creatures 1 Creature[edit]
+
+Subclass of Object:
+type 	description
+char[4] 	moniker
+char[4] 	mother's moniker
+char[4] 	father's moniker
+Body 	body
+Limb 	head
+Limb 	left thigh
+Limb 	right thigh
+Limb 	left arm
+Limb 	right arm
+Limb 	tail
+uint8 	direction facing
+uint8 	downfoot (0=left 1=right)
+uint32 	foot x
+uint32 	foot y
+uint32 	z-order
+string 	current pose
+uint8 	expression (0=normal 1=happy 2=sad)
+uint8 	eyes open
+uint8 	asleep
+string[100] 	poses
+string[8] 	gait_animations
+CreatureVocabulary[80] 	vocabulary
+ObjectPosition[40] 	remembered object positions
+Stimulus[36] 	stimuli
+Brain 	brain
+Biochemistry 	biochemistry
+uint8 	sex
+uint8 	age
+uint32 	biological tick
+char[4] 	gamete (my moniker)
+char[4] 	zygote (child's moniker, if pregnant)
+uint8 	dead
+uint32 	age in ticks
+uint32 	number of instincts to be processed
+uint32 	dreaming
+CInstinct[number of instincts to be processed] 	instincts
+Goal[40] 	goals for remembered objects
+SimpleObject 	zzzz
+uint32[27][3] 	voice lookup table (NOTE: voice data is similar to VCE files, but the lookup table comes before voices)
+{ char[4], uint32 }[32] 	voices { name, delay_ticks }
+string 	history_moniker (reversed and hex-encoded)
+string 	history_name
+string 	history_moms_moniker (reversed and hex-encoded)
+string 	history_dads_moniker (reversed and hex-encoded)
+string 	history_birthday
+string 	history_birthplace
+string 	history_owner_name
+string 	history_owner_phone
+string 	history_owner_address
+string 	history_owner_email
+
+CreatureVocabulary
+
+Not CArchive serialized:
+type 	description
+string 	in
+string 	out
+uint32 	strength
+
+ObjectPosition
+
+Not CArchive serialized:
+type 	description
+int32 	x
+int32 	y
+
+Stimulus
+
+Not CArchive serialized:
+type 	description
+uint8 	significance
+uint8 	input
+uint8 	intensity
+uint8 	features (bitfield, 0=modulate 2=iprange 4=ifasleep)
+uint8 	chemical0
+uint8 	amount0
+uint8 	chemical1
+uint8 	amount1
+uint8 	chemical2
+uint8 	amount2
+uint8 	chemical3
+uint8 	amount3
+
+Goal
+
+Not CArchive serialized:
+type 	description
+uint32[16] 	drives
+Creatures 1 BodyPart[edit]
+
+Subclass of Entity:
+type 	description
+uint32 	angle (the current calculated angle from the pose string)
+uint32 	view (the current calculated sprite pose, based on the angle and direction but not including head adjustments for moods or closed eyes)
+
+Some examples:
+
+    Sid.exp's head has an angle of 4 (towards camera), a view of 8 (towards camera), a gallery named 4AFX with a base offset of 0, and using sprite 21 (offset 0 + view 8 + normal mood 0 + closed eyes 13).
+    Vixy.exp's left thigh has an angle of 3 (upward), a view of 7 (upward, west-facing), a gallery named 5TSF with a base offset of 36, and using sprite 43 (offset 36 + view 7).
+
+Creatures 1 Body[edit]
+
+Note that the body attachment data is transposed compared to ATT files! ATT files are written such that each pose/angle of the body is in order, with all attachment data for all body parts for that pose. MFC-serialized body data instead has each body part in order, with all attachment data for every pose for that part.
+
+Subclass of BodyPart:
+type 	description
+uint8 	head_data[0].x
+uint8 	head_data[0].y
+... 	up through head_data[9], inclusive
+uint8 	left_leg_data[0].x
+uint8 	left_leg_data[0].y
+... 	up through left_leg_data[9], inclusive
+... 	right_leg_data
+... 	left_arm_data
+... 	right_arm_data
+... 	tail_data
+Creatures 1 Limb[edit]
+
+Subclass of BodyPart:
+type 	description
+LimbData[10] 	limbdata
+Limb 	next limb
+
+LimbData
+
+Not CArchive serialized:
+type 	description
+uint8 	startx
+uint8 	starty
+uint8 	endx
+uint8 	endy
+Creatures 1 CBrain[edit]
+
+CArchive serialized:
+type 	description
+uint32 	number of lobes
+Lobe[number of lobes] 	lobes
+Neuron[...] 	neurons (number depends on counts inside each lobe)
+
+Lobe
+
+Not CArchive serialized:
+type 	description
+uint32 	x
+uint32 	y
+uint32 	width
+uint32 	height
+uint32 	perceptible (0 = no 1 = yes 2 = mutually exclusive)
+uint8 	activity
+uint8[4] 	chemicals
+uint8 	threshold
+uint8 	leakage
+uint8 	reststate
+uint8 	inputgain
+uint8[10] 	svrule
+uint8 	flags
+DendriteType 	d0_type
+DendriteType 	d1_type
+uint32 	number of neurons (should be width * height)
+uint32 	number of dendrites
+
+DendriteType
+
+Not CArchive serialized:
+type 	description
+uint32 	source lobe
+uint8 	min
+uint8 	max
+uint8 	spread
+uint8 	fanout
+uint8 	min ltw
+uint8 	max ltw
+uint8 	min strength
+uint8 	max strength
+uint8 	migration
+uint8 	relaxsuscept
+uint8 	relaxstw
+uint8 	ltw gain rate
+uint8 	gain rate
+uint8 	lose rate
+uint8[10] 	gain rule
+uint8[10] 	lose rule
+uint8[10] 	suscept rule
+uint8[10] 	reinforce rule
+
+Neuron
+
+Not CArchive serialized:
+type 	description
+uint8 	x
+uint8 	y
+uint8 	output
+uint8 	state
+uint8 	wta disable
+uint8 	exclusive
+uint8 	number of d0 dendrites
+uint32 	dendrites starting index
+Dendrite[number of d0 dendrites] 	d0 dendrites
+uint8 	number of d1 dendrites
+uint32 	dendrites starting index
+Dendrite[number of d1 dendrites] 	d1 dendrites
+
+Dendrite
+
+Not CArchive serialized:
+type 	description
+uint32 	source (index into source lobe's cells)
+uint8 	home x
+uint8 	home y
+uint8 	suscept
+uint8 	stw
+uint8 	ltw
+uint8 	strength
+Creatures 1 CBiochemistry[edit]
+
+CArchive serialized:
+type 	description
+Creature 	owner
+uint32 	number of emitters
+uint32 	number of receptors
+uint32 	number of reactions
+ChemicalData[256] 	chemicals
+Emitter[number of emitters] 	emitters
+Receptor[number of receptors] 	receptors
+Reaction[number of reactions] 	reactions
+
+ChemicalData
+
+Not CArchive serialized:
+type 	description
+uint8 	concentration
+uint8 	decay
+
+Emitter
+
+Not CArchive serialized:
+type 	description
+uint8 	organ
+uint8 	tissue
+uint8 	locus
+uint8 	chemical
+uint8 	threshold
+uint8 	rate
+uint8 	gain
+uint8 	flags
+
+Receptor
+
+Not CArchive serialized:
+type 	description
+uint8 	organ
+uint8 	tissue
+uint8 	locus
+uint8 	chemical
+uint8 	threshold
+uint8 	nominal
+uint8 	gain
+uint8 	flags
+
+Reaction
+
+Not CArchive serialized:
+type 	description
+uint8 	reactant1_amount
+uint8 	reactant1_chemical
+uint8 	reactant2_amount
+uint8 	reactant2_chemical
+uint8 	rate
+uint8 	product1_amount
+uint8 	product1_chemical
+uint8 	product2_amount
+uint8 	product2_chemical
+Creatures 1 CInstinct[edit]
+
+CArchive serialized:
+type 	description
+InstinctDendrite[3] 	dendrites to be stimulated
+uint32 	decision to be taken (motor)
+uint32 	reinforcement chemical (reinforcer)
+uint32 	reinforcement amount
+uint32 	phase
+
+InstinctDendrite:
+
+Not CArchive serialized:
+type 	description
+uint32 	lobe
+uint32 	cell
+Creatures 1 CGenome[edit]
+
+CArchive serialized:
+type 	description
+uint32 	length, in bytes, of genes data
+char[4] 	moniker
+uint32 	sex (1=male 2=female)
+uint8 	life stage
+... 	genes data, as in GEN files
+External links[edit]
+
+    Reversing the C1 .exp file format part 1 (General layout and extracting the genome) at The Shee's lost knowledge
+    EXP File Format (Creatures 2) at the Creatures Developer Resource
+    Kaitai Struct formats to parse .exp files (Github)
+

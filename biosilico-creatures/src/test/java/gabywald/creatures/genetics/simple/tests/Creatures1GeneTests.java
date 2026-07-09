@@ -25,12 +25,12 @@ class Creatures1GeneTests {
 		Assertions.assertNotNull( gc1 );
 		Assertions.assertEquals(gtst, gc1.getType());
 		Assertions.assertEquals(header, gc1.getHeader());
-		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [49, 50, 51, 52, 53, 54, 55] )	 contents: []\n", 
+		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [049, 050, 051, 052, 053, 054, 055] )	 contents: []\n", 
 								gc1.toString());
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => []", gc1.printInline());
+		Assertions.assertEquals("" + gtst.getShortName() + " : [049, 050, 051, 052, 053, 054, 055] => []", gc1.printInline());
 		
 		gc1.addContent(new UnsignedByte(42));
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [42]", gc1.printInline());
+		Assertions.assertEquals("" + gtst.getShortName() + " : [049, 050, 051, 052, 053, 054, 055] => [042]", gc1.printInline());
 		
 		Assertions.assertEquals(0, gc1.getHaserror());
 		gc1.oneMoreError();
@@ -39,16 +39,16 @@ class Creatures1GeneTests {
 		Assertions.assertEquals(2, gc1.getHaserror());
 		
 		gc1.addContent(new UnsignedByte(42));
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [42, 42]\t has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("" + gtst.getShortName() + " : [049, 050, 051, 052, 053, 054, 055] => [042, 042]\t has (2) errors ", gc1.printInline());
 		
 		gc1.addContents(new UnsignedByte(41), new UnsignedByte(50), new UnsignedByte(1));
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [42, 42, 41, 50, 1]\t has (2) errors ", gc1.printInline());
-		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [49, 50, 51, 52, 53, 54, 55] )	 contents: [42, 42, 41, 50, 1]\n\t has (2) errors \n", 
+		Assertions.assertEquals("" + gtst.getShortName() + " : [049, 050, 051, 052, 053, 054, 055] => [042, 042, 041, 050, 001]	 has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [049, 050, 051, 052, 053, 054, 055] )	 contents: [042, 042, 041, 050, 001]\n\t has (2) errors \n", 
 									gc1.toString());
 		
 		gc1.addContentSTR( "EVE_" );gc1.addContentSTR( "ADAM" );
-		Assertions.assertEquals("" + gtst.getShortName() + " : [49, 50, 51, 52, 53, 54, 55] => [42, 42, 41, 50, 1]\t has (2) errors ", gc1.printInline());
-		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [49, 50, 51, 52, 53, 54, 55] )	 contents: [42, 42, 41, 50, 1]\n\t has (2) errors \n", 
+		Assertions.assertEquals("" + gtst.getShortName() + " : [049, 050, 051, 052, 053, 054, 055] => [042, 042, 041, 050, 001]\t has (2) errors ", gc1.printInline());
+		Assertions.assertEquals("GeneCreatures1 ( " + gtst.getShortName() + " , [049, 050, 051, 052, 053, 054, 055] )	 contents: [042, 042, 041, 050, 001]\n\t has (2) errors \n", 
 									gc1.toString());
 		
 	}

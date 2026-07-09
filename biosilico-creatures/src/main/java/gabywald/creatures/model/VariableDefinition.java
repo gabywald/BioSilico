@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author Gabriel Chandesris (2013)
+ */
 public class VariableDefinition {
 	private String numberHexa, classOfVar, nameOfVar, hlValueHexa;
 	private int numberInt, hlValueInt;

@@ -1,7 +1,5 @@
 package gabywald.creatures.genetics;
 
-import java.util.List;
-
 import gabywald.creatures.model.UnsignedByte;
 
 /**
@@ -36,25 +34,21 @@ import gabywald.creatures.model.UnsignedByte;
  * 		<li>For all Parts - 0, 1, 2, 3: Furthest down/back pose to furthest up/forward pose. Each body part has 4 degrees of rotation on it to the left and right.</li>
  * 		<li>For all Parts - X: No change in part arrangement </li>
  * </ul>
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class PoseGene extends CreatureGene {
 	/**
 	 * Old variant of the constructor. 
-	 * @param kind (int) Pose (see also GaitGene).
+	 * @param kind (UnsignedByte) Pose (see also GaitGene).
 	 * @param info (String)
 	 * @see GaitGene#GAIT_GENE_POSES
-	 * @deprecated Use {@link PoseGene#PoseGene(List)} instead !
 	 */
-	private PoseGene(int kind, String info) {
+	public PoseGene(UnsignedByte kind, String info) {
 		super(2, 3);
-		this.data.add(new UnsignedByte(kind));
+		this.data.add(kind);
 		this.addToData(info, 15); // Expected length is 15 (C3 : 16)
 	}
 	
-	public PoseGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(2, 3, datas, 1 + 15); /* size expected is 16 (C3 : 17) ! */ }
-
 	public int getPose()		{ return this.data.get(0).getValue(); }
 	public String getInfos()	{ return this.stringifyFromData(1, 15 /** C3: 16 !! */); } 
 	

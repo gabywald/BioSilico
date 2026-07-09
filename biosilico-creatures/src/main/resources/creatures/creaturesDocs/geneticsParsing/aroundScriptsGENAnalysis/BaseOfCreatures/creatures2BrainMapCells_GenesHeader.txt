@@ -1,0 +1,253 @@
+
+Creatures 2 -- Brain Map
+
+Lobe ID 	Gene #		X			Y			Width		Height		Neurons
+	0		01			1 (01)		13 (0D)		7 (07)		16 (10)		112
+	1		02			34 (22)		36 (24)		6 (06)		3 (03)		18
+	2		03			15 (0F)		32 (20)		8 (08)		5 (05)		40
+	3		04			37 (25)		32 (20)		8 (08)		2 (02)		16
+	4		08 			21 (15)		1 (01)		20 (14)		2 (02)		40
+	5		09			32 (20)		40 (28)		8 (08)		4 (04)		32
+	6		05			62 (3E)		15 (0F)		1 (01)		16 (10)		16
+	7		06			44 (2C)		36 (24)		5 (05)		8 (08)		40
+	8		07 			11 (0B)		5 (05)		40 (28)		16 (10)		640
+	9		0A  		4 (04)		40 (28)		16 (10)		1 (01)	16
+
+Creatures 2 -- Cell List (retro-compatible with C1)
+
+01 - Drive
+		00 - Pain
+		01 - Need for pleasure
+		02 - Hunger
+		03 - Coldness
+		04 - Hotness
+		05 - Tiredness
+		06 - Sleepiness
+		07 - Loneliness
+		08 - Crowded
+		09 - Fear
+		0A - Boredom
+		0B - Anger
+		0C - Sex drive
+		0D - Injury
+		0E - Suffocation
+		0F - Thirst
+		10 - Stress
+02 - Stimulus source 	
+		00 - Creature's name
+		01 - User's name
+		02 - Lift call button
+		03 - Nature
+		04 - Plant
+		05 - Egg
+		06 - Food
+		07 - Drink
+		08 - Dispenser
+		09 - Implement
+		0A - Cliff edge
+		0B - Detritus
+		0C - Medicine
+		0D - Toy
+		0E - Weather
+		0F - Badplant
+		10 - Nest
+		11 - Badbug
+		12 - Bug
+		13 - Badcritter
+		14 - Critter
+		15 - Seed
+		16 - Leaf
+		17 - Root
+		18 - Flower
+		19 - Fruit
+		1A - Mover
+		1B - Lift
+		1C - Computer
+		1D - Mediabox
+		1E - Message
+		1F - Leftright
+		20 - Incubator
+		21 - Teleporter
+		22 - <ID 34>
+		23 - Machine
+		24 - Norn
+		25 - Grendel
+		26 - Ettin
+		27 - Shee
+03 - Verb
+		00 - Default (quiescent/stay)
+		01 - Activate 1 it (push)
+		02 - Activate 2 it (pull)
+		03 - Deactivate it (stop)
+		04 - Approach it (come)
+		05 - Retreat from it (run)
+		06 - Get it (get)
+		07 - Drop all (drop)
+		08 - Say what you need (say)
+		09 - Rest (sleep)
+		0A - Travel west (left!)
+		0B - Travel east (right!)
+		0C - Eat it (eat)
+		0D - Hit it (hit)
+		0E - Verb 14
+		0F - Verb 15
+04 - Noun
+		00 - Creature's name
+		01 - User's name
+		02 - Lift call button
+		03 - Nature
+		04 - Plant
+		05 - Egg
+		06 - Food
+		07 - Drink
+		08 - Dispenser
+		09 - Implement
+		0A - Cliff edge
+		0B - Detritus
+		0C - Medicine
+		0D - Toy
+		0E - Weather
+		0F - Badplant
+		10 - Nest
+		11 - Badbug
+		12 - Bug
+		13 - Badcritter
+		14 - Critter
+		15 - Seed
+		16 - Leaf
+		17 - Root
+		18 - Flower
+		19 - Fruit
+		1A - Mover
+		1B - Lift
+		1C - Computer
+		1D - Mediabox
+		1E - Message
+		1F - Leftright
+		20 - Incubator
+		21 - Teleporter
+		22 - <ID 34>
+		23 - Machine
+		24 - Norn
+		25 - Grendel
+		26 - Ettin
+		27 - Shee
+05 - General sensory
+		00 - I've been patted
+		01 - I've been slapped
+		02 - I've bumped a wall
+		03 - I am near a wall
+		04 - I am in a vehicle
+		05 - User has spoken
+		06 - Creature has spoken
+		07 - Own kind has spoken
+		08 - Audible event
+		09 - Visible event
+		0A - It is approaching
+		0B - It is retreating
+		0C - It is near to me
+		0D - It is active
+		0E - It is an object
+		0F - It is a creature
+		10 - It is my sibling
+		11 - It is my parent
+		12 - It is my child
+		13 - It is opposite sex
+		14 - <spare2>
+		15 - <spare3>
+		16 - <spare4>
+		17 - <spare5>
+		18 - <spare6>
+		19 - <spare7>
+		1A - <spare8>
+		1B - <spare9>
+		1C - Approaching an edge
+		1D - Retreating from an edge
+		1E - Falling through the air
+		1F - Hitting the ground post-fall
+06 - Decision
+		00 - Default (quiescent/stay)
+		01 - Activate 1 it (push)
+		02 - Activate 2 it (pull)
+		03 - Deactivate it (stop)
+		04 - Approach it (come)
+		05 - Retreat from it (run)
+		06 - Get it (get)
+		07 - Drop all (drop)
+		08 - Say what you need (say)
+		09 - Rest (sleep)
+		0A - Travel west (left!)
+		0B - Travel east (right!)
+		0C - Eat it (eat)
+		0D - Hit it (hit)
+		0E - Verb 14
+		0F - Verb 15
+07 - Attention/seek 	
+		00 - Creature's name
+		01 - User's name
+		02 - Lift call button
+		03 - Nature
+		04 - Plant
+		05 - Egg
+		06 - Food
+		07 - Drink
+		08 - Dispenser
+		09 - Implement
+		0A - Cliff edge
+		0B - Detritus
+		0C - Medicine
+		0D - Toy
+		0E - Weather
+		0F - Badplant
+		10 - Nest
+		11 - Badbug
+		12 - Bug
+		13 - Badcritter
+		14 - Critter
+		15 - Seed
+		16 - Leaf
+		17 - Root
+		18 - Flower
+		19 - Fruit
+		1A - Mover
+		1B - Lift
+		1C - Computer
+		1D - Mediabox
+		1E - Message
+		1F - Leftright
+		20 - Incubator
+		21 - Teleporter
+		22 - <ID 34>
+		23 - Machine
+		24 - Norn
+		25 - Grendel
+		26 - Ettin
+		27 - Shee 
+
+Creatures 2 -- Gene Header
+
+67 65 6E 65 | gt st ## 00 | so sm mr
+
+Changes : 
+	- mr (Mutation Rate)
+	- Byte SM (one more bit used)
+
+	bit # 7 6 5 4 3 2 1 0
+	 00 - 0 0 0 0 0 0 0 0
+	 01 - 0 0 0 0 0 0 0 1
+	 03 - 0 0 0 0 0 0 1 1
+	 07 - 0 0 0 0 0 1 1 1
+	 0F - 0 0 0 0 1 1 1 1
+	 11 - 0 0 0 1 0 0 0 1
+	 13 - 0 0 0 1 0 0 1 1
+	 17 - 0 0 0 1 0 1 1 1
+	 27 - 0 0 1 0 0 1 1 1
+	 2F - 0 0 1 0 1 1 1 1
+	 37 - 0 0 1 1 0 1 1 1
+	
+	Bit 0 - mutability
+	Bit 1 - duplication
+	Bit 2 - deletion
+	Bit 3 - male-specific
+	Bit 4 - female-specific
+	Bit 5 - dormancy

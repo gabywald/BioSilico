@@ -2,16 +2,21 @@ package gabywald.creatures.genetics;
 
 import gabywald.creatures.model.UnsignedByte;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
  * These are the decay rates of all of the chemicals within the creature's Biochemical Sea. They are arranged in the same way as the reaction rate. 
- * @author Gabriel Chandesris (2013)
+ * @author Gabriel Chandesris (2013, 2026)
  */
 public class HalfLivesGene extends CreatureGene {
 	
-	public HalfLivesGene(List<UnsignedByte> datas) throws CreatureGeneException 
-		{ super(1, 3, datas, 256 /** C2 : 255 */); }
+	/**
+	 * Old variant of constructor. 
+	 * @param datas (List<UnsignedByte>)
+	 */
+	public HalfLivesGene(List<UnsignedByte> datas)
+		{ super(1, 3);this.data.addAll(datas); }
 	
 	public UnsignedByte getValueAt(int i) {
 		if ( (i < 0) || (i >= this.data.size()) ) 
@@ -23,5 +28,9 @@ public class HalfLivesGene extends CreatureGene {
 		if ( (i < 0) || (i >= this.data.size()) ) 
 			{ return 0; }
 		return this.data.get(i).getValue();
+	}
+	
+	public List<UnsignedByte> getDatas() {
+		return Collections.unmodifiableList( this.data );
 	}
 }

@@ -10,7 +10,7 @@ import gabywald.utilities.others.PropertiesLoader;
 
 /**
  * 
- * @author Gabriel Chandesris (2020)
+ * @author Gabriel Chandesris (2020, 2026)
  */
 public class CreaturesGenome {
 	private String name;
@@ -43,8 +43,8 @@ public class CreaturesGenome {
 					.append(") {").append( this.name ).append("}\n");
 		Logger.printlnLog(LoggerLevel.LL_FORUSER, sbToExport.toString());
 		
-		String basePathToExport	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.creatures1" );
-		String exportExtension	= Creatures1GenomeParser.PROPERTIES.getProperty( "parsing.export.extension" );
+		String basePathToExport	= Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( "parsing.export.creatures1" );
+		String exportExtension	= Creatures1GenomeParser.PROPERTIES_BS_CREATURES.getProperty( "parsing.export.extension" );
 		
 		String fileNameToExport	= basePathToExport + this.name + exportExtension;
 		
