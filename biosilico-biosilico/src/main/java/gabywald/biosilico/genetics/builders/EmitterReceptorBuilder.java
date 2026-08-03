@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.EmitterReceptor;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,13 +11,13 @@ public class EmitterReceptorBuilder extends GeneBuilder<EmitterReceptor> {
 	
 	public EmitterReceptorBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.VARIABLE, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.THRESHOLD, Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.IOPUT, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.POSX, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.POSY, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.RECEPTOR, 	Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.INTERNAL, 	Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.VARIABLE, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.THRESHOLD, PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.IOPUT, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.POSX, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.POSY, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.RECEPTOR, 	PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.INTERNAL, 	PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
 	}
 	
 	public int setVariable(int variable) {

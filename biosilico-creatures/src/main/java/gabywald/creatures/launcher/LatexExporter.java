@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import gabywald.biosilico.genetics.builders.Pair;
 import gabywald.creatures.genetics.BioChemicalEmitterGene;
 import gabywald.creatures.genetics.BioChemicalReactionGene;
 import gabywald.creatures.genetics.BioChemicalReceptorGene;
@@ -18,6 +17,7 @@ import gabywald.creatures.genetics.simple.C1Chemical;
 import gabywald.creatures.genetics.simple.C1ChemicalsHelper;
 import gabywald.creatures.genetics.simple.CreaturesEnums;
 import gabywald.creatures.model.UnsignedByte;
+import gabywald.global.structures.PairSimple;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
 
@@ -115,7 +115,7 @@ public class LatexExporter {
 		// Dessiner les instincts (cercles)
 		for (InstinctGene instinct : instincts) {
 			int prevlobeXXpos = 0, prevlobeYYpos = 0;
-			for (Pair<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
+			for (PairSimple<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
 				// BrainLobe lobe = GenomeParser.findLobeByName(lobes, lobeName);
 				BrainLobeGene lobe = CreatureGeneListHelper.getBrainLobeGene(lobes, condition.first.getValue());
 				int cell = condition.second.getValue();
@@ -211,9 +211,9 @@ public class LatexExporter {
 		latex.append("{\\bf Action} & {\\bf Reinforcement Drive} & {\\bf Reinforcement Level} & {\\bf Conditions} \\\\ \\hline\n");
 		for (InstinctGene instinct : instincts) {
 			StringBuilder conditions = new StringBuilder();
-			for (Pair<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
+			for (PairSimple<UnsignedByte, UnsignedByte> condition : instinct.getConditions()) {
 				String lobename = CreaturesEnums.getLobesNames().get(condition.first.getValue());
-				Pair<String, String> lobeANDCell = BrainLobeGene.getLobeAndInputCell(condition.first.getValue(), condition.second.getValue());
+				PairSimple<String, String> lobeANDCell = BrainLobeGene.getLobeAndInputCell(condition.first.getValue(), condition.second.getValue());
 				if (lobeANDCell != null) {
 					String cellSTR = lobeANDCell.second;
 					int cellNUM = condition.second.getValue();
@@ -278,7 +278,7 @@ public class LatexExporter {
 		latex.append("\\hline\n");
 		latex.append("{\\bf SeqNum} & {\\bf Significance} & {\\bf SensoryNeu} & {\\bf Intensity} & {\\bf Locus 1} & {\\bf Locus 2} & {\\bf Locus 3} & {\\bf Locus 4} \\\\ \\hline\n");
 		for (StimulusGene stimulus : stimuli) {
-			List<Pair<UnsignedByte, UnsignedByte>> das = stimulus.getDrivesAmounts();
+			List<PairSimple<UnsignedByte, UnsignedByte>> das = stimulus.getDrivesAmounts();
 			latex.append(String.format(
 				"%d & %d & %d & %d & (%d,%d) & (%d,%d) & (%d,%d) & (%d,%d) \\\\ \\hline\n",
 				stimulus.getSequenceNumber().getValue(), stimulus.getSignificance(), stimulus.getSensoryNeurone(), stimulus.getIntensity(),

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import gabywald.biosilico.genetics.builders.Pair;
 import gabywald.creatures.model.UnsignedByte;
+import gabywald.global.structures.PairSimple;
 
 /**
  * These are processed during embryology and whilst the creature is asleep. They provide a way of providing the creature wish some basic information like "Eat Food When Hungry = Good" and "Do Nothing When Bored = Bad" 
@@ -52,10 +52,10 @@ public class InstinctGene extends CreatureGene {
 	public int getNeurone2()	{ return this.data.get(3).getValue(); }
 	public int getNeurone3()	{ return this.data.get(5).getValue(); }
 	
-	public List<Pair<UnsignedByte, UnsignedByte> > getConditions() {
-		return Arrays.asList( Pair.of(this.data.get(0), this.data.get(1)), 
-							  Pair.of(this.data.get(2), this.data.get(3)), 
-							  Pair.of(this.data.get(4), this.data.get(5)) );
+	public List<PairSimple<UnsignedByte, UnsignedByte> > getConditions() {
+		return Arrays.asList( PairSimple.of(this.data.get(0), this.data.get(1)), 
+							  PairSimple.of(this.data.get(2), this.data.get(3)), 
+							  PairSimple.of(this.data.get(4), this.data.get(5)) );
 	}
 	
 	public int getAction()				{ return this.data.get(6).getValue(); }

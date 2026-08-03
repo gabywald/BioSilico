@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.global.structures.PairSimple;
 import gabywald.creatures.model.UnsignedByte;
 
 /**
@@ -87,11 +87,11 @@ public class StimulusGene extends CreatureGene {
 	public int getDrive4()	{ return this.data.get(11).getValue(); }
 	public int getAmount4()	{ return this.data.get(12).getValue(); }
 	
-	public List<Pair<UnsignedByte, UnsignedByte> > getDrivesAmounts() {
-		return Arrays.asList( Pair.of(this.data.get( 5), this.data.get( 6)), 
-							  Pair.of(this.data.get( 7), this.data.get( 8)), 
-							  Pair.of(this.data.get( 9), this.data.get(10)), 
-							  Pair.of(this.data.get(11), this.data.get(12)) );
+	public List<PairSimple<UnsignedByte, UnsignedByte> > getDrivesAmounts() {
+		return Arrays.asList( PairSimple.of(this.data.get( 5), this.data.get( 6)), 
+							  PairSimple.of(this.data.get( 7), this.data.get( 8)), 
+							  PairSimple.of(this.data.get( 9), this.data.get(10)), 
+							  PairSimple.of(this.data.get(11), this.data.get(12)) );
 	}
 	
 	public boolean isModulateUsingSensorySignal()		

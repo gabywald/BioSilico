@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.BiochemicalReaction;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,15 +11,15 @@ public class BiochemicalReactionBuilder extends GeneBuilder<BiochemicalReaction>
 
 	public BiochemicalReactionBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.ACHEM, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.ACOEF, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.BCHEM, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.BCOEF, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.CCHEM, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.CCOEF, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DCHEM, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DCOEF, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.KMVM, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.ACHEM, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.ACOEF, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.BCHEM, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.BCOEF, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.CCHEM, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.CCOEF, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DCHEM, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DCOEF, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.KMVM, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
 	}
 
 	public int setAchem(int achem) {

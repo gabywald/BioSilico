@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.StimulusDecision;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,14 +11,14 @@ public class StimulusDecisionBuilder extends GeneBuilder<StimulusDecision> {
 	
 	public StimulusDecisionBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.PERCEPTION, 	Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.OBJECT, 		Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.INDICATOR, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.THRESHOLD, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.ATTRIBUTE, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.VARIABLE, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.VALUE, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.SCRIPT, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.PERCEPTION, 	PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.OBJECT, 		PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.INDICATOR, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.THRESHOLD, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.ATTRIBUTE, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.VARIABLE, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.VALUE, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.SCRIPT, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
 	}
 	
 	
