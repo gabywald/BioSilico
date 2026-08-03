@@ -5,6 +5,7 @@ import java.util.Map;
 
 import gabywald.biosilico.genetics.Gene;
 import gabywald.biosilico.interfaces.IBuilder;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -13,7 +14,7 @@ import gabywald.biosilico.interfaces.IBuilder;
  */
 public abstract class GeneBuilder<T extends Gene> implements IBuilder<T> {
 	
-	protected Map<GeneBuilderEnum, Pair<GeneAttemptedType, String> > map = new HashMap<GeneBuilderEnum, Pair<GeneAttemptedType, String> >();
+	protected Map<GeneBuilderEnum, PairSimple<GeneAttemptedType, String> > map = new HashMap<GeneBuilderEnum, PairSimple<GeneAttemptedType, String> >();
 	
 	enum GeneAttemptedType {
 		BOOLEAN, INTEGER, String;
@@ -52,29 +53,29 @@ public abstract class GeneBuilder<T extends Gene> implements IBuilder<T> {
 	}
 	
 	protected GeneBuilder() {
-		this.map.put(GeneBuilderEnum.NAME, 			Pair.of(GeneAttemptedType.String,  ""));
-		this.map.put(GeneBuilderEnum.MUTATE, 		Pair.of(GeneAttemptedType.BOOLEAN, "false"));
-		this.map.put(GeneBuilderEnum.DUPLICATE, 	Pair.of(GeneAttemptedType.BOOLEAN, "false"));
-		this.map.put(GeneBuilderEnum.DELETE, 		Pair.of(GeneAttemptedType.BOOLEAN, "false"));
-		this.map.put(GeneBuilderEnum.ACTIV, 		Pair.of(GeneAttemptedType.BOOLEAN, "false"));
-		this.map.put(GeneBuilderEnum.AGE_MIN, 		Pair.of(GeneAttemptedType.INTEGER, "0"));
-		this.map.put(GeneBuilderEnum.AGE_MAX, 		Pair.of(GeneAttemptedType.INTEGER, "0"));
-		this.map.put(GeneBuilderEnum.SEX, 			Pair.of(GeneAttemptedType.INTEGER, "0"));
-		this.map.put(GeneBuilderEnum.MUTATION_RATE, Pair.of(GeneAttemptedType.INTEGER, "0"));
+		this.map.put(GeneBuilderEnum.NAME, 			PairSimple.of(GeneAttemptedType.String,  ""));
+		this.map.put(GeneBuilderEnum.MUTATE, 		PairSimple.of(GeneAttemptedType.BOOLEAN, "false"));
+		this.map.put(GeneBuilderEnum.DUPLICATE, 	PairSimple.of(GeneAttemptedType.BOOLEAN, "false"));
+		this.map.put(GeneBuilderEnum.DELETE, 		PairSimple.of(GeneAttemptedType.BOOLEAN, "false"));
+		this.map.put(GeneBuilderEnum.ACTIV, 		PairSimple.of(GeneAttemptedType.BOOLEAN, "false"));
+		this.map.put(GeneBuilderEnum.AGE_MIN, 		PairSimple.of(GeneAttemptedType.INTEGER, "0"));
+		this.map.put(GeneBuilderEnum.AGE_MAX, 		PairSimple.of(GeneAttemptedType.INTEGER, "0"));
+		this.map.put(GeneBuilderEnum.SEX, 			PairSimple.of(GeneAttemptedType.INTEGER, "0"));
+		this.map.put(GeneBuilderEnum.MUTATION_RATE, PairSimple.of(GeneAttemptedType.INTEGER, "0"));
 	}
 	
 	// ***** 
 	
 	protected String setString(GeneBuilderEnum gbe, String val) {
-		return this.map.put(gbe, Pair.of(GeneAttemptedType.String, val)).second.toString();
+		return this.map.put(gbe, PairSimple.of(GeneAttemptedType.String, val)).second.toString();
 	}
 	
 	protected boolean setBoolean(GeneBuilderEnum gbe, boolean val) {
-		return this.map.put(gbe, Pair.of(GeneAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
+		return this.map.put(gbe, PairSimple.of(GeneAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
 	}
 	
 	protected int setInteger(GeneBuilderEnum gbe, int val) {
-		return Integer.parseInt(this.map.put(gbe, Pair.of(GeneAttemptedType.INTEGER, val + "")).second.toString());
+		return Integer.parseInt(this.map.put(gbe, PairSimple.of(GeneAttemptedType.INTEGER, val + "")).second.toString());
 	}
 	
 	// ***** 

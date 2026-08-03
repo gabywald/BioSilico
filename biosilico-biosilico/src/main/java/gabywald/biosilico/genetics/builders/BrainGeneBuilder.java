@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.BrainGene;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,10 +11,10 @@ public class BrainGeneBuilder extends GeneBuilder<BrainGene> {
 	
 	public BrainGeneBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.HEIGHT, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.WIDTH, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DEPTH, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.MORE, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.HEIGHT, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.WIDTH, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DEPTH, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.MORE, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
 	}
 	
 	public int setHeight(int heigth) {

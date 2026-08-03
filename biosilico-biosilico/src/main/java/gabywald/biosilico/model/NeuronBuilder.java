@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.global.structures.PairSimple;
 import gabywald.biosilico.model.environment.PositionBuilder;
 
 /**
@@ -13,7 +13,7 @@ import gabywald.biosilico.model.environment.PositionBuilder;
  */
 public class NeuronBuilder {
 	
-	protected Map<NeuronBuilderEnum, Pair<NeuronAttemptedType, String> > map = new HashMap<NeuronBuilderEnum, Pair<NeuronAttemptedType, String> >();
+	protected Map<NeuronBuilderEnum, PairSimple<NeuronAttemptedType, String> > map = new HashMap<NeuronBuilderEnum, PairSimple<NeuronAttemptedType, String> >();
 
 	enum NeuronAttemptedType {
 		BOOLEAN, INTEGER, String;
@@ -29,36 +29,36 @@ public class NeuronBuilder {
 	}
 	
 	public void init() { 
-		this.map.put(NeuronBuilderEnum.REST, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.THRESHOLD, 		Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.DESC, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.ACTIVITY, 		Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.DENDRITICMIN, 	Pair.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.REST, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.THRESHOLD, 		PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.DESC, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.ACTIVITY, 		PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.DENDRITICMIN, 	PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
 		
-		this.map.put(NeuronBuilderEnum.DENDRITICMAX, 	Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.INDEX, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.PROX, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.REPR, 			Pair.of(NeuronAttemptedType.BOOLEAN, "false"));
-		this.map.put(NeuronBuilderEnum.REPY, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.DENDRITICMAX, 	PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.INDEX, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.PROX, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.REPR, 			PairSimple.of(NeuronAttemptedType.BOOLEAN, "false"));
+		this.map.put(NeuronBuilderEnum.REPY, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
 		
-		this.map.put(NeuronBuilderEnum.WTA, 			Pair.of(NeuronAttemptedType.BOOLEAN, "false"));
-		this.map.put(NeuronBuilderEnum.POSX, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
-		this.map.put(NeuronBuilderEnum.POSY, 			Pair.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.WTA, 			PairSimple.of(NeuronAttemptedType.BOOLEAN, "false"));
+		this.map.put(NeuronBuilderEnum.POSX, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
+		this.map.put(NeuronBuilderEnum.POSY, 			PairSimple.of(NeuronAttemptedType.INTEGER, "0"));
 
 	}
 	
 	// ***** 
 	
 	protected String setString(NeuronBuilderEnum nbe, String val) {
-		return this.map.put(nbe, Pair.of(NeuronAttemptedType.String, val)).second.toString();
+		return this.map.put(nbe, PairSimple.of(NeuronAttemptedType.String, val)).second.toString();
 	}
 	
 	protected boolean setBoolean(NeuronBuilderEnum nbe, boolean val) {
-		return this.map.put(nbe, Pair.of(NeuronAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
+		return this.map.put(nbe, PairSimple.of(NeuronAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
 	}
 	
 	protected int setInteger(NeuronBuilderEnum nbe, int val) {
-		return Integer.parseInt(this.map.put(nbe, Pair.of(NeuronAttemptedType.INTEGER, val + "")).second.toString());
+		return Integer.parseInt(this.map.put(nbe, PairSimple.of(NeuronAttemptedType.INTEGER, val + "")).second.toString());
 	}
 	
 	// ***** 

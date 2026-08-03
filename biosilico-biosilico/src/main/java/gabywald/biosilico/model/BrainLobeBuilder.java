@@ -3,7 +3,7 @@ package gabywald.biosilico.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.global.structures.PairSimple;
 import gabywald.biosilico.model.environment.PositionBuilder;
 
 /**
@@ -13,7 +13,7 @@ import gabywald.biosilico.model.environment.PositionBuilder;
  */
 public class BrainLobeBuilder {
 	
-	protected Map<BrainLobeBuilderEnum, Pair<BrainLobeAttemptedType, String> > map = new HashMap<BrainLobeBuilderEnum, Pair<BrainLobeAttemptedType, String> >();
+	protected Map<BrainLobeBuilderEnum, PairSimple<BrainLobeAttemptedType, String> > map = new HashMap<BrainLobeBuilderEnum, PairSimple<BrainLobeAttemptedType, String> >();
 
 	enum BrainLobeAttemptedType {
 		BOOLEAN, INTEGER, String;
@@ -29,32 +29,32 @@ public class BrainLobeBuilder {
 	}
 	
 	public void init() { 
-		this.map.put(BrainLobeBuilderEnum.REST, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.THRESHOLD, 		Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.DESC, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.DENDRITICMIN, 	Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.DENDRITICMAX, 	Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.PROX, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.REPR, 			Pair.of(BrainLobeAttemptedType.BOOLEAN, "false"));
-		this.map.put(BrainLobeBuilderEnum.REPY, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.WTA, 				Pair.of(BrainLobeAttemptedType.BOOLEAN, "false"));
-		this.map.put(BrainLobeBuilderEnum.POSX, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
-		this.map.put(BrainLobeBuilderEnum.POSY, 			Pair.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.REST, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.THRESHOLD, 		PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.DESC, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.DENDRITICMIN, 	PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.DENDRITICMAX, 	PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.PROX, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.REPR, 			PairSimple.of(BrainLobeAttemptedType.BOOLEAN, "false"));
+		this.map.put(BrainLobeBuilderEnum.REPY, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.WTA, 				PairSimple.of(BrainLobeAttemptedType.BOOLEAN, "false"));
+		this.map.put(BrainLobeBuilderEnum.POSX, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
+		this.map.put(BrainLobeBuilderEnum.POSY, 			PairSimple.of(BrainLobeAttemptedType.INTEGER, "0"));
 
 	}
 	
 	// ***** 
 	
 	protected String setString(BrainLobeBuilderEnum nbe, String val) {
-		return this.map.put(nbe, Pair.of(BrainLobeAttemptedType.String, val)).second.toString();
+		return this.map.put(nbe, PairSimple.of(BrainLobeAttemptedType.String, val)).second.toString();
 	}
 	
 	protected boolean setBoolean(BrainLobeBuilderEnum nbe, boolean val) {
-		return this.map.put(nbe, Pair.of(BrainLobeAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
+		return this.map.put(nbe, PairSimple.of(BrainLobeAttemptedType.BOOLEAN, val?"true":"false")).second.equals(Boolean.TRUE.toString());
 	}
 	
 	protected int setInteger(BrainLobeBuilderEnum nbe, int val) {
-		return Integer.parseInt(this.map.put(nbe, Pair.of(BrainLobeAttemptedType.INTEGER, val + "")).second.toString());
+		return Integer.parseInt(this.map.put(nbe, PairSimple.of(BrainLobeAttemptedType.INTEGER, val + "")).second.toString());
 	}
 	
 	// ***** 

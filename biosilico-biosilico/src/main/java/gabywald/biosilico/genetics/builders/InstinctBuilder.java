@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.Instinct;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,15 +11,15 @@ public class InstinctBuilder extends GeneBuilder<Instinct> {
 
 	public InstinctBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.INPUTPOSX, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.INPUTPOSY, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.OUTPUTPOSX, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.OUTPUTPOSY, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.WEIGHT, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.VARIABLE, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.THRESHOLD, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.CHECK, 		Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.POSITIVE, 		Pair.of(GeneAttemptedType.BOOLEAN,  "true"));
+		this.map.put(GeneBuilderEnum.INPUTPOSX, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.INPUTPOSY, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.OUTPUTPOSX, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.OUTPUTPOSY, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.WEIGHT, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.VARIABLE, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.THRESHOLD, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.CHECK, 		PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.POSITIVE, 		PairSimple.of(GeneAttemptedType.BOOLEAN,  "true"));
 	}
 	
 	public int setInputPosX(int inputPosX) {

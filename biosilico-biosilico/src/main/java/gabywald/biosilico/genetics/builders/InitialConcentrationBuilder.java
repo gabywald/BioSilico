@@ -1,6 +1,7 @@
 package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.InitialConcentration;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -10,8 +11,8 @@ public class InitialConcentrationBuilder extends GeneBuilder<InitialConcentratio
 
 	public InitialConcentrationBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.VARIABLE, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.VALUE, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.VARIABLE, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.VALUE, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
 	}
 	
 	public int setVariable(int varia) {

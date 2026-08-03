@@ -2,6 +2,7 @@ package gabywald.biosilico.genetics.builders;
 
 import gabywald.biosilico.genetics.BrainLobeGene;
 import gabywald.biosilico.model.Brain;
+import gabywald.global.structures.PairSimple;
 
 /**
  * 
@@ -11,20 +12,20 @@ public class BrainLobeGeneBuilder extends GeneBuilder<BrainLobeGene> {
 
 	public BrainLobeGeneBuilder() {
 		super();
-		this.map.put(GeneBuilderEnum.REST, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.THRESHOLD, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DESC, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DENDRITICMIN, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.DENDRITICMAX, 	Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.PROX, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.REPR, 			Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.REPY, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.WTA, 			Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
-		this.map.put(GeneBuilderEnum.HEIGHT, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.WIDTH, 		Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.POSX, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.POSY, 			Pair.of(GeneAttemptedType.INTEGER,  "0"));
-		this.map.put(GeneBuilderEnum.REPLACE, 		Pair.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.REST, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.THRESHOLD, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DESC, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DENDRITICMIN, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.DENDRITICMAX, 	PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.PROX, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.REPR, 			PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.REPY, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.WTA, 			PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
+		this.map.put(GeneBuilderEnum.HEIGHT, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.WIDTH, 		PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.POSX, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.POSY, 			PairSimple.of(GeneAttemptedType.INTEGER,  "0"));
+		this.map.put(GeneBuilderEnum.REPLACE, 		PairSimple.of(GeneAttemptedType.BOOLEAN,  "false"));
 	}
 	
 	public int setRest(int rest) {

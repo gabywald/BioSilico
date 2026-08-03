@@ -1,6 +1,6 @@
 package gabywald.creatures.genetics;
 
-import gabywald.biosilico.genetics.builders.Pair;
+import gabywald.global.structures.PairSimple;
 import gabywald.creatures.model.UnsignedByte;
 import gabywald.utilities.logger.Logger;
 import gabywald.utilities.logger.Logger.LoggerLevel;
@@ -270,7 +270,7 @@ public class BrainLobeGene extends CreatureGene {
 		{ "7", "Attention/seek", "39", "<ID 39> " }
 	};
 	
-	public static Pair<String, String> getLobeAndInputCell(int lobeNB, int cellNB) {
+	public static PairSimple<String, String> getLobeAndInputCell(int lobeNB, int cellNB) {
 		int iStarter = 0;
 		switch(lobeNB) { // ** Some Optimisation ** 
 		case 1:iStarter =  00;break;
@@ -287,7 +287,7 @@ public class BrainLobeGene extends CreatureGene {
 		for (int i = iStarter ; i < BrainLobeGene.C1_LOBE_T0_TRANSLATION.length ; i++) {
 			String[] currentSelection = BrainLobeGene.C1_LOBE_T0_TRANSLATION[i];
 			if ( (currentSelection[0].equals(lobeNB + "")) && (currentSelection[2].equals(cellNB + "")) ) {
-				return Pair.of(currentSelection[1], currentSelection[3]);
+				return PairSimple.of(currentSelection[1], currentSelection[3]);
 			}
 		}
 		Logger.printlnLog(LoggerLevel.LL_WARNING, "BrainLobeGene.getLobeAndInputCell(" + lobeNB + ", " + cellNB + ") return NULL !");
